@@ -28,3 +28,7 @@ Base64 Base32 Base16 Base85
 ## 杂项
 
 无
+
+# 当前完成状态预览
+
+![Preview.png](https://i.loli.net/2020/03/26/xwCBY5cTq7sSjE6.png)
