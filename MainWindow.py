@@ -10,6 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 import resource
 from basecom import *
+import quopri
 
 
 class Ui_MainWindow(object):
@@ -18,6 +19,7 @@ class Ui_MainWindow(object):
         # some varibles
         self.TypeMode = 0
         self.BaseMode = 1
+        self.CryptoMode = 1
 
         # font config
         QtGui.QFontDatabase.addApplicationFont("./Resources/wqy-microhei.ttc")
@@ -130,7 +132,7 @@ class Ui_MainWindow(object):
         self.FileTempStack.setGeometry(QtCore.QRect(20, 670, 120, 200))
         self.FileTempStack.setObjectName('FileTempStack')
         self.FileTempStack.setStyleSheet(
-            '#FileTempStack{background-color: rgb(20,20,20)}')
+            '#FileTempStack{background-color: rgb(20,20,20); color: white}')
 
         '''Begin define Type panel change method'''
         self.TypeStack = QtWidgets.QStackedWidget(self.centralwidget)
@@ -161,9 +163,17 @@ class Ui_MainWindow(object):
 
         # Crypto Buttons
 
+        # Choose ticker
+        self.CryptoChooserBox = [0, 11, 141]
+        self.CryptoChooser = QtWidgets.QLabel(self.CryptoPanel)
+        self.CryptoChooser.setPixmap(
+            QtGui.QPixmap('./Resources/chooser.png'))
+        self.CryptoChooser.setGeometry(QtCore.QRect(
+            self.CryptoChooserBox[self.CryptoMode], 65, 120, 8))
+
         # Base Button
         self.BaseButton = QtWidgets.QPushButton(self.CryptoPanel)
-        self.BaseButton.setGeometry(QtCore.QRect(20, 20, 120, 45))
+        self.BaseButton.setGeometry(QtCore.QRect(11, 20, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(18)
@@ -175,6 +185,21 @@ class Ui_MainWindow(object):
         self.BaseButton.setText("Base系列")
         self.BaseButton.setFlat(True)
         self.BaseButton.setObjectName("BaseButton")
+
+        # Quote-Printable Button
+        self.QuoteButton = QtWidgets.QPushButton(self.CryptoPanel)
+        self.QuoteButton.setGeometry(QtCore.QRect(141, 20, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.QuoteButton.setFont(font)
+        self.QuoteButton.setStyleSheet(
+            "QPushButton#QuoteButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.QuoteButton.setText("Quote-P")
+        self.QuoteButton.setFlat(True)
+        self.QuoteButton.setObjectName("QuoteButton")
 
         # end Crypto Buttons
 
@@ -351,7 +376,7 @@ class Ui_MainWindow(object):
         self.BaseTextBox.setObjectName('BaseTextBox')
         self.BaseTextBox.setFont(font)
         self.BaseTextBox.setStyleSheet(
-            'background-color: rgb(20,20,20);')
+            'background-color: rgb(20,20,20)')
         self.BaseTextBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.BaseTextBox.setGeometry(QtCore.QRect(20, 180, 680, 430))
         self.BaseTextBox.setPlaceholderText('这里写明文')
@@ -360,12 +385,36 @@ class Ui_MainWindow(object):
         self.BaseCipherBox.setObjectName('BaseTextBox')
         self.BaseCipherBox.setFont(font)
         self.BaseCipherBox.setStyleSheet(
-            'background-color: rgb(20,20,20);')
+            'background-color: rgb(20,20,20)')
         self.BaseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.BaseCipherBox.setGeometry(QtCore.QRect(720, 180, 680, 430))
         self.BaseCipherBox.setPlaceholderText('这里写编码')
 
         # end base panel
+
+        # begin quote panel
+        self.QuotePanel = QtWidgets.QWidget()
+        self.QuotePanel.setObjectName('QuotePanel')
+        self.CryptoStack.addWidget(self.QuotePanel)
+
+        self.QuoteTextBox = QtWidgets.QTextEdit(self.QuotePanel)
+        self.QuoteTextBox.setObjectName('QuoteTextBox')
+        self.QuoteTextBox.setFont(font)
+        self.QuoteTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.QuoteTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.QuoteTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+
+        self.QuoteCipherBox = QtWidgets.QTextEdit(self.QuotePanel)
+        self.QuoteCipherBox.setObjectName('QuoteCipherBox')
+        self.QuoteCipherBox.setFont(font)
+        self.QuoteCipherBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.QuoteCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.QuoteCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+
+        # end quote panel
+
         self.TypeStack.addWidget(self.CryptoPanel)
 
         # end Crypto panel
@@ -407,6 +456,8 @@ class Ui_MainWindow(object):
         self.MiscButton.clicked.connect(self.ChangeTypeStackMisc)
         self.WebButton.clicked.connect(self.ChangeTypeStackWeb)
         self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
+        self.BaseButton.clicked.connect(self.ChangeCryptoBase)
+        self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -421,10 +472,37 @@ class Ui_MainWindow(object):
             self.BaseCipherOutputFunction)
         self.BaseEButton.clicked.connect(self.BaseEDecodeFunction)
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
+        self.ChangeCryptoBase()
         self.ChangeBase64()
         self.center()
 
     # functions
+
+    def ChangeCryptoBase(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 65))
+        self.CryptoMode = 1
+        self.CryptoStack.setCurrentIndex(0)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 65))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoQuote(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 65))
+        self.CryptoMode = 2
+        self.CryptoStack.setCurrentIndex(1)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 65))
+        animation.setDuration(200)
+        animation.start()
 
     def BaseEDecodeFunction(self):
         text = self.BaseCipherBox.toPlainText()
