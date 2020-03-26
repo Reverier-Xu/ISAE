@@ -5,7 +5,29 @@ Intergrated CTF Environment
 
 采用PyQt5编写, 2020年03月25日开工, 欢迎fork, 开发相关功能并pull到本仓库.
 
-目前进度:
+## 如何参与
+
+fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
+
+如果你用有丰富的UI开发经验, 可以帮开发者优化一下界面和逻辑代码并做好模块化, 感激不尽.
+
+## 如何使用
+
+clone本仓库到本地, 安装PyQt5
+
+```python
+pip install PyQt5
+```
+
+运行
+
+```
+python ./ictfeMainWindow.py
+```
+
+后续随着工具集成会加入所需要的Python模块说明.
+
+# 目前进度:
 
 ## 逆向工程
 
