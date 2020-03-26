@@ -14,14 +14,14 @@ def base64_ste(lines):
     temp = 0
     digit = 0
     for i in lines:
-        if i[-2] != '=':
+        if i[-1] != '=':
             continue
-        elif i[-3] != '=':
+        elif i[-2] != '=':
             digit += 2
-            temp = (temp << 2) + (alphabet.find(i[-3]) & 0x3)
+            temp = (temp << 2) + (alphabet.find(i[-2]) & 0x3)
         else:
             digit += 4
-            temp = (temp << 4) + (alphabet.find(i[-4]) & 0xf)
+            temp = (temp << 4) + (alphabet.find(i[-3]) & 0xf)
         if digit == 8:
             digit = 0
             flag += chr(temp)

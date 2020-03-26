@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
         self.BaseEButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseEButton.setObjectName('BaseEButton')
         self.BaseEButton.setGeometry(QtCore.QRect(1180, 10, 200, 45))
-        self.BaseEButton.setText('Base隐写提取')
+        self.BaseEButton.setText('Base64隐写提取')
         self.BaseEButton.setFont(font)
         self.BaseEButton.setStyleSheet(
             "QPushButton#BaseEButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
@@ -419,11 +419,20 @@ class Ui_MainWindow(object):
         self.BaseTextOutputButton.clicked.connect(self.BaseTextOutputFunction)
         self.BaseCipherOutputButton.clicked.connect(
             self.BaseCipherOutputFunction)
+        self.BaseEButton.clicked.connect(self.BaseEDecodeFunction)
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
         self.ChangeBase64()
         self.center()
 
     # functions
+
+    def BaseEDecodeFunction(self):
+        text = self.BaseCipherBox.toPlainText()
+        lines = text.splitlines()
+        aim = base64_ste(lines)
+        self.BaseTextBox.setText(aim)
+        self.FileTempStack.addItem(aim)
+
     def FileStackCopy(self):
         print(self.FileTempStack.selectedItems()[0].text())
         clipboard = QtGui.QGuiApplication.clipboard()
