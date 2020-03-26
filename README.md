@@ -29,6 +29,10 @@ python ./ictfeMainWindow.py
 
 # 目前进度:
 
+## 小工具
+
+添加暂存池, 方便在不同分类之间传递数据.
+
 ## 逆向工程
 
 无
@@ -41,7 +45,8 @@ python ./ictfeMainWindow.py
 
 ### Base系列
 Base64 Base32 Base16 Base85
-支持换表操作, 支持对Python格式的bytes进行编码与解码. 正在尝试集成文件编码与解码.
+支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. 支持Base64隐写提取.
+支持文件操作
 
 ## Pwn
 
@@ -53,4 +58,4 @@ Base64 Base32 Base16 Base85
 
 # 当前完成状态预览
 
-![Preview.png](https://i.loli.net/2020/03/26/xwCBY5cTq7sSjE6.png)
+![Screenshot_20200326_182547.png](https://i.loli.net/2020/03/26/UHQ7Zzprq2swl8t.png)
