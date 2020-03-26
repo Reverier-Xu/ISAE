@@ -133,6 +133,8 @@ class Ui_MainWindow(object):
         self.FileTempStack.setObjectName('FileTempStack')
         self.FileTempStack.setStyleSheet(
             '#FileTempStack{background-color: rgb(20,20,20); color: white}')
+        self.FileTempStack.setDragEnabled(True)
+        self.FileTempStack.setAcceptDrops(True)
 
         '''Begin define Type panel change method'''
         self.TypeStack = QtWidgets.QStackedWidget(self.centralwidget)
@@ -377,6 +379,8 @@ class Ui_MainWindow(object):
         self.BaseTextBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.BaseTextBox.setGeometry(QtCore.QRect(20, 180, 680, 430))
         self.BaseTextBox.setPlaceholderText('这里写明文')
+        self.BaseTextBox.setAcceptDrops(True)
+        self.BaseTextBox.setAcceptRichText(False)
 
         self.BaseCipherBox = QtWidgets.QTextEdit(self.BasePanel)
         self.BaseCipherBox.setObjectName('BaseTextBox')
@@ -386,6 +390,8 @@ class Ui_MainWindow(object):
         self.BaseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.BaseCipherBox.setGeometry(QtCore.QRect(720, 180, 680, 430))
         self.BaseCipherBox.setPlaceholderText('这里写编码')
+        self.BaseCipherBox.setAcceptDrops(True)
+        self.BaseCipherBox.setAcceptRichText(False)
         font.setFamily("文泉驿微米黑")
         # end base panel
 
@@ -486,6 +492,8 @@ class Ui_MainWindow(object):
         self.QuoteTextBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.QuoteTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
         self.QuoteTextBox.setPlaceholderText('Quote - Printable\n这里写明文')
+        self.QuoteTextBox.setAcceptDrops(True)
+        self.QuoteTextBox.setAcceptRichText(False)
 
         self.QuoteCipherBox = QtWidgets.QTextEdit(self.QuotePanel)
         self.QuoteCipherBox.setObjectName('QuoteCipherBox')
@@ -495,6 +503,8 @@ class Ui_MainWindow(object):
         self.QuoteCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.QuoteCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
         self.QuoteCipherBox.setPlaceholderText('Quote - Printable\n这里写编码')
+        self.QuoteCipherBox.setAcceptDrops(True)
+        self.QuoteCipherBox.setAcceptRichText(False)
         font.setFamily("文泉驿微米黑")
         # end quote panel
 
