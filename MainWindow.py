@@ -233,6 +233,15 @@ class Ui_MainWindow(object):
             "QPushButton#Base85Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
         self.Base85Button.setFlat(True)
 
+        self.BaseEButton = QtWidgets.QPushButton(self.BasePanel)
+        self.BaseEButton.setObjectName('BaseEButton')
+        self.BaseEButton.setGeometry(QtCore.QRect(1180, 10, 200, 45))
+        self.BaseEButton.setText('Base隐写提取')
+        self.BaseEButton.setFont(font)
+        self.BaseEButton.setStyleSheet(
+            "QPushButton#BaseEButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.BaseEButton.setFlat(True)
+
         # end base change buttons
 
         # eval support
@@ -291,6 +300,7 @@ class Ui_MainWindow(object):
         self.BaseTextInputButton.setObjectName('BaseTextInputButton')
         self.BaseTextInputButton.setGeometry(QtCore.QRect(20, 125, 120, 45))
         self.BaseTextInputButton.setText('打开...')
+        self.BaseTextInputButton.setToolTip('点击选择文件')
         self.BaseTextInputButton.setFont(font)
         self.BaseTextInputButton.setStyleSheet(
             "QPushButton#BaseTextInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
@@ -303,6 +313,7 @@ class Ui_MainWindow(object):
         self.BaseTextOutputButton.setObjectName('BaseTextOutputButton')
         self.BaseTextOutputButton.setGeometry(QtCore.QRect(360, 125, 120, 45))
         self.BaseTextOutputButton.setText('另存为...')
+        self.BaseTextOutputButton.setToolTip('点击选择文件')
         self.BaseTextOutputButton.setFont(font)
         self.BaseTextOutputButton.setStyleSheet(
             "QPushButton#BaseTextOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
@@ -315,6 +326,7 @@ class Ui_MainWindow(object):
         self.BaseCipherInputButton.setObjectName('BaseCipherInputButton')
         self.BaseCipherInputButton.setGeometry(QtCore.QRect(720, 125, 120, 45))
         self.BaseCipherInputButton.setText('打开...')
+        self.BaseCipherInputButton.setToolTip('点击选择文件')
         self.BaseCipherInputButton.setFont(font)
         self.BaseCipherInputButton.setStyleSheet(
             "QPushButton#BaseCipherInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
@@ -328,6 +340,7 @@ class Ui_MainWindow(object):
         self.BaseCipherOutputButton.setGeometry(
             QtCore.QRect(1060, 125, 120, 45))
         self.BaseCipherOutputButton.setText('另存为...')
+        self.BaseCipherOutputButton.setToolTip('点击选择文件')
         self.BaseCipherOutputButton.setFont(font)
         self.BaseCipherOutputButton.setStyleSheet(
             "QPushButton#BaseCipherOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
@@ -400,10 +413,71 @@ class Ui_MainWindow(object):
         self.Base85Button.clicked.connect(self.ChangeBase85)
         self.BaseEncButton.clicked.connect(self.BaseEnc)
         self.BaseDecButton.clicked.connect(self.BaseDec)
+        self.BaseTextInputButton.clicked.connect(self.BaseTextInputFunction)
+        self.BaseCipherInputButton.clicked.connect(
+            self.BaseCipherInputFunction)
+        self.BaseTextOutputButton.clicked.connect(self.BaseTextOutputFunction)
+        self.BaseCipherOutputButton.clicked.connect(
+            self.BaseCipherOutputFunction)
+        self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
         self.ChangeBase64()
         self.center()
 
     # functions
+    def FileStackCopy(self):
+        print(self.FileTempStack.selectedItems()[0].text())
+        clipboard = QtGui.QGuiApplication.clipboard()
+        clipboard.setText(self.FileTempStack.selectedItems()[0].text())
+
+    def BaseTextInputFunction(self):
+        self.BaseTextInputPath, filetype = \
+            QtWidgets.QFileDialog.getOpenFileName(self,
+                                                  "选取文件",
+                                                  '',
+                                                  "All Files (*);;Text Files (*.txt)")
+        if self.BaseTextInputPath == "":
+            return
+        with open(self.BaseTextInputPath, 'rb') as inp:
+            self.BaseTextBox.setText(str(inp.read()))
+        self.BaseTextEvalCheckBox.setChecked(True)
+
+    def BaseTextOutputFunction(self):
+        self.BaseTextOutputPath, filetype = QtWidgets.QFileDialog.getSaveFileName(self,
+                                                                                  "保存文件",
+                                                                                  '',
+                                                                                  "All Files (*)")
+        if self.BaseTextOutputPath == "":
+            return
+        if self.BaseTextBox.toPlainText()[0:2] == 'b\'':
+            with open(self.BaseTextOutputPath, 'wb') as out:
+                out.write(eval(self.BaseTextBox.toPlainText()))
+        else:
+            with open(self.BaseTextOutputPath, 'w') as out:
+                out.write(self.BaseTextBox.toPlainText())
+
+    def BaseCipherOutputFunction(self):
+        self.BaseCipherOutputPath, filetype = QtWidgets.QFileDialog.getSaveFileName(self,
+                                                                                    "保存文件",
+                                                                                    '',
+                                                                                    "All Files (*)")
+        if self.BaseCipherOutputPath == "":
+            return
+        with open(self.BaseCipherOutputPath, 'w') as out:
+            out.write(self.BaseCipherBox.toPlainText())
+
+    def BaseCipherInputFunction(self):
+        self.BaseCipherInputPath, filetype = \
+            QtWidgets.QFileDialog.getOpenFileName(self,
+                                                  "选取文件",
+                                                  '',
+                                                  "All Files (*);;Text Files (*.txt)")
+        if self.BaseCipherInputPath == "":
+            return
+        with open(self.BaseCipherInputPath, 'r') as inp:
+            try:
+                self.BaseCipherBox.setText(inp.read().decode())
+            except:
+                self.BaseCipherBox.setText('文件读取错误.')
 
     def ChangeBase16(self):
         animation = Qt.QPropertyAnimation(self)
@@ -468,6 +542,7 @@ class Ui_MainWindow(object):
             self.Base85Enc()
         else:
             pass
+        self.FileTempStack.addItem(self.BaseCipherBox.toPlainText())
 
     def BaseDec(self):
         if self.BaseMode == 1:
@@ -480,6 +555,7 @@ class Ui_MainWindow(object):
             self.Base85Dec()
         else:
             pass
+        self.FileTempStack.addItem(self.BaseTextBox.toPlainText())
 
     def CheckBaseCipher(self, x, newtable):
         if (self.BaseMode == 1):
