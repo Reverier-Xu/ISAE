@@ -22,7 +22,7 @@ pip install PyQt5
 运行
 
 ```
-python ./ictfeMainWindow.py
+./Run.py
 ```
 
 后续随着工具集成会加入所需要的Python模块说明.
@@ -48,6 +48,9 @@ Base64 Base32 Base16 Base85
 支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. 支持Base64隐写提取.
 支持文件操作
 
+### Quoted-Printable
+支持文件和字符串的编码和解码.
+
 ## Pwn
 
 无
@@ -59,3 +62,4 @@ Base64 Base32 Base16 Base85
 # 当前完成状态预览
 
 ![Screenshot_20200326_182547.png](https://i.loli.net/2020/03/26/UHQ7Zzprq2swl8t.png)
+![G22O_0A8H3N~L6FKM@0P~_4.png](https://i.loli.net/2020/03/26/LjPTfAB3qwzxKSF.png)

@@ -169,11 +169,11 @@ class Ui_MainWindow(object):
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
         self.CryptoChooser.setGeometry(QtCore.QRect(
-            self.CryptoChooserBox[self.CryptoMode], 65, 120, 8))
+            self.CryptoChooserBox[self.CryptoMode], 55, 120, 8))
 
         # Base Button
         self.BaseButton = QtWidgets.QPushButton(self.CryptoPanel)
-        self.BaseButton.setGeometry(QtCore.QRect(11, 20, 120, 45))
+        self.BaseButton.setGeometry(QtCore.QRect(11, 10, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(18)
@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
 
         # Quote-Printable Button
         self.QuoteButton = QtWidgets.QPushButton(self.CryptoPanel)
-        self.QuoteButton.setGeometry(QtCore.QRect(141, 20, 120, 45))
+        self.QuoteButton.setGeometry(QtCore.QRect(141, 10, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(18)
@@ -297,7 +297,7 @@ class Ui_MainWindow(object):
             selection-background-color: blue;')
         self.BaseTableBox.setObjectName('BaseTableBox')
         self.BaseTableBox.setGeometry(QtCore.QRect(150, 70, 1000, 45))
-
+        font.setFamily("文泉驿微米黑")
         # base enc button
         self.BaseEncButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseEncButton.setObjectName('BaseEncButton')
@@ -319,7 +319,6 @@ class Ui_MainWindow(object):
         self.BaseDecButton.setFlat(True)
 
         # input text file button
-        self.BaseTextInputFlag = False
         self.BaseTextInputPath = ''
         self.BaseTextInputButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseTextInputButton.setObjectName('BaseTextInputButton')
@@ -332,7 +331,6 @@ class Ui_MainWindow(object):
         self.BaseTextInputButton.setFlat(True)
 
         # output text file button
-        self.BaseTextOutputFlag = False
         self.BaseTextOutputPath = ''
         self.BaseTextOutputButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseTextOutputButton.setObjectName('BaseTextOutputButton')
@@ -345,7 +343,6 @@ class Ui_MainWindow(object):
         self.BaseTextOutputButton.setFlat(True)
 
         # input cipher file button
-        self.BaseCipherInputFlag = False
         self.BaseCipherInputPath = ''
         self.BaseCipherInputButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseCipherInputButton.setObjectName('BaseCipherInputButton')
@@ -358,7 +355,6 @@ class Ui_MainWindow(object):
         self.BaseCipherInputButton.setFlat(True)
 
         # output cipher file button
-        self.BaseCipherOutputFlag = False
         self.BaseCipherOutputPath = ''
         self.BaseCipherOutputButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseCipherOutputButton.setObjectName('BaseCipherOutputButton')
@@ -372,6 +368,7 @@ class Ui_MainWindow(object):
         self.BaseCipherOutputButton.setFlat(True)
 
         # base text box and cipher box
+        font.setFamily("Consolas")
         self.BaseTextBox = QtWidgets.QTextEdit(self.BasePanel)
         self.BaseTextBox.setObjectName('BaseTextBox')
         self.BaseTextBox.setFont(font)
@@ -389,7 +386,7 @@ class Ui_MainWindow(object):
         self.BaseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.BaseCipherBox.setGeometry(QtCore.QRect(720, 180, 680, 430))
         self.BaseCipherBox.setPlaceholderText('这里写编码')
-
+        font.setFamily("文泉驿微米黑")
         # end base panel
 
         # begin quote panel
@@ -397,6 +394,90 @@ class Ui_MainWindow(object):
         self.QuotePanel.setObjectName('QuotePanel')
         self.CryptoStack.addWidget(self.QuotePanel)
 
+        # input text file button
+        self.QuoteTextInputPath = ''
+        self.QuoteTextInputButton = QtWidgets.QPushButton(self.QuotePanel)
+        self.QuoteTextInputButton.setObjectName('QuoteTextInputButton')
+        self.QuoteTextInputButton.setGeometry(QtCore.QRect(20, 20, 120, 45))
+        self.QuoteTextInputButton.setText('打开...')
+        self.QuoteTextInputButton.setToolTip('点击选择文件')
+        self.QuoteTextInputButton.setFont(font)
+        self.QuoteTextInputButton.setStyleSheet(
+            "QPushButton#QuoteTextInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.QuoteTextInputButton.setFlat(True)
+
+        # output text file button
+        self.QuoteTextOutputPath = ''
+        self.QuoteTextOutputButton = QtWidgets.QPushButton(self.QuotePanel)
+        self.QuoteTextOutputButton.setObjectName('QuoteTextOutputButton')
+        self.QuoteTextOutputButton.setGeometry(QtCore.QRect(260, 20, 120, 45))
+        self.QuoteTextOutputButton.setText('另存为...')
+        self.QuoteTextOutputButton.setToolTip('点击选择文件')
+        self.QuoteTextOutputButton.setFont(font)
+        self.QuoteTextOutputButton.setStyleSheet(
+            "QPushButton#QuoteTextOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.QuoteTextOutputButton.setFlat(True)
+
+        # eval support
+        self.QuoteTextEvalCheckBox = QtWidgets.QCheckBox(
+            '启用eval', self.QuotePanel)
+        font.setFamily('文泉驿微米黑')
+        self.QuoteTextEvalCheckBox.setGeometry(QtCore.QRect(450, 35, 120, 40))
+        self.QuoteTextEvalCheckBox.setObjectName('QuoteTextEvalCheckBox')
+        self.QuoteTextEvalCheckBox.setStyleSheet(
+            'QCheckBox:unchecked{ border:none; color: white; }\
+                QCheckBox:checked{ border:none; color: cyan; }')
+        self.QuoteTextEvalCheckBox.setFont(font)
+
+        # Quote Encode button
+        self.QuoteEncodeButton = QtWidgets.QPushButton(self.QuotePanel)
+        self.QuoteEncodeButton.setObjectName('QuoteEncodeButton')
+        self.QuoteEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.QuoteEncodeButton.setText('编码')
+        self.QuoteEncodeButton.setFont(font)
+        self.QuoteEncodeButton.setStyleSheet(
+            "QPushButton#QuoteEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.QuoteEncodeButton.setFlat(True)
+
+        # input cipher file button
+        self.QuoteCipherInputPath = ''
+        self.QuoteCipherInputButton = QtWidgets.QPushButton(self.QuotePanel)
+        self.QuoteCipherInputButton.setObjectName('QuoteCipherInputButton')
+        self.QuoteCipherInputButton.setGeometry(
+            QtCore.QRect(720, 20, 120, 45))
+        self.QuoteCipherInputButton.setText('打开...')
+        self.QuoteCipherInputButton.setToolTip('点击选择文件')
+        self.QuoteCipherInputButton.setFont(font)
+        self.QuoteCipherInputButton.setStyleSheet(
+            "QPushButton#QuoteCipherInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.QuoteCipherInputButton.setFlat(True)
+
+        # output cipher file button
+        self.QuoteCipherOutputPath = ''
+        self.QuoteCipherOutputButton = QtWidgets.QPushButton(self.QuotePanel)
+        self.QuoteCipherOutputButton.setObjectName('QuoteCipherOutputButton')
+        self.QuoteCipherOutputButton.setGeometry(
+            QtCore.QRect(960, 20, 120, 45))
+        self.QuoteCipherOutputButton.setText('另存为...')
+        self.QuoteCipherOutputButton.setToolTip('点击选择文件')
+        self.QuoteCipherOutputButton.setFont(font)
+        self.QuoteCipherOutputButton.setStyleSheet(
+            "QPushButton#QuoteCipherOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.QuoteCipherOutputButton.setFlat(True)
+
+        # Quote Decode button
+        self.QuoteDecodeButton = QtWidgets.QPushButton(self.QuotePanel)
+        self.QuoteDecodeButton.setObjectName('QuoteDecodeButton')
+        self.QuoteDecodeButton.setGeometry(
+            QtCore.QRect(1280, 20, 120, 45))
+        self.QuoteDecodeButton.setText('解码')
+        self.QuoteDecodeButton.setFont(font)
+        self.QuoteDecodeButton.setStyleSheet(
+            "QPushButton#QuoteDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.QuoteDecodeButton.setFlat(True)
+
+        font.setFamily("Consolas")
         self.QuoteTextBox = QtWidgets.QTextEdit(self.QuotePanel)
         self.QuoteTextBox.setObjectName('QuoteTextBox')
         self.QuoteTextBox.setFont(font)
@@ -404,6 +485,7 @@ class Ui_MainWindow(object):
             'background-color: rgb(20,20,20)')
         self.QuoteTextBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.QuoteTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.QuoteTextBox.setPlaceholderText('Quote - Printable\n这里写明文')
 
         self.QuoteCipherBox = QtWidgets.QTextEdit(self.QuotePanel)
         self.QuoteCipherBox.setObjectName('QuoteCipherBox')
@@ -412,7 +494,8 @@ class Ui_MainWindow(object):
             'background-color: rgb(20,20,20)')
         self.QuoteCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.QuoteCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
-
+        self.QuoteCipherBox.setPlaceholderText('Quote - Printable\n这里写编码')
+        font.setFamily("文泉驿微米黑")
         # end quote panel
 
         self.TypeStack.addWidget(self.CryptoPanel)
@@ -464,12 +547,21 @@ class Ui_MainWindow(object):
         self.Base85Button.clicked.connect(self.ChangeBase85)
         self.BaseEncButton.clicked.connect(self.BaseEnc)
         self.BaseDecButton.clicked.connect(self.BaseDec)
+        self.QuoteEncodeButton.clicked.connect(self.QuoteEnc)
+        self.QuoteDecodeButton.clicked.connect(self.QuoteDec)
         self.BaseTextInputButton.clicked.connect(self.BaseTextInputFunction)
         self.BaseCipherInputButton.clicked.connect(
             self.BaseCipherInputFunction)
         self.BaseTextOutputButton.clicked.connect(self.BaseTextOutputFunction)
         self.BaseCipherOutputButton.clicked.connect(
             self.BaseCipherOutputFunction)
+        self.QuoteTextInputButton.clicked.connect(self.QuoteTextInputFunction)
+        self.QuoteCipherInputButton.clicked.connect(
+            self.QuoteCipherInputFunction)
+        self.QuoteTextOutputButton.clicked.connect(
+            self.QuoteTextOutputFunction)
+        self.QuoteCipherOutputButton.clicked.connect(
+            self.QuoteCipherOutputFunction)
         self.BaseEButton.clicked.connect(self.BaseEDecodeFunction)
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
         self.ChangeCryptoBase()
@@ -477,17 +569,44 @@ class Ui_MainWindow(object):
         self.center()
 
     # functions
+    def QuoteEnc(self):
+        if self.QuoteTextEvalCheckBox.isChecked() == True:
+            try:
+                text = eval(self.QuoteTextBox.toPlainText())
+            except:
+                self.QuoteCipherBox.setText(
+                    '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
+                return
+        else:
+            text = self.QuoteTextBox.toPlainText().encode()
+        try:
+            cipher = quopri.encodestring(text).decode()
+        except:
+            cipher = '编码时出现错误!'
+        self.QuoteCipherBox.setText(cipher)
+
+    def QuoteDec(self):
+        text = self.QuoteCipherBox.toPlainText()
+        try:
+            cipher = quopri.decodestring(text)
+        except:
+            self.QuoteTextBox.setText('解码时出现错误!')
+            return
+        try:
+            self.QuoteTextBox.setText(cipher.decode())
+        except:
+            self.QuoteTextBox.setText(str(cipher))
 
     def ChangeCryptoBase(self):
         animation = Qt.QPropertyAnimation(self)
         animation.setTargetObject(self.CryptoChooser)
         animation.setPropertyName(b'pos')
         animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserBox[self.CryptoMode], 65))
+            self.CryptoChooserBox[self.CryptoMode], 55))
         self.CryptoMode = 1
         self.CryptoStack.setCurrentIndex(0)
         animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserBox[self.CryptoMode], 65))
+            self.CryptoChooserBox[self.CryptoMode], 55))
         animation.setDuration(200)
         animation.start()
 
@@ -496,11 +615,11 @@ class Ui_MainWindow(object):
         animation.setTargetObject(self.CryptoChooser)
         animation.setPropertyName(b'pos')
         animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserBox[self.CryptoMode], 65))
+            self.CryptoChooserBox[self.CryptoMode], 55))
         self.CryptoMode = 2
         self.CryptoStack.setCurrentIndex(1)
         animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserBox[self.CryptoMode], 65))
+            self.CryptoChooserBox[self.CryptoMode], 55))
         animation.setDuration(200)
         animation.start()
 
@@ -565,6 +684,56 @@ class Ui_MainWindow(object):
                 self.BaseCipherBox.setText(inp.read().decode())
             except:
                 self.BaseCipherBox.setText('文件读取错误.')
+
+    def QuoteTextInputFunction(self):
+        self.QuoteTextInputPath, filetype = \
+            QtWidgets.QFileDialog.getOpenFileName(self,
+                                                  "选取文件",
+                                                  '',
+                                                  "All Files (*);;Text Files (*.txt)")
+        if self.QuoteTextInputPath == "":
+            return
+        with open(self.QuoteTextInputPath, 'rb') as inp:
+            self.QuoteTextBox.setText(str(inp.read()))
+        self.QuoteTextEvalCheckBox.setChecked(True)
+
+    def QuoteTextOutputFunction(self):
+        self.QuoteTextOutputPath, filetype = QtWidgets.QFileDialog.getSaveFileName(self,
+                                                                                   "保存文件",
+                                                                                   '',
+                                                                                   "All Files (*)")
+        if self.QuoteTextOutputPath == "":
+            return
+        if self.QuoteTextBox.toPlainText()[0:2] == 'b\'':
+            with open(self.QuoteTextOutputPath, 'wb') as out:
+                out.write(eval(self.QuoteTextBox.toPlainText()))
+        else:
+            with open(self.QuoteTextOutputPath, 'w') as out:
+                out.write(self.QuoteTextBox.toPlainText())
+
+    def QuoteCipherOutputFunction(self):
+        self.QuoteCipherOutputPath, filetype = QtWidgets.QFileDialog.getSaveFileName(self,
+                                                                                     "保存文件",
+                                                                                     '',
+                                                                                     "All Files (*)")
+        if self.QuoteCipherOutputPath == "":
+            return
+        with open(self.QuoteCipherOutputPath, 'w') as out:
+            out.write(self.QuoteCipherBox.toPlainText())
+
+    def QuoteCipherInputFunction(self):
+        self.QuoteCipherInputPath, filetype = \
+            QtWidgets.QFileDialog.getOpenFileName(self,
+                                                  "选取文件",
+                                                  '',
+                                                  "All Files (*);;Text Files (*.txt)")
+        if self.QuoteCipherInputPath == "":
+            return
+        with open(self.QuoteCipherInputPath, 'r') as inp:
+            try:
+                self.QuoteCipherBox.setText(inp.read().decode())
+            except:
+                self.QuoteCipherBox.setText('文件读取错误.')
 
     def ChangeBase16(self):
         animation = Qt.QPropertyAnimation(self)
