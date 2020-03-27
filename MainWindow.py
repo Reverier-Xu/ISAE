@@ -1475,6 +1475,7 @@ class Ui_MainWindow(object):
         self.UrlButton.clicked.connect(self.ChangeCryptoUrl)
         self.HexButton.clicked.connect(self.ChangeCryptoHex)
         self.HTMLButton.clicked.connect(self.ChangeCryptoHTML)
+        self.EscapeButton.clicked.connect(self.ChangeCryptoEscape)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -1487,6 +1488,8 @@ class Ui_MainWindow(object):
         self.HexDecodeButton.clicked.connect(self.HexDecode)
         self.HTMLEncodeButton.clicked.connect(self.HTMLEncode)
         self.HTMLDecodeButton.clicked.connect(self.HTMLDecode)
+        self.EscapeEncodeButton.clicked.connect(self.EscapeEncode)
+        self.EscapeDecodeButton.clicked.connect(self.EscapeDecode)
         self.BaseTextInputButton.clicked.connect(self.BaseTextInputFunction)
         self.BaseCipherInputButton.clicked.connect(
             self.BaseCipherInputFunction)
@@ -1570,6 +1573,22 @@ class Ui_MainWindow(object):
         output = binascii.hexlify(data.encode())
         return output
 
+    def EscapeEncode(self):
+        try:
+            self.EscapeCipherBox.setText(parse.quote(self.EscapeTextBox.toPlainText().encode(
+                'unicode-escape')).replace('%5Cu', '%u'))
+        except:
+            self.EscapeCipherBox.setText('编码失败.')
+        self.FileTempStack.addItem(self.EscapeCipherBox.toPlainText())
+
+    def EscapeDecode(self):
+        try:
+            self.EscapeTextBox.setText(
+                parse.unquote(self.EscapeCipherBox.toPlainText().replace('%u', '\\u').encode().decode('unicode-escape')))
+        except:
+            self.EscapeTextBox.setText('解码失败.')
+        self.FileTempStack.addItem(self.EscapeTextBox.toPlainText())
+
     def HTMLEncode(self):
         text = self.HTMLTextBox.toPlainText()
         try:
@@ -1594,8 +1613,8 @@ class Ui_MainWindow(object):
         animation.setPropertyName(b'pos')
         animation.setStartValue(QtCore.QPoint(
             self.CryptoChooserBox[self.CryptoMode], 55))
-        self.CryptoMode = 5
-        self.CryptoStack.setCurrentIndex(4)
+        self.CryptoMode = 6
+        self.CryptoStack.setCurrentIndex(5)
         animation.setEndValue(QtCore.QPoint(
             self.CryptoChooserBox[self.CryptoMode], 55))
         animation.setDuration(200)
