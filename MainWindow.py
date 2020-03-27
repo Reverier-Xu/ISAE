@@ -13,6 +13,7 @@ from basecom import *
 import quopri
 from urllib import parse
 import binascii
+import html
 
 
 class Ui_MainWindow(object):
@@ -1322,6 +1323,78 @@ class Ui_MainWindow(object):
         self.HexCipherBox.setAcceptRichText(False)
         font.setFamily("文泉驿微米黑")
         # end hex panel
+
+        # begin HTML panel
+        self.HTMLPanel = QtWidgets.QWidget()
+        self.HTMLPanel.setObjectName('HTMLPanel')
+        self.CryptoStack.addWidget(self.HTMLPanel)
+
+        # HTML Splits
+        self.HTMLSplitTips = QtWidgets.QLabel(self.HTMLPanel)
+        self.HTMLSplitTips.setObjectName('HTMLSplitTips')
+        self.HTMLSplitTips.setText('分隔符:')
+        self.HTMLSplitTips.setFont(font)
+        self.HTMLSplitTips.setStyleSheet('color: white;')
+        self.HTMLSplitTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        self.HTMLSplitBox = QtWidgets.QLineEdit(self.HTMLPanel)
+        font.setFamily("Consolas")
+        self.HTMLSplitBox.setFont(font)
+        self.HTMLSplitBox.setStyleSheet('color: white;\
+            border: 2px solid gray;\
+            border-radius: 10px;\
+            padding: 0 8px;\
+            background: rgb(20, 20, 20);\
+            selection-background-color: blue;')
+        self.HTMLSplitBox.setObjectName('HTMLSplitBox')
+        self.HTMLSplitBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
+        font.setFamily("文泉驿微米黑")
+
+        # HTML Encode button
+        self.HTMLEncodeButton = QtWidgets.QPushButton(self.HTMLPanel)
+        self.HTMLEncodeButton.setObjectName('HTMLEncodeButton')
+        self.HTMLEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.HTMLEncodeButton.setText('编码')
+        self.HTMLEncodeButton.setFont(font)
+        self.HTMLEncodeButton.setStyleSheet(
+            "QPushButton#HTMLEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HTMLEncodeButton.setFlat(True)
+
+        # HTML Decode button
+        self.HTMLDecodeButton = QtWidgets.QPushButton(self.HTMLPanel)
+        self.HTMLDecodeButton.setObjectName('HTMLDecodeButton')
+        self.HTMLDecodeButton.setGeometry(
+            QtCore.QRect(1280, 20, 120, 45))
+        self.HTMLDecodeButton.setText('解码')
+        self.HTMLDecodeButton.setFont(font)
+        self.HTMLDecodeButton.setStyleSheet(
+            "QPushButton#HTMLDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HTMLDecodeButton.setFlat(True)
+
+        font.setFamily("Consolas")
+        self.HTMLTextBox = QtWidgets.QTextEdit(self.HTMLPanel)
+        self.HTMLTextBox.setObjectName('HTMLTextBox')
+        self.HTMLTextBox.setFont(font)
+        self.HTMLTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.HTMLTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.HTMLTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.HTMLTextBox.setPlaceholderText('HTML Encode\n这里写明文')
+        self.HTMLTextBox.setAcceptDrops(True)
+        self.HTMLTextBox.setAcceptRichText(False)
+
+        self.HTMLCipherBox = QtWidgets.QTextEdit(self.HTMLPanel)
+        self.HTMLCipherBox.setObjectName('HTMLCipherBox')
+        self.HTMLCipherBox.setFont(font)
+        self.HTMLCipherBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.HTMLCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.HTMLCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+        self.HTMLCipherBox.setPlaceholderText('HTML Decode\n这里写编码')
+        self.HTMLCipherBox.setAcceptDrops(True)
+        self.HTMLCipherBox.setAcceptRichText(False)
+        font.setFamily("文泉驿微米黑")
+        # end HTML panel
 
         self.TypeStack.addWidget(self.CryptoPanel)
 
