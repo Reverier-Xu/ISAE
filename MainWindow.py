@@ -205,7 +205,7 @@ class Ui_MainWindow(object):
             QtCore.Qt.ScrollBarAlwaysOff)
 
         # Choose ticker
-        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531, 661]
+        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531, 661, 791]
         self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -1428,6 +1428,58 @@ class Ui_MainWindow(object):
         font.setFamily("文泉驿微米黑")
         # end Escape panel
 
+        # begin Tap panel
+        self.TapPanel = QtWidgets.QWidget()
+        self.TapPanel.setObjectName('TapPanel')
+        self.CryptoStack.addWidget(self.TapPanel)
+
+        # Tap Encode button
+        self.TapEncodeButton = QtWidgets.QPushButton(self.TapPanel)
+        self.TapEncodeButton.setObjectName('TapEncodeButton')
+        self.TapEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.TapEncodeButton.setText('编码')
+        self.TapEncodeButton.setFont(font)
+        self.TapEncodeButton.setStyleSheet(
+            "QPushButton#TapEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.TapEncodeButton.setFlat(True)
+
+        # Tap Decode button
+        self.TapDecodeButton = QtWidgets.QPushButton(self.TapPanel)
+        self.TapDecodeButton.setObjectName('TapDecodeButton')
+        self.TapDecodeButton.setGeometry(
+            QtCore.QRect(1280, 20, 120, 45))
+        self.TapDecodeButton.setText('解码')
+        self.TapDecodeButton.setFont(font)
+        self.TapDecodeButton.setStyleSheet(
+            "QPushButton#TapDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.TapDecodeButton.setFlat(True)
+
+        font.setFamily("Consolas")
+        self.TapTextBox = QtWidgets.QTextEdit(self.TapPanel)
+        self.TapTextBox.setObjectName('TapTextBox')
+        self.TapTextBox.setFont(font)
+        self.TapTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.TapTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.TapTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.TapTextBox.setPlaceholderText('Tap Encode\n这里写明文')
+        self.TapTextBox.setAcceptDrops(True)
+        self.TapTextBox.setAcceptRichText(False)
+
+        self.TapCipherBox = QtWidgets.QTextEdit(self.TapPanel)
+        self.TapCipherBox.setObjectName('TapCipherBox')
+        self.TapCipherBox.setFont(font)
+        self.TapCipherBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.TapCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.TapCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+        self.TapCipherBox.setPlaceholderText('Tap Decode\n这里写编码')
+        self.TapCipherBox.setAcceptDrops(True)
+        self.TapCipherBox.setAcceptRichText(False)
+        font.setFamily("文泉驿微米黑")
+        # end Tap panel
+
         self.TypeStack.addWidget(self.CryptoPanel)
 
         # end Crypto panel
@@ -1476,6 +1528,7 @@ class Ui_MainWindow(object):
         self.HexButton.clicked.connect(self.ChangeCryptoHex)
         self.HTMLButton.clicked.connect(self.ChangeCryptoHTML)
         self.EscapeButton.clicked.connect(self.ChangeCryptoEscape)
+        self.TapButton.clicked.connect(self.ChangeCryptoTap)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -1606,6 +1659,19 @@ class Ui_MainWindow(object):
         except:
             self.HTMLTextBox.setText('解码时出现错误!')
         self.FileTempStack.addItem(self.HTMLTextBox.toPlainText())
+
+    def ChangeCryptoTap(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        self.CryptoMode = 7
+        self.CryptoStack.setCurrentIndex(6)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        animation.setDuration(200)
+        animation.start()
 
     def ChangeCryptoEscape(self):
         animation = Qt.QPropertyAnimation(self)
