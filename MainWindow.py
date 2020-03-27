@@ -12,6 +12,7 @@ import resource
 from basecom import *
 import quopri
 from urllib import parse
+import binascii
 
 
 class Ui_MainWindow(object):
@@ -1256,13 +1257,13 @@ class Ui_MainWindow(object):
         self.CryptoStack.addWidget(self.HexPanel)
 
         # Hex Splits
-        self.HexSplitTips = QtWidgets.QLabel(self.UrlPanel)
+        self.HexSplitTips = QtWidgets.QLabel(self.HexPanel)
         self.HexSplitTips.setObjectName('HexSplitTips')
         self.HexSplitTips.setText('分隔符:')
         self.HexSplitTips.setFont(font)
         self.HexSplitTips.setStyleSheet('color: white;')
         self.HexSplitTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
-        self.HexSplitBox = QtWidgets.QLineEdit(self.UrlPanel)
+        self.HexSplitBox = QtWidgets.QLineEdit(self.HexPanel)
         font.setFamily("Consolas")
         self.HexSplitBox.setFont(font)
         self.HexSplitBox.setStyleSheet('color: white;\
@@ -1376,6 +1377,8 @@ class Ui_MainWindow(object):
         self.BaseDecButton.clicked.connect(self.BaseDec)
         self.QuoteEncodeButton.clicked.connect(self.QuoteEnc)
         self.QuoteDecodeButton.clicked.connect(self.QuoteDec)
+        self.HexEncodeButton.clicked.connect(self.HexEncode)
+        self.HexDecodeButton.clicked.connect(self.HexDecode)
         self.BaseTextInputButton.clicked.connect(self.BaseTextInputFunction)
         self.BaseCipherInputButton.clicked.connect(
             self.BaseCipherInputFunction)
@@ -1420,6 +1423,38 @@ class Ui_MainWindow(object):
         except:
             self.UrlTextBox.setText('出现错误!')
         self.FileTempStack.addItem(self.UrlTextBox.toPlainText())
+
+    def HexEncode(self):
+        text = self.HexTextBox.toPlainText()
+        temp = self.char2hex(text).decode()
+        j = 0
+        output = ''
+        for i in temp:
+            if j % 2 == 0:
+                output += self.HexSplitBox.text()
+            output += i
+            j += 1
+        self.HexCipherBox.setText(output)
+        self.FileTempStack.addItem(self.HexCipherBox.toPlainText())
+
+    def HexDecode(self):
+        text = self.HexCipherBox.toPlainText()
+        temp = []
+        if self.HexSplitBox.text() != '':
+            temp = text.split(self.HexSplitBox.text())
+        else:
+            temp = text.split()
+        output = ''.join(temp)
+        self.HexTextBox.setText(self.hex2char(output).decode())
+        self.FileTempStack.addItem(self.HexTextBox.toPlainText())
+
+    def hex2char(self, data):
+        output = binascii.unhexlify(data.encode())
+        return output
+
+    def char2hex(self, data):
+        output = binascii.hexlify(data.encode())
+        return output
 
     def ChangeCryptoHex(self):
         animation = Qt.QPropertyAnimation(self)
