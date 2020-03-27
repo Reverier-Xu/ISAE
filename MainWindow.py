@@ -166,16 +166,24 @@ class Ui_MainWindow(object):
 
         # Crypto Buttons
 
+        self.CryptoChoosePanel = QtWidgets.QWidget()
+        self.CryptoChoosePanel.setObjectName('CryptoChoosePanel')
+        self.CryptoChoosePanel.setGeometry(0, 0, 1420, 300)
+
+        self.CryptoChoosePanelScroll = QtWidgets.QScrollArea(self.CryptoPanel)
+        self.CryptoChoosePanelScroll.setGeometry(0, 0, 1426, 128)
+        self.CryptoChoosePanelScroll.setWidget(self.CryptoChoosePanel)
+
         # Choose ticker
         self.CryptoChooserBox = [0, 11, 141, 271]
-        self.CryptoChooser = QtWidgets.QLabel(self.CryptoPanel)
+        self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
         self.CryptoChooser.setGeometry(QtCore.QRect(
             self.CryptoChooserBox[self.CryptoMode], 55, 120, 8))
 
         # Base Button
-        self.BaseButton = QtWidgets.QPushButton(self.CryptoPanel)
+        self.BaseButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
         self.BaseButton.setGeometry(QtCore.QRect(11, 10, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
@@ -190,7 +198,7 @@ class Ui_MainWindow(object):
         self.BaseButton.setObjectName("BaseButton")
 
         # Quote-Printable Button
-        self.QuoteButton = QtWidgets.QPushButton(self.CryptoPanel)
+        self.QuoteButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
         self.QuoteButton.setGeometry(QtCore.QRect(141, 10, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
@@ -205,7 +213,7 @@ class Ui_MainWindow(object):
         self.QuoteButton.setObjectName("QuoteButton")
 
         # Url Button
-        self.UrlButton = QtWidgets.QPushButton(self.CryptoPanel)
+        self.UrlButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
         self.UrlButton.setGeometry(QtCore.QRect(271, 10, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
