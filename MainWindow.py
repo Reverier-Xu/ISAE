@@ -1426,26 +1426,32 @@ class Ui_MainWindow(object):
 
     def HexEncode(self):
         text = self.HexTextBox.toPlainText()
-        temp = self.char2hex(text).decode()
-        j = 0
-        output = ''
-        for i in temp:
-            if j % 2 == 0:
-                output += self.HexSplitBox.text()
-            output += i
-            j += 1
-        self.HexCipherBox.setText(output)
+        try:
+            temp = self.char2hex(text).decode()
+            j = 0
+            output = ''
+            for i in temp:
+                if j % 2 == 0:
+                    output += self.HexSplitBox.text()
+                output += i
+                j += 1
+            self.HexCipherBox.setText(output)
+        except:
+            self.HexCipherBox.setText('编码时出现错误!')
         self.FileTempStack.addItem(self.HexCipherBox.toPlainText())
 
     def HexDecode(self):
         text = self.HexCipherBox.toPlainText()
-        temp = []
-        if self.HexSplitBox.text() != '':
-            temp = text.split(self.HexSplitBox.text())
-        else:
-            temp = text.split()
-        output = ''.join(temp)
-        self.HexTextBox.setText(self.hex2char(output).decode())
+        try:
+            temp = []
+            if self.HexSplitBox.text() != '':
+                temp = text.split(self.HexSplitBox.text())
+            else:
+                temp = text.split()
+            output = ''.join(temp)
+            self.HexTextBox.setText(self.hex2char(output).decode())
+        except:
+            self.HexTextBox.setText('解码时出现错误!')
         self.FileTempStack.addItem(self.HexTextBox.toPlainText())
 
     def hex2char(self, data):
