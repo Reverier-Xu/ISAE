@@ -203,6 +203,21 @@ class Ui_MainWindow(object):
         self.QuoteButton.setFlat(True)
         self.QuoteButton.setObjectName("QuoteButton")
 
+        # Url Button
+        self.UrlButton = QtWidgets.QPushButton(self.CryptoPanel)
+        self.UrlButton.setGeometry(QtCore.QRect(271, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.UrlButton.setFont(font)
+        self.UrlButton.setStyleSheet(
+            "QPushButton#UrlButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.UrlButton.setText("Url编码")
+        self.UrlButton.setFlat(True)
+        self.UrlButton.setObjectName("UrlButton")
+
         # end Crypto Buttons
 
         # Crypto Panel change methods
@@ -508,6 +523,13 @@ class Ui_MainWindow(object):
         font.setFamily("文泉驿微米黑")
         # end quote panel
 
+        # begin url panel
+        self.UrlPanel = QtWidgets.QWidget()
+        self.UrlPanel.setObjectName('UrlPanel')
+        self.CryptoStack.addWidget(self.UrlPanel)
+
+        # end url panel
+
         self.TypeStack.addWidget(self.CryptoPanel)
 
         # end Crypto panel
@@ -594,6 +616,7 @@ class Ui_MainWindow(object):
         except:
             cipher = '编码时出现错误!'
         self.QuoteCipherBox.setText(cipher)
+        self.FileTempStack.addItem(cipher)
 
     def QuoteDec(self):
         text = self.QuoteCipherBox.toPlainText()
@@ -606,6 +629,7 @@ class Ui_MainWindow(object):
             self.QuoteTextBox.setText(cipher.decode())
         except:
             self.QuoteTextBox.setText(str(cipher))
+        self.FileTempStack.addItem(self.QuoteTextBox.toPlainText())
 
     def ChangeCryptoBase(self):
         animation = Qt.QPropertyAnimation(self)
