@@ -45,7 +45,9 @@ pip install PyQt5
 
 ### Base系列
 Base64 Base32 Base16 Base85
+
 支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. 支持Base64隐写提取.
+
 支持文件操作
 
 ### Quoted-Printable
@@ -53,6 +55,15 @@ Base64 Base32 Base16 Base85
 
 ### Url编码
 支持自定义字符集的Url编码解码.
+
+### Hex编码
+支持Hex编码(UTF-8)
+
+### HTML编码
+支持HTML编码
+
+### Escape
+支持JavaScript的Escape编码
 
 ## Pwn
 
