@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 import resource
 from basecom import *
 import quopri
+from urllib import parse
 
 
 class Ui_MainWindow(object):
@@ -166,7 +167,7 @@ class Ui_MainWindow(object):
         # Crypto Buttons
 
         # Choose ticker
-        self.CryptoChooserBox = [0, 11, 141]
+        self.CryptoChooserBox = [0, 11, 141, 271]
         self.CryptoChooser = QtWidgets.QLabel(self.CryptoPanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -528,6 +529,72 @@ class Ui_MainWindow(object):
         self.UrlPanel.setObjectName('UrlPanel')
         self.CryptoStack.addWidget(self.UrlPanel)
 
+        # Url Encode button
+        self.UrlEncodeButton = QtWidgets.QPushButton(self.UrlPanel)
+        self.UrlEncodeButton.setObjectName('UrlEncodeButton')
+        self.UrlEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.UrlEncodeButton.setText('编码')
+        self.UrlEncodeButton.setFont(font)
+        self.UrlEncodeButton.setStyleSheet(
+            "QPushButton#UrlEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.UrlEncodeButton.setFlat(True)
+
+        # Url Decode button
+        self.UrlDecodeButton = QtWidgets.QPushButton(self.UrlPanel)
+        self.UrlDecodeButton.setObjectName('UrlDecodeButton')
+        self.UrlDecodeButton.setGeometry(
+            QtCore.QRect(1280, 20, 120, 45))
+        self.UrlDecodeButton.setText('解码')
+        self.UrlDecodeButton.setFont(font)
+        self.UrlDecodeButton.setStyleSheet(
+            "QPushButton#UrlDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.UrlDecodeButton.setFlat(True)
+
+        # url table edit box and label
+        self.UrlTableTips = QtWidgets.QLabel(self.UrlPanel)
+        self.UrlTableTips.setObjectName('UrlTableTips')
+        self.UrlTableTips.setText('编码表:')
+        self.UrlTableTips.setFont(font)
+        self.UrlTableTips.setStyleSheet('color: white;')
+        self.UrlTableTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        self.UrlTableBox = QtWidgets.QLineEdit(self.UrlPanel)
+        font.setFamily("Consolas")
+        self.UrlTableBox.setFont(font)
+        self.UrlTableBox.setStyleSheet('color: white;\
+            border: 2px solid gray;\
+            border-radius: 10px;\
+            padding: 0 8px;\
+            background: rgb(20, 20, 20);\
+            selection-background-color: blue;')
+        self.UrlTableBox.setObjectName('UrlTableBox')
+        self.UrlTableBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
+        font.setFamily("文泉驿微米黑")
+
+        font.setFamily("Consolas")
+        self.UrlTextBox = QtWidgets.QTextEdit(self.UrlPanel)
+        self.UrlTextBox.setObjectName('UrlTextBox')
+        self.UrlTextBox.setFont(font)
+        self.UrlTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.UrlTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.UrlTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.UrlTextBox.setPlaceholderText('Url 编码\n这里写明文')
+        self.UrlTextBox.setAcceptDrops(True)
+        self.UrlTextBox.setAcceptRichText(False)
+
+        self.UrlCipherBox = QtWidgets.QTextEdit(self.UrlPanel)
+        self.UrlCipherBox.setObjectName('UrlCipherBox')
+        self.UrlCipherBox.setFont(font)
+        self.UrlCipherBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.UrlCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.UrlCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+        self.UrlCipherBox.setPlaceholderText('Url 编码\n这里写编码')
+        self.UrlCipherBox.setAcceptDrops(True)
+        self.UrlCipherBox.setAcceptRichText(False)
+        font.setFamily("文泉驿微米黑")
+
         # end url panel
 
         self.TypeStack.addWidget(self.CryptoPanel)
@@ -573,6 +640,7 @@ class Ui_MainWindow(object):
         self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
+        self.UrlButton.clicked.connect(self.ChangeCryptoUrl)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -595,12 +663,44 @@ class Ui_MainWindow(object):
         self.QuoteCipherOutputButton.clicked.connect(
             self.QuoteCipherOutputFunction)
         self.BaseEButton.clicked.connect(self.BaseEDecodeFunction)
+        self.UrlEncodeButton.clicked.connect(self.UrlEncode)
+        self.UrlDecodeButton.clicked.connect(self.UrlDecode)
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
         self.ChangeCryptoBase()
         self.ChangeBase64()
         self.center()
 
     # functions
+    def UrlEncode(self):
+        text = self.UrlTextBox.toPlainText()
+        try:
+            self.UrlCipherBox.setText(
+                parse.quote(text, encoding=self.UrlTableBox.text()))
+        except:
+            self.UrlCipherBox.setText('出现错误!')
+
+    def UrlDecode(self):
+        text = self.UrlCipherBox.toPlainText()
+        try:
+            self.UrlTextBox.setText(parse.unquote(
+                text, encoding=self.UrlTableBox.text()))
+        except:
+            self.UrlTextBox.setText('出现错误!')
+
+    def ChangeCryptoUrl(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        self.CryptoMode = 3
+        self.CryptoStack.setCurrentIndex(2)
+        self.UrlTableBox.setText('utf-8')
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        animation.setDuration(200)
+        animation.start()
+
     def QuoteEnc(self):
         if self.QuoteTextEvalCheckBox.isChecked() == True:
             try:
