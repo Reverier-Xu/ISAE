@@ -51,6 +51,9 @@ Base64 Base32 Base16 Base85
 ### Quoted-Printable
 支持文件和字符串的编码和解码.
 
+### Url编码
+支持自定义字符集的Url编码解码.
+
 ## Pwn
 
 无

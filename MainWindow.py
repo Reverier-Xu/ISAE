@@ -678,6 +678,7 @@ class Ui_MainWindow(object):
                 parse.quote(text, encoding=self.UrlTableBox.text()))
         except:
             self.UrlCipherBox.setText('出现错误!')
+        self.FileTempStack.addItem(self.UrlCipherBox.toPlainText())
 
     def UrlDecode(self):
         text = self.UrlCipherBox.toPlainText()
@@ -686,6 +687,7 @@ class Ui_MainWindow(object):
                 text, encoding=self.UrlTableBox.text()))
         except:
             self.UrlTextBox.setText('出现错误!')
+        self.FileTempStack.addItem(self.UrlTextBox.toPlainText())
 
     def ChangeCryptoUrl(self):
         animation = Qt.QPropertyAnimation(self)
