@@ -205,7 +205,7 @@ class Ui_MainWindow(object):
             QtCore.Qt.ScrollBarAlwaysOff)
 
         # Choose ticker
-        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531]
+        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531, 661]
         self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -1376,6 +1376,58 @@ class Ui_MainWindow(object):
         font.setFamily("文泉驿微米黑")
         # end HTML panel
 
+        # begin Escape panel
+        self.EscapePanel = QtWidgets.QWidget()
+        self.EscapePanel.setObjectName('EscapePanel')
+        self.CryptoStack.addWidget(self.EscapePanel)
+
+        # Escape Encode button
+        self.EscapeEncodeButton = QtWidgets.QPushButton(self.EscapePanel)
+        self.EscapeEncodeButton.setObjectName('EscapeEncodeButton')
+        self.EscapeEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.EscapeEncodeButton.setText('编码')
+        self.EscapeEncodeButton.setFont(font)
+        self.EscapeEncodeButton.setStyleSheet(
+            "QPushButton#EscapeEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.EscapeEncodeButton.setFlat(True)
+
+        # Escape Decode button
+        self.EscapeDecodeButton = QtWidgets.QPushButton(self.EscapePanel)
+        self.EscapeDecodeButton.setObjectName('EscapeDecodeButton')
+        self.EscapeDecodeButton.setGeometry(
+            QtCore.QRect(1280, 20, 120, 45))
+        self.EscapeDecodeButton.setText('解码')
+        self.EscapeDecodeButton.setFont(font)
+        self.EscapeDecodeButton.setStyleSheet(
+            "QPushButton#EscapeDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.EscapeDecodeButton.setFlat(True)
+
+        font.setFamily("Consolas")
+        self.EscapeTextBox = QtWidgets.QTextEdit(self.EscapePanel)
+        self.EscapeTextBox.setObjectName('EscapeTextBox')
+        self.EscapeTextBox.setFont(font)
+        self.EscapeTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.EscapeTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.EscapeTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.EscapeTextBox.setPlaceholderText('Escape Encode\n这里写明文')
+        self.EscapeTextBox.setAcceptDrops(True)
+        self.EscapeTextBox.setAcceptRichText(False)
+
+        self.EscapeCipherBox = QtWidgets.QTextEdit(self.EscapePanel)
+        self.EscapeCipherBox.setObjectName('EscapeCipherBox')
+        self.EscapeCipherBox.setFont(font)
+        self.EscapeCipherBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.EscapeCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.EscapeCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+        self.EscapeCipherBox.setPlaceholderText('Escape Decode\n这里写编码')
+        self.EscapeCipherBox.setAcceptDrops(True)
+        self.EscapeCipherBox.setAcceptRichText(False)
+        font.setFamily("文泉驿微米黑")
+        # end Escape panel
+
         self.TypeStack.addWidget(self.CryptoPanel)
 
         # end Crypto panel
@@ -1535,6 +1587,19 @@ class Ui_MainWindow(object):
         except:
             self.HTMLTextBox.setText('解码时出现错误!')
         self.FileTempStack.addItem(self.HTMLTextBox.toPlainText())
+
+    def ChangeCryptoEscape(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        self.CryptoMode = 5
+        self.CryptoStack.setCurrentIndex(4)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        animation.setDuration(200)
+        animation.start()
 
     def ChangeCryptoHex(self):
         animation = Qt.QPropertyAnimation(self)
