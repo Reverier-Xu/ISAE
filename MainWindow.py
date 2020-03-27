@@ -205,7 +205,7 @@ class Ui_MainWindow(object):
             QtCore.Qt.ScrollBarAlwaysOff)
 
         # Choose ticker
-        self.CryptoChooserBox = [0, 11, 141, 271, 401]
+        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531]
         self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -1329,26 +1329,6 @@ class Ui_MainWindow(object):
         self.HTMLPanel.setObjectName('HTMLPanel')
         self.CryptoStack.addWidget(self.HTMLPanel)
 
-        # HTML Splits
-        self.HTMLSplitTips = QtWidgets.QLabel(self.HTMLPanel)
-        self.HTMLSplitTips.setObjectName('HTMLSplitTips')
-        self.HTMLSplitTips.setText('分隔符:')
-        self.HTMLSplitTips.setFont(font)
-        self.HTMLSplitTips.setStyleSheet('color: white;')
-        self.HTMLSplitTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
-        self.HTMLSplitBox = QtWidgets.QLineEdit(self.HTMLPanel)
-        font.setFamily("Consolas")
-        self.HTMLSplitBox.setFont(font)
-        self.HTMLSplitBox.setStyleSheet('color: white;\
-            border: 2px solid gray;\
-            border-radius: 10px;\
-            padding: 0 8px;\
-            background: rgb(20, 20, 20);\
-            selection-background-color: blue;')
-        self.HTMLSplitBox.setObjectName('HTMLSplitBox')
-        self.HTMLSplitBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
-        font.setFamily("文泉驿微米黑")
-
         # HTML Encode button
         self.HTMLEncodeButton = QtWidgets.QPushButton(self.HTMLPanel)
         self.HTMLEncodeButton.setObjectName('HTMLEncodeButton')
@@ -1442,6 +1422,7 @@ class Ui_MainWindow(object):
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
         self.UrlButton.clicked.connect(self.ChangeCryptoUrl)
         self.HexButton.clicked.connect(self.ChangeCryptoHex)
+        self.HTMLButton.clicked.connect(self.ChangeCryptoHTML)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -1452,6 +1433,8 @@ class Ui_MainWindow(object):
         self.QuoteDecodeButton.clicked.connect(self.QuoteDec)
         self.HexEncodeButton.clicked.connect(self.HexEncode)
         self.HexDecodeButton.clicked.connect(self.HexDecode)
+        self.HTMLEncodeButton.clicked.connect(self.HTMLEncode)
+        self.HTMLDecodeButton.clicked.connect(self.HTMLDecode)
         self.BaseTextInputButton.clicked.connect(self.BaseTextInputFunction)
         self.BaseCipherInputButton.clicked.connect(
             self.BaseCipherInputFunction)
@@ -1535,6 +1518,24 @@ class Ui_MainWindow(object):
         output = binascii.hexlify(data.encode())
         return output
 
+    def HTMLEncode(self):
+        text = self.HTMLTextBox.toPlainText()
+        try:
+            output = html.escape(text)
+            self.HTMLCipherBox.setText(output)
+        except:
+            self.HTMLCipherBox.setText('编码时出现错误!')
+        self.FileTempStack.addItem(self.HTMLCipherBox.toPlainText())
+
+    def HTMLDecode(self):
+        text = self.HTMLCipherBox.toPlainText()
+        try:
+            output = html.unescape(text)
+            self.HTMLTextBox.setText(output)
+        except:
+            self.HTMLTextBox.setText('解码时出现错误!')
+        self.FileTempStack.addItem(self.HTMLTextBox.toPlainText())
+
     def ChangeCryptoHex(self):
         animation = Qt.QPropertyAnimation(self)
         animation.setTargetObject(self.CryptoChooser)
@@ -1543,6 +1544,19 @@ class Ui_MainWindow(object):
             self.CryptoChooserBox[self.CryptoMode], 55))
         self.CryptoMode = 4
         self.CryptoStack.setCurrentIndex(3)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoHTML(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        self.CryptoMode = 5
+        self.CryptoStack.setCurrentIndex(4)
         animation.setEndValue(QtCore.QPoint(
             self.CryptoChooserBox[self.CryptoMode], 55))
         animation.setDuration(200)
