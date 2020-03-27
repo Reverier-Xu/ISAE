@@ -124,18 +124,34 @@ class Ui_MainWindow(object):
 
         # File Temp Stack
         self.FileTempStackTip = QtWidgets.QLabel(self.centralwidget)
-        self.FileTempStackTip.setGeometry(QtCore.QRect(38, 630, 120, 30))
+        self.FileTempStackTip.setGeometry(QtCore.QRect(20, 630, 120, 30))
         self.FileTempStackTip.setObjectName('FileTempStackTip')
         self.FileTempStackTip.setStyleSheet('#FileTempStackTip{color: white;}')
         self.FileTempStackTip.setText('暂存池')
         self.FileTempStackTip.setFont(font)
+        self.FileTempStackDelButton = QtWidgets.QPushButton(self.centralwidget)
+        self.FileTempStackDelButton.setGeometry(QtCore.QRect(110, 632, 30, 30))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(20)
+        self.FileTempStackDelButton.setFont(font)
+        self.FileTempStackDelButton.setStyleSheet(
+            "QPushButton#FileTempStackDelButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.FileTempStackDelButton.setFlat(True)
+        self.FileTempStackDelButton.setObjectName("FileTempStackDelButton")
+        self.FileTempStackDelButton.setText('×')
+        font.setFamily("consolas")
+        font.setPointSize(12)
         self.FileTempStack = QtWidgets.QListWidget(self.centralwidget)
         self.FileTempStack.setGeometry(QtCore.QRect(20, 670, 120, 200))
         self.FileTempStack.setObjectName('FileTempStack')
+        self.FileTempStack.setFont(font)
         self.FileTempStack.setStyleSheet(
             '#FileTempStack{background-color: rgb(20,20,20); color: white}')
         self.FileTempStack.setDragEnabled(True)
         self.FileTempStack.setAcceptDrops(True)
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(20)
 
         '''Begin define Type panel change method'''
         self.TypeStack = QtWidgets.QStackedWidget(self.centralwidget)
@@ -402,7 +418,7 @@ class Ui_MainWindow(object):
             'background-color: rgb(20,20,20)')
         self.BaseTextBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.BaseTextBox.setGeometry(QtCore.QRect(20, 180, 680, 430))
-        self.BaseTextBox.setPlaceholderText('这里写明文')
+        self.BaseTextBox.setPlaceholderText('Base Encode\n这里写明文')
         self.BaseTextBox.setAcceptDrops(True)
         self.BaseTextBox.setAcceptRichText(False)
 
@@ -413,7 +429,7 @@ class Ui_MainWindow(object):
             'background-color: rgb(20,20,20)')
         self.BaseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.BaseCipherBox.setGeometry(QtCore.QRect(720, 180, 680, 430))
-        self.BaseCipherBox.setPlaceholderText('这里写编码')
+        self.BaseCipherBox.setPlaceholderText('Base Decode\n这里写编码')
         self.BaseCipherBox.setAcceptDrops(True)
         self.BaseCipherBox.setAcceptRichText(False)
         font.setFamily("文泉驿微米黑")
@@ -587,7 +603,7 @@ class Ui_MainWindow(object):
             'background-color: rgb(20,20,20)')
         self.UrlTextBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.UrlTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
-        self.UrlTextBox.setPlaceholderText('Url 编码\n这里写明文')
+        self.UrlTextBox.setPlaceholderText('Url Encode\n这里写明文')
         self.UrlTextBox.setAcceptDrops(True)
         self.UrlTextBox.setAcceptRichText(False)
 
@@ -598,7 +614,7 @@ class Ui_MainWindow(object):
             'background-color: rgb(20,20,20)')
         self.UrlCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
         self.UrlCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
-        self.UrlCipherBox.setPlaceholderText('Url 编码\n这里写编码')
+        self.UrlCipherBox.setPlaceholderText('Url Decode\n这里写编码')
         self.UrlCipherBox.setAcceptDrops(True)
         self.UrlCipherBox.setAcceptRichText(False)
         font.setFamily("文泉驿微米黑")
@@ -634,6 +650,7 @@ class Ui_MainWindow(object):
         self.CloseButton.clicked.connect(MainWindow.close)
         self.MiniButton.clicked.connect(MainWindow.showMinimized)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.FileTempStackDelButton, self.CryptoButton)
         MainWindow.setTabOrder(self.CryptoButton, self.ReverseButton)
         MainWindow.setTabOrder(self.ReverseButton, self.WebButton)
         MainWindow.setTabOrder(self.WebButton, self.PwnButton)
@@ -674,11 +691,16 @@ class Ui_MainWindow(object):
         self.UrlEncodeButton.clicked.connect(self.UrlEncode)
         self.UrlDecodeButton.clicked.connect(self.UrlDecode)
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
+        self.FileTempStackDelButton.clicked.connect(self.DelFileTempStack)
         self.ChangeCryptoBase()
         self.ChangeBase64()
         self.center()
 
     # functions
+    def DelFileTempStack(self):
+        item = self.FileTempStack.currentItem()
+        self.FileTempStack.takeItem(self.FileTempStack.row(item))
+
     def UrlEncode(self):
         text = self.UrlTextBox.toPlainText()
         try:
