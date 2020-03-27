@@ -150,6 +150,10 @@ class Ui_MainWindow(object):
             '#FileTempStack{background-color: rgb(20,20,20); color: white}')
         self.FileTempStack.setDragEnabled(True)
         self.FileTempStack.setAcceptDrops(True)
+        self.FileTempStack.setHorizontalScrollBarPolicy(
+            QtCore.Qt.ScrollBarAlwaysOff)
+        self.FileTempStack.setVerticalScrollBarPolicy(
+            QtCore.Qt.ScrollBarAlwaysOff)
         font.setFamily("文泉驿微米黑")
         font.setPointSize(20)
 
@@ -188,10 +192,18 @@ class Ui_MainWindow(object):
 
         self.CryptoChoosePanelScroll = QtWidgets.QScrollArea(self.CryptoPanel)
         self.CryptoChoosePanelScroll.setGeometry(0, 0, 1426, 128)
+        self.CryptoChoosePanelScroll.setStyleSheet(
+            '#CryptoChoosePanelScroll{background-color:transparent}')
+        self.CryptoChoosePanelScroll.viewport().setStyleSheet(
+            'background-color:transparent;')
         self.CryptoChoosePanelScroll.setWidget(self.CryptoChoosePanel)
+        self.CryptoChoosePanelScroll.setHorizontalScrollBarPolicy(
+            QtCore.Qt.ScrollBarAlwaysOff)
+        self.CryptoChoosePanelScroll.setVerticalScrollBarPolicy(
+            QtCore.Qt.ScrollBarAlwaysOff)
 
         # Choose ticker
-        self.CryptoChooserBox = [0, 11, 141, 271]
+        self.CryptoChooserBox = [0, 11, 141, 271, 401]
         self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -242,6 +254,623 @@ class Ui_MainWindow(object):
         self.UrlButton.setText("Url编码")
         self.UrlButton.setFlat(True)
         self.UrlButton.setObjectName("UrlButton")
+
+        # Hex Button
+        self.HexButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.HexButton.setGeometry(QtCore.QRect(401, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.HexButton.setFont(font)
+        self.HexButton.setStyleSheet(
+            "QPushButton#HexButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HexButton.setText("Hex编码")
+        self.HexButton.setFlat(True)
+        self.HexButton.setObjectName("HexButton")
+
+        # HTML Button
+        self.HTMLButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.HTMLButton.setGeometry(QtCore.QRect(531, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.HTMLButton.setFont(font)
+        self.HTMLButton.setStyleSheet(
+            "QPushButton#HTMLButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HTMLButton.setText("HTML编码")
+        self.HTMLButton.setFlat(True)
+        self.HTMLButton.setObjectName("HTMLButton")
+
+        # Escape Button
+        self.EscapeButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.EscapeButton.setGeometry(QtCore.QRect(661, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.EscapeButton.setFont(font)
+        self.EscapeButton.setStyleSheet(
+            "QPushButton#EscapeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.EscapeButton.setText("Escape")
+        self.EscapeButton.setFlat(True)
+        self.EscapeButton.setObjectName("EscapeButton")
+
+        # Tap Button
+        self.TapButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.TapButton.setGeometry(QtCore.QRect(791, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.TapButton.setFont(font)
+        self.TapButton.setStyleSheet(
+            "QPushButton#TapButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.TapButton.setText("敲击码")
+        self.TapButton.setFlat(True)
+        self.TapButton.setObjectName("TapButton")
+
+        # Morse Button
+        self.MorseButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.MorseButton.setGeometry(QtCore.QRect(921, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.MorseButton.setFont(font)
+        self.MorseButton.setStyleSheet(
+            "QPushButton#MorseButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.MorseButton.setText("摩斯电码")
+        self.MorseButton.setFlat(True)
+        self.MorseButton.setObjectName("MorseButton")
+
+        # Hash Button
+        self.HashButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.HashButton.setGeometry(QtCore.QRect(1051, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.HashButton.setFont(font)
+        self.HashButton.setStyleSheet(
+            "QPushButton#HashButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HashButton.setText("Hash计算")
+        self.HashButton.setFlat(True)
+        self.HashButton.setObjectName("HashButton")
+
+        # AES Button
+        self.AESButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.AESButton.setGeometry(QtCore.QRect(1181, 10, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.AESButton.setFont(font)
+        self.AESButton.setStyleSheet(
+            "QPushButton#AESButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.AESButton.setText("AES加密")
+        self.AESButton.setFlat(True)
+        self.AESButton.setObjectName("AESButton")
+
+        # DES Button
+        self.DESButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.DESButton.setGeometry(QtCore.QRect(11, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.DESButton.setFont(font)
+        self.DESButton.setStyleSheet(
+            "QPushButton#DESButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.DESButton.setText("DES加密")
+        self.DESButton.setFlat(True)
+        self.DESButton.setObjectName("DESButton")
+
+        # RC4 Button
+        self.RC4Button = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.RC4Button.setGeometry(QtCore.QRect(141, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.RC4Button.setFont(font)
+        self.RC4Button.setStyleSheet(
+            "QPushButton#RC4Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.RC4Button.setText("RC4编码")
+        self.RC4Button.setFlat(True)
+        self.RC4Button.setObjectName("RC4Button")
+
+        # ASCIITranslate Button
+        self.ASCIITranslateButton = QtWidgets.QPushButton(
+            self.CryptoChoosePanel)
+        self.ASCIITranslateButton.setGeometry(QtCore.QRect(271, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.ASCIITranslateButton.setFont(font)
+        self.ASCIITranslateButton.setStyleSheet(
+            "QPushButton#ASCIITranslateButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.ASCIITranslateButton.setText("进制转换")
+        self.ASCIITranslateButton.setFlat(True)
+        self.ASCIITranslateButton.setObjectName("ASCIITranslateButton")
+
+        # RSA Button
+        self.RSAButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.RSAButton.setGeometry(QtCore.QRect(401, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.RSAButton.setFont(font)
+        self.RSAButton.setStyleSheet(
+            "QPushButton#RSAButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.RSAButton.setText("RSA工具")
+        self.RSAButton.setFlat(True)
+        self.RSAButton.setObjectName("RSAButton")
+
+        # CodeTranslate Button
+        self.CodeTranslateButton = QtWidgets.QPushButton(
+            self.CryptoChoosePanel)
+        self.CodeTranslateButton.setGeometry(QtCore.QRect(531, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.CodeTranslateButton.setFont(font)
+        self.CodeTranslateButton.setStyleSheet(
+            "QPushButton#CodeTranslateButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.CodeTranslateButton.setText("编码转换")
+        self.CodeTranslateButton.setFlat(True)
+        self.CodeTranslateButton.setObjectName("CodeTranslateButton")
+
+        # ADFGVX Button
+        self.ADFGVXButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.ADFGVXButton.setGeometry(QtCore.QRect(661, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.ADFGVXButton.setFont(font)
+        self.ADFGVXButton.setStyleSheet(
+            "QPushButton#ADFGVXButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.ADFGVXButton.setText("ADFGVX")
+        self.ADFGVXButton.setFlat(True)
+        self.ADFGVXButton.setObjectName("ADFGVXButton")
+
+        # Affine Button
+        self.AffineButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.AffineButton.setGeometry(QtCore.QRect(791, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.AffineButton.setFont(font)
+        self.AffineButton.setStyleSheet(
+            "QPushButton#AffineButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.AffineButton.setText("仿射密码")
+        self.AffineButton.setFlat(True)
+        self.AffineButton.setObjectName("AffineButton")
+
+        # AutoKey Button
+        self.AutoKeyButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.AutoKeyButton.setGeometry(QtCore.QRect(921, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.AutoKeyButton.setFont(font)
+        self.AutoKeyButton.setStyleSheet(
+            "QPushButton#AutoKeyButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.AutoKeyButton.setText("自动密钥机")
+        self.AutoKeyButton.setFlat(True)
+        self.AutoKeyButton.setObjectName("AutoKeyButton")
+
+        # Atbash Button
+        self.AtbashButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.AtbashButton.setGeometry(QtCore.QRect(1051, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.AtbashButton.setFont(font)
+        self.AtbashButton.setStyleSheet(
+            "QPushButton#AtbashButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.AtbashButton.setText("Atbash")
+        self.AtbashButton.setFlat(True)
+        self.AtbashButton.setObjectName("AtbashButton")
+
+        # Beaufort Button
+        self.BeaufortButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.BeaufortButton.setGeometry(QtCore.QRect(1181, 75, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.BeaufortButton.setFont(font)
+        self.BeaufortButton.setStyleSheet(
+            "QPushButton#BeaufortButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.BeaufortButton.setText("Beaufort")
+        self.BeaufortButton.setFlat(True)
+        self.BeaufortButton.setObjectName("BeaufortButton")
+
+        # Bifid Button
+        self.BifidButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.BifidButton.setGeometry(QtCore.QRect(11, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.BifidButton.setFont(font)
+        self.BifidButton.setStyleSheet(
+            "QPushButton#BifidButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.BifidButton.setText("Bifid")
+        self.BifidButton.setFlat(True)
+        self.BifidButton.setObjectName("BifidButton")
+
+        # Casar Button
+        self.CasarButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.CasarButton.setGeometry(QtCore.QRect(141, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.CasarButton.setFont(font)
+        self.CasarButton.setStyleSheet(
+            "QPushButton#CasarButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.CasarButton.setText("Casar")
+        self.CasarButton.setFlat(True)
+        self.CasarButton.setObjectName("CasarButton")
+
+        # CT Button
+        self.CTButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.CTButton.setGeometry(QtCore.QRect(271, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.CTButton.setFont(font)
+        self.CTButton.setStyleSheet(
+            "QPushButton#CTButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.CTButton.setText("列移位")
+        self.CTButton.setFlat(True)
+        self.CTButton.setObjectName("CTButton")
+
+        # Enigma Button
+        self.EnigmaButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.EnigmaButton.setGeometry(QtCore.QRect(401, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.EnigmaButton.setFont(font)
+        self.EnigmaButton.setStyleSheet(
+            "QPushButton#EnigmaButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.EnigmaButton.setText("Enigma")
+        self.EnigmaButton.setFlat(True)
+        self.EnigmaButton.setObjectName("EnigmaButton")
+
+        # FourSquare Button
+        self.FourSquareButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.FourSquareButton.setGeometry(QtCore.QRect(531, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.FourSquareButton.setFont(font)
+        self.FourSquareButton.setStyleSheet(
+            "QPushButton#FourSquareButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.FourSquareButton.setText("四方密码")
+        self.FourSquareButton.setFlat(True)
+        self.FourSquareButton.setObjectName("FourSquareButton")
+
+        # GronsFeld Button
+        self.GronsFeldButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.GronsFeldButton.setGeometry(QtCore.QRect(661, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.GronsFeldButton.setFont(font)
+        self.GronsFeldButton.setStyleSheet(
+            "QPushButton#GronsFeldButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.GronsFeldButton.setText("GronsFeld")
+        self.GronsFeldButton.setFlat(True)
+        self.GronsFeldButton.setObjectName("GronsFeldButton")
+
+        # M209 Button
+        self.M209Button = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.M209Button.setGeometry(QtCore.QRect(791, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.M209Button.setFont(font)
+        self.M209Button.setStyleSheet(
+            "QPushButton#M209Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.M209Button.setText("M-209")
+        self.M209Button.setFlat(True)
+        self.M209Button.setObjectName("M209Button")
+
+        # PlayFair Button
+        self.PlayFairButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.PlayFairButton.setGeometry(QtCore.QRect(921, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.PlayFairButton.setFont(font)
+        self.PlayFairButton.setStyleSheet(
+            "QPushButton#PlayFairButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.PlayFairButton.setText("PlayFair")
+        self.PlayFairButton.setFlat(True)
+        self.PlayFairButton.setObjectName("PlayFairButton")
+
+        # Polybius Button
+        self.PolybiusButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.PolybiusButton.setGeometry(QtCore.QRect(1051, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.PolybiusButton.setFont(font)
+        self.PolybiusButton.setStyleSheet(
+            "QPushButton#PolybiusButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.PolybiusButton.setText("Polybius")
+        self.PolybiusButton.setFlat(True)
+        self.PolybiusButton.setObjectName("PolybiusButton")
+
+        # Porta Button
+        self.PortaButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.PortaButton.setGeometry(QtCore.QRect(1181, 130, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.PortaButton.setFont(font)
+        self.PortaButton.setStyleSheet(
+            "QPushButton#PortaButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.PortaButton.setText("Porta")
+        self.PortaButton.setFlat(True)
+        self.PortaButton.setObjectName("PortaButton")
+
+        # Railfence Button
+        self.RailFenceButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.RailFenceButton.setGeometry(QtCore.QRect(11, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.RailFenceButton.setFont(font)
+        self.RailFenceButton.setStyleSheet(
+            "QPushButton#RailFenceButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.RailFenceButton.setText("栅栏密码")
+        self.RailFenceButton.setFlat(True)
+        self.RailFenceButton.setObjectName("RailFenceButton")
+
+        # Rot13 Button
+        self.Rot13Button = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.Rot13Button.setGeometry(QtCore.QRect(141, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.Rot13Button.setFont(font)
+        self.Rot13Button.setStyleSheet(
+            "QPushButton#Rot13Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.Rot13Button.setText("Rot13")
+        self.Rot13Button.setFlat(True)
+        self.Rot13Button.setObjectName("Rot13Button")
+
+        # Substitution Button
+        self.SubstitutionButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.SubstitutionButton.setGeometry(QtCore.QRect(271, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.SubstitutionButton.setFont(font)
+        self.SubstitutionButton.setStyleSheet(
+            "QPushButton#SubstitutionButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.SubstitutionButton.setText("简单换位")
+        self.SubstitutionButton.setFlat(True)
+        self.SubstitutionButton.setObjectName("SubstitutionButton")
+
+        # Vigenere Button
+        self.VigenereButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.VigenereButton.setGeometry(QtCore.QRect(401, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.VigenereButton.setFont(font)
+        self.VigenereButton.setStyleSheet(
+            "QPushButton#VigenereButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.VigenereButton.setText("Vigenere")
+        self.VigenereButton.setFlat(True)
+        self.VigenereButton.setObjectName("VigenereButton")
+
+        # Pigen Button
+        self.PigenButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.PigenButton.setGeometry(QtCore.QRect(531, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.PigenButton.setFont(font)
+        self.PigenButton.setStyleSheet(
+            "QPushButton#PigenButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.PigenButton.setText("猪圈密码")
+        self.PigenButton.setFlat(True)
+        self.PigenButton.setObjectName("PigenButton")
+
+        # Bacon Button
+        self.BaconButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.BaconButton.setGeometry(QtCore.QRect(661, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.BaconButton.setFont(font)
+        self.BaconButton.setStyleSheet(
+            "QPushButton#BaconButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.BaconButton.setText("培根密码")
+        self.BaconButton.setFlat(True)
+        self.BaconButton.setObjectName("BaconButton")
+
+        # RunningKey Button
+        self.RunningKeyButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.RunningKeyButton.setGeometry(QtCore.QRect(791, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.RunningKeyButton.setFont(font)
+        self.RunningKeyButton.setStyleSheet(
+            "QPushButton#RunningKeyButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.RunningKeyButton.setText("滚动密钥")
+        self.RunningKeyButton.setFlat(True)
+        self.RunningKeyButton.setObjectName("RunningKeyButton")
+
+        # Hill Button
+        self.HillButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.HillButton.setGeometry(QtCore.QRect(921, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.HillButton.setFont(font)
+        self.HillButton.setStyleSheet(
+            "QPushButton#HillButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HillButton.setText("希尔密码")
+        self.HillButton.setFlat(True)
+        self.HillButton.setObjectName("HillButton")
+
+        # A1z26 Button
+        self.A1z26Button = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.A1z26Button.setGeometry(QtCore.QRect(1051, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.A1z26Button.setFont(font)
+        self.A1z26Button.setStyleSheet(
+            "QPushButton#A1z26Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.A1z26Button.setText("A1z26")
+        self.A1z26Button.setFlat(True)
+        self.A1z26Button.setObjectName("A1z26Button")
+
+        # Beaufort Button
+        self.BeaufortButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.BeaufortButton.setGeometry(QtCore.QRect(1181, 185, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.BeaufortButton.setFont(font)
+        self.BeaufortButton.setStyleSheet(
+            "QPushButton#BeaufortButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.BeaufortButton.setText("Beaufort")
+        self.BeaufortButton.setFlat(True)
+        self.BeaufortButton.setObjectName("BeaufortButton")
+
+        # OtherCipher Button
+        self.OtherCipherButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.OtherCipherButton.setGeometry(QtCore.QRect(11, 240, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.OtherCipherButton.setFont(font)
+        self.OtherCipherButton.setStyleSheet(
+            "QPushButton#OtherCipherButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.OtherCipherButton.setText("编码杂项")
+        self.OtherCipherButton.setFlat(True)
+        self.OtherCipherButton.setObjectName("OtherCipherButton")
+
+        # JSFuck Button
+        self.JSFuckButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.JSFuckButton.setGeometry(QtCore.QRect(141, 240, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.JSFuckButton.setFont(font)
+        self.JSFuckButton.setStyleSheet(
+            "QPushButton#JSFuckButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.JSFuckButton.setText("JSFuck")
+        self.JSFuckButton.setFlat(True)
+        self.JSFuckButton.setObjectName("JSFuckButton")
+
+        # BrainFuck Button
+        self.BrainFuckButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.BrainFuckButton.setGeometry(QtCore.QRect(271, 240, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.BrainFuckButton.setFont(font)
+        self.BrainFuckButton.setStyleSheet(
+            "QPushButton#BrainFuckButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.BrainFuckButton.setText("BrainFuck")
+        self.BrainFuckButton.setFlat(True)
+        self.BrainFuckButton.setObjectName("BrainFuckButton")
+
+        # Ook Button
+        self.OokButton = QtWidgets.QPushButton(self.CryptoChoosePanel)
+        self.OokButton.setGeometry(QtCore.QRect(401, 240, 120, 45))
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPointSize(18)
+        font.setBold(False)
+        font.setWeight(50)
+        self.OokButton.setFont(font)
+        self.OokButton.setStyleSheet(
+            "QPushButton#OokButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.OokButton.setText("Ook!")
+        self.OokButton.setFlat(True)
+        self.OokButton.setObjectName("OokButton")
 
         # end Crypto Buttons
 
@@ -621,6 +1250,78 @@ class Ui_MainWindow(object):
 
         # end url panel
 
+        # begin Hex panel
+        self.HexPanel = QtWidgets.QWidget()
+        self.HexPanel.setObjectName('HexPanel')
+        self.CryptoStack.addWidget(self.HexPanel)
+
+        # Hex Splits
+        self.HexSplitTips = QtWidgets.QLabel(self.UrlPanel)
+        self.HexSplitTips.setObjectName('HexSplitTips')
+        self.HexSplitTips.setText('分隔符:')
+        self.HexSplitTips.setFont(font)
+        self.HexSplitTips.setStyleSheet('color: white;')
+        self.HexSplitTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        self.HexSplitBox = QtWidgets.QLineEdit(self.UrlPanel)
+        font.setFamily("Consolas")
+        self.HexSplitBox.setFont(font)
+        self.HexSplitBox.setStyleSheet('color: white;\
+            border: 2px solid gray;\
+            border-radius: 10px;\
+            padding: 0 8px;\
+            background: rgb(20, 20, 20);\
+            selection-background-color: blue;')
+        self.HexSplitBox.setObjectName('HexSplitBox')
+        self.HexSplitBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
+        font.setFamily("文泉驿微米黑")
+
+        # Hex Encode button
+        self.HexEncodeButton = QtWidgets.QPushButton(self.HexPanel)
+        self.HexEncodeButton.setObjectName('HexEncodeButton')
+        self.HexEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.HexEncodeButton.setText('编码')
+        self.HexEncodeButton.setFont(font)
+        self.HexEncodeButton.setStyleSheet(
+            "QPushButton#HexEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HexEncodeButton.setFlat(True)
+
+        # Hex Decode button
+        self.HexDecodeButton = QtWidgets.QPushButton(self.HexPanel)
+        self.HexDecodeButton.setObjectName('HexDecodeButton')
+        self.HexDecodeButton.setGeometry(
+            QtCore.QRect(1280, 20, 120, 45))
+        self.HexDecodeButton.setText('解码')
+        self.HexDecodeButton.setFont(font)
+        self.HexDecodeButton.setStyleSheet(
+            "QPushButton#HexDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HexDecodeButton.setFlat(True)
+
+        font.setFamily("Consolas")
+        self.HexTextBox = QtWidgets.QTextEdit(self.HexPanel)
+        self.HexTextBox.setObjectName('HexTextBox')
+        self.HexTextBox.setFont(font)
+        self.HexTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.HexTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.HexTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.HexTextBox.setPlaceholderText('Hex Encode\n这里写明文')
+        self.HexTextBox.setAcceptDrops(True)
+        self.HexTextBox.setAcceptRichText(False)
+
+        self.HexCipherBox = QtWidgets.QTextEdit(self.HexPanel)
+        self.HexCipherBox.setObjectName('HexCipherBox')
+        self.HexCipherBox.setFont(font)
+        self.HexCipherBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.HexCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.HexCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+        self.HexCipherBox.setPlaceholderText('Hex Decode\n这里写编码')
+        self.HexCipherBox.setAcceptDrops(True)
+        self.HexCipherBox.setAcceptRichText(False)
+        font.setFamily("文泉驿微米黑")
+        # end hex panel
+
         self.TypeStack.addWidget(self.CryptoPanel)
 
         # end Crypto panel
@@ -666,6 +1367,7 @@ class Ui_MainWindow(object):
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
         self.UrlButton.clicked.connect(self.ChangeCryptoUrl)
+        self.HexButton.clicked.connect(self.ChangeCryptoHex)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -718,6 +1420,19 @@ class Ui_MainWindow(object):
         except:
             self.UrlTextBox.setText('出现错误!')
         self.FileTempStack.addItem(self.UrlTextBox.toPlainText())
+
+    def ChangeCryptoHex(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        self.CryptoMode = 4
+        self.CryptoStack.setCurrentIndex(3)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        animation.setDuration(200)
+        animation.start()
 
     def ChangeCryptoUrl(self):
         animation = Qt.QPropertyAnimation(self)
