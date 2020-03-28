@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './ICTFE.ui'
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
-
+################################################
+#                                              #
+#  Powered By Reverier, XDSEC     2020 03 25   #
+#                                              #
+################################################
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 import resource
