@@ -39,118 +39,169 @@ class Ui_MainWindow(object):
         self.setWindowIcon(QtGui.QIcon('./Resources/icon.png'))
 
         # central widget
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("")
-        self.centralwidget.setObjectName("centralwidget")
+        self.CentralWidget = QtWidgets.QWidget(MainWindow)
+        self.CentralWidget.setStyleSheet("")
+        self.CentralWidget.setObjectName("centralwidget")
 
         # Close Button
-        self.CloseButton = QtWidgets.QPushButton(self.centralwidget)
+        self.CloseButton = QtWidgets.QPushButton(self.CentralWidget)
         self.CloseButton.setGeometry(QtCore.QRect(1544, 2, 54, 32))
-        self.CloseButton.setStyleSheet("QPushButton#CloseButton{image:url(:/img/close);border:none;}\n"
-                                       "QPushButton#CloseButton:hover{image:url(:/img/close1);border:none;}\n"
-                                       "QPushButton#CloseButton:pressed{image:url(:/img/close2);border:none;}")
+        self.CloseButton.setStyleSheet("QPushButton#CloseButton{"
+                                       "image:url(:/img/close);"
+                                       "border:none;"
+                                       "}\n"
+                                       "QPushButton#CloseButton:hover{"
+                                       "image:url(:/img/close1);"
+                                       "border:none;"
+                                       "}\n"
+                                       "QPushButton#CloseButton:pressed{"
+                                       "image:url(:/img/close2);"
+                                       "border:none;"
+                                       "}")
         self.CloseButton.setText("")
         self.CloseButton.setObjectName("CloseButton")
 
         # Minimize Button
-        self.MiniButton = QtWidgets.QPushButton(self.centralwidget)
+        self.MiniButton = QtWidgets.QPushButton(self.CentralWidget)
         self.MiniButton.setGeometry(QtCore.QRect(1490, 2, 54, 32))
-        self.MiniButton.setStyleSheet("QPushButton#MiniButton{image:url(:/img/mini);border:none;}\n"
-                                      "QPushButton#MiniButton:hover{image:url(:/img/mini1);border:none;}\n"
-                                      "QPushButton#MiniButton:pressed{image:url(:/img/mini2);border:none;}")
+        self.MiniButton.setStyleSheet("QPushButton#MiniButton{"
+                                      "image:url(:/img/mini);"
+                                      "border:none;"
+                                      "}\n"
+                                      "QPushButton#MiniButton:hover{"
+                                      "image:url(:/img/mini1);"
+                                      "border:none;"
+                                      "}\n"
+                                      "QPushButton#MiniButton:pressed{"
+                                      "image:url(:/img/mini2);"
+                                      "border:none;"
+                                      "}")
         self.MiniButton.setText("")
         self.MiniButton.setObjectName("MiniButton")
 
         '''Start define Type Change Button'''
 
         # Crypto Button
-        self.CryptoButton = QtWidgets.QPushButton(self.centralwidget)
+        self.CryptoButton = QtWidgets.QPushButton(self.CentralWidget)
         self.CryptoButton.setGeometry(QtCore.QRect(20, 350, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(20)
         self.CryptoButton.setFont(font)
         self.CryptoButton.setStyleSheet(
-            "QPushButton#CryptoButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#CryptoButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.CryptoButton.setFlat(True)
         self.CryptoButton.setObjectName("CryptoButton")
 
         # Misc Button
-        self.MiscButton = QtWidgets.QPushButton(self.centralwidget)
+        self.MiscButton = QtWidgets.QPushButton(self.CentralWidget)
         self.MiscButton.setGeometry(QtCore.QRect(20, 550, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(20)
         self.MiscButton.setFont(font)
         self.MiscButton.setStyleSheet(
-            "QPushButton#MiscButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#MiscButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.MiscButton.setFlat(True)
         self.MiscButton.setObjectName("MiscButton")
 
         # Reverse Button
-        self.ReverseButton = QtWidgets.QPushButton(self.centralwidget)
+        self.ReverseButton = QtWidgets.QPushButton(self.CentralWidget)
         self.ReverseButton.setGeometry(QtCore.QRect(20, 150, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(20)
         self.ReverseButton.setFont(font)
         self.ReverseButton.setStyleSheet(
-            "QPushButton#ReverseButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#ReverseButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.ReverseButton.setFlat(True)
         self.ReverseButton.setObjectName("ReverseButton")
 
         # Web Button
-        self.WebButton = QtWidgets.QPushButton(self.centralwidget)
+        self.WebButton = QtWidgets.QPushButton(self.CentralWidget)
         self.WebButton.setGeometry(QtCore.QRect(20, 250, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(20)
         self.WebButton.setFont(font)
         self.WebButton.setStyleSheet(
-            "QPushButton#WebButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#WebButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.WebButton.setFlat(True)
         self.WebButton.setObjectName("WebButton")
 
         # Pwn Button
-        self.PwnButton = QtWidgets.QPushButton(self.centralwidget)
+        self.PwnButton = QtWidgets.QPushButton(self.CentralWidget)
         self.PwnButton.setGeometry(QtCore.QRect(20, 450, 120, 45))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(20)
         self.PwnButton.setFont(font)
         self.PwnButton.setStyleSheet(
-            "QPushButton#PwnButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#PwnButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.PwnButton.setFlat(True)
         self.PwnButton.setObjectName("PwnButton")
 
         '''End define Type Change Button'''
 
         # File Temp Stack
-        self.FileTempStackTip = QtWidgets.QLabel(self.centralwidget)
+        self.FileTempStackTip = QtWidgets.QLabel(self.CentralWidget)
         self.FileTempStackTip.setGeometry(QtCore.QRect(20, 630, 120, 30))
         self.FileTempStackTip.setObjectName('FileTempStackTip')
         self.FileTempStackTip.setStyleSheet('#FileTempStackTip{color: white;}')
         self.FileTempStackTip.setText('暂存池')
         self.FileTempStackTip.setFont(font)
-        self.FileTempStackDelButton = QtWidgets.QPushButton(self.centralwidget)
+        self.FileTempStackDelButton = QtWidgets.QPushButton(self.CentralWidget)
         self.FileTempStackDelButton.setGeometry(QtCore.QRect(110, 632, 30, 30))
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPointSize(20)
         self.FileTempStackDelButton.setFont(font)
         self.FileTempStackDelButton.setStyleSheet(
-            "QPushButton#FileTempStackDelButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#FileTempStackDelButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.FileTempStackDelButton.setFlat(True)
         self.FileTempStackDelButton.setObjectName("FileTempStackDelButton")
         self.FileTempStackDelButton.setText('×')
         font.setFamily("consolas")
         font.setPointSize(12)
-        self.FileTempStack = QtWidgets.QListWidget(self.centralwidget)
+        self.FileTempStack = QtWidgets.QListWidget(self.CentralWidget)
         self.FileTempStack.setGeometry(QtCore.QRect(20, 670, 120, 200))
         self.FileTempStack.setObjectName('FileTempStack')
         self.FileTempStack.setFont(font)
         self.FileTempStack.setStyleSheet(
-            '#FileTempStack{background-color: rgb(20,20,20); color: white}')
+            '#FileTempStack{'
+            'background-color: rgb(20,20,20);'
+            'color: white'
+            '}')
         self.FileTempStack.setDragEnabled(True)
         self.FileTempStack.setAcceptDrops(True)
         self.FileTempStack.setHorizontalScrollBarPolicy(
@@ -161,13 +212,13 @@ class Ui_MainWindow(object):
         font.setPointSize(20)
 
         '''Begin define Type panel change method'''
-        self.TypeStack = QtWidgets.QStackedWidget(self.centralwidget)
+        self.TypeStack = QtWidgets.QStackedWidget(self.CentralWidget)
         self.TypeStack.setGeometry(QtCore.QRect(170, 130, 1425, 765))
         self.TypeStack.setObjectName("TypeStack")
 
         # Choose ticker
         self.TypeChooserBox = [-10, 195, 295, 395, 495, 595]
-        self.TypeChooser = QtWidgets.QLabel(self.centralwidget)
+        self.TypeChooser = QtWidgets.QLabel(self.CentralWidget)
         self.TypeChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
         self.TypeChooser.setGeometry(QtCore.QRect(
@@ -196,7 +247,9 @@ class Ui_MainWindow(object):
         self.CryptoChoosePanelScroll = QtWidgets.QScrollArea(self.CryptoPanel)
         self.CryptoChoosePanelScroll.setGeometry(0, 0, 1426, 128)
         self.CryptoChoosePanelScroll.setStyleSheet(
-            '#CryptoChoosePanelScroll{background-color:transparent}')
+            '#CryptoChoosePanelScroll{'
+            'background-color:transparent'
+            '}')
         self.CryptoChoosePanelScroll.viewport().setStyleSheet(
             'background-color:transparent;')
         self.CryptoChoosePanelScroll.setWidget(self.CryptoChoosePanel)
@@ -223,7 +276,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.BaseButton.setFont(font)
         self.BaseButton.setStyleSheet(
-            "QPushButton#BaseButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseButton.setText("Base系列")
         self.BaseButton.setFlat(True)
         self.BaseButton.setObjectName("BaseButton")
@@ -238,7 +296,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.QuoteButton.setFont(font)
         self.QuoteButton.setStyleSheet(
-            "QPushButton#QuoteButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#QuoteButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.QuoteButton.setText("Quote-P")
         self.QuoteButton.setFlat(True)
         self.QuoteButton.setObjectName("QuoteButton")
@@ -253,7 +316,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.UrlButton.setFont(font)
         self.UrlButton.setStyleSheet(
-            "QPushButton#UrlButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#UrlButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.UrlButton.setText("Url编码")
         self.UrlButton.setFlat(True)
         self.UrlButton.setObjectName("UrlButton")
@@ -268,7 +336,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.HexButton.setFont(font)
         self.HexButton.setStyleSheet(
-            "QPushButton#HexButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HexButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HexButton.setText("Hex编码")
         self.HexButton.setFlat(True)
         self.HexButton.setObjectName("HexButton")
@@ -283,7 +356,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.HTMLButton.setFont(font)
         self.HTMLButton.setStyleSheet(
-            "QPushButton#HTMLButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HTMLButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HTMLButton.setText("HTML编码")
         self.HTMLButton.setFlat(True)
         self.HTMLButton.setObjectName("HTMLButton")
@@ -298,7 +376,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.EscapeButton.setFont(font)
         self.EscapeButton.setStyleSheet(
-            "QPushButton#EscapeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#EscapeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.EscapeButton.setText("Escape")
         self.EscapeButton.setFlat(True)
         self.EscapeButton.setObjectName("EscapeButton")
@@ -313,7 +396,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.TapButton.setFont(font)
         self.TapButton.setStyleSheet(
-            "QPushButton#TapButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#TapButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.TapButton.setText("敲击码")
         self.TapButton.setFlat(True)
         self.TapButton.setObjectName("TapButton")
@@ -328,7 +416,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.MorseButton.setFont(font)
         self.MorseButton.setStyleSheet(
-            "QPushButton#MorseButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#MorseButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.MorseButton.setText("摩斯电码")
         self.MorseButton.setFlat(True)
         self.MorseButton.setObjectName("MorseButton")
@@ -343,7 +436,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.HashButton.setFont(font)
         self.HashButton.setStyleSheet(
-            "QPushButton#HashButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HashButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HashButton.setText("Hash计算")
         self.HashButton.setFlat(True)
         self.HashButton.setObjectName("HashButton")
@@ -358,7 +456,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.AESButton.setFont(font)
         self.AESButton.setStyleSheet(
-            "QPushButton#AESButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#AESButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.AESButton.setText("AES加密")
         self.AESButton.setFlat(True)
         self.AESButton.setObjectName("AESButton")
@@ -373,7 +476,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.DESButton.setFont(font)
         self.DESButton.setStyleSheet(
-            "QPushButton#DESButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#DESButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.DESButton.setText("DES加密")
         self.DESButton.setFlat(True)
         self.DESButton.setObjectName("DESButton")
@@ -388,7 +496,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.RC4Button.setFont(font)
         self.RC4Button.setStyleSheet(
-            "QPushButton#RC4Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#RC4Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.RC4Button.setText("RC4编码")
         self.RC4Button.setFlat(True)
         self.RC4Button.setObjectName("RC4Button")
@@ -404,7 +517,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.ASCIITranslateButton.setFont(font)
         self.ASCIITranslateButton.setStyleSheet(
-            "QPushButton#ASCIITranslateButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#ASCIITranslateButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.ASCIITranslateButton.setText("进制转换")
         self.ASCIITranslateButton.setFlat(True)
         self.ASCIITranslateButton.setObjectName("ASCIITranslateButton")
@@ -419,7 +537,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.RSAButton.setFont(font)
         self.RSAButton.setStyleSheet(
-            "QPushButton#RSAButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#RSAButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.RSAButton.setText("RSA工具")
         self.RSAButton.setFlat(True)
         self.RSAButton.setObjectName("RSAButton")
@@ -435,7 +558,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.CodeTranslateButton.setFont(font)
         self.CodeTranslateButton.setStyleSheet(
-            "QPushButton#CodeTranslateButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#CodeTranslateButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.CodeTranslateButton.setText("编码转换")
         self.CodeTranslateButton.setFlat(True)
         self.CodeTranslateButton.setObjectName("CodeTranslateButton")
@@ -450,7 +578,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.ADFGVXButton.setFont(font)
         self.ADFGVXButton.setStyleSheet(
-            "QPushButton#ADFGVXButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#ADFGVXButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.ADFGVXButton.setText("ADFGVX")
         self.ADFGVXButton.setFlat(True)
         self.ADFGVXButton.setObjectName("ADFGVXButton")
@@ -465,7 +598,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.AffineButton.setFont(font)
         self.AffineButton.setStyleSheet(
-            "QPushButton#AffineButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#AffineButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.AffineButton.setText("仿射密码")
         self.AffineButton.setFlat(True)
         self.AffineButton.setObjectName("AffineButton")
@@ -480,7 +618,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.AutoKeyButton.setFont(font)
         self.AutoKeyButton.setStyleSheet(
-            "QPushButton#AutoKeyButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#AutoKeyButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.AutoKeyButton.setText("自动密钥机")
         self.AutoKeyButton.setFlat(True)
         self.AutoKeyButton.setObjectName("AutoKeyButton")
@@ -495,7 +638,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.AtbashButton.setFont(font)
         self.AtbashButton.setStyleSheet(
-            "QPushButton#AtbashButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#AtbashButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.AtbashButton.setText("Atbash")
         self.AtbashButton.setFlat(True)
         self.AtbashButton.setObjectName("AtbashButton")
@@ -510,7 +658,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.BeaufortButton.setFont(font)
         self.BeaufortButton.setStyleSheet(
-            "QPushButton#BeaufortButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BeaufortButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BeaufortButton.setText("Beaufort")
         self.BeaufortButton.setFlat(True)
         self.BeaufortButton.setObjectName("BeaufortButton")
@@ -525,7 +678,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.BifidButton.setFont(font)
         self.BifidButton.setStyleSheet(
-            "QPushButton#BifidButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BifidButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BifidButton.setText("Bifid")
         self.BifidButton.setFlat(True)
         self.BifidButton.setObjectName("BifidButton")
@@ -540,7 +698,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.CasarButton.setFont(font)
         self.CasarButton.setStyleSheet(
-            "QPushButton#CasarButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#CasarButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.CasarButton.setText("Casar")
         self.CasarButton.setFlat(True)
         self.CasarButton.setObjectName("CasarButton")
@@ -555,7 +718,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.CTButton.setFont(font)
         self.CTButton.setStyleSheet(
-            "QPushButton#CTButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#CTButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.CTButton.setText("列移位")
         self.CTButton.setFlat(True)
         self.CTButton.setObjectName("CTButton")
@@ -570,7 +738,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.EnigmaButton.setFont(font)
         self.EnigmaButton.setStyleSheet(
-            "QPushButton#EnigmaButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#EnigmaButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.EnigmaButton.setText("Enigma")
         self.EnigmaButton.setFlat(True)
         self.EnigmaButton.setObjectName("EnigmaButton")
@@ -585,7 +758,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.FourSquareButton.setFont(font)
         self.FourSquareButton.setStyleSheet(
-            "QPushButton#FourSquareButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#FourSquareButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.FourSquareButton.setText("四方密码")
         self.FourSquareButton.setFlat(True)
         self.FourSquareButton.setObjectName("FourSquareButton")
@@ -600,7 +778,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.GronsFeldButton.setFont(font)
         self.GronsFeldButton.setStyleSheet(
-            "QPushButton#GronsFeldButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#GronsFeldButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.GronsFeldButton.setText("GronsFeld")
         self.GronsFeldButton.setFlat(True)
         self.GronsFeldButton.setObjectName("GronsFeldButton")
@@ -615,7 +798,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.M209Button.setFont(font)
         self.M209Button.setStyleSheet(
-            "QPushButton#M209Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#M209Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.M209Button.setText("M-209")
         self.M209Button.setFlat(True)
         self.M209Button.setObjectName("M209Button")
@@ -630,7 +818,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.PlayFairButton.setFont(font)
         self.PlayFairButton.setStyleSheet(
-            "QPushButton#PlayFairButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#PlayFairButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.PlayFairButton.setText("PlayFair")
         self.PlayFairButton.setFlat(True)
         self.PlayFairButton.setObjectName("PlayFairButton")
@@ -645,7 +838,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.PolybiusButton.setFont(font)
         self.PolybiusButton.setStyleSheet(
-            "QPushButton#PolybiusButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#PolybiusButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.PolybiusButton.setText("Polybius")
         self.PolybiusButton.setFlat(True)
         self.PolybiusButton.setObjectName("PolybiusButton")
@@ -660,7 +858,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.PortaButton.setFont(font)
         self.PortaButton.setStyleSheet(
-            "QPushButton#PortaButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#PortaButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.PortaButton.setText("Porta")
         self.PortaButton.setFlat(True)
         self.PortaButton.setObjectName("PortaButton")
@@ -675,7 +878,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.RailFenceButton.setFont(font)
         self.RailFenceButton.setStyleSheet(
-            "QPushButton#RailFenceButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#RailFenceButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.RailFenceButton.setText("栅栏密码")
         self.RailFenceButton.setFlat(True)
         self.RailFenceButton.setObjectName("RailFenceButton")
@@ -690,7 +898,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.Rot13Button.setFont(font)
         self.Rot13Button.setStyleSheet(
-            "QPushButton#Rot13Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#Rot13Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.Rot13Button.setText("Rot13")
         self.Rot13Button.setFlat(True)
         self.Rot13Button.setObjectName("Rot13Button")
@@ -705,7 +918,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.SubstitutionButton.setFont(font)
         self.SubstitutionButton.setStyleSheet(
-            "QPushButton#SubstitutionButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#SubstitutionButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.SubstitutionButton.setText("简单换位")
         self.SubstitutionButton.setFlat(True)
         self.SubstitutionButton.setObjectName("SubstitutionButton")
@@ -720,7 +938,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.VigenereButton.setFont(font)
         self.VigenereButton.setStyleSheet(
-            "QPushButton#VigenereButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#VigenereButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.VigenereButton.setText("Vigenere")
         self.VigenereButton.setFlat(True)
         self.VigenereButton.setObjectName("VigenereButton")
@@ -735,7 +958,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.PigenButton.setFont(font)
         self.PigenButton.setStyleSheet(
-            "QPushButton#PigenButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#PigenButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.PigenButton.setText("猪圈密码")
         self.PigenButton.setFlat(True)
         self.PigenButton.setObjectName("PigenButton")
@@ -750,7 +978,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.BaconButton.setFont(font)
         self.BaconButton.setStyleSheet(
-            "QPushButton#BaconButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaconButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaconButton.setText("培根密码")
         self.BaconButton.setFlat(True)
         self.BaconButton.setObjectName("BaconButton")
@@ -765,7 +998,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.RunningKeyButton.setFont(font)
         self.RunningKeyButton.setStyleSheet(
-            "QPushButton#RunningKeyButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#RunningKeyButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.RunningKeyButton.setText("滚动密钥")
         self.RunningKeyButton.setFlat(True)
         self.RunningKeyButton.setObjectName("RunningKeyButton")
@@ -780,7 +1018,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.HillButton.setFont(font)
         self.HillButton.setStyleSheet(
-            "QPushButton#HillButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HillButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HillButton.setText("希尔密码")
         self.HillButton.setFlat(True)
         self.HillButton.setObjectName("HillButton")
@@ -795,7 +1038,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.A1z26Button.setFont(font)
         self.A1z26Button.setStyleSheet(
-            "QPushButton#A1z26Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#A1z26Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.A1z26Button.setText("A1z26")
         self.A1z26Button.setFlat(True)
         self.A1z26Button.setObjectName("A1z26Button")
@@ -810,7 +1058,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.BeaufortButton.setFont(font)
         self.BeaufortButton.setStyleSheet(
-            "QPushButton#BeaufortButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BeaufortButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BeaufortButton.setText("Beaufort")
         self.BeaufortButton.setFlat(True)
         self.BeaufortButton.setObjectName("BeaufortButton")
@@ -825,7 +1078,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.OtherCipherButton.setFont(font)
         self.OtherCipherButton.setStyleSheet(
-            "QPushButton#OtherCipherButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#OtherCipherButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.OtherCipherButton.setText("编码杂项")
         self.OtherCipherButton.setFlat(True)
         self.OtherCipherButton.setObjectName("OtherCipherButton")
@@ -840,7 +1098,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.JSFuckButton.setFont(font)
         self.JSFuckButton.setStyleSheet(
-            "QPushButton#JSFuckButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#JSFuckButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.JSFuckButton.setText("JSFuck")
         self.JSFuckButton.setFlat(True)
         self.JSFuckButton.setObjectName("JSFuckButton")
@@ -855,7 +1118,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.BrainFuckButton.setFont(font)
         self.BrainFuckButton.setStyleSheet(
-            "QPushButton#BrainFuckButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BrainFuckButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BrainFuckButton.setText("BrainFuck")
         self.BrainFuckButton.setFlat(True)
         self.BrainFuckButton.setObjectName("BrainFuckButton")
@@ -870,7 +1138,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.OokButton.setFont(font)
         self.OokButton.setStyleSheet(
-            "QPushButton#OokButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#OokButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.OokButton.setText("Ook!")
         self.OokButton.setFlat(True)
         self.OokButton.setObjectName("OokButton")
@@ -902,7 +1175,12 @@ class Ui_MainWindow(object):
         self.Base64Button.setText('Base64')
         self.Base64Button.setFont(font)
         self.Base64Button.setStyleSheet(
-            "QPushButton#Base64Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#Base64Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.Base64Button.setFlat(True)
 
         self.Base32Button = QtWidgets.QPushButton(self.BasePanel)
@@ -911,7 +1189,12 @@ class Ui_MainWindow(object):
         self.Base32Button.setText('Base32')
         self.Base32Button.setFont(font)
         self.Base32Button.setStyleSheet(
-            "QPushButton#Base32Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#Base32Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.Base32Button.setFlat(True)
 
         self.Base16Button = QtWidgets.QPushButton(self.BasePanel)
@@ -920,7 +1203,12 @@ class Ui_MainWindow(object):
         self.Base16Button.setText('Base16')
         self.Base16Button.setFont(font)
         self.Base16Button.setStyleSheet(
-            "QPushButton#Base16Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#Base16Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.Base16Button.setFlat(True)
 
         self.Base85Button = QtWidgets.QPushButton(self.BasePanel)
@@ -929,7 +1217,12 @@ class Ui_MainWindow(object):
         self.Base85Button.setText('Base85ASC')
         self.Base85Button.setFont(font)
         self.Base85Button.setStyleSheet(
-            "QPushButton#Base85Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#Base85Button{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.Base85Button.setFlat(True)
 
         self.Base85RFCButton = QtWidgets.QPushButton(self.BasePanel)
@@ -938,7 +1231,12 @@ class Ui_MainWindow(object):
         self.Base85RFCButton.setText('Base85RFC')
         self.Base85RFCButton.setFont(font)
         self.Base85RFCButton.setStyleSheet(
-            "QPushButton#Base85RFCButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#Base85RFCButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.Base85RFCButton.setFlat(True)
 
         self.BaseEButton = QtWidgets.QPushButton(self.BasePanel)
@@ -947,7 +1245,12 @@ class Ui_MainWindow(object):
         self.BaseEButton.setText('Base64隐写提取')
         self.BaseEButton.setFont(font)
         self.BaseEButton.setStyleSheet(
-            "QPushButton#BaseEButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseEButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseEButton.setFlat(True)
 
         # end base change buttons
@@ -988,7 +1291,12 @@ class Ui_MainWindow(object):
         self.BaseEncButton.setText('编码')
         self.BaseEncButton.setFont(font)
         self.BaseEncButton.setStyleSheet(
-            "QPushButton#BaseEncButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseEncButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseEncButton.setFlat(True)
 
         # base dec button
@@ -998,7 +1306,12 @@ class Ui_MainWindow(object):
         self.BaseDecButton.setText('解码')
         self.BaseDecButton.setFont(font)
         self.BaseDecButton.setStyleSheet(
-            "QPushButton#BaseDecButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseDecButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseDecButton.setFlat(True)
 
         # input text file button
@@ -1010,7 +1323,12 @@ class Ui_MainWindow(object):
         self.BaseTextInputButton.setToolTip('点击选择文件')
         self.BaseTextInputButton.setFont(font)
         self.BaseTextInputButton.setStyleSheet(
-            "QPushButton#BaseTextInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseTextInputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseTextInputButton.setFlat(True)
 
         # output text file button
@@ -1022,7 +1340,12 @@ class Ui_MainWindow(object):
         self.BaseTextOutputButton.setToolTip('点击选择文件')
         self.BaseTextOutputButton.setFont(font)
         self.BaseTextOutputButton.setStyleSheet(
-            "QPushButton#BaseTextOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseTextOutputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseTextOutputButton.setFlat(True)
 
         # input cipher file button
@@ -1034,7 +1357,12 @@ class Ui_MainWindow(object):
         self.BaseCipherInputButton.setToolTip('点击选择文件')
         self.BaseCipherInputButton.setFont(font)
         self.BaseCipherInputButton.setStyleSheet(
-            "QPushButton#BaseCipherInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseCipherInputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseCipherInputButton.setFlat(True)
 
         # output cipher file button
@@ -1074,7 +1402,12 @@ class Ui_MainWindow(object):
         self.BaseTranslateButton.setText('交换')
         self.BaseTranslateButton.setFont(font)
         self.BaseTranslateButton.setStyleSheet(
-            "QPushButton#BaseTranslateButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseTranslateButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseTranslateButton.setFlat(True)
 
         self.BaseCipherBox = QtWidgets.QTextEdit(self.BasePanel)
@@ -1104,7 +1437,12 @@ class Ui_MainWindow(object):
         self.QuoteTextInputButton.setToolTip('点击选择文件')
         self.QuoteTextInputButton.setFont(font)
         self.QuoteTextInputButton.setStyleSheet(
-            "QPushButton#QuoteTextInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#QuoteTextInputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.QuoteTextInputButton.setFlat(True)
 
         # output text file button
@@ -1116,7 +1454,12 @@ class Ui_MainWindow(object):
         self.QuoteTextOutputButton.setToolTip('点击选择文件')
         self.QuoteTextOutputButton.setFont(font)
         self.QuoteTextOutputButton.setStyleSheet(
-            "QPushButton#QuoteTextOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#QuoteTextOutputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.QuoteTextOutputButton.setFlat(True)
 
         # eval support
@@ -1126,8 +1469,14 @@ class Ui_MainWindow(object):
         self.QuoteTextEvalCheckBox.setGeometry(QtCore.QRect(450, 35, 120, 40))
         self.QuoteTextEvalCheckBox.setObjectName('QuoteTextEvalCheckBox')
         self.QuoteTextEvalCheckBox.setStyleSheet(
-            'QCheckBox:unchecked{ border:none; color: white; }\
-                QCheckBox:checked{ border:none; color: cyan; }')
+            'QCheckBox:unchecked{ '
+            'border:none; '
+            'color: white; '
+            '}'
+            'QCheckBox:checked{'
+            'border:none;'
+            'color: cyan;'
+            '}')
         self.QuoteTextEvalCheckBox.setFont(font)
 
         # Quote Encode button
@@ -1138,7 +1487,12 @@ class Ui_MainWindow(object):
         self.QuoteEncodeButton.setText('编码')
         self.QuoteEncodeButton.setFont(font)
         self.QuoteEncodeButton.setStyleSheet(
-            "QPushButton#QuoteEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#QuoteEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.QuoteEncodeButton.setFlat(True)
 
         # input cipher file button
@@ -1151,7 +1505,12 @@ class Ui_MainWindow(object):
         self.QuoteCipherInputButton.setToolTip('点击选择文件')
         self.QuoteCipherInputButton.setFont(font)
         self.QuoteCipherInputButton.setStyleSheet(
-            "QPushButton#QuoteCipherInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#QuoteCipherInputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.QuoteCipherInputButton.setFlat(True)
 
         # output cipher file button
@@ -1164,7 +1523,12 @@ class Ui_MainWindow(object):
         self.QuoteCipherOutputButton.setToolTip('点击选择文件')
         self.QuoteCipherOutputButton.setFont(font)
         self.QuoteCipherOutputButton.setStyleSheet(
-            "QPushButton#QuoteCipherOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#QuoteCipherOutputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.QuoteCipherOutputButton.setFlat(True)
 
         # Quote Decode button
@@ -1175,7 +1539,12 @@ class Ui_MainWindow(object):
         self.QuoteDecodeButton.setText('解码')
         self.QuoteDecodeButton.setFont(font)
         self.QuoteDecodeButton.setStyleSheet(
-            "QPushButton#QuoteDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#QuoteDecodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.QuoteDecodeButton.setFlat(True)
 
         font.setFamily("Consolas")
@@ -1216,7 +1585,12 @@ class Ui_MainWindow(object):
         self.UrlEncodeButton.setText('编码')
         self.UrlEncodeButton.setFont(font)
         self.UrlEncodeButton.setStyleSheet(
-            "QPushButton#UrlEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#UrlEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.UrlEncodeButton.setFlat(True)
 
         # Url Decode button
@@ -1227,7 +1601,12 @@ class Ui_MainWindow(object):
         self.UrlDecodeButton.setText('解码')
         self.UrlDecodeButton.setFont(font)
         self.UrlDecodeButton.setStyleSheet(
-            "QPushButton#UrlDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#UrlDecodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.UrlDecodeButton.setFlat(True)
 
         # url table edit box and label
@@ -1309,7 +1688,12 @@ class Ui_MainWindow(object):
         self.HexEncodeButton.setText('编码')
         self.HexEncodeButton.setFont(font)
         self.HexEncodeButton.setStyleSheet(
-            "QPushButton#HexEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HexEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HexEncodeButton.setFlat(True)
 
         # Hex Decode button
@@ -1320,7 +1704,12 @@ class Ui_MainWindow(object):
         self.HexDecodeButton.setText('解码')
         self.HexDecodeButton.setFont(font)
         self.HexDecodeButton.setStyleSheet(
-            "QPushButton#HexDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HexDecodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HexDecodeButton.setFlat(True)
 
         font.setFamily("Consolas")
@@ -1361,7 +1750,12 @@ class Ui_MainWindow(object):
         self.HTMLEncodeButton.setText('编码')
         self.HTMLEncodeButton.setFont(font)
         self.HTMLEncodeButton.setStyleSheet(
-            "QPushButton#HTMLEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HTMLEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HTMLEncodeButton.setFlat(True)
 
         # HTML Decode button
@@ -1372,7 +1766,12 @@ class Ui_MainWindow(object):
         self.HTMLDecodeButton.setText('解码')
         self.HTMLDecodeButton.setFont(font)
         self.HTMLDecodeButton.setStyleSheet(
-            "QPushButton#HTMLDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HTMLDecodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HTMLDecodeButton.setFlat(True)
 
         font.setFamily("Consolas")
@@ -1413,7 +1812,12 @@ class Ui_MainWindow(object):
         self.EscapeEncodeButton.setText('编码')
         self.EscapeEncodeButton.setFont(font)
         self.EscapeEncodeButton.setStyleSheet(
-            "QPushButton#EscapeEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#EscapeEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.EscapeEncodeButton.setFlat(True)
 
         # Escape Decode button
@@ -1424,7 +1828,12 @@ class Ui_MainWindow(object):
         self.EscapeDecodeButton.setText('解码')
         self.EscapeDecodeButton.setFont(font)
         self.EscapeDecodeButton.setStyleSheet(
-            "QPushButton#EscapeDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#EscapeDecodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.EscapeDecodeButton.setFlat(True)
 
         font.setFamily("Consolas")
@@ -1465,7 +1874,12 @@ class Ui_MainWindow(object):
         self.TapEncodeButton.setText('编码')
         self.TapEncodeButton.setFont(font)
         self.TapEncodeButton.setStyleSheet(
-            "QPushButton#TapEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#TapEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.TapEncodeButton.setFlat(True)
 
         # Tap Decode button
@@ -1476,7 +1890,12 @@ class Ui_MainWindow(object):
         self.TapDecodeButton.setText('解码')
         self.TapDecodeButton.setFont(font)
         self.TapDecodeButton.setStyleSheet(
-            "QPushButton#TapDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#TapDecodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.TapDecodeButton.setFlat(True)
 
         font.setFamily("Consolas")
@@ -1600,7 +2019,12 @@ class Ui_MainWindow(object):
         self.HashTextInputButton.setToolTip('点击选择文件')
         self.HashTextInputButton.setFont(font)
         self.HashTextInputButton.setStyleSheet(
-            "QPushButton#HashTextInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#HashTextInputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.HashTextInputButton.setFlat(True)
 
         # Hash Encode button
@@ -1656,7 +2080,7 @@ class Ui_MainWindow(object):
         self.TypeStack.addWidget(self.WelcomePanel)
 
         # Set MainWindow Widget
-        MainWindow.setCentralWidget(self.centralwidget)
+        MainWindow.setCentralWidget(self.CentralWidget)
 
         # other process.
         self.retranslateUi(MainWindow)
