@@ -14,6 +14,7 @@ import quopri
 from urllib import parse
 import binascii
 import html
+import morseCode
 
 
 class Ui_MainWindow(object):
@@ -205,7 +206,7 @@ class Ui_MainWindow(object):
             QtCore.Qt.ScrollBarAlwaysOff)
 
         # Choose ticker
-        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531, 661, 791]
+        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531, 661, 791, 921]
         self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -1498,6 +1499,78 @@ class Ui_MainWindow(object):
         font.setFamily("文泉驿微米黑")
         # end Tap panel
 
+        # begin Morse panel
+        self.MorsePanel = QtWidgets.QWidget()
+        self.MorsePanel.setObjectName('MorsePanel')
+        self.CryptoStack.addWidget(self.MorsePanel)
+
+        # Morse Encode button
+        self.MorseEncodeButton = QtWidgets.QPushButton(self.MorsePanel)
+        self.MorseEncodeButton.setObjectName('MorseEncodeButton')
+        self.MorseEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.MorseEncodeButton.setText('编码')
+        self.MorseEncodeButton.setFont(font)
+        self.MorseEncodeButton.setStyleSheet(
+            "QPushButton#MorseEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.MorseEncodeButton.setFlat(True)
+
+        # Morse Spilt edit box and label
+        self.MorseSpiltTips = QtWidgets.QLabel(self.MorsePanel)
+        self.MorseSpiltTips.setObjectName('MorseSpiltTips')
+        self.MorseSpiltTips.setText('分隔符:')
+        self.MorseSpiltTips.setFont(font)
+        self.MorseSpiltTips.setStyleSheet('color: white;')
+        self.MorseSpiltTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        self.MorseSpiltBox = QtWidgets.QLineEdit(self.MorsePanel)
+        font.setFamily("Consolas")
+        self.MorseSpiltBox.setFont(font)
+        self.MorseSpiltBox.setStyleSheet('color: white;\
+            border: 2px solid gray;\
+            border-radius: 10px;\
+            padding: 0 8px;\
+            background: rgb(20, 20, 20);\
+            selection-background-color: blue;')
+        self.MorseSpiltBox.setObjectName('MorseSpiltBox')
+        self.MorseSpiltBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
+        font.setFamily("文泉驿微米黑")
+
+        # Morse Decode button
+        self.MorseDecodeButton = QtWidgets.QPushButton(self.MorsePanel)
+        self.MorseDecodeButton.setObjectName('MorseDecodeButton')
+        self.MorseDecodeButton.setGeometry(
+            QtCore.QRect(1280, 20, 120, 45))
+        self.MorseDecodeButton.setText('解码')
+        self.MorseDecodeButton.setFont(font)
+        self.MorseDecodeButton.setStyleSheet(
+            "QPushButton#MorseDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.MorseDecodeButton.setFlat(True)
+
+        font.setFamily("Consolas")
+        self.MorseTextBox = QtWidgets.QTextEdit(self.MorsePanel)
+        self.MorseTextBox.setObjectName('MorseTextBox')
+        self.MorseTextBox.setFont(font)
+        self.MorseTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.MorseTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.MorseTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.MorseTextBox.setPlaceholderText('Morse Encode\n这里写明文')
+        self.MorseTextBox.setAcceptDrops(True)
+        self.MorseTextBox.setAcceptRichText(False)
+
+        self.MorseCipherBox = QtWidgets.QTextEdit(self.MorsePanel)
+        self.MorseCipherBox.setObjectName('MorseCipherBox')
+        self.MorseCipherBox.setFont(font)
+        self.MorseCipherBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.MorseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.MorseCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+        self.MorseCipherBox.setPlaceholderText('Morse Decode\n这里写编码')
+        self.MorseCipherBox.setAcceptDrops(True)
+        self.MorseCipherBox.setAcceptRichText(False)
+        font.setFamily("文泉驿微米黑")
+        # end Morse panel
+
         self.TypeStack.addWidget(self.CryptoPanel)
 
         # end Crypto panel
@@ -1547,6 +1620,7 @@ class Ui_MainWindow(object):
         self.HTMLButton.clicked.connect(self.ChangeCryptoHTML)
         self.EscapeButton.clicked.connect(self.ChangeCryptoEscape)
         self.TapButton.clicked.connect(self.ChangeCryptoTap)
+        self.MorseButton.clicked.connect(self.ChangeCryptoMorse)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -1564,6 +1638,8 @@ class Ui_MainWindow(object):
         self.EscapeDecodeButton.clicked.connect(self.EscapeDecode)
         self.TapEncodeButton.clicked.connect(self.TapEncode)
         self.TapDecodeButton.clicked.connect(self.TapDecode)
+        self.MorseEncodeButton.clicked.connect(self.MorseEncode)
+        self.MorseDecodeButton.clicked.connect(self.MorseDecode)
         self.BaseTextInputButton.clicked.connect(self.BaseTextInputFunction)
         self.BaseCipherInputButton.clicked.connect(
             self.BaseCipherInputFunction)
@@ -1592,6 +1668,32 @@ class Ui_MainWindow(object):
     def DelFileTempStack(self):
         item = self.FileTempStack.currentItem()
         self.FileTempStack.takeItem(self.FileTempStack.row(item))
+
+    def MorseEncode(self):
+        spilt = self.MorseSpiltBox.text()
+        if spilt == '':
+            spilt = ' '
+        elif spilt.find('.') or spilt.find('-'):
+            self.MorseCipherBox.setText('分隔符含有摩斯电码字符!')
+            return
+        try:
+            self.MorseCipherBox.setText(morseCode.MorseEncode(
+                self.MorseTextBox.toPlainText(), spilt))
+        except:
+            self.MorseCipherBox.setText('编码出现错误!')
+
+    def MorseDecode(self):
+        spilt = self.MorseSpiltBox.text()
+        if spilt == '':
+            spilt = ' '
+        elif spilt.find('.') or spilt.find('-'):
+            self.MorseTextBox.setText('分隔符含有摩斯电码字符!')
+            return
+        try:
+            self.MorseTextBox.setText(morseCode.MorseDecode(
+                self.MorseCipherBox.toPlainText(), spilt))
+        except:
+            self.MorseTextBox.setText('解码出现错误!')
 
     def TapEncode(self):
         table = {'A': 11, 'B': 12, 'C': 13, 'D': 14, 'E': 15,
@@ -1732,6 +1834,19 @@ class Ui_MainWindow(object):
         except:
             self.HTMLTextBox.setText('解码时出现错误!')
         self.FileTempStack.addItem(self.HTMLTextBox.toPlainText())
+
+    def ChangeCryptoMorse(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        self.CryptoMode = 8
+        self.CryptoStack.setCurrentIndex(7)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        animation.setDuration(200)
+        animation.start()
 
     def ChangeCryptoTap(self):
         animation = Qt.QPropertyAnimation(self)
