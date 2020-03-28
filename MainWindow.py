@@ -20,7 +20,7 @@ import morseCode
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
 
-        # some varibles
+        # some variables
         self.TypeMode = 0
         self.BaseMode = 1
         self.CryptoMode = 1
@@ -206,7 +206,7 @@ class Ui_MainWindow(object):
             QtCore.Qt.ScrollBarAlwaysOff)
 
         # Choose ticker
-        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531, 661, 791, 921]
+        self.CryptoChooserBox = [0, 11, 141, 271, 401, 531, 661, 791, 921, 1051]
         self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
         self.CryptoChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -955,7 +955,7 @@ class Ui_MainWindow(object):
         # eval support
         self.BaseTextEvalCheckBox = QtWidgets.QCheckBox(
             '启用eval', self.BasePanel)
-        self.BaseTextEvalCheckBox.setGeometry(QtCore.QRect(580, 135, 120, 40))
+        self.BaseTextEvalCheckBox.setGeometry(QtCore.QRect(540, 135, 120, 40))
         self.BaseTextEvalCheckBox.setObjectName('BaseTextEvalCheckBox')
         self.BaseTextEvalCheckBox.setStyleSheet(
             'QCheckBox:unchecked{ border:none; color: white; }\
@@ -1017,7 +1017,7 @@ class Ui_MainWindow(object):
         self.BaseTextOutputPath = ''
         self.BaseTextOutputButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseTextOutputButton.setObjectName('BaseTextOutputButton')
-        self.BaseTextOutputButton.setGeometry(QtCore.QRect(360, 125, 120, 45))
+        self.BaseTextOutputButton.setGeometry(QtCore.QRect(320, 125, 120, 45))
         self.BaseTextOutputButton.setText('另存为...')
         self.BaseTextOutputButton.setToolTip('点击选择文件')
         self.BaseTextOutputButton.setFont(font)
@@ -1029,7 +1029,7 @@ class Ui_MainWindow(object):
         self.BaseCipherInputPath = ''
         self.BaseCipherInputButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseCipherInputButton.setObjectName('BaseCipherInputButton')
-        self.BaseCipherInputButton.setGeometry(QtCore.QRect(720, 125, 120, 45))
+        self.BaseCipherInputButton.setGeometry(QtCore.QRect(760, 125, 120, 45))
         self.BaseCipherInputButton.setText('打开...')
         self.BaseCipherInputButton.setToolTip('点击选择文件')
         self.BaseCipherInputButton.setFont(font)
@@ -1042,12 +1042,17 @@ class Ui_MainWindow(object):
         self.BaseCipherOutputButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseCipherOutputButton.setObjectName('BaseCipherOutputButton')
         self.BaseCipherOutputButton.setGeometry(
-            QtCore.QRect(1060, 125, 120, 45))
+            QtCore.QRect(1080, 125, 120, 45))
         self.BaseCipherOutputButton.setText('另存为...')
         self.BaseCipherOutputButton.setToolTip('点击选择文件')
         self.BaseCipherOutputButton.setFont(font)
         self.BaseCipherOutputButton.setStyleSheet(
-            "QPushButton#BaseCipherOutputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#BaseCipherOutputButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.BaseCipherOutputButton.setFlat(True)
 
         # base text box and cipher box
@@ -1512,7 +1517,12 @@ class Ui_MainWindow(object):
         self.MorseEncodeButton.setText('编码')
         self.MorseEncodeButton.setFont(font)
         self.MorseEncodeButton.setStyleSheet(
-            "QPushButton#MorseEncodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#MorseEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.MorseEncodeButton.setFlat(True)
 
         # Morse Spilt edit box and label
@@ -1525,12 +1535,12 @@ class Ui_MainWindow(object):
         self.MorseSpiltBox = QtWidgets.QLineEdit(self.MorsePanel)
         font.setFamily("Consolas")
         self.MorseSpiltBox.setFont(font)
-        self.MorseSpiltBox.setStyleSheet('color: white;\
-            border: 2px solid gray;\
-            border-radius: 10px;\
-            padding: 0 8px;\
-            background: rgb(20, 20, 20);\
-            selection-background-color: blue;')
+        self.MorseSpiltBox.setStyleSheet('color: white;'
+                                         'border: 2px solid gray;'
+                                         'border-radius: 10px;'
+                                         'padding: 0 8px;'
+                                         'background: rgb(20, 20, 20);'
+                                         'selection-background-color: blue;')
         self.MorseSpiltBox.setObjectName('MorseSpiltBox')
         self.MorseSpiltBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
         font.setFamily("文泉驿微米黑")
@@ -1543,7 +1553,12 @@ class Ui_MainWindow(object):
         self.MorseDecodeButton.setText('解码')
         self.MorseDecodeButton.setFont(font)
         self.MorseDecodeButton.setStyleSheet(
-            "QPushButton#MorseDecodeButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+            "QPushButton#MorseDecodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
         self.MorseDecodeButton.setFlat(True)
 
         font.setFamily("Consolas")
@@ -1570,6 +1585,54 @@ class Ui_MainWindow(object):
         self.MorseCipherBox.setAcceptRichText(False)
         font.setFamily("文泉驿微米黑")
         # end Morse panel
+
+        # begin Hash panel
+        self.HashPanel = QtWidgets.QWidget()
+        self.HashPanel.setObjectName('HashPanel')
+        self.CryptoStack.addWidget(self.HashPanel)
+
+        # input text file button
+        self.HashTextInputPath = ''
+        self.HashTextInputButton = QtWidgets.QPushButton(self.HashPanel)
+        self.HashTextInputButton.setObjectName('HashTextInputButton')
+        self.HashTextInputButton.setGeometry(QtCore.QRect(20, 20, 120, 45))
+        self.HashTextInputButton.setText('打开...')
+        self.HashTextInputButton.setToolTip('点击选择文件')
+        self.HashTextInputButton.setFont(font)
+        self.HashTextInputButton.setStyleSheet(
+            "QPushButton#HashTextInputButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.HashTextInputButton.setFlat(True)
+
+        # Hash Encode button
+        self.HashEncodeButton = QtWidgets.QPushButton(self.HashPanel)
+        self.HashEncodeButton.setObjectName('HashEncodeButton')
+        self.HashEncodeButton.setGeometry(
+            QtCore.QRect(580, 20, 120, 45))
+        self.HashEncodeButton.setText('编码')
+        self.HashEncodeButton.setFont(font)
+        self.HashEncodeButton.setStyleSheet(
+            "QPushButton#HashEncodeButton{"
+            "background-color:rgb(40, 40, 40);"
+            "color:rgb(200,200,200);"
+            "border-width:1px;"
+            "border-color:rgb(50,50,50);"
+            "}")
+        self.HashEncodeButton.setFlat(True)
+
+        font.setFamily("Consolas")
+        self.HashTextBox = QtWidgets.QTextEdit(self.HashPanel)
+        self.HashTextBox.setObjectName('HashTextBox')
+        self.HashTextBox.setFont(font)
+        self.HashTextBox.setStyleSheet(
+            'background-color: rgb(20,20,20)')
+        self.HashTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+        self.HashTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.HashTextBox.setPlaceholderText('Hash Calculate\n这里写明文')
+        self.HashTextBox.setAcceptDrops(True)
+        self.HashTextBox.setAcceptRichText(False)
+
+        font.setFamily("文泉驿微米黑")
+        # end Hash panel
 
         self.TypeStack.addWidget(self.CryptoPanel)
 
@@ -1621,6 +1684,7 @@ class Ui_MainWindow(object):
         self.EscapeButton.clicked.connect(self.ChangeCryptoEscape)
         self.TapButton.clicked.connect(self.ChangeCryptoTap)
         self.MorseButton.clicked.connect(self.ChangeCryptoMorse)
+        self.HashButton.clicked.connect(self.ChangeCryptoHash)
         self.Base16Button.clicked.connect(self.ChangeBase16)
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
@@ -1673,7 +1737,7 @@ class Ui_MainWindow(object):
         spilt = self.MorseSpiltBox.text()
         if spilt == '':
             spilt = ' '
-        elif spilt.find('.') or spilt.find('-'):
+        elif spilt.find('.') != -1 or spilt.find('-') != -1:
             self.MorseCipherBox.setText('分隔符含有摩斯电码字符!')
             return
         try:
@@ -1812,7 +1876,8 @@ class Ui_MainWindow(object):
     def EscapeDecode(self):
         try:
             self.EscapeTextBox.setText(
-                parse.unquote(self.EscapeCipherBox.toPlainText().replace('%u', '\\u').encode().decode('unicode-escape')))
+                parse.unquote(
+                    self.EscapeCipherBox.toPlainText().replace('%u', '\\u').encode().decode('unicode-escape')))
         except:
             self.EscapeTextBox.setText('解码失败.')
         self.FileTempStack.addItem(self.EscapeTextBox.toPlainText())
@@ -1834,6 +1899,19 @@ class Ui_MainWindow(object):
         except:
             self.HTMLTextBox.setText('解码时出现错误!')
         self.FileTempStack.addItem(self.HTMLTextBox.toPlainText())
+
+    def ChangeCryptoHash(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        self.CryptoMode = 9
+        self.CryptoStack.setCurrentIndex(8)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserBox[self.CryptoMode], 55))
+        animation.setDuration(200)
+        animation.start()
 
     def ChangeCryptoMorse(self):
         animation = Qt.QPropertyAnimation(self)
@@ -2218,7 +2296,8 @@ class Ui_MainWindow(object):
         padding = len(text) % 4
         if padding != 0:
             text += '=' * padding
-        if self.CheckBase64Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text, self.BaseTableBox.text()) == False:
+        if self.CheckBase64Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
+                                                                                            self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
             return
@@ -2230,7 +2309,8 @@ class Ui_MainWindow(object):
         padding = len(text) % 8
         if padding != 0:
             text += '=' * padding
-        if self.CheckBase32Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text, self.BaseTableBox.text()) == False:
+        if self.CheckBase32Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
+                                                                                            self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
             return
@@ -2239,7 +2319,8 @@ class Ui_MainWindow(object):
 
     def Base16Dec(self):
         text = self.BaseCipherBox.toPlainText()
-        if self.CheckBase16Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text, self.BaseTableBox.text()) == False:
+        if self.CheckBase16Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
+                                                                                            self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
             return
@@ -2248,7 +2329,8 @@ class Ui_MainWindow(object):
 
     def Base85Dec(self):
         text = self.BaseCipherBox.toPlainText()
-        if self.CheckBase85Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text, self.BaseTableBox.text()) == False:
+        if self.CheckBase85Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
+                                                                                            self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
             return
