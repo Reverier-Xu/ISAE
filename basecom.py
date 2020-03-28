@@ -6,6 +6,7 @@ Base64StandardTable = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 Base32StandardTable = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
 Base16StandardTable = '0123456789ABCDEF'
 Base85StandardTable = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&<>()[]{}@%$#'
+Base85ReverseTable = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+-;<=>?@^_`{|}~'
 
 
 def base64_ste(lines):
@@ -116,13 +117,36 @@ def ChangeTableBase85Decode(cipher, new_table):
 
 def ChangeTableBase85Encode(text, new_table, flag=False):
     if flag == True:
-        cipher = a85encode(text).decode()
+        cipher = b85encode(text).decode()
     else:
-        cipher = a85encode(text.encode()).decode()
+        cipher = b85encode(text.encode()).decode()
     old_table = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&<>()[]{}@%$#"
     trans = str.maketrans(old_table, new_table)
     cipher = cipher.translate(trans)
     return cipher
+
+
+def ChangeTableBase85RFCEncode(text, new_table, flag=False):
+    if flag == True:
+        cipher = b85encode(text).decode()
+    else:
+        cipher = b85encode(text.encode()).decode()
+    old_table = Base85ReverseTable
+    trans = str.maketrans(old_table, new_table)
+    cipher = cipher.translate(trans)
+    return cipher
+
+
+def ChangeTableBase85RFCDecode(cipher, new_table):
+    old_table = Base85ReverseTable
+    trans = str.maketrans(new_table, old_table)
+    cipher = cipher.translate(trans)
+    text = ''
+    try:
+        text = b85decode(cipher.encode()).decode()
+    except:
+        text = b85decode(cipher.encode())
+    return text
 
 
 def Base64FileEncode(InputPath, OutputPath):
@@ -175,6 +199,20 @@ def Base85FileEncode(InputPath, OutputPath):
 
 
 def Base85FileDecode(InputPath, OutputPath):
+    f = open(InputPath, "r")
+    inp = f.read()
+    outp = open(OutputPath, "wb")
+    outp.write(a85decode(inp.encode()))
+
+
+def Base85RFCFileEncode(InputPath, OutputPath):
+    f = open(InputPath, "r")
+    inp = f.read()
+    outp = open(OutputPath, "wb")
+    outp.write(a85encode(inp.encode()))
+
+
+def Base85RFCFileDecode(InputPath, OutputPath):
     f = open(InputPath, "r")
     inp = f.read()
     outp = open(OutputPath, "wb")

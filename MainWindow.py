@@ -887,7 +887,7 @@ class Ui_MainWindow(object):
         self.CryptoStack.addWidget(self.BasePanel)
 
         # Base Ticker
-        self.BaseChooserBox = [0, 10, 140, 270, 400]
+        self.BaseChooserBox = [0, 10, 140, 270, 400, 530]
         self.BaseChooser = QtWidgets.QLabel(self.BasePanel)
         self.BaseChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -925,11 +925,20 @@ class Ui_MainWindow(object):
         self.Base85Button = QtWidgets.QPushButton(self.BasePanel)
         self.Base85Button.setObjectName('Base85Button')
         self.Base85Button.setGeometry(QtCore.QRect(400, 10, 120, 45))
-        self.Base85Button.setText('Base85')
+        self.Base85Button.setText('Base85ASC')
         self.Base85Button.setFont(font)
         self.Base85Button.setStyleSheet(
             "QPushButton#Base85Button{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
         self.Base85Button.setFlat(True)
+
+        self.Base85RFCButton = QtWidgets.QPushButton(self.BasePanel)
+        self.Base85RFCButton.setObjectName('Base85RFCButton')
+        self.Base85RFCButton.setGeometry(QtCore.QRect(530, 10, 120, 45))
+        self.Base85RFCButton.setText('Base85RFC')
+        self.Base85RFCButton.setFont(font)
+        self.Base85RFCButton.setStyleSheet(
+            "QPushButton#Base85RFCButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.Base85RFCButton.setFlat(True)
 
         self.BaseEButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseEButton.setObjectName('BaseEButton')
@@ -1048,10 +1057,19 @@ class Ui_MainWindow(object):
         self.BaseTextBox.setStyleSheet(
             'background-color: rgb(20,20,20)')
         self.BaseTextBox.setTextColor(QtGui.QColor(200, 200, 200))
-        self.BaseTextBox.setGeometry(QtCore.QRect(20, 180, 680, 430))
+        self.BaseTextBox.setGeometry(QtCore.QRect(20, 180, 640, 430))
         self.BaseTextBox.setPlaceholderText('Base Encode\n这里写明文')
         self.BaseTextBox.setAcceptDrops(True)
         self.BaseTextBox.setAcceptRichText(False)
+
+        self.BaseTranslateButton = QtWidgets.QPushButton(self.BasePanel)
+        self.BaseTranslateButton.setObjectName('BaseTranslateButton')
+        self.BaseTranslateButton.setGeometry(QtCore.QRect(665, 330, 90, 60))
+        self.BaseTranslateButton.setText('交换')
+        self.BaseTranslateButton.setFont(font)
+        self.BaseTranslateButton.setStyleSheet(
+            "QPushButton#BaseTranslateButton{background-color:rgb(40, 40, 40);color:rgb(200,200,200);border-width:1px;border-color:rgb(50,50,50);}")
+        self.BaseTranslateButton.setFlat(True)
 
         self.BaseCipherBox = QtWidgets.QTextEdit(self.BasePanel)
         self.BaseCipherBox.setObjectName('BaseTextBox')
@@ -1059,7 +1077,7 @@ class Ui_MainWindow(object):
         self.BaseCipherBox.setStyleSheet(
             'background-color: rgb(20,20,20)')
         self.BaseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
-        self.BaseCipherBox.setGeometry(QtCore.QRect(720, 180, 680, 430))
+        self.BaseCipherBox.setGeometry(QtCore.QRect(760, 180, 640, 430))
         self.BaseCipherBox.setPlaceholderText('Base Decode\n这里写编码')
         self.BaseCipherBox.setAcceptDrops(True)
         self.BaseCipherBox.setAcceptRichText(False)
@@ -1533,6 +1551,7 @@ class Ui_MainWindow(object):
         self.Base32Button.clicked.connect(self.ChangeBase32)
         self.Base64Button.clicked.connect(self.ChangeBase64)
         self.Base85Button.clicked.connect(self.ChangeBase85)
+        self.Base85RFCButton.clicked.connect(self.ChangeBase85RFC)
         self.BaseEncButton.clicked.connect(self.BaseEnc)
         self.BaseDecButton.clicked.connect(self.BaseDec)
         self.QuoteEncodeButton.clicked.connect(self.QuoteEnc)
@@ -1559,6 +1578,7 @@ class Ui_MainWindow(object):
         self.QuoteCipherOutputButton.clicked.connect(
             self.QuoteCipherOutputFunction)
         self.BaseEButton.clicked.connect(self.BaseEDecodeFunction)
+        self.BaseTranslateButton.clicked.connect(self.BaseTranslateFunction)
         self.UrlEncodeButton.clicked.connect(self.UrlEncode)
         self.UrlDecodeButton.clicked.connect(self.UrlDecode)
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
@@ -1842,6 +1862,11 @@ class Ui_MainWindow(object):
         self.BaseTextBox.setText(aim)
         self.FileTempStack.addItem(aim)
 
+    def BaseTranslateFunction(self):
+        text = self.BaseCipherBox.toPlainText()
+        self.BaseCipherBox.setText(self.BaseTextBox.toPlainText())
+        self.BaseTextBox.setText(text)
+
     def FileStackCopy(self):
         print(self.FileTempStack.selectedItems()[0].text())
         clipboard = QtGui.QGuiApplication.clipboard()
@@ -1999,6 +2024,19 @@ class Ui_MainWindow(object):
         animation.setDuration(200)
         animation.start()
 
+    def ChangeBase85RFC(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.BaseChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.BaseChooserBox[self.BaseMode], 55))
+        self.BaseMode = 5
+        self.BaseTableBox.setText(Base85ReverseTable)
+        animation.setEndValue(QtCore.QPoint(
+            self.BaseChooserBox[self.BaseMode], 55))
+        animation.setDuration(200)
+        animation.start()
+
     def BaseEnc(self):
         if self.BaseMode == 1:
             self.Base64Enc()
@@ -2008,6 +2046,8 @@ class Ui_MainWindow(object):
             self.Base16Enc()
         elif self.BaseMode == 4:
             self.Base85Enc()
+        elif self.BaseMode == 5:
+            self.Base85RFCEnc()
         else:
             pass
         self.FileTempStack.addItem(self.BaseCipherBox.toPlainText())
@@ -2021,6 +2061,8 @@ class Ui_MainWindow(object):
             self.Base16Dec()
         elif self.BaseMode == 4:
             self.Base85Dec()
+        elif self.BaseMode == 5:
+            self.Base85RFCDec()
         else:
             pass
         self.FileTempStack.addItem(self.BaseTextBox.toPlainText())
@@ -2047,6 +2089,11 @@ class Ui_MainWindow(object):
         elif (self.BaseMode == 4):
             try:
                 ChangeTableBase85Decode(x, newtable)
+            except:
+                return False
+        elif (self.BaseMode == 5):
+            try:
+                ChangeTableBase85RFCDecode(x, newtable)
             except:
                 return False
             return True
@@ -2092,6 +2139,14 @@ class Ui_MainWindow(object):
             return
         self.BaseTextBox.setText(str(ChangeTableBase85Decode(
             text, self.BaseTableBox.text())))
+
+    def Base85RFCDec(self):
+        text = self.BaseCipherBox.toPlainText()
+        try:
+            self.BaseTextBox.setText(str(ChangeTableBase85RFCDecode(
+                text, self.BaseTableBox.text())))
+        except:
+            self.BaseTextBox.setText('解码失败.')
 
     def CheckBase64Table(self, x):
         checkx = set(list(x))
@@ -2165,6 +2220,12 @@ class Ui_MainWindow(object):
             return False
         return True
 
+    def CheckBase85RFCTable(self, x):
+        checkx = set(list(x))
+        if len(checkx) != 85:
+            return False
+        return True
+
     def Base85Enc(self):
         text = self.BaseTextBox.toPlainText()
         if self.BaseTextEvalCheckBox.isChecked() == True:
@@ -2179,6 +2240,22 @@ class Ui_MainWindow(object):
                 '编码表无效!!\nTable Error!!!!!!!')
             return
         self.BaseCipherBox.setText(ChangeTableBase85Encode(
+            text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
+
+    def Base85RFCEnc(self):
+        text = self.BaseTextBox.toPlainText()
+        if self.BaseTextEvalCheckBox.isChecked() == True:
+            try:
+                text = eval(text)
+            except:
+                self.BaseCipherBox.setText(
+                    '输入不是有效的Python语句! eval()执行错误!\nInvalid Python expression! eval() Failed!')
+                return
+        if self.CheckBase85RFCTable(self.BaseTableBox.text()) == False:
+            self.BaseTextBox.setText(
+                '编码表无效!!\nTable Error!!!!!!!')
+            return
+        self.BaseCipherBox.setText(ChangeTableBase85RFCEncode(
             text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
 
     def ChangeTypeStackCrypto(self):
