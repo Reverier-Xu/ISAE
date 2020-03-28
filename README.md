@@ -75,5 +75,4 @@ Base64 Base32 Base16 Base85
 
 # 当前完成状态预览
 
-![Screenshot_20200326_182547.png](https://i.loli.net/2020/03/26/UHQ7Zzprq2swl8t.png)
-![G22O_0A8H3N~L6FKM@0P~_4.png](https://i.loli.net/2020/03/26/LjPTfAB3qwzxKSF.png)
+![图片.png](https://i.loli.net/2020/03/28/PiozhculbHMSUEB.png)

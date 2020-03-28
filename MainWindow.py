@@ -1064,7 +1064,7 @@ class Ui_MainWindow(object):
 
         self.BaseTranslateButton = QtWidgets.QPushButton(self.BasePanel)
         self.BaseTranslateButton.setObjectName('BaseTranslateButton')
-        self.BaseTranslateButton.setGeometry(QtCore.QRect(665, 330, 90, 60))
+        self.BaseTranslateButton.setGeometry(QtCore.QRect(665, 330, 90, 45))
         self.BaseTranslateButton.setText('交换')
         self.BaseTranslateButton.setFont(font)
         self.BaseTranslateButton.setStyleSheet(
