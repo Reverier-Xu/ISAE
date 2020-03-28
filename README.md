@@ -15,7 +15,7 @@ fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 
 clone本仓库到本地, 安装PyQt5
 
-```python
+```
 pip install PyQt5
 ```
 
@@ -44,11 +44,11 @@ pip install PyQt5
 ## 密码与编码
 
 ### Base系列
-Base64 Base32 Base16 Base85
+Base64 Base32 Base16 Base85-ASCII Base85-RFC1924
 
 支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. 支持Base64隐写提取.
 
-支持文件操作
+支持文件操作. 添加了明文和密文的快速交换键, 用于反base套娃 (误
 
 ### Quoted-Printable
 支持文件和字符串的编码和解码.
@@ -64,6 +64,12 @@ Base64 Base32 Base16 Base85
 
 ### Escape
 支持JavaScript的Escape编码
+
+### 敲击码
+Tap Code, 简单的编码解码支持.
+
+### 摩斯电码
+Morse Code, 提供基础的编码解码支持, 支持自定义分隔符.
 
 ## Pwn
 

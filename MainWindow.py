@@ -2173,7 +2173,7 @@ class Ui_MainWindow(object):
         spilt = self.MorseSpiltBox.text()
         if spilt == '':
             spilt = ' '
-        elif spilt.find('.') or spilt.find('-'):
+        elif spilt.find('.') != -1 or spilt.find('-') != -1:
             self.MorseTextBox.setText('分隔符含有摩斯电码字符!')
             return
         try:
