@@ -87,7 +87,7 @@ class BasePanel(ui_BasePanel):
             return
         with open(self.BaseCipherInputPath, 'r') as inp:
             try:
-                self.BaseCipherBox.setText(inp.read().decode())
+                self.BaseCipherBox.setText(inp.read())
             except:
                 self.BaseCipherBox.setText('文件读取错误.')
 
