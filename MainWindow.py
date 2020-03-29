@@ -74,44 +74,44 @@ class Ui_MainWindow(object):
 
         # Crypto Button
         self.CryptoButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.CryptoButton.setGeometry(QtCore.QRect(20, 350, 120, 45))
+        self.CryptoButton.setGeometry(QtCore.QRect(24, 350, 120, 45))
         self.CryptoButton.setObjectName("CryptoButton")
 
         # Misc Button
         self.MiscButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.MiscButton.setGeometry(QtCore.QRect(20, 550, 120, 45))
+        self.MiscButton.setGeometry(QtCore.QRect(24, 550, 120, 45))
         self.MiscButton.setObjectName("MiscButton")
 
         # Reverse Button
         self.ReverseButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.ReverseButton.setGeometry(QtCore.QRect(20, 150, 120, 45))
+        self.ReverseButton.setGeometry(QtCore.QRect(24, 150, 120, 45))
         self.ReverseButton.setObjectName("ReverseButton")
 
         # Web Button
         self.WebButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.WebButton.setGeometry(QtCore.QRect(20, 250, 120, 45))
+        self.WebButton.setGeometry(QtCore.QRect(24, 250, 120, 45))
         self.WebButton.setObjectName("WebButton")
 
         # Pwn Button
         self.PwnButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.PwnButton.setGeometry(QtCore.QRect(20, 450, 120, 45))
+        self.PwnButton.setGeometry(QtCore.QRect(24, 450, 120, 45))
         self.PwnButton.setObjectName("PwnButton")
 
         '''End define Type Change Button'''
 
         # File Temp Stack
         self.FileTempStackTip = uni_Widget.ICTFELabel(self.CentralWidget)
-        self.FileTempStackTip.setGeometry(QtCore.QRect(20, 630, 120, 30))
+        self.FileTempStackTip.setGeometry(QtCore.QRect(24, 630, 120, 30))
         self.FileTempStackTip.setObjectName('FileTempStackTip')
         self.FileTempStackTip.setText('暂存池')
         
         self.FileTempStackDelButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.FileTempStackDelButton.setGeometry(QtCore.QRect(110, 632, 30, 30))
+        self.FileTempStackDelButton.setGeometry(QtCore.QRect(114, 632, 30, 30))
         self.FileTempStackDelButton.setObjectName("FileTempStackDelButton")
         self.FileTempStackDelButton.setText('×')
         
         self.FileTempStack = uni_Widget.ICTFEList(self.CentralWidget)
-        self.FileTempStack.setGeometry(QtCore.QRect(20, 670, 120, 200))
+        self.FileTempStack.setGeometry(QtCore.QRect(24, 670, 120, 200))
         self.FileTempStack.setObjectName('FileTempStack')
 
         '''Begin define Type panel change method'''
@@ -125,7 +125,7 @@ class Ui_MainWindow(object):
         self.TypeChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
         self.TypeChooser.setGeometry(QtCore.QRect(
-            20, self.TypeChooserBox[self.TypeMode], 120, 8))
+            24, self.TypeChooserBox[self.TypeMode], 120, 8))
 
         # Reverse Panel
         self.ReversePanel = QtWidgets.QWidget()
@@ -194,12 +194,12 @@ class Ui_MainWindow(object):
         animation.setTargetObject(self.TypeChooser)
         animation.setPropertyName(b'pos')
         animation.setStartValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         self.TypeMode = 3
         self.TypeStack.setCurrentWidget(self.CryptoPanel)
         self.CryptoPanel.ChangeCryptoBase()
         animation.setEndValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         animation.setDuration(200)
         animation.start()
 
@@ -207,11 +207,11 @@ class Ui_MainWindow(object):
         '''改变类型控件组 逆向'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
         animation.setStartValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         self.TypeMode = 1
         self.TypeStack.setCurrentWidget(self.ReversePanel)
         animation.setEndValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         animation.setDuration(200)
         animation.start()
 
@@ -219,11 +219,11 @@ class Ui_MainWindow(object):
         '''改变类型控件组 web'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
         animation.setStartValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         self.TypeMode = 2
         self.TypeStack.setCurrentWidget(self.WebPanel)
         animation.setEndValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         animation.setDuration(200)
         animation.start()
 
@@ -231,11 +231,11 @@ class Ui_MainWindow(object):
         '''改变类型控件组 杂项'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
         animation.setStartValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         self.TypeMode = 5
         self.TypeStack.setCurrentWidget(self.MiscPanel)
         animation.setEndValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         animation.setDuration(200)
         animation.start()
 
@@ -243,11 +243,11 @@ class Ui_MainWindow(object):
         '''改变类型控件组 pwn'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
         animation.setStartValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         self.TypeMode = 4
         self.TypeStack.setCurrentWidget(self.PwnPanel)
         animation.setEndValue(QtCore.QPoint(
-            20, self.TypeChooserBox[self.TypeMode]))
+            24, self.TypeChooserBox[self.TypeMode]))
         animation.setDuration(200)
         animation.start()
 

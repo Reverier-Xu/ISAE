@@ -12,12 +12,20 @@ class ICTFEButton(QtWidgets.QPushButton):
         self.setFont(font)
         self.setStyleSheet(
             "QPushButton{"
-            "background-color:rgb(40, 40, 40);"
-            "color:rgb(200,200,200);"
-            "border-width:1px;"
-            "border-color:rgb(50,50,50);"
+            "background-color:rgba(40, 40, 40, 100%);"
+            "color: white;"
+            "border-radius: 0px;"
+            "border: 0px groove gray;"
+            "border-style: outset;"
+            "}"
+            "QPushButton:hover{"
+            "background-color: rgba(60, 60, 60, 100%);"
+            "color: white;"
+            "}"
+            "QPushButton:pressed{"
+            "background-color: rgb(100, 100, 100);"
+            "border-style: inset; "
             "}")
-        self.setFlat(True)
 
 
 class ICTFETextBox(QtWidgets.QTextEdit):

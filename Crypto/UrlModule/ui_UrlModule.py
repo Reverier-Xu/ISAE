@@ -21,7 +21,7 @@ class ui_UrlPanel(QtWidgets.QWidget):
         self.UrlDecodeButton.setText('解码')
 
         # url table edit box and label
-        self.UrlTableTips = uni_Widget.ICTFEButton(self)
+        self.UrlTableTips = uni_Widget.ICTFELabel(self)
         self.UrlTableTips.setObjectName('UrlTableTips')
         self.UrlTableTips.setText('编码表:')
         self.UrlTableTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
