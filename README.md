@@ -9,6 +9,8 @@ Intergrated CTF Environment
 
 fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 
+如果你没有学习过PyQt5, 可以简单的查看QuickDevelopingDocs中的文档, 然后尝试进行开发.
+
 如果你用有丰富的UI开发经验, 可以帮开发者优化一下界面和逻辑代码并做好模块化, 感激不尽~
 
 ## 如何使用
