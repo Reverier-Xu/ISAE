@@ -1,6 +1,6 @@
 from Crypto.HTMLModule.ui_HTMLModule import ui_HTMLPanel
 import html
-
+from PyQt5 import QtGui
 
 class HTMLPanel(ui_HTMLPanel):
     def __init__(self):
@@ -8,7 +8,14 @@ class HTMLPanel(ui_HTMLPanel):
 
         self.HTMLEncodeButton.clicked.connect(self.HTMLEncode)
         self.HTMLDecodeButton.clicked.connect(self.HTMLDecode)
+        self.HTMLCipherBox.textChanged.connect(self.setFontColorCipher)
+        self.HTMLTextBox.textChanged.connect(self.setFontColorText)
 
+    def setFontColorCipher(self):
+        self.HTMLCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def setFontColorText(self):
+        self.HTMLTextBox.setTextColor(QtGui.QColor(200, 200, 200))
     def HTMLEncode(self):
         text = self.HTMLTextBox.toPlainText()
         try:

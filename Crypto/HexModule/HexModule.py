@@ -1,5 +1,6 @@
 from Crypto.HexModule.ui_HexModule import ui_HexPanel
 from Crypto.HexModule.HexModuleUtils import *
+from PyQt5 import QtGui
 
 
 class HexPanel(ui_HexPanel):
@@ -7,6 +8,14 @@ class HexPanel(ui_HexPanel):
         super(HexPanel, self).__init__()
         self.HexEncodeButton.clicked.connect(self.HexEncode)
         self.HexDecodeButton.clicked.connect(self.HexDecode)
+        self.HexCipherBox.textChanged.connect(self.setFontColorCipher)
+        self.HexTextBox.textChanged.connect(self.setFontColorText)
+
+    def setFontColorCipher(self):
+        self.HexCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def setFontColorText(self):
+        self.HexTextBox.setTextColor(QtGui.QColor(200, 200, 200))
 
     def HexEncode(self):
         text = self.HexTextBox.toPlainText()

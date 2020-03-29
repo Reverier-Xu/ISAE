@@ -2,8 +2,7 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtCore import Qt
-from PyQt5 import QtGui
+from PyQt5 import QtGui, QtCore
 import MainWindow
 
 
@@ -14,7 +13,7 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 
 
 if __name__ == "__main__":
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    #QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
     Win = MainWindow()
     Win.setWindowTitle('ICTFE')

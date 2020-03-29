@@ -13,10 +13,9 @@ from ui_Widgets import uni_Widget
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-
+        QtGui.QFontDatabase.addApplicationFont('./Resources/wqy-microhei.ttc')
         # some variables
         self.TypeMode = 0
-
         # define MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1600, 900)

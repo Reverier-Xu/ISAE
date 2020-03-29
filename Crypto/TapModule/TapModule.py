@@ -1,5 +1,5 @@
 from Crypto.TapModule.ui_TapModule import ui_TapPanel
-
+from PyQt5 import QtGui
 
 class TapPanel(ui_TapPanel):
     def __init__(self):
@@ -7,6 +7,14 @@ class TapPanel(ui_TapPanel):
 
         self.TapEncodeButton.clicked.connect(self.TapEncode)
         self.TapDecodeButton.clicked.connect(self.TapDecode)
+        self.TapCipherBox.textChanged.connect(self.setFontColorCipher)
+        self.TapTextBox.textChanged.connect(self.setFontColorText)
+
+    def setFontColorCipher(self):
+        self.TapCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def setFontColorText(self):
+        self.TapTextBox.setTextColor(QtGui.QColor(200, 200, 200))
 
     def TapEncode(self):
         table = {'A': 11, 'B': 12, 'C': 13, 'D': 14, 'E': 15,

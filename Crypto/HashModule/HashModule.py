@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtWidgets, QtGui
 from Crypto.HashModule.ui_HashModule import ui_HashPanel
 
 

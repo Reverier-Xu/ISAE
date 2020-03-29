@@ -1,5 +1,5 @@
 from Crypto.QuoteModule import ui_QuoteModule
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 import quopri
 
 
@@ -15,6 +15,14 @@ class QuotePanel(ui_QuoteModule.ui_QuotePanel):
             self.QuoteTextOutputFunction)
         self.QuoteCipherOutputButton.clicked.connect(
             self.QuoteCipherOutputFunction)
+        self.QuoteCipherBox.textChanged.connect(self.setFontColorCipher)
+        self.QuoteTextBox.textChanged.connect(self.setFontColorText)
+
+    def setFontColorCipher(self):
+        self.QuoteCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def setFontColorText(self):
+        self.QuoteTextBox.setTextColor(QtGui.QColor(200, 200, 200))
 
     def QuoteEnc(self):
         if self.QuoteTextEvalCheckBox.isChecked():

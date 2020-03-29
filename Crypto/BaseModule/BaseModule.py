@@ -1,6 +1,6 @@
 from Crypto.BaseModule.ui_BaseModule import ui_BasePanel
 from Crypto.BaseModule.BaseModuleUtils import *
-from PyQt5 import QtCore, QtWidgets, Qt
+from PyQt5 import QtCore, QtWidgets, Qt, QtGui
 
 
 class BasePanel(ui_BasePanel):
@@ -21,6 +21,14 @@ class BasePanel(ui_BasePanel):
             self.BaseCipherOutputFunction)
         self.BaseEButton.clicked.connect(self.BaseEDecodeFunction)
         self.BaseTranslateButton.clicked.connect(self.BaseTranslateFunction)
+        self.BaseCipherBox.textChanged.connect(self.setFontColorCipher)
+        self.BaseTextBox.textChanged.connect(self.setFontColorText)
+
+    def setFontColorCipher(self):
+        self.BaseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def setFontColorText(self):
+        self.BaseTextBox.setTextColor(QtGui.QColor(200, 200, 200))
 
     def BaseEDecodeFunction(self):
         text = self.BaseCipherBox.toPlainText()

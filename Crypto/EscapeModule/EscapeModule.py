@@ -1,5 +1,6 @@
 from Crypto.EscapeModule.ui_EscapeModule import ui_EscapePanel
 from urllib import parse
+from PyQt5 import QtGui
 
 
 class EscapePanel(ui_EscapePanel):
@@ -7,6 +8,14 @@ class EscapePanel(ui_EscapePanel):
         super(EscapePanel, self).__init__()
         self.EscapeEncodeButton.clicked.connect(self.EscapeEncode)
         self.EscapeDecodeButton.clicked.connect(self.EscapeDecode)
+        self.EscapeCipherBox.textChanged.connect(self.setFontColorCipher)
+        self.EscapeTextBox.textChanged.connect(self.setFontColorText)
+
+    def setFontColorCipher(self):
+        self.EscapeCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def setFontColorText(self):
+        self.EscapeTextBox.setTextColor(QtGui.QColor(200, 200, 200))
 
     def EscapeEncode(self):
         try:

@@ -6,7 +6,7 @@ class ICTFEButton(QtWidgets.QPushButton):
         super(ICTFEButton, self).__init__(parent)
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
-        font.setPointSize(18)
+        font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
@@ -29,11 +29,11 @@ class ICTFEButton(QtWidgets.QPushButton):
 
 
 class ICTFETextBox(QtWidgets.QTextEdit):
-    def __init__(self,parent=None):
+    def __init__(self, parent=None):
         super(ICTFETextBox, self).__init__(parent)
         font = QtGui.QFont()
         font.setFamily("consolas")
-        font.setPointSize(18)
+        font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
@@ -49,7 +49,7 @@ class ICTFELineBox(QtWidgets.QLineEdit):
         super(ICTFELineBox, self).__init__(parent)
         font = QtGui.QFont()
         font.setFamily("consolas")
-        font.setPointSize(18)
+        font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
@@ -67,7 +67,7 @@ class ICTFECheckBox(QtWidgets.QCheckBox):
         super(ICTFECheckBox, self).__init__(parent)
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
-        font.setPointSize(18)
+        font.setPixelSize(22)
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
@@ -81,7 +81,7 @@ class ICTFELabel(QtWidgets.QLabel):
         super(ICTFELabel, self).__init__(parent)
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
-        font.setPointSize(18)
+        font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
@@ -98,7 +98,7 @@ class ICTFEList(QtWidgets.QListWidget):
             '}')
         font = QtGui.QFont()
         font.setFamily("consolas")
-        font.setPointSize(18)
+        font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
