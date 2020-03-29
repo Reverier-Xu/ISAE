@@ -1,0 +1,139 @@
+from PyQt5 import QtCore, QtWidgets, Qt, QtGui
+from Crypto.ui_Crypto import ui_CryptoPanel
+
+
+class CryptoPanel(ui_CryptoPanel):
+    def __init__(self):
+        super(CryptoPanel, self).__init__()
+
+        self.BaseButton.clicked.connect(self.ChangeCryptoBase)
+        self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
+        self.UrlButton.clicked.connect(self.ChangeCryptoUrl)
+        self.HexButton.clicked.connect(self.ChangeCryptoHex)
+        self.HTMLButton.clicked.connect(self.ChangeCryptoHTML)
+        self.EscapeButton.clicked.connect(self.ChangeCryptoEscape)
+        self.TapButton.clicked.connect(self.ChangeCryptoTap)
+        self.MorseButton.clicked.connect(self.ChangeCryptoMorse)
+        self.HashButton.clicked.connect(self.ChangeCryptoHash)
+
+    def ChangeCryptoHash(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 8
+        self.CryptoStack.setCurrentWidget(self.HashPanel)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoMorse(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 7
+        self.CryptoStack.setCurrentWidget(self.MorsePanel)
+        self.MorsePanel.MorseSpiltBox.setText('/')
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoTap(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 6
+        self.CryptoStack.setCurrentWidget(self.TapPanel)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoEscape(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 5
+        self.CryptoStack.setCurrentWidget(self.EscapePanel)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoHTML(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 4
+        self.CryptoStack.setCurrentWidget(self.HTMLPanel)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoHex(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 3
+        self.CryptoStack.setCurrentWidget(self.HexPanel)
+        self.HexPanel.HexSplitBox.setText('')
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoUrl(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 2
+        self.CryptoStack.setCurrentWidget(self.UrlPanel)
+        self.UrlPanel.UrlTableBox.setText('utf-8')
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoQuote(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 1
+        self.CryptoStack.setCurrentWidget(self.QuotePanel)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoBase(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 0
+        self.CryptoStack.setCurrentWidget(self.BasePanel)
+        self.BasePanel.ChangeBase64()
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
