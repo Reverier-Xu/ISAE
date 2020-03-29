@@ -1,4 +1,4 @@
-from Crypto.QuoteModule import ui_QuoteModule
+from CryptoPanel.QuoteModule import ui_QuoteModule
 from PyQt5 import QtWidgets, QtGui
 import quopri
 

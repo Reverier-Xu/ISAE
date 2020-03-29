@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtWidgets, Qt, QtGui
-from Crypto.ui_Crypto import ui_CryptoPanel
+from CryptoPanel.ui_Crypto import ui_CryptoPanel
 
 
 class CryptoPanel(ui_CryptoPanel):

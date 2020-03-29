@@ -1,4 +1,4 @@
-from Crypto.HTMLModule.ui_HTMLModule import ui_HTMLPanel
+from CryptoPanel.HTMLModule.ui_HTMLModule import ui_HTMLPanel
 import html
 from PyQt5 import QtGui
 

@@ -1,4 +1,4 @@
-from Crypto.EscapeModule.ui_EscapeModule import ui_EscapePanel
+from CryptoPanel.EscapeModule.ui_EscapeModule import ui_EscapePanel
 from urllib import parse
 from PyQt5 import QtGui
 

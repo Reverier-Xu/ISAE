@@ -1,5 +1,5 @@
-from Crypto.HexModule.ui_HexModule import ui_HexPanel
-from Crypto.HexModule.HexModuleUtils import *
+from CryptoPanel.HexModule.ui_HexModule import ui_HexPanel
+from CryptoPanel.HexModule.HexModuleUtils import *
 from PyQt5 import QtGui
 
 

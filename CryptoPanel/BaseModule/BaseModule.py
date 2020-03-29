@@ -1,5 +1,5 @@
-from Crypto.BaseModule.ui_BaseModule import ui_BasePanel
-from Crypto.BaseModule.BaseModuleUtils import *
+from CryptoPanel.BaseModule.ui_BaseModule import ui_BasePanel
+from CryptoPanel.BaseModule.BaseModuleUtils import *
 from PyQt5 import QtCore, QtWidgets, Qt, QtGui
 
 

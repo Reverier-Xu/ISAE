@@ -1,14 +1,14 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
-from Crypto.BaseModule.BaseModule import BasePanel
-from Crypto.QuoteModule.QuoteModule import QuotePanel
-from Crypto.UrlModule.UrlModule import UrlPanel
-from Crypto.HexModule.HexModule import HexPanel
-from Crypto.HTMLModule.HTMLModule import HTMLPanel
-from Crypto.EscapeModule.EscapeModule import EscapePanel
-from Crypto.TapModule.TapModule import TapPanel
-from Crypto.MorseModule.MorseModule import MorsePanel
-from Crypto.HashModule.HashModule import HashPanel
+from CryptoPanel.BaseModule.BaseModule import BasePanel
+from CryptoPanel.QuoteModule.QuoteModule import QuotePanel
+from CryptoPanel.UrlModule.UrlModule import UrlPanel
+from CryptoPanel.HexModule.HexModule import HexPanel
+from CryptoPanel.HTMLModule.HTMLModule import HTMLPanel
+from CryptoPanel.EscapeModule.EscapeModule import EscapePanel
+from CryptoPanel.TapModule.TapModule import TapPanel
+from CryptoPanel.MorseModule.MorseModule import MorsePanel
+from CryptoPanel.HashModule.HashModule import HashPanel
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):

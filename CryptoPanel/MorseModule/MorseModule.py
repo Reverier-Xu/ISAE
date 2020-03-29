@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
-from Crypto.MorseModule.ui_MorseModule import ui_MorsePanel
-from Crypto.MorseModule.MorseModuleUtils import *
+from CryptoPanel.MorseModule.ui_MorseModule import ui_MorsePanel
+from CryptoPanel.MorseModule.MorseModuleUtils import *
 
 
 class MorsePanel(ui_MorsePanel):

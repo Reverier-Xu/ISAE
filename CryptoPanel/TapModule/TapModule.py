@@ -1,4 +1,4 @@
-from Crypto.TapModule.ui_TapModule import ui_TapPanel
+from CryptoPanel.TapModule.ui_TapModule import ui_TapPanel
 from PyQt5 import QtGui
 
 class TapPanel(ui_TapPanel):

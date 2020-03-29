@@ -7,7 +7,7 @@
 ################################################
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
-from Crypto import Crypto
+from CryptoPanel import Crypto
 from ui_Widgets import uni_Widget
 
 

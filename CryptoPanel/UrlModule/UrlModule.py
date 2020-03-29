@@ -1,4 +1,4 @@
-from Crypto.UrlModule import ui_UrlModule
+from CryptoPanel.UrlModule import ui_UrlModule
 from urllib import parse
 from PyQt5 import QtWidgets, QtGui
 
