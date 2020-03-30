@@ -158,6 +158,12 @@ class Ui_MainWindow(object):
             'QWidget#WelcomePanel{image:url(./Resources/welcome.png)}')
         self.TypeStack.addWidget(self.WelcomePanel)
 
+        self.Contributors = uni_Widget.ICTFELabel(self.WelcomePanel)
+        self.Contributors.setObjectName('Contributors')
+        with open('./Contributors', 'r') as inp:
+            self.Contributors.setText('Contributors: ' + inp.read())
+        self.Contributors.setGeometry(QtCore.QRect(10, 675, 1400, 45))
+
         # Set MainWindow Widget
         MainWindow.setCentralWidget(self.CentralWidget)
 

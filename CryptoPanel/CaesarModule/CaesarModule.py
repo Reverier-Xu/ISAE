@@ -1,7 +1,7 @@
-from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5 import QtGui
 from CryptoPanel.CaesarModule.ui_CaesarModule import ui_CaesarPanel
 from CryptoPanel.CaesarModule.CaesarModuleUtils import *
-import ErrorWin
+from ui_Widgets import ErrorWin
 
 
 class CaesarPanel(ui_CaesarPanel):
