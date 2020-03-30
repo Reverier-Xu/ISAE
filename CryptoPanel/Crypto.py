@@ -16,6 +16,21 @@ class CryptoPanel(ui_CryptoPanel):
         self.MorseButton.clicked.connect(self.ChangeCryptoMorse)
         self.HashButton.clicked.connect(self.ChangeCryptoHash)
         self.CaesarButton.clicked.connect(self.ChangeCryptoCaesar)
+        self.FenceButton.clickedd.conntct(self.ChangeCryptoFence)
+
+    def ChangeCryptoFence(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 30
+        self.CryptoStack.setCurrentWidget(self.FencePanel)
+        self.FencePanel.FenceDispBox.setText('0')
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
 
     def ChangeCryptoCaesar(self):
         animation = Qt.QPropertyAnimation(self)
