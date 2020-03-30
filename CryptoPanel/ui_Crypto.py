@@ -9,6 +9,7 @@ from CryptoPanel.EscapeModule.EscapeModule import EscapePanel
 from CryptoPanel.TapModule.TapModule import TapPanel
 from CryptoPanel.MorseModule.MorseModule import MorsePanel
 from CryptoPanel.HashModule.HashModule import HashPanel
+from CryptoPanel.CaesarModule.CaesarModule import CaesarPanel
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):
@@ -172,11 +173,11 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.BifidButton.setText("Bifid")
         self.BifidButton.setObjectName("BifidButton")
 
-        # Casar Button
-        self.CasarButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
-        self.CasarButton.setGeometry(QtCore.QRect(141, 120, 120, 45))
-        self.CasarButton.setText("Casar")
-        self.CasarButton.setObjectName("CasarButton")
+        # Caesar Button
+        self.caesarButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
+        self.caesarButton.setGeometry(QtCore.QRect(141, 120, 120, 45))
+        self.caesarButton.setText("caesar")
+        self.caesarButton.setObjectName("caesarButton")
 
         # CT Button
         self.CTButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
@@ -361,3 +362,8 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.HashPanel = HashPanel()
         self.HashPanel.setObjectName('HashPanel')
         self.CryptoStack.addWidget(self.HashPanel)
+
+        # Caesar panel
+        self.CaesarPanel = CaesarPanel()
+        self.CaesarPanel.setObjectName('CaesarPanel')
+        self.CryptoStack.addWidget(self.CaesarPanel)
