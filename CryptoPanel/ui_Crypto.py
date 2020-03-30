@@ -174,10 +174,10 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.BifidButton.setObjectName("BifidButton")
 
         # Caesar Button
-        self.caesarButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
-        self.caesarButton.setGeometry(QtCore.QRect(141, 120, 120, 45))
-        self.caesarButton.setText("caesar")
-        self.caesarButton.setObjectName("caesarButton")
+        self.CaesarButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
+        self.CaesarButton.setGeometry(QtCore.QRect(141, 120, 120, 45))
+        self.CaesarButton.setText("Caesar")
+        self.CaesarButton.setObjectName("CaesarButton")
 
         # CT Button
         self.CTButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)

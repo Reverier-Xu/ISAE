@@ -2,40 +2,40 @@ from PyQt5 import QtCore, QtWidgets
 from ui_Widgets import uni_Widget
 
 
-class ui_MorsePanel(QtWidgets.QWidget):
+class ui_CaesarPanel(QtWidgets.QWidget):
     def __init__(self):
-        super(ui_MorsePanel, self).__init__()
+        super(ui_CaesarPanel, self).__init__()
 
-        # Morse Encode button
-        self.MorseEncodeButton = uni_Widget.ICTFEButton(self)
-        self.MorseEncodeButton.setObjectName('MorseEncodeButton')
-        self.MorseEncodeButton.setGeometry(QtCore.QRect(580, 20, 120, 45))
-        self.MorseEncodeButton.setText('编码')
+        # Caesar Encrypt button
+        self.CaesarEncryptButton = uni_Widget.ICTFEButton(self)
+        self.CaesarEncryptButton.setObjectName('CaesarEncryptButton')
+        self.CaesarEncryptButton.setGeometry(QtCore.QRect(580, 20, 120, 45))
+        self.CaesarEncryptButton.setText('加密')
 
-        # Morse Spilt edit box and label
-        self.MorseSpiltTips = uni_Widget.ICTFELabel(self)
-        self.MorseSpiltTips.setObjectName('MorseSpiltTips')
-        self.MorseSpiltTips.setText('位移:')
-        self.MorseSpiltTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        # Caesar Disp edit box and label
+        self.CaesarDispTips = uni_Widget.ICTFELabel(self)
+        self.CaesarDispTips.setObjectName('CaesarDispTips')
+        self.CaesarDispTips.setText('位移:')
+        self.CaesarDispTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
 
-        self.MorseSpiltBox = uni_Widget.ICTFELineBox(self)
-        self.MorseSpiltBox.setObjectName('MorseSpiltBox')
-        self.MorseSpiltBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
+        self.CaesarDispBox = uni_Widget.ICTFELineBox(self)
+        self.CaesarDispBox.setObjectName('CaesarDispBox')
+        self.CaesarDispBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
 
-        # Morse Decode button
-        self.MorseDecodeButton = uni_Widget.ICTFEButton(self)
-        self.MorseDecodeButton.setObjectName('MorseDecodeButton')
-        self.MorseDecodeButton.setGeometry(
+        # Caesar Decrypt button
+        self.CaesarDecryptButton = uni_Widget.ICTFEButton(self)
+        self.CaesarDecryptButton.setObjectName('CaesarDecryptButton')
+        self.CaesarDecryptButton.setGeometry(
             QtCore.QRect(1280, 20, 120, 45))
-        self.MorseDecodeButton.setText('解码')
+        self.CaesarDecryptButton.setText('解密')
 
-        self.MorseTextBox = uni_Widget.ICTFETextBox(self)
-        self.MorseTextBox.setObjectName('MorseTextBox')
-        self.MorseTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
-        self.MorseTextBox.setPlaceholderText('Morse Encode\n这里写明文')
+        self.CaesarTextBox = uni_Widget.ICTFETextBox(self)
+        self.CaesarTextBox.setObjectName('CaesarTextBox')
+        self.CaesarTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
+        self.CaesarTextBox.setPlaceholderText('Caesar Encrypt\n这里写明文')
 
-        self.MorseCipherBox = uni_Widget.ICTFETextBox(self)
-        self.MorseCipherBox.setObjectName('MorseCipherBox')
-        self.MorseCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
-        self.MorseCipherBox.setPlaceholderText('Morse Decode\n这里写编码')
-        # end Morse panel
+        self.CaesarCipherBox = uni_Widget.ICTFETextBox(self)
+        self.CaesarCipherBox.setObjectName('CaesarCipherBox')
+        self.CaesarCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
+        self.CaesarCipherBox.setPlaceholderText('Caesar Decrypt\n这里写编码')
+        # end Caesar panel
