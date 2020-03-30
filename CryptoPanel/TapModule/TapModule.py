@@ -1,5 +1,6 @@
 from CryptoPanel.TapModule.ui_TapModule import ui_TapPanel
 from PyQt5 import QtGui
+from ui_Widgets.ErrorWin import errorInfo
 
 class TapPanel(ui_TapPanel):
     def __init__(self):
@@ -35,7 +36,7 @@ class TapPanel(ui_TapPanel):
                 output += str(table[i]) + ' '
             self.TapCipherBox.setText(output)
         except:
-            self.TapCipherBox.setText('编码出现错误!')
+            errorInfo(self, '编码出现错误!')
 
     def TapDecode(self):
         retable = [['A', 'B', '(C/K)', 'D', 'E'],
@@ -62,4 +63,4 @@ class TapPanel(ui_TapPanel):
                 output += retable[int(temp1)][int(temp2)]
             self.TapTextBox.setText(output)
         except:
-            self.TapTextBox.setText('解码出现错误!')
+            errorInfo(self, '解码出现错误!')
