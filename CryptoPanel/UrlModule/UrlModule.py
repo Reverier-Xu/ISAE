@@ -17,6 +17,7 @@ class UrlPanel(ui_UrlModule.ui_UrlPanel):
 
     def setFontColorText(self):
         self.UrlTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+
     def UrlEncode(self):
         text = self.UrlTextBox.toPlainText()
         try:
