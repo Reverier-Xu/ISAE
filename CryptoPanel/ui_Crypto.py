@@ -21,6 +21,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.CryptoMode = 0
         self.CryptoChoosePanel = QtWidgets.QWidget()
         self.CryptoChoosePanel.setObjectName('CryptoChoosePanel')
+        self.CryptoChoosePanel.setStyleSheet('#CryptoChoosePanel{background-color: transparent}')
         self.CryptoChoosePanel.setGeometry(0, 0, 1420, 300)
 
         self.CryptoChoosePanelScroll = uni_Widget.ICTFEScrollArea(self)
