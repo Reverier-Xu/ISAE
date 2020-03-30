@@ -25,7 +25,7 @@ class FencePanel(ui_FencePanel):
                 self.FenceTextBox.toPlainText(), disp))
         except:
             self.FenceDispBox.setText('0')
-            ErrorWin.errorInfo(self, '输入的位移并非纯整数！')
+            ErrorWin.errorInfo(self, '输入的分组数字并非纯整数！')
             
 
     def FenceDecrypt(self):
@@ -35,4 +35,4 @@ class FencePanel(ui_FencePanel):
                 self.FenceCipherBox.toPlainText(), disp))
         except:
             self.FenceDispBox.setText('0')
-            ErrorWin.errorInfo(self, '输入的位移并非纯整数！')        
+            ErrorWin.errorInfo(self, '输入的分组数字并非纯整数！')        
