@@ -10,6 +10,7 @@ from CryptoPanel.TapModule.TapModule import TapPanel
 from CryptoPanel.MorseModule.MorseModule import MorsePanel
 from CryptoPanel.HashModule.HashModule import HashPanel
 from CryptoPanel.CaesarModule.CaesarModule import CaesarPanel
+from CryptoPanel.RailFenceModule.RailFenceModule import RailFencePanel
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):
@@ -357,3 +358,8 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.CaesarPanel = CaesarPanel()
         self.CaesarPanel.setObjectName('CaesarPanel')
         self.CryptoStack.addWidget(self.CaesarPanel)
+
+        # RailFence panel
+        self.RailFencePanel = RailFencePanel()
+        self.RailFencePanel.setObjectName('RailFencePanel')
+        self.CryptoStack.addWidget(self.RailFencePanel)
