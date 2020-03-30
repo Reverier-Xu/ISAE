@@ -1,0 +1,38 @@
+from PyQt5 import QtGui
+from CryptoPanel.RailFenceModule.ui_RailFenceModule import ui_RailFencePanel
+from CryptoPanel.RailFenceModule.RailFenceModuleUtils import *
+from ui_Widgets import ErrorWin
+
+
+class RailFencePanel(ui_RailFencePanel):
+    def __init__(self):
+        super(RailFencePanel, self).__init__()
+        self.RailFenceEncryptButton.clicked.connect(self.RailFenceEncrypt)
+        self.RailFenceDecryptButton.clicked.connect(self.RailFenceDecrypt)
+        self.RailFenceCipherBox.textChanged.connect(self.setFontColorCipher)
+        self.RailFenceTextBox.textChanged.connect(self.setFontColorText)
+
+    def setFontColorCipher(self):
+        self.RailFenceCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def setFontColorText(self):
+        self.RailFenceTextBox.setTextColor(QtGui.QColor(200, 200, 200))
+
+    def RailFenceEncrypt(self):
+        try:
+            disp = int(self.RailFenceDispBox.text())
+            self.RailFenceCipherBox.setText(RailFenceEncrypt(
+                self.RailFenceTextBox.toPlainText(), disp))
+        except:
+            self.RailFenceDispBox.setText('0')
+            ErrorWin.errorInfo(self, '输入的分组数字并非纯整数！')
+            
+
+    def RailFenceDecrypt(self):
+        try:
+            disp = int(self.RailFenceDispBox.text())
+            self.RailFenceTextBox.setText(RailFenceDecrypt(
+                self.RailFenceCipherBox.toPlainText(), disp))
+        except:
+            self.RailFenceDispBox.setText('0')
+            ErrorWin.errorInfo(self, '输入的分组数字并非纯整数！')        
