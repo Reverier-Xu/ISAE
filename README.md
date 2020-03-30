@@ -73,6 +73,12 @@ Tap Code, 简单的编码解码支持.
 ### 摩斯电码
 Morse Code, 提供基础的编码解码支持, 支持自定义分隔符.
 
+### 凯撒密码
+Caesar Cipher, 提供无限位移功能
+
+### 栅栏密码
+Rail-Fence Cipher, 提供不限大小的分组功能
+
 ## Pwn
 
 无
