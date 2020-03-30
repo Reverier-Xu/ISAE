@@ -30,6 +30,11 @@ class ui_UrlPanel(QtWidgets.QWidget):
         self.UrlTableBox.setObjectName('UrlTableBox')
         self.UrlTableBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
 
+        self.AllCheckBox = uni_Widget.ICTFECheckBox(self)
+        self.AllCheckBox.setObjectName('AllCheckBox')
+        self.AllCheckBox.setText('All')
+        self.AllCheckBox.setGeometry(QtCore.QRect(270, 20, 100, 45))
+
         self.UrlTextBox = uni_Widget.ICTFETextBox(self)
         self.UrlTextBox.setObjectName('UrlTextBox')
         self.UrlTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))

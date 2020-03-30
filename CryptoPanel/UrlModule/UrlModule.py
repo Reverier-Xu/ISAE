@@ -20,6 +20,15 @@ class UrlPanel(ui_UrlModule.ui_UrlPanel):
 
     def UrlEncode(self):
         text = self.UrlTextBox.toPlainText()
+        if self.AllCheckBox.isChecked():
+            cipher = ''
+            for i in text:
+                if 127 >= ord(i) >= 0:
+                    cipher += '%{:02X}'.format(ord(i))
+                else:
+                    cipher += parse.quote(i, encoding=self.UrlTableBox.text())
+            self.UrlCipherBox.setText(cipher)
+            return
         try:
             self.UrlCipherBox.setText(
                 parse.quote(text, encoding=self.UrlTableBox.text()))
