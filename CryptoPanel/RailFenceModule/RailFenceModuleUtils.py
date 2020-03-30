@@ -1,26 +1,20 @@
-RailFenceListUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-RailFenceListLower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-
-
-def RailFenceEncrypt(text, disp):
+def RailFenceEncrypt(text, div):
+    if div >= len(text):
+        return text
     output = ''
-    for i in range(0,len(text),1):
-        if text[i] in RailFenceListUpper:
-            output += RailFenceListUpper[(RailFenceListUpper.index(text[i]) + disp) % 26]
-        elif text[i] in RailFenceListLower:
-            output += RailFenceListLower[(RailFenceListLower.index(text[i]) + disp) % 26]
-        else:
-            output += text[i]
+    redivide = list()
+    for i in range(0,div,1):
+        redivide.append(list())
+    for i in range(0,len(text),div):
+        for j in range(0,div,1):
+            redivide[j].append(text[i+j])
+    for i in range(0,div,1):
+        output += ''.join(redivide[i])
     return output
 
 
-def RailFenceDecrypt(text, disp):
+def RailFenceDecrypt(text, div):
     output = ''
     for i in range(0,len(text),1):
-        if text[i] in RailFenceListUpper:
-            output += RailFenceListUpper[(RailFenceListUpper.index(text[i]) - disp) % 26]
-        elif text[i] in RailFenceListLower:
-            output += RailFenceListLower[(RailFenceListLower.index(text[i]) - disp) % 26]
-        else:
-            output += text[i]
+        
     return output

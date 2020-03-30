@@ -12,15 +12,15 @@ class ui_RailFencePanel(QtWidgets.QWidget):
         self.RailFenceEncryptButton.setGeometry(QtCore.QRect(580, 20, 120, 45))
         self.RailFenceEncryptButton.setText('加密')
 
-        # RailFence Disp edit box and label
-        self.RailFenceDispTips = uni_Widget.ICTFELabel(self)
-        self.RailFenceDispTips.setObjectName('RailFenceDispTips')
-        self.RailFenceDispTips.setText('每组字数:')
-        self.RailFenceDispTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        # RailFence Div edit box and label
+        self.RailFenceDivTips = uni_Widget.ICTFELabel(self)
+        self.RailFenceDivTips.setObjectName('RailFenceDivTips')
+        self.RailFenceDivTips.setText('每组字数:')
+        self.RailFenceDivTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
 
-        self.RailFenceDispBox = uni_Widget.ICTFELineBox(self)
-        self.RailFenceDispBox.setObjectName('RailFenceDispBox')
-        self.RailFenceDispBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
+        self.RailFenceDivBox = uni_Widget.ICTFELineBox(self)
+        self.RailFenceDivBox.setObjectName('RailFenceDivBox')
+        self.RailFenceDivBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
 
         # RailFence Decrypt button
         self.RailFenceDecryptButton = uni_Widget.ICTFEButton(self)

@@ -20,19 +20,19 @@ class RailFencePanel(ui_RailFencePanel):
 
     def RailFenceEncrypt(self):
         try:
-            disp = int(self.RailFenceDispBox.text())
+            div = int(self.RailFenceDivBox.text())
             self.RailFenceCipherBox.setText(RailFenceEncrypt(
-                self.RailFenceTextBox.toPlainText(), disp))
+                self.RailFenceTextBox.toPlainText(), div))
         except:
-            self.RailFenceDispBox.setText('0')
+            self.RailFenceDivBox.setText('0')
             ErrorWin.errorInfo(self, '输入的分组数字并非纯整数！')
             
 
     def RailFenceDecrypt(self):
         try:
-            disp = int(self.RailFenceDispBox.text())
+            div = int(self.RailFenceDivBox.text())
             self.RailFenceTextBox.setText(RailFenceDecrypt(
-                self.RailFenceCipherBox.toPlainText(), disp))
+                self.RailFenceCipherBox.toPlainText(), div))
         except:
-            self.RailFenceDispBox.setText('0')
+            self.RailFenceDivBox.setText('0')
             ErrorWin.errorInfo(self, '输入的分组数字并非纯整数！')        
