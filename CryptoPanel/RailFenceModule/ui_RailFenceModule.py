@@ -16,7 +16,7 @@ class ui_RailFencePanel(QtWidgets.QWidget):
         self.RailFenceDivTips = uni_Widget.ICTFELabel(self)
         self.RailFenceDivTips.setObjectName('RailFenceDivTips')
         self.RailFenceDivTips.setText('每组字数:')
-        self.RailFenceDivTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        self.RailFenceDivTips.setGeometry(QtCore.QRect(30, 20, 130, 45))
 
         self.RailFenceDivBox = uni_Widget.ICTFELineBox(self)
         self.RailFenceDivBox.setObjectName('RailFenceDivBox')

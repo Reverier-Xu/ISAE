@@ -11,6 +11,7 @@ from CryptoPanel.MorseModule.MorseModule import MorsePanel
 from CryptoPanel.HashModule.HashModule import HashPanel
 from CryptoPanel.CaesarModule.CaesarModule import CaesarPanel
 from CryptoPanel.RailFenceModule.RailFenceModule import RailFencePanel
+from CryptoPanel.PawnshopModule.PawnshopModule import PawnshopPanel
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):
@@ -294,6 +295,12 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.OokButton.setText("Ook!")
         self.OokButton.setObjectName("OokButton")
 
+        # Pawnshop Button
+        self.PawnshopButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
+        self.PawnshopButton.setGeometry(QtCore.QRect(531, 230, 120, 45))
+        self.PawnshopButton.setText("当铺密码")
+        self.PawnshopButton.setObjectName("PawnshopButton")
+
         # end Crypto Buttons
 
         # Choose ticker
@@ -364,3 +371,8 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.RailFencePanel = RailFencePanel()
         self.RailFencePanel.setObjectName('RailFencePanel')
         self.CryptoStack.addWidget(self.RailFencePanel)
+
+        # Pawnshop panel
+        self.PawnshopPanel = PawnshopPanel()
+        self.PawnshopPanel.setObjectName('PawnshopPanel')
+        self.CryptoStack.addWidget(self.PawnshopPanel)
