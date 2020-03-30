@@ -68,6 +68,7 @@ class CryptoPanel(ui_CryptoPanel):
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         self.CryptoMode = 8
         self.CryptoStack.setCurrentWidget(self.HashPanel)
+        self.HashPanel.HashEncodingBox.setText('UTF-8')
         animation.setEndValue(QtCore.QPoint(
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         animation.setDuration(200)

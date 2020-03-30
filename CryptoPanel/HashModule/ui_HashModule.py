@@ -15,6 +15,23 @@ class ui_HashPanel(QtWidgets.QWidget):
         self.HashTextInputButton.setText('打开...')
         self.HashTextInputButton.setToolTip('点击选择文件')
 
+        self.HashEncodingTips = uni_Widget.ICTFELabel(self)
+        self.HashEncodingTips.setObjectName('HashEncodingTips')
+        self.HashEncodingTips.setGeometry(230, 20, 80, 45)
+        self.HashEncodingTips.setText('编码表:')
+
+        self.HashEncodingBox = uni_Widget.ICTFELineBox(self)
+        self.HashEncodingBox.setObjectName('HashEncodingBox')
+        self.HashEncodingBox.setGeometry(QtCore.QRect(310, 20, 100, 45))
+
+        self.HashSaltTips = uni_Widget.ICTFELabel(self)
+        self.HashSaltTips.setObjectName('HashSaltTips')
+        self.HashSaltTips.setGeometry(430, 20, 60, 45)
+        self.HashSaltTips.setText('加盐:')
+
+        self.HashSaltBox = uni_Widget.ICTFELineBox(self)
+        self.HashSaltBox.setObjectName('HashSaltBox')
+        self.HashSaltBox.setGeometry(QtCore.QRect(490, 20, 50, 45))
         # Hash Encode button
         self.HashEncodeButton = uni_Widget.ICTFEButton(self)
         self.HashEncodeButton.setObjectName('HashEncodeButton')
