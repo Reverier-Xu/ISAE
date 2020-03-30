@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtWidgets, QtGui, Qt
+from PyQt5 import QtCore, QtWidgets
 from ui_Widgets import uni_Widget
 def errorInfo(self, info, types='错误提示'):
     errorWin = QtWidgets.QDialog(self)

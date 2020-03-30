@@ -13,6 +13,7 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon('./Resources/icon.png'))
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:

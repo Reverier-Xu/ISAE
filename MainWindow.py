@@ -24,7 +24,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         MainWindow.setStyleSheet(
             "QWidget#centralwidget{image:url(./Resources/background.png)}")
-        self.setWindowIcon(QtGui.QIcon('./Resources/icon.png'))
 
         # central widget
         self.CentralWidget = QtWidgets.QWidget(MainWindow)
