@@ -26,6 +26,11 @@ class ui_HashPanel(QtWidgets.QWidget):
         self.HashTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
         self.HashTextBox.setPlaceholderText('Hash Calculate\n这里写明文')
 
+        self.HashEvalCheckBox = uni_Widget.ICTFECheckBox(self)
+        self.HashEvalCheckBox.setObjectName('HashEvalCheckBox')
+        self.HashEvalCheckBox.setGeometry(QtCore.QRect(150, 25, 120, 45))
+        self.HashEvalCheckBox.setText('eval')
+
         self.ResultArea = QtWidgets.QWidget()
         self.ResultArea.setObjectName('ResultArea')
         self.ResultArea.setGeometry(QtCore.QRect(700, 80, 720, 1000))
