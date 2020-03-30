@@ -7,7 +7,6 @@ from ui_Widgets import ErrorWin
 class PawnshopPanel(ui_PawnshopPanel):
     def __init__(self):
         super(PawnshopPanel, self).__init__()
-        self.PawnshopEncryptButton.clicked.connect(self.PawnshopEncrypt)
         self.PawnshopDecryptButton.clicked.connect(self.PawnshopDecrypt)
         self.PawnshopCipherBox.textChanged.connect(self.setFontColorCipher)
         self.PawnshopTextBox.textChanged.connect(self.setFontColorText)
