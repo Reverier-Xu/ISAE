@@ -2,19 +2,15 @@ def RailFenceEncrypt(text, div):
     if div >= len(text):
         return text
     output = ''
-    redivide = list()
     for i in range(0,div,1):
-        redivide.append(list())
-    for i in range(0,len(text),div):
-        for j in range(0,div,1):
-            redivide[j].append(text[i+j])
-    for i in range(0,div,1):
-        output += ''.join(redivide[i])
+        output += text[i:len(text):div]
     return output
 
 
 def RailFenceDecrypt(text, div):
+    if div >= len(text):
+        return text
     output = ''
-    for i in range(0,len(text),1):
-        
+    for i in range(0,len(text)//div+1,1):
+        output += text[i:len(text):len(text)//div+1]
     return output
