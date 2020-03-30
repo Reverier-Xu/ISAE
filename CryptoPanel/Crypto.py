@@ -17,16 +17,16 @@ class CryptoPanel(ui_CryptoPanel):
         self.HashButton.clicked.connect(self.ChangeCryptoHash)
         self.CaesarButton.clicked.connect(self.ChangeCryptoCaesar)
         self.RailFenceButton.clicked.connect(self.ChangeCryptoRailFence)
-        self.PawnshopButton.clicked.connect(self.ChangeCryptoPawnshop)
+        self.StrokesButton.clicked.connect(self.ChangeCryptoStrokes)
 
-    def ChangeCryptoPawnshop(self):
+    def ChangeCryptoStrokes(self):
         animation = Qt.QPropertyAnimation(self)
         animation.setTargetObject(self.CryptoChooser)
         animation.setPropertyName(b'pos')
         animation.setStartValue(QtCore.QPoint(
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         self.CryptoMode = 44
-        self.CryptoStack.setCurrentWidget(self.PawnshopPanel)
+        self.CryptoStack.setCurrentWidget(self.StrokesPanel)
         animation.setEndValue(QtCore.QPoint(
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         animation.setDuration(200)
