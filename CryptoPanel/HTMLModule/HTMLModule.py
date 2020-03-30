@@ -1,6 +1,7 @@
 from CryptoPanel.HTMLModule.ui_HTMLModule import ui_HTMLPanel
 import html
 from PyQt5 import QtGui
+from ui_Widgets.ErrorWin import errorInfo
 
 class HTMLPanel(ui_HTMLPanel):
     def __init__(self):
@@ -22,7 +23,7 @@ class HTMLPanel(ui_HTMLPanel):
             output = html.escape(text)
             self.HTMLCipherBox.setText(output)
         except:
-            self.HTMLCipherBox.setText('编码时出现错误!')
+            errorInfo(self, '编码时出现错误!')
 
     def HTMLDecode(self):
         text = self.HTMLCipherBox.toPlainText()
@@ -30,4 +31,4 @@ class HTMLPanel(ui_HTMLPanel):
             output = html.unescape(text)
             self.HTMLTextBox.setText(output)
         except:
-            self.HTMLTextBox.setText('解码时出现错误!')
+            errorInfo(self, '解码时出现错误!')

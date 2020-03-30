@@ -1,6 +1,7 @@
 from CryptoPanel.EscapeModule.ui_EscapeModule import ui_EscapePanel
 from urllib import parse
 from PyQt5 import QtGui
+from ui_Widgets.ErrorWin import errorInfo
 
 
 class EscapePanel(ui_EscapePanel):
@@ -22,7 +23,7 @@ class EscapePanel(ui_EscapePanel):
             self.EscapeCipherBox.setText(parse.quote(self.EscapeTextBox.toPlainText().encode(
                 'unicode-escape')).replace('%5Cu', '%u'))
         except:
-            self.EscapeCipherBox.setText('编码失败.')
+            errorInfo(self, '编码失败.')
 
     def EscapeDecode(self):
         try:
@@ -30,4 +31,4 @@ class EscapePanel(ui_EscapePanel):
                 parse.unquote(
                     self.EscapeCipherBox.toPlainText().replace('%u', '\\u').encode().decode('unicode-escape')))
         except:
-            self.EscapeTextBox.setText('解码失败.')
+            errorInfo(self, '解码失败.')

@@ -1,6 +1,7 @@
 from CryptoPanel.QuoteModule import ui_QuoteModule
 from PyQt5 import QtWidgets, QtGui
 import quopri
+from ui_Widgets.ErrorWin import errorInfo
 
 
 class QuotePanel(ui_QuoteModule.ui_QuotePanel):
@@ -29,15 +30,16 @@ class QuotePanel(ui_QuoteModule.ui_QuotePanel):
             try:
                 text = eval(self.QuoteTextBox.toPlainText())
             except:
-                self.QuoteCipherBox.setText(
-                    '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
+                errorInfo(self,
+                          '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
                 return
         else:
             text = self.QuoteTextBox.toPlainText().encode()
         try:
             cipher = quopri.encodestring(text).decode()
         except:
-            cipher = '编码时出现错误!'
+            errorInfo(self, '编码时出现错误!')
+            return
         self.QuoteCipherBox.setText(cipher)
 
     def QuoteDec(self):
@@ -45,7 +47,7 @@ class QuotePanel(ui_QuoteModule.ui_QuotePanel):
         try:
             cipher = quopri.decodestring(text)
         except:
-            self.QuoteTextBox.setText('解码时出现错误!')
+            errorInfo(self, '解码时出现错误!')
             return
         try:
             self.QuoteTextBox.setText(cipher.decode())
@@ -100,5 +102,4 @@ class QuotePanel(ui_QuoteModule.ui_QuotePanel):
             try:
                 self.QuoteCipherBox.setText(inp.read())
             except:
-                self.QuoteCipherBox.setText('文件读取错误.')
-
+                errorInfo(self, '文件读取错误.')

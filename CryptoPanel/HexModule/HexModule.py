@@ -1,6 +1,7 @@
 from CryptoPanel.HexModule.ui_HexModule import ui_HexPanel
 from CryptoPanel.HexModule.HexModuleUtils import *
 from PyQt5 import QtGui
+from ui_Widgets.ErrorWin import errorInfo
 
 
 class HexPanel(ui_HexPanel):
@@ -30,7 +31,7 @@ class HexPanel(ui_HexPanel):
                 j += 1
             self.HexCipherBox.setText(output)
         except:
-            self.HexCipherBox.setText('编码时出现错误!')
+            errorInfo(self, '编码时出现错误!')
 
     def HexDecode(self):
         text = self.HexCipherBox.toPlainText()
@@ -43,4 +44,4 @@ class HexPanel(ui_HexPanel):
             output = ''.join(temp)
             self.HexTextBox.setText(hex2char(output).decode())
         except:
-            self.HexTextBox.setText('解码时出现错误!')
+            errorInfo(self, '解码时出现错误!')

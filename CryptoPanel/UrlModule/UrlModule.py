@@ -1,6 +1,7 @@
 from CryptoPanel.UrlModule import ui_UrlModule
 from urllib import parse
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtGui
+from ui_Widgets.ErrorWin import errorInfo
 
 
 class UrlPanel(ui_UrlModule.ui_UrlPanel):
@@ -22,7 +23,7 @@ class UrlPanel(ui_UrlModule.ui_UrlPanel):
             self.UrlCipherBox.setText(
                 parse.quote(text, encoding=self.UrlTableBox.text()))
         except:
-            self.UrlCipherBox.setText('出现错误!')
+            errorInfo(self, '出现错误!')
 
     def UrlDecode(self):
         text = self.UrlCipherBox.toPlainText()
@@ -30,4 +31,4 @@ class UrlPanel(ui_UrlModule.ui_UrlPanel):
             self.UrlTextBox.setText(parse.unquote(
                 text, encoding=self.UrlTableBox.text()))
         except:
-            self.UrlTextBox.setText('出现错误!')
+            errorInfo(self, '出现错误!')
