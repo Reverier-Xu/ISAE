@@ -112,9 +112,9 @@ class ICTFEScrollArea(QtWidgets.QScrollArea):
         self.setStyleSheet(
             'QScrollArea{'
             'border: none;'
-            'background-color:transparent;'
+            'background-color:rgb(40, 40, 40);'
             '}')
         self.viewport().setStyleSheet(
-            'QScrollArea{border:none;background-color:transparent;}')
+            'QScrollArea{border:none;background-color:rgb(40,40,40);}')
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
