@@ -34,6 +34,7 @@ class ui_HashPanel(QtWidgets.QWidget):
         self.ResultArea = QtWidgets.QWidget()
         self.ResultArea.setObjectName('ResultArea')
         self.ResultArea.setGeometry(QtCore.QRect(700, 80, 720, 1000))
+        self.ResultArea.setStyleSheet('#ResultArea{background-color: transparent}')
 
         self.ResultAreaScroll = uni_Widget.ICTFEScrollArea(self)
         self.ResultAreaScroll.setObjectName('ResultAreaScroll')
