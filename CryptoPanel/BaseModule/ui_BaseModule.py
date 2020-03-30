@@ -53,6 +53,12 @@ class ui_BasePanel(QtWidgets.QWidget):
         self.BaseTextEvalCheckBox.setObjectName('BaseTextEvalCheckBox')
         self.BaseTextEvalCheckBox.setText('启用eval')
 
+        # No Load File Support
+        self.BaseDoNotLoadFileCheckBox = uni_Widget.ICTFECheckBox(self)
+        self.BaseDoNotLoadFileCheckBox.setGeometry(180, 135, 120, 40)
+        self.BaseDoNotLoadFileCheckBox.setObjectName('BaseDoNotLoadFileCheckBox')
+        self.BaseDoNotLoadFileCheckBox.setText('大文件')
+
         # base table edit box and label
         self.BaseTableTips = uni_Widget.ICTFELabel(self)
         self.BaseTableTips.setObjectName('BaseTableTips')

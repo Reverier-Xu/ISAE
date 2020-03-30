@@ -36,15 +36,6 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.CryptoChoosePanelScroll.setVerticalScrollBarPolicy(
             QtCore.Qt.ScrollBarAlwaysOff)
 
-        # Choose ticker
-        self.CryptoChooserVBox = [11, 141, 271, 401, 531, 661, 791, 921, 1051, 1181]
-        self.CryptoChooserHBox = [55, 110, 165, 220, 275]
-        self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
-        self.CryptoChooser.setPixmap(
-            QtGui.QPixmap('./Resources/chooser.png'))
-        self.CryptoChooser.setGeometry(QtCore.QRect(
-            self.CryptoChooserVBox[self.CryptoMode], 55, 120, 8))
-
         # Base Button
         self.BaseButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
         self.BaseButton.setGeometry(QtCore.QRect(11, 10, 120, 45))
@@ -312,6 +303,15 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.OokButton.setObjectName("OokButton")
 
         # end Crypto Buttons
+
+        # Choose ticker
+        self.CryptoChooserVBox = [11, 141, 271, 401, 531, 661, 791, 921, 1051, 1181]
+        self.CryptoChooserHBox = [55, 110, 165, 220, 275]
+        self.CryptoChooser = QtWidgets.QLabel(self.CryptoChoosePanel)
+        self.CryptoChooser.setPixmap(
+            QtGui.QPixmap('./Resources/chooser.png'))
+        self.CryptoChooser.setGeometry(QtCore.QRect(
+            self.CryptoChooserVBox[self.CryptoMode], 55, 120, 8))
 
         # Crypto Panel change methods
         self.CryptoStack = QtWidgets.QStackedWidget(self)

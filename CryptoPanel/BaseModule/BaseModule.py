@@ -47,7 +47,11 @@ class BasePanel(ui_BasePanel):
                                                   "选取文件",
                                                   '',
                                                   "All Files (*);;Text Files (*.txt)")
-        if self.BaseTextInputPath == "":
+        if self.BaseTextInputPath == '':
+            return
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseTextBox.setText('Opened: ' + self.BaseTextInputPath +
+                                     '\n由于你选中了大文件, 文本框不会将其加载.')
             return
         with open(self.BaseTextInputPath, 'rb') as inp:
             self.BaseTextBox.setText(str(inp.read()))
@@ -84,6 +88,10 @@ class BasePanel(ui_BasePanel):
                                                   '',
                                                   "All Files (*);;Text Files (*.txt)")
         if self.BaseCipherInputPath == "":
+            return
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseCipherBox.setText('Opened: ' + self.BaseCipherInputPath +
+                                       '\n由于你选中了大文件, 文本框不会将其加载.')
             return
         with open(self.BaseCipherInputPath, 'r') as inp:
             try:
@@ -171,6 +179,7 @@ class BasePanel(ui_BasePanel):
             pass
         if self.BaseAutoLoadCheckBox.isChecked():
             self.BaseTextBox.setText(self.BaseCipherBox.toPlainText())
+        self.BaseTextInputPath = ''
 
     def BaseDec(self):
         if self.BaseMode == 1:
@@ -187,6 +196,7 @@ class BasePanel(ui_BasePanel):
             pass
         if self.BaseAutoLoadCheckBox.isChecked():
             self.BaseCipherBox.setText(self.BaseTextBox.toPlainText())
+        self.BaseCipherInputPath = ''
 
     def CheckBaseCipher(self, x, newtable):
         if self.BaseMode == 1:
@@ -220,54 +230,119 @@ class BasePanel(ui_BasePanel):
             return True
 
     def Base64Dec(self):
-        text = self.BaseCipherBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            file = open(self.BaseCipherInputPath, 'r')
+            text = file.read()
+        elif self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseTextBox.setText('请重新选择文件.')
+            return
+        else:
+            text = self.BaseCipherBox.toPlainText()
         padding = len(text) % 4
         if padding != 0:
             text += '=' * padding
-        if self.CheckBase64Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
-                                                                                            self.BaseTableBox.text()) == False:
+        if self.CheckBase64Table(self.BaseTableBox.text()) is False or self.CheckBaseCipher(text,
+                                                                                            self.BaseTableBox.text()) is False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
+            return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            self.BaseTextBox.setText('已保存至: ' + self.BaseCipherInputPath + '.out')
+            with open(self.BaseCipherInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Decode(
+                    text, self.BaseTableBox.text()))
             return
         self.BaseTextBox.setText(str(ChangeTableBase64Decode(
             text, self.BaseTableBox.text())))
 
     def Base32Dec(self):
-        text = self.BaseCipherBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            file = open(self.BaseCipherInputPath, 'r')
+            text = file.read()
+        elif self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseTextBox.setText('请重新选择文件.')
+            return
+        else:
+            text = self.BaseCipherBox.toPlainText()
         padding = len(text) % 8
         if padding != 0:
             text += '=' * padding
-        if self.CheckBase32Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
-                                                                                            self.BaseTableBox.text()) == False:
+        if self.CheckBase32Table(self.BaseTableBox.text()) is False or self.CheckBaseCipher(text,
+                                                                                            self.BaseTableBox.text()) is False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
+            return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            self.BaseTextBox.setText('已保存至: ' + self.BaseCipherInputPath + '.out')
+            with open(self.BaseCipherInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Decode(
+                    text, self.BaseTableBox.text()))
             return
         self.BaseTextBox.setText(str(ChangeTableBase32Decode(
             text, self.BaseTableBox.text())))
 
     def Base16Dec(self):
-        text = self.BaseCipherBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            file = open(self.BaseCipherInputPath, 'r')
+            text = file.read()
+        elif self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseTextBox.setText('请重新选择文件.')
+            return
+        else:
+            text = self.BaseCipherBox.toPlainText()
         if self.CheckBase16Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
                                                                                             self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
             return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            self.BaseTextBox.setText('已保存至: ' + self.BaseCipherInputPath + '.out')
+            with open(self.BaseCipherInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Decode(
+                    text, self.BaseTableBox.text()))
+            return
         self.BaseTextBox.setText(str(ChangeTableBase16Decode(
             text, self.BaseTableBox.text())))
 
     def Base85Dec(self):
-        text = self.BaseCipherBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            file = open(self.BaseCipherInputPath, 'r')
+            text = file.read()
+        elif self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseTextBox.setText('请重新选择文件.')
+            return
+        else:
+            text = self.BaseCipherBox.toPlainText()
         if self.CheckBase85Table(self.BaseTableBox.text()) == False or self.CheckBaseCipher(text,
                                                                                             self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效或者要解码的字符串不是合法的编码字符串!!\nTable or Cipher Error!!!!!!!')
             return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            self.BaseTextBox.setText('已保存至: ' + self.BaseCipherInputPath + '.out')
+            with open(self.BaseCipherInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Decode(
+                    text, self.BaseTableBox.text()))
+            return
         self.BaseTextBox.setText(str(ChangeTableBase85Decode(
             text, self.BaseTableBox.text())))
 
     def Base85RFCDec(self):
-        text = self.BaseCipherBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+            file = open(self.BaseCipherInputPath, 'r')
+            text = file.read()
+        elif self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseTextBox.setText('请重新选择文件.')
+            return
+        else:
+            text = self.BaseCipherBox.toPlainText()
         try:
+            if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseCipherInputPath != '':
+                self.BaseTextBox.setText('已保存至: ' + self.BaseCipherInputPath + '.out')
+                with open(self.BaseCipherInputPath + '.out', 'wb') as out:
+                    out.write(ChangeTableBase64Decode(
+                        text, self.BaseTableBox.text()))
+                return
             self.BaseTextBox.setText(str(ChangeTableBase85RFCDecode(
                 text, self.BaseTableBox.text())))
         except:
@@ -280,17 +355,27 @@ class BasePanel(ui_BasePanel):
         return True
 
     def Base64Enc(self):
-        text = self.BaseTextBox.toPlainText()
-        if self.BaseTextEvalCheckBox.isChecked() == True:
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            file = open(self.BaseTextInputPath, 'rb')
+            text = file.read()
+        else:
+            text = self.BaseTextBox.toPlainText()
+        if self.BaseTextEvalCheckBox.isChecked():
             try:
                 text = eval(text)
             except:
                 self.BaseCipherBox.setText(
                     '输入不是有效的Python语句! eval()执行错误!\nInvalid Python expression! eval() Failed!')
                 return
-        if self.CheckBase64Table(self.BaseTableBox.text()) == False:
+        if self.CheckBase64Table(self.BaseTableBox.text()) is False:
             self.BaseTextBox.setText(
                 '编码表无效!!\nTable Error!!!!!!!')
+            return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseTextInputPath != '':
+            self.BaseCipherBox.setText('已保存至: ' + self.BaseTextInputPath + '.out')
+            with open(self.BaseTextInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Encode(
+                    text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
             return
         self.BaseCipherBox.setText(ChangeTableBase64Encode(
             text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
@@ -302,7 +387,11 @@ class BasePanel(ui_BasePanel):
         return True
 
     def Base32Enc(self):
-        text = self.BaseTextBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            file = open(self.BaseTextInputPath, 'rb')
+            text = file.read()
+        else:
+            text = self.BaseTextBox.toPlainText()
         if self.BaseTextEvalCheckBox.isChecked() == True:
             try:
                 text = eval(text)
@@ -314,6 +403,12 @@ class BasePanel(ui_BasePanel):
             self.BaseTextBox.setText(
                 '编码表无效!!\nTable Error!!!!!!!')
             return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseTextInputPath != '':
+            self.BaseCipherBox.setText('已保存至: ' + self.BaseTextInputPath + '.out')
+            with open(self.BaseTextInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Encode(
+                    text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
+            return
         self.BaseCipherBox.setText(ChangeTableBase32Encode(
             text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
 
@@ -324,7 +419,11 @@ class BasePanel(ui_BasePanel):
         return True
 
     def Base16Enc(self):
-        text = self.BaseTextBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            file = open(self.BaseTextInputPath, 'rb')
+            text = file.read()
+        else:
+            text = self.BaseTextBox.toPlainText()
         if self.BaseTextEvalCheckBox.isChecked() == True:
             try:
                 text = eval(text)
@@ -335,6 +434,12 @@ class BasePanel(ui_BasePanel):
         if self.CheckBase16Table(self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效!!\nTable Error!!!!!!!')
+            return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseTextInputPath != '':
+            self.BaseCipherBox.setText('已保存至: ' + self.BaseTextInputPath + '.out')
+            with open(self.BaseTextInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Encode(
+                    text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
             return
         self.BaseCipherBox.setText(ChangeTableBase16Encode(
             text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
@@ -352,7 +457,11 @@ class BasePanel(ui_BasePanel):
         return True
 
     def Base85Enc(self):
-        text = self.BaseTextBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            file = open(self.BaseTextInputPath, 'rb')
+            text = file.read()
+        else:
+            text = self.BaseTextBox.toPlainText()
         if self.BaseTextEvalCheckBox.isChecked() == True:
             try:
                 text = eval(text)
@@ -364,11 +473,21 @@ class BasePanel(ui_BasePanel):
             self.BaseTextBox.setText(
                 '编码表无效!!\nTable Error!!!!!!!')
             return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseTextInputPath != '':
+            self.BaseCipherBox.setText('已保存至: ' + self.BaseTextInputPath + '.out')
+            with open(self.BaseTextInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Encode(
+                    text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
+            return
         self.BaseCipherBox.setText(ChangeTableBase85Encode(
             text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
 
     def Base85RFCEnc(self):
-        text = self.BaseTextBox.toPlainText()
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            file = open(self.BaseTextInputPath, 'rb')
+            text = file.read()
+        else:
+            text = self.BaseTextBox.toPlainText()
         if self.BaseTextEvalCheckBox.isChecked() == True:
             try:
                 text = eval(text)
@@ -379,6 +498,12 @@ class BasePanel(ui_BasePanel):
         if self.CheckBase85RFCTable(self.BaseTableBox.text()) == False:
             self.BaseTextBox.setText(
                 '编码表无效!!\nTable Error!!!!!!!')
+            return
+        if self.BaseDoNotLoadFileCheckBox.isChecked() and self.BaseTextInputPath != '':
+            self.BaseCipherBox.setText('已保存至: ' + self.BaseTextInputPath + '.out')
+            with open(self.BaseTextInputPath + '.out', 'wb') as out:
+                out.write(ChangeTableBase64Encode(
+                    text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
             return
         self.BaseCipherBox.setText(ChangeTableBase85RFCEncode(
             text, self.BaseTableBox.text(), self.BaseTextEvalCheckBox.isChecked()))
