@@ -8,6 +8,7 @@ class ui_HashPanel(QtWidgets.QWidget):
 
         # input text file button
         self.HashTextInputPath = ''
+        self.HashTextInputFlag = False
         self.HashTextInputButton = uni_Widget.ICTFEButton(self)
         self.HashTextInputButton.setObjectName('HashTextInputButton')
         self.HashTextInputButton.setGeometry(QtCore.QRect(20, 20, 120, 45))
