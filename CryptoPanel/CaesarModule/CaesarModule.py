@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from CryptoPanel.CaesarModule.ui_CaesarModule import ui_CaesarPanel
 from CryptoPanel.CaesarModule.CaesarModuleUtils import *
+import ErrorWin
 
 
 class CaesarPanel(ui_CaesarPanel):
@@ -20,15 +21,18 @@ class CaesarPanel(ui_CaesarPanel):
     def CaesarEncrypt(self):
         try:
             disp = int(self.CaesarDispBox.text())
-        except:
-            self.CaesarDisprBox.setText('位移输入错误！')
-        self.CaesarCipherBox.setText(CaesarEncrypt(
+            self.CaesarCipherBox.setText(CaesarEncrypt(
                 self.CaesarTextBox.toPlainText(), disp))
+        except:
+            self.CaesarDispBox.setText('0')
+            ErrorWin.errorInfo(self, '输入的位移并非纯整数！')
+            
 
     def CaesarDecrypt(self):
         try:
             disp = int(self.CaesarDispBox.text())
-        except:
-            self.CaesarDisprBox.setText('位移输入错误！')
-        self.CaesarTextBox.setText(CaesarDecrypt(
+            self.CaesarTextBox.setText(CaesarDecrypt(
                 self.CaesarCipherBox.toPlainText(), disp))
+        except:
+            self.CaesarDispBox.setText('0')
+            ErrorWin.errorInfo(self, '输入的位移并非纯整数！')        
