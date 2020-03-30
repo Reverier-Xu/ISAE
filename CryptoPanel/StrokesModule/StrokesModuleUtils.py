@@ -1,4 +1,4 @@
-def PawnshopDecrypt(text):
+def StrokesDecrypt(text):
     output = ''
 
     data_lines = open('Resources/汉字编码表 gbk unicode.txt', encoding='GBK').readlines()
