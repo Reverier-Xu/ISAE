@@ -70,16 +70,6 @@ class Ui_MainWindow(object):
 
         '''Start define Type Change Button'''
 
-        # Crypto Button
-        self.CryptoButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.CryptoButton.setGeometry(QtCore.QRect(24, 350, 120, 45))
-        self.CryptoButton.setObjectName("CryptoButton")
-
-        # Misc Button
-        self.MiscButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.MiscButton.setGeometry(QtCore.QRect(24, 550, 120, 45))
-        self.MiscButton.setObjectName("MiscButton")
-
         # Reverse Button
         self.ReverseButton = uni_Widget.ICTFEButton(self.CentralWidget)
         self.ReverseButton.setGeometry(QtCore.QRect(24, 150, 120, 45))
@@ -87,13 +77,33 @@ class Ui_MainWindow(object):
 
         # Web Button
         self.WebButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.WebButton.setGeometry(QtCore.QRect(24, 250, 120, 45))
+        self.WebButton.setGeometry(QtCore.QRect(24, 215, 120, 45))
         self.WebButton.setObjectName("WebButton")
+
+        # Crypto Button
+        self.CryptoButton = uni_Widget.ICTFEButton(self.CentralWidget)
+        self.CryptoButton.setGeometry(QtCore.QRect(24, 280, 120, 45))
+        self.CryptoButton.setObjectName("CryptoButton")
 
         # Pwn Button
         self.PwnButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.PwnButton.setGeometry(QtCore.QRect(24, 450, 120, 45))
+        self.PwnButton.setGeometry(QtCore.QRect(24, 345, 120, 45))
         self.PwnButton.setObjectName("PwnButton")
+
+        # Misc Button
+        self.MiscButton = uni_Widget.ICTFEButton(self.CentralWidget)
+        self.MiscButton.setGeometry(QtCore.QRect(24, 410, 120, 45))
+        self.MiscButton.setObjectName("MiscButton")
+
+        # DIY Button
+        self.DIYButton = uni_Widget.ICTFEButton(self.CentralWidget)
+        self.DIYButton.setGeometry(QtCore.QRect(24, 475, 120, 45))
+        self.DIYButton.setObjectName("DIYButton")
+
+        # Terminal Button
+        self.TerminalButton = uni_Widget.ICTFEButton(self.CentralWidget)
+        self.TerminalButton.setGeometry(QtCore.QRect(24, 540, 120, 45))
+        self.TerminalButton.setObjectName('TerminalButton')
 
         '''End define Type Change Button'''
 
@@ -118,7 +128,7 @@ class Ui_MainWindow(object):
         self.TypeStack.setObjectName("TypeStack")
 
         # Choose ticker
-        self.TypeChooserBox = [-10, 195, 295, 395, 495, 595]
+        self.TypeChooserBox = [-10, 195, 260, 325, 390, 455, 520, 585]
         self.TypeChooser = QtWidgets.QLabel(self.CentralWidget)
         self.TypeChooser.setPixmap(
             QtGui.QPixmap('./Resources/chooser.png'))
@@ -150,6 +160,16 @@ class Ui_MainWindow(object):
         self.MiscPanel.setObjectName("MiscPanel")
         self.TypeStack.addWidget(self.MiscPanel)
 
+        # DIY Panel
+        self.DIYPanel = QtWidgets.QWidget()
+        self.DIYPanel.setObjectName('DIYPanel')
+        self.TypeStack.addWidget(self.DIYPanel)
+
+        # Terminal Panel
+        self.TerminalPanel = QtWidgets.QWidget()
+        self.TerminalPanel.setObjectName('TerminalPanel')
+        self.TypeStack.addWidget(self.TerminalPanel)
+
         # Welcome Panel
         self.WelcomePanel = QtWidgets.QWidget()
         self.WelcomePanel.setObjectName('WelcomePanel')
@@ -176,6 +196,8 @@ class Ui_MainWindow(object):
         self.MiscButton.clicked.connect(self.ChangeTypeStackMisc)
         self.WebButton.clicked.connect(self.ChangeTypeStackWeb)
         self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
+        self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
+        self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
 
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
         self.FileTempStackDelButton.clicked.connect(self.DelFileTempStack)
@@ -255,6 +277,30 @@ class Ui_MainWindow(object):
         animation.setDuration(200)
         animation.start()
 
+    def ChangeTypeStackDIY(self):
+        '''改变类型控件组 DIY'''
+        animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
+        animation.setStartValue(QtCore.QPoint(
+            24, self.TypeChooserBox[self.TypeMode]))
+        self.TypeMode = 6
+        self.TypeStack.setCurrentWidget(self.DIYPanel)
+        animation.setEndValue(QtCore.QPoint(
+            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeTypeStackTerminal(self):
+        '''改变类型控件组 Terminal'''
+        animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
+        animation.setStartValue(QtCore.QPoint(
+            24, self.TypeChooserBox[self.TypeMode]))
+        self.TypeMode = 7
+        self.TypeStack.setCurrentWidget(self.TerminalPanel)
+        animation.setEndValue(QtCore.QPoint(
+            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setDuration(200)
+        animation.start()
+
     def center(self):
         '''窗口居中显示'''
         qr = self.frameGeometry()
@@ -263,10 +309,11 @@ class Ui_MainWindow(object):
         self.move(qr.topLeft())
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.CryptoButton.setText(_translate("MainWindow", "密码"))
-        self.MiscButton.setText(_translate("MainWindow", "杂项"))
-        self.ReverseButton.setText(_translate("MainWindow", "逆向"))
-        self.WebButton.setText(_translate("MainWindow", "Web"))
-        self.PwnButton.setText(_translate("MainWindow", "Pwn"))
+        MainWindow.setWindowTitle("ICTFE")
+        self.CryptoButton.setText("密码编码")
+        self.MiscButton.setText("杂项工具")
+        self.ReverseButton.setText("逆向工程")
+        self.WebButton.setText("Web渗透")
+        self.PwnButton.setText("PWN!")
+        self.DIYButton.setText("启动器")
+        self.TerminalButton.setText('终端集成')

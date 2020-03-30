@@ -23,19 +23,9 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.CryptoChoosePanel.setObjectName('CryptoChoosePanel')
         self.CryptoChoosePanel.setGeometry(0, 0, 1420, 300)
 
-        self.CryptoChoosePanelScroll = QtWidgets.QScrollArea(self)
+        self.CryptoChoosePanelScroll = uni_Widget.ICTFEScrollArea(self)
         self.CryptoChoosePanelScroll.setGeometry(0, 0, 1426, 128)
-        self.CryptoChoosePanelScroll.setStyleSheet(
-            '#CryptoChoosePanelScroll{'
-            'background-color:transparent'
-            '}')
-        self.CryptoChoosePanelScroll.viewport().setStyleSheet(
-            'background-color:transparent;')
         self.CryptoChoosePanelScroll.setWidget(self.CryptoChoosePanel)
-        self.CryptoChoosePanelScroll.setHorizontalScrollBarPolicy(
-            QtCore.Qt.ScrollBarAlwaysOff)
-        self.CryptoChoosePanelScroll.setVerticalScrollBarPolicy(
-            QtCore.Qt.ScrollBarAlwaysOff)
 
         # Base Button
         self.BaseButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
