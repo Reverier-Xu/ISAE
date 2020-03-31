@@ -17,6 +17,7 @@ class CryptoPanel(ui_CryptoPanel):
         self.HashButton.clicked.connect(self.ChangeCryptoHash)
         self.CaesarButton.clicked.connect(self.ChangeCryptoCaesar)
         self.RailFenceButton.clicked.connect(self.ChangeCryptoRailFence)
+        self.ROTButton.clicked.connect(self.ChangeCryptoROT)
         self.StrokesButton.clicked.connect(self.ChangeCryptoStrokes)
 
     def ChangeCryptoStrokes(self):
@@ -27,6 +28,19 @@ class CryptoPanel(ui_CryptoPanel):
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         self.CryptoMode = 44
         self.CryptoStack.setCurrentWidget(self.StrokesPanel)
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeCryptoROT(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 31
+        self.CryptoStack.setCurrentWidget(self.ROTPanel)
         animation.setEndValue(QtCore.QPoint(
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         animation.setDuration(200)

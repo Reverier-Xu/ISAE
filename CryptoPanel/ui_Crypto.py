@@ -12,6 +12,7 @@ from CryptoPanel.HashModule.HashModule import HashPanel
 from CryptoPanel.CaesarModule.CaesarModule import CaesarPanel
 from CryptoPanel.RailFenceModule.RailFenceModule import RailFencePanel
 from CryptoPanel.StrokesModule.StrokesModule import StrokesPanel
+from CryptoPanel.ROTModule.ROTModule import ROTPanel
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):
@@ -217,11 +218,11 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.RailFenceButton.setText("栅栏密码")
         self.RailFenceButton.setObjectName("RailFenceButton")
 
-        # Rot13 Button
-        self.Rot13Button = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
-        self.Rot13Button.setGeometry(QtCore.QRect(141, 175, 120, 45))
-        self.Rot13Button.setText("Rot13")
-        self.Rot13Button.setObjectName("Rot13Button")
+        # Rot Button
+        self.ROTButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
+        self.ROTButton.setGeometry(QtCore.QRect(141, 175, 120, 45))
+        self.ROTButton.setText("R O T")
+        self.ROTButton.setObjectName("ROTButton")
 
         # Substitution Button
         self.SubstitutionButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
@@ -371,6 +372,11 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.RailFencePanel = RailFencePanel()
         self.RailFencePanel.setObjectName('RailFencePanel')
         self.CryptoStack.addWidget(self.RailFencePanel)
+
+        # ROT panel
+        self.ROTPanel = ROTPanel()
+        self.ROTPanel.setObjectName('ROTPanel')
+        self.CryptoStack.addWidget(self.ROTPanel)
 
         # Strokes panel
         self.StrokesPanel = StrokesPanel()

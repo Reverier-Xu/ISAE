@@ -84,6 +84,9 @@ Caesar Cipher, 提供无限位移功能
 ### 栅栏密码
 Rail-Fence Cipher, 提供不限大小的分组功能
 
+### ROT系列
+ROT13和ROT47加密解密支持
+
 ### 笔画密码
 Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 
