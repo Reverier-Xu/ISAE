@@ -1,6 +1,3 @@
-# Author: xiaoxinpro,
-# https://github.com/xiaoxinpro/SqliteHelper
-
 import sqlite3
 
 
