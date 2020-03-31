@@ -20,19 +20,24 @@ class CaesarPanel(ui_CaesarPanel):
 
     def CaesarEncrypt(self):
         try:
+            if int(self.CaesarLimitBox.text()) > 26:
+                ErrorWin.errorInfo(self, '限制无法大于26.')
+                return
             disp = int(self.CaesarDispBox.text())
             self.CaesarCipherBox.setText(CaesarEncrypt(
-                self.CaesarTextBox.toPlainText(), disp))
+                self.CaesarTextBox.toPlainText(), disp, self.CaesarDigitCheckBox.isChecked(), int(self.CaesarStepBox.text()), int(self.CaesarLimitBox.text())))
         except:
             self.CaesarDispBox.setText('0')
             ErrorWin.errorInfo(self, '输入的位移并非纯整数！')
-            
 
     def CaesarDecrypt(self):
         try:
+            if int(self.CaesarLimitBox.text()) > 26:
+                ErrorWin.errorInfo(self, '限制无法大于26.')
+                return
             disp = int(self.CaesarDispBox.text())
             self.CaesarTextBox.setText(CaesarDecrypt(
-                self.CaesarCipherBox.toPlainText(), disp))
+                self.CaesarCipherBox.toPlainText(), disp, self.CaesarDigitCheckBox.isChecked(), int(self.CaesarStepBox.text()), int(self.CaesarLimitBox.text())))
         except:
             self.CaesarDispBox.setText('0')
             ErrorWin.errorInfo(self, '输入的位移并非纯整数！')        

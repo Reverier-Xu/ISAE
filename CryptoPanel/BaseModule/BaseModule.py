@@ -182,6 +182,8 @@ class BasePanel(ui_BasePanel):
         if self.BaseAutoLoadCheckBox.isChecked():
             self.BaseTextBox.setText(self.BaseCipherBox.toPlainText())
         self.BaseTextInputPath = ''
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseTextBox.setText('')
 
     def BaseDec(self):
         if self.BaseMode == 1:
@@ -199,6 +201,8 @@ class BasePanel(ui_BasePanel):
         if self.BaseAutoLoadCheckBox.isChecked():
             self.BaseCipherBox.setText(self.BaseTextBox.toPlainText())
         self.BaseCipherInputPath = ''
+        if self.BaseDoNotLoadFileCheckBox.isChecked():
+            self.BaseCipherBox.setText('')
 
     def CheckBaseCipher(self, x, newtable):
         if self.BaseMode == 1:

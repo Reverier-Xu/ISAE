@@ -9,6 +9,10 @@ class HashPanel(ui_HashPanel):
         super(HashPanel, self).__init__()
         self.HashEncodeButton.clicked.connect(self.HashEncode)
         self.HashTextInputButton.clicked.connect(self.HashTextInput)
+        self.HashTextBox.textChanged.connect(self.setFontColorText)
+
+    def setFontColorText(self):
+        self.HashTextBox.setTextColor(QtGui.QColor(200, 200, 200))
 
     def HashEncode(self):
         if self.HashTextInputFlag:
@@ -24,6 +28,7 @@ class HashPanel(ui_HashPanel):
             self.SHA3512ValueBox.setText(str(generate_file_sha3_512(self.HashTextInputPath)))
             self.HashTextInputPath = ''
             self.HashTextInputFlag = False
+            self.HashTextBox.setText('')
         else:
             text = ''
             if self.HashEvalCheckBox.isChecked():
@@ -44,8 +49,8 @@ class HashPanel(ui_HashPanel):
             except:
                 salt = 0
                 if self.HashSaltBox.text() != '':
-                    errorInfo('加盐的长度不应该包含除了数字之外的符号!')
-            self.HashValueBox.setText(str(hash(text + addSalt(salt))))
+                    errorInfo(self, '加盐的长度不应该包含除了数字之外的符号!')
+            self.HashValueBox.setText(hex(hash(text + addSalt(salt))))
             self.MD5ValueBox.setText(str(generate_md5(text, salt)))
             self.SHA1ValueBox.setText(str(generate_sha1(text, salt)))
             self.SHA224ValueBox.setText(str(generate_sha224(text, salt)))

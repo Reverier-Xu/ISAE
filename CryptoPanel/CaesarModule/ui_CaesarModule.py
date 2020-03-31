@@ -16,12 +16,33 @@ class ui_CaesarPanel(QtWidgets.QWidget):
         self.CaesarDispTips = uni_Widget.ICTFELabel(self)
         self.CaesarDispTips.setObjectName('CaesarDispTips')
         self.CaesarDispTips.setText('位移:')
-        self.CaesarDispTips.setGeometry(QtCore.QRect(50, 20, 130, 45))
+        self.CaesarDispTips.setGeometry(QtCore.QRect(50, 20, 60, 45))
 
         self.CaesarDispBox = uni_Widget.ICTFELineBox(self)
         self.CaesarDispBox.setObjectName('CaesarDispBox')
-        self.CaesarDispBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
+        self.CaesarDispBox.setGeometry(QtCore.QRect(110, 20, 60, 45))
 
+        # step and limits
+        self.CaesarStepTips = uni_Widget.ICTFELabel(self)
+        self.CaesarStepTips.setObjectName('CaesarStepTips')
+        self.CaesarStepTips.setGeometry(QtCore.QRect(180, 20, 60, 45))
+        self.CaesarStepTips.setText('Step:')
+        self.CaesarStepBox = uni_Widget.ICTFELineBox(self)
+        self.CaesarStepBox.setObjectName('CaesarStepBox')
+        self.CaesarStepBox.setGeometry(QtCore.QRect(240, 20, 60, 45))
+        self.CaesarLimitTips = uni_Widget.ICTFELabel(self)
+        self.CaesarLimitTips.setObjectName('CaesarLimitTips')
+        self.CaesarLimitTips.setGeometry(QtCore.QRect(310, 20, 60, 45))
+        self.CaesarLimitTips.setText('Lim:')
+        self.CaesarLimitBox = uni_Widget.ICTFELineBox(self)
+        self.CaesarLimitBox.setObjectName('CaesarLimitBox')
+        self.CaesarLimitBox.setGeometry(QtCore.QRect(360, 20, 60, 45))
+
+        # some check boxs
+        self.CaesarDigitCheckBox = uni_Widget.ICTFECheckBox(self)
+        self.CaesarDigitCheckBox.setObjectName('CaesarDigitCheckBox')
+        self.CaesarDigitCheckBox.setGeometry(QtCore.QRect(430, 20, 80, 45))
+        self.CaesarDigitCheckBox.setText('数字')
         # Caesar Decrypt button
         self.CaesarDecryptButton = uni_Widget.ICTFEButton(self)
         self.CaesarDecryptButton.setObjectName('CaesarDecryptButton')

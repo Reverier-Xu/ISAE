@@ -54,6 +54,8 @@ class CryptoPanel(ui_CryptoPanel):
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         self.CryptoMode = 21
         self.CryptoStack.setCurrentWidget(self.CaesarPanel)
+        self.CaesarPanel.CaesarLimitBox.setText('26')
+        self.CaesarPanel.CaesarStepBox.setText('0')
         self.CaesarPanel.CaesarDispBox.setText('0')
         animation.setEndValue(QtCore.QPoint(
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
