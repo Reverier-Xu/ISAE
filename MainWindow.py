@@ -9,7 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from CryptoPanel import Crypto
 from ui_Widgets import uni_Widget
-
+from FileStack.FileStack import FileStack
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -117,8 +117,8 @@ class Ui_MainWindow(object):
         self.FileTempStackDelButton.setGeometry(QtCore.QRect(114, 632, 30, 30))
         self.FileTempStackDelButton.setObjectName("FileTempStackDelButton")
         self.FileTempStackDelButton.setText('×')
-        
-        self.FileTempStack = uni_Widget.ICTFEList(self.CentralWidget)
+
+        self.FileTempStack = FileStack(self.CentralWidget)
         self.FileTempStack.setGeometry(QtCore.QRect(24, 670, 120, 200))
         self.FileTempStack.setObjectName('FileTempStack')
 

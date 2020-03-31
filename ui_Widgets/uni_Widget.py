@@ -62,6 +62,7 @@ class ICTFELineBox(QtWidgets.QLineEdit):
             'padding: 0 8px;'
             'background: rgb(20, 20, 20);'
             'selection-background-color: blue;')
+        self.setDragEnabled(True)
 
 
 class ICTFECheckBox(QtWidgets.QCheckBox):
@@ -104,6 +105,11 @@ class ICTFEList(QtWidgets.QListWidget):
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
+        self.setDragEnabled(True)
+        self.setDefaultDropAction(Qt.TargetMoveAction)
+
+    def dragEnterEvent(self, e):
+        e.accept()
 
 
 class ICTFEScrollArea(QtWidgets.QScrollArea):

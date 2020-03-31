@@ -18,7 +18,7 @@ fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 clone本仓库到本地, 安装PyQt5
 
 ```
-pip install PyQt5
+pip install PyQt5 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 运行
