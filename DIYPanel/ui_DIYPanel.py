@@ -3,6 +3,7 @@ from ui_Widgets import uni_Widget
 import os
 import platform
 import sqlite3
+from ui_Widgets.ErrorWin import errorInfo
 
 
 class ui_DIYPanel(QtWidgets.QWidget):
@@ -49,6 +50,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
 
     def AddTabPanel(self):
         text, ok = QtWidgets.QInputDialog.getText(self, '创建分区', '名称')
+        for i in self.TabPanels:
+            if text == i.objectName():
+                errorInfo(self, '不能创建两个相同的分区!')
+                return
         if ok:
             button = self.TabAreaPanel.addButton(text)
             panel = ResizablePanel()
@@ -84,16 +89,19 @@ class ui_DIYPanel(QtWidgets.QWidget):
                                                          "All Files (*)")
         if ok:
             name, ok = QtWidgets.QInputDialog.getText(self, '创建启动按钮', '名称')
-            button = panel.addButton(name)
-            button.clicked.connect(lambda: self.OpenFile(file))
-            button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
             print(panel.objectName())
-            cu.execute(
-                'INSERT INTO ' + panel.objectName() + ' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + file + '\')')
-            conn.commit()
+            try:
+                cu.execute(
+                    'INSERT INTO ' + panel.objectName() + ' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + file + '\')')
+                conn.commit()
+            except:
+                errorInfo('添加失败!\n请检查是否有重复项!')
             conn.close()
+            button = panel.addButton(name)
+            button.clicked.connect(lambda: self.OpenFile(file))
+            button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
 
     def AddTabPanelButtonFile(self, panel, file, name):
         button = panel.addButton(name)
