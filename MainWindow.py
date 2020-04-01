@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, Qt
 from CryptoPanel import Crypto
 from ui_Widgets import uni_Widget
 from FileStack.FileStack import FileStack
+from DIYPanel.DIYPanel import DIYPanel
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -161,7 +162,7 @@ class Ui_MainWindow(object):
         self.TypeStack.addWidget(self.MiscPanel)
 
         # DIY Panel
-        self.DIYPanel = QtWidgets.QWidget()
+        self.DIYPanel = DIYPanel()
         self.DIYPanel.setObjectName('DIYPanel')
         self.TypeStack.addWidget(self.DIYPanel)
 
