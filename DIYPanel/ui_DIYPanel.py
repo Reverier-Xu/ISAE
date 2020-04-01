@@ -1,5 +1,7 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from ui_Widgets import uni_Widget
+import os
+import platform
 
 
 class ui_DIYPanel(QtWidgets.QWidget):
@@ -25,7 +27,6 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.TabButtons = self.TabAreaPanel.Buttons  # 通过List进行有序化管理
         self.TabPanels = []
         self.FileButtons = []
-        self.FileMaps = {}
 
     def AddTabPanel(self):
         text, ok = QtWidgets.QInputDialog.getText(self, '创建分区', '名称')
@@ -40,8 +41,18 @@ class ui_DIYPanel(QtWidgets.QWidget):
             panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
             self.FileButtons.append(panel.Buttons)
 
+    def AddTabPanelFile(self, text):
+        button = self.TabAreaPanel.addButton(text)
+        panel = ResizablePanel()
+        panel.setObjectName(text)
+        self.TabStack.addWidget(panel)
+        self.TabPanels.append(panel)
+        button.clicked.connect(lambda: self.TabStack.setCurrentWidget(panel))
+        button.Deleted.connect(lambda: self.DeletePanel(panel))
+        panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
+        self.FileButtons.append(panel.Buttons)
+
     def AddTabPanelButton(self, panel):
-        name = ''
         file, ok = QtWidgets.QFileDialog.getOpenFileName(self,
                                                          "选取文件",
                                                          '',
@@ -49,8 +60,22 @@ class ui_DIYPanel(QtWidgets.QWidget):
         if ok:
             name, ok = QtWidgets.QInputDialog.getText(self, '创建启动按钮', '名称')
             button = panel.addButton(name)
-            self.FileMaps[button] = file
+            button.clicked.connect(lambda: self.OpenFile(file))
             button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
+
+    def AddTabPanelButtonFile(self, panel, file, name):
+        button = panel.addButton(name)
+        button.clicked.connect(lambda: self.OpenFile(file))
+        button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
+
+    def OpenFile(self, file):
+        ok = os.system(file)
+        if ok != 0:
+            sysstr = platform.system()
+            if sysstr == 'Windows':
+                os.system('start ' + file)
+            elif sysstr == 'Linux':
+                os.system('xdg-open ' + file)
 
     def DeleteTabPanelButton(self, panel):
         end_one = len(panel.Buttons) - 1
