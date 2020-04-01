@@ -1,4 +1,6 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtCore import Qt
+
 from ui_Widgets import uni_Widget
 import os
 import platform
@@ -63,6 +65,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             button.clicked.connect(lambda: self.TabStack.setCurrentWidget(panel))
             button.Deleted.connect(lambda: self.DeletePanel(panel))
             panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
+            panel.DropFileSignal.connect(lambda s: self.AddTabPanelButtonDrop(s, panel))
             self.FileButtons.append(panel.Buttons)
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
@@ -79,6 +82,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         button.clicked.connect(lambda: self.TabStack.setCurrentWidget(panel))
         button.Deleted.connect(lambda: self.DeletePanel(panel))
         panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
+        panel.DropFileSignal.connect(lambda s: self.AddTabPanelButtonDrop(s, panel))
         self.FileButtons.append(panel.Buttons)
         return panel
 
@@ -103,6 +107,25 @@ class ui_DIYPanel(QtWidgets.QWidget):
             button.clicked.connect(lambda: self.OpenFile(file))
             button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
 
+    def AddTabPanelButtonDrop(self, path, panel):
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            splitChr = '\\'
+        else:
+            splitChr = '/'
+        name = path.split(splitChr)[-1]
+        self.AddTabPanelButtonFile(panel, path, name)
+        conn = sqlite3.connect('./Resources/DIY.sqlite')
+        cu = conn.cursor()
+        print(panel.objectName())
+        try:
+            cu.execute(
+                'INSERT INTO ' + panel.objectName() + ' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + path + '\')')
+            conn.commit()
+        except:
+            errorInfo('添加失败!\n请检查是否有重复项!')
+        conn.close()
+
     def AddTabPanelButtonFile(self, panel, file, name):
         button = panel.addButton(name)
         button.clicked.connect(lambda: self.OpenFile(file))
@@ -115,7 +138,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             if sysstr == 'Windows':
                 os.system('start ' + file)
             elif sysstr == 'Linux':
-                os.system('xdg-open ' + file)
+                os.system('xdg-open \'' + file + '\'')
 
     def DeleteTabPanelButton(self, panel):
         end_one = len(panel.Buttons) - 1
@@ -200,8 +223,11 @@ class ui_DIYPanel(QtWidgets.QWidget):
 
 
 class ResizablePanel(QtWidgets.QWidget):
+    DropFileSignal = QtCore.pyqtSignal(str)
+
     def __init__(self, parent=None):
         super(ResizablePanel, self).__init__(parent)
+        self.setAcceptDrops(True)
         self.r = 0
         self.TheAddButton = uni_Widget.ICTFEButton(self)
         self.TheAddButton.setGeometry(QtCore.QRect(0, 0, 128, 128))
@@ -234,6 +260,30 @@ class ResizablePanel(QtWidgets.QWidget):
             self.r = i // 11
             self.resize(1426, self.GrimBox[self.r + 1])
         return button
+
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasUrls():
+            event.acceptProposedAction()
+        else:
+            event.ignore()
+
+    def dragMoveEvent(self, event):
+        if event.mimeData().hasUrls():
+            event.setDropAction(Qt.LinkAction)
+            event.accept()
+        else:
+            event.ignore()
+
+    def dropEvent(self, event):
+        if event.mimeData().hasUrls():
+            # 遍历输出拖动进来的所有文件路径
+            for url in event.mimeData().urls():
+                path = url.toLocalFile()
+                print(path)
+                self.DropFileSignal.emit(path)
+            event.acceptProposedAction()
+        else:
+            event.ignore()
 
 
 class DIYedButton(uni_Widget.ICTFEButton):
