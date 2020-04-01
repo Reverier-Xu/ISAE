@@ -1,116 +1,159 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMenu
-
-from ui_Widgets import ErrorWin, uni_Widget
+from PyQt5 import QtWidgets, QtCore, QtGui
+from ui_Widgets import uni_Widget
 
 
 class ui_DIYPanel(QtWidgets.QWidget):
-    def __init__(self):
-        super(ui_DIYPanel, self).__init__()
-        self.ButtonArea = DIYedPanel(self)
-        self.ButtonArea.setGeometry(QtCore.QRect(0, 0, 1426, 128))
-        self.ButtonArea.ButtonScroll.setGeometry(QtCore.QRect(0, 0, 1426, 128))
-
-        self.Panels = []
-
-
-class DIYedPanel(QtWidgets.QWidget):
     def __init__(self, parent=None):
-        super(DIYedPanel, self).__init__(parent)
-        self.ButtonScroll = uni_Widget.ICTFEScrollArea(self)
-        self.ButtonScroll.setObjectName('ButtonScroll')
-        self.ButtonPanel = CostumedPanel()
-        self.ButtonPanel.setGeometry(QtCore.QRect(0, 0, 1426, 128))
-        self.ButtonPanel.setObjectName('ButtonPanel')
-        self.ButtonScroll.setWidget(self.ButtonPanel)
+        super(ui_DIYPanel, self).__init__(parent)
 
-        self.TheAddButton = uni_Widget.ICTFEButton(self.ButtonPanel)
-        self.TheAddButton.setObjectName('addButton')
-        self.TheAddButton.setGeometry(QtCore.QRect(0, 0, 128, 128))
-        font = QtGui.QFont()
-        font.setFamily('consolas')
-        font.setPixelSize(50)
-        self.TheAddButton.setFont(font)
-        self.TheAddButton.setText('+')
+        # 上层
+        self.TabAreaScroll = uni_Widget.ICTFEScrollArea(self)
+        self.TabAreaScroll.setObjectName('TabAreaScroll')
+        self.TabAreaScroll.setGeometry(QtCore.QRect(0, 0, 1426, 128))
+        self.TabAreaPanel = ResizablePanel(self)
+        self.TabAreaPanel.setGeometry(QtCore.QRect(0, 0, 1426, 128))
+        self.TabAreaPanel.setObjectName('TabAreaPanel')
+        self.TabAreaScroll.setWidget(self.TabAreaPanel)
+        self.TabAreaPanel.TheAddButton.clicked.connect(self.AddTabPanel)
 
-        self.DIYPanelStacks = QtWidgets.QStackedWidget(self)
-        self.DIYPanelStacks.setObjectName('DIYPanelStacks')
-        self.DIYPanelStacks.setGeometry(QtCore.QRect(1, 135, 1423, 613))
+        # 下层
+        self.TabStack = QtWidgets.QStackedWidget(self)
+        self.TabStack.setObjectName('TabStack')
+        self.TabStack.setGeometry(QtCore.QRect(0, 132, 1425, 613))
 
-        self.TheAddButton.clicked.connect(self.addOne)
-        self.ButtonPanel.reArrangeButtonSig.connect(self.reArrangeAddButton)
+        # 统一管理
+        self.TabButtons = self.TabAreaPanel.Buttons  # 通过List进行有序化管理
+        self.TabPanels = []
+        self.FileButtons = []
+        self.FileMaps = {}
 
-    def addOne(self):
+    def AddTabPanel(self):
         text, ok = QtWidgets.QInputDialog.getText(self, '创建分区', '名称')
         if ok:
-            self.ButtonPanel.addButton(str(text))
-            animation = QtCore.QPropertyAnimation(self)
-            animation.setTargetObject(self.TheAddButton)
-            animation.setPropertyName(b'pos')
-            animation.setDuration(150)
-            animation.setStartValue(self.TheAddButton.pos())
-            animation.setEndValue(QtCore.QPoint(self.ButtonPanel.VBox[len(self.ButtonPanel.Buttons) % 11],
-                                                self.ButtonPanel.HBox[len(self.ButtonPanel.Buttons) // 11]))
-            animation.start()
+            button = self.TabAreaPanel.addButton(text)
+            panel = ResizablePanel()
+            panel.setObjectName(text)
+            self.TabStack.addWidget(panel)
+            self.TabPanels.append(panel)
+            button.clicked.connect(lambda: self.TabStack.setCurrentWidget(panel))
+            button.Deleted.connect(lambda: self.DeletePanel(panel))
+            panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
+            self.FileButtons.append(panel.Buttons)
 
-    def reArrangeAddButton(self):
+    def AddTabPanelButton(self, panel):
+        name = ''
+        file, ok = QtWidgets.QFileDialog.getOpenFileName(self,
+                                                         "选取文件",
+                                                         '',
+                                                         "All Files (*)")
+        if ok:
+            name, ok = QtWidgets.QInputDialog.getText(self, '创建启动按钮', '名称')
+            button = panel.addButton(name)
+            self.FileMaps[button] = file
+            button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
+
+    def DeleteTabPanelButton(self, panel):
+        end_one = len(panel.Buttons) - 1
+        for i in range(0, len(panel.Buttons) - 1, 1):
+            if panel.Buttons[i].isEnabled() is False:
+                panel.Buttons[i].deleteLater()
+                panel.Buttons.remove(panel.Buttons[i])
+            animation = QtCore.QPropertyAnimation(self)
+            animation.setDuration(150)
+            animation.setPropertyName(b'pos')
+            animation.setTargetObject(panel.Buttons[i])
+            animation.setStartValue(panel.Buttons[i].pos())
+            r = i // 11
+            w = i % 11
+            animation.setEndValue(QtCore.QPoint(panel.GrimBox[w], panel.GrimBox[r]))
+            animation.start()
+        try:
+            if panel.Buttons[end_one].isEnabled() is False:
+                panel.Buttons[end_one].deleteLater()
+                panel.Buttons.remove(panel.Buttons[end_one])
+        except:
+            pass
+        i = len(panel.Buttons)
+        animation = QtCore.QPropertyAnimation(self)
+        animation.setDuration(150)
+        animation.setPropertyName(b'pos')
+        animation.setTargetObject(panel.TheAddButton)
+        animation.setStartValue(panel.TheAddButton.pos())
+        r = i // 11
+        w = i % 11
+        animation.setEndValue(QtCore.QPoint(panel.GrimBox[w], panel.GrimBox[r]))
+        animation.start()
+
+    def DeletePanel(self, panel):
+        self.TabStack.removeWidget(panel)
+        self.TabPanels.remove(panel)
+        end_one = len(self.TabButtons) - 1
+        for i in range(0, len(self.TabButtons) - 1, 1):
+            if self.TabButtons[i].isEnabled() is False:
+                self.TabButtons[i].deleteLater()
+                self.TabButtons.remove(self.TabButtons[i])
+            animation = QtCore.QPropertyAnimation(self)
+            animation.setDuration(150)
+            animation.setPropertyName(b'pos')
+            animation.setTargetObject(self.TabButtons[i])
+            animation.setStartValue(self.TabButtons[i].pos())
+            r = i // 11
+            w = i % 11
+            animation.setEndValue(QtCore.QPoint(self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
+            animation.start()
+        try:
+            if self.TabButtons[end_one].isEnabled() is False:
+                self.TabButtons[end_one].deleteLater()
+                self.TabButtons.remove(self.TabButtons[end_one])
+        except:
+            pass
+        i = len(self.TabButtons)
+        animation = QtCore.QPropertyAnimation(self)
+        animation.setDuration(150)
+        animation.setPropertyName(b'pos')
+        animation.setTargetObject(self.TabAreaPanel.TheAddButton)
+        animation.setStartValue(self.TabAreaPanel.TheAddButton.pos())
+        r = i // 11
+        w = i % 11
+        animation.setEndValue(QtCore.QPoint(self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
+        animation.start()
+
+
+class ResizablePanel(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super(ResizablePanel, self).__init__(parent)
+        self.r = 0
+        self.TheAddButton = uni_Widget.ICTFEButton(self)
+        self.TheAddButton.setGeometry(QtCore.QRect(0, 0, 128, 128))
+        self.TheAddButton.setObjectName('TheAddButton')
+        font = QtGui.QFont()
+        font.setFamily('文泉驿微米黑')
+        font.setPixelSize(50)
+        self.TheAddButton.setText('+')
+        self.TheAddButton.setFont(font)
+        self.Buttons = []
+        self.GrimBox = [0, 128, 256, 384, 512, 640, 768, 896, 1024, 1152, 1280]
+
+    def addButton(self, text):
+        button = DIYedButton(self)
+        self.Buttons.append(button)
+        button.setObjectName(text)
+        button.setText(text)
+        button.show()
+        i = len(self.Buttons) - 1
+        button.setGeometry(QtCore.QRect(self.GrimBox[i % 11], self.GrimBox[i // 11], 128, 128))
+        i += 1
         animation = QtCore.QPropertyAnimation(self)
         animation.setTargetObject(self.TheAddButton)
         animation.setPropertyName(b'pos')
         animation.setDuration(150)
         animation.setStartValue(self.TheAddButton.pos())
-        animation.setEndValue(QtCore.QPoint(self.ButtonPanel.VBox[len(self.ButtonPanel.Buttons) % 11],
-                                            self.ButtonPanel.HBox[len(self.ButtonPanel.Buttons) // 11]))
+        animation.setEndValue(QtCore.QPoint(self.GrimBox[i % 11], self.GrimBox[i // 11]))
         animation.start()
-
-
-class CostumedPanel(QtWidgets.QWidget):
-    reArrangeButtonSig = QtCore.pyqtSignal()
-
-    def __init__(self, parent=None):
-        super(CostumedPanel, self).__init__(parent)
-        self.row = 1
-        self.VBox = [0, 128, 256, 384, 512, 640, 768, 896, 1024, 1152, 1280]
-        self.HBox = [0, 128, 256, 384, 512, 640, 768, 896, 1024, 1152, 1280]
-        self.setStyleSheet('background-color: transparent;')
-        self.Buttons = []
-
-    def addButton(self, text):
-        self.Buttons.append(DIYedButton(self))
-        id = len(self.Buttons) - 1
-        r = id // 11
-        w = id % 11
-        self.Buttons[id].setGeometry(QtCore.QRect(self.VBox[w], self.HBox[r], 128, 128))
-        self.Buttons[id].setObjectName(text)
-        self.Buttons[id].setText(text)
-        if len(self.Buttons) // 11 + 1 != self.row:
-            self.row = len(self.Buttons) // 11 + 1
-            self.setGeometry(QtCore.QRect(0, 0, 1426, self.VBox[self.row]))
-        self.Buttons[id].show()
-        self.Buttons[id].Deleted.connect(self.reArrangeButtons)
-
-    def reArrangeButtons(self):
-        endOne = len(self.Buttons) - 1
-        for i in range(0, len(self.Buttons) - 1, 1):
-            if self.Buttons[i].isEnabled() is False:
-                self.Buttons[i].deleteLater()
-                self.Buttons.remove(self.Buttons[i])
-            animation = QtCore.QPropertyAnimation(self)
-            animation.setDuration(150)
-            animation.setPropertyName(b'pos')
-            animation.setTargetObject(self.Buttons[i])
-            animation.setStartValue(self.Buttons[i].pos())
-            r = i // 11
-            w = i % 11
-            animation.setEndValue(QtCore.QPoint(self.VBox[w], self.HBox[r]))
-            animation.start()
-        try:
-            if self.Buttons[endOne].isEnabled() is False:
-                self.Buttons[endOne].deleteLater()
-                self.Buttons.remove(self.Buttons[endOne])
-        except:
-            pass
-        self.reArrangeButtonSig.emit()
+        if i // 11 > self.r:
+            self.r = i // 11
+            self.resize(1426, self.GrimBox[self.r + 1])
+        return button
 
 
 class DIYedButton(uni_Widget.ICTFEButton):
@@ -120,9 +163,9 @@ class DIYedButton(uni_Widget.ICTFEButton):
         super(DIYedButton, self).__init__(parent)
 
     def contextMenuEvent(self, event):
-        menu = QMenu(self)
-        quitAction = menu.addAction("Delete")
+        menu = QtWidgets.QMenu(self)
+        quit_action = menu.addAction("删除")
         action = menu.exec_(self.mapToGlobal(event.pos()))
-        if action == quitAction:
+        if action == quit_action:
             self.setEnabled(False)
             self.Deleted.emit()
