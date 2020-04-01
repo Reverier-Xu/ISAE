@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 from ui_Widgets import uni_Widget
 import os
 import platform
+import sqlite3
 
 
 class ui_DIYPanel(QtWidgets.QWidget):
@@ -28,6 +29,24 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.TabPanels = []
         self.FileButtons = []
 
+        self.ReadDataBase()
+
+    def ReadDataBase(self):
+        conn = sqlite3.connect('./Resources/DIY.sqlite')
+        cu = conn.cursor()
+        cu.execute("select name from sqlite_master where type='table'")
+        tab_name = cu.fetchall()
+        tab_name = [line[0] for line in tab_name]
+        conn.commit()
+        for i in tab_name:
+            panel = self.AddTabPanelFile(i)
+            cu.execute('select * from ' + i)
+            btnList = cu.fetchall()
+            conn.commit()
+            for j in btnList:
+                self.AddTabPanelButtonFile(panel, j[1], j[0])
+        conn.close()
+
     def AddTabPanel(self):
         text, ok = QtWidgets.QInputDialog.getText(self, '创建分区', '名称')
         if ok:
@@ -40,6 +59,11 @@ class ui_DIYPanel(QtWidgets.QWidget):
             button.Deleted.connect(lambda: self.DeletePanel(panel))
             panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
             self.FileButtons.append(panel.Buttons)
+            conn = sqlite3.connect('./Resources/DIY.sqlite')
+            cu = conn.cursor()
+            cu.execute('CREATE TABLE ' + text + ' (BTNNAME TEXT, FILEPATH TEXT );')
+            conn.commit()
+            conn.close()
 
     def AddTabPanelFile(self, text):
         button = self.TabAreaPanel.addButton(text)
@@ -51,6 +75,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         button.Deleted.connect(lambda: self.DeletePanel(panel))
         panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
         self.FileButtons.append(panel.Buttons)
+        return panel
 
     def AddTabPanelButton(self, panel):
         file, ok = QtWidgets.QFileDialog.getOpenFileName(self,
@@ -62,6 +87,13 @@ class ui_DIYPanel(QtWidgets.QWidget):
             button = panel.addButton(name)
             button.clicked.connect(lambda: self.OpenFile(file))
             button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
+            conn = sqlite3.connect('./Resources/DIY.sqlite')
+            cu = conn.cursor()
+            print(panel.objectName())
+            cu.execute(
+                'INSERT INTO ' + panel.objectName() + ' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + file + '\')')
+            conn.commit()
+            conn.close()
 
     def AddTabPanelButtonFile(self, panel, file, name):
         button = panel.addButton(name)
@@ -79,8 +111,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
 
     def DeleteTabPanelButton(self, panel):
         end_one = len(panel.Buttons) - 1
+        aimBtn = ''
         for i in range(0, len(panel.Buttons) - 1, 1):
             if panel.Buttons[i].isEnabled() is False:
+                aimBtn = panel.Buttons[i].text()
                 panel.Buttons[i].deleteLater()
                 panel.Buttons.remove(panel.Buttons[i])
             animation = QtCore.QPropertyAnimation(self)
@@ -94,6 +128,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             animation.start()
         try:
             if panel.Buttons[end_one].isEnabled() is False:
+                aimBtn = panel.Buttons[end_one].text()
                 panel.Buttons[end_one].deleteLater()
                 panel.Buttons.remove(panel.Buttons[end_one])
         except:
@@ -108,8 +143,20 @@ class ui_DIYPanel(QtWidgets.QWidget):
         w = i % 11
         animation.setEndValue(QtCore.QPoint(panel.GrimBox[w], panel.GrimBox[r]))
         animation.start()
+        if aimBtn != '':
+            conn = sqlite3.connect('./Resources/DIY.sqlite')
+            cu = conn.cursor()
+            print('DELETE from ' + panel.objectName() + ' where BTNNAME=' + aimBtn + ';')
+            cu.execute('DELETE from ' + panel.objectName() + ' where BTNNAME=\'' + aimBtn + '\';')
+            conn.commit()
+            conn.close()
 
     def DeletePanel(self, panel):
+        conn = sqlite3.connect('./Resources/DIY.sqlite')
+        cu = conn.cursor()
+        cu.execute('drop table ' + panel.objectName())
+        conn.commit()
+        conn.close()
         self.TabStack.removeWidget(panel)
         self.TabPanels.remove(panel)
         end_one = len(self.TabButtons) - 1
