@@ -11,11 +11,13 @@ from CryptoPanel import Crypto
 from ui_Widgets import uni_Widget
 from FileStack.FileStack import FileStack
 from DIYPanel.DIYPanel import DIYPanel
+from TerminalPanel.TerminalPanel import TerminalPanel
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         QtGui.QFontDatabase.addApplicationFont('./Resources/wqy-microhei.ttc')
+        QtGui.QFontDatabase.addApplicationFont('./Resources/MaterialIcons-Regular.ttf')
         # some variables
         self.TypeMode = 0
         # define MainWindow
@@ -168,7 +170,7 @@ class Ui_MainWindow(object):
         self.TypeStack.addWidget(self.DIYPanel)
 
         # Terminal Panel
-        self.TerminalPanel = QtWidgets.QWidget()
+        self.TerminalPanel = TerminalPanel()
         self.TerminalPanel.setObjectName('TerminalPanel')
         self.TypeStack.addWidget(self.TerminalPanel)
 

@@ -5,6 +5,7 @@ from ui_Widgets import uni_Widget
 import os
 import platform
 import sqlite3
+import subprocess
 from ui_Widgets.ErrorWin import errorInfo
 
 
@@ -33,6 +34,21 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.FileButtons = []
 
         self.ReadDataBase()
+
+    def EditButtonName(self, panel, button):
+        text = button.text()
+        conn = sqlite3.connect('./Resources/DIY.sqlite')
+        cu = conn.cursor()
+        cu.execute('select FILEPATH from \'' + panel.objectName() + '\' where BTNNAME=\'' + text + '\'')
+        file = cu.fetchall()[0][0]
+        new_name, ok = QtWidgets.QInputDialog.getText(self, '更改名称', '名称')
+        if ok:
+            button.setText(new_name)
+            cu.execute(
+                'update \'' + panel.objectName() + '\' set BTNNAME=\'' + new_name + '\' where FILEPATH=\'' + file + '\'')
+            conn.commit()
+            conn.close()
+            print(file)
 
     def ReadDataBase(self):
         conn = sqlite3.connect('./Resources/DIY.sqlite')
@@ -107,6 +123,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             panel.resize(1426, 613)
             button.clicked.connect(lambda: self.OpenFile(file))
             button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
+            button.EditNameSignal.connect(lambda: self.EditButtonName(panel, button))
 
     def AddTabPanelButtonDrop(self, path, panel):
         osinfo = platform.system()
@@ -132,10 +149,12 @@ class ui_DIYPanel(QtWidgets.QWidget):
         panel.resize(1426, 613)
         button.clicked.connect(lambda: self.OpenFile(file))
         button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
+        button.EditNameSignal.connect(lambda: self.EditButtonName(panel, button))
 
     def OpenFile(self, file):
-        ok = os.system(file)
-        if ok != 0:
+        try:
+            subprocess.Popen(file)
+        except:
             sysstr = platform.system()
             if sysstr == 'Windows':
                 os.system('start \'' + file + '\'')
@@ -291,6 +310,8 @@ class ResizablePanel(QtWidgets.QWidget):
 
 class DIYedButton(QtWidgets.QPushButton):
     Deleted = QtCore.pyqtSignal()
+    EditNameSignal = QtCore.pyqtSignal()
+    EditCmdSignal = QtCore.pyqtSignal()
 
     def __init__(self, parent=None):
         super(DIYedButton, self).__init__(parent)
@@ -319,8 +340,11 @@ class DIYedButton(QtWidgets.QPushButton):
 
     def contextMenuEvent(self, event):
         menu = QtWidgets.QMenu(self)
+        edit_name_action = menu.addAction("编辑名称")
         quit_action = menu.addAction("删除")
         action = menu.exec_(self.mapToGlobal(event.pos()))
         if action == quit_action:
             self.setEnabled(False)
             self.Deleted.emit()
+        if action == edit_name_action:
+            self.EditNameSignal.emit()
