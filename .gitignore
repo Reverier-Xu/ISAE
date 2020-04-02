@@ -1,3 +1,6 @@
 __pycache__/
 .idea/
 Resources/DIY.sqlite
+dist/
+build/
+Run.spec

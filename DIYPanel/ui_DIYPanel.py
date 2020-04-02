@@ -20,6 +20,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.TabAreaPanel = ResizablePanel(self)
         self.TabAreaPanel.setGeometry(QtCore.QRect(0, 0, 1426, 128))
         self.TabAreaPanel.setObjectName('TabAreaPanel')
+        self.TabAreaPanel.setStyleSheet('background-color: transparent')
         self.TabAreaScroll.setWidget(self.TabAreaPanel)
         self.TabAreaPanel.TheAddButton.clicked.connect(self.AddTabPanel)
 
