@@ -26,8 +26,12 @@ fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 clone本仓库到本地, 安装PyQt5
 
 ```
-pip install PyQt5 -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install PyQt5 PyQt5-sip PyQtWebEngine -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 如果需要在Windows上进行打包，则需要安装 pyinstaller
 ```
+
+请不要使用Windows应用商店自带的python环境， 那个存在问题。
 
 运行
 
