@@ -12,6 +12,7 @@ from ui_Widgets import uni_Widget
 from FileStack.FileStack import FileStack
 from DIYPanel.DIYPanel import DIYPanel
 from TerminalPanel.TerminalPanel import TerminalPanel
+from BrowserPanel.BrowserPanel import BrowserPanel
 
 
 class Ui_MainWindow(object):
@@ -109,6 +110,12 @@ class Ui_MainWindow(object):
         self.TerminalButton.setGeometry(QtCore.QRect(24, 540, 120, 45))
         self.TerminalButton.setObjectName('TerminalButton')
 
+        # BrowserButton
+        self.BrowserButton = uni_Widget.ICTFEButton(self.CentralWidget)
+        self.BrowserButton.setGeometry(QtCore.QRect(1000, 70, 120, 45))
+        self.BrowserButton.setObjectName('BrowserButton')
+        self.BrowserButton.setText('浏览器')
+
         '''End define Type Change Button'''
 
         # File Temp Stack
@@ -174,6 +181,11 @@ class Ui_MainWindow(object):
         self.TerminalPanel.setObjectName('TerminalPanel')
         self.TypeStack.addWidget(self.TerminalPanel)
 
+        # Browser Panel
+        self.BrowserPanel = BrowserPanel()
+        self.BrowserPanel.setObjectName('BrowserPanel')
+        self.TypeStack.addWidget(self.BrowserPanel)
+
         # Welcome Panel
         self.WelcomePanel = QtWidgets.QWidget()
         self.WelcomePanel.setObjectName('WelcomePanel')
@@ -201,6 +213,7 @@ class Ui_MainWindow(object):
         self.WebButton.clicked.connect(self.ChangeTypeStackWeb)
         self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
         self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
+        self.BrowserButton.clicked.connect(self.ChangeTypeStackBrowser)
         self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
 
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
@@ -302,6 +315,16 @@ class Ui_MainWindow(object):
         self.TypeStack.setCurrentWidget(self.TerminalPanel)
         animation.setEndValue(QtCore.QPoint(
             24, self.TypeChooserBox[self.TypeMode]))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeTypeStackBrowser(self):
+        animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
+        animation.setStartValue(QtCore.QPoint(
+            24, self.TypeChooserBox[self.TypeMode]))
+        self.TypeStack.setCurrentWidget(self.BrowserPanel)
+        animation.setEndValue(QtCore.QPoint(
+            1000, 115))
         animation.setDuration(200)
         animation.start()
 
