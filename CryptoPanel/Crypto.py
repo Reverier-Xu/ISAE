@@ -19,6 +19,7 @@ class CryptoPanel(ui_CryptoPanel):
         self.RailFenceButton.clicked.connect(self.ChangeCryptoRailFence)
         self.ROTButton.clicked.connect(self.ChangeCryptoROT)
         self.StrokesButton.clicked.connect(self.ChangeCryptoStrokes)
+        self.RSAButton.clicked.connect(self.ChangeCryptoRSA)
 
     def ChangeCryptoStrokes(self):
         animation = Qt.QPropertyAnimation(self)
@@ -75,6 +76,23 @@ class CryptoPanel(ui_CryptoPanel):
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         animation.setDuration(200)
         animation.start()
+
+    # RSA工具
+
+    def ChangeCryptoRSA(self):
+        animation = Qt.QPropertyAnimation(self)
+        animation.setTargetObject(self.CryptoChooser)
+        animation.setPropertyName(b'pos')
+        animation.setStartValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        self.CryptoMode = 13
+        self.CryptoStack.setCurrentWidget(self.RSAPanel)
+        # self.RSAPanel.ChangeRSA()
+        animation.setEndValue(QtCore.QPoint(
+            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
+        animation.setDuration(200)
+        animation.start()
+
 
     def ChangeCryptoHash(self):
         animation = Qt.QPropertyAnimation(self)
@@ -197,7 +215,3 @@ class CryptoPanel(ui_CryptoPanel):
             self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
         animation.setDuration(200)
         animation.start()
-
-    
-
-

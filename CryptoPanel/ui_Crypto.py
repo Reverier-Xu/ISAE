@@ -13,6 +13,7 @@ from CryptoPanel.CaesarModule.CaesarModule import CaesarPanel
 from CryptoPanel.RailFenceModule.RailFenceModule import RailFencePanel
 from CryptoPanel.StrokesModule.StrokesModule import StrokesPanel
 from CryptoPanel.ROTModule.ROTModule import ROTPanel
+from CryptoPanel.RSAModule.RSAModule import RSAPanel
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):
@@ -382,3 +383,8 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.StrokesPanel = StrokesPanel()
         self.StrokesPanel.setObjectName('StrokesPanel')
         self.CryptoStack.addWidget(self.StrokesPanel)
+
+        # RSA panel
+        self.RSAPanel = RSAPanel()
+        self.RSAPanel.setObjectName('RSAPanel')
+        self.CryptoStack.addWidget(self.RSAPanel)
