@@ -5,6 +5,7 @@ from ui_Widgets import uni_Widget
 import os
 import platform
 import sqlite3
+import subprocess
 from ui_Widgets.ErrorWin import errorInfo
 
 
@@ -134,8 +135,9 @@ class ui_DIYPanel(QtWidgets.QWidget):
         button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
 
     def OpenFile(self, file):
-        ok = os.system(file)
-        if ok != 0:
+        try:
+            subprocess.Popen(file)
+        except:
             sysstr = platform.system()
             if sysstr == 'Windows':
                 os.system('start \'' + file + '\'')
