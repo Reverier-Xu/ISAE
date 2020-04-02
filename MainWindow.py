@@ -2,7 +2,7 @@
 
 ################################################
 #                                              #
-#  Powered By Reverier, XDSEC     2020 03 25   #
+#  Created By Reverier, XDSEC     2020 03 23   #
 #                                              #
 ################################################
 
@@ -11,6 +11,7 @@ from CryptoPanel import Crypto
 from ui_Widgets import uni_Widget
 from FileStack.FileStack import FileStack
 from DIYPanel.DIYPanel import DIYPanel
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -113,7 +114,7 @@ class Ui_MainWindow(object):
         self.FileTempStackTip.setGeometry(QtCore.QRect(24, 630, 120, 30))
         self.FileTempStackTip.setObjectName('FileTempStackTip')
         self.FileTempStackTip.setText('暂存池')
-        
+
         self.FileTempStackDelButton = uni_Widget.ICTFEButton(self.CentralWidget)
         self.FileTempStackDelButton.setGeometry(QtCore.QRect(114, 632, 30, 30))
         self.FileTempStackDelButton.setObjectName("FileTempStackDelButton")
@@ -182,7 +183,7 @@ class Ui_MainWindow(object):
         self.Contributors.setObjectName('Contributors')
         with open('./Contributors', 'r') as inp:
             self.Contributors.setText('Contributors: ' + inp.read())
-        self.Contributors.setGeometry(QtCore.QRect(10, 675, 1400, 45))
+        self.Contributors.setGeometry(QtCore.QRect(50, 675, 1400, 45))
 
         # Set MainWindow Widget
         MainWindow.setCentralWidget(self.CentralWidget)
