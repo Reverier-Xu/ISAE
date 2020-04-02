@@ -43,7 +43,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         conn.commit()
         for i in tab_name:
             panel = self.AddTabPanelFile(i)
-            cu.execute('select * from ' + i)
+            cu.execute('select * from \'' + i + '\'')
             btnList = cu.fetchall()
             conn.commit()
             for j in btnList:
@@ -69,7 +69,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             self.FileButtons.append(panel.Buttons)
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
-            cu.execute('CREATE TABLE ' + text + ' (BTNNAME TEXT, FILEPATH TEXT );')
+            cu.execute('CREATE TABLE \'' + text + '\' (BTNNAME TEXT, FILEPATH TEXT );')
             conn.commit()
             conn.close()
 
@@ -98,7 +98,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             print(panel.objectName())
             try:
                 cu.execute(
-                    'INSERT INTO ' + panel.objectName() + ' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + file + '\')')
+                    'INSERT INTO \'' + panel.objectName() + '\' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + file + '\')')
                 conn.commit()
             except:
                 errorInfo('添加失败!\n请检查是否有重复项!')
@@ -120,7 +120,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         print(panel.objectName())
         try:
             cu.execute(
-                'INSERT INTO ' + panel.objectName() + ' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + path + '\')')
+                'INSERT INTO \'' + panel.objectName() + '\' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + path + '\')')
             conn.commit()
         except:
             errorInfo('添加失败!\n请检查是否有重复项!')
@@ -136,7 +136,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         if ok != 0:
             sysstr = platform.system()
             if sysstr == 'Windows':
-                os.system('start ' + file)
+                os.system('start \'' + file + '\'')
             elif sysstr == 'Linux':
                 os.system('xdg-open \'' + file + '\'')
 
@@ -178,14 +178,14 @@ class ui_DIYPanel(QtWidgets.QWidget):
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
             print('DELETE from ' + panel.objectName() + ' where BTNNAME=' + aimBtn + ';')
-            cu.execute('DELETE from ' + panel.objectName() + ' where BTNNAME=\'' + aimBtn + '\';')
+            cu.execute('DELETE from \'' + panel.objectName() + '\' where BTNNAME=\'' + aimBtn + '\';')
             conn.commit()
             conn.close()
 
     def DeletePanel(self, panel):
         conn = sqlite3.connect('./Resources/DIY.sqlite')
         cu = conn.cursor()
-        cu.execute('drop table ' + panel.objectName())
+        cu.execute('DROP TABLE \'' + panel.objectName() + '\'')
         conn.commit()
         conn.close()
         self.TabStack.removeWidget(panel)
@@ -238,7 +238,8 @@ class ResizablePanel(QtWidgets.QWidget):
         self.TheAddButton.setText('+')
         self.TheAddButton.setFont(font)
         self.Buttons = []
-        self.GrimBox = [0, 128, 256, 384, 512, 640, 768, 896, 1024, 1152, 1280]
+        self.GrimBox = [0, 130, 260, 390, 520, 650, 780, 910, 1040, 1170, 1300]
+        # self.GrimBox = [0, 128, 256, 384, 512, 640, 768, 896, 1024, 1152, 1280]
 
     def addButton(self, text):
         button = DIYedButton(self)
@@ -286,11 +287,33 @@ class ResizablePanel(QtWidgets.QWidget):
             event.ignore()
 
 
-class DIYedButton(uni_Widget.ICTFEButton):
+class DIYedButton(QtWidgets.QPushButton):
     Deleted = QtCore.pyqtSignal()
 
     def __init__(self, parent=None):
         super(DIYedButton, self).__init__(parent)
+        font = QtGui.QFont()
+        font.setFamily("文泉驿微米黑")
+        font.setPixelSize(24)
+        font.setBold(False)
+        font.setWeight(50)
+        self.setFont(font)
+        self.setStyleSheet(
+            "QPushButton{"
+            "background-color:rgba(80, 120, 190, 60%);"
+            "color: white;"
+            "border-radius: 0px;"
+            "border: 0px groove gray;"
+            "border-style: outset;"
+            "}"
+            "QPushButton:hover{"
+            "background-color: rgba(80, 160, 80, 60%);"
+            "color: white;"
+            "}"
+            "QPushButton:pressed{"
+            "background-color: rgb(100, 100, 100);"
+            "border-style: inset; "
+            "}")
 
     def contextMenuEvent(self, event):
         menu = QtWidgets.QMenu(self)
