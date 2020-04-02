@@ -25,7 +25,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         # 下层
         self.TabStack = QtWidgets.QStackedWidget(self)
         self.TabStack.setObjectName('TabStack')
-        self.TabStack.setGeometry(QtCore.QRect(0, 132, 1425, 613))
+        self.TabStack.setGeometry(QtCore.QRect(0, 132, 1426, 613))
 
         # 统一管理
         self.TabButtons = self.TabAreaPanel.Buttons  # 通过List进行有序化管理
@@ -104,6 +104,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
                 errorInfo('添加失败!\n请检查是否有重复项!')
             conn.close()
             button = panel.addButton(name)
+            panel.resize(1426, 613)
             button.clicked.connect(lambda: self.OpenFile(file))
             button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
 
@@ -128,6 +129,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
 
     def AddTabPanelButtonFile(self, panel, file, name):
         button = panel.addButton(name)
+        panel.resize(1426, 613)
         button.clicked.connect(lambda: self.OpenFile(file))
         button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
 
@@ -177,7 +179,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         if aimBtn != '':
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
-            print('DELETE from ' + panel.objectName() + ' where BTNNAME=' + aimBtn + ';')
+            print('DELETE from \'' + panel.objectName() + '\' where BTNNAME=\'' + aimBtn + '\';')
             cu.execute('DELETE from \'' + panel.objectName() + '\' where BTNNAME=\'' + aimBtn + '\';')
             conn.commit()
             conn.close()
@@ -300,14 +302,14 @@ class DIYedButton(QtWidgets.QPushButton):
         self.setFont(font)
         self.setStyleSheet(
             "QPushButton{"
-            "background-color:rgba(80, 120, 190, 60%);"
+            "background-color:rgba(80, 160, 255, 80%);"
             "color: white;"
             "border-radius: 0px;"
             "border: 0px groove gray;"
             "border-style: outset;"
             "}"
             "QPushButton:hover{"
-            "background-color: rgba(80, 160, 80, 60%);"
+            "background-color: rgba(80, 160, 80, 80%);"
             "color: white;"
             "}"
             "QPushButton:pressed{"
