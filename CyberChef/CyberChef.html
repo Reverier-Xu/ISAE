@@ -145,8 +145,7 @@
 
     </div>
 </div>
-<button type="button" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip"
-        title="Edit favourites">
+<button type="button" class="btn btn-warning bmd-btn-icon" id="edit-favourites" data-toggle="tooltip" title="编辑收藏">
     <i class="material-icons">star</i>
 </button>
 <div id="content-wrapper">
@@ -171,8 +170,8 @@
     <div id="workspace-wrapper">
         <div id="operations" class="split split-horizontal no-select">
             <div class="title no-select">Operations</div>
-            <input id="search" type="search" class="form-control"
-                   placeholder="Search..." autocomplete="off" tabindex="2">
+            <input id="search" type="search" class="form-control" placeholder="Search..." autocomplete="off"
+                   tabindex="2">
             <ul id="search-results" class="op-list"></ul>
             <div id="categories" class="panel-group no-select"></div>
         </div>
@@ -192,14 +191,11 @@
             <ul id="rec-list" class="list-area no-select"></ul>
             <div id="controls" class="no-select">
                 <div id="controls-content" class="d-flex align-items-center">
-                    <button type="button"
-                            class="mx-2 btn btn-lg btn-secondary" id="step" data-toggle="tooltip"
+                    <button type="button" class="mx-2 btn btn-lg btn-secondary" id="step" data-toggle="tooltip"
                             title="Step through the recipe">Step
                     </button>
-                    <button type="button"
-                            class="mx-2 btn btn-lg btn-success btn-raised btn-block" id="bake"><img aria-hidden="true"
-                                                                                                    src="images/cook_male-32x32.png"
-                                                                                                    alt="Chef Icon">
+                    <button type="button" class="mx-2 btn btn-lg btn-success btn-raised btn-block" id="bake"><img
+                            aria-hidden="true" src="images/cook_male-32x32.png" alt="Chef Icon">
                         <span>Bake!</span></button>
                     <div class="form-group" style="display:contents">
                         <div class="mx-1 checkbox"><label id="auto-bake-label"><input type="checkbox"
@@ -242,28 +238,24 @@
                         aria-haspopup="true" aria-expanded="false">···</span>
                     <div class="dropdown-menu" aria-labelledby="btn-input-tab-dropdown"><a id="btn-go-to-input-tab"
                                                                                            class="dropdown-item">Go to
-                        tab </a><a id="btn-find-input-tab"
-                                   class="dropdown-item">Find tab </a><a id="btn-close-all-tabs"
-                                                                         class="dropdown-item">Close all tabs</a></div>
-                    <span id="btn-next-input-tab"
-                          class="input-tab-buttons">&gt;</span>
+                        tab </a><a id="btn-find-input-tab" class="dropdown-item">Find tab </a><a
+                            id="btn-close-all-tabs" class="dropdown-item">Close all tabs</a></div>
+                    <span id="btn-next-input-tab" class="input-tab-buttons">&gt;</span>
                     <ul id="input-tabs"></ul>
                 </div>
                 <div class="textarea-wrapper no-select input-wrapper" id="input-wrapper">
                     <div id="input-highlighter" class="no-select"></div>
-                    <textarea id="input-text" class="input-text"
-                              spellcheck="false" tabindex="1" autofocus></textarea>
+                    <textarea id="input-text" class="input-text" spellcheck="false" tabindex="1"
+                              autofocus></textarea>
                     <div class="input-file" id="input-file">
                         <div class="file-overlay" id="file-overlay"></div>
                         <div style="position:relative;height:100%">
                             <div class="io-card card"><img aria-hidden="true" src="images/file-128x128.png"
                                                            alt="File icon" id="input-file-thumbnail">
                                 <div class="card-body">
-                                    <button type="button" class="close"
-                                            id="input-file-close">&times;
+                                    <button type="button" class="close" id="input-file-close">&times;
                                     </button>
-                                    Name: <span
-                                        id="input-file-name"></span><br>Size: <span
+                                    Name: <span id="input-file-name"></span><br>Size: <span
                                         id="input-file-size"></span><br>Type: <span
                                         id="input-file-type"></span><br>Loaded: <span id="input-file-loaded"></span>
                                 </div>
@@ -300,9 +292,8 @@
                     <div class="io-info" id="bake-info"></div>
                     <div class="io-info" id="output-info"></div>
                     <div class="io-info" id="output-selection-info"></div>
-                    <button type="button"
-                            class="btn btn-primary bmd-btn-icon hidden" id="magic" data-toggle="tooltip" title="Magic!"
-                            data-html="true">
+                    <button type="button" class="btn btn-primary bmd-btn-icon hidden" id="magic"
+                            data-toggle="tooltip" title="Magic!" data-html="true">
                         <svg width="22" height="22" viewBox="0 0 24 24">
                             <path
                                     d="M7.5,5.6L5,7L6.4,4.5L5,2L7.5,3.4L10,2L8.6,4.5L10,7L7.5,5.6M19.5,15.4L22,14L20.6,16.5L22,19L19.5,17.6L17,19L18.4,16.5L17,14L19.5,15.4M22,2L20.6,4.5L22,7L19.5,5.6L17,7L18.4,4.5L17,2L19.5,3.4L22,2M13.34,12.78L15.78,10.34L13.66,8.22L11.22,10.66L13.34,12.78M14.37,7.29L16.71,9.63C17.1,10 17.1,10.65 16.71,11.04L5.04,22.71C4.65,23.1 4,23.1 3.63,22.71L1.29,20.37C0.9,20 0.9,19.35 1.29,18.96L12.96,7.29C13.35,6.9 14,6.9 14.37,7.29Z"/>
@@ -320,29 +311,25 @@
                         <div class="dropdown-menu" aria-labelledby="btn-input-tab-dropdown"><a
                                 id="btn-go-to-output-tab" class="dropdown-item">Go to tab </a><a
                                 id="btn-find-output-tab" class="dropdown-item">Find tab</a></div>
-                        <span
-                                id="btn-next-output-tab" class="output-tab-buttons">&gt;</span>
+                        <span id="btn-next-output-tab" class="output-tab-buttons">&gt;</span>
                         <ul id="output-tabs"></ul>
                     </div>
                     <div class="textarea-wrapper">
                         <div id="output-highlighter" class="no-select"></div>
                         <div id="output-html"></div>
-                        <textarea id="output-text" readonly="readonly"
-                                  spellcheck="false"></textarea> <img id="show-file-overlay" aria-hidden="true"
-                                                                      src="images/file-32x32.png"
-                                                                      alt="Show file overlay" title="Show file overlay">
+                        <textarea id="output-text" readonly="readonly" spellcheck="false"></textarea> <img
+                            id="show-file-overlay" aria-hidden="true" src="images/file-32x32.png"
+                            alt="Show file overlay" title="Show file overlay">
                         <div id="output-file">
                             <div class="file-overlay"></div>
                             <div style="position:relative;height:100%">
                                 <div class="io-card card"><img aria-hidden="true" src="images/file-128x128.png"
                                                                alt="File icon">
                                     <div class="card-body">Size: <span id="output-file-size"></span><br>
-                                        <button
-                                                id="output-file-download" type="button"
+                                        <button id="output-file-download" type="button"
                                                 class="btn btn-primary btn-outline">Download
                                         </button>
-                                        <button
-                                                id="output-file-show-all" type="button"
+                                        <button id="output-file-show-all" type="button"
                                                 class="btn btn-warning btn-outline" data-toggle="tooltip"
                                                 title="Warning: This could crash your browser. Use at your own risk.">
                                             Show
@@ -357,9 +344,8 @@
                                                               step="128"
                                                               min="0">
                                             <div class="input-group-addon">to</div>
-                                            <input type="number"
-                                                   class="form-control" id="output-file-slice-to" placeholder="To"
-                                                   value="256" step="128" min="0">
+                                            <input type="number" class="form-control" id="output-file-slice-to"
+                                                   placeholder="To" value="256" step="128" min="0">
                                             <div class="input-group-addon">KiB</div>
                                         </div>
                                     </div>
@@ -414,11 +400,9 @@
                             local storage using this name, or copy it to load later</span></div>
             </div>
             <div class="modal-footer" id="save-footer">
-                <button type="button" class="btn btn-primary"
-                        id="save-button" data-dismiss="modal">Save
+                <button type="button" class="btn btn-primary" id="save-button" data-dismiss="modal">Save
                 </button>
-                <button type="button"
-                        class="btn btn-secondary" data-dismiss="modal">Done
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Done
                 </button>
             </div>
             <div class="modal-body">
@@ -427,11 +411,11 @@
                     <div class="save-link-options"><label class="checkbox-inline"><input type="checkbox"
                                                                                          id="save-link-recipe-checkbox"
                                                                                          checked="checked"> Include
-                        recipe</label> <label
-                            class="checkbox-inline"><input type="checkbox" id="save-link-input-checkbox"
-                                                           checked="checked"> Include input</label></div>
-                    <br><br><a id="save-link"
-                               style="word-wrap:break-word"></a>
+                        recipe</label> <label class="checkbox-inline"><input type="checkbox"
+                                                                             id="save-link-input-checkbox"
+                                                                             checked="checked"> Include input</label>
+                    </div>
+                    <br><br><a id="save-link" style="word-wrap:break-word"></a>
                 </div>
             </div>
         </div>
@@ -452,14 +436,11 @@
                             recipe by pasting it into this box</span></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="load-button"
-                        data-dismiss="modal">Load
+                <button type="button" class="btn btn-primary" id="load-button" data-dismiss="modal">Load
                 </button>
-                <button type="button" class="btn btn-danger"
-                        id="load-delete-button">Delete
+                <button type="button" class="btn btn-danger" id="load-delete-button">Delete
                 </button>
-                <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Cancel
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                 </button>
             </div>
         </div>
@@ -550,8 +531,7 @@
                 <button type="button" class="btn btn-secondary" id="reset-options">Reset
                     options to default
                 </button>
-                <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Close
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                 </button>
             </div>
         </div>
@@ -561,7 +541,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Favourites</h5>
+                <h5 class="modal-title">编辑收藏</h5>
             </div>
             <div class="modal-body" id="favourites-body">
                 <ul>
@@ -577,14 +557,12 @@
                 <div class="option-item"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="reset-favourites">Reset favourites to default
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="reset-favourites">Reset
+                    favourites to default
                 </button>
-                <button type="button"
-                        class="btn btn-success" data-dismiss="modal" id="save-favourites">Save
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="save-favourites">Save
                 </button>
-                <button
-                        type="button" class="btn btn-danger" data-dismiss="modal">Cancel
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel
                 </button>
             </div>
         </div>
@@ -654,8 +632,8 @@
                                     parts of the input as arguments to operations</a></li>
                             </ul>
                         </div>
-                        <br><a class="btn btn-primary" data-toggle="collapse"
-                               data-target="#faq-load-files">Can I load input directly from files?</a>
+                        <br><a class="btn btn-primary" data-toggle="collapse" data-target="#faq-load-files">Can I
+                            load input directly from files?</a>
                         <div class="collapse" id="faq-load-files">
                             <p>Yes! Just drag your file over the input box and drop it.</p>
                             <p>CyberChef can handle files up to around 2GB (depending on your browser), however some
@@ -693,8 +671,8 @@
                             it in as much detail as possible. Copy and include the following information if
                             relevant.</p><br>
                         <pre id="report-bug-info"></pre>
-                        <br><a class="btn btn-primary"
-                               href="https://github.com/gchq/CyberChef/issues/new/choose" role="button">Raise issue on
+                        <br><a class="btn btn-primary" href="https://github.com/gchq/CyberChef/issues/new/choose"
+                               role="button">Raise issue on
                             GitHub</a>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="about" style="padding:20px">
@@ -733,13 +711,13 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Close
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                 </button>
             </div>
-            <a href="https://github.com/gchq/CyberChef"><img
-                    aria-hidden="true" style="position:absolute;top:0;right:0;border:0" src="images/fork_me.png"
-                    alt="Fork me on GitHub"></a>
+            <a href="https://github.com/gchq/CyberChef"><img aria-hidden="true"
+                                                             style="position:absolute;top:0;right:0;border:0"
+                                                             src="images/fork_me.png"
+                                                             alt="Fork me on GitHub"></a>
         </div>
     </div>
 </div>
@@ -780,12 +758,10 @@
                 <div class="form-group input-group">
                     <div class="toggle-string"><label for="input-filter"
                                                       class="bmd-label-floating toggle-string">Filter (regex)</label>
-                        <input type="text"
-                               class="form-control toggle-string" id="input-filter"></div>
+                        <input type="text" class="form-control toggle-string" id="input-filter"></div>
                     <div class="input-group-append">
-                        <button class="btn btn-secondary dropdown-toggle"
-                                id="input-filter-button" type="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">CONTENT
+                        <button class="btn btn-secondary dropdown-toggle" id="input-filter-button" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CONTENT
                         </button>
                         <div class="dropdown-menu toggle-dropdown"><a class="dropdown-item"
                                                                       id="input-filter-content">Content</a> <a
@@ -801,11 +777,9 @@
                 <ul id="input-search-results"></ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"
-                        id="input-filter-refresh">Refresh
+                <button type="button" class="btn btn-primary" id="input-filter-refresh">Refresh
                 </button>
-                <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Close
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                 </button>
             </div>
         </div>
@@ -834,8 +808,8 @@
                     </ul>
                     <div class="form-group output-find-option"><label for="output-content-filter"
                                                                       class="bmd-label-floating">Content filter
-                        (regex)</label> <input type="text"
-                                               class="form-control" id="output-content-filter"></div>
+                        (regex)</label> <input type="text" class="form-control" id="output-content-filter">
+                    </div>
                     <div class="form-group output-find-option" id="output-num-results-container"><label
                             for="output-num-results" class="bmd-label-floating">Number of results</label> <input
                             type="number" class="form-control" id="output-num-results" value="20"></div>
@@ -845,11 +819,9 @@
                 <ul id="output-search-results"></ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"
-                        id="output-filter-refresh">Refresh
+                <button type="button" class="btn btn-primary" id="output-filter-refresh">Refresh
                 </button>
-                <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">Close
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                 </button>
             </div>
         </div>

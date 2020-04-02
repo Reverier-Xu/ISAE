@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
 
         '''Begin define Type panel change method'''
         self.TypeStack = QtWidgets.QStackedWidget(self.CentralWidget)
-        self.TypeStack.setGeometry(QtCore.QRect(170, 130, 1425, 765))
+        self.TypeStack.setGeometry(QtCore.QRect(169, 130, 1428, 768))
         self.TypeStack.setObjectName("TypeStack")
 
         # Choose ticker
@@ -320,4 +320,4 @@ class Ui_MainWindow(object):
         self.WebButton.setText("Web渗透")
         self.PwnButton.setText("PWN!")
         self.DIYButton.setText("启动器")
-        self.TerminalButton.setText('终端集成')
+        self.TerminalButton.setText('数据神厨')
