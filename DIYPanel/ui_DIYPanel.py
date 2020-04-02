@@ -16,9 +16,9 @@ class ui_DIYPanel(QtWidgets.QWidget):
         # 上层
         self.TabAreaScroll = uni_Widget.ICTFEScrollArea(self)
         self.TabAreaScroll.setObjectName('TabAreaScroll')
-        self.TabAreaScroll.setGeometry(QtCore.QRect(0, 0, 1426, 128))
+        self.TabAreaScroll.setGeometry(QtCore.QRect(1, 0, 1426, 128))
         self.TabAreaPanel = ResizablePanel(self)
-        self.TabAreaPanel.setGeometry(QtCore.QRect(0, 0, 1426, 128))
+        self.TabAreaPanel.setGeometry(QtCore.QRect(1, 0, 1426, 128))
         self.TabAreaPanel.setObjectName('TabAreaPanel')
         self.TabAreaPanel.setStyleSheet('background-color: transparent')
         self.TabAreaScroll.setWidget(self.TabAreaPanel)
@@ -27,7 +27,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         # 下层
         self.TabStack = QtWidgets.QStackedWidget(self)
         self.TabStack.setObjectName('TabStack')
-        self.TabStack.setGeometry(QtCore.QRect(0, 132, 1426, 613))
+        self.TabStack.setGeometry(QtCore.QRect(1, 132, 1426, 631))
 
         # 统一管理
         self.TabButtons = self.TabAreaPanel.Buttons  # 通过List进行有序化管理
