@@ -107,4 +107,8 @@ Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 
 # 当前完成状态预览
 
-![图片.png](https://i.loli.net/2020/03/28/PiozhculbHMSUEB.png)
+![图片.png](https://i.loli.net/2020/04/02/4gbzPdF8t2QDWKs.png)
+
+![图片.png](https://i.loli.net/2020/04/02/PxHJf5LbIiluMqV.png)
+
+![图片.png](https://i.loli.net/2020/04/02/LJHd38XGIZFExjw.png)
