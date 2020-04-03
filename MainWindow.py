@@ -112,7 +112,7 @@ class Ui_MainWindow(object):
 
         # BrowserButton
         self.BrowserButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.BrowserButton.setGeometry(QtCore.QRect(1000, 70, 120, 45))
+        self.BrowserButton.setGeometry(QtCore.QRect(600, 73, 120, 45))
         self.BrowserButton.setObjectName('BrowserButton')
         self.BrowserButton.setText('浏览器')
 
@@ -135,7 +135,7 @@ class Ui_MainWindow(object):
 
         '''Begin define Type panel change method'''
         self.TypeStack = QtWidgets.QStackedWidget(self.CentralWidget)
-        self.TypeStack.setGeometry(QtCore.QRect(169, 130, 1428, 768))
+        self.TypeStack.setGeometry(QtCore.QRect(169, 130, 1429, 768))
         self.TypeStack.setObjectName("TypeStack")
 
         # Choose ticker
@@ -190,7 +190,10 @@ class Ui_MainWindow(object):
         self.WelcomePanel = QtWidgets.QWidget()
         self.WelcomePanel.setObjectName('WelcomePanel')
         self.WelcomePanel.setStyleSheet(
-            'QWidget#WelcomePanel{image:url(./Resources/welcome.png)}')
+            'QWidget#WelcomePanel{image:url(./Resources/welcome.png);'
+            'color: rgb(40, 40, 40);'
+            'background-color: rgb(40, 40, 40);'
+            'border-width: 0px;}')
         self.TypeStack.addWidget(self.WelcomePanel)
 
         self.Contributors = uni_Widget.ICTFELabel(self.WelcomePanel)
@@ -236,8 +239,7 @@ class Ui_MainWindow(object):
         animation = Qt.QPropertyAnimation(self)
         animation.setTargetObject(self.TypeChooser)
         animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeMode = 3
         self.TypeStack.setCurrentWidget(self.CryptoPanel)
         self.CryptoPanel.ChangeCryptoBase()
@@ -249,8 +251,7 @@ class Ui_MainWindow(object):
     def ChangeTypeStackReverse(self):
         '''改变类型控件组 逆向'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeMode = 1
         self.TypeStack.setCurrentWidget(self.ReversePanel)
         animation.setEndValue(QtCore.QPoint(
@@ -261,8 +262,7 @@ class Ui_MainWindow(object):
     def ChangeTypeStackWeb(self):
         '''改变类型控件组 web'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeMode = 2
         self.TypeStack.setCurrentWidget(self.WebPanel)
         animation.setEndValue(QtCore.QPoint(
@@ -273,8 +273,7 @@ class Ui_MainWindow(object):
     def ChangeTypeStackMisc(self):
         '''改变类型控件组 杂项'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeMode = 5
         self.TypeStack.setCurrentWidget(self.MiscPanel)
         animation.setEndValue(QtCore.QPoint(
@@ -285,8 +284,7 @@ class Ui_MainWindow(object):
     def ChangeTypeStackPwn(self):
         '''改变类型控件组 pwn'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeMode = 4
         self.TypeStack.setCurrentWidget(self.PwnPanel)
         animation.setEndValue(QtCore.QPoint(
@@ -297,8 +295,7 @@ class Ui_MainWindow(object):
     def ChangeTypeStackDIY(self):
         '''改变类型控件组 DIY'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeMode = 6
         self.TypeStack.setCurrentWidget(self.DIYPanel)
         animation.setEndValue(QtCore.QPoint(
@@ -309,8 +306,7 @@ class Ui_MainWindow(object):
     def ChangeTypeStackTerminal(self):
         '''改变类型控件组 Terminal'''
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeMode = 7
         self.TypeStack.setCurrentWidget(self.TerminalPanel)
         animation.setEndValue(QtCore.QPoint(
@@ -320,11 +316,10 @@ class Ui_MainWindow(object):
 
     def ChangeTypeStackBrowser(self):
         animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
-        animation.setStartValue(QtCore.QPoint(
-            24, self.TypeChooserBox[self.TypeMode]))
+        animation.setStartValue(self.TypeChooser.pos())
         self.TypeStack.setCurrentWidget(self.BrowserPanel)
         animation.setEndValue(QtCore.QPoint(
-            1000, 115))
+            600, 118))
         animation.setDuration(200)
         animation.start()
 
