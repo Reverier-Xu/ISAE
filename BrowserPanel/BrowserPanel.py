@@ -94,8 +94,11 @@ class BrowserTab(QMainWindow):
             self.browser.load(s)
 
     def navigate_to_home(self):
-        s = QUrl("https://www.bilibili.com/")
-        self.browser.load(s)
+        pwd = os.getcwd()
+        pwd = pwd.replace('\\', '/')
+        print('file:///' + pwd + '/Resources/Search/Search.html')
+        self.browser.load(QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
+        self.browser.show()
 
     def renew_urlbar(self, s):
         prec = s.scheme()
@@ -122,7 +125,10 @@ class BrowserWindow(QWidget):
         self.tabs.setMovable(True)
         self.tabs.setTabShape(0)
         self.init_tab = BrowserTab(self)
-        self.init_tab.browser.load(QUrl("https://www.bilibili.com/"))
+        pwd = os.getcwd()
+        pwd = pwd.replace('\\', '/')
+        print('file:///' + pwd + '/Resources/Search/Search.html')
+        self.init_tab.browser.load(QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
         self.add_new_tab(self.init_tab)
         self.tabs.tabCloseRequested.connect(lambda i: self.close_current_tab(i))
 
