@@ -1,10 +1,6 @@
 import os
 
-from PyQt5 import QtWidgets, QtCore, QtGui, QtWebEngineWidgets
-from PyQt5.QtCore import QFileInfo
-from PyQt5.QtWidgets import QFileDialog
-
-from ui_Widgets import uni_Widget, ErrorWin
+from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets
 
 
 class WikiPanel(QtWidgets.QWidget):
@@ -26,4 +22,12 @@ class WikiBrowserPanelWidget(QtWidgets.QWidget):
         print('file:///' + pwd + '/Resources/Wiki/index.html')
         self.browser.load(QtCore.QUrl('file:///' + pwd + '/Resources/Wiki/index.html'))
         self.browser.setGeometry(QtCore.QRect(0, 0, 1428, 768))
+        self.browser.urlChanged.connect(lambda link: self.SuitLocalWiki(link))
         self.browser.show()
+
+    def SuitLocalWiki(self, qlink):
+        link = qlink.toString()
+        if link[-1] == '/':
+            link += 'index.html'
+            out = QtCore.QUrl(link)
+            self.browser.load(QtCore.QUrl(out))
