@@ -18,7 +18,6 @@ from BrowserPanel.BrowserPanel import BrowserPanel
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         QtGui.QFontDatabase.addApplicationFont('./Resources/wqy-microhei.ttc')
-        QtGui.QFontDatabase.addApplicationFont('./Resources/MaterialIcons-Regular.ttf')
         # some variables
         self.TypeMode = 0
         # define MainWindow
@@ -189,11 +188,16 @@ class Ui_MainWindow(object):
         # Welcome Panel
         self.WelcomePanel = QtWidgets.QWidget()
         self.WelcomePanel.setObjectName('WelcomePanel')
+        self.WelcomeLabel = QtWidgets.QLabel(self.WelcomePanel)
+        self.WelcomeLabel.setObjectName('WelcomeLabel')
+        self.WelcomeLabel.setGeometry(QtCore.QRect(0, 0, 1428, 768))
+        pixmap = QtGui.QPixmap("./Resources/welcome.png")  # 按指定路径找到图片
+        self.WelcomeLabel.setPixmap(pixmap)  # 在label上显示图片
         self.WelcomePanel.setStyleSheet(
-            'QWidget#WelcomePanel{image:url(./Resources/welcome.png);'
             'color: rgb(40, 40, 40);'
             'background-color: rgb(40, 40, 40);'
             'border-width: 0px;}')
+        self.WelcomeLabel.setAutoFillBackground(True)
         self.TypeStack.addWidget(self.WelcomePanel)
 
         self.Contributors = uni_Widget.ICTFELabel(self.WelcomePanel)
