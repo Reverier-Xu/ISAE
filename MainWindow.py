@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
 
         # BrowserButton
         self.BrowserButton = uni_Widget.ICTFEButton(self.CentralWidget)
-        self.BrowserButton.setGeometry(QtCore.QRect(600, 73, 120, 45))
+        self.BrowserButton.setGeometry(QtCore.QRect(1080, 73, 120, 45))
         self.BrowserButton.setObjectName('BrowserButton')
         self.BrowserButton.setText('浏览器')
 
@@ -323,7 +323,7 @@ class Ui_MainWindow(object):
         animation.setStartValue(self.TypeChooser.pos())
         self.TypeStack.setCurrentWidget(self.BrowserPanel)
         animation.setEndValue(QtCore.QPoint(
-            600, 118))
+            1080, 118))
         animation.setDuration(200)
         animation.start()
 
