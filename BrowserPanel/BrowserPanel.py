@@ -28,6 +28,11 @@ class BrowserEngineView(QWebEngineView):
     def createWindow(self, QWebPage_WebWindowType):
         webview = BrowserEngineView(self.mainWindow)
         tab = BrowserTab(self.mainWindow)
+        webview.settings().setAttribute(QWebEngineSettings.FullScreenSupportEnabled, True)
+        webview.settings().setAttribute(QWebEngineSettings.JavascriptEnabled, True)
+        webview.settings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
+        QWebEngineSettings.defaultSettings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
+        QWebEngineSettings.globalSettings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
         tab.browser = webview
         tab.setCentralWidget(tab.browser)
         self.tabs.append(tab)
@@ -41,9 +46,6 @@ class BrowserTab(QMainWindow):
         self.mainWindow = Main
         self.browser = BrowserEngineView(self.mainWindow)
         self.browser.load(QUrl("about:blank"))
-        self.browser.settings().setAttribute(QWebEngineSettings.FullScreenSupportEnabled, True)
-        self.browser.settings().setAttribute(QWebEngineSettings.JavascriptEnabled, True)
-        self.browser.settings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
         self.setCentralWidget(self.browser)
         self.navigation_bar = QToolBar('Navigation')
         self.navigation_bar.setIconSize(QSize(16, 16))
@@ -114,7 +116,7 @@ class BrowserWindow(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.tabs = QTabWidget(self)
-        self.tabsDict = {}
+        self.tabs.setStyleSheet('background-color: rgb(40, 40, 40);')
         self.tabs.setGeometry(QRect(0, 0, 1428, 768))
         self.tabs.setTabsClosable(True)
         self.tabs.setMovable(True)
@@ -130,7 +132,6 @@ class BrowserWindow(QWidget):
 
     def add_new_tab(self, tab):
         i = self.tabs.addTab(tab, "新建")
-        self.tabsDict[i] = tab
         self.tabs.setCurrentIndex(i)
         self.tabs.setTabIcon(i, QIcon('Assets/main.png'))
         tab.back_button.triggered.connect(tab.browser.back)

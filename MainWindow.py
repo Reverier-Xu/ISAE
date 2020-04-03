@@ -196,7 +196,7 @@ class Ui_MainWindow(object):
         self.WelcomePanel.setStyleSheet(
             'color: rgb(40, 40, 40);'
             'background-color: rgb(40, 40, 40);'
-            'border-width: 0px;}')
+            'border-width: 0px;')
         self.WelcomeLabel.setAutoFillBackground(True)
         self.TypeStack.addWidget(self.WelcomePanel)
 
