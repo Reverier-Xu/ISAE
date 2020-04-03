@@ -7,12 +7,13 @@
 ################################################
 
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
-from CryptoPanel import Crypto
+from CryptoPanel import CryptoPanel
 from ui_Widgets import uni_Widget
 from FileStack.FileStack import FileStack
 from DIYPanel.DIYPanel import DIYPanel
 from TerminalPanel.TerminalPanel import TerminalPanel
 from BrowserPanel.BrowserPanel import BrowserPanel
+from WikiPanel.WikiPanel import WikiPanel
 
 
 class Ui_MainWindow(object):
@@ -109,6 +110,12 @@ class Ui_MainWindow(object):
         self.TerminalButton.setGeometry(QtCore.QRect(24, 540, 120, 45))
         self.TerminalButton.setObjectName('TerminalButton')
 
+        # WikiButton
+        self.WikiButton = uni_Widget.ICTFEButton(self.CentralWidget)
+        self.WikiButton.setGeometry(QtCore.QRect(960, 73, 120, 45))
+        self.WikiButton.setObjectName('WikiButton')
+        self.WikiButton.setText('Wiki')
+
         # BrowserButton
         self.BrowserButton = uni_Widget.ICTFEButton(self.CentralWidget)
         self.BrowserButton.setGeometry(QtCore.QRect(1080, 73, 120, 45))
@@ -156,7 +163,7 @@ class Ui_MainWindow(object):
         self.TypeStack.addWidget(self.WebPanel)
 
         # Crypto Panel
-        self.CryptoPanel = Crypto.CryptoPanel()
+        self.CryptoPanel = CryptoPanel.CryptoPanel()
         self.CryptoPanel.setObjectName("CryptoPanel")
         self.TypeStack.addWidget(self.CryptoPanel)
 
@@ -184,6 +191,11 @@ class Ui_MainWindow(object):
         self.BrowserPanel = BrowserPanel()
         self.BrowserPanel.setObjectName('BrowserPanel')
         self.TypeStack.addWidget(self.BrowserPanel)
+
+        # Wiki Panel
+        self.WikiPanel = WikiPanel()
+        self.WikiPanel.setObjectName('WikiPanel')
+        self.TypeStack.addWidget(self.WikiPanel)
 
         # Welcome Panel
         self.WelcomePanel = QtWidgets.QWidget()
@@ -221,6 +233,7 @@ class Ui_MainWindow(object):
         self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
         self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
         self.BrowserButton.clicked.connect(self.ChangeTypeStackBrowser)
+        self.WikiButton.clicked.connect(self.ChangeTypeStackWiki)
         self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
 
         self.FileTempStack.doubleClicked.connect(self.FileStackCopy)
@@ -324,6 +337,15 @@ class Ui_MainWindow(object):
         self.TypeStack.setCurrentWidget(self.BrowserPanel)
         animation.setEndValue(QtCore.QPoint(
             1080, 118))
+        animation.setDuration(200)
+        animation.start()
+
+    def ChangeTypeStackWiki(self):
+        animation = Qt.QPropertyAnimation(self.TypeChooser, b'pos', self)
+        animation.setStartValue(self.TypeChooser.pos())
+        self.TypeStack.setCurrentWidget(self.WikiPanel)
+        animation.setEndValue(QtCore.QPoint(
+            960, 118))
         animation.setDuration(200)
         animation.start()
 
