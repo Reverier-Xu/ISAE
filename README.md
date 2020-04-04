@@ -143,3 +143,9 @@ Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 Windows上的H5不包含h.264的解码器, 无法进行H5播放. Linux上一切正常.
 
 # 当前完成状态预览
+![Screenshot_20200404_125915.png](https://i.loli.net/2020/04/04/puivLnDIkFrAHwl.png)
+![Screenshot_20200404_125946.png](https://i.loli.net/2020/04/04/otsqaBLAu6RSbXi.png)
+![Screenshot_20200404_130002.png](https://i.loli.net/2020/04/04/q5WgoEdxIcODL6Y.png)
+![Screenshot_20200404_125928.png](https://i.loli.net/2020/04/04/8X9qRU51bd2Lykf.png)
+![Screenshot_20200403_203428.png](https://i.loli.net/2020/04/04/MroUzRGt69YJO37.png)
+![Screenshot_20200404_125833.png](https://i.loli.net/2020/04/04/DpLPHqF26sO8jIz.png)
