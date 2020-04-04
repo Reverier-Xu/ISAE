@@ -39,7 +39,7 @@ pip install gmpy2
 
 ```
 
-请不要使用Windows应用商店自带的python环境， 那个存在问题。
+请不要使用Windows应用商店提供的python环境， 那个存在问题。
 
 运行
 
@@ -125,10 +125,21 @@ Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 
 所设定的文件将尝试执行, 若不可执行则调用命令使用相关软件打开当前文件.
 
+## CyberChef
+
+即**数据神厨**分区. 至于为什么要把CyberChef翻译成数据神厨, 这个问题就不必纠结了... 因为实在想不到什么好翻译了
+
+如果直接写CyberChef的话好像会超出按钮的长度所以就翻译成中文了 (逃
+
+本分区集成了CyberChef的所有功能, 支持文件输入输出, 尽力与官方版本保持同步.
+
+## CTF Wiki
+
+集成了完整的离线CTF Wiki. 将来本wiki将会和官方wiki同步更改.
+
+## 浏览器
+
+集成了一个具有基本浏览功能的浏览器. 支持Flash插件的使用.
+Windows上的H5不包含h.264的解码器, 无法进行H5播放. Linux上一切正常.
+
 # 当前完成状态预览
-
-![图片.png](https://i.loli.net/2020/04/02/4gbzPdF8t2QDWKs.png)
-
-![图片.png](https://i.loli.net/2020/04/02/PxHJf5LbIiluMqV.png)
-
-![图片.png](https://i.loli.net/2020/04/02/LJHd38XGIZFExjw.png)
