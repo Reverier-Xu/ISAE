@@ -26,9 +26,17 @@ fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 clone本仓库到本地, 安装PyQt5
 
 ```
-pip install PyQt5 PyQt5-sip PyQtWebEngine -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install PyQt5 PyQt5-sip PyQtWebEngine pycrypto -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 如果需要在Windows上进行打包，则需要安装 pyinstaller
+
+pip install gmpy2
+
+# 这里请注意, gmpy2在Windows平台上可能不会正常工作.
+# 请Windows平台的用户前往 https://www.lfd.uci.edu/~gohlke/pythonlibs/
+# 下载对应版本的gmpy2并本地安装.
+# 待软件开发完成后将进行不依赖于开发环境的打包工作, 敬请期待.
+
 ```
 
 请不要使用Windows应用商店自带的python环境， 那个存在问题。
