@@ -48,7 +48,7 @@ class BrowserTab(QMainWindow):
         self.browser.load(QUrl("about:blank"))
         self.setCentralWidget(self.browser)
         self.navigation_bar = QToolBar('Navigation')
-        self.navigation_bar.setIconSize(QSize(16, 16))
+        self.navigation_bar.setIconSize(QSize(18, 18))
         self.addToolBar(self.navigation_bar)
 
         self.back_button = QAction(QIcon('Assets/back.png'), '后退', self)
@@ -81,13 +81,24 @@ class BrowserTab(QMainWindow):
         self.navigation_bar.addWidget(self.url_text_bar)
         self.navigation_bar.addAction(self.enter_button)
         self.navigation_bar.setMovable(False)
+        self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
+        self.shortcutd.activated.connect(self.zoom_in_func)
+        self.shortcutu = QShortcut(QKeySequence("Ctrl+-"), self)
+        self.shortcutu.activated.connect(self.zoom_out_func)
+
+    def zoom_in_func(self):
+        self.browser.setZoomFactor(self.browser.zoomFactor() + 0.1)
+
+    def zoom_out_func(self):
+        self.browser.setZoomFactor(self.browser.zoomFactor() - 0.1)
 
     def navigate_to_url(self):
         s = QUrl(self.url_text_bar.text())
         if s.scheme() == '':
             s.setScheme('http')
-        if re.match('((http|ftp|https)://)?(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?',
-                    self.url_text_bar.text()) != None:
+        if re.match(
+                '((http|ftp|https)://)?(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?',
+                self.url_text_bar.text()) != None:
             self.browser.load(s)
         else:
             s = QUrl('https://cn.bing.com/search?q=' + self.url_text_bar.text())
@@ -103,11 +114,11 @@ class BrowserTab(QMainWindow):
     def renew_urlbar(self, s):
         prec = s.scheme()
         if prec == 'http':
-            self.ssl_label1.setPixmap(QPixmap("Assets/unsafe.png").scaledToHeight(16))
+            self.ssl_label1.setPixmap(QPixmap("Assets/unsafe.png").scaledToHeight(18))
             self.ssl_label2.setText(" 不安全 ")
             self.ssl_label2.setStyleSheet("color:red;")
         elif prec == 'https':
-            self.ssl_label1.setPixmap(QPixmap("Assets/safe.png").scaledToHeight(16))
+            self.ssl_label1.setPixmap(QPixmap("Assets/safe.png").scaledToHeight(18))
             self.ssl_label2.setText(" 安全 ")
             self.ssl_label2.setStyleSheet("color:green;")
         self.url_text_bar.setText(s.toString())
@@ -151,7 +162,8 @@ class BrowserWindow(QWidget):
         tab.browser.urlChanged.connect(tab.renew_urlbar)
         tab.browser.titleChanged.connect(lambda title: (self.tabs.setTabText(i, title),
                                                         self.tabs.setTabToolTip(i, title)))
-        # tab.browser.iconChanged.connect(self.tabs.setTabIcon(i, tab.browser.icon()))
+
+    #        tab.browser.iconChanged.connect(self.tabs.setTabIcon(i, tab.browser.icon()))
 
     def close_current_tab(self, i):
         if self.tabs.count() > 1:

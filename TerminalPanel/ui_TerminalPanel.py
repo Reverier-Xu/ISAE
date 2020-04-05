@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QUrl, QFileInfo
+from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWebEngineWidgets import QWebEngineDownloadItem
-from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QFileDialog, QShortcut
 
 from ui_Widgets import uni_Widget
 from ui_Widgets.ErrorWin import errorInfo
@@ -29,6 +30,16 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         self.browser.setGeometry(QtCore.QRect(0, 0, 1428, 768))
         self.browser.show()
         self.browser.page().profile().downloadRequested.connect(self.on_downloadRequested)
+        self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
+        self.shortcutd.activated.connect(self.zoom_in_func)
+        self.shortcutu = QShortcut(QKeySequence("Ctrl+-"), self)
+        self.shortcutu.activated.connect(self.zoom_out_func)
+
+    def zoom_in_func(self):
+        self.browser.setZoomFactor(self.browser.zoomFactor() + 0.1)
+
+    def zoom_out_func(self):
+        self.browser.setZoomFactor(self.browser.zoomFactor() - 0.1)
 
     def on_downloadRequested(self, download: "QWebEngineDownloadItem"):
         # download是QWebEngineDownloadItem对象；
