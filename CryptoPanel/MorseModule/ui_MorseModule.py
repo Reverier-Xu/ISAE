@@ -22,6 +22,11 @@ class ui_MorsePanel(QtWidgets.QWidget):
         self.MorseSpiltBox.setObjectName('MorseSpiltBox')
         self.MorseSpiltBox.setGeometry(QtCore.QRect(150, 20, 100, 45))
 
+        self.MorseChineseCheckBox = uni_Widget.ICTFECheckBox(self)
+        self.MorseChineseCheckBox.setObjectName('MorseChineseCheckBox')
+        self.MorseChineseCheckBox.setGeometry(QtCore.QRect(260, 20, 100, 45))
+        self.MorseChineseCheckBox.setText('中文')
+
         # Morse Decode button
         self.MorseDecodeButton = uni_Widget.ICTFEButton(self)
         self.MorseDecodeButton.setObjectName('MorseDecodeButton')

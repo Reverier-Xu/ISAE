@@ -27,7 +27,7 @@ class MorsePanel(ui_MorsePanel):
             return
         try:
             self.MorseCipherBox.setText(MorseEncode(
-                self.MorseTextBox.toPlainText(), spilt))
+                self.MorseTextBox.toPlainText(), spilt, self.MorseChineseCheckBox.isChecked()))
         except:
             errorInfo(self, '编码出现错误!')
 
@@ -40,6 +40,6 @@ class MorsePanel(ui_MorsePanel):
             return
         try:
             self.MorseTextBox.setText(MorseDecode(
-                self.MorseCipherBox.toPlainText(), spilt))
+                self.MorseCipherBox.toPlainText(), spilt, self.MorseChineseCheckBox.isChecked()))
         except:
             errorInfo(self, '解码出现错误!')
