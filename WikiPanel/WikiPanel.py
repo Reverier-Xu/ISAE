@@ -26,6 +26,7 @@ class WikiBrowserPanelWidget(QtWidgets.QWidget):
         self.browser.setGeometry(QtCore.QRect(0, 0, 1428, 768))
         self.browser.urlChanged.connect(lambda link: self.SuitLocalWiki(link))
         self.browser.show()
+        self.browser.setZoomFactor(1.1)
 
         self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
         self.shortcutd.activated.connect(self.zoom_in_func)

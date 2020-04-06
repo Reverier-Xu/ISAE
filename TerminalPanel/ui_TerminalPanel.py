@@ -29,6 +29,7 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         self.browser.load(QtCore.QUrl('file:///' + pwd + '/CyberChef/CyberChef.html'))
         self.browser.setGeometry(QtCore.QRect(0, 0, 1428, 768))
         self.browser.show()
+        self.browser.setZoomFactor(1.2)
         self.browser.page().profile().downloadRequested.connect(self.on_downloadRequested)
         self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
         self.shortcutd.activated.connect(self.zoom_in_func)
