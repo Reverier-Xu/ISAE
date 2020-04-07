@@ -16,7 +16,11 @@ class ui_TerminalPanel(QtWidgets.QWidget):
         self.CyberChefPanel = CyberChefPanelWidget(self)
         self.CyberChefPanel.setObjectName('CyberChefPanel')
         self.CyberChefPanel.setStyleSheet('background-color: transparent;')
-        self.CyberChefPanel.setGeometry(0, 0, 1428, 768)
+        self.Layouts = QtWidgets.QHBoxLayout(self)
+        self.Layouts.addWidget(self.CyberChefPanel)
+        self.Layouts.setSpacing(0)
+        self.Layouts.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.Layouts)
 
 
 class CyberChefPanelWidget(QtWidgets.QWidget):
@@ -26,8 +30,13 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         print('file:///' + pwd + '/CyberChef/CyberChef.html')
-        self.browser.load(QtCore.QUrl('file:///' + pwd + '/CyberChef/CyberChef.html'))
-        self.browser.setGeometry(QtCore.QRect(0, 0, 1428, 768))
+        self.browser.load(QtCore.QUrl(
+            'file:///' + pwd + '/CyberChef/CyberChef.html'))
+        self.Layouts = QtWidgets.QHBoxLayout(self)
+        self.Layouts.addWidget(self.browser)
+        self.Layouts.setSpacing(0)
+        self.Layouts.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.Layouts)
         self.browser.show()
         self.browser.setZoomFactor(1.2)
         self.browser.page().profile().downloadRequested.connect(self.on_downloadRequested)
@@ -51,7 +60,8 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         filttype = download.mimeType()
         # 后缀切割
         unkonw_suffix = filttype.split(r'/')[-1]
-        path, _ = QFileDialog.getSaveFileName(self, "保存到", old_path, "*." + unkonw_suffix + ";;" + "*." + suffix)
+        path, _ = QFileDialog.getSaveFileName(
+            self, "保存到", old_path, "*." + unkonw_suffix + ";;" + "*." + suffix)
         print(old_path, suffix)
         if path != "":
             download.setPath(path)

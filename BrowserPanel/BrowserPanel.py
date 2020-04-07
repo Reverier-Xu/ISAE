@@ -15,7 +15,11 @@ class BrowserPanel(QWidget):
     def __init__(self, parent=None):
         super(BrowserPanel, self).__init__(parent)
         self.MainBrowser = BrowserWindow(self)
-        self.MainBrowser.setGeometry(QRect(0, 0, 1428, 768))
+        self.Layouts = QHBoxLayout(self)
+        self.Layouts.addWidget(self.MainBrowser)
+        self.Layouts.setSpacing(0)
+        self.Layouts.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.Layouts)
 
 
 class BrowserEngineView(QWebEngineView):
@@ -31,8 +35,10 @@ class BrowserEngineView(QWebEngineView):
         webview.settings().setAttribute(QWebEngineSettings.FullScreenSupportEnabled, True)
         webview.settings().setAttribute(QWebEngineSettings.JavascriptEnabled, True)
         webview.settings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
-        QWebEngineSettings.defaultSettings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
-        QWebEngineSettings.globalSettings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
+        QWebEngineSettings.defaultSettings().setAttribute(
+            QWebEngineSettings.PluginsEnabled, True)
+        QWebEngineSettings.globalSettings().setAttribute(
+            QWebEngineSettings.PluginsEnabled, True)
         tab.browser = webview
         tab.setCentralWidget(tab.browser)
         self.tabs.append(tab)
@@ -101,24 +107,28 @@ class BrowserTab(QMainWindow):
                 self.url_text_bar.text()) != None:
             self.browser.load(s)
         else:
-            s = QUrl('https://cn.bing.com/search?q=' + self.url_text_bar.text())
+            s = QUrl('https://cn.bing.com/search?q=' +
+                     self.url_text_bar.text())
             self.browser.load(s)
 
     def navigate_to_home(self):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         print('file:///' + pwd + '/Resources/Search/Search.html')
-        self.browser.load(QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
+        self.browser.load(
+            QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
         self.browser.show()
 
     def renew_urlbar(self, s):
         prec = s.scheme()
         if prec == 'http':
-            self.ssl_label1.setPixmap(QPixmap("Assets/unsafe.png").scaledToHeight(18))
+            self.ssl_label1.setPixmap(
+                QPixmap("Assets/unsafe.png").scaledToHeight(18))
             self.ssl_label2.setText(" 不安全 ")
             self.ssl_label2.setStyleSheet("color:red;")
         elif prec == 'https':
-            self.ssl_label1.setPixmap(QPixmap("Assets/safe.png").scaledToHeight(18))
+            self.ssl_label1.setPixmap(
+                QPixmap("Assets/safe.png").scaledToHeight(18))
             self.ssl_label2.setText(" 安全 ")
             self.ssl_label2.setStyleSheet("color:green;")
         self.url_text_bar.setText(s.toString())
@@ -131,7 +141,11 @@ class BrowserWindow(QWidget):
         super().__init__(parent)
         self.tabs = QTabWidget(self)
         self.tabs.setStyleSheet('background-color: rgb(40, 40, 40);')
-        self.tabs.setGeometry(QRect(0, 0, 1428, 768))
+        self.Layouts = QHBoxLayout(self)
+        self.Layouts.addWidget(self.tabs)
+        self.Layouts.setSpacing(0)
+        self.Layouts.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.Layouts)
         self.tabs.setTabsClosable(True)
         self.tabs.setMovable(True)
         self.tabs.setTabShape(0)
@@ -139,9 +153,11 @@ class BrowserWindow(QWidget):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         print('file:///' + pwd + '/Resources/Search/Search.html')
-        self.init_tab.browser.load(QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
+        self.init_tab.browser.load(
+            QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
         self.add_new_tab(self.init_tab)
-        self.tabs.tabCloseRequested.connect(lambda i: self.close_current_tab(i))
+        self.tabs.tabCloseRequested.connect(
+            lambda i: self.close_current_tab(i))
 
     def add_blank_tab(self):
         blank_tab = BrowserTab(self)

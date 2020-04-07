@@ -34,7 +34,7 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 
 
 if __name__ == "__main__":
-    #QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
+    # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
     Win = MainWindow()
     Win.setWindowTitle('ICTFE')

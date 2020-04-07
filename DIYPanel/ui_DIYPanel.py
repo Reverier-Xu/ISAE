@@ -12,22 +12,34 @@ from ui_Widgets.ErrorWin import errorInfo
 class ui_DIYPanel(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(ui_DIYPanel, self).__init__(parent)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self)
 
-        # 上层
+        self.verticalLayout.setObjectName("verticalLayout")
         self.TabAreaScroll = uni_Widget.ICTFEScrollArea(self)
-        self.TabAreaScroll.setObjectName('TabAreaScroll')
-        self.TabAreaScroll.setGeometry(QtCore.QRect(1, 0, 1426, 128))
-        self.TabAreaPanel = ResizablePanel(self)
-        self.TabAreaPanel.setGeometry(QtCore.QRect(1, 0, 1426, 128))
-        self.TabAreaPanel.setObjectName('TabAreaPanel')
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.TabAreaScroll.sizePolicy().hasHeightForWidth())
+        self.TabAreaScroll.setSizePolicy(sizePolicy)
+        self.TabAreaScroll.setMinimumSize(QtCore.QSize(1200, 130))
+        self.TabAreaScroll.setWidgetResizable(True)
+        self.TabAreaScroll.setObjectName("TabAreaScroll")
+
+        self.TabAreaPanel = ResizablePanel()
+        self.TabAreaPanel.setGeometry(QtCore.QRect(0, 0, 1600, 128))
+        self.TabAreaPanel.setObjectName("TabAreaPanel")
+        self.TabAreaPanel.TheAddButton.clicked.connect(self.AddTabPanel)
+
         self.TabAreaPanel.setStyleSheet('background-color: transparent')
         self.TabAreaScroll.setWidget(self.TabAreaPanel)
-        self.TabAreaPanel.TheAddButton.clicked.connect(self.AddTabPanel)
+        self.verticalLayout.addWidget(self.TabAreaScroll)
 
         # 下层
         self.TabStack = QtWidgets.QStackedWidget(self)
-        self.TabStack.setObjectName('TabStack')
-        self.TabStack.setGeometry(QtCore.QRect(1, 132, 1426, 631))
+        self.TabStack.setObjectName("TabStack")
+        self.verticalLayout.addWidget(self.TabStack)
 
         # 统一管理
         self.TabButtons = self.TabAreaPanel.Buttons  # 通过List进行有序化管理
@@ -40,7 +52,8 @@ class ui_DIYPanel(QtWidgets.QWidget):
         text = button.text()
         conn = sqlite3.connect('./Resources/DIY.sqlite')
         cu = conn.cursor()
-        cu.execute('select FILEPATH from \'' + panel.objectName() + '\' where BTNNAME=\'' + text + '\'')
+        cu.execute('select FILEPATH from \'' + panel.objectName() +
+                   '\' where BTNNAME=\'' + text + '\'')
         file = cu.fetchall()[0][0]
         new_name, ok = QtWidgets.QInputDialog.getText(self, '更改名称', '名称')
         if ok:
@@ -79,14 +92,18 @@ class ui_DIYPanel(QtWidgets.QWidget):
             panel.setObjectName(text)
             self.TabStack.addWidget(panel)
             self.TabPanels.append(panel)
-            button.clicked.connect(lambda: self.TabStack.setCurrentWidget(panel))
+            button.clicked.connect(
+                lambda: self.TabStack.setCurrentWidget(panel))
             button.Deleted.connect(lambda: self.DeletePanel(panel))
-            panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
-            panel.DropFileSignal.connect(lambda s: self.AddTabPanelButtonDrop(s, panel))
+            panel.TheAddButton.clicked.connect(
+                lambda: self.AddTabPanelButton(panel))
+            panel.DropFileSignal.connect(
+                lambda s: self.AddTabPanelButtonDrop(s, panel))
             self.FileButtons.append(panel.Buttons)
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
-            cu.execute('CREATE TABLE \'' + text + '\' (BTNNAME TEXT, FILEPATH TEXT );')
+            cu.execute('CREATE TABLE \'' + text +
+                       '\' (BTNNAME TEXT, FILEPATH TEXT );')
             conn.commit()
             conn.close()
 
@@ -98,8 +115,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.TabPanels.append(panel)
         button.clicked.connect(lambda: self.TabStack.setCurrentWidget(panel))
         button.Deleted.connect(lambda: self.DeletePanel(panel))
-        panel.TheAddButton.clicked.connect(lambda: self.AddTabPanelButton(panel))
-        panel.DropFileSignal.connect(lambda s: self.AddTabPanelButtonDrop(s, panel))
+        panel.TheAddButton.clicked.connect(
+            lambda: self.AddTabPanelButton(panel))
+        panel.DropFileSignal.connect(
+            lambda s: self.AddTabPanelButtonDrop(s, panel))
         self.FileButtons.append(panel.Buttons)
         return panel
 
@@ -121,10 +140,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
                 errorInfo('添加失败!\n请检查是否有重复项!')
             conn.close()
             button = panel.addButton(name)
-            panel.resize(1426, 613)
             button.clicked.connect(lambda: self.OpenFile(file))
             button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
-            button.EditNameSignal.connect(lambda: self.EditButtonName(panel, button))
+            button.EditNameSignal.connect(
+                lambda: self.EditButtonName(panel, button))
 
     def AddTabPanelButtonDrop(self, path, panel):
         osinfo = platform.system()
@@ -147,10 +166,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
 
     def AddTabPanelButtonFile(self, panel, file, name):
         button = panel.addButton(name)
-        panel.resize(1426, 613)
         button.clicked.connect(lambda: self.OpenFile(file))
         button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
-        button.EditNameSignal.connect(lambda: self.EditButtonName(panel, button))
+        button.EditNameSignal.connect(
+            lambda: self.EditButtonName(panel, button))
 
     def OpenFile(self, file):
         try:
@@ -175,9 +194,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
             animation.setPropertyName(b'pos')
             animation.setTargetObject(panel.Buttons[i])
             animation.setStartValue(panel.Buttons[i].pos())
-            r = i // 11
-            w = i % 11
-            animation.setEndValue(QtCore.QPoint(panel.GrimBox[w], panel.GrimBox[r]))
+            r = i // 12
+            w = i % 12
+            animation.setEndValue(QtCore.QPoint(
+                panel.GrimBox[w], panel.GrimBox[r]))
             animation.start()
         try:
             if panel.Buttons[end_one].isEnabled() is False:
@@ -192,15 +212,18 @@ class ui_DIYPanel(QtWidgets.QWidget):
         animation.setPropertyName(b'pos')
         animation.setTargetObject(panel.TheAddButton)
         animation.setStartValue(panel.TheAddButton.pos())
-        r = i // 11
-        w = i % 11
-        animation.setEndValue(QtCore.QPoint(panel.GrimBox[w], panel.GrimBox[r]))
+        r = i // 12
+        w = i % 12
+        animation.setEndValue(QtCore.QPoint(
+            panel.GrimBox[w], panel.GrimBox[r]))
         animation.start()
         if aimBtn != '':
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
-            print('DELETE from \'' + panel.objectName() + '\' where BTNNAME=\'' + aimBtn + '\';')
-            cu.execute('DELETE from \'' + panel.objectName() + '\' where BTNNAME=\'' + aimBtn + '\';')
+            print('DELETE from \'' + panel.objectName() +
+                  '\' where BTNNAME=\'' + aimBtn + '\';')
+            cu.execute('DELETE from \'' + panel.objectName() +
+                       '\' where BTNNAME=\'' + aimBtn + '\';')
             conn.commit()
             conn.close()
 
@@ -222,9 +245,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
             animation.setPropertyName(b'pos')
             animation.setTargetObject(self.TabButtons[i])
             animation.setStartValue(self.TabButtons[i].pos())
-            r = i // 11
-            w = i % 11
-            animation.setEndValue(QtCore.QPoint(self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
+            r = i // 12
+            w = i % 12
+            animation.setEndValue(QtCore.QPoint(
+                self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
             animation.start()
         try:
             if self.TabButtons[end_one].isEnabled() is False:
@@ -238,9 +262,10 @@ class ui_DIYPanel(QtWidgets.QWidget):
         animation.setPropertyName(b'pos')
         animation.setTargetObject(self.TabAreaPanel.TheAddButton)
         animation.setStartValue(self.TabAreaPanel.TheAddButton.pos())
-        r = i // 11
-        w = i % 11
-        animation.setEndValue(QtCore.QPoint(self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
+        r = i // 12
+        w = i % 12
+        animation.setEndValue(QtCore.QPoint(
+            self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
         animation.start()
 
 
@@ -260,7 +285,8 @@ class ResizablePanel(QtWidgets.QWidget):
         self.TheAddButton.setText('+')
         self.TheAddButton.setFont(font)
         self.Buttons = []
-        self.GrimBox = [0, 130, 260, 390, 520, 650, 780, 910, 1040, 1170, 1300]
+        self.GrimBox = [0, 130, 260, 390, 520,
+                        650, 780, 910, 1040, 1170, 1300, 1430]
         # self.GrimBox = [0, 128, 256, 384, 512, 640, 768, 896, 1024, 1152, 1280]
 
     def addButton(self, text):
@@ -270,18 +296,20 @@ class ResizablePanel(QtWidgets.QWidget):
         button.setText(text)
         button.show()
         i = len(self.Buttons) - 1
-        button.setGeometry(QtCore.QRect(self.GrimBox[i % 11], self.GrimBox[i // 11], 128, 128))
+        button.setGeometry(QtCore.QRect(
+            self.GrimBox[i % 12], self.GrimBox[i // 12], 128, 128))
         i += 1
         animation = QtCore.QPropertyAnimation(self)
         animation.setTargetObject(self.TheAddButton)
         animation.setPropertyName(b'pos')
         animation.setDuration(150)
         animation.setStartValue(self.TheAddButton.pos())
-        animation.setEndValue(QtCore.QPoint(self.GrimBox[i % 11], self.GrimBox[i // 11]))
+        animation.setEndValue(QtCore.QPoint(
+            self.GrimBox[i % 12], self.GrimBox[i // 12]))
         animation.start()
-        if i // 11 > self.r:
-            self.r = i // 11
-            self.resize(1426, self.GrimBox[self.r + 1])
+        if i // 12 > self.r:
+            self.r = i // 12
+            self.resize(1600, self.GrimBox[self.r + 1])
         return button
 
     def dragEnterEvent(self, event):

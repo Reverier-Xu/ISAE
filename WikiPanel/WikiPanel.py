@@ -8,11 +8,14 @@ from PyQt5.QtWidgets import QShortcut
 class WikiPanel(QtWidgets.QWidget):
     def __init__(self):
         super(WikiPanel, self).__init__()
-
         self.WikiBrowserPanel = WikiBrowserPanelWidget(self)
         self.WikiBrowserPanel.setObjectName('WikiBrowserPanel')
         self.WikiBrowserPanel.setStyleSheet('background-color: transparent;')
-        self.WikiBrowserPanel.setGeometry(0, 0, 1428, 768)
+        self.Layouts = QtWidgets.QHBoxLayout(self)
+        self.Layouts.addWidget(self.WikiBrowserPanel)
+        self.Layouts.setSpacing(0)
+        self.Layouts.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.Layouts)
 
 
 class WikiBrowserPanelWidget(QtWidgets.QWidget):
@@ -22,11 +25,16 @@ class WikiBrowserPanelWidget(QtWidgets.QWidget):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         print('file:///' + pwd + '/Resources/Wiki/index.html')
-        self.browser.load(QtCore.QUrl('file:///' + pwd + '/Resources/Wiki/index.html'))
-        self.browser.setGeometry(QtCore.QRect(0, 0, 1428, 768))
+        self.browser.load(QtCore.QUrl(
+            'file:///' + pwd + '/Resources/Wiki/index.html'))
+        self.Layouts = QtWidgets.QHBoxLayout(self)
+        self.Layouts.addWidget(self.browser)
+        self.Layouts.setSpacing(0)
+        self.Layouts.setContentsMargins(0, 0, 0, 0)
         self.browser.urlChanged.connect(lambda link: self.SuitLocalWiki(link))
         self.browser.show()
         self.browser.setZoomFactor(1.1)
+        self.setLayout(self.Layouts)
 
         self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
         self.shortcutd.activated.connect(self.zoom_in_func)
