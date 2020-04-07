@@ -15,6 +15,7 @@ from TerminalPanel.TerminalPanel import TerminalPanel
 from BrowserPanel.BrowserPanel import BrowserPanel
 from WikiPanel.WikiPanel import WikiPanel
 from CryptoPanel import CryptoPanel
+from kiwix.KiwixPanel import KiwixPanel
 
 
 class Ui_MainWindow(object):
@@ -231,6 +232,18 @@ class Ui_MainWindow(object):
         self.BrowserButton.setMaximumSize(QtCore.QSize(120, 45))
         self.BrowserButton.setObjectName("BrowserButton")
         self.TabLayout.addWidget(self.BrowserButton)
+        self.KiwixButton = uni_Widget.ICTFEButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.KiwixButton.sizePolicy().hasHeightForWidth())
+        self.KiwixButton.setSizePolicy(sizePolicy)
+        self.KiwixButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.KiwixButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.KiwixButton.setObjectName("KiwixButton")
+        self.TabLayout.addWidget(self.KiwixButton)
         self.DIYButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -243,22 +256,6 @@ class Ui_MainWindow(object):
         self.DIYButton.setMaximumSize(QtCore.QSize(120, 45))
         self.DIYButton.setObjectName("DIYButton")
         self.TabLayout.addWidget(self.DIYButton)
-
-        # Choose ticker
-        self.TypeChooserBox = [-150, self.ReverseButton.pos().x(),
-                               self.WebButton.pos().x(),
-                               self.CryptoButton.pos().x(),
-                               self.PwnButton.pos().x(),
-                               self.MiscButton.pos().x(),
-                               self.TerminalButton.pos().x(),
-                               self.WikiButton.pos().x(),
-                               self.BrowserButton.pos().x()]
-        print(self.TypeChooserBox)
-        self.TypeChooser = QtWidgets.QLabel(self.centralwidget)
-        self.TypeChooser.setPixmap(
-            QtGui.QPixmap('./Resources/chooser.png'))
-        self.TypeChooser.setGeometry(QtCore.QRect(
-            self.TypeChooserBox[self.TypeMode], self.ReverseButton.pos().y(), 120, 8))
 
         self.verticalLayout.addLayout(self.TabLayout)
 
@@ -314,6 +311,11 @@ class Ui_MainWindow(object):
         self.WikiPanel.setObjectName('WikiPanel')
         self.TypeStack.addWidget(self.WikiPanel)
 
+        # Wiki Panel
+        self.KiwixPanel = KiwixPanel()
+        self.KiwixPanel.setObjectName('KiwixPanel')
+        self.TypeStack.addWidget(self.KiwixPanel)
+
         # Welcome Panel
         self.WelcomePanel = QtWidgets.QWidget()
         self.WelcomePanel.setObjectName('WelcomePanel')
@@ -345,6 +347,7 @@ class Ui_MainWindow(object):
         self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
         self.BrowserButton.clicked.connect(self.ChangeTypeStackBrowser)
         self.WikiButton.clicked.connect(self.ChangeTypeStackWiki)
+        self.KiwixButton.clicked.connect(self.ChangeTypeStackKiwix)
         self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
         self.center()
 
@@ -492,6 +495,21 @@ class Ui_MainWindow(object):
                                           "background-color: rgb(100, 100, 100);"
                                           "border-style: inset; "
                                           "}")
+        self.KiwixButton.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
         button.setStyleSheet("QPushButton{"
                              "background-color:rgba(40, 140, 255, 100%);"
                              "color: white;"
@@ -552,6 +570,10 @@ class Ui_MainWindow(object):
         self.TypeStack.setCurrentWidget(self.WikiPanel)
         self.setTabButtonColor(self.WikiButton)
 
+    def ChangeTypeStackKiwix(self):
+        self.TypeStack.setCurrentWidget(self.KiwixPanel)
+        self.setTabButtonColor(self.KiwixButton)
+
     def center(self):
         '''窗口居中显示'''
         qr = self.frameGeometry()
@@ -570,4 +592,5 @@ class Ui_MainWindow(object):
         self.TerminalButton.setText(_translate("MainWindow", "数据厨师"))
         self.WikiButton.setText(_translate("MainWindow", "Wiki"))
         self.BrowserButton.setText(_translate("MainWindow", "浏览器"))
+        self.KiwixButton.setText(_translate("MainWindow", "Kiwix"))
         self.DIYButton.setText(_translate("MainWindow", "启动器"))
