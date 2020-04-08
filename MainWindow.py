@@ -362,7 +362,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.MiniButton.clicked.connect(MainWindow.showMinimized)
-        self.CloseButton.clicked.connect(MainWindow.close)
+        self.CloseButton.clicked.connect(self.FormClosing)
         self.MaxButton.clicked.connect(MainWindow.MaximumWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.CryptoButton.clicked.connect(self.ChangeTypeStackCrypto)
@@ -454,6 +454,10 @@ class Ui_MainWindow(object):
         cp = QtWidgets.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+
+    def FormClosing(self):
+        self.StatusThread.exit()
+        self.MainWindow.close()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
