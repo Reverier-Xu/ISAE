@@ -8,65 +8,94 @@ class ui_QuotePanel(QtWidgets.QWidget):
         # begin quote panel
         # input text file button
         self.QuoteTextInputPath = ''
-        self.QuoteTextInputButton = uni_Widget.ICTFEButton(self)
-        self.QuoteTextInputButton.setObjectName('QuoteTextInputButton')
-        self.QuoteTextInputButton.setGeometry(QtCore.QRect(20, 20, 120, 45))
-        self.QuoteTextInputButton.setText('打开...')
-        self.QuoteTextInputButton.setToolTip('点击选择文件')
 
         # output text file button
         self.QuoteTextOutputPath = ''
-        self.QuoteTextOutputButton = uni_Widget.ICTFEButton(self)
-        self.QuoteTextOutputButton.setObjectName('QuoteTextOutputButton')
-        self.QuoteTextOutputButton.setGeometry(QtCore.QRect(260, 20, 120, 45))
-        self.QuoteTextOutputButton.setText('另存为...')
-        self.QuoteTextOutputButton.setToolTip('点击选择文件')
-
-        # eval support
-        self.QuoteTextEvalCheckBox = uni_Widget.ICTFECheckBox(self)
-        self.QuoteTextEvalCheckBox.setGeometry(QtCore.QRect(450, 35, 120, 40))
-        self.QuoteTextEvalCheckBox.setObjectName('QuoteTextEvalCheckBox')
-        self.QuoteTextEvalCheckBox.setText('启用eval')
-
-        # Quote Encode button
-        self.QuoteEncodeButton = uni_Widget.ICTFEButton(self)
-        self.QuoteEncodeButton.setObjectName('QuoteEncodeButton')
-        self.QuoteEncodeButton.setGeometry(
-            QtCore.QRect(580, 20, 120, 45))
-        self.QuoteEncodeButton.setText('编码')
 
         # input cipher file button
         self.QuoteCipherInputPath = ''
-        self.QuoteCipherInputButton = uni_Widget.ICTFEButton(self)
-        self.QuoteCipherInputButton.setObjectName('QuoteCipherInputButton')
-        self.QuoteCipherInputButton.setGeometry(
-            QtCore.QRect(720, 20, 120, 45))
-        self.QuoteCipherInputButton.setText('打开...')
-        self.QuoteCipherInputButton.setToolTip('点击选择文件')
 
         # output cipher file button
         self.QuoteCipherOutputPath = ''
-        self.QuoteCipherOutputButton = uni_Widget.ICTFEButton(self)
-        self.QuoteCipherOutputButton.setObjectName('QuoteCipherOutputButton')
-        self.QuoteCipherOutputButton.setGeometry(
-            QtCore.QRect(960, 20, 120, 45))
-        self.QuoteCipherOutputButton.setText('另存为...')
-        self.QuoteCipherOutputButton.setToolTip('点击选择文件')
 
-        # Quote Decode button
-        self.QuoteDecodeButton = uni_Widget.ICTFEButton(self)
-        self.QuoteDecodeButton.setObjectName('QuoteDecodeButton')
-        self.QuoteDecodeButton.setGeometry(
-            QtCore.QRect(1280, 20, 120, 45))
-        self.QuoteDecodeButton.setText('解码')
-
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.QuoteTextInputButton = uni_Widget.ICTFEButton(self)
+        self.QuoteTextInputButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.QuoteTextInputButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.QuoteTextInputButton.setObjectName("QuoteTextInputButton")
+        self.horizontalLayout.addWidget(self.QuoteTextInputButton)
+        self.QuoteTextOutputButton = uni_Widget.ICTFEButton(self)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(120)
+        sizePolicy.setVerticalStretch(45)
+        sizePolicy.setHeightForWidth(self.QuoteTextOutputButton.sizePolicy().hasHeightForWidth())
+        self.QuoteTextOutputButton.setSizePolicy(sizePolicy)
+        self.QuoteTextOutputButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.QuoteTextOutputButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.QuoteTextOutputButton.setObjectName("QuoteTextOutputButton")
+        self.horizontalLayout.addWidget(self.QuoteTextOutputButton)
+        self.QuoteEvalCheckBox = uni_Widget.ICTFECheckBox(self)
+        self.QuoteEvalCheckBox.setMinimumSize(QtCore.QSize(120, 45))
+        self.QuoteEvalCheckBox.setMaximumSize(QtCore.QSize(120, 45))
+        self.QuoteEvalCheckBox.setObjectName("QuoteEvalCheckBox")
+        self.horizontalLayout.addWidget(self.QuoteEvalCheckBox)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.QuoteEncodeButton = uni_Widget.ICTFEButton(self)
+        self.QuoteEncodeButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.QuoteEncodeButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.QuoteEncodeButton.setObjectName("QuoteEncodeButton")
+        self.horizontalLayout.addWidget(self.QuoteEncodeButton)
+        self.verticalLayout.addLayout(self.horizontalLayout)
         self.QuoteTextBox = uni_Widget.ICTFETextBox(self)
-        self.QuoteTextBox.setObjectName('QuoteTextBox')
-        self.QuoteTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
-        self.QuoteTextBox.setPlaceholderText('Quote - Printable\n这里写明文')
-
+        self.QuoteTextBox.setObjectName("QuoteTextBox")
+        self.verticalLayout.addWidget(self.QuoteTextBox)
+        self.horizontalLayout_3.addLayout(self.verticalLayout)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.QuoteCipherInputButton = uni_Widget.ICTFEButton(self)
+        self.QuoteCipherInputButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.QuoteCipherInputButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.QuoteCipherInputButton.setObjectName("QuoteCipherInputButton")
+        self.horizontalLayout_2.addWidget(self.QuoteCipherInputButton)
+        self.QuoteCipherOutputButton = uni_Widget.ICTFEButton(self)
+        self.QuoteCipherOutputButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.QuoteCipherOutputButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.QuoteCipherOutputButton.setObjectName("QuoteCipherOutputButton")
+        self.horizontalLayout_2.addWidget(self.QuoteCipherOutputButton)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem1)
+        self.QuoteDecodeButton = uni_Widget.ICTFEButton(self)
+        self.QuoteDecodeButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.QuoteDecodeButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.QuoteDecodeButton.setObjectName("QuoteDecodeButton")
+        self.horizontalLayout_2.addWidget(self.QuoteDecodeButton)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.QuoteCipherBox = uni_Widget.ICTFETextBox(self)
-        self.QuoteCipherBox.setObjectName('QuoteCipherBox')
-        self.QuoteCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
-        self.QuoteCipherBox.setPlaceholderText('Quote - Printable\n这里写编码')
+        self.QuoteCipherBox.setObjectName("QuoteCipherBox")
+        self.verticalLayout_2.addWidget(self.QuoteCipherBox)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_2)
+        self.horizontalLayout_4.addLayout(self.horizontalLayout_3)
+
+        self.retranslateUi()
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.QuoteTextInputButton.setText(_translate("self", "打开"))
+        self.QuoteTextOutputButton.setText(_translate("self", "另存为"))
+        self.QuoteEvalCheckBox.setText(_translate("self", "启用eval"))
+        self.QuoteEncodeButton.setText(_translate("self", "编码"))
+        self.QuoteCipherInputButton.setText(_translate("self", "打开"))
+        self.QuoteCipherOutputButton.setText(_translate("self", "另存为"))
+        self.QuoteDecodeButton.setText(_translate("self", "解码"))
+
         # end quote panel

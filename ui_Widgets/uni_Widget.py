@@ -2,6 +2,38 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
+ButtonStyleNormal = "QPushButton{" \
+                    "background-color:rgba(40, 40, 40, 100%);" \
+                    "color: white;" \
+                    "border-radius: 0px;" \
+                    "border: 0px groove gray;" \
+                    "border-style: outset;" \
+                    "}" \
+                    "QPushButton:hover{" \
+                    "background-color: rgba(60, 60, 60, 100%);" \
+                    "color: white;" \
+                    "}" \
+                    "QPushButton:pressed{" \
+                    "background-color: rgb(100, 100, 100);" \
+                    "border-style: inset; " \
+                    "}"
+
+ButtonStyleSelected = "QPushButton{" \
+                      "background-color:rgba(40, 140, 255, 100%);" \
+                      "color: white;" \
+                      "border-radius: 0px;" \
+                      "border: 0px groove gray;" \
+                      "border-style: outset;" \
+                      "}" \
+                      "QPushButton:hover{" \
+                      "background-color: rgba(60, 60, 255, 100%);" \
+                      "color: white;" \
+                      "}" \
+                      "QPushButton:pressed{" \
+                      "background-color: rgb(100, 100, 255);" \
+                      "border-style: inset; " \
+                      "}"
+
 
 class ICTFEButton(QtWidgets.QPushButton):
     def __init__(self, parent=None):

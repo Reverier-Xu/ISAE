@@ -1,6 +1,8 @@
 from CryptoPanel.BaseModule.ui_BaseModule import ui_BasePanel
 from CryptoPanel.BaseModule.BaseModuleUtils import *
 from PyQt5 import QtCore, QtWidgets, Qt, QtGui
+
+from ui_Widgets import uni_Widget
 from ui_Widgets.ErrorWin import errorInfo
 
 
@@ -24,6 +26,14 @@ class BasePanel(ui_BasePanel):
         self.BaseTranslateButton.clicked.connect(self.BaseTranslateFunction)
         self.BaseCipherBox.textChanged.connect(self.setFontColorCipher)
         self.BaseTextBox.textChanged.connect(self.setFontColorText)
+
+    def ChangeButtonColor(self, button):
+        self.Base64Button.setStyleSheet(uni_Widget.ButtonStyleNormal)
+        self.Base32Button.setStyleSheet(uni_Widget.ButtonStyleNormal)
+        self.Base16Button.setStyleSheet(uni_Widget.ButtonStyleNormal)
+        self.Base85Button.setStyleSheet(uni_Widget.ButtonStyleNormal)
+        self.Base85RFCButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
+        button.setStyleSheet(uni_Widget.ButtonStyleSelected)
 
     def setFontColorCipher(self):
         self.BaseCipherBox.setTextColor(QtGui.QColor(200, 200, 200))
@@ -102,69 +112,29 @@ class BasePanel(ui_BasePanel):
                 errorInfo('文件读取错误!')
 
     def ChangeBase16(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.BaseChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
         self.BaseMode = 3
         self.BaseTableBox.setText(Base16StandardTable)
-        animation.setEndValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.Base16Button)
 
     def ChangeBase32(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.BaseChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
         self.BaseMode = 2
         self.BaseTableBox.setText(Base32StandardTable)
-        animation.setEndValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.Base32Button)
 
     def ChangeBase64(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.BaseChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
         self.BaseMode = 1
         self.BaseTableBox.setText(Base64StandardTable)
-        animation.setEndValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.Base64Button)
 
     def ChangeBase85(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.BaseChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
         self.BaseMode = 4
         self.BaseTableBox.setText(Base85StandardTable)
-        animation.setEndValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.Base85Button)
 
     def ChangeBase85RFC(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.BaseChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
         self.BaseMode = 5
         self.BaseTableBox.setText(Base85ReverseTable)
-        animation.setEndValue(QtCore.QPoint(
-            self.BaseChooserBox[self.BaseMode], 55))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.Base85RFCButton)
 
     def BaseEnc(self):
         if self.BaseMode == 1:
