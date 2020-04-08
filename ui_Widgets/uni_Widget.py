@@ -6,6 +6,7 @@ from PyQt5.QtGui import QCursor
 class ICTFEButton(QtWidgets.QPushButton):
     def __init__(self, parent=None):
         super(ICTFEButton, self).__init__(parent)
+        self.setMinimumSize(120, 45)
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
         font.setPixelSize(24)
@@ -122,7 +123,7 @@ class ICTFEScrollArea(QtWidgets.QScrollArea):
             '}')
         self.viewport().setStyleSheet(
             'QScrollArea{'
-            'border:none;'
+            'border: none;'
             'background-color:rgb(40,40,40);'
             '}')
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

@@ -16,6 +16,8 @@ from BrowserPanel.BrowserPanel import BrowserPanel
 from WikiPanel.WikiPanel import WikiPanel
 from CryptoPanel import CryptoPanel
 from kiwix.KiwixPanel import KiwixPanel
+import psutil
+import time
 
 
 class Ui_MainWindow(object):
@@ -23,14 +25,18 @@ class Ui_MainWindow(object):
         self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1600, 900)
-        self.TypeMode = 0
+        self.StatusBar = QtWidgets.QStatusBar()
+        MainWindow.setStatusBar(self.StatusBar)
+        self.StatusBar.setObjectName('StatusBar')
+        self.StatusBar.setStyleSheet(
+            'QWidget{background-color: transparent;}')
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.centralwidget.setStyleSheet("QWidget#centralwidget{\n"
-                                         "background-color: rgb(40, 40, 40);\n"
-                                         "border: 1px grey;\n"
-                                         "border-style: solid;\n"
-                                         "}")
+        self.MainWindow.setStyleSheet("QMainWindow#MainWindow{\n"
+                                      "background-color: rgb(40, 40, 40);\n"
+                                      "border: 1px grey;\n"
+                                      "border-style: solid;\n"
+                                      "}")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(1, 1, 1, 1)
@@ -44,7 +50,7 @@ class Ui_MainWindow(object):
         font.setPixelSize(18)
         self.TitleLabel = uni_Widget.ICTFELabel(self.centralwidget)
         self.TitleLabel.setObjectName("TitleLabel")
-        self.TitleLabel.setText('集成式CTF解题环境')
+        self.TitleLabel.setText('ICTFE - 集成式CTF解题环境 Version 1.0 Dev')
         self.TitleLabel.setFont(font)
         self.horizontalLayout.addWidget(self.TitleLabel)
         spacerItem = QtWidgets.QSpacerItem(
@@ -257,6 +263,16 @@ class Ui_MainWindow(object):
         self.DIYButton.setObjectName("DIYButton")
         self.TabLayout.addWidget(self.DIYButton)
 
+        self.SplitterWidget2 = QtWidgets.QWidget(self)
+        self.SplitterWidget2.setMaximumHeight(1)
+        self.SplitterWidget2.setMinimumHeight(1)
+        self.SplitterWidget2.setStyleSheet("QWidget{\n"
+                                           "background-color: grey;\n"
+                                           "border: 1px grey;\n"
+                                           "border-style: solid;\n"
+                                           "}")
+        self.verticalLayout.addWidget(self.SplitterWidget2)
+
         self.verticalLayout.addLayout(self.TabLayout)
 
         self.TypeStack = QtWidgets.QStackedWidget(self.centralwidget)
@@ -330,6 +346,16 @@ class Ui_MainWindow(object):
             'border-width: 0px;')
         self.TypeStack.addWidget(self.WelcomePanel)
 
+        self.SplitterWidget1 = QtWidgets.QWidget(self)
+        self.SplitterWidget1.setMaximumHeight(1)
+        self.SplitterWidget1.setMinimumHeight(1)
+        self.SplitterWidget1.setStyleSheet("QWidget{\n"
+                                           "background-color: grey;\n"
+                                           "border: 1px grey;\n"
+                                           "border-style: solid;\n"
+                                           "}")
+        self.verticalLayout.addWidget(self.SplitterWidget1)
+
         self.verticalLayout.addWidget(self.TypeStack)
         MainWindow.setCentralWidget(self.centralwidget)
         self.MaxFlag = False
@@ -349,6 +375,8 @@ class Ui_MainWindow(object):
         self.WikiButton.clicked.connect(self.ChangeTypeStackWiki)
         self.KiwixButton.clicked.connect(self.ChangeTypeStackKiwix)
         self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
+        self.StatusThread = SystemInfoThread(MainWindow)
+        self.StatusThread.start()
         self.center()
 
     def MaximumWindow(self):
@@ -594,3 +622,21 @@ class Ui_MainWindow(object):
         self.BrowserButton.setText(_translate("MainWindow", "浏览器"))
         self.KiwixButton.setText(_translate("MainWindow", "Kiwix"))
         self.DIYButton.setText(_translate("MainWindow", "启动器"))
+
+
+class SystemInfoThread(QtCore.QThread):
+
+    def __init__(self, window):
+        super(SystemInfoThread, self).__init__()
+        self.__win = window
+
+    def run(self):
+        old_net_speed = psutil.net_io_counters().bytes_recv
+        while True:
+            new_net_speed = psutil.net_io_counters().bytes_recv
+            time.sleep(1)
+            self.__win.StatusBar.showMessage('>>>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
+                                             "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024)+'      Memory Usage: '+str(
+                                                 int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
+                                             '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')
+            old_net_speed = new_net_speed

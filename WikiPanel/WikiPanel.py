@@ -1,8 +1,9 @@
 import os
 
-from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets
+from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets, QtWebEngine, QtWebEngineCore
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut
+from PyQt5 import Qt
 
 
 class WikiPanel(QtWidgets.QWidget):

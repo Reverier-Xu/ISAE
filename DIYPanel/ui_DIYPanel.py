@@ -36,6 +36,15 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.TabAreaScroll.setWidget(self.TabAreaPanel)
         self.verticalLayout.addWidget(self.TabAreaScroll)
 
+        self.SplitterWidget = QtWidgets.QWidget(self)
+        self.SplitterWidget.setMaximumHeight(1)
+        self.SplitterWidget.setMinimumHeight(1)
+        self.SplitterWidget.setStyleSheet("QWidget{\n"
+                                           "background-color: grey;\n"
+                                           "border: 1px grey;\n"
+                                           "border-style: solid;\n"
+                                           "}")
+        self.verticalLayout.addWidget(self.SplitterWidget)
         # 下层
         self.TabStack = QtWidgets.QStackedWidget(self)
         self.TabStack.setObjectName("TabStack")
@@ -47,6 +56,40 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.FileButtons = []
 
         self.ReadDataBase()
+
+    def ChangeTab(self, button, panel):
+        self.TabStack.setCurrentWidget(panel)
+        for i in self.TabButtons:
+            i.setStyleSheet("QPushButton{"
+                            "background-color:rgba(80, 160, 255, 80%);"
+                            "color: white;"
+                            "border-radius: 0px;"
+                            "border: 0px groove gray;"
+                            "border-style: outset;"
+                            "}"
+                            "QPushButton:hover{"
+                            "background-color: rgba(80, 160, 80, 80%);"
+                            "color: white;"
+                            "}"
+                            "QPushButton:pressed{"
+                            "background-color: rgb(100, 100, 100);"
+                            "border-style: inset; "
+                            "}")
+        button.setStyleSheet("QPushButton{"
+                             "background-color:rgba(80, 255, 100, 80%);"
+                             "color: white;"
+                             "border-radius: 0px;"
+                             "border: 0px groove gray;"
+                             "border-style: outset;"
+                             "}"
+                             "QPushButton:hover{"
+                             "background-color: rgba(80, 250, 180, 80%);"
+                             "color: white;"
+                             "}"
+                             "QPushButton:pressed{"
+                             "background-color: rgb(100, 100, 100);"
+                             "border-style: inset; "
+                             "}")
 
     def EditButtonName(self, panel, button):
         text = button.text()
@@ -93,7 +136,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             self.TabStack.addWidget(panel)
             self.TabPanels.append(panel)
             button.clicked.connect(
-                lambda: self.TabStack.setCurrentWidget(panel))
+                lambda: self.ChangeTab(button, panel))
             button.Deleted.connect(lambda: self.DeletePanel(panel))
             panel.TheAddButton.clicked.connect(
                 lambda: self.AddTabPanelButton(panel))
@@ -113,7 +156,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         panel.setObjectName(text)
         self.TabStack.addWidget(panel)
         self.TabPanels.append(panel)
-        button.clicked.connect(lambda: self.TabStack.setCurrentWidget(panel))
+        button.clicked.connect(lambda: self.ChangeTab(button, panel))
         button.Deleted.connect(lambda: self.DeletePanel(panel))
         panel.TheAddButton.clicked.connect(
             lambda: self.AddTabPanelButton(panel))
@@ -307,9 +350,6 @@ class ResizablePanel(QtWidgets.QWidget):
         animation.setEndValue(QtCore.QPoint(
             self.GrimBox[i % 12], self.GrimBox[i // 12]))
         animation.start()
-        if i // 12 > self.r:
-            self.r = i // 12
-            self.resize(1600, self.GrimBox[self.r + 1])
         return button
 
     def dragEnterEvent(self, event):

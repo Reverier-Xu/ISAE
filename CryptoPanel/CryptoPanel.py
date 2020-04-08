@@ -21,197 +21,761 @@ class CryptoPanel(ui_CryptoPanel):
         self.StrokesButton.clicked.connect(self.ChangeCryptoStrokes)
         self.RSAButton.clicked.connect(self.ChangeCryptoRSA)
 
+    def ChangeButtonColor(self, button):
+        self.BaseButton.setStyleSheet("QPushButton{"
+                                      "background-color:rgba(40, 40, 40, 100%);"
+                                      "color: white;"
+                                      "border-radius: 0px;"
+                                      "border: 0px groove gray;"
+                                      "border-style: outset;"
+                                      "}"
+                                      "QPushButton:hover{"
+                                      "background-color: rgba(60, 60, 60, 100%);"
+                                      "color: white;"
+                                      "}"
+                                      "QPushButton:pressed{"
+                                      "background-color: rgb(100, 100, 100);"
+                                      "border-style: inset; "
+                                      "}")
+        self.QuoteButton.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
+        self.UrlButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.HexButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.HTMLButton.setStyleSheet("QPushButton{"
+                                      "background-color:rgba(40, 40, 40, 100%);"
+                                      "color: white;"
+                                      "border-radius: 0px;"
+                                      "border: 0px groove gray;"
+                                      "border-style: outset;"
+                                      "}"
+                                      "QPushButton:hover{"
+                                      "background-color: rgba(60, 60, 60, 100%);"
+                                      "color: white;"
+                                      "}"
+                                      "QPushButton:pressed{"
+                                      "background-color: rgb(100, 100, 100);"
+                                      "border-style: inset; "
+                                      "}")
+        self.EscapeButton.setStyleSheet("QPushButton{"
+                                        "background-color:rgba(40, 40, 40, 100%);"
+                                        "color: white;"
+                                        "border-radius: 0px;"
+                                        "border: 0px groove gray;"
+                                        "border-style: outset;"
+                                        "}"
+                                        "QPushButton:hover{"
+                                        "background-color: rgba(60, 60, 60, 100%);"
+                                        "color: white;"
+                                        "}"
+                                        "QPushButton:pressed{"
+                                        "background-color: rgb(100, 100, 100);"
+                                        "border-style: inset; "
+                                        "}")
+        self.TapButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.MorseButton.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
+        self.HashButton.setStyleSheet("QPushButton{"
+                                      "background-color:rgba(40, 40, 40, 100%);"
+                                      "color: white;"
+                                      "border-radius: 0px;"
+                                      "border: 0px groove gray;"
+                                      "border-style: outset;"
+                                      "}"
+                                      "QPushButton:hover{"
+                                      "background-color: rgba(60, 60, 60, 100%);"
+                                      "color: white;"
+                                      "}"
+                                      "QPushButton:pressed{"
+                                      "background-color: rgb(100, 100, 100);"
+                                      "border-style: inset; "
+                                      "}")
+        self.AESButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.DESButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.RC4Button.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.ASCIITranslateButton.setStyleSheet("QPushButton{"
+                                                "background-color:rgba(40, 40, 40, 100%);"
+                                                "color: white;"
+                                                "border-radius: 0px;"
+                                                "border: 0px groove gray;"
+                                                "border-style: outset;"
+                                                "}"
+                                                "QPushButton:hover{"
+                                                "background-color: rgba(60, 60, 60, 100%);"
+                                                "color: white;"
+                                                "}"
+                                                "QPushButton:pressed{"
+                                                "background-color: rgb(100, 100, 100);"
+                                                "border-style: inset; "
+                                                "}")
+        self.RSAButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.CodeTranslateButton.setStyleSheet("QPushButton{"
+                                               "background-color:rgba(40, 40, 40, 100%);"
+                                               "color: white;"
+                                               "border-radius: 0px;"
+                                               "border: 0px groove gray;"
+                                               "border-style: outset;"
+                                               "}"
+                                               "QPushButton:hover{"
+                                               "background-color: rgba(60, 60, 60, 100%);"
+                                               "color: white;"
+                                               "}"
+                                               "QPushButton:pressed{"
+                                               "background-color: rgb(100, 100, 100);"
+                                               "border-style: inset; "
+                                               "}")
+        self.ADFGVXButton.setStyleSheet("QPushButton{"
+                                        "background-color:rgba(40, 40, 40, 100%);"
+                                        "color: white;"
+                                        "border-radius: 0px;"
+                                        "border: 0px groove gray;"
+                                        "border-style: outset;"
+                                        "}"
+                                        "QPushButton:hover{"
+                                        "background-color: rgba(60, 60, 60, 100%);"
+                                        "color: white;"
+                                        "}"
+                                        "QPushButton:pressed{"
+                                        "background-color: rgb(100, 100, 100);"
+                                        "border-style: inset; "
+                                        "}")
+        self.AffineButton.setStyleSheet("QPushButton{"
+                                        "background-color:rgba(40, 40, 40, 100%);"
+                                        "color: white;"
+                                        "border-radius: 0px;"
+                                        "border: 0px groove gray;"
+                                        "border-style: outset;"
+                                        "}"
+                                        "QPushButton:hover{"
+                                        "background-color: rgba(60, 60, 60, 100%);"
+                                        "color: white;"
+                                        "}"
+                                        "QPushButton:pressed{"
+                                        "background-color: rgb(100, 100, 100);"
+                                        "border-style: inset; "
+                                        "}")
+        self.AutoKeyButton.setStyleSheet("QPushButton{"
+                                         "background-color:rgba(40, 40, 40, 100%);"
+                                         "color: white;"
+                                         "border-radius: 0px;"
+                                         "border: 0px groove gray;"
+                                         "border-style: outset;"
+                                         "}"
+                                         "QPushButton:hover{"
+                                         "background-color: rgba(60, 60, 60, 100%);"
+                                         "color: white;"
+                                         "}"
+                                         "QPushButton:pressed{"
+                                         "background-color: rgb(100, 100, 100);"
+                                         "border-style: inset; "
+                                         "}")
+        self.AtbashButton.setStyleSheet("QPushButton{"
+                                        "background-color:rgba(40, 40, 40, 100%);"
+                                        "color: white;"
+                                        "border-radius: 0px;"
+                                        "border: 0px groove gray;"
+                                        "border-style: outset;"
+                                        "}"
+                                        "QPushButton:hover{"
+                                        "background-color: rgba(60, 60, 60, 100%);"
+                                        "color: white;"
+                                        "}"
+                                        "QPushButton:pressed{"
+                                        "background-color: rgb(100, 100, 100);"
+                                        "border-style: inset; "
+                                        "}")
+        self.BeaufortButton.setStyleSheet("QPushButton{"
+                                          "background-color:rgba(40, 40, 40, 100%);"
+                                          "color: white;"
+                                          "border-radius: 0px;"
+                                          "border: 0px groove gray;"
+                                          "border-style: outset;"
+                                          "}"
+                                          "QPushButton:hover{"
+                                          "background-color: rgba(60, 60, 60, 100%);"
+                                          "color: white;"
+                                          "}"
+                                          "QPushButton:pressed{"
+                                          "background-color: rgb(100, 100, 100);"
+                                          "border-style: inset; "
+                                          "}")
+        self.BifidButton.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
+        self.CaesarButton.setStyleSheet("QPushButton{"
+                                        "background-color:rgba(40, 40, 40, 100%);"
+                                        "color: white;"
+                                        "border-radius: 0px;"
+                                        "border: 0px groove gray;"
+                                        "border-style: outset;"
+                                        "}"
+                                        "QPushButton:hover{"
+                                        "background-color: rgba(60, 60, 60, 100%);"
+                                        "color: white;"
+                                        "}"
+                                        "QPushButton:pressed{"
+                                        "background-color: rgb(100, 100, 100);"
+                                        "border-style: inset; "
+                                        "}")
+        self.CTButton.setStyleSheet("QPushButton{"
+                                    "background-color:rgba(40, 40, 40, 100%);"
+                                    "color: white;"
+                                    "border-radius: 0px;"
+                                    "border: 0px groove gray;"
+                                    "border-style: outset;"
+                                    "}"
+                                    "QPushButton:hover{"
+                                    "background-color: rgba(60, 60, 60, 100%);"
+                                    "color: white;"
+                                    "}"
+                                    "QPushButton:pressed{"
+                                    "background-color: rgb(100, 100, 100);"
+                                    "border-style: inset; "
+                                    "}")
+        self.EnigmaButton.setStyleSheet("QPushButton{"
+                                        "background-color:rgba(40, 40, 40, 100%);"
+                                        "color: white;"
+                                        "border-radius: 0px;"
+                                        "border: 0px groove gray;"
+                                        "border-style: outset;"
+                                        "}"
+                                        "QPushButton:hover{"
+                                        "background-color: rgba(60, 60, 60, 100%);"
+                                        "color: white;"
+                                        "}"
+                                        "QPushButton:pressed{"
+                                        "background-color: rgb(100, 100, 100);"
+                                        "border-style: inset; "
+                                        "}")
+        self.FourSquareButton.setStyleSheet("QPushButton{"
+                                            "background-color:rgba(40, 40, 40, 100%);"
+                                            "color: white;"
+                                            "border-radius: 0px;"
+                                            "border: 0px groove gray;"
+                                            "border-style: outset;"
+                                            "}"
+                                            "QPushButton:hover{"
+                                            "background-color: rgba(60, 60, 60, 100%);"
+                                            "color: white;"
+                                            "}"
+                                            "QPushButton:pressed{"
+                                            "background-color: rgb(100, 100, 100);"
+                                            "border-style: inset; "
+                                            "}")
+        self.GronsFeldButton.setStyleSheet("QPushButton{"
+                                           "background-color:rgba(40, 40, 40, 100%);"
+                                           "color: white;"
+                                           "border-radius: 0px;"
+                                           "border: 0px groove gray;"
+                                           "border-style: outset;"
+                                           "}"
+                                           "QPushButton:hover{"
+                                           "background-color: rgba(60, 60, 60, 100%);"
+                                           "color: white;"
+                                           "}"
+                                           "QPushButton:pressed{"
+                                           "background-color: rgb(100, 100, 100);"
+                                           "border-style: inset; "
+                                           "}")
+        self.M209Button.setStyleSheet("QPushButton{"
+                                      "background-color:rgba(40, 40, 40, 100%);"
+                                      "color: white;"
+                                      "border-radius: 0px;"
+                                      "border: 0px groove gray;"
+                                      "border-style: outset;"
+                                      "}"
+                                      "QPushButton:hover{"
+                                      "background-color: rgba(60, 60, 60, 100%);"
+                                      "color: white;"
+                                      "}"
+                                      "QPushButton:pressed{"
+                                      "background-color: rgb(100, 100, 100);"
+                                      "border-style: inset; "
+                                      "}")
+        self.PlayFairButton.setStyleSheet("QPushButton{"
+                                          "background-color:rgba(40, 40, 40, 100%);"
+                                          "color: white;"
+                                          "border-radius: 0px;"
+                                          "border: 0px groove gray;"
+                                          "border-style: outset;"
+                                          "}"
+                                          "QPushButton:hover{"
+                                          "background-color: rgba(60, 60, 60, 100%);"
+                                          "color: white;"
+                                          "}"
+                                          "QPushButton:pressed{"
+                                          "background-color: rgb(100, 100, 100);"
+                                          "border-style: inset; "
+                                          "}")
+        self.PolybiusButton.setStyleSheet("QPushButton{"
+                                          "background-color:rgba(40, 40, 40, 100%);"
+                                          "color: white;"
+                                          "border-radius: 0px;"
+                                          "border: 0px groove gray;"
+                                          "border-style: outset;"
+                                          "}"
+                                          "QPushButton:hover{"
+                                          "background-color: rgba(60, 60, 60, 100%);"
+                                          "color: white;"
+                                          "}"
+                                          "QPushButton:pressed{"
+                                          "background-color: rgb(100, 100, 100);"
+                                          "border-style: inset; "
+                                          "}")
+        self.PortaButton.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
+        self.RailFenceButton.setStyleSheet("QPushButton{"
+                                           "background-color:rgba(40, 40, 40, 100%);"
+                                           "color: white;"
+                                           "border-radius: 0px;"
+                                           "border: 0px groove gray;"
+                                           "border-style: outset;"
+                                           "}"
+                                           "QPushButton:hover{"
+                                           "background-color: rgba(60, 60, 60, 100%);"
+                                           "color: white;"
+                                           "}"
+                                           "QPushButton:pressed{"
+                                           "background-color: rgb(100, 100, 100);"
+                                           "border-style: inset; "
+                                           "}")
+        self.ROTButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.SubstitutionButton.setStyleSheet("QPushButton{"
+                                              "background-color:rgba(40, 40, 40, 100%);"
+                                              "color: white;"
+                                              "border-radius: 0px;"
+                                              "border: 0px groove gray;"
+                                              "border-style: outset;"
+                                              "}"
+                                              "QPushButton:hover{"
+                                              "background-color: rgba(60, 60, 60, 100%);"
+                                              "color: white;"
+                                              "}"
+                                              "QPushButton:pressed{"
+                                              "background-color: rgb(100, 100, 100);"
+                                              "border-style: inset; "
+                                              "}")
+        self.VigenereButton.setStyleSheet("QPushButton{"
+                                          "background-color:rgba(40, 40, 40, 100%);"
+                                          "color: white;"
+                                          "border-radius: 0px;"
+                                          "border: 0px groove gray;"
+                                          "border-style: outset;"
+                                          "}"
+                                          "QPushButton:hover{"
+                                          "background-color: rgba(60, 60, 60, 100%);"
+                                          "color: white;"
+                                          "}"
+                                          "QPushButton:pressed{"
+                                          "background-color: rgb(100, 100, 100);"
+                                          "border-style: inset; "
+                                          "}")
+        self.PigenButton.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
+        self.BaconButton.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
+        self.RunningKeyButton.setStyleSheet("QPushButton{"
+                                            "background-color:rgba(40, 40, 40, 100%);"
+                                            "color: white;"
+                                            "border-radius: 0px;"
+                                            "border: 0px groove gray;"
+                                            "border-style: outset;"
+                                            "}"
+                                            "QPushButton:hover{"
+                                            "background-color: rgba(60, 60, 60, 100%);"
+                                            "color: white;"
+                                            "}"
+                                            "QPushButton:pressed{"
+                                            "background-color: rgb(100, 100, 100);"
+                                            "border-style: inset; "
+                                            "}")
+        self.HillButton.setStyleSheet("QPushButton{"
+                                      "background-color:rgba(40, 40, 40, 100%);"
+                                      "color: white;"
+                                      "border-radius: 0px;"
+                                      "border: 0px groove gray;"
+                                      "border-style: outset;"
+                                      "}"
+                                      "QPushButton:hover{"
+                                      "background-color: rgba(60, 60, 60, 100%);"
+                                      "color: white;"
+                                      "}"
+                                      "QPushButton:pressed{"
+                                      "background-color: rgb(100, 100, 100);"
+                                      "border-style: inset; "
+                                      "}")
+        self.A1z26Button.setStyleSheet("QPushButton{"
+                                       "background-color:rgba(40, 40, 40, 100%);"
+                                       "color: white;"
+                                       "border-radius: 0px;"
+                                       "border: 0px groove gray;"
+                                       "border-style: outset;"
+                                       "}"
+                                       "QPushButton:hover{"
+                                       "background-color: rgba(60, 60, 60, 100%);"
+                                       "color: white;"
+                                       "}"
+                                       "QPushButton:pressed{"
+                                       "background-color: rgb(100, 100, 100);"
+                                       "border-style: inset; "
+                                       "}")
+        self.BeaufortButton.setStyleSheet("QPushButton{"
+                                          "background-color:rgba(40, 40, 40, 100%);"
+                                          "color: white;"
+                                          "border-radius: 0px;"
+                                          "border: 0px groove gray;"
+                                          "border-style: outset;"
+                                          "}"
+                                          "QPushButton:hover{"
+                                          "background-color: rgba(60, 60, 60, 100%);"
+                                          "color: white;"
+                                          "}"
+                                          "QPushButton:pressed{"
+                                          "background-color: rgb(100, 100, 100);"
+                                          "border-style: inset; "
+                                          "}")
+        self.OtherCipherButton.setStyleSheet("QPushButton{"
+                                             "background-color:rgba(40, 40, 40, 100%);"
+                                             "color: white;"
+                                             "border-radius: 0px;"
+                                             "border: 0px groove gray;"
+                                             "border-style: outset;"
+                                             "}"
+                                             "QPushButton:hover{"
+                                             "background-color: rgba(60, 60, 60, 100%);"
+                                             "color: white;"
+                                             "}"
+                                             "QPushButton:pressed{"
+                                             "background-color: rgb(100, 100, 100);"
+                                             "border-style: inset; "
+                                             "}")
+        self.JSFuckButton.setStyleSheet("QPushButton{"
+                                        "background-color:rgba(40, 40, 40, 100%);"
+                                        "color: white;"
+                                        "border-radius: 0px;"
+                                        "border: 0px groove gray;"
+                                        "border-style: outset;"
+                                        "}"
+                                        "QPushButton:hover{"
+                                        "background-color: rgba(60, 60, 60, 100%);"
+                                        "color: white;"
+                                        "}"
+                                        "QPushButton:pressed{"
+                                        "background-color: rgb(100, 100, 100);"
+                                        "border-style: inset; "
+                                        "}")
+        self.BrainFuckButton.setStyleSheet("QPushButton{"
+                                           "background-color:rgba(40, 40, 40, 100%);"
+                                           "color: white;"
+                                           "border-radius: 0px;"
+                                           "border: 0px groove gray;"
+                                           "border-style: outset;"
+                                           "}"
+                                           "QPushButton:hover{"
+                                           "background-color: rgba(60, 60, 60, 100%);"
+                                           "color: white;"
+                                           "}"
+                                           "QPushButton:pressed{"
+                                           "background-color: rgb(100, 100, 100);"
+                                           "border-style: inset; "
+                                           "}")
+        self.OokButton.setStyleSheet("QPushButton{"
+                                     "background-color:rgba(40, 40, 40, 100%);"
+                                     "color: white;"
+                                     "border-radius: 0px;"
+                                     "border: 0px groove gray;"
+                                     "border-style: outset;"
+                                     "}"
+                                     "QPushButton:hover{"
+                                     "background-color: rgba(60, 60, 60, 100%);"
+                                     "color: white;"
+                                     "}"
+                                     "QPushButton:pressed{"
+                                     "background-color: rgb(100, 100, 100);"
+                                     "border-style: inset; "
+                                     "}")
+        self.StrokesButton.setStyleSheet("QPushButton{"
+                                         "background-color:rgba(40, 40, 40, 100%);"
+                                         "color: white;"
+                                         "border-radius: 0px;"
+                                         "border: 0px groove gray;"
+                                         "border-style: outset;"
+                                         "}"
+                                         "QPushButton:hover{"
+                                         "background-color: rgba(60, 60, 60, 100%);"
+                                         "color: white;"
+                                         "}"
+                                         "QPushButton:pressed{"
+                                         "background-color: rgb(100, 100, 100);"
+                                         "border-style: inset; "
+                                         "}")
+        button.setStyleSheet("QPushButton{"
+                             "background-color:rgba(40, 140, 255, 100%);"
+                             "color: white;"
+                             "border-radius: 0px;"
+                             "border: 0px groove gray;"
+                             "border-style: outset;"
+                             "}"
+                             "QPushButton:hover{"
+                             "background-color: rgba(60, 60, 255, 100%);"
+                             "color: white;"
+                             "}"
+                             "QPushButton:pressed{"
+                             "background-color: rgb(100, 100, 255);"
+                             "border-style: inset; "
+                             "}")
+
     def ChangeCryptoStrokes(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 44
         self.CryptoStack.setCurrentWidget(self.StrokesPanel)
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.StrokesButton)
 
     def ChangeCryptoROT(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 31
         self.CryptoStack.setCurrentWidget(self.ROTPanel)
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.ROTButton)
 
     def ChangeCryptoRailFence(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 30
         self.CryptoStack.setCurrentWidget(self.RailFencePanel)
-        self.RailFencePanel.RailFenceDivBox.setText('2')
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.RailFenceButton)
 
     def ChangeCryptoCaesar(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 21
         self.CryptoStack.setCurrentWidget(self.CaesarPanel)
+        self.ChangeButtonColor(self.CaesarButton)
         self.CaesarPanel.CaesarLimitBox.setText('26')
         self.CaesarPanel.CaesarStepBox.setText('0')
         self.CaesarPanel.CaesarDispBox.setText('0')
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
 
     # RSA工具
 
     def ChangeCryptoRSA(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 13
         self.CryptoStack.setCurrentWidget(self.RSAPanel)
+        self.ChangeButtonColor(self.RSAButton)
         # self.RSAPanel.ChangeRSA()
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
-
 
     def ChangeCryptoHash(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 8
         self.CryptoStack.setCurrentWidget(self.HashPanel)
+        self.ChangeButtonColor(self.HashButton)
         self.HashPanel.HashEncodingBox.setText('UTF-8')
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
 
     def ChangeCryptoMorse(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 7
         self.CryptoStack.setCurrentWidget(self.MorsePanel)
+        self.ChangeButtonColor(self.MorseButton)
         self.MorsePanel.MorseSpiltBox.setText('/')
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
 
     def ChangeCryptoTap(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 6
         self.CryptoStack.setCurrentWidget(self.TapPanel)
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.TapButton)
 
     def ChangeCryptoEscape(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 5
         self.CryptoStack.setCurrentWidget(self.EscapePanel)
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.EscapeButton)
 
     def ChangeCryptoHTML(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 4
         self.CryptoStack.setCurrentWidget(self.HTMLPanel)
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.HTMLButton)
 
     def ChangeCryptoHex(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 3
         self.CryptoStack.setCurrentWidget(self.HexPanel)
+        self.ChangeButtonColor(self.HexButton)
         self.HexPanel.HexSplitBox.setText('')
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
 
     def ChangeCryptoUrl(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 2
         self.CryptoStack.setCurrentWidget(self.UrlPanel)
+        self.ChangeButtonColor(self.UrlButton)
         self.UrlPanel.UrlTableBox.setText('utf-8')
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
 
     def ChangeCryptoQuote(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 1
         self.CryptoStack.setCurrentWidget(self.QuotePanel)
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
+        self.ChangeButtonColor(self.QuoteButton)
 
     def ChangeCryptoBase(self):
-        animation = Qt.QPropertyAnimation(self)
-        animation.setTargetObject(self.CryptoChooser)
-        animation.setPropertyName(b'pos')
-        animation.setStartValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        self.CryptoMode = 0
         self.CryptoStack.setCurrentWidget(self.BasePanel)
+        self.ChangeButtonColor(self.BaseButton)
         self.BasePanel.ChangeBase64()
-        animation.setEndValue(QtCore.QPoint(
-            self.CryptoChooserVBox[self.CryptoMode % 10], self.CryptoChooserHBox[self.CryptoMode // 10]))
-        animation.setDuration(200)
-        animation.start()
