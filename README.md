@@ -17,7 +17,7 @@ fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 
 在测试之后请不要push Resources文件夹下的DIY.sqlite数据库, 或者将此数据库删掉后再push
 
-软件使用时不存在问题, 但是使用Pycharm提交之后数据库里面会被以文本形式插入一些奇奇怪怪的东西, 
+软件使用时不存在问题, 但是使用Pycharm提交之后数据库里面会被以文本形式插入一些奇奇怪怪的东西,
 暂不清楚这些语句是怎么插入进去的, 这些文本会破坏数据库的完整性, 从而造成软件无法打开.
 删掉之后软件启动时会自动创建一个空的.
 
@@ -143,9 +143,8 @@ Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 Windows上的H5不包含h.264的解码器, 无法进行H5播放. Linux上一切正常.
 
 # 当前完成状态预览
-![Screenshot_20200404_125915.png](https://i.loli.net/2020/04/04/puivLnDIkFrAHwl.png)
-![Screenshot_20200404_125946.png](https://i.loli.net/2020/04/04/otsqaBLAu6RSbXi.png)
-![Screenshot_20200404_130002.png](https://i.loli.net/2020/04/04/q5WgoEdxIcODL6Y.png)
-![Screenshot_20200404_125928.png](https://i.loli.net/2020/04/04/8X9qRU51bd2Lykf.png)
-![Screenshot_20200403_203428.png](https://i.loli.net/2020/04/04/MroUzRGt69YJO37.png)
-![Screenshot_20200404_125833.png](https://i.loli.net/2020/04/04/DpLPHqF26sO8jIz.png)
+![图片.png](https://i.loli.net/2020/04/08/gD1z7cpIxinRe8B.png)
+![图片.png](https://i.loli.net/2020/04/08/aeXhjSM2PqrA5Bb.png)
+![图片.png](https://i.loli.net/2020/04/08/QeRvMVjsb6cn5a9.png)
+![图片.png](https://i.loli.net/2020/04/08/OZwzU3hSIgt9sFa.png)
+![图片.png](https://i.loli.net/2020/04/08/GuMV2dDZrkPFcQb.png)
