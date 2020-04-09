@@ -1,12 +1,13 @@
 from PyQt5.QtCore import QUrl, QFileInfo
 from PyQt5.QtGui import QKeySequence
-from PyQt5.QtWebEngineWidgets import QWebEngineDownloadItem
+from PyQt5.QtWebEngineWidgets import QWebEngineDownloadItem, QWebEngineSettings
 from PyQt5.QtWidgets import QFileDialog, QShortcut
 
 from ui_Widgets import uni_Widget
 from ui_Widgets.ErrorWin import errorInfo
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebEngineWidgets
 import os
+import platform
 
 
 class ui_TerminalPanel(QtWidgets.QWidget):
@@ -38,6 +39,13 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         self.Layouts.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.Layouts)
         self.browser.show()
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            self.browser.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
         self.browser.setZoomFactor(1.2)
         self.browser.page().profile().downloadRequested.connect(self.on_downloadRequested)
         self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
