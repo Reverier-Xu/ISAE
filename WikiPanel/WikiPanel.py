@@ -1,9 +1,11 @@
 import os
 
 from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets, QtWebEngine, QtWebEngineCore
+from PyQt5.QtWebEngineWidgets import QWebEngineSettings
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut
 from PyQt5 import Qt
+import platform
 
 
 class WikiPanel(QtWidgets.QWidget):
@@ -28,6 +30,13 @@ class WikiBrowserPanelWidget(QtWidgets.QWidget):
         print('file:///' + pwd + '/Resources/Wiki/index.html')
         self.browser.load(QtCore.QUrl(
             'file:///' + pwd + '/Resources/Wiki/index.html'))
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            self.browser.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
         self.Layouts = QtWidgets.QHBoxLayout(self)
         self.Layouts.addWidget(self.browser)
         self.Layouts.setSpacing(0)

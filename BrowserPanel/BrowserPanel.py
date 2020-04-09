@@ -9,6 +9,7 @@ from ui_Widgets import uni_Widget
 import sys
 import socket
 import re
+import platform
 
 
 class BrowserPanel(QWidget):
@@ -35,6 +36,13 @@ class BrowserEngineView(QWebEngineView):
         webview.settings().setAttribute(QWebEngineSettings.FullScreenSupportEnabled, True)
         webview.settings().setAttribute(QWebEngineSettings.JavascriptEnabled, True)
         webview.settings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            webview.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
+            webview.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
+            webview.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
+            webview.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
+            webview.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
         QWebEngineSettings.defaultSettings().setAttribute(
             QWebEngineSettings.PluginsEnabled, True)
         QWebEngineSettings.globalSettings().setAttribute(

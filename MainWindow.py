@@ -22,6 +22,7 @@ import time
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        QtGui.QFontDatabase.addApplicationFont("./Resources/wqy-microhei.ttc")
         self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1600, 900)
@@ -47,6 +48,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(10, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         font = QtGui.QFont()
+        font.setFamily('文泉驿微米黑')
         font.setPixelSize(18)
         self.TitleLabel = uni_Widget.ICTFELabel(self.centralwidget)
         self.TitleLabel.setObjectName("TitleLabel")
@@ -142,18 +144,18 @@ class Ui_MainWindow(object):
         self.TabLayout.setContentsMargins(10, 0, 10, 0)
         self.TabLayout.setSpacing(5)
         self.TabLayout.setObjectName("TabLayout")
-        self.ReverseButton = uni_Widget.ICTFEButton(self.centralwidget)
+        self.BinaryButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(
-            self.ReverseButton.sizePolicy().hasHeightForWidth())
-        self.ReverseButton.setSizePolicy(sizePolicy)
-        self.ReverseButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.ReverseButton.setMaximumSize(QtCore.QSize(120, 45))
-        self.ReverseButton.setObjectName("ReverseButton")
-        self.TabLayout.addWidget(self.ReverseButton)
+            self.BinaryButton.sizePolicy().hasHeightForWidth())
+        self.BinaryButton.setSizePolicy(sizePolicy)
+        self.BinaryButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.BinaryButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.BinaryButton.setObjectName("BinaryButton")
+        self.TabLayout.addWidget(self.BinaryButton)
         self.WebButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -178,18 +180,6 @@ class Ui_MainWindow(object):
         self.CryptoButton.setMaximumSize(QtCore.QSize(120, 45))
         self.CryptoButton.setObjectName("CryptoButton")
         self.TabLayout.addWidget(self.CryptoButton)
-        self.PwnButton = uni_Widget.ICTFEButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.PwnButton.sizePolicy().hasHeightForWidth())
-        self.PwnButton.setSizePolicy(sizePolicy)
-        self.PwnButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.PwnButton.setMaximumSize(QtCore.QSize(120, 45))
-        self.PwnButton.setObjectName("PwnButton")
-        self.TabLayout.addWidget(self.PwnButton)
         self.MiscButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -282,10 +272,10 @@ class Ui_MainWindow(object):
                                      "}")
         self.TypeStack.setObjectName("TypeStack")
 
-        # Reverse Panel
-        self.ReversePanel = QtWidgets.QWidget()
-        self.ReversePanel.setObjectName("ReversePanel")
-        self.TypeStack.addWidget(self.ReversePanel)
+        # Binary Panel
+        self.BinaryPanel = QtWidgets.QWidget()
+        self.BinaryPanel.setObjectName("BinaryPanel")
+        self.TypeStack.addWidget(self.BinaryPanel)
 
         # Web Panel
         self.WebPanel = QtWidgets.QWidget()
@@ -296,11 +286,6 @@ class Ui_MainWindow(object):
         self.CryptoPanel = CryptoPanel.CryptoPanel()
         self.CryptoPanel.setObjectName("CryptoPanel")
         self.TypeStack.addWidget(self.CryptoPanel)
-
-        # Pwn panel
-        self.PwnPanel = QtWidgets.QWidget()
-        self.PwnPanel.setObjectName("PwnPanel")
-        self.TypeStack.addWidget(self.PwnPanel)
 
         # Misc Panel
         self.MiscPanel = QtWidgets.QWidget()
@@ -366,10 +351,9 @@ class Ui_MainWindow(object):
         self.MaxButton.clicked.connect(MainWindow.MaximumWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.CryptoButton.clicked.connect(self.ChangeTypeStackCrypto)
-        self.ReverseButton.clicked.connect(self.ChangeTypeStackReverse)
+        self.BinaryButton.clicked.connect(self.ChangeTypeStackBinary)
         self.MiscButton.clicked.connect(self.ChangeTypeStackMisc)
         self.WebButton.clicked.connect(self.ChangeTypeStackWeb)
-        self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
         self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
         self.BrowserButton.clicked.connect(self.ChangeTypeStackBrowser)
         self.WikiButton.clicked.connect(self.ChangeTypeStackWiki)
@@ -389,10 +373,9 @@ class Ui_MainWindow(object):
 
     def setTabButtonColor(self, button):
         self.CryptoButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.ReverseButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
+        self.BinaryButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.MiscButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.WebButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.PwnButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.DIYButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.BrowserButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.WikiButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
@@ -406,10 +389,10 @@ class Ui_MainWindow(object):
         self.setTabButtonColor(self.CryptoButton)
         self.CryptoPanel.ChangeCryptoBase()
 
-    def ChangeTypeStackReverse(self):
-        '''改变类型控件组 逆向'''
-        self.TypeStack.setCurrentWidget(self.ReversePanel)
-        self.setTabButtonColor(self.ReverseButton)
+    def ChangeTypeStackBinary(self):
+        '''改变类型控件组 二进制'''
+        self.TypeStack.setCurrentWidget(self.BinaryPanel)
+        self.setTabButtonColor(self.BinaryButton)
 
     def ChangeTypeStackWeb(self):
         '''改变类型控件组 web'''
@@ -420,11 +403,6 @@ class Ui_MainWindow(object):
         '''改变类型控件组 杂项'''
         self.TypeStack.setCurrentWidget(self.MiscPanel)
         self.setTabButtonColor(self.MiscButton)
-
-    def ChangeTypeStackPwn(self):
-        '''改变类型控件组 pwn'''
-        self.TypeStack.setCurrentWidget(self.PwnPanel)
-        self.setTabButtonColor(self.PwnButton)
 
     def ChangeTypeStackDIY(self):
         '''改变类型控件组 DIY'''
@@ -462,10 +440,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.ReverseButton.setText(_translate("MainWindow", "逆向工程"))
+        self.BinaryButton.setText(_translate("MainWindow", "二进制"))
         self.WebButton.setText(_translate("MainWindow", "Web渗透"))
         self.CryptoButton.setText(_translate("MainWindow", "密码编码"))
-        self.PwnButton.setText(_translate("MainWindow", "PWN!"))
         self.MiscButton.setText(_translate("MainWindow", "杂项工具"))
         self.TerminalButton.setText(_translate("MainWindow", "数据厨师"))
         self.WikiButton.setText(_translate("MainWindow", "Wiki"))
@@ -485,7 +462,8 @@ class SystemInfoThread(QtCore.QThread):
         while True:
             new_net_speed = psutil.net_io_counters().bytes_recv
             time.sleep(1)
-            self.__win.StatusBar.showMessage('>>>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
+            self.__win.StatusBar.setStyleSheet("QStatusBar{padding-left:8px;background:rgba(40,40,40,0);color:white;font-weight:bold;}")
+            self.__win.StatusBar.showMessage(' >>>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
                                              "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024)+'      Memory Usage: '+str(
                                                  int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
                                              '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')

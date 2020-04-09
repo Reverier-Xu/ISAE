@@ -1,8 +1,10 @@
 import os
 
 from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineDownloadItem, QWebEngineSettings
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut
+import platform
 
 
 class KiwixPanel(QtWidgets.QWidget):
@@ -22,6 +24,13 @@ class KiwixBrowserPanelWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super(KiwixBrowserPanelWidget, self).__init__(parent)
         self.browser = QtWebEngineWidgets.QWebEngineView(self)
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            self.browser.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         self.browser.load(QtCore.QUrl(

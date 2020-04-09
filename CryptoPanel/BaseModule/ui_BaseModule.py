@@ -52,7 +52,7 @@ class ui_BasePanel(QtWidgets.QWidget):
         self.BaseMainLayout.addLayout(self.horizontalLayout)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.BaseTableTips = QtWidgets.QLabel(self)
+        self.BaseTableTips = uni_Widget.ICTFELabel(self)
         self.BaseTableTips.setObjectName("BaseTableTips")
         self.horizontalLayout_2.addWidget(self.BaseTableTips)
         self.BaseTableBox = uni_Widget.ICTFELineBox(self)
