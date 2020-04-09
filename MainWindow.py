@@ -22,6 +22,7 @@ import time
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        QtGui.QFontDatabase.addApplicationFont("./Resources/wqy-microhei.ttc")
         self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1600, 900)
@@ -46,12 +47,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setContentsMargins(10, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        font = QtGui.QFont()
-        font.setPixelSize(18)
         self.TitleLabel = uni_Widget.ICTFELabel(self.centralwidget)
         self.TitleLabel.setObjectName("TitleLabel")
         self.TitleLabel.setText('ICTFE - 集成式CTF解题环境 Version 1.0 Dev')
-        self.TitleLabel.setFont(font)
         self.horizontalLayout.addWidget(self.TitleLabel)
         spacerItem = QtWidgets.QSpacerItem(
             1088, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
