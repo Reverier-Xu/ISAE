@@ -477,13 +477,18 @@ class SystemInfoThread(QtCore.QThread):
     def __init__(self, window):
         super(SystemInfoThread, self).__init__()
         self.__win = window
+        self.__win.StatusBar.setStyleSheet('color: white;')
+        font = QtGui.QFont()
+        font.setFamily('Consolas')
+        font.setPixelSize(16)
+        self.__win.StatusBar.setFont(font)
 
     def run(self):
         old_net_speed = psutil.net_io_counters().bytes_recv
         while True:
             new_net_speed = psutil.net_io_counters().bytes_recv
             time.sleep(1)
-            self.__win.StatusBar.showMessage('>>>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
+            self.__win.StatusBar.showMessage('  =>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
                                              "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024)+'      Memory Usage: '+str(
                                                  int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
                                              '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')
