@@ -11,8 +11,18 @@ def file_name(path):
     return os.listdir(path)
 
 
+
+class FileTreeItem(QtWidgets.QTreeWidgetItem):
+    FilePath = ''
+
+    def __init__(self, parent=None):
+        super(FileTreeItem, self).__init__(parent)
+
+    def setFilePath(self, path):
+        self.FilePath = path
+
 class Tree(QMainWindow, ui_PDFFileWindow):
-    FileDetectedSignal = QtCore.pyqtSignal(str)
+    FileDetectedSignal = QtCore.pyqtSignal(FileTreeItem)
 
     def __init__(self, parent=None):
         super(Tree, self).__init__(parent)
@@ -24,16 +34,15 @@ class Tree(QMainWindow, ui_PDFFileWindow):
         font.setPixelSize(20)
         path = './Resources/PDFJS/web'
         self.tree.setFont(font)
-        self.tree.setStyleSheet("QTreeView::item:hover{background-color:rgb(60,150,225)}"
-                                "QTreeView::item:selected{background-color:rgb(80,130,255)}"
-                                "QTreeView{background-color: rgb(40, 40, 40)}")
+        self.tree.setStyleSheet("QTreeView::item:hover{color: lightgrey; background-color: rgb(60,150,225)}"
+                                "QTreeView::item:selected{color: lightgrey; background-color:rgb(80,130,255)}"
+                                "QTreeView{color: lightgrey; background-color: rgb(40, 40, 40)}"
+                                "QHeaderView::section{color: lightgrey; background-color: rgb(40, 40, 40);}")
         self.tree.setColumnCount(1)
         self.tree.setColumnWidth(0, 50)
         self.tree.setHeaderLabels(["书籍列表"])
         self.tree.setIconSize(Qt.QSize(25, 25))
         self.tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        self.tree.doubleClicked.connect(lambda x: self.EmitFilePath(self.tree.itemFromIndex(x)))
-        self.actionfileopen.triggered.connect(self.Open_Folder)
 
         dirs = file_name(path)
 
@@ -56,16 +65,16 @@ class Tree(QMainWindow, ui_PDFFileWindow):
         font.setFamily('文泉驿等宽微米黑')
         font.setPixelSize(20)
         self.tree.setFont(font)
-        self.tree.setStyleSheet("QTreeView::item:hover{background-color:rgb(60,150,225)}"
-                                "QTreeView::item:selected{background-color:rgb(80,130,255)}"
-                                "QTreeView{background-color: rgb(40, 40, 40)}")
         self.tree.setColumnCount(1)
         self.tree.setColumnWidth(0, 50)
         self.tree.setHeaderLabels(["书籍列表"])
         self.tree.setIconSize(Qt.QSize(25, 25))
         self.tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.tree.setStyleSheet("QTreeView::item:hover{color: lightgrey; background-color: rgb(60,150,225)}"
+                                "QTreeView::item:selected{color: lightgrey; background-color:rgb(80,130,255)}"
+                                "QTreeView{color: lightgrey; background-color: rgb(40, 40, 40)}"
+                                "QHeaderView::section{color: lightgrey; background-color: rgb(40, 40, 40);}")
         self.tree.doubleClicked.connect(lambda x: self.EmitFilePath(self.tree.itemFromIndex(x)))
-        self.actionfileopen.triggered.connect(self.Open_Folder)
 
         dirs = file_name(path)
 
@@ -89,9 +98,8 @@ class Tree(QMainWindow, ui_PDFFileWindow):
                 child = FileTreeItem(root)
                 child.setText(0, i)
                 child.setIcon(0, QtGui.QIcon(icon))
-                dirs_new = file_name(path_new)
-                self.CreateTree(dirs_new, child, path_new)
-            else:
+                child.setFilePath(path_new)
+            elif path_new[-4:] == '.pdf':
                 fileInfo = Qt.QFileInfo(path_new)
                 fileIcon = Qt.QFileIconProvider()
                 icon = QtGui.QIcon(fileIcon.icon(fileInfo))
@@ -101,14 +109,4 @@ class Tree(QMainWindow, ui_PDFFileWindow):
                 child.setFilePath(path_new)
 
     def EmitFilePath(self, item):
-        self.FileDetectedSignal.emit(item.FilePath)
-
-
-class FileTreeItem(QtWidgets.QTreeWidgetItem):
-    FilePath = ''
-
-    def __init__(self, parent=None):
-        super(FileTreeItem, self).__init__(parent)
-
-    def setFilePath(self, path):
-        self.FilePath = path
+        self.FileDetectedSignal.emit(item)
