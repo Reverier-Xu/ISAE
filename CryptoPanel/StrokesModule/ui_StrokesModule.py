@@ -6,19 +6,29 @@ class ui_StrokesPanel(QtWidgets.QWidget):
     def __init__(self):
         super(ui_StrokesPanel, self).__init__()
 
-        # Strokes Decrypt button
+        self.gridLayout = QtWidgets.QGridLayout(self)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.StrokesDecryptButton = uni_Widget.ICTFEButton(self)
-        self.StrokesDecryptButton.setObjectName('StrokesDecryptButton')
-        self.StrokesDecryptButton.setGeometry(QtCore.QRect(580, 20, 120, 45))
-        self.StrokesDecryptButton.setText('解密')
-
+        self.StrokesDecryptButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.StrokesDecryptButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.StrokesDecryptButton.setObjectName("StrokesDecryptButton")
+        self.horizontalLayout.addWidget(self.StrokesDecryptButton)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         self.StrokesTextBox = uni_Widget.ICTFETextBox(self)
-        self.StrokesTextBox.setObjectName('StrokesTextBox')
-        self.StrokesTextBox.setGeometry(QtCore.QRect(20, 80, 680, 530))
-        self.StrokesTextBox.setPlaceholderText('Strokes Encrypt\n这里写明文')
-
+        self.StrokesTextBox.setObjectName("StrokesTextBox")
+        self.gridLayout.addWidget(self.StrokesTextBox, 1, 0, 1, 1)
         self.StrokesCipherBox = uni_Widget.ICTFETextBox(self)
-        self.StrokesCipherBox.setObjectName('StrokesCipherBox')
-        self.StrokesCipherBox.setGeometry(QtCore.QRect(720, 80, 680, 530))
-        self.StrokesCipherBox.setPlaceholderText('Strokes Decrypt\n这里写编码')
-        # end Strokes panel
+        self.StrokesCipherBox.setObjectName("StrokesCipherBox")
+        self.gridLayout.addWidget(self.StrokesCipherBox, 1, 1, 1, 1)
+
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.setWindowTitle(_translate("self", "self"))
+        self.StrokesDecryptButton.setText(_translate("self", "计算!"))

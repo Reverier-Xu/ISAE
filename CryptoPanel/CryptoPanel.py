@@ -22,6 +22,72 @@ class CryptoPanel(ui_CryptoPanel):
         self.StrokesButton.clicked.connect(self.ChangeCryptoStrokes)
         self.RSAButton.clicked.connect(self.ChangeCryptoRSA)
 
+    def ChangeCryptoStrokes(self):
+        self.CryptoStack.setCurrentWidget(self.StrokesPanel)
+        self.ChangeButtonColor(self.StrokesButton)
+
+    def ChangeCryptoROT(self):
+        self.CryptoStack.setCurrentWidget(self.ROTPanel)
+        self.ChangeButtonColor(self.ROTButton)
+
+    def ChangeCryptoRailFence(self):
+        self.CryptoStack.setCurrentWidget(self.RailFencePanel)
+        self.ChangeButtonColor(self.RailFenceButton)
+
+    def ChangeCryptoCaesar(self):
+        self.CryptoStack.setCurrentWidget(self.CaesarPanel)
+        self.ChangeButtonColor(self.CaesarButton)
+        self.CaesarPanel.CaesarLimitBox.setText('26')
+        self.CaesarPanel.CaesarStepBox.setText('0')
+        self.CaesarPanel.CaesarDispBox.setText('0')
+
+    # RSA工具
+    def ChangeCryptoRSA(self):
+        self.CryptoStack.setCurrentWidget(self.RSAPanel)
+        self.ChangeButtonColor(self.RSAButton)
+        # self.RSAPanel.ChangeRSA()
+
+    def ChangeCryptoHash(self):
+        self.CryptoStack.setCurrentWidget(self.HashPanel)
+        self.ChangeButtonColor(self.HashButton)
+        self.HashPanel.HashEncodingBox.setText('UTF-8')
+
+    def ChangeCryptoMorse(self):
+        self.CryptoStack.setCurrentWidget(self.MorsePanel)
+        self.ChangeButtonColor(self.MorseButton)
+        self.MorsePanel.MorseSpiltBox.setText('/')
+
+    def ChangeCryptoTap(self):
+        self.CryptoStack.setCurrentWidget(self.TapPanel)
+        self.ChangeButtonColor(self.TapButton)
+
+    def ChangeCryptoEscape(self):
+        self.CryptoStack.setCurrentWidget(self.EscapePanel)
+        self.ChangeButtonColor(self.EscapeButton)
+
+    def ChangeCryptoHTML(self):
+        self.CryptoStack.setCurrentWidget(self.HTMLPanel)
+        self.ChangeButtonColor(self.HTMLButton)
+
+    def ChangeCryptoHex(self):
+        self.CryptoStack.setCurrentWidget(self.HexPanel)
+        self.ChangeButtonColor(self.HexButton)
+        self.HexPanel.HexSplitBox.setText('')
+
+    def ChangeCryptoUrl(self):
+        self.CryptoStack.setCurrentWidget(self.UrlPanel)
+        self.ChangeButtonColor(self.UrlButton)
+        self.UrlPanel.UrlTableBox.setText('utf-8')
+
+    def ChangeCryptoQuote(self):
+        self.CryptoStack.setCurrentWidget(self.QuotePanel)
+        self.ChangeButtonColor(self.QuoteButton)
+
+    def ChangeCryptoBase(self):
+        self.CryptoStack.setCurrentWidget(self.BasePanel)
+        self.ChangeButtonColor(self.BaseButton)
+        self.BasePanel.ChangeBase64()
+
     def ChangeButtonColor(self, button):
         self.BaseButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.QuoteButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
@@ -69,70 +135,3 @@ class CryptoPanel(ui_CryptoPanel):
         self.OokButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.StrokesButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         button.setStyleSheet(uni_Widget.ButtonStyleSelected)
-
-    def ChangeCryptoStrokes(self):
-        self.CryptoStack.setCurrentWidget(self.StrokesPanel)
-        self.ChangeButtonColor(self.StrokesButton)
-
-    def ChangeCryptoROT(self):
-        self.CryptoStack.setCurrentWidget(self.ROTPanel)
-        self.ChangeButtonColor(self.ROTButton)
-
-    def ChangeCryptoRailFence(self):
-        self.CryptoStack.setCurrentWidget(self.RailFencePanel)
-        self.ChangeButtonColor(self.RailFenceButton)
-
-    def ChangeCryptoCaesar(self):
-        self.CryptoStack.setCurrentWidget(self.CaesarPanel)
-        self.ChangeButtonColor(self.CaesarButton)
-        self.CaesarPanel.CaesarLimitBox.setText('26')
-        self.CaesarPanel.CaesarStepBox.setText('0')
-        self.CaesarPanel.CaesarDispBox.setText('0')
-
-    # RSA工具
-
-    def ChangeCryptoRSA(self):
-        self.CryptoStack.setCurrentWidget(self.RSAPanel)
-        self.ChangeButtonColor(self.RSAButton)
-        # self.RSAPanel.ChangeRSA()
-
-    def ChangeCryptoHash(self):
-        self.CryptoStack.setCurrentWidget(self.HashPanel)
-        self.ChangeButtonColor(self.HashButton)
-        self.HashPanel.HashEncodingBox.setText('UTF-8')
-
-    def ChangeCryptoMorse(self):
-        self.CryptoStack.setCurrentWidget(self.MorsePanel)
-        self.ChangeButtonColor(self.MorseButton)
-        self.MorsePanel.MorseSpiltBox.setText('/')
-
-    def ChangeCryptoTap(self):
-        self.CryptoStack.setCurrentWidget(self.TapPanel)
-        self.ChangeButtonColor(self.TapButton)
-
-    def ChangeCryptoEscape(self):
-        self.CryptoStack.setCurrentWidget(self.EscapePanel)
-        self.ChangeButtonColor(self.EscapeButton)
-
-    def ChangeCryptoHTML(self):
-        self.CryptoStack.setCurrentWidget(self.HTMLPanel)
-        self.ChangeButtonColor(self.HTMLButton)
-
-    def ChangeCryptoHex(self):
-        self.CryptoStack.setCurrentWidget(self.HexPanel)
-        self.ChangeButtonColor(self.HexButton)
-        self.HexPanel.HexSplitBox.setText('')
-
-    def ChangeCryptoUrl(self):
-        self.CryptoStack.setCurrentWidget(self.UrlPanel)
-        self.ChangeButtonColor(self.UrlButton)
-        self.UrlPanel.UrlTableBox.setText('utf-8')
-
-    def ChangeCryptoQuote(self):
-        self.CryptoStack.setCurrentWidget(self.QuotePanel)
-        self.ChangeButtonColor(self.QuoteButton)
-
-    def ChangeCryptoBase(self):
-        self.CryptoStack.setCurrentWidget(self.BasePanel)
-        self.ChangeButtonColor(self.BaseButton)
-        self.BasePanel.ChangeBase64()
