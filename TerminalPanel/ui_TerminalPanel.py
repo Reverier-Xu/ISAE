@@ -30,7 +30,6 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         self.browser = QtWebEngineWidgets.QWebEngineView(self)
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
-        print('file:///' + pwd + '/CyberChef/CyberChef.html')
         self.browser.load(QtCore.QUrl(
             'file:///' + pwd + '/CyberChef/CyberChef.html'))
         self.Layouts = QtWidgets.QHBoxLayout(self)
@@ -70,7 +69,6 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         unkonw_suffix = filttype.split(r'/')[-1]
         path, _ = QFileDialog.getSaveFileName(
             self, "保存到", old_path, "*." + unkonw_suffix + ";;" + "*." + suffix)
-        print(old_path, suffix)
         if path != "":
             download.setPath(path)
             download.accept()

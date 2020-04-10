@@ -105,7 +105,6 @@ class ui_DIYPanel(QtWidgets.QWidget):
                 'update \'' + panel.objectName() + '\' set BTNNAME=\'' + new_name + '\' where FILEPATH=\'' + file + '\'')
             conn.commit()
             conn.close()
-            print(file)
 
     def ReadDataBase(self):
         conn = sqlite3.connect('./Resources/DIY.sqlite')
@@ -174,7 +173,6 @@ class ui_DIYPanel(QtWidgets.QWidget):
             name, ok = QtWidgets.QInputDialog.getText(self, '创建启动按钮', '名称')
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
-            print(panel.objectName())
             try:
                 cu.execute(
                     'INSERT INTO \'' + panel.objectName() + '\' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + file + '\')')
@@ -198,7 +196,6 @@ class ui_DIYPanel(QtWidgets.QWidget):
         self.AddTabPanelButtonFile(panel, path, name)
         conn = sqlite3.connect('./Resources/DIY.sqlite')
         cu = conn.cursor()
-        print(panel.objectName())
         try:
             cu.execute(
                 'INSERT INTO \'' + panel.objectName() + '\' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + path + '\')')
@@ -263,8 +260,6 @@ class ui_DIYPanel(QtWidgets.QWidget):
         if aimBtn != '':
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
-            print('DELETE from \'' + panel.objectName() +
-                  '\' where BTNNAME=\'' + aimBtn + '\';')
             cu.execute('DELETE from \'' + panel.objectName() +
                        '\' where BTNNAME=\'' + aimBtn + '\';')
             conn.commit()
@@ -370,7 +365,6 @@ class ResizablePanel(QtWidgets.QWidget):
             # 遍历输出拖动进来的所有文件路径
             for url in event.mimeData().urls():
                 path = url.toLocalFile()
-                print(path)
                 self.DropFileSignal.emit(path)
             event.acceptProposedAction()
         else:

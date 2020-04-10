@@ -27,7 +27,6 @@ class WikiBrowserPanelWidget(QtWidgets.QWidget):
         self.browser = QtWebEngineWidgets.QWebEngineView(self)
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
-        print('file:///' + pwd + '/Resources/Wiki/index.html')
         self.browser.load(QtCore.QUrl(
             'file:///' + pwd + '/Resources/Wiki/index.html'))
         self.Layouts = QtWidgets.QHBoxLayout(self)

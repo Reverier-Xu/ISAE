@@ -7310,7 +7310,6 @@ def MorseEncode(text='', spilt=' ', chinese=False):
         listsch = list(chinese_dict.values())
         for i in range(0, len(text), 1):
             if listsch.count(text[i]):
-                print('yes')
                 text = text.replace(text[i], list(chinese_dict.keys())[
                     listsch.index(text[i])])
     lists = list(MorseList.values())

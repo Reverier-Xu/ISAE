@@ -52,7 +52,10 @@ class BrowserTab(QMainWindow):
         super(BrowserTab, self).__init__(parent)
         self.mainWindow = Main
         self.browser = BrowserEngineView(self.mainWindow)
-        self.browser.load(QUrl("about:blank"))
+        pwd = os.getcwd()
+        pwd = pwd.replace('\\', '/')
+        self.browser.load(
+            QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
         self.setCentralWidget(self.browser)
         self.navigation_bar = QToolBar('Navigation')
         self.navigation_bar.setIconSize(QSize(18, 18))
@@ -74,9 +77,11 @@ class BrowserTab(QMainWindow):
         self.enter_button = QAction(QIcon('Assets/enter.png'), '转到', self)
         self.add_button = QAction(QIcon('Assets/new.png'), '新建标签页', self)
         self.ssl_label1 = QLabel(self)
-        self.ssl_label1.setStyleSheet('border: 1px solid grey;')
+        self.ssl_label1.setPixmap(
+            QPixmap("Assets/main.png").scaledToHeight(18))
         self.ssl_label2 = QLabel(self)
-        self.ssl_label2.setStyleSheet('border: 1px solid grey;')
+        self.ssl_label2.setText(" 欢迎来到ICTFE ")
+        self.ssl_label2.setStyleSheet("color:white;")
         self.url_text_bar = QLineEdit(self)
         self.url_text_bar.setMinimumWidth(300)
         self.url_text_bar.resize(1000, 30)
@@ -124,7 +129,6 @@ class BrowserTab(QMainWindow):
     def navigate_to_home(self):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
-        print('file:///' + pwd + '/Resources/Search/Search.html')
         self.browser.load(
             QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
         self.browser.show()
@@ -153,20 +157,20 @@ class BrowserWindow(QWidget):
         self.tabs.setStyleSheet('''
 QTabWidget::pane {
   border: 1px solid rgb(40, 40, 40);
-  top:0px; 
+  top:0px;
   background: rgb(40, 40, 40);
-} 
+}
 
 QTabBar::tab {
-  background: rgb(40, 40, 40); 
+  background: rgb(40, 40, 40);
   color: white;
-  border: 1px solid rgb(40, 40, 40); 
+  border: 1px solid rgb(40, 40, 40);
   padding: 1px;
-} 
+}
 
-QTabBar::tab:selected { 
-  background: rgb(40, 100, 245); 
-  margin-bottom: 0px; 
+QTabBar::tab:selected {
+  background: rgb(40, 100, 245);
+  margin-bottom: 0px;
 }''')
         self.Layouts = QHBoxLayout(self)
         self.Layouts.addWidget(self.tabs)
@@ -179,7 +183,6 @@ QTabBar::tab:selected {
         self.init_tab = BrowserTab(self)
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
-        print('file:///' + pwd + '/Resources/Search/Search.html')
         self.init_tab.browser.load(
             QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
         self.add_new_tab(self.init_tab)
