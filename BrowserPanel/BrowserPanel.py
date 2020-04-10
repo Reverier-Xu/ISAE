@@ -9,6 +9,7 @@ from ui_Widgets import uni_Widget
 import sys
 import socket
 import re
+import platform
 
 
 class BrowserPanel(QWidget):
@@ -55,8 +56,16 @@ class BrowserTab(QMainWindow):
         self.setCentralWidget(self.browser)
         self.navigation_bar = QToolBar('Navigation')
         self.navigation_bar.setIconSize(QSize(18, 18))
+        self.navigation_bar.setMaximumHeight(35)
+        self.navigation_bar.setContentsMargins(1, -1, 1, -1)
         self.addToolBar(self.navigation_bar)
-
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            self.browser.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
         self.back_button = QAction(QIcon('Assets/back.png'), '后退', self)
         self.next_button = QAction(QIcon('Assets/forward.png'), '前进', self)
         self.stop_button = QAction(QIcon('Assets/stop.png'), '停止', self)
@@ -65,7 +74,9 @@ class BrowserTab(QMainWindow):
         self.enter_button = QAction(QIcon('Assets/enter.png'), '转到', self)
         self.add_button = QAction(QIcon('Assets/new.png'), '新建标签页', self)
         self.ssl_label1 = QLabel(self)
+        self.ssl_label1.setStyleSheet('border: 1px solid grey;')
         self.ssl_label2 = QLabel(self)
+        self.ssl_label2.setStyleSheet('border: 1px solid grey;')
         self.url_text_bar = QLineEdit(self)
         self.url_text_bar.setMinimumWidth(300)
         self.url_text_bar.resize(1000, 30)
@@ -81,7 +92,6 @@ class BrowserTab(QMainWindow):
         self.navigation_bar.addAction(self.refresh_button)
         self.navigation_bar.addAction(self.home_button)
         self.navigation_bar.addAction(self.add_button)
-        self.navigation_bar.addSeparator()
         self.navigation_bar.addWidget(self.ssl_label1)
         self.navigation_bar.addWidget(self.ssl_label2)
         self.navigation_bar.addWidget(self.url_text_bar)
@@ -140,7 +150,24 @@ class BrowserWindow(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.tabs = QTabWidget(self)
-        self.tabs.setStyleSheet('background-color: rgb(40, 40, 40);')
+        self.tabs.setStyleSheet('''
+QTabWidget::pane {
+  border: 1px solid rgb(40, 40, 40);
+  top:0px; 
+  background: rgb(40, 40, 40);
+} 
+
+QTabBar::tab {
+  background: rgb(40, 40, 40); 
+  color: white;
+  border: 1px solid rgb(40, 40, 40); 
+  padding: 1px;
+} 
+
+QTabBar::tab:selected { 
+  background: rgb(40, 100, 245); 
+  margin-bottom: 0px; 
+}''')
         self.Layouts = QHBoxLayout(self)
         self.Layouts.addWidget(self.tabs)
         self.Layouts.setSpacing(0)

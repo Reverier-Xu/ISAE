@@ -55,7 +55,7 @@ class ui_HashPanel(QtWidgets.QWidget):
         self.HashTextBox.setObjectName("HashTextBox")
         self.verticalLayout.addWidget(self.HashTextBox)
         self.horizontalLayout_13.addLayout(self.verticalLayout)
-        self.scrollArea = QtWidgets.QScrollArea(self)
+        self.scrollArea = uni_Widget.ICTFEScrollArea(self)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()

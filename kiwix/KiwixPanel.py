@@ -3,6 +3,8 @@ import os
 from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut
+import platform
+from PyQt5.QtWebEngineWidgets import QWebEngineSettings
 
 
 class KiwixPanel(QtWidgets.QWidget):
@@ -32,9 +34,15 @@ class KiwixBrowserPanelWidget(QtWidgets.QWidget):
         self.Layouts.setContentsMargins(0, 0, 0, 0)
         self.browser.urlChanged.connect(lambda link: self.SuitLocalKiwix(link))
         self.browser.show()
-        self.browser.setZoomFactor(1.1)
+        self.browser.setZoomFactor(1.4)
         self.setLayout(self.Layouts)
-
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            self.browser.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
         self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
         self.shortcutd.activated.connect(self.zoom_in_func)
         self.shortcutu = QShortcut(QKeySequence("Ctrl+-"), self)

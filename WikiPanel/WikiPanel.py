@@ -4,6 +4,8 @@ from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets, QtWebEngine, QtWebEngin
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut
 from PyQt5 import Qt
+from PyQt5.QtWebEngineWidgets import QWebEngineSettings
+import platform
 
 
 class WikiPanel(QtWidgets.QWidget):
@@ -36,7 +38,13 @@ class WikiBrowserPanelWidget(QtWidgets.QWidget):
         self.browser.show()
         self.browser.setZoomFactor(1.1)
         self.setLayout(self.Layouts)
-
+        osinfo = platform.system()
+        if osinfo == 'Windows':
+            self.browser.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
+            self.browser.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
         self.shortcutd = QShortcut(QKeySequence("Ctrl+="), self)
         self.shortcutd.activated.connect(self.zoom_in_func)
         self.shortcutu = QShortcut(QKeySequence("Ctrl+-"), self)
