@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Form</class>
+    <widget class="QWidget" name="Form">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1041</width>
+                <height>677</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Form</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+                <widget class="QDockWidget" name="FileListDock">
+                    <property name="maximumSize">
+                        <size>
+                            <width>130</width>
+                            <height>524287</height>
+                        </size>
+                    </property>
+                    <property name="features">
+                        <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+                    </property>
+                    <widget class="QWidget" name="dockWidgetContents"/>
+                </widget>
+            </item>
+            <item>
+                <widget class="QDockWidget" name="PDFDock">
+                    <property name="features">
+                        <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+                    </property>
+                    <widget class="QWidget" name="dockWidgetContents_2"/>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

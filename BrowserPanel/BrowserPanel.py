@@ -119,7 +119,7 @@ class BrowserTab(QMainWindow):
             s.setScheme('http')
         if re.match(
                 '((http|ftp|https)://)?(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?',
-                self.url_text_bar.text()) != None:
+                self.url_text_bar.text()) != None or self.url_text_bar.text()[:4] == 'file':
             self.browser.load(s)
         else:
             s = QUrl('https://cn.bing.com/search?q=' +

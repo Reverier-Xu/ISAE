@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import Qt
+
+from PDFJSPanel.PDFJSPanel import PDFJSPanel
 from ui_Widgets import uni_Widget
 from DIYPanel.DIYPanel import DIYPanel
 from TerminalPanel.TerminalPanel import TerminalPanel
@@ -49,6 +51,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.TitleLabel = uni_Widget.ICTFELabel(self.centralwidget)
         self.TitleLabel.setObjectName("TitleLabel")
+        font = QtGui.QFont()
+        font.setFamily('文泉驿等宽微米黑')
+        font.setPixelSize(16)
+        self.TitleLabel.setFont(font)
         self.TitleLabel.setText('ICTFE - 集成式CTF解题环境 Version 1.0 Dev')
         self.horizontalLayout.addWidget(self.TitleLabel)
         spacerItem = QtWidgets.QSpacerItem(
@@ -260,6 +266,18 @@ class Ui_MainWindow(object):
         self.DIYButton.setMaximumSize(QtCore.QSize(120, 45))
         self.DIYButton.setObjectName("DIYButton")
         self.TabLayout.addWidget(self.DIYButton)
+        self.PDFJSButton = uni_Widget.ICTFEButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.PDFJSButton.sizePolicy().hasHeightForWidth())
+        self.PDFJSButton.setSizePolicy(sizePolicy)
+        self.PDFJSButton.setMinimumSize(QtCore.QSize(120, 45))
+        self.PDFJSButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.PDFJSButton.setObjectName("PDFJSButton")
+        self.TabLayout.addWidget(self.PDFJSButton)
 
         self.SplitterWidget2 = QtWidgets.QWidget(self)
         self.SplitterWidget2.setMaximumHeight(1)
@@ -309,6 +327,11 @@ class Ui_MainWindow(object):
         self.DIYPanel = DIYPanel()
         self.DIYPanel.setObjectName('DIYPanel')
         self.TypeStack.addWidget(self.DIYPanel)
+
+        # PDFJS Panel
+        self.PDFJSPanel = PDFJSPanel()
+        self.PDFJSPanel.setObjectName('PDFJSPanel')
+        self.TypeStack.addWidget(self.PDFJSPanel)
 
         # Terminal Panel
         self.TerminalPanel = TerminalPanel()
@@ -369,12 +392,13 @@ class Ui_MainWindow(object):
         self.WebButton.clicked.connect(self.ChangeTypeStackWeb)
         self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
         self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
+        self.PDFJSButton.clicked.connect(self.ChangeTypeStackPDFJS)
         self.BrowserButton.clicked.connect(self.ChangeTypeStackBrowser)
         self.WikiButton.clicked.connect(self.ChangeTypeStackWiki)
         self.KiwixButton.clicked.connect(self.ChangeTypeStackKiwix)
         self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
         self.StatusThread = SystemInfoThread(MainWindow)
-        self.StatusThread.start()
+        # self.StatusThread.start()
         self.center()
 
     def MaximumWindow(self):
@@ -392,6 +416,7 @@ class Ui_MainWindow(object):
         self.WebButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.PwnButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.DIYButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
+        self.PDFJSButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.BrowserButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.WikiButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.TerminalButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
@@ -428,6 +453,11 @@ class Ui_MainWindow(object):
         '''改变类型控件组 DIY'''
         self.TypeStack.setCurrentWidget(self.DIYPanel)
         self.setTabButtonColor(self.DIYButton)
+
+    def ChangeTypeStackPDFJS(self):
+        '''改变类型控件组 PDFJS'''
+        self.TypeStack.setCurrentWidget(self.PDFJSPanel)
+        self.setTabButtonColor(self.PDFJSButton)
 
     def ChangeTypeStackTerminal(self):
         '''改变类型控件组 Terminal'''
@@ -470,6 +500,7 @@ class Ui_MainWindow(object):
         self.BrowserButton.setText(_translate("MainWindow", "浏览器"))
         self.KiwixButton.setText(_translate("MainWindow", "Kiwix"))
         self.DIYButton.setText(_translate("MainWindow", "启动器"))
+        self.PDFJSButton.setText(_translate("MainWindow", "PDF阅读"))
 
 
 class SystemInfoThread(QtCore.QThread):
