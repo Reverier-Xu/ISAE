@@ -30,7 +30,6 @@ class HashPanel(ui_HashPanel):
             self.HashTextInputFlag = False
             self.HashTextBox.setText('')
         else:
-            text = ''
             if self.HashEvalCheckBox.isChecked():
                 try:
                     text = eval(self.HashTextBox.toPlainText())

@@ -61,6 +61,7 @@ class BrowserTab(QMainWindow):
         self.navigation_bar.setIconSize(QSize(18, 18))
         self.navigation_bar.setMaximumHeight(35)
         self.navigation_bar.setContentsMargins(1, -1, 1, -1)
+        self.navigation_bar.setStyleSheet('QToolBar{border: 1px solid grey;}')
         self.addToolBar(self.navigation_bar)
         osinfo = platform.system()
         if osinfo == 'Windows':
@@ -82,7 +83,7 @@ class BrowserTab(QMainWindow):
         self.ssl_label2 = QLabel(self)
         self.ssl_label2.setText(" 欢迎来到ICTFE ")
         self.ssl_label2.setStyleSheet("color:white;")
-        self.url_text_bar = QLineEdit(self)
+        self.url_text_bar = uni_Widget.ICTFELineBox(self)
         self.url_text_bar.setMinimumWidth(300)
         self.url_text_bar.resize(1000, 30)
         self.url_text_bar.setStyleSheet(
@@ -91,7 +92,8 @@ class BrowserTab(QMainWindow):
             'border-radius: 0px;'
             'padding: 0 0px;'
             'background: rgb(20, 20, 20);'
-            'selection-background-color: blue;')
+            'selection-background-color: blue;'
+            'font: 18px;')
         self.navigation_bar.addAction(self.back_button)
         self.navigation_bar.addAction(self.next_button)
         self.navigation_bar.addAction(self.refresh_button)

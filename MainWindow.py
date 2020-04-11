@@ -398,7 +398,7 @@ class Ui_MainWindow(object):
         self.KiwixButton.clicked.connect(self.ChangeTypeStackKiwix)
         self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
         self.StatusThread = SystemInfoThread(MainWindow)
-        # self.StatusThread.start()
+        self.StatusThread.start()
         self.center()
 
     def MaximumWindow(self):
@@ -508,7 +508,7 @@ class SystemInfoThread(QtCore.QThread):
     def __init__(self, window):
         super(SystemInfoThread, self).__init__()
         self.__win = window
-        self.__win.StatusBar.setStyleSheet('color: white;')
+        self.__win.StatusBar.setStyleSheet('QStatusBar{color: white; border: 1px solid grey;}')
         font = QtGui.QFont()
         font.setFamily('Consolas')
         font.setPixelSize(16)
