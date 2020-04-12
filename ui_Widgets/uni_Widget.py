@@ -35,6 +35,12 @@ ButtonStyleSelected = "QPushButton{" \
                       "}"
 
 
+class ICTFESplitter(QtWidgets.QSplitter):
+    def __init__(self, parent=None):
+        super(ICTFESplitter, self).__init__(parent)
+        self.setStyleSheet("QSplitter::handle { background-color: grey; }")
+
+
 class ICTFEButton(QtWidgets.QPushButton):
     def __init__(self, parent=None):
         super(ICTFEButton, self).__init__(parent)
@@ -128,9 +134,10 @@ class ICTFEList(QtWidgets.QListWidget):
     def __init__(self, parent=None):
         super(ICTFEList, self).__init__(parent)
         self.setStyleSheet(
-            '#FileTempStack{'
-            'background-color: rgb(20,20,20);'
-            'color: white'
+            'QListWidget{'
+            'background-color: rgb(40,40,40);'
+            'border: 1px solid grey;'
+            'color: white;'
             '}')
         font = QtGui.QFont()
         font.setFamily("consolas")

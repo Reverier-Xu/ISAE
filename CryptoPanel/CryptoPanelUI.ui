@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Form</class>
+    <widget class="QWidget" name="Form">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1228</width>
+                <height>718</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Form</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+                <widget class="QSplitter" name="CryptoLayout">
+                    <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                    </property>
+                    <widget class="QScrollArea" name="ToolsArea">
+                        <property name="widgetResizable">
+                            <bool>true</bool>
+                        </property>
+                        <widget class="QWidget" name="ToolsAreaPanel">
+                            <property name="geometry">
+                                <rect>
+                                    <x>0</x>
+                                    <y>0</y>
+                                    <width>252</width>
+                                    <height>698</height>
+                                </rect>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_5">
+                                <item>
+                                    <widget class="QLineEdit" name="ToolsSearchBox"/>
+                                </item>
+                                <item>
+                                    <widget class="QListWidget" name="ToolsList"/>
+                                </item>
+                            </layout>
+                        </widget>
+                    </widget>
+                    <widget class="QSplitter" name="OperationLayout">
+                        <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                        </property>
+                        <widget class="QSplitter" name="NodeBoxAndIOLayouts">
+                            <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                            </property>
+                            <widget class="QWidget" name="CryptoToolNodeEditor" native="true"/>
+                            <widget class="QScrollArea" name="IOArea">
+                                <property name="widgetResizable">
+                                    <bool>true</bool>
+                                </property>
+                                <widget class="QWidget" name="IOAreaPanel">
+                                    <property name="geometry">
+                                        <rect>
+                                            <x>0</x>
+                                            <y>0</y>
+                                            <width>698</width>
+                                            <height>272</height>
+                                        </rect>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                                        <item>
+                                            <widget class="QSplitter" name="IOLayout">
+                                                <property name="orientation">
+                                                    <enum>Qt::Horizontal</enum>
+                                                </property>
+                                                <widget class="QWidget" name="">
+                                                    <layout class="QVBoxLayout" name="InputPanelLayout">
+                                                        <item>
+                                                            <widget class="QLabel" name="InputTips">
+                                                                <property name="text">
+                                                                    <string>输入</string>
+                                                                </property>
+                                                            </widget>
+                                                        </item>
+                                                        <item>
+                                                            <layout class="QHBoxLayout" name="InputBoxLayout">
+                                                                <item>
+                                                                    <widget class="QTextEdit" name="InputBox"/>
+                                                                </item>
+                                                                <item>
+                                                                    <layout class="QVBoxLayout"
+                                                                            name="InputWorkButtonLayout">
+                                                                        <item>
+                                                                            <widget class="QPushButton"
+                                                                                    name="OpenFileButton">
+                                                                                <property name="text">
+                                                                                    <string>打开...</string>
+                                                                                </property>
+                                                                            </widget>
+                                                                        </item>
+                                                                        <item>
+                                                                            <widget class="QCheckBox"
+                                                                                    name="EvalCheckBox">
+                                                                                <property name="text">
+                                                                                    <string>eval</string>
+                                                                                </property>
+                                                                            </widget>
+                                                                        </item>
+                                                                        <item>
+                                                                            <widget class="QCheckBox"
+                                                                                    name="BigCheckBox">
+                                                                                <property name="text">
+                                                                                    <string>大文件</string>
+                                                                                </property>
+                                                                            </widget>
+                                                                        </item>
+                                                                    </layout>
+                                                                </item>
+                                                            </layout>
+                                                        </item>
+                                                    </layout>
+                                                </widget>
+                                                <widget class="QWidget" name="layoutWidget">
+                                                    <layout class="QVBoxLayout" name="OutputPanelLayout">
+                                                        <item>
+                                                            <widget class="QLabel" name="OutputTips">
+                                                                <property name="text">
+                                                                    <string>输出</string>
+                                                                </property>
+                                                            </widget>
+                                                        </item>
+                                                        <item>
+                                                            <layout class="QHBoxLayout" name="OutputBoxLayout">
+                                                                <item>
+                                                                    <widget class="QTextEdit" name="OutputBox"/>
+                                                                </item>
+                                                                <item>
+                                                                    <widget class="QPushButton" name="SaveFileButton">
+                                                                        <property name="text">
+                                                                            <string>另存为..</string>
+                                                                        </property>
+                                                                    </widget>
+                                                                </item>
+                                                            </layout>
+                                                        </item>
+                                                    </layout>
+                                                </widget>
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </widget>
+                        </widget>
+                        <widget class="QSplitter" name="FileAndOptionsLayout">
+                            <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                            </property>
+                            <widget class="QScrollArea" name="OptionsArea">
+                                <property name="widgetResizable">
+                                    <bool>true</bool>
+                                </property>
+                                <widget class="QWidget" name="OptionsAreaPanel">
+                                    <property name="geometry">
+                                        <rect>
+                                            <x>0</x>
+                                            <y>0</y>
+                                            <width>252</width>
+                                            <height>449</height>
+                                        </rect>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout">
+                                        <item>
+                                            <widget class="QLabel" name="OptionsTips">
+                                                <property name="text">
+                                                    <string>节点选项</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QListView" name="OptionsBox"/>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </widget>
+                            <widget class="QScrollArea" name="FileTempStackArea">
+                                <property name="widgetResizable">
+                                    <bool>true</bool>
+                                </property>
+                                <widget class="QWidget" name="FileTempStackAreaPanel">
+                                    <property name="geometry">
+                                        <rect>
+                                            <x>0</x>
+                                            <y>0</y>
+                                            <width>252</width>
+                                            <height>246</height>
+                                        </rect>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_2">
+                                        <item>
+                                            <widget class="QLabel" name="FileTempStackTips">
+                                                <property name="text">
+                                                    <string>暂存池</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QListView" name="FileTempStack"/>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </widget>
+                        </widget>
+                    </widget>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

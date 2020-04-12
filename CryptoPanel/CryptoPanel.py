@@ -6,7 +6,7 @@ from ui_Widgets import uni_Widget
 class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
-
+'''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
         self.UrlButton.clicked.connect(self.ChangeCryptoUrl)
@@ -135,3 +135,4 @@ class CryptoPanel(ui_CryptoPanel):
         self.OokButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.StrokesButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         button.setStyleSheet(uni_Widget.ButtonStyleSelected)
+'''

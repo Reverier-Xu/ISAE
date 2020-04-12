@@ -427,7 +427,6 @@ class Ui_MainWindow(object):
         '''改变类型控件组 密码学'''
         self.TypeStack.setCurrentWidget(self.CryptoPanel)
         self.setTabButtonColor(self.CryptoButton)
-        self.CryptoPanel.ChangeCryptoBase()
 
     def ChangeTypeStackReverse(self):
         '''改变类型控件组 逆向'''
