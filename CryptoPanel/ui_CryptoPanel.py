@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
-from ui_Widgets.nodeeditor.node_editor_widget import NodeEditorWidget
+from ui_Widgets.qtpynodeeditor import FlowView, FlowScene
 
 '''
 from CryptoPanel.BaseModule.BaseModule import BasePanel
@@ -32,6 +32,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsArea = uni_Widget.ICTFEScrollArea(self.CryptoLayout)
         self.ToolsArea.setWidgetResizable(True)
         self.ToolsArea.setObjectName("ToolsArea")
+        self.ToolsArea.setMaximumWidth(300)
         self.ToolsAreaPanel = QtWidgets.QWidget()
         self.ToolsAreaPanel.setGeometry(QtCore.QRect(0, 0, 252, 698))
         self.ToolsAreaPanel.setObjectName("ToolsAreaPanel")
@@ -51,7 +52,10 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.NodeBoxAndIOLayouts = uni_Widget.ICTFESplitter(self.OperationLayout)
         self.NodeBoxAndIOLayouts.setOrientation(QtCore.Qt.Vertical)
         self.NodeBoxAndIOLayouts.setObjectName("NodeBoxAndIOLayouts")
-        self.CryptoToolNodeEditor = NodeEditorWidget(self.NodeBoxAndIOLayouts)
+        scene = FlowScene()
+        self.CryptoToolNodeEditor = FlowView(scene)
+        self.NodeBoxAndIOLayouts.addWidget(self.CryptoToolNodeEditor)
+        '''
         self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
         self.IOArea = uni_Widget.ICTFEScrollArea(self.NodeBoxAndIOLayouts)
         self.IOArea.setWidgetResizable(True)
@@ -110,6 +114,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.OutputPanelLayout.addLayout(self.OutputBoxLayout)
         self.IOPanelLayout.addWidget(self.IOLayout)
         self.IOArea.setWidget(self.IOAreaPanel)
+        '''
         self.FileAndOptionsLayout = uni_Widget.ICTFESplitter(self.OperationLayout)
         self.FileAndOptionsLayout.setOrientation(QtCore.Qt.Vertical)
         self.FileAndOptionsLayout.setObjectName("FileAndOptionsLayout")
@@ -131,6 +136,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.FileTempStackArea = uni_Widget.ICTFEScrollArea(self.FileAndOptionsLayout)
         self.FileTempStackArea.setWidgetResizable(True)
         self.FileTempStackArea.setObjectName("FileTempStackArea")
+        self.FileTempStackArea.setMaximumWidth(400)
         self.FileTempStackAreaPanel = QtWidgets.QWidget()
         self.FileTempStackAreaPanel.setGeometry(QtCore.QRect(0, 0, 252, 246))
         self.FileTempStackAreaPanel.setObjectName("FileTempStackAreaPanel")
@@ -150,12 +156,14 @@ class ui_CryptoPanel(QtWidgets.QWidget):
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("self", "self"))
+        '''
         self.InputTips.setText(_translate("self", "输入"))
         self.OpenFileButton.setText(_translate("self", "打开..."))
         self.EvalCheckBox.setText(_translate("self", "eval"))
         self.BigCheckBox.setText(_translate("self", "大文件"))
         self.OutputTips.setText(_translate("self", "输出"))
         self.SaveFileButton.setText(_translate("self", "另存为.."))
+        '''
         self.OptionsTips.setText(_translate("self", "节点选项"))
         self.FileTempStackTips.setText(_translate("self", "暂存池"))
 

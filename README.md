@@ -26,11 +26,11 @@ fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 clone本仓库到本地, 安装PyQt5
 
 ```
-pip install PyQt5 PyQt5-sip PyQtWebEngine pycrypto python-poppler-qt5 -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install PyQt5 PyQt5-sip PyQtWebEngine -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 如果需要在Windows上进行打包，则需要安装 pyinstaller
 
-pip install gmpy2
+pip install gmpy2 pycrypto python-poppler-qt5 qtpy networkx
 
 # 这里请注意, gmpy2在Windows平台上可能不会正常工作.
 # 请Windows平台的用户前往 https://www.lfd.uci.edu/~gohlke/pythonlibs/
