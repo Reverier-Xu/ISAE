@@ -5,7 +5,7 @@ A module containing NodeEditor's class for representing `Node`.
 from ui_Widgets.nodeeditor.node_edge import Edge
 from ui_Widgets.nodeeditor.node_graphics_node import QDMGraphicsNode
 from ui_Widgets.nodeeditor.node_content_widget import QDMNodeContentWidget
-from ui_Widgets.nodeeditor.node_scene import Scene
+# from ui_Widgets.nodeeditor.node_scene import Scene
 from ui_Widgets.nodeeditor.node_socket import *
 from ui_Widgets.nodeeditor.utils import dumpException, pp
 

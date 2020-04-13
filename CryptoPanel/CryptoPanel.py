@@ -6,6 +6,8 @@ from ui_Widgets import uni_Widget
 class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
+        self.CryptoToolNodeEditor.addNodes()
+        self.CryptoToolNodeEditor.addNodes()
 '''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
