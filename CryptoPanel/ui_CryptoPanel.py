@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
-from ui_Widgets.qtpynodeeditor import FlowView, FlowScene
+from ui_Widgets.nodeeditor import node_editor_widget
 
 '''
 from CryptoPanel.BaseModule.BaseModule import BasePanel
@@ -52,10 +52,8 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.NodeBoxAndIOLayouts = uni_Widget.ICTFESplitter(self.OperationLayout)
         self.NodeBoxAndIOLayouts.setOrientation(QtCore.Qt.Vertical)
         self.NodeBoxAndIOLayouts.setObjectName("NodeBoxAndIOLayouts")
-        scene = FlowScene()
-        self.CryptoToolNodeEditor = FlowView(scene)
+        self.CryptoToolNodeEditor = node_editor_widget.NodeEditorWidget()
         self.NodeBoxAndIOLayouts.addWidget(self.CryptoToolNodeEditor)
-        '''
         self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
         self.IOArea = uni_Widget.ICTFEScrollArea(self.NodeBoxAndIOLayouts)
         self.IOArea.setWidgetResizable(True)
@@ -114,7 +112,6 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.OutputPanelLayout.addLayout(self.OutputBoxLayout)
         self.IOPanelLayout.addWidget(self.IOLayout)
         self.IOArea.setWidget(self.IOAreaPanel)
-        '''
         self.FileAndOptionsLayout = uni_Widget.ICTFESplitter(self.OperationLayout)
         self.FileAndOptionsLayout.setOrientation(QtCore.Qt.Vertical)
         self.FileAndOptionsLayout.setObjectName("FileAndOptionsLayout")
@@ -156,14 +153,12 @@ class ui_CryptoPanel(QtWidgets.QWidget):
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("self", "self"))
-        '''
         self.InputTips.setText(_translate("self", "输入"))
         self.OpenFileButton.setText(_translate("self", "打开..."))
         self.EvalCheckBox.setText(_translate("self", "eval"))
         self.BigCheckBox.setText(_translate("self", "大文件"))
         self.OutputTips.setText(_translate("self", "输出"))
         self.SaveFileButton.setText(_translate("self", "另存为.."))
-        '''
         self.OptionsTips.setText(_translate("self", "节点选项"))
         self.FileTempStackTips.setText(_translate("self", "暂存池"))
 

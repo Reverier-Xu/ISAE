@@ -46,8 +46,7 @@ class Port(QObject):
     @property
     def can_connect(self):
         'Can this port be connected to?'
-        return (not self._connections or
-                self.connection_policy == ConnectionPolicy.many)
+        return True
 
     @property
     def caption(self):

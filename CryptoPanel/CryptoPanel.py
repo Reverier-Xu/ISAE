@@ -1,11 +1,11 @@
 from PyQt5 import QtCore, QtWidgets, Qt, QtGui
 from CryptoPanel.ui_CryptoPanel import ui_CryptoPanel
-from ui_Widgets import uni_Widget
-
+from ui_Widgets import uni_Widget, nodeeditor
 
 class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
+
 '''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
