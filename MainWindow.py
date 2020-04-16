@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5 import Qt
+from PyQt5.QtCore import Qt
 
 from PDFJSPanel.PDFJSPanel import PDFJSPanel
 from ui_Widgets import uni_Widget
@@ -37,7 +37,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.MainWindow.setStyleSheet("QMainWindow#MainWindow{\n"
                                       "background-color: rgb(40, 40, 40);\n"
-                                      "border: 1px grey;\n"
+                                      "border: 1px rgb(50, 50, 50);\n"
                                       "border-style: solid;\n"
                                       "}")
         self.centralwidget.setObjectName("centralwidget")
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setContentsMargins(10, 0, 0, 0)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.TitleLabel = uni_Widget.ICTFELabel(self.centralwidget)
         self.TitleLabel.setObjectName("TitleLabel")
@@ -55,8 +55,21 @@ class Ui_MainWindow(object):
         font.setFamily('文泉驿等宽微米黑')
         font.setPixelSize(16)
         self.TitleLabel.setFont(font)
-        self.TitleLabel.setText('ICTFE - 集成式CTF解题环境 Version 1.0 Dev')
+        self.TitleLabel.setText('  ICTFE  ')
+        self.TitleLabel.setStyleSheet('QLabel{'
+                                      'background-color: rgba(130, 50, 235);'
+                                      'color: white;'
+                                      '}'
+                                      "QLabel:hover{"
+                                      "background-color: rgba(60, 130, 240, 100%);"
+                                      "color: white;"
+                                      "}")
         self.horizontalLayout.addWidget(self.TitleLabel)
+        self.TabLayout = QtWidgets.QHBoxLayout()
+        self.TabLayout.setContentsMargins(10, 0, 10, 0)
+        self.TabLayout.setSpacing(5)
+        self.TabLayout.setObjectName("TabLayout")
+        self.horizontalLayout.addLayout(self.TabLayout)
         spacerItem = QtWidgets.QSpacerItem(
             1088, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
@@ -142,10 +155,6 @@ class Ui_MainWindow(object):
         self.CloseButton.setObjectName("CloseButton")
         self.horizontalLayout.addWidget(self.CloseButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.TabLayout = QtWidgets.QHBoxLayout()
-        self.TabLayout.setContentsMargins(10, 0, 10, 0)
-        self.TabLayout.setSpacing(5)
-        self.TabLayout.setObjectName("TabLayout")
         self.ReverseButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -154,9 +163,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.ReverseButton.sizePolicy().hasHeightForWidth())
         self.ReverseButton.setSizePolicy(sizePolicy)
-        self.ReverseButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.ReverseButton.setMaximumSize(QtCore.QSize(120, 45))
         self.ReverseButton.setObjectName("ReverseButton")
+        self.ReverseButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.ReverseButton)
         self.WebButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -166,9 +174,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.WebButton.sizePolicy().hasHeightForWidth())
         self.WebButton.setSizePolicy(sizePolicy)
-        self.WebButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.WebButton.setMaximumSize(QtCore.QSize(120, 45))
         self.WebButton.setObjectName("WebButton")
+        self.WebButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.WebButton)
         self.CryptoButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -178,9 +185,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.CryptoButton.sizePolicy().hasHeightForWidth())
         self.CryptoButton.setSizePolicy(sizePolicy)
-        self.CryptoButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.CryptoButton.setMaximumSize(QtCore.QSize(120, 45))
         self.CryptoButton.setObjectName("CryptoButton")
+        self.CryptoButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.CryptoButton)
         self.PwnButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -190,9 +196,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.PwnButton.sizePolicy().hasHeightForWidth())
         self.PwnButton.setSizePolicy(sizePolicy)
-        self.PwnButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.PwnButton.setMaximumSize(QtCore.QSize(120, 45))
         self.PwnButton.setObjectName("PwnButton")
+        self.PwnButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.PwnButton)
         self.MiscButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -202,9 +207,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.MiscButton.sizePolicy().hasHeightForWidth())
         self.MiscButton.setSizePolicy(sizePolicy)
-        self.MiscButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.MiscButton.setMaximumSize(QtCore.QSize(120, 45))
         self.MiscButton.setObjectName("MiscButton")
+        self.MiscButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.MiscButton)
         self.TerminalButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -214,9 +218,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.TerminalButton.sizePolicy().hasHeightForWidth())
         self.TerminalButton.setSizePolicy(sizePolicy)
-        self.TerminalButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.TerminalButton.setMaximumSize(QtCore.QSize(120, 45))
         self.TerminalButton.setObjectName("TerminalButton")
+        self.TerminalButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.TerminalButton)
         self.WikiButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -226,8 +229,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.WikiButton.sizePolicy().hasHeightForWidth())
         self.WikiButton.setSizePolicy(sizePolicy)
-        self.WikiButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.WikiButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.WikiButton.setMaximumHeight(32)
         self.WikiButton.setObjectName("WikiButton")
         self.TabLayout.addWidget(self.WikiButton)
         self.BrowserButton = uni_Widget.ICTFEButton(self.centralwidget)
@@ -238,9 +240,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.BrowserButton.sizePolicy().hasHeightForWidth())
         self.BrowserButton.setSizePolicy(sizePolicy)
-        self.BrowserButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.BrowserButton.setMaximumSize(QtCore.QSize(120, 45))
         self.BrowserButton.setObjectName("BrowserButton")
+        self.BrowserButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.BrowserButton)
         self.KiwixButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -250,9 +251,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.KiwixButton.sizePolicy().hasHeightForWidth())
         self.KiwixButton.setSizePolicy(sizePolicy)
-        self.KiwixButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.KiwixButton.setMaximumSize(QtCore.QSize(120, 45))
         self.KiwixButton.setObjectName("KiwixButton")
+        self.KiwixButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.KiwixButton)
         self.DIYButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -262,9 +262,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.DIYButton.sizePolicy().hasHeightForWidth())
         self.DIYButton.setSizePolicy(sizePolicy)
-        self.DIYButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.DIYButton.setMaximumSize(QtCore.QSize(120, 45))
         self.DIYButton.setObjectName("DIYButton")
+        self.DIYButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.DIYButton)
         self.PDFJSButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -274,22 +273,9 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.PDFJSButton.sizePolicy().hasHeightForWidth())
         self.PDFJSButton.setSizePolicy(sizePolicy)
-        self.PDFJSButton.setMinimumSize(QtCore.QSize(120, 45))
-        self.PDFJSButton.setMaximumSize(QtCore.QSize(120, 45))
+        self.PDFJSButton.setMaximumHeight(32)
         self.PDFJSButton.setObjectName("PDFJSButton")
         self.TabLayout.addWidget(self.PDFJSButton)
-
-        self.SplitterWidget2 = QtWidgets.QWidget(self)
-        self.SplitterWidget2.setMaximumHeight(1)
-        self.SplitterWidget2.setMinimumHeight(1)
-        self.SplitterWidget2.setStyleSheet("QWidget{\n"
-                                           "background-color: grey;\n"
-                                           "border: 1px grey;\n"
-                                           "border-style: solid;\n"
-                                           "}")
-        self.verticalLayout.addWidget(self.SplitterWidget2)
-
-        self.verticalLayout.addLayout(self.TabLayout)
 
         self.TypeStack = QtWidgets.QStackedWidget(self.centralwidget)
         self.TypeStack.setMinimumSize(QtCore.QSize(1000, 600))
@@ -354,25 +340,19 @@ class Ui_MainWindow(object):
         self.TypeStack.addWidget(self.KiwixPanel)
 
         # Welcome Panel
-        self.WelcomePanel = QtWidgets.QWidget()
-        self.WelcomePanel.setObjectName('WelcomePanel')
-        self.WelcomeLabel = QtWidgets.QLabel(self.WelcomePanel)
+        self.WelcomeLabel = QtWidgets.QLabel()
         self.WelcomeLabel.setObjectName('WelcomeLabel')
-        self.WelcomeLabel.setGeometry(QtCore.QRect(86, 0, 1428, 768))
+        self.WelcomeLabel.setAlignment(Qt.AlignVCenter | Qt.AlignCenter)
         pixmap = QtGui.QPixmap("./Resources/welcome.png")  # 按指定路径找到图片
         self.WelcomeLabel.setPixmap(pixmap)  # 在label上显示图片
-        self.WelcomePanel.setStyleSheet(
-            'color: rgb(40, 40, 40);'
-            'background-color: rgb(40, 40, 40);'
-            'border-width: 0px;')
-        self.TypeStack.addWidget(self.WelcomePanel)
+        self.TypeStack.addWidget(self.WelcomeLabel)
 
         self.SplitterWidget1 = QtWidgets.QWidget(self)
         self.SplitterWidget1.setMaximumHeight(1)
         self.SplitterWidget1.setMinimumHeight(1)
         self.SplitterWidget1.setStyleSheet("QWidget{\n"
-                                           "background-color: grey;\n"
-                                           "border: 1px grey;\n"
+                                           "background-color: rgba(130, 50, 235);\n"
+                                           "border: 1px rgba(130, 50, 235);\n"
                                            "border-style: solid;\n"
                                            "}")
         self.verticalLayout.addWidget(self.SplitterWidget1)
@@ -422,6 +402,11 @@ class Ui_MainWindow(object):
         self.TerminalButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.KiwixButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         button.setStyleSheet(uni_Widget.ButtonStyleSelected)
+        self.SplitterWidget1.setStyleSheet("QWidget{\n"
+                                           "background-color: rgba(40, 140, 255, 100%);\n"
+                                           "border: 1px rgba(40, 140, 255, 100%);\n"
+                                           "border-style: solid;\n"
+                                           "}")
 
     def ChangeTypeStackCrypto(self):
         '''改变类型控件组 密码学'''
@@ -507,7 +492,7 @@ class SystemInfoThread(QtCore.QThread):
     def __init__(self, window):
         super(SystemInfoThread, self).__init__()
         self.__win = window
-        self.__win.StatusBar.setStyleSheet('QStatusBar{color: white; border: 1px solid grey;}')
+        self.__win.StatusBar.setStyleSheet('QStatusBar{color: white; border: 1px solid rgb(50, 50, 50);}')
         font = QtGui.QFont()
         font.setFamily('Consolas')
         font.setPixelSize(16)
@@ -518,8 +503,9 @@ class SystemInfoThread(QtCore.QThread):
         while True:
             new_net_speed = psutil.net_io_counters().bytes_recv
             time.sleep(1)
-            self.__win.StatusBar.showMessage('  =>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
-                                             "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024)+'      Memory Usage: '+str(
-                                                 int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
-                                             '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')
+            self.__win.StatusBar.showMessage(
+                '  =>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
+                "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024) + '      Memory Usage: ' + str(
+                    int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
+                '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')
             old_net_speed = new_net_speed

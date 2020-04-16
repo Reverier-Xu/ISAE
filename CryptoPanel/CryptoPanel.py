@@ -1,13 +1,16 @@
 from PyQt5 import QtCore, QtWidgets, Qt, QtGui
 from CryptoPanel.ui_CryptoPanel import ui_CryptoPanel
-from ui_Widgets import uni_Widget, nodeeditor
+from ui_Widgets import uni_Widget, qtpynodeeditor
+from CryptoPanel.Modules.ToBase64 import ToBase64
+from CryptoPanel.CryptoNodeBasic import *
+
 
 class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
 
-'''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
+        self.CryptoNodeButton.clicked.connect(self.ChangeCryptoCryptoNode)
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
         self.UrlButton.clicked.connect(self.ChangeCryptoUrl)
         self.HexButton.clicked.connect(self.ChangeCryptoHex)
@@ -21,6 +24,7 @@ class CryptoPanel(ui_CryptoPanel):
         self.ROTButton.clicked.connect(self.ChangeCryptoROT)
         self.StrokesButton.clicked.connect(self.ChangeCryptoStrokes)
         self.RSAButton.clicked.connect(self.ChangeCryptoRSA)
+        self.ChangeCryptoCryptoNode()
 
     def ChangeCryptoStrokes(self):
         self.CryptoStack.setCurrentWidget(self.StrokesPanel)
@@ -88,7 +92,12 @@ class CryptoPanel(ui_CryptoPanel):
         self.ChangeButtonColor(self.BaseButton)
         self.BasePanel.ChangeBase64()
 
+    def ChangeCryptoCryptoNode(self):
+        self.CryptoStack.setCurrentWidget(self.CryptoNodePanel)
+        self.ChangeButtonColor(self.CryptoNodeButton)
+
     def ChangeButtonColor(self, button):
+        self.CryptoNodeButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.BaseButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.QuoteButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.UrlButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
@@ -135,4 +144,3 @@ class CryptoPanel(ui_CryptoPanel):
         self.OokButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.StrokesButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         button.setStyleSheet(uni_Widget.ButtonStyleSelected)
-'''

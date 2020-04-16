@@ -1,8 +1,7 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
-from ui_Widgets.nodeeditor import node_editor_widget
+import ui_Widgets.qtpynodeeditor as nodeeditor
 
-'''
 from CryptoPanel.BaseModule.BaseModule import BasePanel
 from CryptoPanel.QuoteModule.QuoteModule import QuotePanel
 from CryptoPanel.UrlModule.UrlModule import UrlPanel
@@ -17,153 +16,12 @@ from CryptoPanel.RailFenceModule.RailFenceModule import RailFencePanel
 from CryptoPanel.StrokesModule.StrokesModule import StrokesPanel
 from CryptoPanel.ROTModule.ROTModule import ROTPanel
 from CryptoPanel.RSAModule.RSAModule import RSAPanel
-'''
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):
     def __init__(self):
         super(ui_CryptoPanel, self).__init__()
-        self.CryptoMainLayout = QtWidgets.QVBoxLayout(self)
-        self.CryptoMainLayout.setObjectName("CryptoMainLayout")
-        self.CryptoMainLayout.setContentsMargins(0, 0, 0, 0)
-        self.CryptoLayout = uni_Widget.ICTFESplitter(self)
-        self.CryptoLayout.setOrientation(QtCore.Qt.Horizontal)
-        self.CryptoLayout.setObjectName("CryptoLayout")
-        self.ToolsArea = uni_Widget.ICTFEScrollArea(self.CryptoLayout)
-        self.ToolsArea.setWidgetResizable(True)
-        self.ToolsArea.setObjectName("ToolsArea")
-        self.ToolsArea.setMaximumWidth(300)
-        self.ToolsAreaPanel = QtWidgets.QWidget()
-        self.ToolsAreaPanel.setGeometry(QtCore.QRect(0, 0, 252, 698))
-        self.ToolsAreaPanel.setObjectName("ToolsAreaPanel")
-        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.ToolsAreaPanel)
-        self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.ToolsSearchBox = uni_Widget.ICTFELineBox(self.ToolsAreaPanel)
-        self.ToolsSearchBox.setObjectName("ToolsSearchBox")
-        self.ToolsSearchBox.setPlaceholderText('搜索...')
-        self.verticalLayout_5.addWidget(self.ToolsSearchBox)
-        self.ToolsList = uni_Widget.ICTFEList(self.ToolsAreaPanel)
-        self.ToolsList.setObjectName("ToolsList")
-        self.verticalLayout_5.addWidget(self.ToolsList)
-        self.ToolsArea.setWidget(self.ToolsAreaPanel)
-        self.OperationLayout = uni_Widget.ICTFESplitter(self.CryptoLayout)
-        self.OperationLayout.setOrientation(QtCore.Qt.Horizontal)
-        self.OperationLayout.setObjectName("OperationLayout")
-        self.NodeBoxAndIOLayouts = uni_Widget.ICTFESplitter(self.OperationLayout)
-        self.NodeBoxAndIOLayouts.setOrientation(QtCore.Qt.Vertical)
-        self.NodeBoxAndIOLayouts.setObjectName("NodeBoxAndIOLayouts")
-        self.CryptoToolNodeEditor = node_editor_widget.NodeEditorWidget()
-        self.NodeBoxAndIOLayouts.addWidget(self.CryptoToolNodeEditor)
-        self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
-        self.IOArea = uni_Widget.ICTFEScrollArea(self.NodeBoxAndIOLayouts)
-        self.IOArea.setWidgetResizable(True)
-        self.IOArea.setObjectName("IOArea")
-        self.IOAreaPanel = QtWidgets.QWidget()
-        self.IOAreaPanel.setGeometry(QtCore.QRect(0, 0, 698, 272))
-        self.IOAreaPanel.setObjectName("IOAreaPanel")
-        self.IOPanelLayout = QtWidgets.QHBoxLayout(self.IOAreaPanel)
-        self.IOPanelLayout.setObjectName("IOPanelLayout")
-        self.IOPanelLayout.setContentsMargins(0, 0, 0, 0)
-        self.IOLayout = uni_Widget.ICTFESplitter(self.IOAreaPanel)
-        self.IOLayout.setOrientation(QtCore.Qt.Horizontal)
-        self.IOLayout.setObjectName("IOLayout")
-        self.widget = QtWidgets.QWidget(self.IOLayout)
-        self.widget.setObjectName("widget")
-        self.InputPanelLayout = QtWidgets.QVBoxLayout(self.widget)
-        self.InputPanelLayout.setContentsMargins(5, 5, 5, 5)
-        self.InputPanelLayout.setObjectName("InputPanelLayout")
-        self.InputTips = uni_Widget.ICTFELabel(self.widget)
-        self.InputTips.setObjectName("InputTips")
-        self.InputPanelLayout.addWidget(self.InputTips)
-        self.InputBoxLayout = QtWidgets.QHBoxLayout()
-        self.InputBoxLayout.setObjectName("InputBoxLayout")
-        self.InputBox = uni_Widget.ICTFETextBox(self.widget)
-        self.InputBox.setObjectName("InputBox")
-        self.InputBoxLayout.addWidget(self.InputBox)
-        self.InputWorkButtonLayout = QtWidgets.QVBoxLayout()
-        self.InputWorkButtonLayout.setObjectName("InputWorkButtonLayout")
-        self.OpenFileButton = uni_Widget.ICTFEButton(self.widget)
-        self.OpenFileButton.setObjectName("OpenFileButton")
-        self.InputWorkButtonLayout.addWidget(self.OpenFileButton)
-        self.EvalCheckBox = uni_Widget.ICTFECheckBox(self.widget)
-        self.EvalCheckBox.setObjectName("EvalCheckBox")
-        self.InputWorkButtonLayout.addWidget(self.EvalCheckBox)
-        self.BigCheckBox = uni_Widget.ICTFECheckBox(self.widget)
-        self.BigCheckBox.setObjectName("BigCheckBox")
-        self.InputWorkButtonLayout.addWidget(self.BigCheckBox)
-        self.InputBoxLayout.addLayout(self.InputWorkButtonLayout)
-        self.InputPanelLayout.addLayout(self.InputBoxLayout)
-        self.layoutWidget = QtWidgets.QWidget(self.IOLayout)
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.OutputPanelLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.OutputPanelLayout.setContentsMargins(5, 5, 5, 5)
-        self.OutputPanelLayout.setObjectName("OutputPanelLayout")
-        self.OutputTips = uni_Widget.ICTFELabel(self.layoutWidget)
-        self.OutputTips.setObjectName("OutputTips")
-        self.OutputPanelLayout.addWidget(self.OutputTips)
-        self.OutputBoxLayout = QtWidgets.QHBoxLayout()
-        self.OutputBoxLayout.setObjectName("OutputBoxLayout")
-        self.OutputBox = uni_Widget.ICTFETextBox(self.layoutWidget)
-        self.OutputBox.setObjectName("OutputBox")
-        self.OutputBoxLayout.addWidget(self.OutputBox)
-        self.SaveFileButton = uni_Widget.ICTFEButton(self.layoutWidget)
-        self.SaveFileButton.setObjectName("SaveFileButton")
-        self.OutputBoxLayout.addWidget(self.SaveFileButton)
-        self.OutputPanelLayout.addLayout(self.OutputBoxLayout)
-        self.IOPanelLayout.addWidget(self.IOLayout)
-        self.IOArea.setWidget(self.IOAreaPanel)
-        self.FileAndOptionsLayout = uni_Widget.ICTFESplitter(self.OperationLayout)
-        self.FileAndOptionsLayout.setOrientation(QtCore.Qt.Vertical)
-        self.FileAndOptionsLayout.setObjectName("FileAndOptionsLayout")
-        self.OptionsArea = uni_Widget.ICTFEScrollArea(self.FileAndOptionsLayout)
-        self.OptionsArea.setWidgetResizable(True)
-        self.OptionsArea.setObjectName("OptionsArea")
-        self.OptionsAreaPanel = QtWidgets.QWidget()
-        self.OptionsAreaPanel.setGeometry(QtCore.QRect(0, 0, 252, 449))
-        self.OptionsAreaPanel.setObjectName("OptionsAreaPanel")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.OptionsAreaPanel)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.OptionsTips = uni_Widget.ICTFELabel(self.OptionsAreaPanel)
-        self.OptionsTips.setObjectName("OptionsTips")
-        self.verticalLayout.addWidget(self.OptionsTips)
-        self.OptionsBox = uni_Widget.ICTFEList(self.OptionsAreaPanel)
-        self.OptionsBox.setObjectName("OptionsBox")
-        self.verticalLayout.addWidget(self.OptionsBox)
-        self.OptionsArea.setWidget(self.OptionsAreaPanel)
-        self.FileTempStackArea = uni_Widget.ICTFEScrollArea(self.FileAndOptionsLayout)
-        self.FileTempStackArea.setWidgetResizable(True)
-        self.FileTempStackArea.setObjectName("FileTempStackArea")
-        self.FileTempStackArea.setMaximumWidth(400)
-        self.FileTempStackAreaPanel = QtWidgets.QWidget()
-        self.FileTempStackAreaPanel.setGeometry(QtCore.QRect(0, 0, 252, 246))
-        self.FileTempStackAreaPanel.setObjectName("FileTempStackAreaPanel")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.FileTempStackAreaPanel)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.FileTempStackTips = uni_Widget.ICTFELabel(self.FileTempStackAreaPanel)
-        self.FileTempStackTips.setObjectName("FileTempStackTips")
-        self.verticalLayout_2.addWidget(self.FileTempStackTips)
-        self.FileTempStack = uni_Widget.ICTFEList(self.FileTempStackAreaPanel)
-        self.FileTempStack.setObjectName("FileTempStack")
-        self.verticalLayout_2.addWidget(self.FileTempStack)
-        self.FileTempStackArea.setWidget(self.FileTempStackAreaPanel)
-        self.CryptoMainLayout.addWidget(self.CryptoLayout)
-        self.retranslateUi()
-        QtCore.QMetaObject.connectSlotsByName(self)
 
-    def retranslateUi(self):
-        _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("self", "self"))
-        self.InputTips.setText(_translate("self", "输入"))
-        self.OpenFileButton.setText(_translate("self", "打开..."))
-        self.EvalCheckBox.setText(_translate("self", "eval"))
-        self.BigCheckBox.setText(_translate("self", "大文件"))
-        self.OutputTips.setText(_translate("self", "输出"))
-        self.SaveFileButton.setText(_translate("self", "另存为.."))
-        self.OptionsTips.setText(_translate("self", "节点选项"))
-        self.FileTempStackTips.setText(_translate("self", "暂存池"))
-
-
-'''
         # Crypto Buttons
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -194,7 +52,13 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.buttonLayout = QtWidgets.QVBoxLayout()
         self.buttonLayout.setSpacing(5)
 
-        # Base Button
+        # Crypto Node Button
+        self.CryptoNodeButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
+        self.CryptoNodeButton.setText("数据流")
+        self.CryptoNodeButton.setObjectName("CryptoNodeButton")
+        self.buttonLayout.addWidget(self.CryptoNodeButton)
+
+        # CryptoNode Button
         self.BaseButton = uni_Widget.ICTFEButton(self.CryptoChoosePanel)
         self.BaseButton.setText("Base系列")
         self.BaseButton.setObjectName("BaseButton")
@@ -498,6 +362,12 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.BasePanel.setObjectName('BasePanel')
         self.CryptoStack.addWidget(self.BasePanel)
 
+        # CryptoNode panel
+        self.scene = nodeeditor.FlowScene()
+        self.CryptoNodePanel = nodeeditor.FlowView(self.scene)
+        self.CryptoNodePanel.setObjectName('CryptoNodePanel')
+        self.CryptoStack.addWidget(self.CryptoNodePanel)
+
         # Quote panel
         self.QuotePanel = QuotePanel()
         self.QuotePanel.setObjectName('QuotePanel')
@@ -565,4 +435,3 @@ class ui_CryptoPanel(QtWidgets.QWidget):
 
         self.Layouts.addWidget(self.CryptoStack)
         self.setLayout(self.Layouts)
-'''

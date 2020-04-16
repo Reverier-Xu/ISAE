@@ -38,6 +38,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     Win = MainWindow()
     Win.setWindowTitle('ICTFE')
-    Win.TypeStack.setCurrentWidget(Win.WelcomePanel)
+    Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)
     Win.show()
     sys.exit(app.exec_())

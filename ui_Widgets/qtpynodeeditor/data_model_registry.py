@@ -50,6 +50,8 @@ class DataModelRegistry:
         value : (NodeDataModel, init_kwargs)
         """
         cls, kwargs = self._item_creators[model_name]
+        print(kwargs)
+        # print(**kwargs)
         return cls(**kwargs)
 
     def registered_model_creators(self) -> dict:

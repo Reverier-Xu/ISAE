@@ -33,6 +33,36 @@ ButtonStyleSelected = "QPushButton{" \
                       "background-color: rgb(100, 100, 255);" \
                       "border-style: inset; " \
                       "}"
+ButtonStyleBlue = "QPushButton{" \
+                  "background-color:rgba(40, 140, 255, 100%);" \
+                  "color: white;" \
+                  "border-radius: 0px;" \
+                  "border: 0px groove gray;" \
+                  "border-style: outset;" \
+                  "}" \
+                  "QPushButton:hover{" \
+                  "background-color: rgba(60, 60, 255, 100%);" \
+                  "color: white;" \
+                  "}" \
+                  "QPushButton:pressed{" \
+                  "background-color: rgb(100, 100, 255);" \
+                  "border-style: inset; " \
+                  "}"
+ButtonStyleYellow = "QPushButton{" \
+                    "background-color:rgba(140, 40, 255, 100%);" \
+                    "color: white;" \
+                    "border-radius: 0px;" \
+                    "border: 0px groove gray;" \
+                    "border-style: outset;" \
+                    "}" \
+                    "QPushButton:hover{" \
+                    "background-color: rgba(255, 60, 60, 100%);" \
+                    "color: white;" \
+                    "}" \
+                    "QPushButton:pressed{" \
+                    "background-color: rgb(100, 100, 255);" \
+                    "border-style: inset; " \
+                    "}"
 
 
 class ICTFESplitter(QtWidgets.QSplitter):
@@ -44,10 +74,10 @@ class ICTFESplitter(QtWidgets.QSplitter):
 class ICTFEButton(QtWidgets.QPushButton):
     def __init__(self, parent=None):
         super(ICTFEButton, self).__init__(parent)
-        self.setMinimumSize(120, 45)
+        self.setMinimumSize(120, 32)
         font = QtGui.QFont()
         font.setFamily("文泉驿微米黑")
-        font.setPixelSize(24)
+        font.setPixelSize(20)
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
