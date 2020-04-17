@@ -20,6 +20,7 @@ from CryptoPanel import CryptoPanel
 from kiwix.KiwixPanel import KiwixPanel
 import psutil
 import time
+import random
 
 
 class Ui_MainWindow(object):
@@ -36,7 +37,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.MainWindow.setStyleSheet("QMainWindow#MainWindow{\n"
-                                      "background-color: rgb(40, 40, 40);\n"
+                                      "background-color: rgb(30, 30, 30);\n"
                                       "border: 1px rgb(50, 50, 50);\n"
                                       "border-style: solid;\n"
                                       "}")
@@ -66,8 +67,7 @@ class Ui_MainWindow(object):
                                       "}")
         self.horizontalLayout.addWidget(self.TitleLabel)
         self.TabLayout = QtWidgets.QHBoxLayout()
-        self.TabLayout.setContentsMargins(10, 0, 10, 0)
-        self.TabLayout.setSpacing(5)
+        self.TabLayout.setContentsMargins(0, 0, 0, 0)
         self.TabLayout.setObjectName("TabLayout")
         self.horizontalLayout.addLayout(self.TabLayout)
         spacerItem = QtWidgets.QSpacerItem(
@@ -165,6 +165,10 @@ class Ui_MainWindow(object):
         self.ReverseButton.setSizePolicy(sizePolicy)
         self.ReverseButton.setObjectName("ReverseButton")
         self.ReverseButton.setMaximumHeight(32)
+
+        self.TabLayout.setSpacing(0)
+
+
         self.TabLayout.addWidget(self.ReverseButton)
         self.WebButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -348,14 +352,15 @@ class Ui_MainWindow(object):
         self.TypeStack.addWidget(self.WelcomeLabel)
 
         self.SplitterWidget1 = QtWidgets.QWidget(self)
-        self.SplitterWidget1.setMaximumHeight(1)
-        self.SplitterWidget1.setMinimumHeight(1)
+        self.SplitterWidget1.setMaximumHeight(3)
+        self.SplitterWidget1.setMinimumHeight(3)
         self.SplitterWidget1.setStyleSheet("QWidget{\n"
                                            "background-color: rgba(130, 50, 235);\n"
-                                           "border: 1px rgba(130, 50, 235);\n"
+                                           "border: 2px rgba(130, 50, 235);\n"
                                            "border-style: solid;\n"
                                            "}")
         self.verticalLayout.addWidget(self.SplitterWidget1)
+        self.styleGetter = 0
 
         self.verticalLayout.addWidget(self.TypeStack)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -401,12 +406,11 @@ class Ui_MainWindow(object):
         self.WikiButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.TerminalButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.KiwixButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        button.setStyleSheet(uni_Widget.ButtonStyleSelected)
-        self.SplitterWidget1.setStyleSheet("QWidget{\n"
-                                           "background-color: rgba(40, 140, 255, 100%);\n"
-                                           "border: 1px rgba(40, 140, 255, 100%);\n"
-                                           "border-style: solid;\n"
-                                           "}")
+        button.setStyleSheet(uni_Widget.ButtonStyles[self.styleGetter])
+        self.SplitterWidget1.setStyleSheet(
+            uni_Widget.SplitterStyles[self.styleGetter])
+        self.styleGetter += 1
+        self.styleGetter %= 4
 
     def ChangeTypeStackCrypto(self):
         '''改变类型控件组 密码学'''

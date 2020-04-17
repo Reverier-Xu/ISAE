@@ -30,13 +30,7 @@ class QDMNodeContentWidget(QWidget, Serializable):
     def initUI(self):
         """Sets up layouts and widgets to be rendered in :py:class:`~nodeeditor.node_graphics_node.QDMGraphicsNode` class.
         """
-        self.layout = QVBoxLayout()
-        self.layout.setContentsMargins(0, 0, 0, 0)
-        self.setLayout(self.layout)
-
-        self.wdg_label = QLabel("Some Title")
-        self.layout.addWidget(self.wdg_label)
-        self.layout.addWidget(QDMTextEdit("foo"))
+        pass
 
     def setEditingFlag(self, value: bool):
         """

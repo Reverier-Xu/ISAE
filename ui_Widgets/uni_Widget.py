@@ -3,18 +3,18 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 ButtonStyleNormal = "QPushButton{" \
-                    "background-color:rgba(40, 40, 40, 100%);" \
+                    "background-color:rgb(30, 30, 30, 100%);" \
                     "color: white;" \
                     "border-radius: 0px;" \
                     "border: 0px groove gray;" \
                     "border-style: outset;" \
                     "}" \
                     "QPushButton:hover{" \
-                    "background-color: rgba(60, 60, 60, 100%);" \
+                    "background-color: rgba(50, 50, 50, 100%);" \
                     "color: white;" \
                     "}" \
                     "QPushButton:pressed{" \
-                    "background-color: rgb(100, 100, 100);" \
+                    "background-color: rgb(80, 80, 80);" \
                     "border-style: inset; " \
                     "}"
 
@@ -49,26 +49,93 @@ ButtonStyleBlue = "QPushButton{" \
                   "border-style: inset; " \
                   "}"
 ButtonStyleYellow = "QPushButton{" \
-                    "background-color:rgba(140, 40, 255, 100%);" \
+                    "background-color:rgba(240, 145, 40, 100%);" \
                     "color: white;" \
                     "border-radius: 0px;" \
                     "border: 0px groove gray;" \
                     "border-style: outset;" \
                     "}" \
                     "QPushButton:hover{" \
-                    "background-color: rgba(255, 60, 60, 100%);" \
+                    "background-color: rgba(160, 145, 60, 100%);" \
                     "color: white;" \
                     "}" \
                     "QPushButton:pressed{" \
-                    "background-color: rgb(100, 100, 255);" \
+                    "background-color: rgb(160, 115, 60);" \
                     "border-style: inset; " \
                     "}"
+ButtonStyleRed = "QPushButton{" \
+    "background-color:rgba(250, 40, 155, 100%);" \
+    "color: white;" \
+    "border-radius: 0px;" \
+    "border: 0px groove gray;" \
+    "border-style: outset;" \
+    "}" \
+    "QPushButton:hover{" \
+    "background-color: rgba(255, 60, 60, 100%);" \
+    "color: white;" \
+    "}" \
+    "QPushButton:pressed{" \
+    "background-color: rgb(100, 100, 255);" \
+    "border-style: inset; " \
+    "}"
+ButtonStyleGreen = "QPushButton{" \
+    "background-color:rgba(60, 180, 75, 100%);" \
+    "color: white;" \
+    "border-radius: 0px;" \
+    "border: 0px groove gray;" \
+    "border-style: outset;" \
+    "}" \
+    "QPushButton:hover{" \
+    "background-color: rgba(60, 165, 60, 100%);" \
+    "color: white;" \
+    "}" \
+    "QPushButton:pressed{" \
+    "background-color: rgb(30, 225, 30);" \
+    "border-style: inset; " \
+    "}"
+SplitterBlue = "QWidget{\n"\
+    "background-color: rgba(40, 140, 255, 100%);\n"\
+    "border: 1px rgba(40, 140, 255, 100%);\n"\
+    "border-style: solid;\n"\
+    "}"
+SplitterRed = "QWidget{\n"\
+    "background-color: rgba(250, 40, 155, 100%);\n"\
+    "border: 1px rgba(250, 40, 155, 100%);\n"\
+    "border-style: solid;\n"\
+    "}"
+SplitterYellow = "QWidget{\n"\
+    "background-color: rgba(240, 145, 40, 100%);\n"\
+    "border: 1px rgba(240, 145, 40, 100%);\n"\
+    "border-style: solid;\n"\
+    "}"
+SplitterGreen = "QWidget{\n"\
+    "background-color: rgba(60, 180, 75, 100%);\n"\
+    "border: 1px rgba(60, 180, 75, 100%);\n"\
+    "border-style: solid;\n"\
+    "}"
+ButtonStyles = [ButtonStyleBlue, ButtonStyleGreen,
+                ButtonStyleRed, ButtonStyleYellow]
+SplitterStyles = [SplitterBlue, SplitterGreen, SplitterRed, SplitterYellow]
 
 
 class ICTFESplitter(QtWidgets.QSplitter):
     def __init__(self, parent=None):
         super(ICTFESplitter, self).__init__(parent)
-        self.setStyleSheet("QSplitter::handle { background-color: grey; }")
+        self.setStyleSheet("QSplitter::handle {"
+                           "background-color: rgb(50, 50, 50);"
+                           "}"
+                           "QSplitter::handle:horizontal {"
+                           "width: 2px;"
+                           "}"
+                           "QSplitter::handle:vertical {"
+                           "height: 2px;"
+                           "}"
+                           "QSplitter::handle:pressed {"
+                           "background-color: rgb(50, 250, 150);"
+                           "}"
+                           "QSplitter::handle:hover {"
+                           "background-color: rgb(50, 150, 250);"
+                           "}")
 
 
 class ICTFEButton(QtWidgets.QPushButton):
@@ -83,18 +150,18 @@ class ICTFEButton(QtWidgets.QPushButton):
         self.setFont(font)
         self.setStyleSheet(
             "QPushButton{"
-            "background-color:rgba(40, 40, 40, 100%);"
+            "background-color:rgba(30, 30, 30, 100%);"
             "color: white;"
             "border-radius: 0px;"
             "border: 0px groove gray;"
             "border-style: outset;"
             "}"
             "QPushButton:hover{"
-            "background-color: rgba(60, 60, 60, 100%);"
+            "background-color: rgba(50, 50, 50, 100%);"
             "color: white;"
             "}"
             "QPushButton:pressed{"
-            "background-color: rgb(100, 100, 100);"
+            "background-color: rgb(80, 80, 80);"
             "border-style: inset; "
             "}")
 
@@ -165,7 +232,7 @@ class ICTFEList(QtWidgets.QListWidget):
         super(ICTFEList, self).__init__(parent)
         self.setStyleSheet(
             'QListWidget{'
-            'background-color: rgb(40,40,40);'
+            'background-color: rgb(30, 30, 30);'
             'border: 1px solid grey;'
             'color: white;'
             '}')
@@ -188,12 +255,12 @@ class ICTFEScrollArea(QtWidgets.QScrollArea):
         self.setStyleSheet(
             'QScrollArea{'
             'border: none;'
-            'background-color:rgb(40, 40, 40);'
+            'background-color:rgb(30, 30, 30);'
             '}')
         self.viewport().setStyleSheet(
             'QScrollArea{'
             'border: none;'
-            'background-color:rgb(40,40,40);'
+            'background-color:rgb(30, 30, 30);'
             '}')
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

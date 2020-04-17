@@ -1,14 +1,14 @@
 from PyQt5 import QtCore, QtWidgets, Qt, QtGui
 from CryptoPanel.ui_CryptoPanel import ui_CryptoPanel
 from ui_Widgets import uni_Widget, qtpynodeeditor
-from CryptoPanel.Modules.ToBase64 import ToBase64
 from CryptoPanel.CryptoNodeBasic import *
 
 
 class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
-
+        self.MainProcess.setValue(100)
+'''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
         self.CryptoNodeButton.clicked.connect(self.ChangeCryptoCryptoNode)
         self.QuoteButton.clicked.connect(self.ChangeCryptoQuote)
@@ -144,3 +144,4 @@ class CryptoPanel(ui_CryptoPanel):
         self.OokButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.StrokesButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         button.setStyleSheet(uni_Widget.ButtonStyleSelected)
+'''

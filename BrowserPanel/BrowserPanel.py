@@ -158,15 +158,15 @@ class BrowserWindow(QWidget):
         self.tabs = QTabWidget(self)
         self.tabs.setStyleSheet('''
 QTabWidget::pane {
-  border: 1px solid rgb(40, 40, 40);
+  border: 1px solid rgb(30, 30, 30);
   top:0px;
-  background: rgb(40, 40, 40);
+  background: rgb(30, 30, 30);
 }
 
 QTabBar::tab {
-  background: rgb(40, 40, 40);
+  background: rgb(30, 30, 30);
   color: white;
-  border: 1px solid rgb(40, 40, 40);
+  border: 1px solid rgb(30, 30, 30);
   padding: 1px;
 }
 

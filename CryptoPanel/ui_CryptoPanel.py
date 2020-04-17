@@ -1,7 +1,8 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
-import ui_Widgets.qtpynodeeditor as nodeeditor
+from ui_Widgets.nodeeditor import node_editor_widget
 
+'''
 from CryptoPanel.BaseModule.BaseModule import BasePanel
 from CryptoPanel.QuoteModule.QuoteModule import QuotePanel
 from CryptoPanel.UrlModule.UrlModule import UrlPanel
@@ -16,12 +17,164 @@ from CryptoPanel.RailFenceModule.RailFenceModule import RailFencePanel
 from CryptoPanel.StrokesModule.StrokesModule import StrokesPanel
 from CryptoPanel.ROTModule.ROTModule import ROTPanel
 from CryptoPanel.RSAModule.RSAModule import RSAPanel
+'''
 
 
 class ui_CryptoPanel(QtWidgets.QWidget):
     def __init__(self):
         super(ui_CryptoPanel, self).__init__()
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.CryptoMainSpliter = uni_Widget.ICTFESplitter(self)
 
+        self.CryptoMainSpliter.setOrientation(QtCore.Qt.Horizontal)
+        self.CryptoMainSpliter.setObjectName("CryptoMainSpliter")
+        self.ToolsArea = uni_Widget.ICTFEScrollArea(self.CryptoMainSpliter)
+        self.ToolsArea.setWidgetResizable(True)
+        self.ToolsArea.setObjectName("ToolsArea")
+        self.ToolsAreaPanel = QtWidgets.QWidget()
+        self.ToolsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 698))
+        self.ToolsAreaPanel.setObjectName("ToolsAreaPanel")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.ToolsAreaPanel)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.ToolsSearchBox = QtWidgets.QLineEdit(self.ToolsAreaPanel)
+        self.ToolsSearchBox.setStyleSheet('color: white;'
+                                          'border: 1px solid gray;'
+                                          'border-radius: 5px;'
+                                          'padding: 5px;'
+                                          'background: rgb(20, 20, 20);'
+                                          'selection-background-color: blue;')
+        self.ToolsSearchBox.setPlaceholderText('搜索...')
+        self.ToolsSearchBox.setObjectName("ToolsSearchBox")
+        self.verticalLayout_5.addWidget(self.ToolsSearchBox)
+        self.ToolsList = QtWidgets.QListWidget(self.ToolsAreaPanel)
+        self.ToolsList.setStyleSheet('background-color: transparent; border: 1px solid grey;')
+        self.ToolsList.setObjectName("ToolsList")
+        self.verticalLayout_5.addWidget(self.ToolsList)
+        self.ToolsArea.setWidget(self.ToolsAreaPanel)
+        self.widget = QtWidgets.QWidget(self.CryptoMainSpliter)
+        self.widget.setObjectName("widget")
+        self.NodeEditorLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.NodeEditorLayout.setContentsMargins(0, 0, 0, 0)
+        self.NodeEditorLayout.setObjectName("NodeEditorLayout")
+        self.ToolBarWidget = QtWidgets.QWidget(self.widget)
+        self.ToolBarWidget.setMinimumSize(QtCore.QSize(0, 32))
+        self.ToolBarWidget.setMaximumSize(QtCore.QSize(16777215, 32))
+        self.ToolBarWidget.setObjectName("ToolBarWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.ToolBarWidget)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.horizontalLayout.setContentsMargins(20, 0, 20, 0)
+        self.horizontalLayout.setSpacing(20)
+        self.StartButton = uni_Widget.ICTFEButton(self.ToolBarWidget)
+        self.StartButton.setMinimumHeight(32)
+        self.StartButton.setMaximumHeight(32)
+        self.StartButton.setMaximumWidth(32)
+        self.StartButton.setMinimumWidth(32)
+        self.StartButton.setObjectName("StartButton")
+        self.horizontalLayout.addWidget(self.StartButton)
+        self.StopButton = uni_Widget.ICTFEButton(self.ToolBarWidget)
+        self.StopButton.setMinimumHeight(32)
+        self.StopButton.setMaximumHeight(32)
+        self.StopButton.setMaximumWidth(32)
+        self.StopButton.setMinimumWidth(32)
+        self.StopButton.setObjectName("StopButton")
+        self.horizontalLayout.addWidget(self.StopButton)
+        self.StillButton = uni_Widget.ICTFEButton(self.ToolBarWidget)
+        self.StillButton.setMinimumHeight(32)
+        self.StillButton.setMaximumHeight(32)
+        self.StillButton.setMaximumWidth(32)
+        self.StillButton.setMinimumWidth(32)
+        self.StillButton.setObjectName("StillButton")
+        self.horizontalLayout.addWidget(self.StillButton)
+        self.MainProcess = QtWidgets.QProgressBar(self.ToolBarWidget)
+        self.MainProcess.setTextVisible(False)
+        self.MainProcess.setStyleSheet("QProgressBar{"
+                                       "border:1px solid #303030;"
+                                       "height:10px;"
+                                       "background: black;"
+                                       "text: none;"
+                                       "color:rgb(255,255,0);"
+                                       "border-radius: 5px;"
+                                       "}")
+
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.MainProcess.sizePolicy().hasHeightForWidth())
+        self.MainProcess.setSizePolicy(sizePolicy)
+        self.MainProcess.setMinimumHeight(10)
+        self.MainProcess.setMaximumHeight(10)
+        self.MainProcess.setProperty("value", 24)
+        self.MainProcess.setObjectName("MainProcess")
+        self.horizontalLayout.addWidget(self.MainProcess)
+        self.NodeEditorLayout.addWidget(self.ToolBarWidget)
+        self.NodeEditorLayout.setContentsMargins(0, 0, 0, 0)
+        self.NodeEditorLayout.setSpacing(0)
+        self.CryptoToolNodeEditor = node_editor_widget.NodeEditorWidget()
+        self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
+        self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor)
+        self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor)
+        self.FileAndOptionsLayout = uni_Widget.ICTFESplitter(self.CryptoMainSpliter)
+        self.FileAndOptionsLayout.setOrientation(QtCore.Qt.Vertical)
+        self.FileAndOptionsLayout.setObjectName("FileAndOptionsLayout")
+        self.OptionsArea = uni_Widget.ICTFEScrollArea(self.FileAndOptionsLayout)
+        self.OptionsArea.setWidgetResizable(True)
+        self.OptionsArea.setObjectName("OptionsArea")
+        self.OptionsAreaPanel = QtWidgets.QWidget()
+        self.OptionsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 348))
+        self.OptionsAreaPanel.setObjectName("OptionsAreaPanel")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.OptionsAreaPanel)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.OptionsTips = uni_Widget.ICTFELabel(self.OptionsAreaPanel)
+        self.OptionsTips.setObjectName("OptionsTips")
+        self.verticalLayout.addWidget(self.OptionsTips)
+        self.OptionsBox = uni_Widget.ICTFEList(self.OptionsAreaPanel)
+        self.OptionsBox.setObjectName("OptionsBox")
+        self.verticalLayout.addWidget(self.OptionsBox)
+        self.OptionsArea.setWidget(self.OptionsAreaPanel)
+        self.FileTempStackArea = uni_Widget.ICTFEScrollArea(self.FileAndOptionsLayout)
+        self.FileTempStackArea.setWidgetResizable(True)
+        self.FileTempStackArea.setObjectName("FileTempStackArea")
+        self.FileTempStackAreaPanel = QtWidgets.QWidget()
+        self.FileTempStackAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 347))
+        self.FileTempStackAreaPanel.setObjectName("FileTempStackAreaPanel")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.FileTempStackAreaPanel)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.FileTempStackTips = uni_Widget.ICTFELabel(self.FileTempStackAreaPanel)
+        self.FileTempStackTips.setObjectName("FileTempStackTips")
+        self.verticalLayout_2.addWidget(self.FileTempStackTips)
+        self.FileTempStack = uni_Widget.ICTFEList(self.FileTempStackAreaPanel)
+        self.FileTempStack.setObjectName("FileTempStack")
+        self.verticalLayout_2.addWidget(self.FileTempStack)
+        self.FileTempStackArea.setWidget(self.FileTempStackAreaPanel)
+        self.horizontalLayout_2.addWidget(self.CryptoMainSpliter)
+
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.StartButton.setText(_translate("self", "▷"))
+        font = self.StartButton.font()
+        font.setFamily('文泉驿微米黑')
+        font.setPixelSize(36)
+        self.StartButton.setFont(font)
+        self.StillButton.setText(_translate("self", "||"))
+        font = self.StillButton.font()
+        font.setFamily('文泉驿微米黑')
+        font.setPixelSize(18)
+        self.StillButton.setFont(font)
+        self.StopButton.setText(_translate("self", "□"))
+        font = self.StopButton.font()
+        font.setFamily('文泉驿微米黑')
+        font.setPixelSize(36)
+        self.StopButton.setFont(font)
+        self.OptionsTips.setText(_translate("self", "节点选项"))
+        self.FileTempStackTips.setText(_translate("self", "暂存池"))
+
+
+'''
         # Crypto Buttons
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -435,3 +588,4 @@ class ui_CryptoPanel(QtWidgets.QWidget):
 
         self.Layouts.addWidget(self.CryptoStack)
         self.setLayout(self.Layouts)
+'''

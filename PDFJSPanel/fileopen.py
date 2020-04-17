@@ -39,5 +39,5 @@ class ui_PDFFileWindow(object):
         font.setFamily('文泉驿等宽微米黑')
         font.setPixelSize(20)
         self.menubar.setFont(font)
-        self.menubar.setStyleSheet('color: white; background-color: rgb(40, 40, 40)')
+        self.menubar.setStyleSheet('color: white; background-color: rgb(30, 30, 30)')
         self.actionfileopen.setText(_translate("MainWindow", "打开文件夹"))

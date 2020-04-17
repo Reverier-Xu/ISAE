@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">QWidget#centralwidget{
-background-color: rgb(40, 40, 40);
+background-color: rgb(30, 30, 30);
 border: 1px grey;
 border-style: inset;
 }</string>
