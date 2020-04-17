@@ -65,7 +65,10 @@ pip install gmpy2 pycrypto python-poppler-qt5 qtpy networkx
 
 ## 密码与编码
 
-### 密码学panel正在进行插件化重构, 预计用时三天(4月16日结束), 敬请期待.
+### ~~密码学panel正在进行插件化重构, 预计用时三天(4月16日结束), 敬请期待.~~
+
+### 好的, 三天搞不完, 延期到4月20日吧, 再搞不完就提头来见了
+
 ~~### Base系列~~
 ~~Base64 Base32 Base16 Base85-ASCII Base85-RFC1924~~
 
