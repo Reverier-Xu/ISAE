@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 
 ButtonStyleNormal = "QPushButton{" \
-                    "background-color:rgb(30, 30, 30, 100%);" \
+                    "background-color:rgba(30, 30, 30, 100%);" \
                     "color: white;" \
                     "border-radius: 0px;" \
                     "border: 0px groove gray;" \
@@ -125,10 +125,10 @@ class ICTFESplitter(QtWidgets.QSplitter):
                            "background-color: rgb(50, 50, 50);"
                            "}"
                            "QSplitter::handle:horizontal {"
-                           "width: 2px;"
+                           "width: 3px;"
                            "}"
                            "QSplitter::handle:vertical {"
-                           "height: 2px;"
+                           "height: 3px;"
                            "}"
                            "QSplitter::handle:pressed {"
                            "background-color: rgb(50, 250, 150);"

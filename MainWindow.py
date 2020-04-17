@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
         self.TitleLabel.setFont(font)
         self.TitleLabel.setText('  ICTFE  ')
         self.TitleLabel.setStyleSheet('QLabel{'
-                                      'background-color: rgba(130, 50, 235);'
+                                      'background-color: rgb(130, 50, 235);'
                                       'color: white;'
                                       '}'
                                       "QLabel:hover{"
@@ -355,8 +355,8 @@ class Ui_MainWindow(object):
         self.SplitterWidget1.setMaximumHeight(3)
         self.SplitterWidget1.setMinimumHeight(3)
         self.SplitterWidget1.setStyleSheet("QWidget{\n"
-                                           "background-color: rgba(130, 50, 235);\n"
-                                           "border: 2px rgba(130, 50, 235);\n"
+                                           "background-color: rgb(130, 50, 235);\n"
+                                           "border: 2px rgb(130, 50, 235);\n"
                                            "border-style: solid;\n"
                                            "}")
         self.verticalLayout.addWidget(self.SplitterWidget1)
