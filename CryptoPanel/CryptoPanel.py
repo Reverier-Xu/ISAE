@@ -8,6 +8,17 @@ class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
         self.MainProcess.setValue(100)
+        self.graph = Graph()
+        self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
+        for i in Modules:
+            self.ToolsList.addDIYItem(i, Modules[i].properties['categlories'])
+        self.ToolsList.addDIYItem('input', '基本')
+        self.ToolsList.addDIYItem('output', '基本')
+        self.CryptoToolNodeEditor.view.NodeDeleted.connect(self.CryptoToolNodeEditor.graph.NodeDelete)
+        self.CryptoToolNodeEditor.view.EdgeCreated.connect(self.CryptoToolNodeEditor.graph.ConnectNode)
+        self.CryptoToolNodeEditor.view.EdgeDeleted.connect(self.CryptoToolNodeEditor.graph.EdgeDelete)
+        self.StartButton.clicked.connect(self.CryptoToolNodeEditor.graph.Compute)
+
 '''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
         self.CryptoNodeButton.clicked.connect(self.ChangeCryptoCryptoNode)
