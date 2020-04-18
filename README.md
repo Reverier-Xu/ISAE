@@ -30,7 +30,7 @@ pip install PyQt5 PyQt5-sip PyQtWebEngine -i https://pypi.tuna.tsinghua.edu.cn/s
 
 # 如果需要在Windows上进行打包，则需要安装 pyinstaller
 
-pip install gmpy2 pycrypto python-poppler-qt5 qtpy networkx
+pip install gmpy2 pycrypto python-poppler-qt5
 
 # 这里请注意, gmpy2在Windows平台上可能不会正常工作.
 # 请Windows平台的用户前往 https://www.lfd.uci.edu/~gohlke/pythonlibs/

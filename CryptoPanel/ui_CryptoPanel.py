@@ -112,7 +112,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.NodeEditorLayout.addWidget(self.ToolBarWidget)
         self.NodeEditorLayout.setContentsMargins(0, 0, 0, 0)
         self.NodeEditorLayout.setSpacing(0)
-        self.CryptoToolNodeEditor = CryptoNodeEditorWidget()
+        self.CryptoToolNodeEditor = NodeEditorWidget()
         self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor)
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor)
