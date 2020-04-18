@@ -10,7 +10,6 @@ DEBUG = False
 
 class SceneHistory():
     """Class contains all the code for undo/redo operations"""
-
     def __init__(self, scene: 'Scene'):
         """
         :param scene: Reference to the :class:`~nodeeditor.node_scene.Scene`
@@ -95,6 +94,7 @@ class SceneHistory():
             self.history_current_step += 1
             self.restoreHistory()
             self.scene.has_been_modified = True
+
 
     def restoreHistory(self):
         """

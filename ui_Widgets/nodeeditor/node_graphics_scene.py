@@ -44,6 +44,7 @@ class QDMGraphicsScene(QGraphicsScene):
         self._pen_dark = QPen(self._color_dark)
         self._pen_dark.setWidth(2)
 
+
     # the drag events won't be allowed until dragMoveEvent is overriden
     def dragMoveEvent(self, event):
         """Overriden Qt's dragMoveEvent to enable Qt's Drag Events"""

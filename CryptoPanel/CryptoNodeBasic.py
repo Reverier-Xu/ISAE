@@ -152,7 +152,7 @@ class Graph:
     ''' Nodes Properties: Node's ID -> Node's Properties(dict) '''
     properties = {}
 
-    ''' Nodes' Maps: Node's ID -> dict('input' -> {Port -> [Node's ID, Port]}, 'output' -> {Port -> [Node's ID, Port]}) '''
+    ''' Nodes' Maps: Node's ID -> dict('input' -> {Port -> [Node's ID, Port]}, 'output' -> {Port -> [[Node's ID, Port], [Node's ID, Port]]}) '''
     NodesMaps = {}
 
     ''' Node's Crypto Type: Node's ID -> CryptoFunc(object) '''
@@ -196,8 +196,12 @@ class Graph:
         enderPort = edge.end_socket.index
         starterData = starter.serialize()
         enderData = ender.serialize()
-        self.NodesMaps[starterData['id']]['output'][starterPort] = [
-            enderData['id'], enderPort]
+        if len(self.NodesMaps[starterData['id']]['output']) == 0:
+            self.NodesMaps[starterData['id']]['output'][starterPort] = [[
+                enderData['id'], enderPort]]
+        else:
+            self.NodesMaps[starterData['id']]['output'][starterPort].append([
+                enderData['id'], enderPort])
         self.NodesMaps[enderData['id']]['input'][enderPort] = [
             starterData['id'], starterPort]
 
@@ -218,26 +222,43 @@ class Graph:
         clears = self.NodesMaps[id]
         for i in clears['input']:
             for j in self.NodesMaps[clears['input'][i][0]]['output']:
-                if self.NodesMaps[clears['input'][i][0]]['output'][j][0] == id:
-                    self.NodesMaps[clears['input'][i][0]]['output'].pop(j)
-                    break
+                for k in self.NodesMaps[clears['input'][i][0]]['output'][j]:
+                    if k[0] == id:
+                        self.NodesMaps[clears['input'][i][0]]['output'][j].remove(k)
+                        break
         for i in clears['output']:
-            for j in self.NodesMaps[clears['output'][i][0]]['input']:
-                if self.NodesMaps[clears['output'][i][0]]['input'][j][0] == id:
-                    self.NodesMaps[clears['output'][i][0]]['input'].pop(j)
-                    break
+            for j in clears['output'][i]:
+                for k in self.NodesMaps[j[0]]['input']:
+                    if self.NodesMaps[j[0]]['input'][k][0] == id:
+                        self.NodesMaps[j[0]]['input'].pop(k)
         self.NodesMaps.pop(id)
+        print('After Delete the Node, the map is: ', self.NodesMaps)
+        print('')
 
     def EdgeDelete(self, dic: dict):
         starterData = dic['starter'].serialize()
         enderData = dic['ender'].serialize()
-        self.NodesMaps[starterData['id']]['output'].pop(dic['starterPort'])
+        self.NodesMaps[starterData['id']]['output'][dic['starterPort']].remove([enderData['id'], dic['enderPort']])
         self.NodesMaps[enderData['id']]['input'].pop(dic['enderPort'])
+        print('After Edge Deleted: ', self.NodesMaps)
+        print('')
 
     def Compute(self):
         self.Modified()
+        print('Before Computing, The Map is: ', self.NodesMaps)
+        print('')
+        print('The Data is: ', self.NodeResults)
+        print('')
+        print('The Node Properties is: ', self.properties)
+        print('')
         for i in self.outputs:
             self.Get(i)
+        print('After Computing, The Map is: ', self.NodesMaps)
+        print('')
+        print('The Data is: ', self.NodeResults)
+        print('')
+        print('The Node Properties is: ', self.properties)
+        print('')
 
     def Get(self, id):
         if self.inputs.count(id) != 0:
@@ -250,13 +271,16 @@ class Graph:
             ok = self.Get(self.NodesMaps[id]['input'][i][0])
             if not ok:
                 return False
-            print(self.properties)
+            # print(self.properties)
             self.properties[id]['input'][i] = self.NodeResults[
                 self.NodesMaps[id]['input'][i][0]]['output'][self.NodesMaps[id]['input'][i][1]]
         if self.outputs.count(id) != 0:
             self.NodeResults[id] = self.properties[id]
-            print(id)
-            self.outputnodes[id].content.textBox.setText(self.NodeResults[id]['input'][0])
+            # print(id)
+            try:
+                self.outputnodes[id].content.textBox.setText(self.NodeResults[id]['input'][0])
+            except:
+                self.outputnodes[id].content.textBox.setText('Error!')
             self.NodeStatus[id] = True
             return True
         try:
@@ -270,6 +294,11 @@ class Graph:
     def Modified(self):
         for i in self.NodeStatus:
             self.NodeStatus[i] = False
+        for i in self.NodeResults:
+            self.NodeResults[i] = {'input': {}, 'output': {}}
+        for i in self.properties:
+            self.properties[i]['input'] = {}
+            self.properties[i]['output'] = {}
 
 
 class CryptoNodeEditorWidget(NodeEditorWidget):

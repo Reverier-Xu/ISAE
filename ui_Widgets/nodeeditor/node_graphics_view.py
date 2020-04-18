@@ -23,9 +23,6 @@ DEBUG = False
 
 
 class QDMGraphicsView(QGraphicsView):
-    EdgeCreated = pyqtSignal(Edge)
-    EdgeDeleted = pyqtSignal(dict)
-    NodeDeleted = pyqtSignal(dict)
     """Class representing NodeEditor's `Graphics View`"""
     #: pyqtSignal emitted when cursor position on the `Scene` has changed
     scenePosChanged = pyqtSignal(int, int)
@@ -73,6 +70,7 @@ class QDMGraphicsView(QGraphicsView):
         # listeners
         self._drag_enter_listeners = []
         self._drop_listeners = []
+
 
     def initUI(self):
         """Set up this ``QGraphicsView``"""
@@ -191,6 +189,7 @@ class QDMGraphicsView(QGraphicsView):
                 super().mousePressEvent(fakeEvent)
                 return
 
+
         if isinstance(item, QDMGraphicsSocket):
             if self.mode == MODE_NOOP:
                 self.mode = MODE_EDGE_DRAG
@@ -242,6 +241,7 @@ class QDMGraphicsView(QGraphicsView):
             QApplication.setOverrideCursor(Qt.ArrowCursor)
             self.mode = MODE_NOOP
             return
+
 
         if self.rubberBandDraggingRectangle:
             self.rubberBandDraggingRectangle = False
@@ -308,8 +308,11 @@ class QDMGraphicsView(QGraphicsView):
         # Use this code below if you wanna have shortcuts in this widget.
         # You want to use this, when you don't have a window which handles these shortcuts for you
 
-        if event.key() == Qt.Key_Delete:
-            self.deleteSelected()
+        # if event.key() == Qt.Key_Delete:
+        #     if not self.editingFlag:
+        #         self.deleteSelected()
+        #     else:
+        #         super().keyPressEvent(event)
         # elif event.key() == Qt.Key_S and event.modifiers() & Qt.ControlModifier:
         #     self.grScene.scene.saveToFile("graph.json")
         # elif event.key() == Qt.Key_L and event.modifiers() & Qt.ControlModifier:
@@ -326,8 +329,8 @@ class QDMGraphicsView(QGraphicsView):
         #         print("#", ix, "--", item['desc'])
         #         ix += 1
         # else:
-        #     super().keyPressEvent(event)
         super().keyPressEvent(event)
+
 
     def cutIntersectingEdges(self):
         """Compare which `Edges` intersect with current `Cut line` and delete them safely"""
@@ -345,19 +348,11 @@ class QDMGraphicsView(QGraphicsView):
 
     def deleteSelected(self):
         """Shortcut for safe deleting every object selected in the `Scene`."""
-        itemclo = []
         for item in self.grScene.selectedItems():
             if isinstance(item, QDMGraphicsEdge):
-                self.EdgeDeleted.emit({'starter':item.edge.start_socket.node,
-                                       'starterPort': item.edge.start_socket.index,
-                                       'ender': item.edge.end_socket.node,
-                                       'enderPort': item.edge.end_socket.index})
                 item.edge.remove()
             elif hasattr(item, 'node'):
-                self.NodeDeleted.emit(dict(item.node.serialize()))
-                itemclo.append(item)
-        for item in itemclo:
-            item.node.remove()
+                item.node.remove()
         self.grScene.scene.history.storeHistory("Delete selected", setModified=True)
 
     def debug_modifiers(self, event):
@@ -428,7 +423,6 @@ class QDMGraphicsView(QGraphicsView):
                         if socket.is_input: socket.node.onInputChanged(socket)
 
                     self.grScene.scene.history.storeHistory("Created new edge by dragging", setModified=True)
-                    self.EdgeCreated.emit(new_edge)
                     return True
         except Exception as e:
             dumpException(e)

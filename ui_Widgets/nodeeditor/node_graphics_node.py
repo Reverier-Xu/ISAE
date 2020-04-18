@@ -9,7 +9,6 @@ from PyQt5.QtGui import *
 
 class QDMGraphicsNode(QGraphicsItem):
     """Class describing Graphics representation of :class:`~nodeeditor.node_node.Node`"""
-
     def __init__(self, node: 'Node', parent: QWidget = None):
         """
         :param node: reference to :class:`~nodeeditor.node_node.Node`
@@ -156,6 +155,7 @@ class QDMGraphicsNode(QGraphicsItem):
         self.hovered = False
         self.update()
 
+
     def boundingRect(self) -> QRectF:
         """Defining Qt' bounding rectangle"""
         return QRectF(
@@ -164,6 +164,7 @@ class QDMGraphicsNode(QGraphicsItem):
             self.width,
             self.height
         ).normalized()
+
 
     def initTitle(self):
         """Set up the title Graphics representation: font, color, position, etc."""
@@ -187,6 +188,7 @@ class QDMGraphicsNode(QGraphicsItem):
         # get the QGraphicsProxyWidget when inserted into the grScene
         self.grContent = self.node.scene.grScene.addWidget(self.content)
         self.grContent.setParentItem(self)
+
 
     def paint(self, painter, QStyleOptionGraphicsItem, widget=None):
         """Painting the rounded rectanglar `Node`"""

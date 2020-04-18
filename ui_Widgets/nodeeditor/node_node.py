@@ -2,10 +2,8 @@
 """
 A module containing NodeEditor's class for representing `Node`.
 """
-from ui_Widgets.nodeeditor.node_edge import Edge
 from ui_Widgets.nodeeditor.node_graphics_node import QDMGraphicsNode
 from ui_Widgets.nodeeditor.node_content_widget import QDMNodeContentWidget
-# from ui_Widgets.nodeeditor.node_scene import Scene
 from ui_Widgets.nodeeditor.node_socket import *
 from ui_Widgets.nodeeditor.utils import dumpException, pp
 
@@ -102,14 +100,13 @@ class Node(Serializable):
         """
         self.grNode.setPos(x, y)
 
+
     def initInnerClasses(self):
         """Sets up graphics Node (PyQt) and Content Widget"""
         node_content_class = self.getNodeContentClass()
         graphics_node_class = self.getGraphicsNodeClass()
-        if node_content_class is not None:
-            self.content = node_content_class(self)
-        if graphics_node_class is not None:
-            self.grNode = graphics_node_class(self)
+        if node_content_class is not None: self.content = node_content_class(self)
+        if graphics_node_class is not None: self.grNode = graphics_node_class(self)
 
     def getNodeContentClass(self):
         """Returns class representing nodeeditor content"""
@@ -281,6 +278,7 @@ class Node(Serializable):
         self.scene.removeNode(self)
         if DEBUG: print(" - everything was done.")
 
+
     # node evaluation stuff
 
     def isDirty(self) -> bool:
@@ -373,6 +371,7 @@ class Node(Serializable):
         """Evaluate all children of this `Node`"""
         for node in self.getChildrenNodes():
             node.eval()
+
 
     # traversing nodes functions
 

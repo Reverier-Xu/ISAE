@@ -264,3 +264,30 @@ class ICTFEScrollArea(QtWidgets.QScrollArea):
             '}')
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+
+
+class PropertiesEditWidget(QtWidgets.QListWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
+
+
+class BoolEditItem(QtWidgets.QWidget):
+    def __init__(self, parent=None, name: str = ''):
+        super().__init__(parent=parent)
+        layout = QtWidgets.QVBoxLayout()
+        check = ICTFECheckBox()
+        check.setText(name)
+        layout.addWidget(check)
+        self.setLayout(layout)
+
+
+class LineEditItem(QtWidgets.QWidget):
+    def __init__(self, parent=None, name: str = ''):
+        super().__init__(parent=parent)
+        layout = QtWidgets.QHBoxLayout()
+        label = ICTFELabel()
+        label.setText(name)
+        layout.addWidget(label)
+        editbox = ICTFELineBox()
+        layout.addWidget(editbox)
+        self.setLayout(layout)

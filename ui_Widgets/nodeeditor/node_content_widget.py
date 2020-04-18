@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-"""A module containing base class for Node's content graphical representation.
-It also contains example of overridden Text Widget which can pass to it's
-parent notification about currently being modified."""
+"""A module containing base class for Node's content graphical representation. It also contains example of
+overriden Text Widget which can pass to it's parent notification about currently being modified."""
 from collections import OrderedDict
 from ui_Widgets.nodeeditor.node_serializable import Serializable
 from PyQt5.QtWidgets import *
@@ -30,7 +29,13 @@ class QDMNodeContentWidget(QWidget, Serializable):
     def initUI(self):
         """Sets up layouts and widgets to be rendered in :py:class:`~nodeeditor.node_graphics_node.QDMGraphicsNode` class.
         """
-        pass
+        self.layout = QVBoxLayout()
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.layout)
+
+        self.wdg_label = QLabel("Some Title")
+        self.layout.addWidget(self.wdg_label)
+        self.layout.addWidget(QDMTextEdit("foo"))
 
     def setEditingFlag(self, value: bool):
         """

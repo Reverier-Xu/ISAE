@@ -169,7 +169,6 @@ class QDMGraphicsEdge(QGraphicsPathItem):
 
 class QDMGraphicsEdgeDirect(QDMGraphicsEdge):
     """Direct line connection Graphics Edge"""
-
     def calcPath(self) -> QPainterPath:
         """Calculate the Direct line connection
 
@@ -183,7 +182,6 @@ class QDMGraphicsEdgeDirect(QDMGraphicsEdge):
 
 class QDMGraphicsEdgeBezier(QDMGraphicsEdge):
     """Cubic line connection Graphics Edge"""
-
     def calcPath(self) -> QPainterPath:
         """Calculate the cubic Bezier line connection with 2 control points
 
@@ -217,6 +215,7 @@ class QDMGraphicsEdgeBezier(QDMGraphicsEdge):
                             (d[1] - s[1]) if (d[1] - s[1]) != 0 else 0.00001
                         )
                         ) * EDGE_CP_ROUNDNESS
+
 
         path = QPainterPath(QPointF(self.posSource[0], self.posSource[1]))
         path.cubicTo(s[0] + cpx_s, s[1] + cpy_s, d[0] + cpx_d, d[1] + cpy_d, self.posDestination[0],

@@ -13,6 +13,7 @@ from ui_Widgets.nodeeditor.node_edge import Edge
 from ui_Widgets.nodeeditor.node_scene_history import SceneHistory
 from ui_Widgets.nodeeditor.node_scene_clipboard import SceneClipboard
 
+
 DEBUG_REMOVE_WARNINGS = False
 
 
@@ -21,7 +22,6 @@ class InvalidFile(Exception): pass
 
 class Scene(Serializable):
     """Class representing NodeEditor's `Scene`"""
-
     def __init__(self):
         """
         :Instance Attributes:
@@ -121,6 +121,7 @@ class Scene(Serializable):
             if not silent:
                 self.history.storeHistory("Deselected Everything")
                 for callback in self._items_deselected_listeners: callback()
+
 
     def isModified(self) -> bool:
         """Is this `Scene` dirty aka `has been modified` ?

@@ -17,7 +17,6 @@ class NodeEditorWidget(QWidget):
     Scene_class = Scene
 
     """The ``NodeEditorWidget`` class"""
-
     def __init__(self, parent: QWidget = None):
         """
         :param parent: parent widget
@@ -33,6 +32,7 @@ class NodeEditorWidget(QWidget):
 
         self.initUI()
 
+
     def initUI(self):
         """Set up this ``NodeEditorWidget`` with its layout,  :class:`~nodeeditor.node_scene.Scene` and
         :class:`~nodeeditor.node_graphics_view.QDMGraphicsView`"""
@@ -46,6 +46,7 @@ class NodeEditorWidget(QWidget):
         # create graphics view
         self.view = QDMGraphicsView(self.scene.grScene, self)
         self.layout.addWidget(self.view)
+
 
     def isModified(self) -> bool:
         """Has the `Scene` been modified?
@@ -127,7 +128,7 @@ class NodeEditorWidget(QWidget):
         except InvalidFile as e:
             print(e)
             QApplication.restoreOverrideCursor()
-            QMessageBox.warning(self, "加载 %s 时出错." % os.path.basename(filename), str(e))
+            QMessageBox.warning(self, "Error loading %s" % os.path.basename(filename), str(e))
             return False
         finally:
             QApplication.restoreOverrideCursor()
@@ -138,8 +139,7 @@ class NodeEditorWidget(QWidget):
         :param filename: file to store the graph
         :type filename: ``str``
         """
-        if filename is not None:
-            self.filename = filename
+        if filename is not None: self.filename = filename
         QApplication.setOverrideCursor(Qt.WaitCursor)
         self.scene.saveToFile(self.filename)
         QApplication.restoreOverrideCursor()
@@ -188,7 +188,7 @@ class NodeEditorWidget(QWidget):
         rect = self.grScene.addRect(-100, -100, 80, 100, outlinePen, greenBrush)
         rect.setFlag(QGraphicsItem.ItemIsMovable)
 
-        text = self.grScene.addText("This is my Awesome text!")
+        text = self.grScene.addText("This is my Awesome text!", QFont("Ubuntu"))
         text.setFlag(QGraphicsItem.ItemIsSelectable)
         text.setFlag(QGraphicsItem.ItemIsMovable)
         text.setDefaultTextColor(QColor.fromRgbF(1.0, 1.0, 1.0))

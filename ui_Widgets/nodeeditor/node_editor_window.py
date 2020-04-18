@@ -13,7 +13,6 @@ class NodeEditorWindow(QMainWindow):
     NodeEditorWidget_class = NodeEditorWidget
 
     """Class representing NodeEditor's Main Window"""
-
     def __init__(self):
         """
         :Instance Attributes:
@@ -27,6 +26,7 @@ class NodeEditorWindow(QMainWindow):
         self.name_product = 'NodeEditor'
 
         self.initUI()
+
 
     def initUI(self):
         """Set up this ``QMainWindow``. Create :class:`~nodeeditor.node_editor_widget.NodeEditorWidget`, Actions and Menus"""
@@ -111,6 +111,7 @@ class NodeEditorWindow(QMainWindow):
 
         self.setWindowTitle(title)
 
+
     def closeEvent(self, event):
         """Handle close event. Ask before we loose work"""
         if self.maybeSave():
@@ -179,6 +180,7 @@ class NodeEditorWindow(QMainWindow):
         if self.maybeSave():
             self.getCurrentNodeEditorWidget().fileNew()
             self.setTitle()
+
 
     def onFileOpen(self):
         """Handle File Open operation"""

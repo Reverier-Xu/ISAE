@@ -16,10 +16,8 @@ SOCKET_COLORS = [
     QColor("#FF888888"),
 ]
 
-
 class QDMGraphicsSocket(QGraphicsItem):
     """Class representing Graphic `Socket` in ``QGraphicsScene``"""
-
     def __init__(self, socket: 'Socket'):
         """
         :param socket: reference to :class:`~nodeeditor.node_socket.Socket`

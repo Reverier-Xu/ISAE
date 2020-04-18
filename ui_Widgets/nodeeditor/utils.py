@@ -35,7 +35,6 @@ def loadStylesheet(filename: str):
     stylesheet = file.readAll()
     QApplication.instance().setStyleSheet(str(stylesheet, encoding='utf-8'))
 
-
 def loadStylesheets(*args):
     """
     Loads multiple qss stylesheets. Concats them together and applies the final stylesheet to current QApplication instance

@@ -6,6 +6,7 @@ from collections import OrderedDict
 from ui_Widgets.nodeeditor.node_graphics_edge import QDMGraphicsEdge
 from ui_Widgets.nodeeditor.node_edge import Edge
 
+
 DEBUG = False
 DEBUG_PASTING = False
 
@@ -14,7 +15,6 @@ class SceneClipboard():
     """
     Class contains all the code for serialization/deserialization from Clipboard
     """
-
     def __init__(self, scene: 'Scene'):
         """
         :param scene: Reference to the :class:`~nodeeditor.node_scene.Scene`
@@ -47,11 +47,13 @@ class SceneClipboard():
             elif isinstance(item, QDMGraphicsEdge):
                 sel_edges.append(item.edge)
 
+
         # debug
         if DEBUG:
             print("  NODES\n      ", sel_nodes)
             print("  EDGES\n      ", sel_edges)
             print("  SOCKETS\n     ", sel_sockets)
+
 
         # remove all edges which are not connected to a nodeeditor in our list
         edges_to_remove = []
