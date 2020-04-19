@@ -65,14 +65,12 @@ pip install gmpy2 pycrypto python-poppler-qt5
 
 ## 密码与编码
 
-### ~~密码学panel正在进行插件化重构, 预计用时三天(4月16日结束), 敬请期待.~~
+### 密码学重构完成, 请参照Modules文件夹下的实例编写模块, 文档稍后上线.
 
-### 好的, 三天搞不完, 延期到4月20日吧, 再搞不完就提头来见了
+### Base系列
+Base64 Base32 ~~Base16 Base85-ASCII Base85-RFC1924~~
 
-~~### Base系列~~
-~~Base64 Base32 Base16 Base85-ASCII Base85-RFC1924~~
-
-~~支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. 支持Base64隐写提取.~~
+支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. ~~支持Base64隐写提取.~~
 
 ~~支持文件操作. 添加了明文和密文的快速交换键, 用于反base套娃 (误~~
 
