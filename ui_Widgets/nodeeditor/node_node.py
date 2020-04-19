@@ -100,13 +100,14 @@ class Node(Serializable):
         """
         self.grNode.setPos(x, y)
 
-
     def initInnerClasses(self):
         """Sets up graphics Node (PyQt) and Content Widget"""
         node_content_class = self.getNodeContentClass()
         graphics_node_class = self.getGraphicsNodeClass()
-        if node_content_class is not None: self.content = node_content_class(self)
-        if graphics_node_class is not None: self.grNode = graphics_node_class(self)
+        if node_content_class is not None:
+            self.content = node_content_class(self)
+        if graphics_node_class is not None:
+            self.grNode = graphics_node_class(self)
 
     def getNodeContentClass(self):
         """Returns class representing nodeeditor content"""
@@ -278,7 +279,6 @@ class Node(Serializable):
         self.scene.removeNode(self)
         if DEBUG: print(" - everything was done.")
 
-
     # node evaluation stuff
 
     def isDirty(self) -> bool:
@@ -372,7 +372,6 @@ class Node(Serializable):
         for node in self.getChildrenNodes():
             node.eval()
 
-
     # traversing nodes functions
 
     def getChildrenNodes(self) -> 'List[Node]':
@@ -401,10 +400,11 @@ class Node(Serializable):
         """
         try:
             input_socket = self.inputs[index]
-            if len(input_socket.edges) == 0: return None
+            if len(input_socket.edges) == 0:
+                return None
             connecting_edge = input_socket.edges[0]
             other_socket = connecting_edge.getOtherSocket(self.inputs[index])
-            return other_socket.node
+            return other_socket
         except Exception as e:
             dumpException(e)
             return None

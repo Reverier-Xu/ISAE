@@ -62,9 +62,7 @@ class Socket(Serializable):
         self.is_input = is_input
         self.is_output = not self.is_input
 
-
         if DEBUG: print("Socket -- creating with", self.index, self.position, "for nodeeditor", self.node)
-
 
         self.grSocket = self.__class__.Socket_GR_Class(self)
 
@@ -107,7 +105,6 @@ class Socket(Serializable):
         res = self.node.getSocketPosition(self.index, self.position, self.count_on_this_node_side)
         if DEBUG: print("  res", res)
         return res
-
 
     def hasAnyEdge(self) -> bool:
         """

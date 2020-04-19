@@ -7,8 +7,11 @@ from CryptoPanel.CryptoNodeBasic import *
 class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
-        self.MainProcess.setValue(100)
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
+        for i in Modules:
+            self.ToolsList.addDIYItem(i, Modules[i].properties['categlories'])
+        self.ToolsList.addDIYItem('input', '基本')
+        self.ToolsList.addDIYItem('output', '基本')
 
 '''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
