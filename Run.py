@@ -7,6 +7,7 @@ from PyQt5.QtGui import QCursor
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtGui, QtCore
 import MainWindow
+import sys
 
 
 class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
@@ -34,6 +35,7 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 if __name__ == "__main__":
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
+    sys.setrecursionlimit(1000000)
     Win = MainWindow()
     Win.setWindowTitle('ICTFE')
     Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)

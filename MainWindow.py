@@ -54,7 +54,7 @@ class Ui_MainWindow(object):
         self.TitleLabel = uni_Widget.ICTFELabel(self.centralwidget)
         self.TitleLabel.setObjectName("TitleLabel")
         font = QtGui.QFont()
-        font.setFamily('文泉驿等宽微米黑')
+        font.setFamily('Fira Code')
         font.setPixelSize(16)
         self.TitleLabel.setFont(font)
         self.TitleLabel.setText('  ICTFE  ')

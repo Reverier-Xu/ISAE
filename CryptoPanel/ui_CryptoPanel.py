@@ -1,7 +1,6 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
 from ui_Widgets.qtpynodeeditor import *
-from ui_Widgets.nodeeditor import node_drag_list_box
 from CryptoPanel.CryptoNodeBasic import *
 
 '''
@@ -50,7 +49,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsSearchBox.setPlaceholderText('搜索...')
         self.ToolsSearchBox.setObjectName("ToolsSearchBox")
         self.verticalLayout_5.addWidget(self.ToolsSearchBox)
-        self.ToolsList = node_drag_list_box.DragList(self.ToolsAreaPanel)
+        self.ToolsList = DragList(self.ToolsAreaPanel)
         self.ToolsList.setStyleSheet('background-color: transparent; border: 1px solid grey;')
         self.ToolsList.setObjectName("ToolsList")
         self.verticalLayout_5.addWidget(self.ToolsList)

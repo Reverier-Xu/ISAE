@@ -149,6 +149,7 @@ class CryptoComputeModel(NodeDataModel):
     settings = None
     inputs = {}
     outputs = {}
+    computed = False
 
     def __init__(self, module, *args, **kwargs):
         self.num_ports[PortType.input] = len(module.properties['input'])
@@ -177,7 +178,6 @@ class CryptoComputeModel(NodeDataModel):
         -------
         value : NodeData
         '''
-        print('output port: ', port)
         try:
             return self.outputs[port]
         except:
@@ -193,13 +193,18 @@ class CryptoComputeModel(NodeDataModel):
         port_index : int
         '''
         self.inputs[port.index] = data
-
         if self._check_inputs():
             try:
                 self.compute()
                 self.data_updated.emit(0)
             except:
                 pass
+        else:
+            for i in self.outputs:
+                self.outputs[i] = None
+            self.data_updated.emit(0)
+        self.computed = False
+
 
     def _check_inputs(self):
         try:
@@ -211,14 +216,15 @@ class CryptoComputeModel(NodeDataModel):
             return False
 
     def compute(self):
+        if self.computed:
+            pass
         inp = {}
         for i in self.inputs:
             inp[i] = self.inputs[i].string
-        print('input: ', inp)
         out = self.func(inp, self.settings)
-        print('output: ', out)
         for i in out:
             self.outputs[i] = StringData(out[i])
+        self.computed = True
 
 
 class CryptoFlowView(FlowView):
@@ -247,3 +253,63 @@ class CryptoFlowView(FlowView):
     def dragEnterEvent(self, event: QDragEnterEvent):
         print(event.mimeData())
         event.acceptProposedAction()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Delete and event.modifiers() & Qt.ControlModifier:
+            self.delete_selected()
+        else:
+            super().keyPressEvent(event)
+
+
+class DragList(QTreeWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.initUI()
+
+    def initUI(self):
+        # init
+        self.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.setDragEnabled(True)
+        self.headerItem().setText(0, "模块")
+
+    def filter(self, text):
+        """以text开头作为过滤条件示例"""
+        cursor = QTreeWidgetItemIterator(self)
+        while cursor.value():
+            item = cursor.value()
+            if item.text(0).startswith(text):
+                item.setHidden(False)
+                # 需要让父节点也显示,不然子节点显示不出来
+                try:
+                    item.parent().setHidden(False)
+                except Exception:
+                    pass
+            else:
+                item.setHidden(True)
+            cursor = cursor.__iadd__(1)
+
+    def addDIYItem(self, name, categlories):
+        # can be (icon, text, parent, <int>type)
+        try:
+            i = self.findItems(categlories, Qt.MatchStartsWith, column=0)[0]
+        except:
+            fa = QTreeWidgetItem(self)
+            fa.setText(0, categlories)
+            i = fa
+        item = QTreeWidgetItem(i)
+        item.setText(0, name)
+
+        item.setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable |
+                      Qt.ItemIsDragEnabled)
+
+    def startDrag(self, *args, **kwargs):
+
+        item = self.currentItem()
+
+        mimeData = QMimeData()
+        mimeData.setText(item.text(0))
+
+        drag = QDrag(self)
+        drag.setMimeData(mimeData)
+
+        drag.exec_(Qt.MoveAction)
