@@ -19,10 +19,10 @@ defaults = {
 
 
 def main(inp: dict, settings: dict):
-    out = []
+    out = {}
     if settings['开关'] == '编码':
-        out.append(utils.ChangeTableBase64Encode(inp[0], settings['编码表'], settings['eval']))
+        out[0] = utils.ChangeTableBase64Encode(inp[0], settings['编码表'], settings['eval'])
     elif settings['开关'] == '解码':
-        out.append(utils.ChangeTableBase64Decode(
-            settings[0], settings['编码表']))
+        out[0] = utils.ChangeTableBase64Decode(
+            settings[0], settings['编码表'])
     return out

@@ -50,7 +50,10 @@ class StringData(NodeData):
 
 
 class InputModel(NodeDataModel):
+    name = 'Input'
     caption = 'Input'
+    caption_visible = True
+    port_caption_visible = True
     num_ports = {PortType.input: 0,
                  PortType.output: 1,
                  }
@@ -68,6 +71,7 @@ class InputModel(NodeDataModel):
         super().__init__(*args, **kwargs)
         self._string = None
         self._edit = uni_Widget.ICTFETextBox()
+        self._edit.textChanged.connect(self.onTextEdited)
 
     def resizable(self):
         return True
@@ -79,30 +83,48 @@ class InputModel(NodeDataModel):
     def embedded_widget(self):
         return self._edit
 
+    def onTextEdited(self, **kwargs):
+        self._string = self._edit.toPlainText()
+        self.data_updated.emit(0)
 
-class ImageShowModel(NodeDataModel):
+
+class OutputModel(NodeDataModel):
+    name = 'Output'
     caption = 'Output'
+    caption_visible = True
+    port_caption_visible = True
     num_ports = {PortType.input: 1,
                  PortType.output: 1,
                  }
+    port_caption = {
+        'input': {
+            0: '输入'
+        },
+        'output': {
+            0: '中继'
+        }
+    }
     data_type = StringData
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._node_data = None
-        self._show = uni_Widget.ICTFETextBox
+        self._show = uni_Widget.ICTFETextBox()
+        self._show.setReadOnly(True)
+        self._show.setText('未连接..')
 
     def resizable(self):
         return True
 
     def set_in_data(self, node_data, port):
         self._node_data = node_data
+        print('the node data: ', node_data)
         if (self._node_data and
                 self._node_data.data_type == StringData.data_type and
                 self._node_data.string):
             string = node_data.string
         else:
-            string = 'Error.'
+            string = '未连接/未初始化.'
 
         self._show.setText(string)
         self.data_updated.emit(0)
@@ -116,7 +138,6 @@ class ImageShowModel(NodeDataModel):
 
 class CryptoComputeModel(NodeDataModel):
     caption_visible = True
-    name = 'CRYPTO'
     num_ports = {
         PortType.input: 2,
         PortType.output: 1,
@@ -156,7 +177,11 @@ class CryptoComputeModel(NodeDataModel):
         -------
         value : NodeData
         '''
-        return self.outputs[port]
+        print('output port: ', port)
+        try:
+            return self.outputs[port]
+        except:
+            return None
 
     def set_in_data(self, data: NodeData, port: Port):
         '''
@@ -172,6 +197,7 @@ class CryptoComputeModel(NodeDataModel):
         if self._check_inputs():
             try:
                 self.compute()
+                self.data_updated.emit(0)
             except:
                 pass
 
@@ -188,390 +214,36 @@ class CryptoComputeModel(NodeDataModel):
         inp = {}
         for i in self.inputs:
             inp[i] = self.inputs[i].string
+        print('input: ', inp)
         out = self.func(inp, self.settings)
+        print('output: ', out)
         for i in out:
             self.outputs[i] = StringData(out[i])
 
 
-'''
-class CryptoGraphicsNode(QDMGraphicsNode):
-    def initSizes(self):
-        super().initSizes()
-        self.width = 200
-        self.height = 300
-        self.edge_roundness = 6
-        self.edge_padding = 0
-        self.title_horizontal_padding = 8
-        self.title_vertical_padding = 10
+class CryptoFlowView(FlowView):
+    def __init__(self, scene, parent=None):
+        super().__init__(scene, parent=parent)
+        self.setDragMode(QGraphicsView.RubberBandDrag)
+        self.setAcceptDrops(True)
+        self.setViewportUpdateMode(QGraphicsView.FullViewportUpdate)
 
-    def initAssets(self):
-        super().initAssets()
-        self.icons = QImage("Resources/status_icons.png")
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
-    def paint(self, painter, QStyleOptionGraphicsItem, widget=None):
-        super().paint(painter, QStyleOptionGraphicsItem, widget)
+        self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
 
-        offset = 24.0
-        if self.node.isDirty():
-            offset = 0.0
-        if self.node.isInvalid():
-            offset = 48.0
-
-        painter.drawImage(
-            QRectF(-10, -10, 24.0, 24.0),
-            self.icons,
-            QRectF(offset, 0, 24.0, 24.0)
-        )
-
-
-class CryptoContent(QDMNodeContentWidget):
-    properties = {}
-    settings = {}
-    settingmap = {}
-
-    def __init__(self, node: Node, parent: QWidget = None, properties: dict = None, settings: dict = None):
-        """
-        :param node: reference to the :py:class:`~nodeeditor.node_node.Node`
-        :type node: :py:class:`~nodeeditor.node_node.Node`
-        :param parent: parent widget
-        :type parent: QWidget
-
-        :Instance Attributes:
-            - **node** - reference to the :class:`~nodeeditor.node_node.Node`
-            - **layout** - ``QLayout`` container
-        """
-        self.node = node
-        print(properties)
-        self.properties = properties
-        self.settings = settings
-        super().__init__(parent)
-        self.initUI()
-
-    def initUI(self):
-        layouts = QVBoxLayout()
-        NameLabel = uni_Widget.ICTFELabel()
-        NameLabel.setText(self.properties['name'])
-        layouts.addWidget(NameLabel)
-        for i in self.properties['properties']:
-            if self.properties['properties'][i] == bool:
-                checks = uni_Widget.ICTFECheckBox()
-                layouts.addWidget(checks)
-                checks.setText(i)
-                self.settingmap[i] = checks
-            elif self.properties['properties'][i] == str:
-                linetips = uni_Widget.ICTFELabel()
-                linetips.setText(i)
-                layouts.addWidget(linetips)
-                linebox = uni_Widget.ICTFELineBox()
-                layouts.addWidget(linebox)
-                linebox.setText(self.settings[i])
-                layouts.addWidget(linebox)
-                self.settingmap[i] = linebox
-            elif type(self.properties['properties'][i]) == list:
-                comtips = uni_Widget.ICTFELabel()
-                comtips.setText(i)
-                layouts.addWidget(comtips)
-                combobox = QComboBox()
-                for j in self.properties['properties'][i]:
-                    combobox.addItem(j)
-                combobox.setCurrentText(self.settings[i])
-                layouts.addWidget(combobox)
-                self.settingmap[i] = combobox
-            else:
-                pass
-        self.setLayout(layouts)
-
-    def getSettings(self):
-        for i in self.settings:
-            if type(self.settingmap[i]) == uni_Widget.ICTFECheckBox:
-                self.settings[i] = self.settingmap[i].isChecked()
-            elif type(self.settingmap[i]) == uni_Widget.ICTFELineBox:
-                self.settings[i] = self.settingmap[i].text()
-            elif type(self.settingmap[i]) == QComboBox:
-                print(self.settingmap[i].currentText())
-                self.settings[i] = self.settingmap[i].currentText()
-        return self.settings
-
-
-class CryptoNode(Node):
-    name = 'None'
-    op_code = CRYPTO_OP_CODE
-    op_title = "Undefined"
-    properties = {}
-    settings = {}
-    outputResult = []
-    func = None
-
-    GraphicsNode_class = CryptoGraphicsNode
-    NodeContent_class = CryptoContent
-
-    def __init__(self, scene, modules):
-        self.properties = modules.properties
-        self.settings = modules.defaults
-        self.func = modules.main
-        outputResult = []
-        inputs = []
-        for i in range(0, modules.properties['input']):
-            inputs.append(2)
-        for i in range(0, modules.properties['output']):
-            outputResult.append(1)
-            self.outputResult.append(None)
-        super().__init__(scene, self.__class__.op_title, inputs, outputResult)
-
-        # it's really important to mark all nodes Dirty by default
-        self.markDirty()
-
-    def initSettings(self):
-        super().initSettings()
-        self.input_socket_position = LEFT_CENTER
-        self.output_socket_position = RIGHT_CENTER
-
-    def initInnerClasses(self):
-        """Sets up graphics Node (PyQt) and Content Widget"""
-        node_content_class = self.getNodeContentClass()
-        graphics_node_class = self.getGraphicsNodeClass()
-        if node_content_class is not None:
-            self.content = node_content_class(self, properties=self.properties, settings=self.settings)
-        if graphics_node_class is not None:
-            self.grNode = graphics_node_class(self)
-
-    def evalOperation(self, inp):
-        self.settings = self.content.getSettings()
-        print(self.settings)
-        return self.func(inp, self.settings)
-
-    def evalImplementation(self):
-        inp = []
-        for i in range(self.properties['input']):
-            inp.append(self.getInput(i))
-
-        for i in inp:
-            if i is None:
-                self.markInvalid()
-                self.markDescendantsDirty()
-                self.grNode.setToolTip("请连接所有节点")
-                return None
-        else:
-            inputs = []
-            for i in inp:
-                outs = i.node.eval()
-                if outs is None:
-                    return None
-                inputs.append(outs[i.count_on_this_node_side - 1])
-            val = self.evalOperation(inputs)
-            self.outputResult = val
-            self.markDirty(False)
-            self.markInvalid(False)
-            self.grNode.setToolTip("")
-
-            self.markDescendantsDirty()
-            self.evalChildren()
-
-            return val
-
-    def eval(self):
-        if not self.isDirty() and not self.isInvalid():
-            print(" -> returning cached %s value:" % self.__class__.__name__, self.outputResult)
-            return self.outputResult
-
+    def dropEvent(self, event: QDropEvent):
+        eventData = event.mimeData().text()
+        print(eventData)
         try:
-            val = self.evalImplementation()
-            return val
-        except ValueError as e:
-            self.markInvalid()
-            self.grNode.setToolTip(str(e))
-            self.markDescendantsDirty()
-        except Exception as e:
-            self.markInvalid()
-            self.grNode.setToolTip(str(e))
-            dumpException(e)
+            node = self.scene.create_node(self.scene._registry.create(eventData))
+            pos_view = self.mapToScene(event.pos())
+            node.graphics_object.setPos(pos_view)
+            self._scene.node_placed.emit(node)
+        except:
+            pass
 
-    def onInputChanged(self, socket=None):
-        print("%s::__onInputChanged" % self.__class__.__name__)
-        self.markDirty()
-        self.eval()
-
-    def serialize(self):
-        res = super().serialize()
-        res['op_code'] = self.__class__.op_code
-        return res
-
-    def deserialize(self, data, hashmap={}, restore_id=True):
-        res = super().deserialize(data, hashmap, restore_id)
-        print("Deserialized CryptoNode '%s'" % self.__class__.__name__, "res:", res)
-        return res
-
-
-class CryptoInputContent(QDMNodeContentWidget):
-    def initUI(self):
-        layouts = QVBoxLayout()
-        self.resize(400, 300)
-        self.edit = uni_Widget.ICTFETextBox(self)
-        self.edit.setPlaceholderText('在这里输入~...')
-        self.edit.setObjectName(self.node.content_label_objname)
-        layouts.addWidget(self.edit)
-        self.setLayout(layouts)
-
-    def serialize(self):
-        res = super().serialize()
-        res['value'] = self.edit.toPlainText()
-        return res
-
-    def deserialize(self, data, hashmap={}):
-        res = super().deserialize(data, hashmap)
-        try:
-            value = data['value']
-            self.edit.setText(value)
-            return True & res
-        except Exception as e:
-            dumpException(e)
-        return res
-
-
-class CryptoNode_Input(Node):
-    op_code = INPUT_OP_CODE
-    op_title = "Input"
-    content_label_objname = "calc_node_input"
-
-    def __init__(self, scene):
-        super().__init__(scene, inputs=[], outputs=[3])
-        self.eval()
-
-    def initInnerClasses(self):
-        self.content = CryptoInputContent(self)
-        self.grNode = CryptoGraphicsNode(self)
-        self.content.edit.textChanged.connect(self.onInputChanged)
-
-    def evalImplementation(self):
-        self.outputResult = [self.content.edit.toPlainText()]
-        self.markDirty(False)
-        self.markInvalid(False)
-        self.markDescendantsInvalid(False)
-        self.markDescendantsDirty()
-
-        self.grNode.setToolTip("")
-
-        self.evalChildren()
-
-        return self.outputResult
-
-    def eval(self):
-        try:
-            val = self.evalImplementation()
-            return val
-        except ValueError as e:
-            self.markInvalid()
-            self.grNode.setToolTip(str(e))
-            self.markDescendantsDirty()
-        except Exception as e:
-            self.markInvalid()
-            self.grNode.setToolTip(str(e))
-            dumpException(e)
-
-    def onInputChanged(self, socket=None):
-        print("%s::__onInputChanged" % self.__class__.__name__)
-        self.markDirty()
-        self.eval()
-
-
-class CryptoOutputContent(QDMNodeContentWidget):
-
-    def initUI(self):
-        self.resize(400,300)
-        layouts = QVBoxLayout()
-        self.edit = uni_Widget.ICTFETextBox(self)
-        self.edit.setPlaceholderText('不出意外的话, 这里应该是输出~...')
-        self.edit.setObjectName(self.node.content_label_objname)
-        layouts.addWidget(self.edit)
-        self.setLayout(layouts)
-
-
-class CryptoNode_Output(Node):
-    icon = "icons/out.png"
-    op_code = OUTPUT_OP_CODE
-    op_title = "Output"
-    content_label_objname = "calc_node_output"
-
-    def __init__(self, scene):
-        super().__init__(scene, inputs=[1], outputs=[])
-
-    def initInnerClasses(self):
-        self.content = CryptoOutputContent(self)
-        self.grNode = CryptoGraphicsNode(self)
-
-    def evalImplementation(self):
-        input_node_sockets = self.getInput(0)
-        if not input_node_sockets:
-            self.grNode.setToolTip("输入未连接")
-            self.markInvalid()
-            return
-
-        val = input_node_sockets.node.eval()
-
-        if val is None:
-            self.grNode.setToolTip("输入不合法")
-            self.markInvalid()
-            return
-
-        self.content.edit.setText(val[0])
-        self.markInvalid(False)
-        self.markDirty(False)
-        self.grNode.setToolTip("")
-
-        return val
-
-    def eval(self):
-        try:
-            val = self.evalImplementation()
-            return val
-        except ValueError as e:
-            self.markInvalid()
-            self.grNode.setToolTip(str(e))
-            self.markDescendantsDirty()
-        except Exception as e:
-            self.markInvalid()
-            self.grNode.setToolTip(str(e))
-            dumpException(e)
-
-    def onInputChanged(self, socket=None):
-        print("%s::__onInputChanged" % self.__class__.__name__)
-        self.markDirty()
-        self.eval()
-
-
-class CryptoNodeEditorWidget(NodeEditorWidget):
-    def __init__(self):
-        super().__init__()
-        # self.setAttribute(Qt.WA_DeleteOnClose)
-        self.scene.addDragEnterListener(self.onDragEnter)
-        self.scene.addDropListener(self.onDrop)
-
-    def onDragEnter(self, event):
+    def dragEnterEvent(self, event: QDragEnterEvent):
+        print(event.mimeData())
         event.acceptProposedAction()
-
-    def onDrop(self, event):
-        if event.mimeData().hasText():
-            eventData = event.mimeData().text()
-            text = eventData
-
-            mouse_position = event.pos()
-            scene_position = self.scene.grScene.views()[0].mapToScene(mouse_position)
-            try:
-                if text == 'input':
-                    node = CryptoNode_Input(self.scene)
-                elif text == 'output':
-                    node = CryptoNode_Output(self.scene)
-                else:
-                    print(Modules[text])
-                    node = CryptoNode(self.scene, Modules[text])
-                node.setPos(scene_position.x(), scene_position.y())
-                self.scene.history.storeHistory("Created node %s" % node.__class__.__name__)
-            except Exception as e:
-                dumpException(e)
-
-            event.setDropAction(Qt.MoveAction)
-            event.accept()
-        else:
-            # print(" ... drop ignored, not requested format '%s'" % LISTBOX_MIMETYPE)
-            event.ignore()
-'''

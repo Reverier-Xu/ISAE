@@ -325,6 +325,10 @@ class FlowSceneModel:
 
         return node
 
+    def dragMoveEvent(self, event):
+        """Overriden Qt's dragMoveEvent to enable Qt's Drag Events"""
+        pass
+
     @contextlib.contextmanager
     def _new_node_context(self, data_model_name, *, emit_placed=False):
         'Context manager: creates Node/yields it, handling necessary Signals'

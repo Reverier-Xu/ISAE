@@ -26,6 +26,7 @@ import random
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         QtGui.QFontDatabase.addApplicationFont("./Resources/wqy-microhei.ttc")
+        QtGui.QFontDatabase.addApplicationFont('./Resources/fira-code.ttf')
         self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1600, 900)
@@ -64,6 +65,7 @@ class Ui_MainWindow(object):
                                       "QLabel:hover{"
                                       "background-color: rgba(60, 130, 240, 100%);"
                                       "color: white;"
+                                      'border-radius: 16px;'
                                       "}")
         self.horizontalLayout.addWidget(self.TitleLabel)
         self.TabLayout = QtWidgets.QHBoxLayout()
@@ -498,7 +500,7 @@ class SystemInfoThread(QtCore.QThread):
         self.__win = window
         self.__win.StatusBar.setStyleSheet('QStatusBar{color: white; border: 1px solid rgb(50, 50, 50);}')
         font = QtGui.QFont()
-        font.setFamily('Consolas')
+        font.setFamily('Fira Code')
         font.setPixelSize(16)
         self.__win.StatusBar.setFont(font)
 
@@ -508,7 +510,7 @@ class SystemInfoThread(QtCore.QThread):
             new_net_speed = psutil.net_io_counters().bytes_recv
             time.sleep(1)
             self.__win.StatusBar.showMessage(
-                '  =>>  ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered.        ' +
+                '  >> ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered       ' +
                 "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024) + '      Memory Usage: ' + str(
                     int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
                 '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')

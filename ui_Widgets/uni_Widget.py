@@ -170,7 +170,7 @@ class ICTFETextBox(QtWidgets.QTextEdit):
     def __init__(self, parent=None):
         super(ICTFETextBox, self).__init__(parent)
         font = QtGui.QFont()
-        font.setFamily("consolas")
+        font.setFamily("Fira Code")
         font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)
@@ -186,7 +186,7 @@ class ICTFELineBox(QtWidgets.QLineEdit):
     def __init__(self, parent=None):
         super(ICTFELineBox, self).__init__(parent)
         font = QtGui.QFont()
-        font.setFamily("consolas")
+        font.setFamily("Fira Code")
         font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)
@@ -237,7 +237,7 @@ class ICTFEList(QtWidgets.QListWidget):
             'color: white;'
             '}')
         font = QtGui.QFont()
-        font.setFamily("consolas")
+        font.setFamily("Fira Code")
         font.setPixelSize(24)
         font.setBold(False)
         font.setWeight(50)

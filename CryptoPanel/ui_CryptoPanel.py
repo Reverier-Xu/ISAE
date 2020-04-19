@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
-from ui_Widgets.nodeeditor import node_editor_widget, node_drag_list_box
+from ui_Widgets.qtpynodeeditor import *
+from ui_Widgets.nodeeditor import node_drag_list_box
 from CryptoPanel.CryptoNodeBasic import *
 
 '''
@@ -60,7 +61,9 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.NodeEditorLayout.setContentsMargins(0, 0, 0, 0)
         self.NodeEditorLayout.setObjectName("NodeEditorLayout")
         self.NodeEditorLayout.setSpacing(0)
-        self.CryptoToolNodeEditor = CryptoNodeEditorWidget()
+        scene = FlowScene()
+        self.CryptoToolNodeEditor = CryptoFlowView(scene)
+        self.CryptoToolNodeEditor.setMinimumWidth(1000)
         self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor)
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor)

@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtWidgets, Qt, QtGui
 from CryptoPanel.ui_CryptoPanel import ui_CryptoPanel
 from ui_Widgets import uni_Widget
 from CryptoPanel.CryptoNodeBasic import *
+from ui_Widgets.qtpynodeeditor import *
 
 
 class CryptoPanel(ui_CryptoPanel):
@@ -10,8 +11,20 @@ class CryptoPanel(ui_CryptoPanel):
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
         for i in Modules:
             self.ToolsList.addDIYItem(i, Modules[i].properties['categlories'])
-        self.ToolsList.addDIYItem('input', '基本')
-        self.ToolsList.addDIYItem('output', '基本')
+        self.ToolsList.addDIYItem('Input', '基本')
+        self.ToolsList.addDIYItem('Output', '基本')
+        reg = DataModelRegistry()
+        reg.register_model(InputModel, category='Basic')
+        reg.register_model(OutputModel, category='Basic')
+        for i in Modules:
+            class DIYNodesDataModule(CryptoComputeModel):
+                module = Modules[i]
+                name = Modules[i].properties['name']
+                def __init__(self, *args, **kwargs):
+                    super().__init__(self.module, *args, **kwargs)
+            reg.register_model(DIYNodesDataModule, category=Modules[i].properties['categlories'])
+        scene = FlowScene(reg)
+        self.CryptoToolNodeEditor.setScene(scene)
 
 '''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)
