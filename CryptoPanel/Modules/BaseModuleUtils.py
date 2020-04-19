@@ -48,7 +48,7 @@ def ChangeTableBase64Decode(cipher, new_table):
 
 def ChangeTableBase64Encode(text, new_table, flag=False):
     if flag == True:
-        cipher = b64encode(text).decode()
+        cipher = b64encode(eval(text)).decode()
     else:
         cipher = b64encode(text.encode()).decode()
     old_table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
@@ -71,7 +71,7 @@ def ChangeTableBase32Decode(cipher, new_table):
 
 def ChangeTableBase32Encode(text, new_table, flag=False):
     if flag == True:
-        cipher = b32encode(text).decode()
+        cipher = b32encode(eval(text)).decode()
     else:
         cipher = b32encode(text.encode()).decode()
     old_table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
@@ -94,7 +94,7 @@ def ChangeTableBase16Decode(cipher, new_table):
 
 def ChangeTableBase16Encode(text, new_table, flag=False):
     if flag == True:
-        cipher = b16encode(text).decode()
+        cipher = b16encode(eval(text)).decode()
     else:
         cipher = b16encode(text.encode()).decode()
     old_table = '0123456789ABCDEF'
@@ -117,7 +117,7 @@ def ChangeTableBase85Decode(cipher, new_table):
 
 def ChangeTableBase85Encode(text, new_table, flag=False):
     if flag == True:
-        cipher = b85encode(text).decode()
+        cipher = b85encode(eval(text)).decode()
     else:
         cipher = b85encode(text.encode()).decode()
     old_table = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&<>()[]{}@%$#"
@@ -128,7 +128,7 @@ def ChangeTableBase85Encode(text, new_table, flag=False):
 
 def ChangeTableBase85RFCEncode(text, new_table, flag=False):
     if flag == True:
-        cipher = b85encode(text).decode()
+        cipher = b85encode(eval(text)).decode()
     else:
         cipher = b85encode(text.encode()).decode()
     old_table = Base85ReverseTable

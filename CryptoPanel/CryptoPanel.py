@@ -1,3 +1,5 @@
+import copy
+
 from PyQt5 import QtCore, QtWidgets, Qt, QtGui
 from CryptoPanel.ui_CryptoPanel import ui_CryptoPanel
 from ui_Widgets import uni_Widget
@@ -16,12 +18,24 @@ class CryptoPanel(ui_CryptoPanel):
         reg = DataModelRegistry()
         reg.register_model(InputModel, category='Basic')
         reg.register_model(OutputModel, category='Basic')
+        print(Modules)
         for i in Modules:
             class DIYNodesDataModule(CryptoComputeModel):
                 module = Modules[i]
+                properties = module.properties
+                num_ports = {PortType.input: len(module.properties['input']),
+                             PortType.output: len(module.properties['output'])}
+                port_caption = {'input': module.properties['input'],
+                                'output': module.properties['output']}
                 name = Modules[i].properties['name']
+
                 def __init__(self, *args, **kwargs):
+                    self.settings = copy.deepcopy(self.module.defaults)
+                    self.func = self.module.main
+                    self.inputs = {}
+                    self.outputs = {}
                     super().__init__(self.module, *args, **kwargs)
+
             reg.register_model(DIYNodesDataModule, category=Modules[i].properties['categlories'])
         scene = FlowScene(reg)
         self.CryptoToolNodeEditor.setScene(scene)
@@ -29,7 +43,9 @@ class CryptoPanel(ui_CryptoPanel):
         self.SaveOptionsButton.clicked.connect(self.SaveOptionsFunc)
 
     def SaveOptionsFunc(self):
+        print('after saves: ', id(self.OptionsBox.node.model.settings))
         self.OptionsBox.node.model.settings = self.OptionsBox.GetOptions()
+
 
 '''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)

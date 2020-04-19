@@ -132,28 +132,13 @@ class OutputModel(NodeDataModel):
 
 class CryptoComputeModel(NodeDataModel):
     caption_visible = True
-    num_ports = {
-        PortType.input: 2,
-        PortType.output: 1,
-    }
-    port_caption = {'input': {0: '1', 1: '2'}, 'output': {0: '1'}}
     properties = None
     port_caption_visible = True
     data_type = StringData.data_type
-    settings = None
-    inputs = {}
-    outputs = {}
     computed = False
 
     def __init__(self, module, *args, **kwargs):
-        self.num_ports[PortType.input] = len(module.properties['input'])
-        self.num_ports[PortType.output] = len(module.properties['output'])
-        self.port_caption['input'] = module.properties['input']
-        self.port_caption['output'] = module.properties['output']
-        self.name = module.properties['name']
-        self.properties = module.properties
-        self.settings = module.defaults
-        self.func = module.main
+
         super().__init__(*args, **kwargs)
 
     @property
@@ -199,7 +184,6 @@ class CryptoComputeModel(NodeDataModel):
             self.data_updated.emit(0)
         self.computed = False
 
-
     def _check_inputs(self):
         try:
             for i in self.inputs:
@@ -215,9 +199,8 @@ class CryptoComputeModel(NodeDataModel):
         inp = {}
         for i in self.inputs:
             inp[i] = self.inputs[i].string
-        print('计算之前: ', self.settings, self.inputs)
+        print(self, self.settings, id(self.settings))
         out = self.func(inp, self.settings)
-        print('计算之后: ', out)
         for i in out:
             self.outputs[i] = StringData(out[i])
         self.computed = True
@@ -225,6 +208,7 @@ class CryptoComputeModel(NodeDataModel):
 
 class CryptoFlowView(FlowView):
     settingsMap = {}
+
     def __init__(self, scene, parent=None):
         super().__init__(scene, parent=parent)
         self.setDragMode(QGraphicsView.RubberBandDrag)
@@ -243,7 +227,6 @@ class CryptoFlowView(FlowView):
         pos_view = self.mapToScene(event.pos())
         node.graphics_object.setPos(pos_view)
         self._scene.node_placed.emit(node)
-
 
     def dragEnterEvent(self, event: QDragEnterEvent):
         event.acceptProposedAction()
