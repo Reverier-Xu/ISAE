@@ -25,6 +25,11 @@ class CryptoPanel(ui_CryptoPanel):
             reg.register_model(DIYNodesDataModule, category=Modules[i].properties['categlories'])
         scene = FlowScene(reg)
         self.CryptoToolNodeEditor.setScene(scene)
+        self.CryptoToolNodeEditor.scene.node_double_clicked.connect(self.OptionsBox.LoadOptions)
+        self.SaveOptionsButton.clicked.connect(self.SaveOptionsFunc)
+
+    def SaveOptionsFunc(self):
+        self.OptionsBox.node.model.settings = self.OptionsBox.GetOptions()
 
 '''
         self.BaseButton.clicked.connect(self.ChangeCryptoBase)

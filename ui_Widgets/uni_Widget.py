@@ -194,8 +194,8 @@ class ICTFELineBox(QtWidgets.QLineEdit):
         self.setStyleSheet(
             'color: white;'
             'border: 2px solid gray;'
-            'border-radius: 10px;'
-            'padding: 0 8px;'
+            'border-radius: 2px;'
+            'padding: 0 4px;'
             'background: rgb(20, 20, 20);'
             'selection-background-color: blue;')
         self.setDragEnabled(True)

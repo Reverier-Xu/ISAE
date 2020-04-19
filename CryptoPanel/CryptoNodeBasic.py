@@ -9,13 +9,9 @@ import CryptoPanel.Modules
 import pkgutil
 import sys
 from ui_Widgets import uni_Widget
+from CryptoPanel.OptionEditBox import OptionsEditBox
 
 Modules = {}
-'''
-CRYPTO_OP_CODE = 0
-INPUT_OP_CODE = 1
-OUTPUT_OP_CODE = 2
-'''
 
 
 def get_modules(package="."):
@@ -77,7 +73,6 @@ class InputModel(NodeDataModel):
         return True
 
     def out_data(self, port):
-        self._string = self._edit.toPlainText()
         return StringData(self._string)
 
     def embedded_widget(self):
@@ -118,7 +113,6 @@ class OutputModel(NodeDataModel):
 
     def set_in_data(self, node_data, port):
         self._node_data = node_data
-        print('the node data: ', node_data)
         if (self._node_data and
                 self._node_data.data_type == StringData.data_type and
                 self._node_data.string):
@@ -126,7 +120,7 @@ class OutputModel(NodeDataModel):
         else:
             string = '未连接/未初始化.'
 
-        self._show.setText(string)
+        self._show.setText(str(string))
         self.data_updated.emit(0)
 
     def out_data(self, port):
@@ -221,13 +215,16 @@ class CryptoComputeModel(NodeDataModel):
         inp = {}
         for i in self.inputs:
             inp[i] = self.inputs[i].string
+        print('计算之前: ', self.settings, self.inputs)
         out = self.func(inp, self.settings)
+        print('计算之后: ', out)
         for i in out:
             self.outputs[i] = StringData(out[i])
         self.computed = True
 
 
 class CryptoFlowView(FlowView):
+    settingsMap = {}
     def __init__(self, scene, parent=None):
         super().__init__(scene, parent=parent)
         self.setDragMode(QGraphicsView.RubberBandDrag)
@@ -241,17 +238,14 @@ class CryptoFlowView(FlowView):
 
     def dropEvent(self, event: QDropEvent):
         eventData = event.mimeData().text()
-        print(eventData)
-        try:
-            node = self.scene.create_node(self.scene._registry.create(eventData))
-            pos_view = self.mapToScene(event.pos())
-            node.graphics_object.setPos(pos_view)
-            self._scene.node_placed.emit(node)
-        except:
-            pass
+
+        node = self.scene.create_node(self.scene._registry.create(eventData))
+        pos_view = self.mapToScene(event.pos())
+        node.graphics_object.setPos(pos_view)
+        self._scene.node_placed.emit(node)
+
 
     def dragEnterEvent(self, event: QDragEnterEvent):
-        print(event.mimeData())
         event.acceptProposedAction()
 
     def keyPressEvent(self, event):

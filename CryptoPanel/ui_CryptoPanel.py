@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtWidgets, QtGui
 from ui_Widgets import uni_Widget
 from ui_Widgets.qtpynodeeditor import *
 from CryptoPanel.CryptoNodeBasic import *
+from CryptoPanel.OptionEditBox import *
 
 '''
 from CryptoPanel.BaseModule.BaseModule import BasePanel
@@ -79,8 +80,15 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.verticalLayout.setObjectName("verticalLayout")
         self.OptionsTips = uni_Widget.ICTFELabel(self.OptionsAreaPanel)
         self.OptionsTips.setObjectName("OptionsTips")
-        self.verticalLayout.addWidget(self.OptionsTips)
-        self.OptionsBox = uni_Widget.ICTFEList(self.OptionsAreaPanel)
+        self.SaveOptionsButton = uni_Widget.ICTFEButton(self.OptionsAreaPanel)
+        self.SaveOptionsButton.setObjectName('SaveOptionsButton')
+        self.SaveOptionsButton.setText('保存')
+        self.OptionTipsLayout = QtWidgets.QHBoxLayout(self.OptionsAreaPanel)
+        self.OptionTipsLayout.setContentsMargins(0, 0, 0, 0)
+        self.OptionTipsLayout.addWidget(self.OptionsTips)
+        self.OptionTipsLayout.addWidget(self.SaveOptionsButton)
+        self.verticalLayout.addLayout(self.OptionTipsLayout)
+        self.OptionsBox = OptionsEditBox()
         self.OptionsBox.setObjectName("OptionsBox")
         self.verticalLayout.addWidget(self.OptionsBox)
         self.OptionsArea.setWidget(self.OptionsAreaPanel)

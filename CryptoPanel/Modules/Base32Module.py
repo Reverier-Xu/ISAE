@@ -24,5 +24,5 @@ def main(inp: dict, settings: dict):
         out[0] = utils.ChangeTableBase32Encode(inp[0], settings['编码表'], settings['eval'])
     elif settings['开关'] == '解码':
         out[0] = utils.ChangeTableBase32Decode(
-            settings[0], settings['编码表'])
+            inp[0], settings['编码表'])
     return out
