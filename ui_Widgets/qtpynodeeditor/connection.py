@@ -310,8 +310,11 @@ class Connection(QObject, Serializable, ConnectionBase):
         try:
             return ports[port_type].data_type
         except KeyError:
-            valid_type, = ports
-            return ports[valid_type].data_type
+            try:
+                valid_type, = ports
+                return ports[valid_type].data_type
+            except:
+                return None
 
     @property
     def type_converter(self) -> TypeConverter:
