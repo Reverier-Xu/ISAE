@@ -53,8 +53,8 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsSearchBox.setObjectName("ToolsSearchBox")
         self.verticalLayout_5.addWidget(self.ToolsSearchBox)
         self.ToolsList = DragList(self.ToolsAreaPanel)
-        self.ToolsList.setStyleSheet("QTreeWidget::item:hover{color: lightgrey; background-color: rgb(60,150,225)}"
-                                     "QTreeWidget::item:selected{color: lightgrey; background-color:rgb(80,130,255)}"
+        self.ToolsList.setStyleSheet("QTreeWidget::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
+                                     "QTreeWidget::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
                                      "QTreeWidget{color: lightgrey; background-color: rgb(30, 30, 30)}")
         self.ToolsList.setObjectName("ToolsList")
         self.verticalLayout_5.addWidget(self.ToolsList)
