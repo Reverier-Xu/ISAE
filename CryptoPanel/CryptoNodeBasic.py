@@ -267,13 +267,13 @@ class DragList(QTreeWidget):
                 item.setHidden(True)
             cursor = cursor.__iadd__(1)
 
-    def addDIYItem(self, name, categlories):
+    def addDIYItem(self, name, categories):
         # can be (icon, text, parent, <int>type)
         try:
-            i = self.findItems(categlories, Qt.MatchStartsWith, column=0)[0]
+            i = self.findItems(categories, Qt.MatchStartsWith, column=0)[0]
         except:
             fa = QTreeWidgetItem(self)
-            fa.setText(0, categlories)
+            fa.setText(0, categories)
             i = fa
         item = QTreeWidgetItem(i)
         item.setText(0, name)

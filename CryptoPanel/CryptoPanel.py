@@ -12,7 +12,7 @@ class CryptoPanel(ui_CryptoPanel):
         super(CryptoPanel, self).__init__()
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
         for i in Modules:
-            self.ToolsList.addDIYItem(i, Modules[i].properties['categlories'])
+            self.ToolsList.addDIYItem(i, Modules[i].properties['categories'])
         self.ToolsList.addDIYItem('Input', '基本')
         self.ToolsList.addDIYItem('Output', '基本')
         reg = DataModelRegistry()
@@ -36,7 +36,7 @@ class CryptoPanel(ui_CryptoPanel):
                     self.outputs = {}
                     super().__init__(self.module, *args, **kwargs)
 
-            reg.register_model(DIYNodesDataModule, category=Modules[i].properties['categlories'])
+            reg.register_model(DIYNodesDataModule, category=Modules[i].properties['categories'])
         scene = FlowScene(reg)
         self.CryptoToolNodeEditor.setScene(scene)
         self.CryptoToolNodeEditor.scene.node_double_clicked.connect(self.OptionsBox.LoadOptions)

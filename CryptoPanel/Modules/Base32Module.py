@@ -1,7 +1,7 @@
 import CryptoPanel.Modules.BaseModuleUtils as utils
 properties = {
     'name': 'Base32',
-    'categlories': '编码解码',
+    'categories': '编码解码',
     'input': {0:'输入'},
     'output': {0:'输出'},
     'properties': {
