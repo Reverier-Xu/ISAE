@@ -149,8 +149,11 @@ Base64 Base32 Base16 Base85-ASCII Base85-RFC1924
 Windows上的H5不包含h.264的解码器, 无法进行H5播放. Linux上一切正常.
 
 # 当前完成状态预览
-![图片.png](https://i.loli.net/2020/04/08/gD1z7cpIxinRe8B.png)
-![图片.png](https://i.loli.net/2020/04/08/aeXhjSM2PqrA5Bb.png)
-![图片.png](https://i.loli.net/2020/04/08/QeRvMVjsb6cn5a9.png)
-![图片.png](https://i.loli.net/2020/04/08/OZwzU3hSIgt9sFa.png)
-![图片.png](https://i.loli.net/2020/04/08/GuMV2dDZrkPFcQb.png)
+![image.png](https://i.loli.net/2020/04/20/DYJ2dFvqcCpnj74.png)
+![image.png](https://i.loli.net/2020/04/20/8JRqxuGfwtIvsOH.png)
+![image.png](https://i.loli.net/2020/04/20/kTM4l5AC6JYasDQ.png)
+![image.png](https://i.loli.net/2020/04/20/6gGrTaN9ZiPzu3K.png)
+![image.png](https://i.loli.net/2020/04/20/f3RyghxNBS9TWmF.png)
+![image.png](https://i.loli.net/2020/04/20/YXHvW4NSdFCsVBD.png)
+![image.png](https://i.loli.net/2020/04/20/iw4vIoV5WdZg1Qb.png)
+
