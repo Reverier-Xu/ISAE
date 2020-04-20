@@ -1,11 +1,12 @@
 #!/bin/python3
 
 import sys
+from time import sleep
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import QtGui, QtCore
+from PyQt5 import QtCore, QtGui, QtWidgets
 import MainWindow
 import sys
 
@@ -36,8 +37,13 @@ if __name__ == "__main__":
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
     sys.setrecursionlimit(1000000)
+    splash = QtWidgets.QSplashScreen(QtGui.QPixmap("./Resources/splash.png"))
+    splash.show()
+    sleep(1)
+    QtWidgets.qApp.processEvents()
     Win = MainWindow()
     Win.setWindowTitle('ICTFE')
     Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)
     Win.show()
+    splash.finish(Win)
     sys.exit(app.exec_())

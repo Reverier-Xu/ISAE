@@ -224,11 +224,13 @@ class CryptoFlowView(FlowView):
 
     def dropEvent(self, event: QDropEvent):
         eventData = event.mimeData().text()
-
-        node = self.scene.create_node(self.scene._registry.create(eventData))
-        pos_view = self.mapToScene(event.pos())
-        node.graphics_object.setPos(pos_view)
-        self._scene.node_placed.emit(node)
+        try:
+            node = self.scene.create_node(self.scene._registry.create(eventData))
+            pos_view = self.mapToScene(event.pos())
+            node.graphics_object.setPos(pos_view)
+            self._scene.node_placed.emit(node)
+        except:
+            super().dropEvent(event)
 
     def dragEnterEvent(self, event: QDragEnterEvent):
         event.acceptProposedAction()

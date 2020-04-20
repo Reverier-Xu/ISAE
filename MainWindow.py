@@ -510,7 +510,7 @@ class SystemInfoThread(QtCore.QThread):
             new_net_speed = psutil.net_io_counters().bytes_recv
             time.sleep(1)
             self.__win.StatusBar.showMessage(
-                '  >> ICTFE - Version 1.0.0 Dev Build 27061 | Reverier Powered       ' +
+                '  -> ICTFE - Version 1.0.0 Dev Build 28147 | Powered By Reverier       ' +
                 "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024) + '      Memory Usage: ' + str(
                     int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
                 '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')

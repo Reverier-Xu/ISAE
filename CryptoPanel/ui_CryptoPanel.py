@@ -3,6 +3,7 @@ from ui_Widgets import uni_Widget
 from ui_Widgets.qtpynodeeditor import *
 from CryptoPanel.CryptoNodeBasic import *
 from CryptoPanel.OptionEditBox import *
+from FileStack import FileStack
 
 '''
 from CryptoPanel.BaseModule.BaseModule import BasePanel
@@ -106,7 +107,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.FileTempStackTips = uni_Widget.ICTFELabel(self.FileTempStackAreaPanel)
         self.FileTempStackTips.setObjectName("FileTempStackTips")
         self.verticalLayout_2.addWidget(self.FileTempStackTips)
-        self.FileTempStack = uni_Widget.ICTFEList(self.FileTempStackAreaPanel)
+        self.FileTempStack = FileStack.FileStack(self.FileTempStackAreaPanel)
         self.FileTempStack.setObjectName("FileTempStack")
         self.verticalLayout_2.addWidget(self.FileTempStack)
         self.FileTempStackArea.setWidget(self.FileTempStackAreaPanel)
