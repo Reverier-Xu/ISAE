@@ -9,7 +9,7 @@ Intergrated CTF Environment
 
 fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 
-如果你没有学习过PyQt5, 可以简单的查看QuickDevelopingDocs中的文档, 然后尝试进行开发.
+如果你没有学习过PyQt5, 可以简单的查看[QuickDevelopingDocs](QuickDevelopingDocs/0_ICTFE密码学插件开发指北.md)中的文档, 然后尝试进行开发.
 
 如果你用有丰富的UI开发经验, 可以帮开发者优化一下界面和逻辑代码并做好模块化, 感激不尽~
 
@@ -30,7 +30,7 @@ pip install PyQt5 PyQt5-sip PyQtWebEngine -i https://pypi.tuna.tsinghua.edu.cn/s
 
 # 如果需要在Windows上进行打包，则需要安装 pyinstaller
 
-pip install gmpy2 pycrypto python-poppler-qt5
+pip install gmpy2 pycrypto python-poppler-qt5 qtpy networkx
 
 # 这里请注意, gmpy2在Windows平台上可能不会正常工作.
 # 请Windows平台的用户前往 https://www.lfd.uci.edu/~gohlke/pythonlibs/
@@ -68,17 +68,17 @@ pip install gmpy2 pycrypto python-poppler-qt5
 ### 密码学重构完成, 请参照Modules文件夹下的实例编写模块, 文档稍后上线.
 
 ### Base系列
-Base64 Base32 ~~Base16 Base85-ASCII Base85-RFC1924~~
+Base64 Base32 Base16 Base85-ASCII Base85-RFC1924
 
-支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. ~~支持Base64隐写提取.~~
+支持任意字符的换表操作, 支持对Python格式的bytes进行编码与解码. 支持Base64隐写提取.
 
 ~~支持文件操作. 添加了明文和密文的快速交换键, 用于反base套娃 (误~~
 
 ~~### Quoted-Printable~~
 ~~支持文件和字符串的编码和解码.~~
 
-~~### Url编码~~
-~~支持自定义字符集的Url编码解码.~~
+### Url编码
+支持自定义字符集的Url编码解码.
 
 ~~### Hex编码~~
 ~~支持Hex编码(UTF-8)~~

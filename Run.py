@@ -36,6 +36,7 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 if __name__ == "__main__":
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
+    app.setStyle('Fusion')
     sys.setrecursionlimit(1000000)
     splash = QtWidgets.QSplashScreen(QtGui.QPixmap("./Resources/splash.png"))
     splash.show()
