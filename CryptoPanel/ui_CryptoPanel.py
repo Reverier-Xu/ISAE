@@ -38,9 +38,10 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsAreaPanel = QtWidgets.QWidget()
         self.ToolsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 698))
         self.ToolsAreaPanel.setObjectName("ToolsAreaPanel")
+        self.ToolsAreaPanel.setStyleSheet('QWidget#ToolsAreaPanel{background-color: #1e1e1e;}')
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.ToolsAreaPanel)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.ToolsSearchBox = QtWidgets.QLineEdit(self.ToolsAreaPanel)
+        self.ToolsSearchBox = uni_Widget.ICTFELineBox(self.ToolsAreaPanel)
         self.ToolsSearchBox.setStyleSheet('color: white;'
                                           'border: 1px solid gray;'
                                           'border-radius: 5px;'
@@ -51,7 +52,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsSearchBox.setObjectName("ToolsSearchBox")
         self.verticalLayout_5.addWidget(self.ToolsSearchBox)
         self.ToolsList = DragList(self.ToolsAreaPanel)
-        self.ToolsList.setStyleSheet('background-color: transparent; border: 1px solid grey;')
+        self.ToolsList.setStyleSheet('background-color: transparent; border: 1px solid grey;color: white;')
         self.ToolsList.setObjectName("ToolsList")
         self.verticalLayout_5.addWidget(self.ToolsList)
         self.ToolsArea.setWidget(self.ToolsAreaPanel)
@@ -76,6 +77,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.OptionsAreaPanel = QtWidgets.QWidget()
         self.OptionsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 348))
         self.OptionsAreaPanel.setObjectName("OptionsAreaPanel")
+        self.OptionsAreaPanel.setStyleSheet('background-color: transparent; border: 0px solid grey;color: white;')
         self.verticalLayout = QtWidgets.QVBoxLayout(self.OptionsAreaPanel)
         self.verticalLayout.setObjectName("verticalLayout")
         self.OptionsTips = uni_Widget.ICTFELabel(self.OptionsAreaPanel)
@@ -96,6 +98,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.FileTempStackArea.setWidgetResizable(True)
         self.FileTempStackArea.setObjectName("FileTempStackArea")
         self.FileTempStackAreaPanel = QtWidgets.QWidget()
+        self.FileTempStackAreaPanel.setStyleSheet('background-color: transparent; color: white;')
         self.FileTempStackAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 347))
         self.FileTempStackAreaPanel.setObjectName("FileTempStackAreaPanel")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.FileTempStackAreaPanel)

@@ -250,6 +250,11 @@ class DragList(QTreeWidget):
         self.setSelectionMode(QAbstractItemView.SingleSelection)
         self.setDragEnabled(True)
         self.headerItem().setText(0, "模块")
+        self.header().setVisible(False)
+        font = QFont()
+        font.setFamily('文泉驿微米黑')
+        font.setPixelSize(24)
+        self.setFont(font)
 
     def filter(self, text):
         """以text开头作为过滤条件示例"""

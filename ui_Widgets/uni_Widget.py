@@ -175,8 +175,7 @@ class ICTFETextBox(QtWidgets.QTextEdit):
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
-        self.setStyleSheet(
-            'background-color: rgb(20,20,20); color: rgb(200, 200, 200);')
+        self.setStyleSheet('background-color: rgb(20,20,20); color: rgb(200, 200, 200);')
         self.setTextColor(QtGui.QColor(200, 200, 200))
         self.setAcceptDrops(True)
         self.setAcceptRichText(False)

@@ -43,8 +43,11 @@ class CryptoPanel(ui_CryptoPanel):
         self.SaveOptionsButton.clicked.connect(self.SaveOptionsFunc)
 
     def SaveOptionsFunc(self):
-        print('after saves: ', id(self.OptionsBox.node.model.settings))
-        self.OptionsBox.node.model.settings = self.OptionsBox.GetOptions()
+        try:
+            print('after saves: ', id(self.OptionsBox.node.model.settings))
+            self.OptionsBox.node.model.settings = self.OptionsBox.GetOptions()
+        except:
+            pass
 
 
 '''

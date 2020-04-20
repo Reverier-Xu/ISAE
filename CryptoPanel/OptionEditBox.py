@@ -10,6 +10,10 @@ class OptionsEditBox(QtWidgets.QTableWidget):
         super().__init__(parent=parent)
         self.setColumnCount(2)
         self.horizontalHeader().setStretchLastSection(True)
+        font = QtGui.QFont()
+        font.setFamily('文泉驿微米黑')
+        font.setPixelSize(20)
+        self.setFont(font)
         self.horizontalHeader().hide()
         self.verticalHeader().hide()
         self.setStyleSheet("QTableWidget{background-color: transparent;border:1px solid grey}"
@@ -50,6 +54,10 @@ class OptionsEditBox(QtWidgets.QTableWidget):
                 execItem.setText(settings[i])
             elif type(prop['properties'][i]) == list:
                 execItem = QtWidgets.QComboBox()
+                font = QtGui.QFont()
+                font.setFamily('文泉驿微米黑')
+                font.setPixelSize(20)
+                execItem.setFont(font)
                 execItem.setStyleSheet('border:0px solid grey; color: white; background-color: rgb(30,30,30)')
                 for j in prop['properties'][i]:
                     execItem.addItem(j)
