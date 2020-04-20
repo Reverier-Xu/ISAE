@@ -30,7 +30,7 @@ class CryptoPanel(ui_CryptoPanel):
                 name = Modules[i].properties['name']
 
                 def __init__(self, *args, **kwargs):
-                    self.settings = copy.deepcopy(self.module.defaults)
+                    self.settings = copy(self.module.defaults)
                     self.func = self.module.main
                     self.inputs = {}
                     self.outputs = {}

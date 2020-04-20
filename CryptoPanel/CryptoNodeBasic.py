@@ -1,5 +1,7 @@
 import importlib
 import os
+from copy import copy
+
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -158,7 +160,7 @@ class CryptoComputeModel(NodeDataModel):
         value : NodeData
         '''
         try:
-            return self.outputs[port]
+            return copy(self.outputs[port])
         except:
             return None
 
@@ -171,7 +173,7 @@ class CryptoComputeModel(NodeDataModel):
         data : NodeData
         port_index : int
         '''
-        self.inputs[port.index] = data
+        self.inputs[port.index] = copy(data)
         if self._check_inputs():
             try:
                 self.compute()
