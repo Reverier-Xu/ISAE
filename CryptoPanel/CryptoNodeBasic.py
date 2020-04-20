@@ -115,6 +115,10 @@ class OutputModel(NodeDataModel):
 
     def set_in_data(self, node_data, port):
         self._node_data = node_data
+        try:
+            print(node_data.string)
+        except:
+            pass
         if (self._node_data and
                 self._node_data.data_type == StringData.data_type and
                 self._node_data.string):
@@ -177,13 +181,15 @@ class CryptoComputeModel(NodeDataModel):
         if self._check_inputs():
             try:
                 self.compute()
-                self.data_updated.emit(0)
+                for i in range(self.num_ports[PortType.output]):
+                    self.data_updated.emit(i)
             except:
                 pass
         else:
             for i in self.outputs:
                 self.outputs[i] = None
-            self.data_updated.emit(0)
+            for i in range(self.num_ports[PortType.output]):
+                self.data_updated.emit(i)
         self.computed = False
 
     def _check_inputs(self):
@@ -202,9 +208,11 @@ class CryptoComputeModel(NodeDataModel):
         for i in self.inputs:
             inp[i] = self.inputs[i].string
         print(self, self.settings, id(self.settings))
-        out = self.func(inp, self.settings)
+        out = copy(self.func(inp, self.settings))
+        print('out data: ', out)
         for i in out:
             self.outputs[i] = StringData(out[i])
+        print('self.outputs: ', self.outputs)
         self.computed = True
 
 

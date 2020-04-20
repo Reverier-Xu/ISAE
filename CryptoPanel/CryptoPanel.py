@@ -11,16 +11,18 @@ class CryptoPanel(ui_CryptoPanel):
     def __init__(self):
         super(CryptoPanel, self).__init__()
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
-        for i in Modules:
-            self.ToolsList.addDIYItem(i, Modules[i].properties['categories'])
         self.ToolsList.addDIYItem('Input', '基本')
         self.ToolsList.addDIYItem('Output', '基本')
+        for i in Modules:
+            self.ToolsList.addDIYItem(i, Modules[i].properties['categories'])
         reg = DataModelRegistry()
         reg.register_model(InputModel, category='Basic')
         reg.register_model(OutputModel, category='Basic')
         print(Modules)
         for i in Modules:
             class DIYNodesDataModule(CryptoComputeModel):
+                port_caption_visible = True
+                data_type = StringData.data_type
                 module = Modules[i]
                 properties = module.properties
                 num_ports = {PortType.input: len(module.properties['input']),
