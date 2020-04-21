@@ -16,7 +16,7 @@ from DIYPanel.DIYPanel import DIYPanel
 from TerminalPanel.TerminalPanel import TerminalPanel
 from BrowserPanel.BrowserPanel import BrowserPanel
 from WikiPanel.WikiPanel import WikiPanel
-from CryptoPanel import CryptoPanel
+from DataFlowPanel import DataFlowPanel
 from kiwix.KiwixPanel import KiwixPanel
 import psutil
 import time
@@ -170,7 +170,6 @@ class Ui_MainWindow(object):
 
         self.TabLayout.setSpacing(0)
 
-
         self.TabLayout.addWidget(self.ReverseButton)
         self.WebButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
@@ -194,17 +193,6 @@ class Ui_MainWindow(object):
         self.CryptoButton.setObjectName("CryptoButton")
         self.CryptoButton.setMaximumHeight(32)
         self.TabLayout.addWidget(self.CryptoButton)
-        self.PwnButton = uni_Widget.ICTFEButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.PwnButton.sizePolicy().hasHeightForWidth())
-        self.PwnButton.setSizePolicy(sizePolicy)
-        self.PwnButton.setObjectName("PwnButton")
-        self.PwnButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.PwnButton)
         self.MiscButton = uni_Widget.ICTFEButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -291,9 +279,9 @@ class Ui_MainWindow(object):
         self.TypeStack.setObjectName("TypeStack")
 
         # Reverse Panel
-        self.ReversePanel = QtWidgets.QWidget()
-        self.ReversePanel.setObjectName("ReversePanel")
-        self.TypeStack.addWidget(self.ReversePanel)
+        self.BinaryPanel = QtWidgets.QWidget()
+        self.BinaryPanel.setObjectName("BinaryPanel")
+        self.TypeStack.addWidget(self.BinaryPanel)
 
         # Web Panel
         self.WebPanel = QtWidgets.QWidget()
@@ -301,14 +289,9 @@ class Ui_MainWindow(object):
         self.TypeStack.addWidget(self.WebPanel)
 
         # Crypto Panel
-        self.CryptoPanel = CryptoPanel.CryptoPanel()
-        self.CryptoPanel.setObjectName("CryptoPanel")
+        self.CryptoPanel = DataFlowPanel.DataFlowPanel()
+        self.CryptoPanel.setObjectName("DataFlowPanel")
         self.TypeStack.addWidget(self.CryptoPanel)
-
-        # Pwn panel
-        self.PwnPanel = QtWidgets.QWidget()
-        self.PwnPanel.setObjectName("PwnPanel")
-        self.TypeStack.addWidget(self.PwnPanel)
 
         # Misc Panel
         self.MiscPanel = QtWidgets.QWidget()
@@ -377,7 +360,6 @@ class Ui_MainWindow(object):
         self.ReverseButton.clicked.connect(self.ChangeTypeStackReverse)
         self.MiscButton.clicked.connect(self.ChangeTypeStackMisc)
         self.WebButton.clicked.connect(self.ChangeTypeStackWeb)
-        self.PwnButton.clicked.connect(self.ChangeTypeStackPwn)
         self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
         self.PDFJSButton.clicked.connect(self.ChangeTypeStackPDFJS)
         self.BrowserButton.clicked.connect(self.ChangeTypeStackBrowser)
@@ -401,7 +383,6 @@ class Ui_MainWindow(object):
         self.ReverseButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.MiscButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.WebButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.PwnButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.DIYButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.PDFJSButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
         self.BrowserButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
@@ -421,7 +402,7 @@ class Ui_MainWindow(object):
 
     def ChangeTypeStackReverse(self):
         '''改变类型控件组 逆向'''
-        self.TypeStack.setCurrentWidget(self.ReversePanel)
+        self.TypeStack.setCurrentWidget(self.BinaryPanel)
         self.setTabButtonColor(self.ReverseButton)
 
     def ChangeTypeStackWeb(self):
@@ -433,11 +414,6 @@ class Ui_MainWindow(object):
         '''改变类型控件组 杂项'''
         self.TypeStack.setCurrentWidget(self.MiscPanel)
         self.setTabButtonColor(self.MiscButton)
-
-    def ChangeTypeStackPwn(self):
-        '''改变类型控件组 pwn'''
-        self.TypeStack.setCurrentWidget(self.PwnPanel)
-        self.setTabButtonColor(self.PwnButton)
 
     def ChangeTypeStackDIY(self):
         '''改变类型控件组 DIY'''
@@ -480,10 +456,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.ReverseButton.setText(_translate("MainWindow", "逆向工程"))
-        self.WebButton.setText(_translate("MainWindow", "Web渗透"))
-        self.CryptoButton.setText(_translate("MainWindow", "密码编码"))
-        self.PwnButton.setText(_translate("MainWindow", "PWN!"))
+        self.ReverseButton.setText(_translate("MainWindow", "二进制"))
+        self.WebButton.setText(_translate("MainWindow", "Web工具"))
+        self.CryptoButton.setText(_translate("MainWindow", "数据流"))
         self.MiscButton.setText(_translate("MainWindow", "杂项工具"))
         self.TerminalButton.setText(_translate("MainWindow", "数据厨师"))
         self.WikiButton.setText(_translate("MainWindow", "Wiki"))
