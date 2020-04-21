@@ -18,7 +18,16 @@
 
 		<div class="container">
 			<h1 style="font-family:'Fira Code';">Welcome To ICTFE!</h1>
-			<h2>搜索引擎是你最好的朋友.</h2>
+			<h2 id="hitokoto">遇事不决, 量子力学.</h2>
+			<script>
+				fetch('https://v1.hitokoto.cn')
+					.then(response => response.json())
+					.then(data => {
+						const hitokoto = document.getElementById('hitokoto')
+						hitokoto.innerText = data.hitokoto
+					})
+					.catch(console.error)
+			</script>
 			<div class="search-box">
 				<div class="search-icon"><i class="fa fa-search search-icon"></i></div>
 				<form action="https://cn.bing.com/" method="get" class="search-form">
@@ -33,10 +42,9 @@
 				</svg>
 				<div class="go-icon"><i class="fa fa-arrow-right"></i></div>
 			</div>
-
-			<h2 style="margin-top: 50px">linksヾ(❀╹◡╹)ﾉ~: &nbsp; <a href="https://buuoj.cn">BUUCTF</a> &nbsp; <a
-					href="https://www.bugku.com/">BugKu</a> &nbsp; <a href="https://www.wootec.top/">Blog</a> &nbsp; <a
-					href="https://github.com/Reverier-Xu/ICTFE">GitHub</a></h2>
+			<h3 style="margin-top: 80px">linksヾ(❀╹◡╹)ﾉ~: &nbsp; <a href="https://www.wootec.top/">Blog</a> &nbsp; <a
+					href="https://github.com/Reverier-Xu/ICTFE">GitHub</a> &nbsp; <a href="https://buuoj.cn">BUUCTF</a> &nbsp; <a
+					href="https://www.bugku.com/">BugKu</a> &nbsp; <a href="https://www.luogu.com.cn">洛谷OJ</a> &nbsp; <a href="https://www.codingame.com/">Codin'Game</a></h2>
 
 		</div>
 	</main>
