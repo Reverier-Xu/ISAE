@@ -1,0 +1,250 @@
+.section_gap {
+    padding: 120px 0;
+    @media (max-width: 767px) {
+        padding: 60px 0;
+    }
+}
+
+.section_gap_top {
+    padding-top: 120px;
+    @media (max-width: 767px) {
+        padding-top: 60px;
+    }
+}
+
+.section_gap_bottom {
+    padding-bottom: 120px;
+    @media (max-width: 767px) {
+        padding-bottom: 60px;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Main Title Area css
+============================================================================================ */
+
+.main_title {
+    text-align: center;
+    margin-bottom: 80px;
+    h2 {
+        font-size: 72px;
+        color: $primary-color;
+        opacity: 0.1;
+        margin: 0;
+        line-height: 60px;
+    }
+    h1 {
+        color: $title-color;
+        margin-top: -40px;
+    }
+    p {
+        font-size: 14px;
+        line-height: 24px;
+        color: $text-color;
+        margin-bottom: 0px;
+        max-width: 570px;
+        margin: auto;
+    }
+    &.white {
+        h2 {
+            color: #fff;
+        }
+        p {
+            color: #fff;
+            opacity: 0.6;
+        }
+    }
+}
+
+/* End Main Title Area css
+============================================================================================ */
+
+/* Start Common Section Area css
+============================================================================================ */
+
+.section_content {
+    position: relative;
+    padding: 70px 0px 73px 70px;
+    h6 {
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 12px;
+        position: relative;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        &:after {
+            content: "";
+            position: absolute;
+            @include gradient(to right, $primary-color 0%, $primary-color2 100%);
+            color: $primary-color;
+            height: 1px;
+            width: 50px;
+            bottom: -10px;
+            left: 0;
+        }
+    }
+    h1 {
+        color: #fff;
+        line-height: 45px;
+        padding: 30px 0 30px;
+        margin-bottom: 0;
+    }
+    p {
+        margin-bottom: 0px;
+        color: #fff;
+        font-weight: 400;
+        padding: 0 40px 40px 0;
+    }
+}
+
+/* End Common Section Area css
+============================================================================================ */
+
+/* Start Gradient Area css
+============================================================================================ */
+
+.gradient-bg {
+    @include gradient(90deg, $primary-color 0%, $primary-color2 100%);
+}
+
+.gradient-bg2 {
+    @include gradient(90deg, $primary-color 0%, $primary-color2 100%);
+}
+
+.gradient-color {
+    @include gradient(90deg, $primary-color 0%, $primary-color2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* End Gradient Area css
+============================================================================================ */
+
+.gradient_btn {
+    display: inline-block;
+    color: #fff;
+    letter-spacing: 1px;
+    font-family: $primary-font;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 46px;
+    outline: none !important;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: double 2px transparent;
+    border-radius: 10px;
+    background-image: linear-gradient(#342b7e, #3b328b), radial-gradient(circle at top left, $primary-color, $primary-color2);
+    background-image: -webkit-linear-gradient(#342b7e, #3b328b), -webkit-radial-gradient(circle at top left, $primary-color, $primary-color2);
+    background-image: -moz-linear-gradient(#342b7e, #3b328b), -moz-radial-gradient(circle at top left, $primary-color, $primary-color2);
+    background-image: -ms-linear-gradient(#342b7e, #3b328b), -ms-radial-gradient(circle at top left, $primary-color, $primary-color2);
+    background-image: -o-linear-gradient(#342b7e, #3b328b), -o-radial-gradient(circle at top left, $primary-color, $primary-color2);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    span {
+        padding: 0 60px;
+    }
+    &:hover {
+        // @include gradient(to right, $primary-color 0%, $primary-color2 100%);
+        color: #22195e;
+        box-shadow: 0px 10px 30px rgba(130, 82, 250, 0.2); // border: 2px solid transparent;
+    }
+}
+
+.primary_btn {
+    display: inline-block;
+    @include gradient2( to right, $primary-color 0%, $primary-color2 51%, $primary-color 100%);
+    background-size: 200% auto;
+    padding: 0px 35px;
+    color: $title-color;
+    letter-spacing: 1px;
+    font-family: $primary-font;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 50px;
+    border-radius: 5px;
+    outline: none !important;
+    box-shadow: 0px 10px 30px rgba(163, 255, 177, 0.2);
+    text-align: center;
+    cursor: pointer;
+    @include transition;
+    text-transform: uppercase;
+    &:hover {
+        background-position: right center;
+        color: #22195e;
+    }
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Start Video Play css
+============================================================================================ */
+
+.video-play-button {
+    position: relative;
+    box-sizing: content-box;
+    display: inline-block;
+    width: 32px;
+    height: 44px;
+    border-radius: 50%;
+    padding: 46px 8px 18px 28px;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+        display: block;
+        width: 60px;
+        height: 60px;
+        @extend .gradient-bg;
+        border-radius: 50%;
+    }
+    &:before {
+        z-index: 0;
+        @include animation(pulse-border 2000ms ease-out infinite);
+    }
+    &:after {
+        z-index: 1;
+        @include transition(all 200ms ease);
+    }
+    span {
+        display: block;
+        position: relative;
+        z-index: 3;
+        width: 0;
+        height: 0;
+        border-left: 16px solid #000000;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+    }
+    &:hover {
+        &:after {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+}
+
+@include keyframes(pulse-border) {
+    0% {
+        @include transform(translate(-50%, -50%) translateZ(0) scale(1));
+        opacity: 0.7;
+    }
+    100% {
+        @include transform(translate(-50%, -50%) translateZ(0) scale(1.5));
+        opacity: 0.1;
+    }
+}
+
+/* End Video Play css
+============================================================================================ */

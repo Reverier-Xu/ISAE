@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
 import MainWindow
 import sys
+import time
+from PyQt5.Qt import QPixmap
 
 
 class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
@@ -32,13 +34,17 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
     def mouseReleaseEvent(self, QMouseEvent):
         self.m_flag = False
 
+class SplashScreen(QtWidgets.QSplashScreen):
+     def __init__(self):
+         super(SplashScreen, self).__init__(QPixmap("./Resources/splash.png"))
+         self.load = QPixmap("./Resources/splash.png")
 
 if __name__ == "__main__":
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     sys.setrecursionlimit(1000000)
-    splash = QtWidgets.QSplashScreen(QtGui.QPixmap("./Resources/splash.png"))
+    splash = SplashScreen()
     splash.show()
     sleep(1)
     QtWidgets.qApp.processEvents()

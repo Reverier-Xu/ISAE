@@ -1,0 +1,51 @@
+body {
+    line-height: 24px;
+    font-size: 14px;
+    font-family: $primary-font;
+    font-weight: 500;
+    color: $text-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $title-font;
+    font-weight: 600;
+}
+
+.list {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.p0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.white_bg {
+    background: #fff !important;
+}

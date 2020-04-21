@@ -1,0 +1,67 @@
+/* Footer Area css
+============================================================================================ */
+
+.footer_area {
+    @include gradient2(to right, #231a60 0%, #3c338d 51%, #231a60 100%);
+    .f_widget {
+        .f_title {
+            margin-bottom: 40px;
+            h4 {
+                color: #fff;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 0px;
+            }
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 50px;
+            li {
+                display: block;
+                padding-bottom: 20px;
+                color: rgba(255, 255, 255, .5);
+                cursor: pointer;
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+.single-footer-widget {
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    .copy_right_text {
+        p {
+            margin: 0;
+            color: #fff;
+            margin-left: -15px;
+            a {
+                color: $primary-color;
+            }
+        }
+    }
+    .social_widget {
+        text-align: right;
+        position: relative;
+        margin-right: -15px;
+        a {
+            color: #fff;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            background: #4c4588;
+            margin-left: 6px;
+            display: inline-block;
+            text-align: center;
+            &:hover {
+                background: $primary-color;
+            }
+        }
+    }
+}
+
+/* End Footer Area css
+============================================================================================ */
