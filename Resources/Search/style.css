@@ -1,0 +1,229 @@
+html, body {
+  font-family: '文泉驿等宽微米黑', sans-serif;
+  color: #FFFFFF;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+*, *:before, *:after {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(66, 211, 255);
+  text-decoration: none;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  padding: 0 26px;
+  width: 100%;
+  height: 100%;
+  background: rgb(29, 29, 29);
+  /*background: -moz-linear-gradient(-45deg, rgba(154,57,163,1) 0%, rgba(65,103,168,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(154,57,163,1)), color-stop(100%, rgba(65,103,168,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(154,57,163,1) 0%, rgba(65,103,168,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(154,57,163,1) 0%, rgba(65,103,168,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(154,57,163,1) 0%, rgba(65,103,168,1) 100%);
+  background: linear-gradient(135deg, rgba(154,57,163,1) 0%, rgba(65,103,168,1) 100%);*/
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a39a3', endColorstr='#4167a8', GradientType=1);
+}
+
+h1 {
+  display: block;
+  margin: 0 auto 25px auto;
+  text-align: center;
+  font-size: 1.92em;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  display: block;
+  margin: 0 auto 60px auto;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.25em;
+  letter-spacing: -0.015em;
+}
+
+.container {
+  position: relative;
+  margin: calc(75px + 2vh + 2vw) auto 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 840px;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 60px;
+  border-radius: 120px;
+  margin: 0 auto;
+}
+
+.search-icon, .go-icon {
+  position: absolute;
+  top: 0;
+  height: 60px;
+  width: 86px;
+  line-height: 61px;
+  text-align: center;
+}
+
+.search-icon {
+  left: 0;
+  pointer-events: none;
+  font-size: 1.22em;
+  will-change: transform;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -o-transform-origin: center center;
+  transition: transform 400ms 220ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -webkit-transition: transform 400ms 220ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -moz-transition: transform 400ms 220ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -o-transition: transform 400ms 220ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.si-rotate {
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+}
+
+.go-icon {
+  right: 0;
+  pointer-events: none;
+  font-size: 1.38em;
+  will-change: opacity;
+  cursor: default;
+  opacity: 0;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transition: opacity 190ms ease-out, transform 260ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -webkit-transition: opacity 190ms ease-out, transform 260ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -moz-transition: opacity 190ms ease-out, transform 260ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -o-transition: opacity 190ms ease-out, transform 260ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.go-in {
+  opacity: 1;
+  pointer-events: all;
+  cursor: pointer;
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -o-transform: rotate(0);
+  transition: opacity 190ms ease-out, transform 260ms 20ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -webkit-transition: opacity 190ms ease-out, transform 260ms 20ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -moz-transition: opacity 190ms ease-out, transform 260ms 20ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -o-transition: opacity 190ms ease-out, transform 260ms 20ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.search-border {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 60px;
+}
+
+.border {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+}
+
+.border {
+  stroke-dasharray: 740;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 400ms cubic-bezier(0.600, 0.040, 0.735, 0.990);
+  -webkit-transition: stroke-dashoffset 400ms cubic-bezier(0.600, 0.040, 0.735, 0.990);
+  -moz-transition: stroke-dashoffset 400ms cubic-bezier(0.600, 0.040, 0.735, 0.990);
+  -o-transition: stroke-dashoffset 400ms cubic-bezier(0.600, 0.040, 0.735, 0.990);
+}
+
+.border-searching .border {
+  stroke-dasharray: 740;
+  stroke-dashoffset: 459;
+  transition: stroke-dashoffset 650ms cubic-bezier(0.755, 0.150, 0.205, 1.000);
+  -webkit-transition: stroke-dashoffset 650ms cubic-bezier(0.755, 0.150, 0.205, 1.000);
+  -moz-transition: stroke-dashoffset 650ms cubic-bezier(0.755, 0.150, 0.205, 1.000);
+  -o-transition: stroke-dashoffset 650ms cubic-bezier(0.755, 0.150, 0.205, 1.000);
+}
+
+#search {
+  font-family: 'Montserrat Alternates', sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 120px;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  padding: 0 68px 0 68px;
+  color: #FFFFFF;
+  font-size: 1.32em;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  outline: none;
+}
+
+#search::-webkit-input-placeholder {
+  color: rgb(180, 180, 180);
+}
+
+#search::-moz-placeholder {
+  color: rgb(180, 180, 180);
+}
+
+#search:-ms-input-placeholder {
+  color: rgb(180, 180, 180);
+}
+
+#search:-moz-placeholder {
+  color: rgb(180, 180, 180);
+}
+
+#search::-moz-selection {
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+#search::selection {
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.25);
+}

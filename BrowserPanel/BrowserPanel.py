@@ -10,6 +10,8 @@ import sys
 import socket
 import re
 import platform
+import requests
+import sys
 
 
 class BrowserPanel(QWidget):
@@ -56,6 +58,7 @@ class BrowserTab(QMainWindow):
         pwd = pwd.replace('\\', '/')
         self.browser.load(
             QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
+        self.browser.setZoomFactor(1.5)
         self.setCentralWidget(self.browser)
         self.navigation_bar = QToolBar('Navigation')
         self.navigation_bar.setIconSize(QSize(18, 18))
@@ -127,12 +130,14 @@ class BrowserTab(QMainWindow):
             s = QUrl('https://cn.bing.com/search?q=' +
                      self.url_text_bar.text())
             self.browser.load(s)
+        self.browser.setZoomFactor(1.2)
 
     def navigate_to_home(self):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         self.browser.load(
             QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
+        self.browser.setZoomFactor(1.5)
         self.browser.show()
 
     def renew_urlbar(self, s):
@@ -187,6 +192,7 @@ QTabBar::tab:selected {
         pwd = pwd.replace('\\', '/')
         self.init_tab.browser.load(
             QUrl('file:///' + pwd + '/Resources/Search/Search.html'))
+        self.init_tab.browser.setZoomFactor(1.5)
         self.add_new_tab(self.init_tab)
         self.tabs.tabCloseRequested.connect(
             lambda i: self.close_current_tab(i))

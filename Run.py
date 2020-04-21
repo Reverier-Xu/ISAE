@@ -37,7 +37,7 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 class SplashScreen(QtWidgets.QSplashScreen):
      def __init__(self):
          super(SplashScreen, self).__init__(QPixmap("./Resources/splash.png"))
-         self.load = QPixmap("./Resources/splash.png")
+
 
 if __name__ == "__main__":
     # QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
