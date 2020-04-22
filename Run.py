@@ -23,6 +23,7 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 
     def closeEvent(self, QCloseEvent):
         Pools.terminate()
+        self.StatusThread.terminate()
         super(MainWindow, self).closeEvent(QCloseEvent)
 
     def mousePressEvent(self, event):
