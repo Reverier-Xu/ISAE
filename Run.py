@@ -46,7 +46,7 @@ if __name__ == "__main__":
     sys.setrecursionlimit(1000000)
     splash = SplashScreen()
     splash.show()
-    sleep(1)
+    sleep(0.5)
     QtWidgets.qApp.processEvents()
     Win = MainWindow()
     Win.setWindowTitle('ICTFE')

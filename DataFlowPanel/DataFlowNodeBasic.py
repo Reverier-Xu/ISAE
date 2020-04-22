@@ -12,6 +12,7 @@ import pkgutil
 import sys
 from ui_Widgets import uni_Widget
 from DataFlowPanel.OptionEditBox import OptionsEditBox
+import traceback
 
 Modules = {}
 
@@ -183,8 +184,8 @@ class CryptoComputeModel(NodeDataModel):
                 self.compute()
                 for i in range(self.num_ports[PortType.output]):
                     self.data_updated.emit(i)
-            except:
-                pass
+            except Exception as e:
+                traceback.print_exc()
         else:
             for i in self.outputs:
                 self.outputs[i] = None

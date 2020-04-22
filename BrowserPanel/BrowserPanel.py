@@ -153,6 +153,10 @@ class BrowserTab(QMainWindow):
             self.ssl_label2.setText(" 安全 ")
             self.ssl_label2.setStyleSheet("color:green;")
         self.url_text_bar.setText(s.toString())
+        pwd = os.getcwd()
+        pwd = pwd.replace('\\', '/')
+        if s.toString().count('/Resources/Search/Search.html')!=0:
+            self.url_text_bar.setText('Home Page~')
         self.url_text_bar.setCursorPosition(0)
 
 

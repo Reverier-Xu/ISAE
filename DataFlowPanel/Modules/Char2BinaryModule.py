@@ -14,7 +14,7 @@ def main(inp, settings):
 
 
 def encode(s):
-    return ''.join([bin(ord(c)).replace('0b', '') for c in s])
+    return ' '.join([bin(ord(c)).replace('0b', '') for c in s])
 
 
 def decode(s):
