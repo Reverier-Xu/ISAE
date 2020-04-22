@@ -13,6 +13,7 @@ import sys
 from ui_Widgets import uni_Widget
 from DataFlowPanel.OptionEditBox import OptionsEditBox
 import traceback
+from multiprocessing import Pool, Process
 
 Modules = {}
 
@@ -142,15 +143,22 @@ class CryptoComputeModel(NodeDataModel):
     properties = None
     port_caption_visible = True
     data_type = StringData.data_type
-    computed = False
+    computeEndedSig = pyqtSignal()
 
     def __init__(self, module, *args, **kwargs):
-
         super().__init__(*args, **kwargs)
+        self.computeEndedSig.connect(self.ComputeEnded)
+        self._statusLabel = uni_Widget.ICTFELabel()
+        self._statusLabel.setText('?')
+        self._statusLabel.setMinimumWidth(20)
+        self._statusLabel.setAlignment(QtCore.Qt.AlignCenter|QtCore.Qt.AlignVCenter)
 
     @property
     def caption(self):
         return self.name
+
+    def embedded_widget(self):
+        return self._statusLabel
 
     def out_data(self, port: int) -> NodeData:
         '''
@@ -178,12 +186,12 @@ class CryptoComputeModel(NodeDataModel):
         data : NodeData
         port_index : int
         '''
+        print('new data set start.')
         self.inputs[port.index] = copy(data)
         if self._check_inputs():
             try:
                 self.compute()
-                for i in range(self.num_ports[PortType.output]):
-                    self.data_updated.emit(i)
+                print('compute function called.')
             except Exception as e:
                 traceback.print_exc()
         else:
@@ -191,7 +199,10 @@ class CryptoComputeModel(NodeDataModel):
                 self.outputs[i] = None
             for i in range(self.num_ports[PortType.output]):
                 self.data_updated.emit(i)
-        self.computed = False
+
+    def ComputeEnded(self):
+        for i in range(self.num_ports[PortType.output]):
+            self.data_updated.emit(i)
 
     def _check_inputs(self):
         try:
@@ -203,18 +214,40 @@ class CryptoComputeModel(NodeDataModel):
             return False
 
     def compute(self):
-        if self.computed:
-            pass
+        self._statusLabel.setText('...')
+        print('start compute.')
+        try:
+            self.p.terminate()
+            print('terminated.')
+        except Exception:
+            traceback.print_exc()
+        self.p = Pool(1)
         inp = {}
         for i in self.inputs:
             inp[i] = self.inputs[i].string
-        print(self, self.settings, id(self.settings))
-        out = copy(self.func(inp, self.settings))
+        self.p.apply_async(
+            self.func, args=(inp, self.settings), callback=self.computeCallback, error_callback=self.ComputeFailed)
+
+    def ComputeFailed(self, *args, **kwargs):
+        self.p.terminate()
+        print('compute failed.')
+        for i in self.outputs:
+                self.outputs[i] = None
+        for i in range(self.num_ports[PortType.output]):
+            self.data_updated.emit(i)
+        self._statusLabel.setText('×')
+
+    def computeCallback(self, out):
+        print('callback.')
+        self.p.close()
+        print('closed in callback.')
         print('out data: ', out)
+        out = copy(out)
         for i in out:
             self.outputs[i] = StringData(out[i])
         print('self.outputs: ', self.outputs)
-        self.computed = True
+        self.computeEndedSig.emit()
+        self._statusLabel.setText('√')
 
 
 class CryptoFlowView(FlowView):
@@ -239,6 +272,7 @@ class CryptoFlowView(FlowView):
             node.graphics_object.setPos(pos_view)
             self._scene.node_placed.emit(node)
         except:
+            traceback.print_exc()
             super().dropEvent(event)
 
     def dragEnterEvent(self, event: QDragEnterEvent):
@@ -249,6 +283,29 @@ class CryptoFlowView(FlowView):
             self.delete_selected()
         else:
             super().keyPressEvent(event)
+
+    def delete_selected(self):
+            # Delete the selected connections first, ensuring that they won't be
+            # automatically deleted when selected nodes are deleted (deleting a node
+            # deletes some connections as well)
+        for item in self._scene.selectedItems():
+            if isinstance(item, ConnectionGraphicsObject):
+                self._scene.delete_connection(item.connection)
+
+        if not self._scene.allow_node_deletion:
+            return
+
+        # Delete the nodes; self will delete many of the connections.
+        # Selected connections were already deleted prior to self loop, otherwise
+        # qgraphicsitem_cast<NodeGraphicsObject*>(item) could be a use-after-free
+        # when a selected connection is deleted by deleting the node.
+        for item in self._scene.selectedItems():
+            if isinstance(item, NodeGraphicsObject):
+                try:
+                    item.node.model.p.terminate()
+                except:
+                    pass
+                self._scene.remove_node(item.node)
 
 
 class DragList(QTreeWidget):
