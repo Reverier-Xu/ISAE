@@ -74,26 +74,26 @@ Base64 Base32 Base16 Base85-ASCII Base85-RFC1924
 
 ~~支持文件操作. 添加了明文和密文的快速交换键, 用于反base套娃 (误~~
 
-~~### Quoted-Printable~~
-~~支持文件和字符串的编码和解码.~~
+### Quoted-Printable
+支持文件和字符串的编码和解码.
 
 ### Url编码
 支持自定义字符集的Url编码解码.
 
-~~### Hex编码~~
-~~支持Hex编码(UTF-8)~~
+### Hex编码
+支持Hex编码(UTF-8)
 
-~~### HTML编码~~
-~~支持HTML编码~~
+### HTML编码
+支持HTML编码
 
-~~### Escape~~
-~~支持JavaScript的Escape编码~~
+### Escape
+支持JavaScript的Escape编码
 
-~~### 敲击码~~
-~~Tap Code, 简单的编码解码支持.~~
+### 敲击码
+Tap Code, 简单的编码解码支持.
 
-~~### 摩斯电码~~
-~~Morse Code, 提供基础的编码解码支持, 支持自定义分隔符.~~
+### 摩斯电码
+Morse Code, 提供基础的(字母, 英文标点, 中文, unicode)编码解码支持, 支持自定义分隔符.
 
 ### Hash计算
 
@@ -106,14 +106,14 @@ Base64 Base32 Base16 Base85-ASCII Base85-RFC1924
 ### 凯撒密码
 Caesar Cipher, 提供无限位移功能
 
-~~### 栅栏密码~~
-~~Rail-Fence Cipher, 提供不限大小的分组功能~~
+### 栅栏密码
+Rail-Fence Cipher, 提供不限大小的分组功能
 
-~~### ROT系列~~
-~~ROT13和ROT47加密解密支持~~
+### ROT系列
+ROT13和ROT47加密解密支持
 
-~~### 笔画密码~~
-~~Strokes Cipher, 提供约2w字左右的汉字笔画密码查询~~
+### 笔画密码
+Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 
 ## Pwn
 
