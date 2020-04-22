@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import MainWindow
 import sys
 import time
+from DataFlowPanel.DataFlowNodeBasic import CryptoComputeThreadPool as Pools
 from PyQt5.Qt import QPixmap
 
 
@@ -19,6 +20,10 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
         self.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('./Resources/icon.png'))
         self.m_flag = False
+
+    def closeEvent(self, QCloseEvent):
+        Pools.terminate()
+        super(MainWindow, self).closeEvent(QCloseEvent)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton and self.MaxFlag is False:

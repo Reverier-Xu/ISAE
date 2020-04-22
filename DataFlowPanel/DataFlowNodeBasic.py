@@ -17,6 +17,7 @@ from multiprocessing import Pool, Process
 
 Modules = {}
 
+CryptoComputeThreadPool = Pool(100)
 
 def get_modules(package="."):
     """
@@ -186,15 +187,17 @@ class CryptoComputeModel(NodeDataModel):
         data : NodeData
         port_index : int
         '''
-        print('new data set start.')
+        print(self.name, 'new data set start.')
         self.inputs[port.index] = copy(data)
         if self._check_inputs():
             try:
+                print(self.name, 'compute function called.')
                 self.compute()
-                print('compute function called.')
             except Exception as e:
                 traceback.print_exc()
         else:
+            print(self.name, ': data setting incorrect.')
+            self._statusLabel.setText('×')
             for i in self.outputs:
                 self.outputs[i] = None
             for i in range(self.num_ports[PortType.output]):
@@ -215,22 +218,16 @@ class CryptoComputeModel(NodeDataModel):
 
     def compute(self):
         self._statusLabel.setText('...')
-        print('start compute.')
-        try:
-            self.p.terminate()
-            print('terminated.')
-        except Exception:
-            traceback.print_exc()
-        self.p = Pool(1)
+        print(self.name, ': start compute.')
         inp = {}
         for i in self.inputs:
             inp[i] = self.inputs[i].string
-        self.p.apply_async(
+        print(self.name, 'thread started, func=', self.func, 'arg=', self.settings)
+        CryptoComputeThreadPool.apply_async(
             self.func, args=(inp, self.settings), callback=self.computeCallback, error_callback=self.ComputeFailed)
 
     def ComputeFailed(self, *args, **kwargs):
-        self.p.terminate()
-        print('compute failed.')
+        print(self.name, 'compute failed.')
         for i in self.outputs:
                 self.outputs[i] = None
         for i in range(self.num_ports[PortType.output]):
@@ -238,14 +235,13 @@ class CryptoComputeModel(NodeDataModel):
         self._statusLabel.setText('×')
 
     def computeCallback(self, out):
-        print('callback.')
-        self.p.close()
-        print('closed in callback.')
-        print('out data: ', out)
+        print(self.name, 'callback.')
+        print(self.name, 'closed in callback.')
+        print(self.name, 'out data: ', out)
         out = copy(out)
         for i in out:
             self.outputs[i] = StringData(out[i])
-        print('self.outputs: ', self.outputs)
+        print(self.name, 'self.outputs: ', self.outputs)
         self.computeEndedSig.emit()
         self._statusLabel.setText('√')
 

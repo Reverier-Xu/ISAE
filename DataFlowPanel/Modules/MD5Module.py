@@ -24,5 +24,7 @@ def main(inp, settings):
         inps = inp[0].encode()
     salt = int(settings['salt长度'])
     print(inp[0], salt)
+    print('md5Module entered, settings:', settings, ', inputs: ', inp)
     out = {0: str(generate_md5(inps, salt))}
+    print('md5Module ended, returning...')
     return out
