@@ -31,8 +31,6 @@ class OptionsEditBox(QtWidgets.QTableWidget):
         except:
             return
         rows = len(prop['properties'])
-        print(prop)
-        print(settings)
         self.setRowCount(rows)
         k = 0
         for i in prop['properties']:
@@ -77,7 +75,6 @@ class OptionsEditBox(QtWidgets.QTableWidget):
                     self.settings[self.item(i, 0).text()] = self.cellWidget(i, 1).text()
                 elif type(self.properties['properties'][self.item(i, 0).text()]) == list:
                     self.settings[self.item(i, 0).text()] = self.cellWidget(i, 1).currentText()
-            print(self.settings)
             return self.settings
         except:
             pass

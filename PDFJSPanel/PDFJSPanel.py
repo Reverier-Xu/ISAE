@@ -17,14 +17,12 @@ class PDFJSPanel(ui_PDFJSPanel):
 
     def ChangePDFViewer(self, item):
         path = item.FilePath
-        print(path)
         if path[-4:] == '.pdf':
             pwd = os.getcwd()
             pwd = pwd.replace('\\', '/')
             path = parse.quote(path, encoding='UTF-8')
             if path[0] == '.':
                 path = pwd + path[1:]
-            print('file:///' + pwd + '/Resources/PDFJS/web/viewer.html?file=file:///' + path)
             self.PDFViewerPanel.load(
                 QtCore.QUrl.fromUserInput('file:///' + pwd + '/Resources/PDFJS/web/viewer.html?file=file:///' + path))
         elif os.path.isdir(path):

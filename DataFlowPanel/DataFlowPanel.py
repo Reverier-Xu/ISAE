@@ -18,7 +18,6 @@ class DataFlowPanel(ui_CryptoPanel):
         reg = DataModelRegistry()
         reg.register_model(InputModel, category='Basic')
         reg.register_model(OutputModel, category='Basic')
-        print(Modules)
         for i in Modules:
             class DIYNodesDataModule(CryptoComputeModel):
                 port_caption_visible = True
@@ -46,7 +45,6 @@ class DataFlowPanel(ui_CryptoPanel):
 
     def SaveOptionsFunc(self):
         try:
-            print('after saves: ', id(self.OptionsBox.node.model.settings))
             self.OptionsBox.node.model.settings = self.OptionsBox.GetOptions()
         except:
             pass

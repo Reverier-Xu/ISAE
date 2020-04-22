@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtWidgets, QtGui, Qt
 from DataFlowPanel.RSAModule.ui_RSAModule import ui_RSAPanel
 from DataFlowPanel.RSAModule.RSAModuleUtils import *
 from ui_Widgets.ErrorWin import errorInfo
+import traceback
 
 
 class RSAPanel(ui_RSAPanel):
@@ -54,7 +55,7 @@ class RSAPanel(ui_RSAPanel):
             self.RSAqBox.setEnabled(True)
 
         except Exception as e:
-            print(str(e))
+            traceback.print_exc()
 
     def Changedn(self):
         animation = Qt.QPropertyAnimation(self)

@@ -18,12 +18,10 @@ defaults = {
 def main(inp: dict, settings: dict):
     out = {}
     pattern = settings['表达式']
-    print(inp)
     outs = re.split(pattern, inp[0], 1)
     out[0] = outs[0]
     try:
         out[1] = outs[1]
     except:
         out[1] = ''
-    print(out)
     return out

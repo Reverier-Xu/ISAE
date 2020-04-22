@@ -23,6 +23,5 @@ def main(inp, settings):
     else:
         inps = inp[0].encode()
     salt = int(settings['salt长度'])
-    print(inp[0], salt)
     out = {0: str(generate_sha3_224(inps, salt))}
     return out

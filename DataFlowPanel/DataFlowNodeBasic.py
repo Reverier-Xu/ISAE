@@ -118,10 +118,6 @@ class OutputModel(NodeDataModel):
 
     def set_in_data(self, node_data, port):
         self._node_data = node_data
-        try:
-            print(node_data.string)
-        except:
-            pass
         if (self._node_data and
                 self._node_data.data_type == StringData.data_type and
                 self._node_data.string):
@@ -187,16 +183,13 @@ class CryptoComputeModel(NodeDataModel):
         data : NodeData
         port_index : int
         '''
-        print(self.name, 'new data set start.')
         self.inputs[port.index] = copy(data)
         if self._check_inputs():
             try:
-                print(self.name, 'compute function called.')
                 self.compute()
             except Exception as e:
                 traceback.print_exc()
         else:
-            print(self.name, ': data setting incorrect.')
             self._statusLabel.setText('×')
             for i in self.outputs:
                 self.outputs[i] = None
@@ -218,16 +211,13 @@ class CryptoComputeModel(NodeDataModel):
 
     def compute(self):
         self._statusLabel.setText('...')
-        print(self.name, ': start compute.')
         inp = {}
         for i in self.inputs:
             inp[i] = self.inputs[i].string
-        print(self.name, 'thread started, func=', self.func, 'arg=', self.settings)
         CryptoComputeThreadPool.apply_async(
             self.func, args=(inp, self.settings), callback=self.computeCallback, error_callback=self.ComputeFailed)
 
     def ComputeFailed(self, *args, **kwargs):
-        print(self.name, 'compute failed.')
         for i in self.outputs:
                 self.outputs[i] = None
         for i in range(self.num_ports[PortType.output]):
@@ -235,13 +225,9 @@ class CryptoComputeModel(NodeDataModel):
         self._statusLabel.setText('×')
 
     def computeCallback(self, out):
-        print(self.name, 'callback.')
-        print(self.name, 'closed in callback.')
-        print(self.name, 'out data: ', out)
         out = copy(out)
         for i in out:
             self.outputs[i] = StringData(out[i])
-        print(self.name, 'self.outputs: ', self.outputs)
         self.computeEndedSig.emit()
         self._statusLabel.setText('√')
 

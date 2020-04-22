@@ -40,9 +40,10 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
     def mouseReleaseEvent(self, QMouseEvent):
         self.m_flag = False
 
+
 class SplashScreen(QtWidgets.QSplashScreen):
-     def __init__(self):
-         super(SplashScreen, self).__init__(QPixmap("./Resources/splash.png"))
+    def __init__(self):
+        super(SplashScreen, self).__init__(QPixmap("./Resources/splash.png"))
 
 
 if __name__ == "__main__":
