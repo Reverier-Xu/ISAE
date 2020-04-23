@@ -19,6 +19,7 @@ Modules = {}
 
 CryptoComputeThreadPool = Pool(100)
 
+
 def get_modules(package="."):
     """
     获取包名下所有非__init__的模块名
@@ -148,7 +149,8 @@ class CryptoComputeModel(NodeDataModel):
         self._statusLabel = uni_Widget.ICTFELabel()
         self._statusLabel.setText('?')
         self._statusLabel.setMinimumWidth(20)
-        self._statusLabel.setAlignment(QtCore.Qt.AlignCenter|QtCore.Qt.AlignVCenter)
+        self._statusLabel.setAlignment(
+            QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
 
     @property
     def caption(self):
@@ -219,7 +221,7 @@ class CryptoComputeModel(NodeDataModel):
 
     def ComputeFailed(self, *args, **kwargs):
         for i in self.outputs:
-                self.outputs[i] = None
+            self.outputs[i] = None
         for i in range(self.num_ports[PortType.output]):
             self.data_updated.emit(i)
         self._statusLabel.setText('×')
@@ -249,7 +251,8 @@ class CryptoFlowView(FlowView):
     def dropEvent(self, event: QDropEvent):
         eventData = event.mimeData().text()
         try:
-            node = self.scene.create_node(self.scene._registry.create(eventData))
+            node = self.scene.create_node(
+                self.scene._registry.create(eventData))
             pos_view = self.mapToScene(event.pos())
             node.graphics_object.setPos(pos_view)
             self._scene.node_placed.emit(node)
@@ -267,9 +270,9 @@ class CryptoFlowView(FlowView):
             super().keyPressEvent(event)
 
     def delete_selected(self):
-            # Delete the selected connections first, ensuring that they won't be
-            # automatically deleted when selected nodes are deleted (deleting a node
-            # deletes some connections as well)
+        # Delete the selected connections first, ensuring that they won't be
+        # automatically deleted when selected nodes are deleted (deleting a node
+        # deletes some connections as well)
         for item in self._scene.selectedItems():
             if isinstance(item, ConnectionGraphicsObject):
                 self._scene.delete_connection(item.connection)
