@@ -14,9 +14,10 @@ from ui_Widgets import uni_Widget
 from DataFlowPanel.OptionEditBox import OptionsEditBox
 import traceback
 from multiprocessing import Pool, Process
+import multiprocessing
 
 Modules = {}
-
+multiprocessing.freeze_support()
 CryptoComputeThreadPool = Pool(100)
 
 
@@ -193,10 +194,8 @@ class ImageShowModel(NodeDataModel):
             self._label.setText('Error.')
             self.pixmap = None
 
-
     def embedded_widget(self):
         return self._label
-
 
 
 class CryptoComputeModel(NodeDataModel):
@@ -208,7 +207,7 @@ class CryptoComputeModel(NodeDataModel):
 
     def __init__(self, module, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.computeEndedSig.connect(self.ComputeEnded)
+        self.computeEndedSig.connect(self._emit_results)
         self._statusLabel = uni_Widget.ICTFELabel()
         self._statusLabel.setText('?')
         self._statusLabel.setMinimumWidth(20)
@@ -261,7 +260,7 @@ class CryptoComputeModel(NodeDataModel):
             for i in range(self.num_ports[PortType.output]):
                 self.data_updated.emit(i)
 
-    def ComputeEnded(self):
+    def _emit_results(self):
         for i in range(self.num_ports[PortType.output]):
             self.data_updated.emit(i)
 
@@ -287,9 +286,9 @@ class CryptoComputeModel(NodeDataModel):
                 else:
                     inp[i] = None
         CryptoComputeThreadPool.apply_async(
-            self.func, args=(inp, self.settings), callback=self.computeCallback, error_callback=self.ComputeFailed)
+            self.func, args=(inp, self.settings), callback=self._compute_callback, error_callback=self._compute_error_callback)
 
-    def ComputeFailed(self, error=None, *args, **kwargs):
+    def _compute_error_callback(self, error=None, *args, **kwargs):
         print(error)
         for i in self.outputs:
             self.outputs[i] = None
@@ -297,7 +296,7 @@ class CryptoComputeModel(NodeDataModel):
             self.data_updated.emit(i)
         self._statusLabel.setText('×')
 
-    def computeCallback(self, out):
+    def _compute_callback(self, out):
         out = copy(out)
         for i in out:
             self.outputs[i] = StringData(out[i])
