@@ -1,4 +1,5 @@
 import binascii
+import traceback
 
 properties = {
     'name': 'Quoted Printable',
@@ -24,14 +25,12 @@ def main(inp, settings):
         inputs = inputs.encode()
     if settings['开关'] == '编码':
         outputs = binascii.b2a_qp(inputs)
-        try:
-            out = {0: outputs.decode()}
-        except:
-            out = {0: str(outputs)}
     else:
-        outputs = binascii.a2b_qp(inputs)
         try:
-            out = {0: outputs.decode()}
+            outputs = binascii.a2b_qp(inputs)
         except:
-            out = {0: str(outputs)}
+            error = traceback.format_exc()
+            raise Exception(error)
+    print(outputs)
+    out = {0: outputs}
     return out

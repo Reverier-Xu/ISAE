@@ -34,5 +34,5 @@ def main(inp, settings):
         r = requests.get(r, proxies=proxy, timeout=timeout)
     else:
         r = requests.get(r, timeout=timeout)
-    out = {0: r.text}
+    out = {0: r.content}
     return out

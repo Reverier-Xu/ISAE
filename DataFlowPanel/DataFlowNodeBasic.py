@@ -125,8 +125,10 @@ class OutputModel(NodeDataModel):
             string = node_data.string
         else:
             string = '未连接/未初始化.'
-
-        self._show.setText(str(string))
+        try:
+            self._show.setText(string.decode())
+        except:
+            self._show.setText(str(string))
         self.data_updated.emit(0)
 
     def out_data(self, port):
@@ -134,6 +136,67 @@ class OutputModel(NodeDataModel):
 
     def embedded_widget(self):
         return self._show
+
+
+class ImageShowModel(NodeDataModel):
+    caption = 'Image Output'
+    name = 'Image Output'
+    num_ports = {PortType.input: 1,
+                 PortType.output: 0,
+                 }
+    data_type = StringData
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._node_data = None
+        self.pixmap = None
+        self._label = QLabel('Image')
+        self._label.setAlignment(Qt.AlignVCenter | Qt.AlignCenter)
+
+        self._label.setFixedSize(200, 200)
+        self._label.installEventFilter(self)
+
+    def resizable(self):
+        return True
+
+    def eventFilter(self, obj, event):
+        if obj is self._label and event.type() == QtCore.QEvent.Resize:
+            if (self._node_data and
+                    self._node_data.data_type == StringData.data_type and
+                    self._node_data.string):
+                w, h = self._label.width(), self._label.height()
+                try:
+                    self._label.setPixmap(self.pixmap.scaled(w, h, Qt.KeepAspectRatio))
+                except:
+                    pass
+
+        return False
+
+    def set_in_data(self, node_data, port):
+        self._node_data = node_data
+        try:
+            if (self._node_data and
+                    self._node_data.data_type == StringData.data_type and
+                    self._node_data.string):
+                w, h = self._label.width(), self._label.height()
+                if type(node_data.string) == str and node_data.string[:2] == 'b\'':
+                    inp = eval(node_data.string)
+                else:
+                    inp = node_data.string
+                pixmap = QPixmap()
+                pixmap.loadFromData(inp)
+            else:
+                pixmap = QPixmap()
+            self._label.setPixmap(pixmap.scaled(w, h, Qt.KeepAspectRatio))
+            self.pixmap = pixmap
+        except:
+            self._label.setText('Error.')
+            self.pixmap = None
+
+
+    def embedded_widget(self):
+        return self._label
+
 
 
 class CryptoComputeModel(NodeDataModel):
@@ -214,12 +277,20 @@ class CryptoComputeModel(NodeDataModel):
     def compute(self):
         self._statusLabel.setText('...')
         inp = {}
+        print(self.inputs[0].string)
         for i in self.inputs:
-            inp[i] = self.inputs[i].string
+            try:
+                inp[i] = self.inputs[i].string.decode()
+            except:
+                if self.inputs[i].string is not None:
+                    inp[i] = str(self.inputs[i].string)
+                else:
+                    inp[i] = None
         CryptoComputeThreadPool.apply_async(
             self.func, args=(inp, self.settings), callback=self.computeCallback, error_callback=self.ComputeFailed)
 
-    def ComputeFailed(self, *args, **kwargs):
+    def ComputeFailed(self, error=None, *args, **kwargs):
+        print(error)
         for i in self.outputs:
             self.outputs[i] = None
         for i in range(self.num_ports[PortType.output]):

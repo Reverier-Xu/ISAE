@@ -20,6 +20,7 @@ defaults = {
 
 
 def main(inp: dict, settings: dict):
+    print(inp)
     out = {}
     if settings['开关'] == '编码':
         out[0] = utils.ChangeTableBase16Encode(inp[0], settings['编码表'], settings['eval'])
