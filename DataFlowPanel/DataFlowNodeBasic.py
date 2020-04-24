@@ -44,6 +44,29 @@ for module in get_modules('DataFlowPanel/Modules'):
         pass
 
 
+class ComputeThread(QThread):
+    func = None
+    inp = None
+    settings = None
+    results = None
+
+    def __init__(self, func, parent=None):
+        super().__init__(parent=parent)
+        self.func = func
+
+    def run(self):
+        try:
+            self.results = self.func(self.inp, self.settings)
+        except:
+            self.results = None
+
+    def getResult(self):
+        return copy(self.results)
+
+    def setData(self, inp, settings):
+        self.inp = inp
+        self.settings = settings
+
 class StringData(NodeData):
     data_type = NodeDataType(id='string', name='str')
 
@@ -204,6 +227,7 @@ class CryptoComputeModel(NodeDataModel):
     port_caption_visible = True
     data_type = StringData.data_type
     computeEndedSig = pyqtSignal()
+    computeThread = None
 
     def __init__(self, module, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -213,6 +237,8 @@ class CryptoComputeModel(NodeDataModel):
         self._statusLabel.setMinimumWidth(20)
         self._statusLabel.setAlignment(
             QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
+        self.computeThread = ComputeThread(self.func)
+        self.computeThread.finished.connect(self._compute_callback)
 
     @property
     def caption(self):
@@ -285,8 +311,12 @@ class CryptoComputeModel(NodeDataModel):
                     inp[i] = str(self.inputs[i].string)
                 else:
                     inp[i] = None
-        CryptoComputeThreadPool.apply_async(
-            self.func, args=(inp, self.settings), callback=self._compute_callback, error_callback=self._compute_error_callback)
+        if self.computeThread.isRunning():
+            self.computeThread.quit()
+            self.computeThread.wait()
+        self.computeThread.setData(inp, self.settings)
+        self.computeThread.start()
+
 
     def _compute_error_callback(self, error=None, *args, **kwargs):
         print(error)
@@ -296,7 +326,11 @@ class CryptoComputeModel(NodeDataModel):
             self.data_updated.emit(i)
         self._statusLabel.setText('×')
 
-    def _compute_callback(self, out):
+    def _compute_callback(self):
+        out = self.computeThread.getResult()
+        if out is None:
+            self._compute_error_callback()
+            return
         out = copy(out)
         for i in out:
             self.outputs[i] = StringData(out[i])
