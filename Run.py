@@ -10,7 +10,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import MainWindow
 import sys
 import time
-from DataFlowPanel.DataFlowNodeBasic import CryptoComputeThreadPool as Pools
 from PyQt5.Qt import QPixmap
 
 
@@ -22,7 +21,6 @@ class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
         self.m_flag = False
 
     def closeEvent(self, QCloseEvent):
-        Pools.terminate()
         self.StatusThread.terminate()
         super(MainWindow, self).closeEvent(QCloseEvent)
 

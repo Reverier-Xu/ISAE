@@ -13,12 +13,8 @@ import sys
 from ui_Widgets import uni_Widget
 from DataFlowPanel.OptionEditBox import OptionsEditBox
 import traceback
-from multiprocessing import Pool, Process
-import multiprocessing
 
 Modules = {}
-multiprocessing.freeze_support()
-CryptoComputeThreadPool = Pool(100)
 
 
 def get_modules(package="."):
@@ -67,8 +63,9 @@ class ComputeThread(QThread):
         self.inp = inp
         self.settings = settings
 
+
 class StringData(NodeData):
-    data_type = NodeDataType(id='string', name='str')
+    data_type = NodeDataType(id='string', name='data')
 
     def __init__(self, string: str):
         super().__init__()
@@ -111,6 +108,54 @@ class InputModel(NodeDataModel):
     def onTextEdited(self, **kwargs):
         self._string = self._edit.toPlainText()
         self.data_updated.emit(0)
+
+
+class FileInputModel(NodeDataModel):
+    name = 'File Input'
+    caption = 'File Input'
+    num_ports = {PortType.input: 0,
+                 PortType.output: 1,
+                 }
+    data_type = StringData.data_type
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._data = None
+        self._label = uni_Widget.ICTFELabel()
+        self._label.setText('点击选择文件')
+        self._label.setAlignment(Qt.AlignVCenter | Qt.AlignCenter)
+
+        self._label.setFixedSize(200, 100)
+        self._label.installEventFilter(self)
+
+    def eventFilter(self, obj, event):
+        if obj is not self._label:
+            return False
+
+        if event.type() == QtCore.QEvent.MouseButtonPress:
+            file_name, _ = QFileDialog.getOpenFileName(
+                None, "打开文件", QtCore.QDir.homePath(),
+                "all(*)")
+            try:
+                with open(file_name, 'rb') as out:
+                    self._data = out.read()
+            except Exception as ex:
+                print(f'Failed to load file {file_name}: {ex}')
+                return False
+            self._label.setText(file_name)
+            self.data_updated.emit(0)
+            return True
+
+        return False
+
+    def resizable(self):
+        return True
+
+    def out_data(self, port):
+        return StringData(self._data)
+
+    def embedded_widget(self):
+        return self._label
 
 
 class OutputModel(NodeDataModel):
@@ -316,7 +361,6 @@ class CryptoComputeModel(NodeDataModel):
             self.computeThread.wait()
         self.computeThread.setData(inp, self.settings)
         self.computeThread.start()
-
 
     def _compute_error_callback(self, error=None, *args, **kwargs):
         print(error)
