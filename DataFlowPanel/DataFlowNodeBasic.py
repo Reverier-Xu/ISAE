@@ -114,8 +114,18 @@ class FileInputModel(NodeDataModel):
     name = 'File Input'
     caption = 'File Input'
     num_ports = {PortType.input: 0,
-                 PortType.output: 1,
+                 PortType.output: 2,
                  }
+    port_caption_visible = True
+    port_caption = {
+        'input': {
+
+        },
+        'output': {
+            0: 'data',
+            1: '路径'
+        }
+    }
     data_type = StringData.data_type
 
     def __init__(self, *args, **kwargs):
@@ -133,16 +143,16 @@ class FileInputModel(NodeDataModel):
             return False
 
         if event.type() == QtCore.QEvent.MouseButtonPress:
-            file_name, _ = QFileDialog.getOpenFileName(
+            self.file_name, _ = QFileDialog.getOpenFileName(
                 None, "打开文件", QtCore.QDir.homePath(),
                 "all(*)")
             try:
-                with open(file_name, 'rb') as out:
+                with open(self.file_name, 'rb') as out:
                     self._data = out.read()
             except Exception as ex:
-                print(f'Failed to load file {file_name}: {ex}')
+                print(f'Failed to load file {self.file_name}: {ex}')
                 return False
-            self._label.setText(file_name)
+            self._label.setText(self.file_name)
             self.data_updated.emit(0)
             return True
 
@@ -152,7 +162,10 @@ class FileInputModel(NodeDataModel):
         return True
 
     def out_data(self, port):
-        return StringData(self._data)
+        if port == 0:
+            return StringData(self._data)
+        else:
+            return StringData(self.file_name)
 
     def embedded_widget(self):
         return self._label

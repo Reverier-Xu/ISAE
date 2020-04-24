@@ -5,3 +5,4 @@ dist/
 Run.spec
 dist.7z
 .vscode/
+testsFile/
