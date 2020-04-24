@@ -457,9 +457,9 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.ReverseButton.setText(_translate("MainWindow", "二进制"))
-        self.WebButton.setText(_translate("MainWindow", "Web工具"))
+        self.WebButton.setText(_translate("MainWindow", "Web渗透"))
         self.CryptoButton.setText(_translate("MainWindow", "数据流"))
-        self.MiscButton.setText(_translate("MainWindow", "杂项工具"))
+        self.MiscButton.setText(_translate("MainWindow", "独立工具"))
         self.TerminalButton.setText(_translate("MainWindow", "数据厨师"))
         self.WikiButton.setText(_translate("MainWindow", "Wiki"))
         self.BrowserButton.setText(_translate("MainWindow", "浏览器"))
