@@ -13,30 +13,18 @@ fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 
 如果你用有丰富的UI开发经验, 可以帮开发者优化一下界面和逻辑代码并做好模块化, 感激不尽~
 
-### 已知开发问题
-
-在测试之后请不要push Resources文件夹下的DIY.sqlite数据库, 或者将此数据库删掉后再push
-
-软件使用时不存在问题, 但是使用Pycharm提交之后数据库里面会被以文本形式插入一些奇奇怪怪的东西,
-暂不清楚这些语句是怎么插入进去的, 这些文本会破坏数据库的完整性, 从而造成软件无法打开.
-删掉之后软件启动时会自动创建一个空的.
-
 ## 如何使用
 
 clone本仓库到本地, 安装PyQt5
 
 ```
-pip install PyQt5 PyQt5-sip PyQtWebEngine -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 如果需要在Windows上进行打包，则需要安装 pyinstaller
-
-pip install gmpy2 pycrypto python-poppler-qt5 qtpy networkx requests baidu-aip
-
 # 这里请注意, gmpy2在Windows平台上可能不会正常工作.
 # 请Windows平台的用户前往 https://www.lfd.uci.edu/~gohlke/pythonlibs/
 # 下载对应版本的gmpy2并本地安装.
-# 待软件开发完成后将进行不依赖于开发环境的打包工作, 敬请期待.
-
+# 待软件开发完成后将进行不依赖于开发环境的打包工作.
 ```
 
 请不要使用Windows应用商店提供的python环境， 那个存在问题。
@@ -132,7 +120,7 @@ Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 
 ## CyberChef
 
-即**数据神厨**分区. 至于为什么要把CyberChef翻译成数据神厨, 这个问题就不必纠结了... 因为实在想不到什么好翻译了
+即**数据厨师**分区. 至于为什么要把CyberChef翻译成数据厨师, 这个问题就不必纠结了... 因为实在想不到什么好翻译了
 
 如果直接写CyberChef的话好像会超出按钮的长度所以就翻译成中文了 (逃
 

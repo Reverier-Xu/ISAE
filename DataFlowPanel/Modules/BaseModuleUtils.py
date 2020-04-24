@@ -1,6 +1,4 @@
-﻿# -*- coding:utf-8 -*-
-from base64 import *
-
+﻿from base64 import *
 
 Base64StandardTable = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 Base32StandardTable = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
