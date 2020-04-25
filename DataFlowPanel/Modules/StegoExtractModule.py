@@ -1,6 +1,6 @@
 import traceback
 import subprocess
-import ExternalTools.binwalk.binwalk as binwalk
+import  binwalk
 import sys
 
 properties = {
