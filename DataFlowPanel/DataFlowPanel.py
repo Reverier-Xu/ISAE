@@ -15,6 +15,7 @@ class DataFlowPanel(ui_CryptoPanel):
         self.ToolsList.addDIYItem('File Input', '基本')
         self.ToolsList.addDIYItem('Output', '基本')
         self.ToolsList.addDIYItem('Image Output', '基本')
+        self.ToolsList.addDIYItem('File Output', '基本')
         for i in Modules:
             self.ToolsList.addDIYItem(i, Modules[i].properties['categories'])
         reg = DataModelRegistry()
@@ -22,6 +23,7 @@ class DataFlowPanel(ui_CryptoPanel):
         reg.register_model(OutputModel, category='Basic')
         reg.register_model(ImageShowModel, category='Basic')
         reg.register_model(FileInputModel, category='Basic')
+        reg.register_model(FileOutputModel, category='Basic')
         for i in Modules:
             class DIYNodesDataModule(CryptoComputeModel):
                 port_caption_visible = True

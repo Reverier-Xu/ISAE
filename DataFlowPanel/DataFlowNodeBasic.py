@@ -220,6 +220,62 @@ class OutputModel(NodeDataModel):
         return self._show
 
 
+class FileOutputModel(NodeDataModel):
+    name = 'File Output'
+    caption = 'File Output'
+    caption_visible = True
+    port_caption_visible = True
+    num_ports = {PortType.input: 1,
+                 PortType.output: 0,
+                 }
+    port_caption = {
+        'input': {
+            0: '输入'
+        },
+        'output': {
+        }
+    }
+    data_type = StringData
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._node_data = None
+        self._show = uni_Widget.ICTFEButton()
+        self._show.setText('无文件...')
+        self._show.setEnabled(False)
+        self._show.clicked.connect(self.SaveFile)
+
+    def SaveFile(self):
+        OutputPath, filetype = QFileDialog.getSaveFileName(self._show,
+                                                           "保存文件",
+                                                           '',
+                                                           "All Files (*)")
+        if OutputPath == "":
+            return
+        string = self._node_data.string
+        if type(string) == str:
+            string = string.encode()
+        with open(OutputPath, 'wb') as out:
+            out.write(string)
+
+    def set_in_data(self, node_data, port):
+        self._node_data = node_data
+        if (self._node_data and
+                self._node_data.data_type == StringData.data_type and
+                self._node_data.string):
+            self._show.setText('点击保存')
+            self._show.setEnabled(True)
+        else:
+            self._show.setText('无文件...')
+            self._show.setEnabled(False)
+
+    def out_data(self, port):
+        return self._node_data
+
+    def embedded_widget(self):
+        return self._show
+
+
 class ImageShowModel(NodeDataModel):
     caption = 'Image Output'
     name = 'Image Output'
