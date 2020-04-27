@@ -1,9 +1,7 @@
 import copy
 
-from PyQt5 import QtCore, QtWidgets, Qt, QtGui
-from DataFlowPanel.ui_DataFlowPanel import ui_CryptoPanel
-from ui_Widgets import uni_Widget
 from DataFlowPanel.DataFlowNodeBasic import *
+from DataFlowPanel.ui_DataFlowPanel import ui_CryptoPanel
 from ui_Widgets.qtpynodeeditor import *
 
 
@@ -52,5 +50,5 @@ class DataFlowPanel(ui_CryptoPanel):
     def SaveOptionsFunc(self):
         try:
             self.OptionsBox.node.model.settings = self.OptionsBox.GetOptions()
-        except:
-            pass
+        except AttributeError:
+            traceback.print_exc()

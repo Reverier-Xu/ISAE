@@ -1,9 +1,10 @@
-import DataFlowPanel.Modules.BaseModuleUtils as utils
+import DataFlowPanel.Modules.BaseModuleUtils as Utils
+
 properties = {
     'name': 'Base32',
     'categories': '编码解码',
-    'input': {0:'输入'},
-    'output': {0:'输出'},
+    'input': {0: '输入'},
+    'output': {0: '输出'},
     'properties': {
         '开关': ['编码', '解码'],
         '编码表': str,
@@ -13,7 +14,7 @@ properties = {
 
 defaults = {
     '开关': '编码',
-    '编码表': utils.Base32StandardTable,
+    '编码表': Utils.Base32StandardTable,
     'eval': False
 }
 
@@ -21,8 +22,8 @@ defaults = {
 def main(inp: dict, settings: dict):
     out = {}
     if settings['开关'] == '编码':
-        out[0] = utils.ChangeTableBase32Encode(inp[0], settings['编码表'], settings['eval'])
+        out[0] = Utils.ChangeTableBase32Encode(inp[0], settings['编码表'], settings['eval'])
     elif settings['开关'] == '解码':
-        out[0] = utils.ChangeTableBase32Decode(
+        out[0] = Utils.ChangeTableBase32Decode(
             inp[0], settings['编码表'])
     return out

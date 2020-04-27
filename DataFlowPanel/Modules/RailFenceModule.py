@@ -6,7 +6,7 @@ properties = {
     'input': {0: '输入'},
     'output': {0: '输出'},
     'properties': {
-        '开关':['加密', '解密'],
+        '开关': ['加密', '解密'],
         '位移': str
     }
 }
@@ -14,6 +14,7 @@ defaults = {
     '开关': '加密',
     '位移': '3'
 }
+
 
 def main(inp, settings):
     if settings['开关'] == '加密':

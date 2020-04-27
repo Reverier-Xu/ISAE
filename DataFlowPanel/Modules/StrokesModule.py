@@ -1,4 +1,5 @@
 from DataFlowPanel.Modules.StrokesModuleUtils import *
+
 properties = {
     'name': '笔画密码',
     'categories': '密码',
@@ -9,6 +10,8 @@ properties = {
 
 defaults = {}
 
+
 def main(inp, settings):
+    print(settings)
     out = {0: StrokesDecrypt(inp[0])}
     return out

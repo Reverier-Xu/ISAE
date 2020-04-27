@@ -1,6 +1,6 @@
 import os
 
-from PyQt5 import QtCore, QtGui, QtWidgets, QtWebEngineWidgets
+from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
 from PyQt5.QtCore import QUrl
 
 from PDFJSPanel.file_tree import Tree
@@ -28,6 +28,4 @@ class ui_PDFJSPanel(QtWidgets.QWidget):
         self.PDFViewerPanel.setMinimumWidth(500)
         splitter1.addWidget(self.PDFViewerPanel)
         splitter1.setSizes([200, 500])
-        self.horizontalLayout.addWidget(splitter1)
-
-        QtCore.QMetaObject.connectSlotsByName(self)
+        self.horizontalLayout.addWidget(splitter1, alignment=QtCore.Qt.Alignment())

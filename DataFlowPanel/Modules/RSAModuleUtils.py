@@ -22,10 +22,10 @@ def gcd(a, b):
 
 def egcd(a, b):
     if a == 0:
-        return (b, 0, 1)
+        return b, 0, 1
     else:
         g, y, x = egcd(b % a, a)
-        return (g, x - (b // a) * y, y)
+        return g, x - (b // a) * y, y
 
 
 def inverse(a, b):
@@ -46,7 +46,7 @@ def rsa_rabin(c, p, q):
     x = (b * q * c_p + a * p * c_q) % n
     y = (b * q * c_p - a * p * c_q) % n
 
-    return (d2s(x), d2s(n - x), d2s(y), d2s(n - y))
+    return d2s(x), d2s(n - x), d2s(y), d2s(n - y)
 
 
 def rsa_p(n, e, c):  # Pollard's rho algorithm
@@ -55,9 +55,9 @@ def rsa_p(n, e, c):  # Pollard's rho algorithm
         x1 = mapx(x1, n)
         x2 = mapx(mapx(x2, n), n)
         p = gcd(x1 - x2, n)
-        if (p == n):
-            return ("fail")
-        elif (p != 1):
+        if p == n:
+            return "fail"
+        elif p != 1:
             q = n / p
             d = inverse(e, (p - 1) * (q - 1))
             m = pow(c, d, n)
@@ -67,13 +67,13 @@ def rsa_p(n, e, c):  # Pollard's rho algorithm
 def rsa_dpdq(c, p, q, dp, dq):  # reveal dp&dq
     mp = pow(c, dp, p)
     mq = pow(c, dq, q)
-    InvP = inverse(p, q)
-    InvQ = inverse(q, p)
+    inv_p = inverse(p, q)
+    inv_q = inverse(q, p)
     try:
-        m = (mp * p * InvP + mq * q * InvQ) % (p * q)
+        m = (mp * p * inv_p + mq * q * inv_q) % (p * q)
         return d2s(m)
-    except:
-        m2 = (((mp - mq) * InvQ) % p) * q + mq
+    except BaseException:
+        m = (((mp - mq) * inv_q) % p) * q + mq
         d2s(m)
 
 
@@ -89,7 +89,7 @@ def rsa_dp(n, e, c, dp):  # reveal dp
                 return d2s(m)
 
 
-def rsa_n(n, e1, e2, c1, c2):  # use the same moudule
+def rsa_n(n, e1, e2, c1, c2):  # use the same module
     s = egcd(e1, e2)
     s1 = s[1]
     s2 = s[2]
@@ -107,8 +107,8 @@ def rsa_n(n, e1, e2, c1, c2):  # use the same moudule
 
 def CRT(mi, ai):
     M = reduce(lambda x, y: x * y, mi)
-    ai_ti_Mi = [a * (M / m) * inverse(M / m, m) for (m, a) in zip(mi, ai)]
-    return d2s(reduce(lambda x, y: x + y, ai_ti_Mi) % M)
+    ai_ti_mi = [a * (M / m) * inverse(M / m, m) for (m, a) in zip(mi, ai)]
+    return d2s(reduce(lambda x, y: x + y, ai_ti_mi) % M)
 
 
 def rsa_broad(n, e, c):
@@ -129,4 +129,4 @@ def getpq(c, n, e, d):
                 p = gcd(y - 1, n)
                 q = n / p
 
-    return (p, q)
+    return p, q

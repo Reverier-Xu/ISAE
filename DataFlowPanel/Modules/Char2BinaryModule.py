@@ -9,6 +9,7 @@ defaults = {}
 
 
 def main(inp, settings):
+    print(settings)
     out = {0: encode(inp[0])}
     return out
 

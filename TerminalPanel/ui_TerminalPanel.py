@@ -1,18 +1,16 @@
-from PyQt5.QtCore import QUrl, QFileInfo
+import os
+import platform
+
+from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
+from PyQt5.QtCore import QFileInfo
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWebEngineWidgets import QWebEngineDownloadItem, QWebEngineSettings
 from PyQt5.QtWidgets import QFileDialog, QShortcut
 
-from ui_Widgets import uni_Widget
-from ui_Widgets.ErrorWin import errorInfo
-from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebEngineWidgets
-import os
-import platform
-
 
 class ui_TerminalPanel(QtWidgets.QWidget):
     def __init__(self):
-        super(ui_TerminalPanel, self).__init__()
+        super(ui_TerminalPanel, self).__init__(flags=QtCore.Qt.WindowFlags())
 
         self.CyberChefPanel = CyberChefPanelWidget(self)
         self.CyberChefPanel.setObjectName('CyberChefPanel')
@@ -26,7 +24,7 @@ class ui_TerminalPanel(QtWidgets.QWidget):
 
 class CyberChefPanelWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
-        super(CyberChefPanelWidget, self).__init__(parent)
+        super(CyberChefPanelWidget, self).__init__(parent, flags=QtCore.Qt.WindowFlags())
         self.browser = QtWebEngineWidgets.QWebEngineView(self)
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
@@ -64,11 +62,11 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         old_path = download.path()
         suffix = QFileInfo(old_path).suffix()
         # 下载文件类型
-        filttype = download.mimeType()
+        file_type = download.mimeType()
         # 后缀切割
-        unkonw_suffix = filttype.split(r'/')[-1]
+        unknown_suffix = file_type.split(r'/')[-1]
         path, _ = QFileDialog.getSaveFileName(
-            self, "保存到", old_path, "*." + unkonw_suffix + ";;" + "*." + suffix)
+            self, "保存到", old_path, "*." + unknown_suffix + ";;" + "*." + suffix)
         if path != "":
             download.setPath(path)
             download.accept()

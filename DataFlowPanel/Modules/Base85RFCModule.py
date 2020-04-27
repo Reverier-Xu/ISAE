@@ -1,4 +1,4 @@
-import DataFlowPanel.Modules.BaseModuleUtils as utils
+import DataFlowPanel.Modules.BaseModuleUtils as Utils
 
 properties = {
     'name': 'Base85-RFC-1924',
@@ -14,7 +14,7 @@ properties = {
 
 defaults = {
     '开关': '编码',
-    '编码表': utils.Base85ReverseTable,
+    '编码表': Utils.Base85ReverseTable,
     'eval': False
 }
 
@@ -22,8 +22,8 @@ defaults = {
 def main(inp: dict, settings: dict):
     out = {}
     if settings['开关'] == '编码':
-        out[0] = utils.ChangeTableBase85RFCEncode(inp[0], settings['编码表'], settings['eval'])
+        out[0] = Utils.ChangeTableBase85RFCEncode(inp[0], settings['编码表'], settings['eval'])
     elif settings['开关'] == '解码':
-        out[0] = utils.ChangeTableBase85RFCDecode(
+        out[0] = Utils.ChangeTableBase85RFCDecode(
             inp[0], settings['编码表'])
     return out

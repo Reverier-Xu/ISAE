@@ -1,6 +1,5 @@
-from PyQt5.QtCore import QDataStream, QIODevice, QByteArray, QMimeData, QPoint, Qt
-from PyQt5.QtGui import QIcon, QDrag
-from PyQt5.QtWidgets import QListWidgetItem
+from PyQt5.QtCore import QMimeData, QPoint, Qt
+from PyQt5.QtGui import QDrag
 
 from ui_Widgets import uni_Widget
 
@@ -29,11 +28,11 @@ class FileStack(uni_Widget.ICTFEList):
         else:
             event.ignore()
 
-    def startDrag(self, dropActions):
+    def startDrag(self, dropActions, **kwargs):
         item = self.currentItem()
-        mimeData = QMimeData()
-        mimeData.setText(item.text())
+        mime_data = QMimeData()
+        mime_data.setText(item.text())
         drag = QDrag(self)
-        drag.setMimeData(mimeData)
+        drag.setMimeData(mime_data)
         drag.setHotSpot(QPoint(12, 12))
         drag.exec(Qt.MoveAction)

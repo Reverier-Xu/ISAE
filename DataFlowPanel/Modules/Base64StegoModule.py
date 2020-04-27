@@ -1,4 +1,4 @@
-import DataFlowPanel.Modules.BaseModuleUtils as utils
+import DataFlowPanel.Modules.BaseModuleUtils as Utils
 
 properties = {
     'name': 'Base64隐写',
@@ -14,6 +14,5 @@ defaults = {
 
 
 def main(inp: dict, settings: dict):
-    out = {}
-    out[0] = utils.base64_ste(inp[0].splitlines())
+    out = {0: Utils.base64_ste(inp[0].splitlines())}
     return out

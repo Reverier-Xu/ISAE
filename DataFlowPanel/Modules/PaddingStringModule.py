@@ -22,7 +22,7 @@ def main(inp, settings):
     return out
 
 
-def cut_text(text, lenth):
-    textArr = re.findall('.{' + str(lenth) + '}', text)
-    textArr.append(text[(len(textArr) * lenth):])
-    return textArr
+def cut_text(text, length):
+    text_arr = re.findall('.{' + str(length) + '}', text)
+    text_arr.append(text[(len(text_arr) * length):])
+    return text_arr

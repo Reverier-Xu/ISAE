@@ -1,10 +1,10 @@
-import sys
-from PyQt5.QtWidgets import *
-from PyQt5 import Qt, QtGui, QtCore
-from PDFJSPanel.fileopen import ui_PDFFileWindow
-from PyQt5 import QtWidgets
-import threading
 import os
+
+from PyQt5 import Qt, QtGui, QtCore
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import *
+
+from PDFJSPanel.fileopen import ui_PDFFileWindow
 
 
 def file_name(path):
@@ -46,9 +46,9 @@ class Tree(QMainWindow, ui_PDFFileWindow):
 
         dirs = file_name(path)
 
-        fileInfo = Qt.QFileInfo(path)
-        fileIcon = Qt.QFileIconProvider()
-        icon = QtGui.QIcon(fileIcon.icon(fileInfo))
+        file_info = Qt.QFileInfo(path)
+        file_icon = Qt.QFileIconProvider()
+        icon = QtGui.QIcon(file_icon.icon(file_info))
         root = FileTreeItem(self.tree)
         root.setText(0, path.split('/')[-1])
         root.setIcon(0, QtGui.QIcon(icon))
@@ -78,9 +78,9 @@ class Tree(QMainWindow, ui_PDFFileWindow):
 
         dirs = file_name(path)
 
-        fileInfo = Qt.QFileInfo(path)
-        fileIcon = Qt.QFileIconProvider()
-        icon = QtGui.QIcon(fileIcon.icon(fileInfo))
+        file_info = Qt.QFileInfo(path)
+        file_icon = Qt.QFileIconProvider()
+        icon = QtGui.QIcon(file_icon.icon(file_info))
         root = FileTreeItem(self.tree)
         root.setText(0, path.split('/')[-1])
         root.setIcon(0, QtGui.QIcon(icon))
@@ -92,17 +92,17 @@ class Tree(QMainWindow, ui_PDFFileWindow):
         for i in dirs:
             path_new = path + '/' + i
             if os.path.isdir(path_new):
-                fileInfo = Qt.QFileInfo(path_new)
-                fileIcon = Qt.QFileIconProvider()
-                icon = QtGui.QIcon(fileIcon.icon(fileInfo))
+                file_info = Qt.QFileInfo(path_new)
+                file_icon = Qt.QFileIconProvider()
+                icon = QtGui.QIcon(file_icon.icon(file_info))
                 child = FileTreeItem(root)
                 child.setText(0, i)
                 child.setIcon(0, QtGui.QIcon(icon))
                 child.setFilePath(path_new)
             elif path_new[-4:] == '.pdf':
-                fileInfo = Qt.QFileInfo(path_new)
-                fileIcon = Qt.QFileIconProvider()
-                icon = QtGui.QIcon(fileIcon.icon(fileInfo))
+                file_info = Qt.QFileInfo(path_new)
+                file_icon = Qt.QFileIconProvider()
+                icon = QtGui.QIcon(file_icon.icon(file_info))
                 child = FileTreeItem(root)
                 child.setText(0, i)
                 child.setIcon(0, QtGui.QIcon(icon))

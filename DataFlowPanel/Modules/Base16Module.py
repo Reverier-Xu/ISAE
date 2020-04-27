@@ -1,4 +1,4 @@
-import DataFlowPanel.Modules.BaseModuleUtils as utils
+import DataFlowPanel.Modules.BaseModuleUtils as Utils
 
 properties = {
     'name': 'Base16',
@@ -14,7 +14,7 @@ properties = {
 
 defaults = {
     '开关': '编码',
-    '编码表': utils.Base16StandardTable,
+    '编码表': Utils.Base16StandardTable,
     'eval': False
 }
 
@@ -23,8 +23,8 @@ def main(inp: dict, settings: dict):
     print(inp)
     out = {}
     if settings['开关'] == '编码':
-        out[0] = utils.ChangeTableBase16Encode(inp[0], settings['编码表'], settings['eval'])
+        out[0] = Utils.ChangeTableBase16Encode(inp[0], settings['编码表'], settings['eval'])
     elif settings['开关'] == '解码':
-        out[0] = utils.ChangeTableBase16Decode(
+        out[0] = Utils.ChangeTableBase16Decode(
             inp[0], settings['编码表'])
     return out

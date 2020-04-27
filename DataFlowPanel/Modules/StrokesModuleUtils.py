@@ -9,11 +9,10 @@ def StrokesDecrypt(text):
     for line in data_lines[7:]:
         l = line.strip().split()
         unicode_mark = chr(int(l[4], 16))
-        bihua = l[6]
-        query_dict[unicode_mark] = bihua
+        bahia = l[6]
+        query_dict[unicode_mark] = bahia
 
     for s in text:
         output += str(query_dict.get(s, -1)) + ' '
 
-    data_lines
     return output

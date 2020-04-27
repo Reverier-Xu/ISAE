@@ -11,8 +11,9 @@ def file_name(path):
 class PDFJSPanel(ui_PDFJSPanel):
     def __init__(self, parent=None):
         super(PDFJSPanel, self).__init__(parent)
-        self.PDFFileTreePanel.tree.doubleClicked.connect(lambda x: self.PDFFileTreePanel.EmitFilePath(self.PDFFileTreePanel.tree.itemFromIndex(x)))
-        self.PDFFileTreePanel.actionfileopen.triggered.connect(self.PDFFileTreePanel.Open_Folder)
+        self.PDFFileTreePanel.tree.doubleClicked.connect(
+            lambda x: self.PDFFileTreePanel.EmitFilePath(self.PDFFileTreePanel.tree.itemFromIndex(x)))
+        self.PDFFileTreePanel.actionFileOpen.triggered.connect(self.PDFFileTreePanel.Open_Folder)
         self.PDFFileTreePanel.FileDetectedSignal.connect(lambda s: self.ChangePDFViewer(s))
 
     def ChangePDFViewer(self, item):

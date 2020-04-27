@@ -1,5 +1,3 @@
-import binascii
-
 properties = {
     'name': 'Dec To Char',
     'categories': '数据转换',
@@ -13,6 +11,7 @@ defaults = {
 
 
 def main(inp, settings):
+    print(settings)
     out = {0: dec2char(inp[0])}
     return out
 

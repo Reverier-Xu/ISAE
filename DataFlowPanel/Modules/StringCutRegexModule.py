@@ -22,6 +22,6 @@ def main(inp: dict, settings: dict):
     out[0] = outs[0]
     try:
         out[1] = outs[1]
-    except:
+    except BaseException:
         out[1] = ''
     return out

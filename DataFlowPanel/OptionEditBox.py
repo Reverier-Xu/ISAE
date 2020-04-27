@@ -1,13 +1,16 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from ui_Widgets import uni_Widget
+from ui_Widgets.qtpynodeeditor import Node
 
 
 class OptionsEditBox(QtWidgets.QTableWidget):
     settings = {}
     properties = {}
     node = None
+
     def __init__(self, parent=None):
-        super().__init__(parent=parent)
+        super().__init__()
+        self.parent = parent
         self.setColumnCount(2)
         self.horizontalHeader().setStretchLastSection(True)
         font = QtGui.QFont()
@@ -16,11 +19,15 @@ class OptionsEditBox(QtWidgets.QTableWidget):
         self.setFont(font)
         self.horizontalHeader().hide()
         self.verticalHeader().hide()
-        self.setStyleSheet("QTableWidget{background-color: transparent;border:1px solid grey}"
-                           "QTableWidget::item{border:1px solid grey}")
+        self.setStyleSheet("QTableWidget{"
+                           "background-color: transparent;"
+                           "border:1px solid grey"
+                           "}"
+                           "QTableWidget::item{"
+                           "border:1px solid grey"
+                           "}")
 
-
-    def LoadOptions(self, node: 'Node'):
+    def LoadOptions(self, node: Node):
         self.setRowCount(0)
         try:
             prop = node.model.properties
@@ -28,41 +35,41 @@ class OptionsEditBox(QtWidgets.QTableWidget):
             self.settings = settings
             self.properties = prop
             self.node = node
-        except:
+        except AttributeError:
             return
         rows = len(prop['properties'])
         self.setRowCount(rows)
         k = 0
         for i in prop['properties']:
-            nameItem = QtWidgets.QTableWidgetItem(i)
-            nameItem.setFlags(QtCore.Qt.ItemIsEditable)
-            self.setItem(k, 0, nameItem)
+            name_item = QtWidgets.QTableWidgetItem(i)
+            name_item.setFlags(QtCore.Qt.ItemIsEditable)
+            self.setItem(k, 0, name_item)
             if prop['properties'][i] == bool:
-                execItem = uni_Widget.ICTFECheckBox()
-                execItem.setText('True')
-                execItem.setChecked(settings[i])
+                exec_item = uni_Widget.ICTFECheckBox()
+                exec_item.setText('True')
+                exec_item.setChecked(settings[i])
             elif prop['properties'][i] == str:
-                execItem = uni_Widget.ICTFELineBox()
-                execItem.setStyleSheet('color: white;'
-                                       'border: 0px solid gray;'
-                                       'border-radius: 0px;'
-                                       'padding: 0 4px;'
-                                       'background: rgb(20, 20, 20);'
-                                       'selection-background-color: blue;')
-                execItem.setText(settings[i])
+                exec_item = uni_Widget.ICTFELineBox()
+                exec_item.setStyleSheet('color: white;'
+                                        'border: 0px solid gray;'
+                                        'border-radius: 0px;'
+                                        'padding: 0 4px;'
+                                        'background: rgb(20, 20, 20);'
+                                        'selection-background-color: blue;')
+                exec_item.setText(settings[i])
             elif type(prop['properties'][i]) == list:
-                execItem = QtWidgets.QComboBox()
+                exec_item = QtWidgets.QComboBox()
                 font = QtGui.QFont()
                 font.setFamily('文泉驿微米黑')
                 font.setPixelSize(20)
-                execItem.setFont(font)
-                execItem.setStyleSheet('border:0px solid grey; color: white; background-color: rgb(30,30,30)')
+                exec_item.setFont(font)
+                exec_item.setStyleSheet('border:0px solid grey; color: white; background-color: rgb(30,30,30)')
                 for j in prop['properties'][i]:
-                    execItem.addItem(j)
-                execItem.setCurrentText(settings[i])
+                    exec_item.addItem(j)
+                exec_item.setCurrentText(settings[i])
             else:
                 continue
-            self.setCellWidget(k, 1, execItem)
+            self.setCellWidget(k, 1, exec_item)
             k += 1
 
     def GetOptions(self):
@@ -76,5 +83,5 @@ class OptionsEditBox(QtWidgets.QTableWidget):
                 elif type(self.properties['properties'][self.item(i, 0).text()]) == list:
                     self.settings[self.item(i, 0).text()] = self.cellWidget(i, 1).currentText()
             return self.settings
-        except:
+        except AttributeError:
             pass

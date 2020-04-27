@@ -9,5 +9,6 @@ defaults = {}
 
 
 def main(inp, settings):
+    print(settings)
     out = {0: inp[0] + inp[1]}
     return out

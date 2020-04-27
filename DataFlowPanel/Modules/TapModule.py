@@ -10,12 +10,14 @@ properties = {
 
 defaults = {'开关': '编码'}
 
+
 def main(inp, settings):
     if settings['开关'] == '编码':
         out = {0: TapEncode(inp[0])}
     else:
         out = {0: TapDecode(inp[0])}
     return out
+
 
 def TapEncode(text):
     table = {'A': 11, 'B': 12, 'C': 13, 'D': 14, 'E': 15,
@@ -33,6 +35,7 @@ def TapEncode(text):
     for i in text:
         output += str(table[i]) + ' '
     return output
+
 
 def TapDecode(text):
     retable = [['A', 'B', '(C/K)', 'D', 'E'],

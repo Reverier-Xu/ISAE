@@ -18,7 +18,7 @@ defaults = {
 
 
 def main(inp, settings):
-    if settings['eval'] == True:
+    if settings['eval'] is True:
         inps = eval(inp[0])
     else:
         inps = inp[0].encode()

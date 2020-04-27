@@ -17,9 +17,10 @@ defaults = {
     'eval': False
 }
 
+
 def main(inp, settings):
     inputs = inp[0]
-    if settings['eval'] == True:
+    if settings['eval'] is True:
         inputs = eval(inputs)
     else:
         inputs = inputs.encode()
@@ -28,7 +29,7 @@ def main(inp, settings):
     else:
         try:
             outputs = binascii.a2b_qp(inputs)
-        except:
+        except BaseException:
             error = traceback.format_exc()
             raise Exception(error)
     print(outputs)

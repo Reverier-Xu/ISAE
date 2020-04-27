@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 
 
 class Ui_Form(object):
@@ -21,21 +21,14 @@ class Ui_Form(object):
         self.FileListDock.setFeatures(
             QtWidgets.QDockWidget.DockWidgetFloatable | QtWidgets.QDockWidget.DockWidgetMovable)
         self.FileListDock.setObjectName("FileListDock")
-        self.dockWidgetContents = QtWidgets.QWidget()
+        self.dockWidgetContents = QtWidgets.QWidget(flags=QtCore.Qt.WindowFlags())
         self.dockWidgetContents.setObjectName("dockWidgetContents")
         self.FileListDock.setWidget(self.dockWidgetContents)
-        self.horizontalLayout.addWidget(self.FileListDock)
+        self.horizontalLayout.addWidget(self.FileListDock, alignment=QtCore.Qt.Alignment())
         self.PDFDock = QtWidgets.QDockWidget(Form)
         self.PDFDock.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable | QtWidgets.QDockWidget.DockWidgetMovable)
         self.PDFDock.setObjectName("PDFDock")
-        self.dockWidgetContents_2 = QtWidgets.QWidget()
+        self.dockWidgetContents_2 = QtWidgets.QWidget(flags=QtCore.Qt.WindowFlags())
         self.dockWidgetContents_2.setObjectName("dockWidgetContents_2")
         self.PDFDock.setWidget(self.dockWidgetContents_2)
-        self.horizontalLayout.addWidget(self.PDFDock)
-
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        self.horizontalLayout.addWidget(self.PDFDock, alignment=QtCore.Qt.Alignment())

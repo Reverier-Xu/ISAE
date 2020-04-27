@@ -14,10 +14,10 @@ def main(inp, settings):
     return out
 
 
-def Unicode2HexStr(Unicde_Str):
-    Hex_Str = ""
+def Unicode2HexStr(Unicode_Str):
+    hex_str = ""
 
-    for i in range(0, len(Unicde_Str)):
-        Hex_Str += (hex(ord(Unicde_Str[i])).replace('0x', '').zfill(4))
+    for i in range(0, len(Unicode_Str)):
+        hex_str += (hex(ord(Unicode_Str[i])).replace('0x', '').zfill(4))
 
-    return Hex_Str
+    return hex_str

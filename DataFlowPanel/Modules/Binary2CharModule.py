@@ -1,5 +1,3 @@
-import re
-
 properties = {
     'name': 'Binary To Char',
     'categories': '数据转换',
@@ -11,6 +9,7 @@ defaults = {}
 
 
 def main(inp, settings):
+    print(settings)
     out = {0: decode(inp[0])}
     return out
 

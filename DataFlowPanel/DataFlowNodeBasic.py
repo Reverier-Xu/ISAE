@@ -1,18 +1,16 @@
 import importlib
 import os
-from copy import copy
-
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from ui_Widgets.qtpynodeeditor import *
-from PyQt5 import QtCore
-import DataFlowPanel.Modules
-import pkgutil
-import sys
-from ui_Widgets import uni_Widget
-from DataFlowPanel.OptionEditBox import OptionsEditBox
 import traceback
+from copy import copy
+from typing import Optional, Any
+
+from PyQt5 import QtCore
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+from ui_Widgets import uni_Widget
+from ui_Widgets.qtpynodeeditor import *
 
 Modules = {}
 
@@ -246,16 +244,16 @@ class FileOutputModel(NodeDataModel):
         self._show.clicked.connect(self.SaveFile)
 
     def SaveFile(self):
-        OutputPath, filetype = QFileDialog.getSaveFileName(self._show,
-                                                           "保存文件",
-                                                           '',
-                                                           "All Files (*)")
-        if OutputPath == "":
+        output_path, file_type = QFileDialog.getSaveFileName(self._show,
+                                                             "保存文件",
+                                                             '',
+                                                             "All Files (*)")
+        if output_path == "":
             return
         string = self._node_data.string
         if type(string) == str:
             string = string.encode()
-        with open(OutputPath, 'wb') as out:
+        with open(output_path, 'wb') as out:
             out.write(string)
 
     def set_in_data(self, node_data, port):
@@ -311,6 +309,8 @@ class ImageShowModel(NodeDataModel):
         return False
 
     def set_in_data(self, node_data, port):
+        w = 0
+        h = 0
         self._node_data = node_data
         try:
             if (self._node_data and
@@ -361,8 +361,8 @@ class CryptoComputeModel(NodeDataModel):
     def embedded_widget(self):
         return self._statusLabel
 
-    def out_data(self, port: int) -> NodeData:
-        '''
+    def out_data(self, port: int) -> Optional[Any]:
+        """
         The output data as a result of this calculation
 
         Parameters
@@ -372,21 +372,23 @@ class CryptoComputeModel(NodeDataModel):
         Returns
         -------
         value : NodeData
-        '''
+        """
         try:
             return copy(self.outputs[port])
         except:
             return None
 
     def set_in_data(self, data: NodeData, port: Port):
-        '''
+        """
         New data at the input of the node
 
         Parameters
         ----------
         data : NodeData
         port_index : int
-        '''
+        :param data:
+        :param port:
+        """
         self.inputs[port.index] = copy(data)
         if self._check_inputs():
             try:
@@ -466,10 +468,10 @@ class CryptoFlowView(FlowView):
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
 
     def dropEvent(self, event: QDropEvent):
-        eventData = event.mimeData().text()
+        event_data = event.mimeData().text()
         try:
             node = self.scene.create_node(
-                self.scene._registry.create(eventData))
+                self.scene._registry.create(event_data))
             pos_view = self.mapToScene(event.pos())
             node.graphics_object.setPos(pos_view)
             self._scene.node_placed.emit(node)
@@ -487,9 +489,7 @@ class CryptoFlowView(FlowView):
             super().keyPressEvent(event)
 
     def delete_selected(self):
-        # Delete the selected connections first, ensuring that they won't be
-        # automatically deleted when selected nodes are deleted (deleting a node
-        # deletes some connections as well)
+
         for item in self._scene.selectedItems():
             if isinstance(item, ConnectionGraphicsObject):
                 self._scene.delete_connection(item.connection)
@@ -497,10 +497,6 @@ class CryptoFlowView(FlowView):
         if not self._scene.allow_node_deletion:
             return
 
-        # Delete the nodes; self will delete many of the connections.
-        # Selected connections were already deleted prior to self loop, otherwise
-        # qgraphicsitem_cast<NodeGraphicsObject*>(item) could be a use-after-free
-        # when a selected connection is deleted by deleting the node.
         for item in self._scene.selectedItems():
             if isinstance(item, NodeGraphicsObject):
                 try:
@@ -540,7 +536,7 @@ class DragList(QTreeWidget):
                 try:
                     item.parent().setHidden(False)
                 except Exception:
-                    pass
+                    traceback.print_exc()
             else:
                 item.setHidden(True)
             cursor = cursor.__iadd__(1)
@@ -563,10 +559,10 @@ class DragList(QTreeWidget):
 
         item = self.currentItem()
 
-        mimeData = QMimeData()
-        mimeData.setText(item.text(0))
+        mime_data = QMimeData()
+        mime_data.setText(item.text(0))
 
         drag = QDrag(self)
-        drag.setMimeData(mimeData)
+        drag.setMimeData(mime_data)
 
         drag.exec_(Qt.MoveAction)

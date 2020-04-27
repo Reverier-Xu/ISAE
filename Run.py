@@ -3,26 +3,24 @@
 import sys
 from time import sleep
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QCursor
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import QtCore, QtGui, QtWidgets
-import MainWindow
-import sys
-import time
+from PyQt5 import QtGui, QtWidgets
 from PyQt5.Qt import QPixmap
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+import MainWindow
 
 
-class MainWindow(QMainWindow, MainWindow.Ui_MainWindow):
+class rMainWindow(QMainWindow, MainWindow.Ui_MainWindow):
     def __init__(self, parent=None):
-        super(MainWindow, self).__init__(parent)
+        super(rMainWindow, self).__init__(parent)
         self.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('./Resources/icon.png'))
         self.m_flag = False
 
     def closeEvent(self, QCloseEvent):
         self.StatusThread.terminate()
-        super(MainWindow, self).closeEvent(QCloseEvent)
+        super(rMainWindow, self).closeEvent(QCloseEvent)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton and self.MaxFlag is False:
@@ -53,7 +51,7 @@ if __name__ == "__main__":
     splash.show()
     sleep(0.5)
     QtWidgets.qApp.processEvents()
-    Win = MainWindow()
+    Win = rMainWindow()
     Win.setWindowTitle('ICTFE')
     Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)
     Win.show()

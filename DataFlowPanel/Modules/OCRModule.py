@@ -1,8 +1,4 @@
-import glob
-from os import path
-import os
 from aip import AipOcr
-from PIL import Image
 
 properties = {
     'name': '百度-OCR',
@@ -10,8 +6,8 @@ properties = {
     'input': {0: '输入'},
     'output': {0: '输出'},
     'properties': {
-        'APP_ID' : str,
-        'API_KEY' : str,
+        'APP_ID': str,
+        'API_KEY': str,
         'SECRECT_KEY': str,
         '高精度': bool,
         '注': str
@@ -40,11 +36,11 @@ def main(inp, settings):
     if settings['高精度']:
         message = client.basicAccurate(img)  # 通用文字高精度识别，每天 800 次免费
     else:
-        message = client.basicGeneral(img)   # 通用文字识别，每天 50 000 次免费
+        message = client.basicGeneral(img)  # 通用文字识别，每天 50 000 次免费
     print("识别成功！")
 
     fo = ''
     # 输出文本内容
     for text in message.get('words_result'):
         fo += text.get('words')
-    return {0:fo}
+    return {0: fo}

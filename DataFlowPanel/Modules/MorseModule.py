@@ -17,8 +17,6 @@ defaults = {
 
 
 def main(inp, settings):
-    inputs = inp[0]
-
     if settings['开关'] == '编码':
         out = {0: utils.MorseEncode(inp[0], settings['分隔符'])}
     else:

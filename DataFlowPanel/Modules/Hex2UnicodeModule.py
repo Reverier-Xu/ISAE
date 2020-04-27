@@ -11,13 +11,14 @@ defaults = {}
 
 
 def main(inp, settings):
+    print(settings)
     out = {0: HexStr2Unicode(inp[0])}
     return out
 
 
 def HexStr2Unicode(Hex_Str):
-    Unicde_Str = ""
+    unicde_str = ""
     for i in range(0, len(Hex_Str) // 4):
         chr(int(Hex_Str[i * 4:i * 4 + 4], 16))
-        Unicde_Str += chr(int(Hex_Str[i * 4:i * 4 + 4], 16))
-    return Unicde_Str
+        unicde_str += chr(int(Hex_Str[i * 4:i * 4 + 4], 16))
+    return unicde_str

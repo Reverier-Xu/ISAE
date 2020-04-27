@@ -1,16 +1,15 @@
 import os
-
-from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets, QtWebEngine, QtWebEngineCore
-from PyQt5.QtGui import QKeySequence
-from PyQt5.QtWidgets import QShortcut
-from PyQt5 import Qt
-from PyQt5.QtWebEngineWidgets import QWebEngineSettings
 import platform
+
+from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets, Qt
+from PyQt5.QtGui import QKeySequence
+from PyQt5.QtWebEngineWidgets import QWebEngineSettings
+from PyQt5.QtWidgets import QShortcut
 
 
 class WikiPanel(QtWidgets.QWidget):
     def __init__(self):
-        super(WikiPanel, self).__init__()
+        super(WikiPanel, self).__init__(parent=None, flags=QtCore.Qt.WindowFlags())
         self.WikiBrowserPanel = WikiBrowserPanelWidget(self)
         self.WikiBrowserPanel.setObjectName('WikiBrowserPanel')
         self.WikiBrowserPanel.setStyleSheet('background-color: transparent;')
@@ -37,8 +36,8 @@ class WikiBrowserPanelWidget(QtWidgets.QWidget):
         self.browser.show()
         self.browser.setZoomFactor(1.1)
         self.setLayout(self.Layouts)
-        osinfo = platform.system()
-        if osinfo == 'Windows':
+        ogrinfo = platform.system()
+        if ogrinfo == 'Windows':
             self.browser.settings().setFontFamily(QWebEngineSettings.StandardFont, '微软雅黑')
             self.browser.settings().setFontFamily(QWebEngineSettings.FixedFont, '微软雅黑')
             self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')

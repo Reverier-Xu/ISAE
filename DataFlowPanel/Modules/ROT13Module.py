@@ -13,5 +13,6 @@ defaults = {
 
 
 def main(inp, settings):
+    print(settings)
     out = {0: ROT13(inp[0])}
     return out

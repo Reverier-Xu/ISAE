@@ -1,22 +1,18 @@
-import datetime
 import os
+import platform
+import re
 
 from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineDownloadItem, QWebEngineSettings
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
+from PyQt5.QtWidgets import *
+
 from ui_Widgets import uni_Widget
-import sys
-import socket
-import re
-import platform
-import requests
-import sys
 
 
 class BrowserPanel(QWidget):
     def __init__(self, parent=None):
-        super(BrowserPanel, self).__init__(parent)
+        super(BrowserPanel, self).__init__(parent, flags=Qt.WindowFlags())
         self.MainBrowser = BrowserWindow(self)
         self.Layouts = QHBoxLayout(self)
         self.Layouts.addWidget(self.MainBrowser)

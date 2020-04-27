@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QCursor
 
 ButtonStyleNormal = "QPushButton{" \
                     "background-color:rgba(30, 30, 30, 100%);" \
@@ -272,21 +271,21 @@ class PropertiesEditWidget(QtWidgets.QListWidget):
 
 class BoolEditItem(QtWidgets.QWidget):
     def __init__(self, parent=None, name: str = ''):
-        super().__init__(parent=parent)
+        super().__init__(parent=parent, flags=QtCore.Qt.WindowFlags())
         layout = QtWidgets.QVBoxLayout()
         check = ICTFECheckBox()
         check.setText(name)
-        layout.addWidget(check)
+        layout.addWidget(check, alignment=Qt.Alignment())
         self.setLayout(layout)
 
 
 class LineEditItem(QtWidgets.QWidget):
     def __init__(self, parent=None, name: str = ''):
-        super().__init__(parent=parent)
+        super().__init__(parent=parent, flags=QtCore.Qt.WindowFlags())
         layout = QtWidgets.QHBoxLayout()
         label = ICTFELabel()
         label.setText(name)
-        layout.addWidget(label)
+        layout.addWidget(label, alignment=Qt.Alignment())
         editbox = ICTFELineBox()
-        layout.addWidget(editbox)
+        layout.addWidget(editbox, alignment=Qt.Alignment())
         self.setLayout(layout)

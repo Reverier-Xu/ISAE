@@ -9,20 +9,31 @@ import subprocess
 from ui_Widgets.ErrorWin import errorInfo
 
 
+def OpenFile(file):
+    try:
+        subprocess.Popen(file)
+    except:
+        sysstr = platform.system()
+        if sysstr == 'Windows':
+            os.system('start \'' + file + '\'')
+        elif sysstr == 'Linux':
+            os.system('xdg-open \'' + file + '\'')
+
+
 class ui_DIYPanel(QtWidgets.QWidget):
     def __init__(self, parent=None):
-        super(ui_DIYPanel, self).__init__(parent)
+        super(ui_DIYPanel, self).__init__(parent, flags=Qt.WindowFlags())
         self.verticalLayout = QtWidgets.QVBoxLayout(self)
 
         self.verticalLayout.setObjectName("verticalLayout")
         self.TabAreaScroll = uni_Widget.ICTFEScrollArea(self)
-        sizePolicy = QtWidgets.QSizePolicy(
+        size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(
             self.TabAreaScroll.sizePolicy().hasHeightForWidth())
-        self.TabAreaScroll.setSizePolicy(sizePolicy)
+        self.TabAreaScroll.setSizePolicy(size_policy)
         self.TabAreaScroll.setMinimumSize(QtCore.QSize(1200, 130))
         self.TabAreaScroll.setWidgetResizable(True)
         self.TabAreaScroll.setObjectName("TabAreaScroll")
@@ -34,21 +45,21 @@ class ui_DIYPanel(QtWidgets.QWidget):
 
         self.TabAreaPanel.setStyleSheet('background-color: transparent')
         self.TabAreaScroll.setWidget(self.TabAreaPanel)
-        self.verticalLayout.addWidget(self.TabAreaScroll)
+        self.verticalLayout.addWidget(self.TabAreaScroll, alignment=Qt.Alignment())
 
-        self.SplitterWidget = QtWidgets.QWidget(self)
+        self.SplitterWidget = QtWidgets.QWidget(self, flags=Qt.WindowFlags())
         self.SplitterWidget.setMaximumHeight(1)
         self.SplitterWidget.setMinimumHeight(1)
-        self.SplitterWidget.setStyleSheet("QWidget{\n"
-                                           "background-color: grey;\n"
-                                           "border: 1px grey;\n"
-                                           "border-style: solid;\n"
-                                           "}")
-        self.verticalLayout.addWidget(self.SplitterWidget)
+        self.SplitterWidget.setStyleSheet("QWidget{"
+                                          "background-color: grey;"
+                                          "border: 1px grey;"
+                                          "border-style: solid;"
+                                          "}")
+        self.verticalLayout.addWidget(self.SplitterWidget, alignment=Qt.Alignment())
         # 下层
         self.TabStack = QtWidgets.QStackedWidget(self)
         self.TabStack.setObjectName("TabStack")
-        self.verticalLayout.addWidget(self.TabStack)
+        self.verticalLayout.addWidget(self.TabStack, alignment=Qt.Alignment())
 
         # 统一管理
         self.TabButtons = self.TabAreaPanel.Buttons  # 通过List进行有序化管理
@@ -98,7 +109,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         cu.execute('select FILEPATH from \'' + panel.objectName() +
                    '\' where BTNNAME=\'' + text + '\'')
         file = cu.fetchall()[0][0]
-        new_name, ok = QtWidgets.QInputDialog.getText(self, '更改名称', '名称')
+        new_name, ok = QtWidgets.QInputDialog.getText(self, '更改名称', '名称', flags=Qt.WindowFlags())
         if ok:
             button.setText(new_name)
             cu.execute(
@@ -116,9 +127,9 @@ class ui_DIYPanel(QtWidgets.QWidget):
         for i in tab_name:
             panel = self.AddTabPanelFile(i)
             cu.execute('select * from \'' + i + '\'')
-            btnList = cu.fetchall()
+            btn_list = cu.fetchall()
             conn.commit()
-            for j in btnList:
+            for j in btn_list:
                 self.AddTabPanelButtonFile(panel, j[1], j[0])
         conn.close()
 
@@ -181,18 +192,18 @@ class ui_DIYPanel(QtWidgets.QWidget):
                 errorInfo('添加失败!\n请检查是否有重复项!')
             conn.close()
             button = panel.addButton(name)
-            button.clicked.connect(lambda: self.OpenFile(file))
+            button.clicked.connect(lambda: OpenFile(file))
             button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
             button.EditNameSignal.connect(
                 lambda: self.EditButtonName(panel, button))
 
     def AddTabPanelButtonDrop(self, path, panel):
-        osinfo = platform.system()
-        if osinfo == 'Windows':
-            splitChr = '\\'
+        ogrinfo = platform.system()
+        if ogrinfo == 'Windows':
+            split_chr = '\\'
         else:
-            splitChr = '/'
-        name = path.split(splitChr)[-1]
+            split_chr = '/'
+        name = path.split(split_chr)[-1]
         self.AddTabPanelButtonFile(panel, path, name)
         conn = sqlite3.connect('./Resources/DIY.sqlite')
         cu = conn.cursor()
@@ -201,32 +212,22 @@ class ui_DIYPanel(QtWidgets.QWidget):
                 'INSERT INTO \'' + panel.objectName() + '\' (BTNNAME, FILEPATH) VALUES (\'' + name + '\',\'' + path + '\')')
             conn.commit()
         except:
-            errorInfo('添加失败!\n请检查是否有重复项!')
+            errorInfo(self, '添加失败!\n请检查是否有重复项!')
         conn.close()
 
     def AddTabPanelButtonFile(self, panel, file, name):
         button = panel.addButton(name)
-        button.clicked.connect(lambda: self.OpenFile(file))
+        button.clicked.connect(lambda: OpenFile(file))
         button.Deleted.connect(lambda: self.DeleteTabPanelButton(panel))
         button.EditNameSignal.connect(
             lambda: self.EditButtonName(panel, button))
 
-    def OpenFile(self, file):
-        try:
-            subprocess.Popen(file)
-        except:
-            sysstr = platform.system()
-            if sysstr == 'Windows':
-                os.system('start \'' + file + '\'')
-            elif sysstr == 'Linux':
-                os.system('xdg-open \'' + file + '\'')
-
     def DeleteTabPanelButton(self, panel):
         end_one = len(panel.Buttons) - 1
-        aimBtn = ''
+        aim_btn = ''
         for i in range(0, len(panel.Buttons) - 1, 1):
             if panel.Buttons[i].isEnabled() is False:
-                aimBtn = panel.Buttons[i].text()
+                aim_btn = panel.Buttons[i].text()
                 panel.Buttons[i].deleteLater()
                 panel.Buttons.remove(panel.Buttons[i])
             animation = QtCore.QPropertyAnimation(self)
@@ -241,7 +242,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             animation.start()
         try:
             if panel.Buttons[end_one].isEnabled() is False:
-                aimBtn = panel.Buttons[end_one].text()
+                aim_btn = panel.Buttons[end_one].text()
                 panel.Buttons[end_one].deleteLater()
                 panel.Buttons.remove(panel.Buttons[end_one])
         except:
@@ -257,11 +258,11 @@ class ui_DIYPanel(QtWidgets.QWidget):
         animation.setEndValue(QtCore.QPoint(
             panel.GrimBox[w], panel.GrimBox[r]))
         animation.start()
-        if aimBtn != '':
+        if aim_btn != '':
             conn = sqlite3.connect('./Resources/DIY.sqlite')
             cu = conn.cursor()
             cu.execute('DELETE from \'' + panel.objectName() +
-                       '\' where BTNNAME=\'' + aimBtn + '\';')
+                       '\' where BTNNAME=\'' + aim_btn + '\';')
             conn.commit()
             conn.close()
 
@@ -311,7 +312,7 @@ class ResizablePanel(QtWidgets.QWidget):
     DropFileSignal = QtCore.pyqtSignal(str)
 
     def __init__(self, parent=None):
-        super(ResizablePanel, self).__init__(parent)
+        super(ResizablePanel, self).__init__(parent, flags=Qt.WindowFlags())
         self.setAcceptDrops(True)
         self.r = 0
         self.TheAddButton = uni_Widget.ICTFEButton(self)

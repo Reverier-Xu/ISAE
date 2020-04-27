@@ -15,6 +15,7 @@ defaults = {
 
 
 def main(inp, settings):
+    print(settings)
     out = {0: char2hex(inp[0]).decode()}
     return out
 

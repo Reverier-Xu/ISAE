@@ -1,6 +1,7 @@
 import os
 
 from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut
 import platform
@@ -9,12 +10,12 @@ from PyQt5.QtWebEngineWidgets import QWebEngineSettings
 
 class KiwixPanel(QtWidgets.QWidget):
     def __init__(self):
-        super(KiwixPanel, self).__init__()
+        super(KiwixPanel, self).__init__(flags=Qt.WindowFlags())
         self.KiwixBrowserPanel = KiwixBrowserPanelWidget(self)
         self.KiwixBrowserPanel.setObjectName('KiwixBrowserPanel')
         self.KiwixBrowserPanel.setStyleSheet('background-color: transparent;')
         self.Layouts = QtWidgets.QHBoxLayout(self)
-        self.Layouts.addWidget(self.KiwixBrowserPanel)
+        self.Layouts.addWidget(self.KiwixBrowserPanel, alignment=Qt.Alignment())
         self.Layouts.setSpacing(0)
         self.Layouts.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.Layouts)
@@ -22,14 +23,14 @@ class KiwixPanel(QtWidgets.QWidget):
 
 class KiwixBrowserPanelWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
-        super(KiwixBrowserPanelWidget, self).__init__(parent)
+        super(KiwixBrowserPanelWidget, self).__init__(parent, flags=Qt.WindowFlags())
         self.browser = QtWebEngineWidgets.QWebEngineView(self)
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         self.browser.load(QtCore.QUrl(
             'file:///' + pwd + '/kiwix/index.html'))
         self.Layouts = QtWidgets.QHBoxLayout(self)
-        self.Layouts.addWidget(self.browser)
+        self.Layouts.addWidget(self.browser, alignment=Qt.Alignment())
         self.Layouts.setSpacing(0)
         self.Layouts.setContentsMargins(0, 0, 0, 0)
         self.browser.urlChanged.connect(lambda link: self.SuitLocalKiwix(link))

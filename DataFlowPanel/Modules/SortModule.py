@@ -30,7 +30,7 @@ def main(inp, settings):
                 for i in range(len(data)):
                     try:
                         data[i] = int(data[i])
-                    except:
+                    except BaseException:
                         data.remove(data[i])
             data = sorted(data, reverse=settings['从大到小'])
             for i in range(len(data)):
@@ -42,12 +42,12 @@ def main(inp, settings):
             for i in range(len(data)):
                 try:
                     data[i] = int(data[i])
-                except:
+                except BaseException:
                     data.remove(data[i])
         data = sorted(data, reverse=settings['从大到小'])
         for i in range(len(data)):
             data[i] = str(data[i])
         data = settings['分割符'].join(data)
         return {0: data}
-    except:
+    except BaseException:
         traceback.print_exc()

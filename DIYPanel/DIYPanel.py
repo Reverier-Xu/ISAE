@@ -1,5 +1,4 @@
 from DIYPanel.ui_DIYPanel import ui_DIYPanel
-from PyQt5 import QtWidgets, QtCore
 
 
 class DIYPanel(ui_DIYPanel):
