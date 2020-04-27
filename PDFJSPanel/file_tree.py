@@ -36,8 +36,8 @@ class Tree(QMainWindow, ui_PDFFileWindow):
         self.tree.setFont(font)
         self.tree.setStyleSheet("QTreeView::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
                                 "QTreeView::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                "QTreeView{color: lightgrey; background-color: rgb(30, 30, 30)}"
-                                "QHeaderView::section{color: lightgrey; background-color: rgb(30, 30, 30);}")
+                                "QTreeView{color: lightgrey; background-color: rgb(20, 20, 20)}"
+                                "QHeaderView::section{color: lightgrey; background-color: rgb(20, 20, 20);}")
         self.tree.setColumnCount(1)
         self.tree.setColumnWidth(0, 50)
         self.tree.setHeaderLabels(["书籍列表"])
@@ -72,8 +72,8 @@ class Tree(QMainWindow, ui_PDFFileWindow):
         self.tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.tree.setStyleSheet("QTreeView::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
                                 "QTreeView::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                "QTreeView{color: lightgrey; background-color: rgb(30, 30, 30)}"
-                                "QHeaderView::section{color: lightgrey; background-color: rgb(30, 30, 30);}")
+                                "QTreeView{color: lightgrey; background-color: rgb(20, 20, 20)}"
+                                "QHeaderView::section{color: lightgrey; background-color: rgb(20, 20, 20);}")
         self.tree.doubleClicked.connect(lambda x: self.EmitFilePath(self.tree.itemFromIndex(x)))
 
         dirs = file_name(path)

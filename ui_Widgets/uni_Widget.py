@@ -2,18 +2,18 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt
 
 ButtonStyleNormal = "QPushButton{" \
-                    "background-color:rgba(30, 30, 30, 100%);" \
+                    "background-color:rgb(20, 20, 20);" \
                     "color: white;" \
                     "border-radius: 0px;" \
                     "border: 0px groove gray;" \
                     "border-style: outset;" \
                     "}" \
                     "QPushButton:hover{" \
-                    "background-color: rgba(50, 50, 50, 100%);" \
+                    "background-color: rgba(30, 30, 30, 100%);" \
                     "color: white;" \
                     "}" \
                     "QPushButton:pressed{" \
-                    "background-color: rgb(80, 80, 80);" \
+                    "background-color: rgb(40, 40, 40);" \
                     "border-style: inset; " \
                     "}"
 
@@ -149,18 +149,18 @@ class ICTFEButton(QtWidgets.QPushButton):
         self.setFont(font)
         self.setStyleSheet(
             "QPushButton{"
-            "background-color:rgba(30, 30, 30, 100%);"
+            "background-color:rgb(20, 20, 20);"
             "color: white;"
             "border-radius: 0px;"
             "border: 0px groove gray;"
             "border-style: outset;"
             "}"
             "QPushButton:hover{"
-            "background-color: rgba(50, 50, 50, 100%);"
+            "background-color: rgba(30, 30, 40, 100%);"
             "color: white;"
             "}"
             "QPushButton:pressed{"
-            "background-color: rgb(80, 80, 80);"
+            "background-color: rgb(40, 40, 40);"
             "border-style: inset; "
             "}")
 
@@ -230,7 +230,7 @@ class ICTFEList(QtWidgets.QListWidget):
         super(ICTFEList, self).__init__(parent)
         self.setStyleSheet(
             'QListWidget{'
-            'background-color: rgb(30, 30, 30);'
+            'background-color: rgb(20, 20, 20);'
             'border: 1px solid grey;'
             'color: white;'
             '}')
@@ -253,12 +253,12 @@ class ICTFEScrollArea(QtWidgets.QScrollArea):
         self.setStyleSheet(
             'QScrollArea{'
             'border: none;'
-            'background-color:rgb(30, 30, 30);'
+            'background-color:rgb(20, 20, 20);'
             '}')
         self.viewport().setStyleSheet(
             'QScrollArea{'
             'border: none;'
-            'background-color:rgb(30, 30, 30);'
+            'background-color:rgb(20, 20, 20);'
             '}')
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

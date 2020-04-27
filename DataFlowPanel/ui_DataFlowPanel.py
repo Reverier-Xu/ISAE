@@ -19,7 +19,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsAreaPanel = QtWidgets.QWidget(flags=Qt.WindowFlags())
         self.ToolsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 698))
         self.ToolsAreaPanel.setObjectName("ToolsAreaPanel")
-        self.ToolsAreaPanel.setStyleSheet('QWidget#ToolsAreaPanel{background-color: #1e1e1e;}')
+        self.ToolsAreaPanel.setStyleSheet('QWidget#ToolsAreaPanel{background-color: rgb(20, 20, 20);}')
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.ToolsAreaPanel)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.ToolsSearchBox = uni_Widget.ICTFELineBox(self.ToolsAreaPanel)
@@ -35,7 +35,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsList = DragList(self.ToolsAreaPanel)
         self.ToolsList.setStyleSheet("QTreeWidget::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
                                      "QTreeWidget::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                     "QTreeWidget{color: lightgrey; background-color: rgb(30, 30, 30)}")
+                                     "QTreeWidget{color: lightgrey; background-color: rgb(20, 20, 20)}")
         self.ToolsList.setObjectName("ToolsList")
         self.verticalLayout_5.addWidget(self.ToolsList, alignment=Qt.Alignment())
         self.ToolsArea.setWidget(self.ToolsAreaPanel)
@@ -61,7 +61,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.OptionsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 348))
         self.OptionsAreaPanel.setObjectName("OptionsAreaPanel")
         self.OptionsAreaPanel.setStyleSheet('QWidget#OptionsAreaPanel{'
-                                            'background-color: rgb(30, 30, 30);'
+                                            'background-color: rgb(20, 20, 20);'
                                             'border: 0px solid rgb(40, 40, 40);'
                                             'color: white;'
                                             '}')
