@@ -30,8 +30,8 @@ def get_modules(package="."):
     return modules
 
 
-for module in get_modules('DataFlowPanel/Modules'):
-    module = importlib.import_module(module, 'DataFlowPanel.Modules')
+for module in get_modules('Modules/DataFlow'):
+    module = importlib.import_module(module, 'Modules.DataFlow')
     try:
         Modules[module.properties['name']] = module
     except:
