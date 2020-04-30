@@ -25,7 +25,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsSearchBox = uni_Widget.ICTFELineBox(self.ToolsAreaPanel)
         self.ToolsSearchBox.setStyleSheet('color: white;'
                                           'border: 1px solid gray;'
-                                          'border-radius: 5px;'
+                                          'border-radius: 0px;'
                                           'padding: 5px;'
                                           'background: rgb(20, 20, 20);'
                                           'selection-background-color: blue;')
@@ -35,7 +35,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.ToolsList = DragList(self.ToolsAreaPanel)
         self.ToolsList.setStyleSheet("QTreeWidget::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
                                      "QTreeWidget::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                     "QTreeWidget{color: lightgrey; background-color: rgb(20, 20, 20)}")
+                                     "QTreeWidget{border: 1px solid grey; color: lightgrey; background-color: rgb(20, 20, 20)}")
         self.ToolsList.setObjectName("ToolsList")
         self.verticalLayout_5.addWidget(self.ToolsList, alignment=Qt.Alignment())
         self.ToolsArea.setWidget(self.ToolsAreaPanel)
@@ -47,7 +47,7 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.NodeEditorLayout.setSpacing(0)
         scene = FlowScene()
         self.CryptoToolNodeEditor = CryptoFlowView(scene)
-        self.CryptoToolNodeEditor.setMinimumWidth(1000)
+        self.CryptoToolNodeEditor.setStyleSheet('#CryptoToolNodeEditor{border: 0px solid grey;}')
         self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor, alignment=Qt.Alignment())
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor, alignment=Qt.Alignment())
@@ -69,38 +69,17 @@ class ui_CryptoPanel(QtWidgets.QWidget):
         self.verticalLayout.setObjectName("verticalLayout")
         self.OptionsTips = uni_Widget.ICTFELabel(self.OptionsAreaPanel)
         self.OptionsTips.setObjectName("OptionsTips")
-        self.SaveOptionsButton = uni_Widget.ICTFEButton(self.OptionsAreaPanel)
-        self.SaveOptionsButton.setObjectName('SaveOptionsButton')
-        self.SaveOptionsButton.setText('保存')
-        self.OptionTipsLayout = QtWidgets.QHBoxLayout(self.OptionsAreaPanel)
+        self.OptionTipsLayout = QtWidgets.QHBoxLayout()
         self.OptionTipsLayout.setContentsMargins(0, 0, 0, 0)
         self.OptionTipsLayout.addWidget(self.OptionsTips, alignment=Qt.Alignment())
-        self.OptionTipsLayout.addWidget(self.SaveOptionsButton, alignment=Qt.Alignment())
         self.verticalLayout.addLayout(self.OptionTipsLayout)
         self.OptionsBox = OptionsEditBox()
         self.OptionsBox.setObjectName("OptionsBox")
         self.verticalLayout.addWidget(self.OptionsBox, alignment=Qt.Alignment())
         self.OptionsArea.setWidget(self.OptionsAreaPanel)
-        self.FileTempStackArea = uni_Widget.ICTFEScrollArea(self.FileAndOptionsLayout)
-        self.FileTempStackArea.setWidgetResizable(True)
-        self.FileTempStackArea.setObjectName("FileTempStackArea")
-        self.FileTempStackAreaPanel = QtWidgets.QWidget(flags=Qt.WindowFlags())
-        self.FileTempStackAreaPanel.setStyleSheet('background-color: transparent; color: white;')
-        self.FileTempStackAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 347))
-        self.FileTempStackAreaPanel.setObjectName("FileTempStackAreaPanel")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.FileTempStackAreaPanel)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.FileTempStackTips = uni_Widget.ICTFELabel(self.FileTempStackAreaPanel)
-        self.FileTempStackTips.setObjectName("FileTempStackTips")
-        self.verticalLayout_2.addWidget(self.FileTempStackTips, alignment=Qt.Alignment())
-        self.FileTempStack = FileStack.FileStack(self.FileTempStackAreaPanel)
-        self.FileTempStack.setObjectName("FileTempStack")
-        self.verticalLayout_2.addWidget(self.FileTempStack, alignment=Qt.Alignment())
-        self.FileTempStackArea.setWidget(self.FileTempStackAreaPanel)
         self.horizontalLayout_2.addWidget(self.CryptoMainSplitter, alignment=Qt.Alignment())
 
         self.reTranslateUi()
 
     def reTranslateUi(self):
         self.OptionsTips.setText("节点选项")
-        self.FileTempStackTips.setText("暂存池")

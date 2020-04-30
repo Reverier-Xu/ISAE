@@ -20,9 +20,11 @@ from DataFlowPanel import DataFlowPanel
 from kiwix.KiwixPanel import KiwixPanel
 import psutil
 import time
+import traceback
 
 
 class Ui_MainWindow(object):
+    currentDock = None
     def setupUi(self, MainWindow):
         QtGui.QFontDatabase.addApplicationFont("./Resources/wqy-microhei.ttc")
         QtGui.QFontDatabase.addApplicationFont('./Resources/fira-code.ttf')
@@ -46,6 +48,9 @@ class Ui_MainWindow(object):
         self.verticalLayout.setContentsMargins(1, 1, 1, 1)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.TitleWidget = QtWidgets.QWidget()
+        self.TitleWidget.setObjectName('TitleWidget')
+        self.TitleWidget.setStyleSheet('#TitleWidget{background-color: rgb(40, 40, 40)}')
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -67,10 +72,12 @@ class Ui_MainWindow(object):
                                       'border-radius: 16px;'
                                       "}")
         self.horizontalLayout.addWidget(self.TitleLabel, alignment=QtCore.Qt.Alignment())
+        '''
         self.TabLayout = QtWidgets.QHBoxLayout()
         self.TabLayout.setContentsMargins(0, 0, 0, 0)
         self.TabLayout.setObjectName("TabLayout")
         self.horizontalLayout.addLayout(self.TabLayout)
+        '''
         spacer_item = QtWidgets.QSpacerItem(
             1088, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacer_item)
@@ -88,14 +95,17 @@ class Ui_MainWindow(object):
         self.MiniButton.setBaseSize(QtCore.QSize(120, 45))
         self.MiniButton.setStyleSheet("QPushButton#MiniButton{\n"
                                       "            image:url(./Resources/mini);\n"
+                                      "            background-color: transparent;\n"
                                       "            border:none;\n"
                                       "            }\n"
                                       "            QPushButton#MiniButton:hover{\n"
-                                      "            image:url(./Resources/mini1);\n"
+                                      "            image:url(./Resources/mini);\n"
+                                      "            background-color: rgb(30, 30, 30);\n"
                                       "            border:none;\n"
                                       "            }\n"
                                       "            QPushButton#MiniButton:pressed{\n"
-                                      "            image:url(./Resources/mini2);\n"
+                                      "            image:url(./Resources/mini);\n"
+                                      "            background-color: rgb(50, 50, 50);\n"
                                       "            border:none;\n"
                                       "            }")
         self.MiniButton.setText("")
@@ -116,13 +126,16 @@ class Ui_MainWindow(object):
         self.MaxButton.setStyleSheet("QPushButton#MaxButton{\n"
                                      "            image:url(./Resources/max);\n"
                                      "            border:none;\n"
+                                     "            background-color: transparent;\n"
                                      "            }\n"
                                      "            QPushButton#MaxButton:hover{\n"
-                                     "            image:url(./Resources/max1);\n"
+                                     "            image:url(./Resources/max);\n"
+                                     "            background-color: rgb(30, 30, 30);\n"
                                      "            border:none;\n"
                                      "            }\n"
                                      "            QPushButton#MaxButton:pressed{\n"
-                                     "            image:url(./Resources/max2);\n"
+                                     "            image:url(./Resources/max);\n"
+                                     "            background-color: rgb(50, 50, 50);\n"
                                      "            border:none;\n"
                                      "            }")
         self.MaxButton.setText("")
@@ -141,35 +154,47 @@ class Ui_MainWindow(object):
         self.CloseButton.setMaximumSize(QtCore.QSize(54, 32))
         self.CloseButton.setStyleSheet("QPushButton#CloseButton{\n"
                                        "            image:url(./Resources/close);\n"
+                                       "            background-color: transparent;\n"
                                        "            border:none;\n"
                                        "            }\n"
                                        "            QPushButton#CloseButton:hover{\n"
-                                       "            image:url(./Resources/close1);\n"
+                                       "            image:url(./Resources/close);\n"
+                                       "            background-color: rgba(255, 50, 50, 80%);\n"
                                        "            border:none;\n"
                                        "            }\n"
                                        "            QPushButton#CloseButton:pressed{\n"
-                                       "            image:url(./Resources/close2);\n"
+                                       "            image:url(./Resources/close);\n"
+                                       "            background-color: rgba(255, 100, 100, 80%);\n"
                                        "            border:none;\n"
                                        "            }")
         self.CloseButton.setText("")
         self.CloseButton.setFlat(True)
         self.CloseButton.setObjectName("CloseButton")
         self.horizontalLayout.addWidget(self.CloseButton, alignment=QtCore.Qt.Alignment())
-        self.verticalLayout.addLayout(self.horizontalLayout)
-        self.ReverseButton = uni_Widget.ICTFEButton(self.centralWidget)
+        self.TitleWidget.setLayout(self.horizontalLayout)
+        self.verticalLayout.addWidget(self.TitleWidget)
+        self.ButtonDock = QtWidgets.QWidget(self.centralWidget)
+        self.ButtonDock.setObjectName('ButtonDock')
+        self.ButtonDockLayout = QtWidgets.QVBoxLayout(self.ButtonDock)
+        self.ButtonDockLayout.setObjectName('ButtonDockLayout')
+
+        self.BinaryButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(
-            self.ReverseButton.sizePolicy().hasHeightForWidth())
-        self.ReverseButton.setSizePolicy(size_policy)
-        self.ReverseButton.setObjectName("ReverseButton")
-        self.ReverseButton.setMaximumHeight(32)
+            self.BinaryButton.sizePolicy().hasHeightForWidth())
+        self.BinaryButton.setSizePolicy(size_policy)
+        self.BinaryButton.setObjectName("BinaryButton")
+        self.BinaryButton.setMinimumHeight(64)
+        self.BinaryButton.setMaximumHeight(64)
+        self.BinaryButton.setMinimumWidth(64)
+        self.BinaryButton.setMaximumWidth(64)
+        self.BinaryButton.setIconSize(QtCore.QSize(48, 48))
+        self.BinaryButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/binary.png')))
+        self.ButtonDockLayout.addWidget(self.BinaryButton)
 
-        self.TabLayout.setSpacing(0)
-
-        self.TabLayout.addWidget(self.ReverseButton, alignment=QtCore.Qt.Alignment())
         self.WebButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -179,41 +204,65 @@ class Ui_MainWindow(object):
             self.WebButton.sizePolicy().hasHeightForWidth())
         self.WebButton.setSizePolicy(size_policy)
         self.WebButton.setObjectName("WebButton")
-        self.WebButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.WebButton, alignment=QtCore.Qt.Alignment())
-        self.CryptoButton = uni_Widget.ICTFEButton(self.centralWidget)
+        self.WebButton.setMinimumHeight(64)
+        self.WebButton.setMaximumHeight(64)
+        self.WebButton.setMinimumWidth(64)
+        self.WebButton.setMaximumWidth(64)
+        self.WebButton.setIconSize(QtCore.QSize(48, 48))
+        self.WebButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/web.png')))
+        self.ButtonDockLayout.addWidget(self.WebButton)
+
+        self.DataFlowButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(
-            self.CryptoButton.sizePolicy().hasHeightForWidth())
-        self.CryptoButton.setSizePolicy(size_policy)
-        self.CryptoButton.setObjectName("CryptoButton")
-        self.CryptoButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.CryptoButton, alignment=QtCore.Qt.Alignment())
-        self.MiscButton = uni_Widget.ICTFEButton(self.centralWidget)
+            self.DataFlowButton.sizePolicy().hasHeightForWidth())
+        self.DataFlowButton.setSizePolicy(size_policy)
+        self.DataFlowButton.setObjectName("DataFlowButton")
+        self.DataFlowButton.setMinimumHeight(64)
+        self.DataFlowButton.setMaximumHeight(64)
+        self.DataFlowButton.setMinimumWidth(64)
+        self.DataFlowButton.setMaximumWidth(64)
+        self.DataFlowButton.setIconSize(QtCore.QSize(48, 48))
+        self.DataFlowButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/dataflow.png')))
+        self.ButtonDockLayout.addWidget(self.DataFlowButton)
+
+        self.ToolsButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(
-            self.MiscButton.sizePolicy().hasHeightForWidth())
-        self.MiscButton.setSizePolicy(size_policy)
-        self.MiscButton.setObjectName("MiscButton")
-        self.MiscButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.MiscButton, alignment=QtCore.Qt.Alignment())
-        self.TerminalButton = uni_Widget.ICTFEButton(self.centralWidget)
+            self.ToolsButton.sizePolicy().hasHeightForWidth())
+        self.ToolsButton.setSizePolicy(size_policy)
+        self.ToolsButton.setObjectName("ToolsButton")
+        self.ToolsButton.setMinimumHeight(64)
+        self.ToolsButton.setMaximumHeight(64)
+        self.ToolsButton.setMinimumWidth(64)
+        self.ToolsButton.setMaximumWidth(64)
+        self.ToolsButton.setIconSize(QtCore.QSize(48, 48))
+        self.ToolsButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/tools.png')))
+        self.ButtonDockLayout.addWidget(self.ToolsButton)
+
+        self.CyberChefButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(
-            self.TerminalButton.sizePolicy().hasHeightForWidth())
-        self.TerminalButton.setSizePolicy(size_policy)
-        self.TerminalButton.setObjectName("TerminalButton")
-        self.TerminalButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.TerminalButton, alignment=QtCore.Qt.Alignment())
+            self.CyberChefButton.sizePolicy().hasHeightForWidth())
+        self.CyberChefButton.setSizePolicy(size_policy)
+        self.CyberChefButton.setObjectName("CyberChefButton")
+        self.CyberChefButton.setMinimumHeight(64)
+        self.CyberChefButton.setMaximumHeight(64)
+        self.CyberChefButton.setMinimumWidth(64)
+        self.CyberChefButton.setMaximumWidth(64)
+        self.CyberChefButton.setIconSize(QtCore.QSize(48, 48))
+        self.CyberChefButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/cyberchef.png')))
+        self.ButtonDockLayout.addWidget(self.CyberChefButton)
+
         self.WikiButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -222,9 +271,15 @@ class Ui_MainWindow(object):
         size_policy.setHeightForWidth(
             self.WikiButton.sizePolicy().hasHeightForWidth())
         self.WikiButton.setSizePolicy(size_policy)
-        self.WikiButton.setMaximumHeight(32)
         self.WikiButton.setObjectName("WikiButton")
-        self.TabLayout.addWidget(self.WikiButton, alignment=QtCore.Qt.Alignment())
+        self.WikiButton.setMinimumHeight(64)
+        self.WikiButton.setMaximumHeight(64)
+        self.WikiButton.setMinimumWidth(64)
+        self.WikiButton.setMaximumWidth(64)
+        self.WikiButton.setIconSize(QtCore.QSize(48, 48))
+        self.WikiButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/wiki.png')))
+        self.ButtonDockLayout.addWidget(self.WikiButton)
+
         self.BrowserButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -234,8 +289,14 @@ class Ui_MainWindow(object):
             self.BrowserButton.sizePolicy().hasHeightForWidth())
         self.BrowserButton.setSizePolicy(size_policy)
         self.BrowserButton.setObjectName("BrowserButton")
-        self.BrowserButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.BrowserButton, alignment=QtCore.Qt.Alignment())
+        self.BrowserButton.setMinimumHeight(64)
+        self.BrowserButton.setMaximumHeight(64)
+        self.BrowserButton.setMinimumWidth(64)
+        self.BrowserButton.setMaximumWidth(64)
+        self.BrowserButton.setIconSize(QtCore.QSize(48, 48))
+        self.BrowserButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/browser.png')))
+        self.ButtonDockLayout.addWidget(self.BrowserButton)
+
         self.KiwixButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -245,128 +306,110 @@ class Ui_MainWindow(object):
             self.KiwixButton.sizePolicy().hasHeightForWidth())
         self.KiwixButton.setSizePolicy(size_policy)
         self.KiwixButton.setObjectName("KiwixButton")
-        self.KiwixButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.KiwixButton, alignment=QtCore.Qt.Alignment())
-        self.DIYButton = uni_Widget.ICTFEButton(self.centralWidget)
+        self.KiwixButton.setMinimumHeight(64)
+        self.KiwixButton.setMaximumHeight(64)
+        self.KiwixButton.setMinimumWidth(64)
+        self.KiwixButton.setMaximumWidth(64)
+        self.KiwixButton.setIconSize(QtCore.QSize(48, 48))
+        self.KiwixButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/kiwix.png')))
+        self.ButtonDockLayout.addWidget(self.KiwixButton)
+
+        self.StartButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(
-            self.DIYButton.sizePolicy().hasHeightForWidth())
-        self.DIYButton.setSizePolicy(size_policy)
-        self.DIYButton.setObjectName("DIYButton")
-        self.DIYButton.setMaximumHeight(32)
-        self.TabLayout.addWidget(self.DIYButton, alignment=QtCore.Qt.Alignment())
-        self.PDFJSButton = uni_Widget.ICTFEButton(self.centralWidget)
+            self.StartButton.sizePolicy().hasHeightForWidth())
+        self.StartButton.setSizePolicy(size_policy)
+        self.StartButton.setObjectName("StartButton")
+        self.StartButton.setMinimumHeight(64)
+        self.StartButton.setMaximumHeight(64)
+        self.StartButton.setMinimumWidth(64)
+        self.StartButton.setMaximumWidth(64)
+        self.StartButton.setIconSize(QtCore.QSize(48, 48))
+        self.StartButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/start.png')))
+        self.ButtonDockLayout.addWidget(self.StartButton)
+
+        self.PDFButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         size_policy.setHorizontalStretch(0)
         size_policy.setVerticalStretch(0)
         size_policy.setHeightForWidth(
-            self.PDFJSButton.sizePolicy().hasHeightForWidth())
-        self.PDFJSButton.setSizePolicy(size_policy)
-        self.PDFJSButton.setMaximumHeight(32)
-        self.PDFJSButton.setObjectName("PDFJSButton")
-        self.TabLayout.addWidget(self.PDFJSButton, alignment=QtCore.Qt.Alignment())
+            self.PDFButton.sizePolicy().hasHeightForWidth())
+        self.PDFButton.setSizePolicy(size_policy)
+        self.PDFButton.setObjectName("PDFButton")
+        self.PDFButton.setMinimumHeight(64)
+        self.PDFButton.setMaximumHeight(64)
+        self.PDFButton.setMinimumWidth(64)
+        self.PDFButton.setMaximumWidth(64)
+        self.PDFButton.setIconSize(QtCore.QSize(48, 48))
+        self.PDFButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/pdf.png')))
+        self.ButtonDockLayout.addWidget(self.PDFButton)
+
+        spacer_item = QtWidgets.QSpacerItem(
+            20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.ButtonDockLayout.addItem(spacer_item)
+
+        self.TempStackButton = uni_Widget.ICTFEButton(self.centralWidget)
+        size_policy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(
+            self.TempStackButton.sizePolicy().hasHeightForWidth())
+        self.TempStackButton.setSizePolicy(size_policy)
+        self.TempStackButton.setObjectName("TempStackButton")
+        self.TempStackButton.setMinimumHeight(64)
+        self.TempStackButton.setMaximumHeight(64)
+        self.TempStackButton.setMinimumWidth(64)
+        self.TempStackButton.setMaximumWidth(64)
+        self.TempStackButton.setIconSize(QtCore.QSize(48, 48))
+        self.TempStackButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/stack.png')))
+        self.ButtonDockLayout.addWidget(self.TempStackButton)
 
         self.TypeStack = QtWidgets.QStackedWidget(self.centralWidget)
-        self.TypeStack.setMinimumSize(QtCore.QSize(1000, 600))
         self.TypeStack.setStyleSheet("QWidget#TypeStack{\n"
                                      "background-color: transparent;\n"
                                      "}")
         self.TypeStack.setObjectName("TypeStack")
 
-        # Reverse Panel
-        self.BinaryPanel = QtWidgets.QWidget(None, flags=Qt.WindowFlags())
-        self.BinaryPanel.setObjectName("BinaryPanel")
-        self.TypeStack.addWidget(self.BinaryPanel)
+        self.MainStackWindow = QtWidgets.QMainWindow()
+        self.MainStackWindow.setObjectName('MainStackWindow')
+        self.MainStackWindow.setDockNestingEnabled(True)
+        # self.MainStackWindow.centralContent = QtWidgets.QWidget(self.MainStackWindow)
+        self.TypeStack.addWidget(self.MainStackWindow)
+        # self.MainStackWindow.setMaximumWidth(0)
 
-        # Web Panel
-        self.WebPanel = QtWidgets.QWidget(None, flags=Qt.WindowFlags())
-        self.WebPanel.setObjectName("WebPanel")
-        self.TypeStack.addWidget(self.WebPanel)
-
-        # Crypto Panel
-        self.CryptoPanel = DataFlowPanel.DataFlowPanel()
-        self.CryptoPanel.setObjectName("DataFlowPanel")
-        self.TypeStack.addWidget(self.CryptoPanel)
-
-        # Misc Panel
-        self.MiscPanel = QtWidgets.QWidget(None, flags=Qt.WindowFlags())
-        self.MiscPanel.setObjectName("MiscPanel")
-        self.TypeStack.addWidget(self.MiscPanel)
-
-        # DIY Panel
-        self.DIYPanel = DIYPanel()
-        self.DIYPanel.setObjectName('DIYPanel')
-        self.TypeStack.addWidget(self.DIYPanel)
-
-        # PDFJS Panel
-        self.PDFJSPanel = PDFJSPanel()
-        self.PDFJSPanel.setObjectName('PDFJSPanel')
-        self.TypeStack.addWidget(self.PDFJSPanel)
-
-        # Terminal Panel
-        self.TerminalPanel = TerminalPanel()
-        self.TerminalPanel.setObjectName('TerminalPanel')
-        self.TypeStack.addWidget(self.TerminalPanel)
-
-        # Browser Panel
-        self.BrowserPanel = BrowserPanel()
-        self.BrowserPanel.setObjectName('BrowserPanel')
-        self.TypeStack.addWidget(self.BrowserPanel)
-
-        # Wiki Panel
-        self.WikiPanel = WikiPanel()
-        self.WikiPanel.setObjectName('WikiPanel')
-        self.TypeStack.addWidget(self.WikiPanel)
-
-        # Wiki Panel
-        self.KiwixPanel = KiwixPanel()
-        self.KiwixPanel.setObjectName('KiwixPanel')
-        self.TypeStack.addWidget(self.KiwixPanel)
-
-        # Welcome Panel
-        self.WelcomeLabel = QtWidgets.QLabel()
-        self.WelcomeLabel.setObjectName('WelcomeLabel')
-        self.WelcomeLabel.setAlignment(Qt.AlignVCenter | Qt.AlignCenter)
-        pixmap = QtGui.QPixmap("./Resources/welcome.png")  # 按指定路径找到图片
-        self.WelcomeLabel.setPixmap(pixmap)  # 在label上显示图片
-        self.TypeStack.addWidget(self.WelcomeLabel)
-
-        self.SplitterWidget1 = QtWidgets.QWidget(self, flags=Qt.WindowFlags())
-        self.SplitterWidget1.setMaximumHeight(3)
-        self.SplitterWidget1.setMinimumHeight(3)
-        self.SplitterWidget1.setStyleSheet("QWidget{\n"
-                                           "background-color: rgb(130, 50, 235);\n"
-                                           "border: 2px rgb(130, 50, 235);\n"
-                                           "border-style: solid;\n"
-                                           "}")
-        self.verticalLayout.addWidget(self.SplitterWidget1, alignment=Qt.Alignment())
-        self.styleGetter = 0
-
-        self.verticalLayout.addWidget(self.TypeStack, alignment=Qt.Alignment())
+        self.MainHLayout = QtWidgets.QHBoxLayout()
+        self.MainHLayout.setSpacing(0)
+        self.ButtonDockLayout.setSpacing(5)
+        self.ButtonDockLayout.setContentsMargins(0, 0, 0, 0)
+        self.ButtonDock.setStyleSheet('#ButtonDock{background-color: rgb(30, 30, 30);}')
+        self.ButtonDock.setMaximumWidth(64)
+        self.MainHLayout.setContentsMargins(0, 0, 0, 0)
+        self.MainHLayout.addWidget(self.ButtonDock, alignment=Qt.Alignment())
+        self.ButtonDock.setLayout(self.ButtonDockLayout)
+        self.MainHLayout.addWidget(self.TypeStack, alignment=Qt.Alignment())
+        self.verticalLayout.addLayout(self.MainHLayout)
         MainWindow.setCentralWidget(self.centralWidget)
         self.MaxFlag = False
-
-        self.reTranslateUi(MainWindow)
+        # self.reTranslateUi(MainWindow)
         self.MiniButton.clicked.connect(MainWindow.showMinimized)
         self.CloseButton.clicked.connect(self.FormClosing)
         self.MaxButton.clicked.connect(MainWindow.MaximumWindow)
-        self.CryptoButton.clicked.connect(self.ChangeTypeStackCrypto)
-        self.ReverseButton.clicked.connect(self.ChangeTypeStackReverse)
-        self.MiscButton.clicked.connect(self.ChangeTypeStackMisc)
-        self.WebButton.clicked.connect(self.ChangeTypeStackWeb)
-        self.DIYButton.clicked.connect(self.ChangeTypeStackDIY)
-        self.PDFJSButton.clicked.connect(self.ChangeTypeStackPDFJS)
-        self.BrowserButton.clicked.connect(self.ChangeTypeStackBrowser)
-        self.WikiButton.clicked.connect(self.ChangeTypeStackWiki)
-        self.KiwixButton.clicked.connect(self.ChangeTypeStackKiwix)
-        self.TerminalButton.clicked.connect(self.ChangeTypeStackTerminal)
+
         self.StatusThread = SystemInfoThread(MainWindow)
         self.StatusThread.start()
         self.center()
+        self.DataFlowButton.clicked.connect(self.DataFlowPanelCreate)
+        self.CyberChefButton.clicked.connect(self.CyberChefCreate)
+        self.KiwixButton.clicked.connect(self.KiwixPanelCreate)
+        self.PDFButton.clicked.connect(self.PDFJSPanelCreate)
+        self.WikiButton.clicked.connect(self.WikiPanelCreate)
+        self.StartButton.clicked.connect(self.DIYPanelCreate)
+        self.BrowserButton.clicked.connect(self.BrowserPanelCreate)
 
     def MaximumWindow(self):
         if self.MaxFlag:
@@ -375,70 +418,6 @@ class Ui_MainWindow(object):
         else:
             self.MaxFlag = True
             self.MainWindow.showMaximized()
-
-    def setTabButtonColor(self, button):
-        self.CryptoButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.ReverseButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.MiscButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.WebButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.DIYButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.PDFJSButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.BrowserButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.WikiButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.TerminalButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        self.KiwixButton.setStyleSheet(uni_Widget.ButtonStyleNormal)
-        button.setStyleSheet(uni_Widget.ButtonStyles[self.styleGetter])
-        self.SplitterWidget1.setStyleSheet(
-            uni_Widget.SplitterStyles[self.styleGetter])
-        self.styleGetter += 1
-        self.styleGetter %= 4
-
-    def ChangeTypeStackCrypto(self):
-        """改变类型控件组 密码学"""
-        self.TypeStack.setCurrentWidget(self.CryptoPanel)
-        self.setTabButtonColor(self.CryptoButton)
-
-    def ChangeTypeStackReverse(self):
-        """改变类型控件组 逆向"""
-        self.TypeStack.setCurrentWidget(self.BinaryPanel)
-        self.setTabButtonColor(self.ReverseButton)
-
-    def ChangeTypeStackWeb(self):
-        """改变类型控件组 web"""
-        self.TypeStack.setCurrentWidget(self.WebPanel)
-        self.setTabButtonColor(self.WebButton)
-
-    def ChangeTypeStackMisc(self):
-        """改变类型控件组 杂项"""
-        self.TypeStack.setCurrentWidget(self.MiscPanel)
-        self.setTabButtonColor(self.MiscButton)
-
-    def ChangeTypeStackDIY(self):
-        """改变类型控件组 DIY"""
-        self.TypeStack.setCurrentWidget(self.DIYPanel)
-        self.setTabButtonColor(self.DIYButton)
-
-    def ChangeTypeStackPDFJS(self):
-        """改变类型控件组 PDFJS"""
-        self.TypeStack.setCurrentWidget(self.PDFJSPanel)
-        self.setTabButtonColor(self.PDFJSButton)
-
-    def ChangeTypeStackTerminal(self):
-        """改变类型控件组 Terminal"""
-        self.TypeStack.setCurrentWidget(self.TerminalPanel)
-        self.setTabButtonColor(self.TerminalButton)
-
-    def ChangeTypeStackBrowser(self):
-        self.TypeStack.setCurrentWidget(self.BrowserPanel)
-        self.setTabButtonColor(self.BrowserButton)
-
-    def ChangeTypeStackWiki(self):
-        self.TypeStack.setCurrentWidget(self.WikiPanel)
-        self.setTabButtonColor(self.WikiButton)
-
-    def ChangeTypeStackKiwix(self):
-        self.TypeStack.setCurrentWidget(self.KiwixPanel)
-        self.setTabButtonColor(self.KiwixButton)
 
     def center(self):
         """窗口居中显示"""
@@ -451,26 +430,139 @@ class Ui_MainWindow(object):
         self.StatusThread.exit()
         self.MainWindow.close()
 
-    def reTranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle("ICTFE")
-        self.ReverseButton.setText("二进制")
-        self.WebButton.setText("Web渗透")
-        self.CryptoButton.setText("数据流")
-        self.MiscButton.setText("独立工具")
-        self.TerminalButton.setText("数据厨师")
-        self.WikiButton.setText("Wiki")
-        self.BrowserButton.setText("浏览器")
-        self.KiwixButton.setText("Kiwix")
-        self.DIYButton.setText("启动器")
-        self.PDFJSButton.setText("PDF阅读")
+    def DataFlowPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "数据流":
+                dock.raise_()
+                return
+        self.MainStackWindow.DataFlowPanelDock = QtWidgets.QDockWidget("数据流")
+        self.MainStackWindow.DataFlowPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.DataFlowPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.DataFlowPanel = DataFlowPanel.DataFlowPanel()
+        self.MainStackWindow.DataFlowPanelDock.setWidget(self.MainStackWindow.DataFlowPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.DataFlowPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.DataFlowPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.DataFlowPanelDock
 
+    def CyberChefCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "CyberChef":
+                dock.raise_()
+                return
+        self.MainStackWindow.CyberChefDock = QtWidgets.QDockWidget("CyberChef")
+        self.MainStackWindow.CyberChefDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.CyberChefDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.CyberChef = TerminalPanel()
+        self.MainStackWindow.CyberChefDock.setWidget(self.MainStackWindow.CyberChef)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.CyberChefDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.CyberChefDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.CyberChefDock
+
+    def KiwixPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "Kiwix":
+                dock.raise_()
+                return
+        self.MainStackWindow.KiwixPanelDock = QtWidgets.QDockWidget("Kiwix")
+        self.MainStackWindow.KiwixPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.KiwixPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.KiwixPanel = KiwixPanel()
+        self.MainStackWindow.KiwixPanelDock.setWidget(self.MainStackWindow.KiwixPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.KiwixPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.KiwixPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.KiwixPanelDock
+
+    def WikiPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "Wiki":
+                dock.raise_()
+                return
+        self.MainStackWindow.WikiPanelDock = QtWidgets.QDockWidget("Wiki")
+        self.MainStackWindow.WikiPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.WikiPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.WikiPanel = WikiPanel()
+        self.MainStackWindow.WikiPanelDock.setWidget(self.MainStackWindow.WikiPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.WikiPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.WikiPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.WikiPanelDock
+
+    def BrowserPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "Browser":
+                dock.raise_()
+                return
+        self.MainStackWindow.BrowserPanelDock = QtWidgets.QDockWidget("Browser")
+        self.MainStackWindow.BrowserPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.BrowserPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.BrowserPanel = BrowserPanel()
+        self.MainStackWindow.BrowserPanelDock.setWidget(self.MainStackWindow.BrowserPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.BrowserPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.BrowserPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.BrowserPanelDock
+
+    def DIYPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "DIY":
+                dock.raise_()
+                return
+        self.MainStackWindow.DIYPanelDock = QtWidgets.QDockWidget("DIY")
+        self.MainStackWindow.DIYPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.DIYPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.DIYPanel = DIYPanel()
+        self.MainStackWindow.DIYPanelDock.setWidget(self.MainStackWindow.DIYPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.DIYPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.DIYPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.DIYPanelDock
+
+    def PDFJSPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "PDFJS":
+                dock.raise_()
+                return
+        self.MainStackWindow.PDFJSPanelDock = QtWidgets.QDockWidget("PDFJS")
+        self.MainStackWindow.PDFJSPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.PDFJSPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.PDFJSPanel = PDFJSPanel()
+        self.MainStackWindow.PDFJSPanelDock.setWidget(self.MainStackWindow.PDFJSPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.PDFJSPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.PDFJSPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.PDFJSPanelDock
 
 class SystemInfoThread(QtCore.QThread):
 
     def __init__(self, window):
         super(SystemInfoThread, self).__init__()
         self.__win = window
-        self.__win.StatusBar.setStyleSheet('QStatusBar{color: white; border: 1px solid rgb(50, 50, 50);}')
+        self.__win.StatusBar.setStyleSheet(
+            'QStatusBar{background-color: rgb(40, 40, 40);color: white; border: 1px solid rgb(50, 50, 50);}')
         font = QtGui.QFont()
         font.setFamily('Fira Code')
         font.setPixelSize(16)

@@ -45,10 +45,3 @@ class DataFlowPanel(ui_CryptoPanel):
         scene = FlowScene(reg)
         self.CryptoToolNodeEditor.setScene(scene)
         self.CryptoToolNodeEditor.scene.node_double_clicked.connect(self.OptionsBox.LoadOptions)
-        self.SaveOptionsButton.clicked.connect(self.SaveOptionsFunc)
-
-    def SaveOptionsFunc(self):
-        try:
-            self.OptionsBox.node.model.settings = self.OptionsBox.GetOptions()
-        except AttributeError:
-            traceback.print_exc()

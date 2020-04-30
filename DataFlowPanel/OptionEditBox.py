@@ -47,6 +47,7 @@ class OptionsEditBox(QtWidgets.QTableWidget):
             if prop['properties'][i] == bool:
                 exec_item = uni_Widget.ICTFECheckBox()
                 exec_item.setText('True')
+                exec_item.stateChanged.connect(self.GetOptions)
                 exec_item.setChecked(settings[i])
             elif prop['properties'][i] == str:
                 exec_item = uni_Widget.ICTFELineBox()
@@ -56,6 +57,7 @@ class OptionsEditBox(QtWidgets.QTableWidget):
                                         'padding: 0 4px;'
                                         'background: rgb(20, 20, 20);'
                                         'selection-background-color: blue;')
+                exec_item.textEdited.connect(self.GetOptions)
                 exec_item.setText(settings[i])
             elif type(prop['properties'][i]) == list:
                 exec_item = QtWidgets.QComboBox()
@@ -66,6 +68,7 @@ class OptionsEditBox(QtWidgets.QTableWidget):
                 exec_item.setStyleSheet('border:0px solid grey; color: white; background-color: rgb(30,30,30)')
                 for j in prop['properties'][i]:
                     exec_item.addItem(j)
+                exec_item.currentTextChanged.connect(lambda a: self.GetOptions())
                 exec_item.setCurrentText(settings[i])
             else:
                 continue

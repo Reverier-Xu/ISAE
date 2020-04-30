@@ -149,18 +149,18 @@ class ICTFEButton(QtWidgets.QPushButton):
         self.setFont(font)
         self.setStyleSheet(
             "QPushButton{"
-            "background-color:rgb(20, 20, 20);"
+            "background-color: transparent;"
             "color: white;"
             "border-radius: 0px;"
             "border: 0px groove gray;"
             "border-style: outset;"
             "}"
             "QPushButton:hover{"
-            "background-color: rgba(30, 30, 40, 100%);"
+            "background-color: rgba(40, 40, 40, 100%);"
             "color: white;"
             "}"
             "QPushButton:pressed{"
-            "background-color: rgb(40, 40, 40);"
+            "background-color: rgb(60, 60, 60);"
             "border-style: inset; "
             "}")
 
@@ -289,3 +289,35 @@ class LineEditItem(QtWidgets.QWidget):
         editbox = ICTFELineBox()
         layout.addWidget(editbox, alignment=Qt.Alignment())
         self.setLayout(layout)
+
+
+DockStyleSheet = '''
+        QDockWidget {
+    border: 1px solid black;
+    titlebar-close-icon: url(./Resources/closeDock.png);
+    titlebar-normal-icon: url(./Resources/maxDock.png);
+}
+
+QDockWidget::title {
+    text-align: left; /* align the text to the left */
+    background: rgb(40, 40, 140);
+}
+
+QDockWidget::close-button, QDockWidget::float-button {
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 0px;
+}
+
+QDockWidget::close-button:hover {
+    background: rgb(250, 50, 50);
+}
+QDockWidget::float-button:hover {
+    background: rgb(100, 100, 100);
+}
+QDockWidget::close-button:pressed{
+    background: rgb(200, 100, 100);
+}
+QDockWidget::float-button:pressed {
+    background: rgb(80, 80, 80);
+}'''

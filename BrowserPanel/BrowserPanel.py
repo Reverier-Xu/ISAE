@@ -162,23 +162,23 @@ class BrowserWindow(QWidget):
         super().__init__(parent)
         self.tabs = QTabWidget(self)
         self.tabs.setStyleSheet('''
-QTabWidget::pane {
-  border: 1px solid rgb(20, 20, 20);
-  top:0px;
-  background: rgb(20, 20, 20);
-}
+                                QTabWidget::pane {
+                                  border: 1px solid rgb(20, 20, 20);
+                                  top:0px;
+                                  background: rgb(20, 20, 20);
+                                }
 
-QTabBar::tab {
-  background: rgb(20, 20, 20);
-  color: white;
-  border: 1px solid rgb(20, 20, 20);
-  padding: 1px;
-}
+                                QTabBar::tab {
+                                  background: rgb(20, 20, 20);
+                                  color: white;
+                                  border: 1px solid rgb(20, 20, 20);
+                                  padding: 1px;
+                                }
 
-QTabBar::tab:selected {
-  background: rgb(40, 100, 245);
-  margin-bottom: 0px;
-}''')
+                                QTabBar::tab:selected {
+                                  background: rgb(40, 100, 245);
+                                  margin-bottom: 0px;
+                                }''')
         self.Layouts = QHBoxLayout(self)
         self.Layouts.addWidget(self.tabs)
         self.Layouts.setSpacing(0)

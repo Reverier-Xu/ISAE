@@ -53,7 +53,7 @@ if __name__ == "__main__":
     QtWidgets.qApp.processEvents()
     Win = rMainWindow()
     Win.setWindowTitle('ICTFE')
-    Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)
+    # Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)
     Win.show()
     splash.finish(Win)
     sys.exit(app.exec_())
