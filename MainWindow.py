@@ -16,6 +16,7 @@ from DIYPanel.DIYPanel import DIYPanel
 from TerminalPanel.TerminalPanel import TerminalPanel
 from BrowserPanel.BrowserPanel import BrowserPanel
 from WikiPanel.WikiPanel import WikiPanel
+from WebPanel.WebPanel import WebPanel
 from DataFlowPanel import DataFlowPanel
 from kiwix.KiwixPanel import KiwixPanel
 import psutil
@@ -407,6 +408,7 @@ class Ui_MainWindow(object):
         self.CyberChefButton.clicked.connect(self.CyberChefCreate)
         self.KiwixButton.clicked.connect(self.KiwixPanelCreate)
         self.PDFButton.clicked.connect(self.PDFJSPanelCreate)
+        self.WebButton.clicked.connect(self.WebPanelCreate)
         self.WikiButton.clicked.connect(self.WikiPanelCreate)
         self.StartButton.clicked.connect(self.DIYPanelCreate)
         self.BrowserButton.clicked.connect(self.BrowserPanelCreate)
@@ -483,6 +485,24 @@ class Ui_MainWindow(object):
         except:
             traceback.print_exc()
         self.currentDock = self.MainStackWindow.KiwixPanelDock
+
+    def WebPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "Web":
+                dock.raise_()
+                return
+        self.MainStackWindow.WebPanelDock = QtWidgets.QDockWidget("Web")
+        self.MainStackWindow.WebPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.WebPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.WebPanel = WebPanel()
+        self.MainStackWindow.WebPanelDock.setWidget(self.MainStackWindow.WebPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.WebPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.WebPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.WebPanelDock
 
     def WikiPanelCreate(self):
         for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
