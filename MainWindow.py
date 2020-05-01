@@ -13,12 +13,12 @@ from PyQt5.QtCore import Qt
 from PDFJSPanel.PDFJSPanel import PDFJSPanel
 from ui_Widgets import uni_Widget
 from DIYPanel.DIYPanel import DIYPanel
-from TerminalPanel.TerminalPanel import TerminalPanel
+from CyberChefPanel.CyberChefPanel import CyberChefPanel
 from BrowserPanel.BrowserPanel import BrowserPanel
 from WikiPanel.WikiPanel import WikiPanel
 from WebPanel.WebPanel import WebPanel
 from DataFlowPanel import DataFlowPanel
-from kiwix.KiwixPanel import KiwixPanel
+from KiwixPanel.KiwixPanel import KiwixPanel
 import psutil
 import time
 import traceback
@@ -458,7 +458,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.CyberChefDock = QtWidgets.QDockWidget("CyberChef")
         self.MainStackWindow.CyberChefDock.setStyleSheet(uni_Widget.DockStyleSheet)
         self.MainStackWindow.CyberChefDock.setAttribute(Qt.WA_DeleteOnClose)
-        self.MainStackWindow.CyberChef = TerminalPanel()
+        self.MainStackWindow.CyberChef = CyberChefPanel()
         self.MainStackWindow.CyberChefDock.setWidget(self.MainStackWindow.CyberChef)
         self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.CyberChefDock)
         try:

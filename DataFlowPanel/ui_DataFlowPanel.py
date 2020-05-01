@@ -1,4 +1,4 @@
-from DataFlowPanel.DataFlowNodeBasic import *
+from DataFlowPanel.DataFlowNodeEditor import *
 from DataFlowPanel.OptionEditBox import *
 from FileStack import FileStack
 

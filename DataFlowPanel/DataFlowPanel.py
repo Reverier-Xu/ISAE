@@ -1,6 +1,6 @@
 import copy
 
-from DataFlowPanel.DataFlowNodeBasic import *
+from DataFlowPanel.DataFlowNodeEditor import *
 from DataFlowPanel.ui_DataFlowPanel import ui_CryptoPanel
 from ui_Widgets.qtpynodeeditor import *
 

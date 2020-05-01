@@ -28,7 +28,7 @@ class KiwixBrowserPanelWidget(QtWidgets.QWidget):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         self.browser.load(QtCore.QUrl(
-            'file:///' + pwd + '/kiwix/index.html'))
+            'file:///' + pwd + '/Resources/kiwix/index.html'))
         self.Layouts = QtWidgets.QHBoxLayout(self)
         self.Layouts.addWidget(self.browser, alignment=Qt.Alignment())
         self.Layouts.setSpacing(0)

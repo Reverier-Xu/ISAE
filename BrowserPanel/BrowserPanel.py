@@ -69,16 +69,16 @@ class BrowserTab(QMainWindow):
             self.browser.settings().setFontFamily(QWebEngineSettings.SerifFont, '微软雅黑')
             self.browser.settings().setFontFamily(QWebEngineSettings.SansSerifFont, '微软雅黑')
             self.browser.settings().setFontFamily(QWebEngineSettings.CursiveFont, '微软雅黑')
-        self.back_button = QAction(QIcon('Assets/back.png'), '后退', self)
-        self.next_button = QAction(QIcon('Assets/forward.png'), '前进', self)
-        self.stop_button = QAction(QIcon('Assets/stop.png'), '停止', self)
-        self.refresh_button = QAction(QIcon('Assets/refresh.png'), '刷新', self)
-        self.home_button = QAction(QIcon('Assets/home.png'), '主页', self)
-        self.enter_button = QAction(QIcon('Assets/enter.png'), '转到', self)
-        self.add_button = QAction(QIcon('Assets/new.png'), '新建标签页', self)
+        self.back_button = QAction(QIcon('Resources/Assets/back.png'), '后退', self)
+        self.next_button = QAction(QIcon('Resources/Assets/forward.png'), '前进', self)
+        self.stop_button = QAction(QIcon('Resources/Assets/stop.png'), '停止', self)
+        self.refresh_button = QAction(QIcon('Resources/Assets/refresh.png'), '刷新', self)
+        self.home_button = QAction(QIcon('Resources/Assets/home.png'), '主页', self)
+        self.enter_button = QAction(QIcon('Resources/Assets/enter.png'), '转到', self)
+        self.add_button = QAction(QIcon('Resources/Assets/new.png'), '新建标签页', self)
         self.ssl_label1 = QLabel(self)
         self.ssl_label1.setPixmap(
-            QPixmap("Assets/main.png").scaledToHeight(18))
+            QPixmap("Resources/Assets/main.png").scaledToHeight(18))
         self.ssl_label2 = QLabel(self)
         self.ssl_label2.setText(" 欢迎来到ICTFE ")
         self.ssl_label2.setStyleSheet("color:white;")
@@ -118,13 +118,11 @@ class BrowserTab(QMainWindow):
         s = QUrl(self.url_text_bar.text())
         if s.scheme() == '':
             s.setScheme('http')
-        if re.match(
-                '((http|ftp|https)://)?(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?',
+        if re.match('((http|ftp|https)://)?(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2,6})|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\&%_\./-~-]*)?',
                 self.url_text_bar.text()) != None or self.url_text_bar.text()[:4] == 'file':
             self.browser.load(s)
         else:
-            s = QUrl('https://cn.bing.com/search?q=' +
-                     self.url_text_bar.text())
+            s = QUrl('https://cn.bing.com/search?q=' + self.url_text_bar.text())
             self.browser.load(s)
         self.browser.setZoomFactor(1.2)
 

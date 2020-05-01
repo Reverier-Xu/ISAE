@@ -8,9 +8,9 @@ from PyQt5.QtWebEngineWidgets import QWebEngineDownloadItem, QWebEngineSettings
 from PyQt5.QtWidgets import QFileDialog, QShortcut
 
 
-class ui_TerminalPanel(QtWidgets.QWidget):
+class CyberChefPanel(QtWidgets.QWidget):
     def __init__(self):
-        super(ui_TerminalPanel, self).__init__(flags=QtCore.Qt.WindowFlags())
+        super(CyberChefPanel, self).__init__(flags=QtCore.Qt.WindowFlags())
 
         self.CyberChefPanel = CyberChefPanelWidget(self)
         self.CyberChefPanel.setObjectName('CyberChefPanel')
@@ -29,7 +29,7 @@ class CyberChefPanelWidget(QtWidgets.QWidget):
         pwd = os.getcwd()
         pwd = pwd.replace('\\', '/')
         self.browser.load(QtCore.QUrl(
-            'file:///' + pwd + '/CyberChef/CyberChef.html'))
+            'file:///' + pwd + '/Resources/CyberChef/CyberChef.html'))
         self.Layouts = QtWidgets.QHBoxLayout(self)
         self.Layouts.addWidget(self.browser)
         self.Layouts.setSpacing(0)
