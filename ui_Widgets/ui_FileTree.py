@@ -22,13 +22,14 @@ class ui_FileWindow(object):
         MainWindow.setCentralWidget(self.centralWidget)
         self.layouts = QtWidgets.QVBoxLayout()
         self.layouts.setObjectName('layouts')
-        self.layouts.setSpacing(5)
+        self.layouts.setSpacing(0)
         self.layouts.setContentsMargins(0, 0, 0, 0)
         self.tree = QTreeWidget()
         font = QtGui.QFont()
         font.setFamily('文泉驿等宽微米黑')
         font.setPixelSize(20)
         self.tree.setFont(font)
+        self.tree.header().hide()
         self.tree.setStyleSheet("QTreeView::item:hover{"
                                 "color: lightgrey; "
                                 "background-color: rgb(50,50,50)"

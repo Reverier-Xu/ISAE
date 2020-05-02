@@ -46,17 +46,18 @@ class CryptoFlowView(FlowView):
     def dropEvent(self, event: QDropEvent):
         event_data = event.mimeData().text()
         try:
-            node = self.scene.create_node(
-                self.scene._registry.create(event_data))
+            node = self.scene.create_node(self.scene._registry.create(event_data))
             pos_view = self.mapToScene(event.pos())
             node.graphics_object.setPos(pos_view)
             self._scene.node_placed.emit(node)
         except:
             traceback.print_exc()
             super().dropEvent(event)
+        super(CryptoFlowView, self).dropEvent(event)
 
     def dragEnterEvent(self, event: QDragEnterEvent):
         event.acceptProposedAction()
+        super(CryptoFlowView, self).dragEnterEvent(event)
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Delete and event.modifiers() & Qt.ControlModifier:

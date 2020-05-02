@@ -612,6 +612,7 @@ class Ui_MainWindow(object):
         except:
             traceback.print_exc()
         self.currentDock = self.MainStackWindow.EditorPanelDock
+        self.MainStackWindow.EditorPanel.shellWin.setVisible(False)
 
     def PDFJSPanelCreate(self):
         for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
