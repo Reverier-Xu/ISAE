@@ -1,0 +1,18 @@
+from zenipy import file_selection
+import os
+def selectFile():
+    myhome = os.path.expanduser('~/Dokumente/*')
+    myfile = file_selection(multiple=False, directory=False, save=False, confirm_overwrite=False, filename=myhome, title='', width=330, height=120, timeout=None)
+    if myfile:
+        return(myfile)
+    else:
+        return("") 
+
+myfile = selectFile()
+if not myfile == "":
+    myfilepath =myfile
+    myfilename =os.path.basename(myfile)
+    myextension = os.path.splitext(myfile)[1]
+    print(myfilepath)
+    print (myfilename)
+    print(myextension)

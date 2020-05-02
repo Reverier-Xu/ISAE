@@ -1,0 +1,5 @@
+def msg(title, message_text):
+    from zenipy import message
+    message(title=title, text=message_text, width=400, height=150, timeout=None)
+
+msg("Message", "my Message")

@@ -1,3 +1,0 @@
-	def msgbox(self,title, message):
-		QMessageBox.warning(self, title, message)
-

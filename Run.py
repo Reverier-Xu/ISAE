@@ -58,6 +58,7 @@ if __name__ == "__main__":
     Win.setWindowTitle('ICTFE')
     # Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)
     Win.show()
+    Win.showMaximized()
     splash.finish(Win)
     font = QtGui.QFont()
     font.setFamily('文泉驿微米黑')

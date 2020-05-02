@@ -1,0 +1,2 @@
+        self.root = QFileInfo.path(QFileInfo(QCoreApplication.arguments()[0]))
+        print("root is " + self.root)

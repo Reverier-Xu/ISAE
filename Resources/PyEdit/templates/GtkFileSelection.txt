@@ -1,0 +1,122 @@
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk, GLib
+
+class Base(object):
+    def __init__(self, title, width, height, timeout):
+        self.title = title
+        self.width = width
+        self.height = height
+        self.timeout = timeout
+        self.dialog = None
+        self.response = None
+
+    def init_dialog(self):
+        # global config
+        self.dialog.set_resizable(True)
+        self.dialog.resize(self.width, self.height)
+        self.dialog.set_border_width(5)
+        if self.timeout:
+            GLib.timeout_add_seconds(
+                self.timeout,
+                self._destroy,
+                self.dialog
+            )
+
+        if self.title:
+            self.dialog.set_title(self.title)
+        self.dialog.connect("destroy", self._destroy)
+
+    def run(self):
+        self.dialog.show()
+        self.dialog.connect("response", self._response)
+        Gtk.main()
+
+    def _response(self, dialog, response):
+        self.set_response(response)
+        self._destroy(self.dialog)
+
+    def _destroy(self, dialog):
+        self.dialog.destroy()
+        Gtk.main_quit()
+
+    def set_response(self, response):
+        self.response = response
+
+
+class ZFileSelection(Base):
+    def __init__(self, multiple, directory, save, confirm_overwrite,
+                 filename, *args, **kwargs):
+        super(ZFileSelection, self).__init__(*args, **kwargs)
+        self.multiple = multiple
+        self.directory = directory
+        self.save = save
+        self.confirm_overwrite = confirm_overwrite
+        self.filename = filename
+        self.dialog = Gtk.FileChooserDialog(
+            buttons=(
+                Gtk.STOCK_CANCEL,
+                Gtk.ResponseType.CANCEL,
+                Gtk.STOCK_OK,
+                Gtk.ResponseType.OK)
+        )
+        self.init_dialog()
+
+    def init_dialog(self):
+        super(ZFileSelection, self).init_dialog()
+        if not self.save and self.multiple:
+            self.dialog.set_select_multiple(True)
+        if self.directory:
+            self.dialog.set_action(Gtk.FileChooserAction.SELECT_FOLDER)
+        if self.save:
+            self.dialog.set_action(Gtk.FileChooserAction.SAVE)
+        if self.confirm_overwrite:
+            self.dialog.set_do_overwrite_confirmation(True)
+        if self.filename:
+            self.dialog.set_filename(self.filename)
+
+    def set_response(self, response):
+        if response == Gtk.ResponseType.OK:
+            if self.multiple:
+                self.response = self.dialog.get_filenames()
+            else:
+                self.response = self.dialog.get_filename()
+                
+
+        
+        
+def file_selection(multiple=False, directory=False, save=False,
+                   confirm_overwrite=False, filename=None,
+                   title="", width=500,
+                   height=450, timeout=None):
+    """
+    Open a file selection window
+
+    :param multiple: allow multiple file selection
+    :type multiple: bool
+    :param directory: only directory selection
+    :type directory: bool
+    :param save: save mode
+    :type save: bool
+    :param confirm_overwrite: confirm when a file is overwritten
+    :type confirm_overwrite: bool
+    :param filename: placeholder for the filename
+    :type filename: str
+    :param text: text inside the window
+    :type text: str
+    :param title: title of the window
+    :type title: str
+    :param width: window width
+    :type width: int
+    :param height: window height
+    :type height: int
+    :param timeout: close the window after n seconds
+    :type timeout: int
+    :return: path of files selected.
+    :rtype: string or list if multiple enabled
+    """
+    dialog = ZFileSelection(multiple, directory, save,
+                            confirm_overwrite, filename,
+                            title, width, height, timeout)
+    dialog.run()
+    return dialog.response

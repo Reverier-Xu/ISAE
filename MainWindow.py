@@ -439,6 +439,7 @@ class Ui_MainWindow(object):
         self.TempStackButton.clicked.connect(self.FileStackPanelCreate)
 
         self.restorePath()
+        self.EditorPanelCreate()
 
     def MaximumWindow(self):
         if self.MaxFlag:
@@ -600,6 +601,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.EditorPanelDock = QtWidgets.QDockWidget("Editor")
         self.MainStackWindow.EditorPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
         self.MainStackWindow.EditorPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.EditorPanelDock.setFeatures(QtWidgets.QDockWidget.DockWidgetMovable | QtWidgets.QDockWidget.DockWidgetFloatable)
         self.MainStackWindow.EditorPanel = EditorPanel()
         self.MainStackWindow.FileStackPanel.FileDetectedSingal.connect(lambda s: self.loadFileInEditor(s))
         self.MainStackWindow.EditorPanelDock.setWidget(self.MainStackWindow.EditorPanel)
@@ -659,26 +661,10 @@ class Ui_MainWindow(object):
         self.MainStackWindow.FileStackPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.FileStackPanelDock.setFeatures(QtWidgets.QDockWidget.NoDockWidgetFeatures)
         self.MainStackWindow.FileStackPanel = FileStackPanel(path=Settings.GlobalPath)
-        self.MainStackWindow.FileStackPanel.setMaximumWidth(300)
+        self.MainStackWindow.FileStackPanel.setMaximumWidth(500)
         self.MainStackWindow.FileStackPanelDock.setWidget(self.MainStackWindow.FileStackPanel)
         self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.FileStackPanelDock)
         self.fileStackShow = True
-
-        self.MainStackWindow.WelcomePanelDock = QtWidgets.QDockWidget("Welcome")
-        self.MainStackWindow.WelcomePanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
-        self.MainStackWindow.WelcomePanelDock.setAttribute(Qt.WA_DeleteOnClose)
-        self.MainStackWindow.WelcomePanel = QtWidgets.QWidget()
-        welcome_layout = QtWidgets.QHBoxLayout()
-        welcome_layout.setContentsMargins(0, 0, 0, 0)
-        self.WelcomeLabel = QtWidgets.QLabel()
-        pixmap = QtGui.QPixmap("Resources/welcome.png")
-        self.WelcomeLabel.setPixmap(pixmap)
-        self.WelcomeLabel.setAlignment(Qt.AlignCenter)
-        welcome_layout.addWidget(self.WelcomeLabel)
-        self.MainStackWindow.WelcomePanel.setLayout(welcome_layout)
-        self.MainStackWindow.WelcomePanelDock.setWidget(self.MainStackWindow.WelcomePanel)
-        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.WelcomePanelDock)
-        self.currentDock = self.MainStackWindow.WelcomePanelDock
 
 
 class SystemInfoThread(QtCore.QThread):

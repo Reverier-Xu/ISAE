@@ -1,0 +1,4 @@
+    def msgbox(self, message):
+        msg = QMessageBox(2, "Information", message, QMessageBox.Ok)
+        msg.setStyleSheet("QLabel{min-width: 100px;}")
+        msg.exec()

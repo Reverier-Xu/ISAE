@@ -1,0 +1,14 @@
+### zenipy DatePicker
+from zenipy import calendar
+from enum import Enum
+
+class Monat(Enum):
+    Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember = 0,1,2,3,4,5,6,7,8,9,10,11
+
+def getDate():
+    mydate = calendar(text='', day=None, month=None, title='Calendar', width=300, height=210, timeout=None)
+    day = mydate[2]
+    month = Monat(mydate[1]).name
+    year = mydate[0]
+    theDate = ("%s.%s %s" %(day, month, year))
+    return (theDate)

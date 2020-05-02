@@ -1,0 +1,159 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(640, 480)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit.setObjectName("textEdit")
+        self.gridLayout.addWidget(self.textEdit, 2, 0, 1, 2)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.findField = QtWidgets.QLineEdit(self.centralwidget)
+        self.findField.setFixedWidth(130)
+        self.findField.setObjectName("findField")
+        self.horizontalLayout_2.addWidget(self.findField)
+        self.btnFind = QtWidgets.QPushButton(self.centralwidget)
+        self.btnFind.setMinimumSize(QtCore.QSize(87, 0))
+        self.btnFind.setMaximumSize(QtCore.QSize(87, 16777215))
+        self.btnFind.setObjectName("btnFind")
+        self.horizontalLayout_2.addWidget(self.btnFind)
+        self.replaceField = QtWidgets.QLineEdit(self.centralwidget)
+        self.findField.setFixedWidth(130)
+        self.replaceField.setObjectName("replaceField")
+        self.horizontalLayout_2.addWidget(self.replaceField, 0, QtCore.Qt.AlignLeft)
+        self.btnReplace = QtWidgets.QPushButton(self.centralwidget)
+        self.btnReplace.setFixedWidth(80)
+        self.btnReplace.setObjectName("pushButton")
+        self.horizontalLayout_2.addWidget(self.btnReplace, 2, QtCore.Qt.AlignLeft)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
+        self.verticalLayout.addLayout(self.verticalLayout_3)
+        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        ####### status bar ########
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.statusbar.showMessage("Ready", 0)
+        self.statusbar.setStyleSheet("QStatusBar {color: #555753; font-size: 7pt;}")
+
+        ####### actions ########
+        self.actionNew = QtWidgets.QAction(QtGui.QIcon.fromTheme("document-new"), "New",  
+                                                                            MainWindow, shortcut = "Ctrl+n", triggered = self.newFile)
+        self.actionNew.setObjectName("actionNew")
+
+        self.actionOpen = QtWidgets.QAction(QtGui.QIcon.fromTheme("document-open"), "Open File", 
+                                                                                MainWindow, shortcut = "Ctrl+o", triggered = self.openFile)
+        self.actionOpen.setObjectName("actionOpen")
+
+        self.actionSave = QtWidgets.QAction(QtGui.QIcon.fromTheme("document-save"), "Save", 
+                                                                                MainWindow, shortcut = "Ctrl+s", triggered = self.saveFile)
+        self.actionSave.setObjectName("actionSave")
+
+        self.actionSave_as = QtWidgets.QAction(QtGui.QIcon.fromTheme("document-save-as"), "Save as ...", 
+                                                                                    MainWindow, shortcut = "Shift+Ctrl+s", triggered = self.saveFileAs)
+        self.actionSave_as.setObjectName("actionSave_as")
+
+        self.actionPrint_Preview = QtWidgets.QAction(QtGui.QIcon.fromTheme("document-print-preview"), "Print Preview", 
+                                                                                                MainWindow, shortcut = "Shift+Ctrl+p", triggered = self.previewFile)
+        self.actionPrint_Preview.setObjectName("actionPrint_Preview")
+
+        self.actionPrint = QtWidgets.QAction(QtGui.QIcon.fromTheme("document-print"), "Print", 
+                                                                                MainWindow, shortcut = "Ctrl+p", triggered = self.printFile)
+        self.actionPrint.setObjectName("actionPrint")
+
+        self.actionCopy = QtWidgets.QAction(QtGui.QIcon.fromTheme("edit-copy"), "Copy", 
+                                                                               MainWindow, shortcut = "Ctrl+c")
+        self.actionCopy.setObjectName("actionCopy")
+
+        self.actionCut = QtWidgets.QAction(QtGui.QIcon.fromTheme("edit-cut"), "Cut", 
+                                                                            MainWindow, shortcut = "Ctrl+x")
+        self.actionCut.setObjectName("actionCut")
+
+        self.actionPaste = QtWidgets.QAction(QtGui.QIcon.fromTheme("edit-paste"), "Paste", 
+                                                                                MainWindow, shortcut = "Ctrl+v")
+        self.actionPaste.setObjectName("actionPaste")
+
+        ###### menubar #######
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 640, 23))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        ####### FileMenu ########
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
+        self.menubar.addAction(self.menuFile.menuAction())
+        self.menuFile.setTitle("File")
+        self.menuFile.addAction(self.actionNew)
+        self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionSave)
+        self.menuFile.addAction(self.actionSave_as)
+        ####### EditMenu ######
+        self.menuEdit = QtWidgets.QMenu(self.menubar)
+        self.menuEdit.setObjectName("menuEdit")
+        self.menubar.addAction(self.menuEdit.menuAction())
+        self.menuEdit.setTitle("Edit")
+        self.menuEdit.addAction(self.actionCopy)
+        self.menuEdit.addAction(self.actionCut)
+        self.menuEdit.addAction(self.actionPaste)
+        ##### toolbar #######
+        self.toolBar = QtWidgets.QToolBar(MainWindow)
+        self.toolBar.setObjectName("toolBar")
+        self.toolBar.setContextMenuPolicy(QtCore.Qt.PreventContextMenu)
+        self.toolBar.setMovable(False)
+        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
+        self.toolBar.setIconSize(QtCore.QSize(20, 20))
+        self.toolBar.addAction(self.actionNew)
+        self.toolBar.addAction(self.actionOpen)
+        self.toolBar.addAction(self.actionSave)
+        self.toolBar.addAction(self.actionSave_as)
+        self.toolBar.addSeparator()
+        self.toolBar.addAction(self.actionCopy)
+        self.toolBar.addAction(self.actionCut)
+        self.toolBar.addAction(self.actionPaste)
+        self.toolBar.addSeparator()
+        self.toolBar.addAction(self.actionPrint_Preview)
+        self.toolBar.addAction(self.actionPrint)
+
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    ###### defs #######
+    def newFile(self):
+        print("new File")
+
+    def openFile(self):
+        print("open File")
+
+    def saveFile(self):
+        print("save File")
+
+    def saveFileAs(self):
+        print("save File as ...")
+
+    def previewFile(self):
+        print("preview File")
+
+    def printFile(self):
+        print("print File")
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.setGeometry(0, 0, 800, 600)
+    MainWindow.show()
+    sys.exit(app.exec_())

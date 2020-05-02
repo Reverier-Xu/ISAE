@@ -1,0 +1,6 @@
+def setColor():
+    from zenipy import color_selection
+    mycolor = color_selection(show_palette=True, opacity_control=True, title='', width=330, height=120, timeout=None)
+    return(mycolor)
+
+print(setColor())

@@ -1,0 +1,29 @@
+import gi
+gi.require_version('Gtk', '3.0') 
+from gi.repository import Gtk
+import pydub
+import os
+
+
+def on_file():
+   dlg = Gtk.FileChooserDialog("Please choose a file", None, 
+            Gtk.FileChooserAction.OPEN,
+            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+             Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+   dlg.set_current_folder("/tmp")
+   response = dlg.run()
+
+   if response == Gtk.ResponseType.OK:
+       infile = (dlg.get_filename())
+       fname = os.path.basename(infile)
+       return infile, fname
+   else:
+       return ""
+   dlg.destroy()
+
+myfile = on_file()
+if not myfile == "":
+    the_file = myfile[0] 
+    myfilename = myfile[1]
+    print("File:", the_file)
+    print("FileName", myfilename)

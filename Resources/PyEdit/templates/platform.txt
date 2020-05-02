@@ -1,0 +1,10 @@
+import platform
+print(platform.python_version())
+
+import platform
+vers = platform.python_version()[0]
+print(vers)
+if vers == "2":
+    print("Python 2")
+else:
+    print("Python 3")

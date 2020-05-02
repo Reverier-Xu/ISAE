@@ -1,0 +1,25 @@
+from gi.repository import Gtk
+
+dialogWindow = Gtk.MessageDialog(None,
+                          Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                          Gtk.MessageType.QUESTION,
+                          Gtk.ButtonsType.OK_CANCEL,
+                          "URL or ID")
+
+dialogWindow.set_title("YouTube")
+dialogWindow.set_size_request(250,120)
+dialogBox = dialogWindow.get_content_area()
+userEntry = Gtk.Entry()
+userEntry.set_size_request(200,30)
+dialogBox.pack_end(userEntry, False, False, 0)
+
+dialogWindow.show_all()
+response = dialogWindow.run()
+text = userEntry.get_text() 
+dialogWindow.destroy()
+if (response == Gtk.ResponseType.OK) and (text != ''):
+    print(text)
+elif (response == Gtk.ResponseType.CANCEL):
+    print("cancelled")
+else:
+    print("no Text")

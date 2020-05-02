@@ -1,0 +1,9 @@
+    def listFiles(theDir):
+        mlist = []
+        
+        for name in os.listdir(theDir):
+            if os.path.isfile(os.path.join(theDir, name)):
+                mlist.append(name)
+        
+        mlist.sort(key=str.lower)
+        return ('\n'.join(mlist))
