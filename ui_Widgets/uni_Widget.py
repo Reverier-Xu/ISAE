@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QSize
 
 ButtonStyleNormal = "QPushButton{" \
                     "background-color:rgb(20, 20, 20);" \

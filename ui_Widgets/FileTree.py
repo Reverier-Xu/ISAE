@@ -4,7 +4,7 @@ from PyQt5 import Qt, QtGui, QtCore
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 
-from PDFJSPanel.fileopen import ui_PDFFileWindow
+from ui_Widgets.ui_FileTree import ui_FileWindow
 
 
 def file_name(path):
@@ -21,31 +21,15 @@ class FileTreeItem(QtWidgets.QTreeWidgetItem):
         self.FilePath = path
 
 
-class Tree(QMainWindow, ui_PDFFileWindow):
+class FileTree(QMainWindow, ui_FileWindow):
     FileDetectedSignal = QtCore.pyqtSignal(FileTreeItem)
 
-    def __init__(self, parent=None):
-        super(Tree, self).__init__(parent)
+    def __init__(self, parent=None, path='../ICTFE'):
+        super(FileTree, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("File_Tree")
-        self.tree = QTreeWidget()
-        font = QtGui.QFont()
-        font.setFamily('文泉驿等宽微米黑')
-        font.setPixelSize(20)
-        path = './Resources/PDFJS/web'
-        self.tree.setFont(font)
-        self.tree.setStyleSheet("QTreeView::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
-                                "QTreeView::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                "QTreeView{color: lightgrey; background-color: rgb(20, 20, 20)}"
-                                "QHeaderView::section{color: lightgrey; background-color: rgb(20, 20, 20);}")
-        self.tree.setColumnCount(1)
-        self.tree.setColumnWidth(0, 50)
-        self.tree.setHeaderLabels(["书籍列表"])
-        self.tree.setIconSize(Qt.QSize(25, 25))
-        self.tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         dirs = file_name(path)
-
         file_info = Qt.QFileInfo(path)
         file_icon = Qt.QFileIconProvider()
         icon = QtGui.QIcon(file_icon.icon(file_info))
@@ -53,28 +37,16 @@ class Tree(QMainWindow, ui_PDFFileWindow):
         root.setText(0, path.split('/')[-1])
         root.setIcon(0, QtGui.QIcon(icon))
         self.CreateTree(dirs, root, path)
-        self.setCentralWidget(self.tree)
+        self.actionFileOpen.clicked.connect(self.Open_Folder)
         QApplication.processEvents()
+        self.tree.doubleClicked.connect(
+            lambda x: self.EmitFilePath(self.tree.itemFromIndex(x)))
 
     def Open_Folder(self):
+        self.tree.clear()
         path = QFileDialog.getExistingDirectory(self, "选取文件夹", "./")
         if path == '':
             return
-        self.tree = QTreeWidget()
-        font = QtGui.QFont()
-        font.setFamily('文泉驿等宽微米黑')
-        font.setPixelSize(20)
-        self.tree.setFont(font)
-        self.tree.setColumnCount(1)
-        self.tree.setColumnWidth(0, 50)
-        self.tree.setHeaderLabels(["书籍列表"])
-        self.tree.setIconSize(Qt.QSize(25, 25))
-        self.tree.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        self.tree.setStyleSheet("QTreeView::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
-                                "QTreeView::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                "QTreeView{color: lightgrey; background-color: rgb(20, 20, 20)}"
-                                "QHeaderView::section{color: lightgrey; background-color: rgb(20, 20, 20);}")
-        self.tree.doubleClicked.connect(lambda x: self.EmitFilePath(self.tree.itemFromIndex(x)))
 
         dirs = file_name(path)
 
@@ -85,7 +57,6 @@ class Tree(QMainWindow, ui_PDFFileWindow):
         root.setText(0, path.split('/')[-1])
         root.setIcon(0, QtGui.QIcon(icon))
         self.CreateTree(dirs, root, path)
-        self.setCentralWidget(self.tree)
         QApplication.processEvents()
 
     def CreateTree(self, dirs, root, path):
@@ -99,7 +70,7 @@ class Tree(QMainWindow, ui_PDFFileWindow):
                 child.setText(0, i)
                 child.setIcon(0, QtGui.QIcon(icon))
                 child.setFilePath(path_new)
-            elif path_new[-4:] == '.pdf':
+            else:
                 file_info = Qt.QFileInfo(path_new)
                 file_icon = Qt.QFileIconProvider()
                 icon = QtGui.QIcon(file_icon.icon(file_info))

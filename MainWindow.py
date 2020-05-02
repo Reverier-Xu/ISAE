@@ -19,6 +19,7 @@ from WikiPanel.WikiPanel import WikiPanel
 from WebPanel.WebPanel import WebPanel
 from DataFlowPanel import DataFlowPanel
 from KiwixPanel.KiwixPanel import KiwixPanel
+from FileStack.FileStack import FileStackPanel
 import psutil
 import time
 import traceback
@@ -26,6 +27,7 @@ import traceback
 
 class Ui_MainWindow(object):
     currentDock = None
+    fileStackShow = False
     def setupUi(self, MainWindow):
         QtGui.QFontDatabase.addApplicationFont("./Resources/wqy-microhei.ttc")
         QtGui.QFontDatabase.addApplicationFont('./Resources/fira-code.ttf')
@@ -412,6 +414,7 @@ class Ui_MainWindow(object):
         self.WikiButton.clicked.connect(self.WikiPanelCreate)
         self.StartButton.clicked.connect(self.DIYPanelCreate)
         self.BrowserButton.clicked.connect(self.BrowserPanelCreate)
+        self.TempStackButton.clicked.connect(self.FileStackPanelCreate)
 
     def MaximumWindow(self):
         if self.MaxFlag:
@@ -442,7 +445,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.DataFlowPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.DataFlowPanel = DataFlowPanel.DataFlowPanel()
         self.MainStackWindow.DataFlowPanelDock.setWidget(self.MainStackWindow.DataFlowPanel)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.DataFlowPanelDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.DataFlowPanelDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.DataFlowPanelDock)
@@ -460,7 +463,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.CyberChefDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.CyberChef = CyberChefPanel()
         self.MainStackWindow.CyberChefDock.setWidget(self.MainStackWindow.CyberChef)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.CyberChefDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.CyberChefDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.CyberChefDock)
@@ -478,7 +481,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.KiwixPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.KiwixPanel = KiwixPanel()
         self.MainStackWindow.KiwixPanelDock.setWidget(self.MainStackWindow.KiwixPanel)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.KiwixPanelDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.KiwixPanelDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.KiwixPanelDock)
@@ -496,7 +499,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.WebPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.WebPanel = WebPanel()
         self.MainStackWindow.WebPanelDock.setWidget(self.MainStackWindow.WebPanel)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.WebPanelDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.WebPanelDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.WebPanelDock)
@@ -514,7 +517,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.WikiPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.WikiPanel = WikiPanel()
         self.MainStackWindow.WikiPanelDock.setWidget(self.MainStackWindow.WikiPanel)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.WikiPanelDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.WikiPanelDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.WikiPanelDock)
@@ -532,7 +535,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.BrowserPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.BrowserPanel = BrowserPanel()
         self.MainStackWindow.BrowserPanelDock.setWidget(self.MainStackWindow.BrowserPanel)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.BrowserPanelDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.BrowserPanelDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.BrowserPanelDock)
@@ -550,7 +553,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.DIYPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.DIYPanel = DIYPanel()
         self.MainStackWindow.DIYPanelDock.setWidget(self.MainStackWindow.DIYPanel)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.DIYPanelDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.DIYPanelDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.DIYPanelDock)
@@ -568,13 +571,34 @@ class Ui_MainWindow(object):
         self.MainStackWindow.PDFJSPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.PDFJSPanel = PDFJSPanel()
         self.MainStackWindow.PDFJSPanelDock.setWidget(self.MainStackWindow.PDFJSPanel)
-        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.PDFJSPanelDock)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.PDFJSPanelDock)
         try:
             if self.currentDock != None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.PDFJSPanelDock)
         except:
             traceback.print_exc()
         self.currentDock = self.MainStackWindow.PDFJSPanelDock
+
+    def FileStackPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "File":
+                if self.fileStackShow:
+                    self.MainStackWindow.FileStackPanelDock.hide()
+                    self.fileStackShow = False
+                else:
+                    self.MainStackWindow.FileStackPanelDock.show()
+                    self.fileStackShow = True
+                return
+        self.MainStackWindow.FileStackPanelDock = QtWidgets.QDockWidget("File")
+        self.MainStackWindow.FileStackPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.FileStackPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.FileStackPanelDock.setFeatures(QtWidgets.QDockWidget.NoDockWidgetFeatures)
+        self.MainStackWindow.FileStackPanel = FileStackPanel()
+        self.MainStackWindow.FileStackPanel.setMaximumWidth(300)
+        self.MainStackWindow.FileStackPanelDock.setWidget(self.MainStackWindow.FileStackPanel)
+        self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.FileStackPanelDock)
+        self.fileStackShow = True
+
 
 class SystemInfoThread(QtCore.QThread):
 
