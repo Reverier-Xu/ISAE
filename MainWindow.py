@@ -20,6 +20,7 @@ from WebPanel.WebPanel import WebPanel
 from DataFlowPanel import DataFlowPanel
 from KiwixPanel.KiwixPanel import KiwixPanel
 from FileStack.FileStack import FileStackPanel
+from Config import Settings
 import psutil
 import time
 import traceback
@@ -28,6 +29,7 @@ import traceback
 class Ui_MainWindow(object):
     currentDock = None
     fileStackShow = False
+
     def setupUi(self, MainWindow):
         QtGui.QFontDatabase.addApplicationFont("./Resources/wqy-microhei.ttc")
         QtGui.QFontDatabase.addApplicationFont('./Resources/fira-code.ttf')
@@ -416,6 +418,8 @@ class Ui_MainWindow(object):
         self.BrowserButton.clicked.connect(self.BrowserPanelCreate)
         self.TempStackButton.clicked.connect(self.FileStackPanelCreate)
 
+        self.restorePath()
+
     def MaximumWindow(self):
         if self.MaxFlag:
             self.MaxFlag = False
@@ -589,15 +593,37 @@ class Ui_MainWindow(object):
                     self.MainStackWindow.FileStackPanelDock.show()
                     self.fileStackShow = True
                 return
+
+    def restorePath(self):
+        with open('Config/startpath.ctfe', 'r') as inp:
+            Settings.GlobalPath = inp.read()
+        if Settings.GlobalPath == '':
+            Settings.GlobalPath = '../ICTFE'
         self.MainStackWindow.FileStackPanelDock = QtWidgets.QDockWidget("File")
         self.MainStackWindow.FileStackPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
         self.MainStackWindow.FileStackPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.FileStackPanelDock.setFeatures(QtWidgets.QDockWidget.NoDockWidgetFeatures)
-        self.MainStackWindow.FileStackPanel = FileStackPanel()
+        self.MainStackWindow.FileStackPanel = FileStackPanel(path=Settings.GlobalPath)
         self.MainStackWindow.FileStackPanel.setMaximumWidth(300)
         self.MainStackWindow.FileStackPanelDock.setWidget(self.MainStackWindow.FileStackPanel)
         self.MainStackWindow.addDockWidget(Qt.LeftDockWidgetArea, self.MainStackWindow.FileStackPanelDock)
         self.fileStackShow = True
+
+        self.MainStackWindow.WelcomePanelDock = QtWidgets.QDockWidget("Welcome")
+        self.MainStackWindow.WelcomePanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.WelcomePanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.WelcomePanel = QtWidgets.QWidget()
+        welcome_layout = QtWidgets.QHBoxLayout()
+        welcome_layout.setContentsMargins(0, 0, 0, 0)
+        self.WelcomeLabel = QtWidgets.QLabel()
+        pixmap = QtGui.QPixmap("Resources/welcome.png")
+        self.WelcomeLabel.setPixmap(pixmap)
+        self.WelcomeLabel.setAlignment(Qt.AlignCenter)
+        welcome_layout.addWidget(self.WelcomeLabel)
+        self.MainStackWindow.WelcomePanel.setLayout(welcome_layout)
+        self.MainStackWindow.WelcomePanelDock.setWidget(self.MainStackWindow.WelcomePanel)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.WelcomePanelDock)
+        self.currentDock = self.MainStackWindow.WelcomePanelDock
 
 
 class SystemInfoThread(QtCore.QThread):

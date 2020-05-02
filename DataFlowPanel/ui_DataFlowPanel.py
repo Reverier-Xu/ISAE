@@ -1,11 +1,11 @@
 from DataFlowPanel.DataFlowNodeEditor import *
 from DataFlowPanel.OptionEditBox import *
-from FileStack import FileStack
+from DataFlowPanel.DataFlowDragList import *
 
 
-class ui_CryptoPanel(QtWidgets.QWidget):
+class ui_DataFlowPanel(QtWidgets.QWidget):
     def __init__(self):
-        super(ui_CryptoPanel, self).__init__(flags=Qt.WindowFlags())
+        super(ui_DataFlowPanel, self).__init__(flags=Qt.WindowFlags())
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)

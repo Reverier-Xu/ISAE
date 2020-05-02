@@ -6,23 +6,24 @@ from PyQt5 import QtWidgets, QtCore
 
 from ui_Widgets import uni_Widget, FileTree
 from ui_Widgets.FileTree import file_name
+from Config import Settings
 
 
 class FileStackPanel(QtWidgets.QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, path='../ICTFE'):
         super(FileStackPanel, self).__init__(parent)
         self.horizontalLayout = QtWidgets.QHBoxLayout(self)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         splitter1 = uni_Widget.ICTFESplitter(QtCore.Qt.Vertical)
         splitter1.setContentsMargins(0, 0, 0, 0)
-        self.FileTreePanel = FileTree.FileTree()
+        self.FileTreePanel = FileTree.FileTree(path=path)
         self.FileTreePanel.setObjectName("FileTreePanel")
         self.FileTreePanel.setMinimumWidth(200)
         splitter1.addWidget(self.FileTreePanel)
         self.FileStackPanel = FileStack(self)
         splitter1.addWidget(self.FileStackPanel)
-        splitter1.setSizes([200, 500])
+        splitter1.setSizes([500, 200])
         self.horizontalLayout.addWidget(splitter1, alignment=QtCore.Qt.Alignment())
         self.FileTreePanel.FileDetectedSignal.connect(lambda s: self.CreateFileTree(s))
 

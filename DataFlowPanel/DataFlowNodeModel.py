@@ -5,6 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from Config import Settings
 from ui_Widgets import uni_Widget
 from ui_Widgets.qtpynodeeditor import *
 import traceback
@@ -92,7 +93,7 @@ class FileInputModel(NodeDataModel):
 
         if event.type() == QtCore.QEvent.MouseButtonPress:
             self.file_name, _ = QFileDialog.getOpenFileName(
-                None, "打开文件", QtCore.QDir.homePath(),
+                None, "打开文件", Settings.GlobalPath,
                 "all(*)")
             try:
                 with open(self.file_name, 'rb') as out:
@@ -196,7 +197,7 @@ class FileOutputModel(NodeDataModel):
     def SaveFile(self):
         output_path, file_type = QFileDialog.getSaveFileName(self._show,
                                                              "保存文件",
-                                                             '',
+                                                             Settings.GlobalPath,
                                                              "All Files (*)")
         if output_path == "":
             return

@@ -5,6 +5,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 
 from ui_Widgets.ui_FileTree import ui_FileWindow
+from Config import Settings
 
 
 def file_name(path):
@@ -43,11 +44,10 @@ class FileTree(QMainWindow, ui_FileWindow):
             lambda x: self.EmitFilePath(self.tree.itemFromIndex(x)))
 
     def Open_Folder(self):
-        self.tree.clear()
-        path = QFileDialog.getExistingDirectory(self, "选取文件夹", "./")
+        path = QFileDialog.getExistingDirectory(self, "选取文件夹", Settings.GlobalPath)
         if path == '':
             return
-
+        self.tree.clear()
         dirs = file_name(path)
 
         file_info = Qt.QFileInfo(path)
@@ -58,6 +58,7 @@ class FileTree(QMainWindow, ui_FileWindow):
         root.setIcon(0, QtGui.QIcon(icon))
         self.CreateTree(dirs, root, path)
         QApplication.processEvents()
+        Settings.GlobalPath = path
 
     def CreateTree(self, dirs, root, path):
         for i in dirs:

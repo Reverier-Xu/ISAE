@@ -1,11 +1,11 @@
 import copy
 
 from DataFlowPanel.DataFlowNodeEditor import *
-from DataFlowPanel.ui_DataFlowPanel import ui_CryptoPanel
+from DataFlowPanel.ui_DataFlowPanel import ui_DataFlowPanel
 from ui_Widgets.qtpynodeeditor import *
 
 
-class DataFlowPanel(ui_CryptoPanel):
+class DataFlowPanel(ui_DataFlowPanel):
     def __init__(self):
         super(DataFlowPanel, self).__init__()
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)

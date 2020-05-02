@@ -9,6 +9,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 import MainWindow
+from Config import Settings
 
 
 class rMainWindow(QMainWindow, MainWindow.Ui_MainWindow):
@@ -20,6 +21,8 @@ class rMainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 
     def closeEvent(self, QCloseEvent):
         self.StatusThread.terminate()
+        with open('Config/startpath.ctfe', 'w') as out:
+            out.write(Settings.GlobalPath)
         super(rMainWindow, self).closeEvent(QCloseEvent)
 
     def mousePressEvent(self, event):

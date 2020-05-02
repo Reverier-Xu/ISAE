@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import Qt
 
+from Config import Settings
 from ui_Widgets import uni_Widget
 import os
 import platform
@@ -178,7 +179,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
     def AddTabPanelButton(self, panel):
         file, ok = QtWidgets.QFileDialog.getOpenFileName(self,
                                                          "选取文件",
-                                                         '',
+                                                         Settings.GlobalPath,
                                                          "All Files (*)")
         if ok:
             name, ok = QtWidgets.QInputDialog.getText(self, '创建启动按钮', '名称')
