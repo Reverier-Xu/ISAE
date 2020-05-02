@@ -292,7 +292,7 @@ class LineEditItem(QtWidgets.QWidget):
 
 
 DockStyleSheet = '''
-        QDockWidget {
+QDockWidget {
     border: 1px solid black;
     titlebar-close-icon: url(./Resources/closeDock.png);
     titlebar-normal-icon: url(./Resources/maxDock.png);
@@ -301,23 +301,60 @@ DockStyleSheet = '''
 QDockWidget::title {
     text-align: left; /* align the text to the left */
     background: rgb(40, 40, 140);
+    min-height: 24px;
 }
 
 QDockWidget::close-button, QDockWidget::float-button {
-    border: 1px solid transparent;
+    border: none;
     background: transparent;
+    icon-size: 24px;
     padding: 0px;
 }
 
 QDockWidget::close-button:hover {
     background: rgb(250, 50, 50);
 }
+
 QDockWidget::float-button:hover {
     background: rgb(100, 100, 100);
 }
+
 QDockWidget::close-button:pressed{
     background: rgb(200, 100, 100);
 }
+
 QDockWidget::float-button:pressed {
     background: rgb(80, 80, 80);
 }'''
+
+TabStyle = '''
+QTabWidget::tab-bar {
+alignment:left;
+top:0px;
+left:0px;
+right:0px;
+}
+QTabBar::tab {
+border-color: white;
+border-width: 0px;
+border-bottom:none;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+background:blue;
+color:blue;
+min-width:60px;
+min-height:20px;
+}
+QTabBar::tab:selected{
+background: green;
+color: white;
+}
+QTabBar::tab:!selected{
+background: rgb(60, 60, 245);
+color: white;
+border: none;
+}
+QTabBar::tab:hover{
+background:rgb(115, 25, 255);
+}
+'''

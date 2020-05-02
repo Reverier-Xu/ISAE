@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
                                       "background-color: rgb(20, 20, 20);\n"
                                       "border: 1px rgb(50, 50, 50);\n"
                                       "border-style: solid;\n"
-                                      "}")
+                                      "}" + uni_Widget.TabStyle)
         self.centralWidget.setObjectName("centralWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralWidget)
         self.verticalLayout.setContentsMargins(1, 1, 1, 1)

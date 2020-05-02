@@ -56,4 +56,7 @@ if __name__ == "__main__":
     # Win.TypeStack.setCurrentWidget(Win.WelcomeLabel)
     Win.show()
     splash.finish(Win)
+    font = QtGui.QFont()
+    font.setFamily('文泉驿微米黑')
+    app.setFont(font)
     sys.exit(app.exec_())
