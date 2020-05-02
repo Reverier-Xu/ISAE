@@ -1,0 +1,8 @@
+	def about(self):
+		link = "<p><a title='Axel Schneider' href='http://goodoldsongs.jimdo.com' target='_blank'>Axel Schneider</a></p>"
+		title = "about PyEdit"
+		message = "<h2>PyEdit 1.0</h2><h4>Python Editor</h4>created by " + link + " with PyQt5<br>©2016<br>" \
+					+ "<br>Copyright © 2017 The Qt Company Ltd and other contributors." \
+					+ "<br>Qt and the Qt logo are trademarks of The Qt Company Ltd."
+		self.msgbox(title, message)
+

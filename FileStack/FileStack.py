@@ -10,6 +10,7 @@ from Config import Settings
 
 
 class FileStackPanel(QtWidgets.QWidget):
+    FileDetectedSingal = QtCore.pyqtSignal(str)
     def __init__(self, parent=None, path='../ICTFE'):
         super(FileStackPanel, self).__init__(parent)
         self.horizontalLayout = QtWidgets.QHBoxLayout(self)
@@ -26,12 +27,18 @@ class FileStackPanel(QtWidgets.QWidget):
         splitter1.setSizes([500, 200])
         self.horizontalLayout.addWidget(splitter1, alignment=QtCore.Qt.Alignment())
         self.FileTreePanel.FileDetectedSignal.connect(lambda s: self.CreateFileTree(s))
+        self.FileTreePanel.PathSelected.connect(lambda s: self.updateGlobalPath(s))
+
+    def updateGlobalPath(self, s):
+        Settings.GlobalPath = s
 
     def CreateFileTree(self, item):
         path = item.FilePath
         if os.path.isdir(path):
             dirs_new = file_name(path)
             self.FileTreePanel.CreateTree(dirs_new, item, path)
+        else:
+            self.FileDetectedSingal.emit(path)
 
 
 class FileStack(uni_Widget.ICTFEList):

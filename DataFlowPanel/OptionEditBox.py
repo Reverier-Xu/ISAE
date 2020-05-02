@@ -21,10 +21,10 @@ class OptionsEditBox(QtWidgets.QTableWidget):
         self.verticalHeader().hide()
         self.setStyleSheet("QTableWidget{"
                            "background-color: transparent;"
-                           "border:1px solid grey"
+                           "border:1px solid rgb(50, 50, 50)"
                            "}"
                            "QTableWidget::item{"
-                           "border:1px solid grey"
+                           "border:1px solid rgb(50, 50, 50)"
                            "}")
 
     def LoadOptions(self, node: Node):
@@ -65,7 +65,7 @@ class OptionsEditBox(QtWidgets.QTableWidget):
                 font.setFamily('文泉驿微米黑')
                 font.setPixelSize(20)
                 exec_item.setFont(font)
-                exec_item.setStyleSheet('border:0px solid grey; color: white; background-color: rgb(30,30,30)')
+                exec_item.setStyleSheet('border:0px solid rgb(50, 50, 50); color: white; background-color: rgb(30,30,30)')
                 for j in prop['properties'][i]:
                     exec_item.addItem(j)
                 exec_item.currentTextChanged.connect(lambda a: self.GetOptions())

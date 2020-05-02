@@ -40,7 +40,7 @@ class ui_FileWindow(object):
                                 "QTreeView{"
                                 "color: lightgrey; "
                                 "background-color: rgb(20, 20, 20); "
-                                "border: 1px solid grey;"
+                                "border: 1px solid rgb(50, 50, 50);"
                                 "}"
                                 "QHeaderView::section{"
                                 "color: lightgrey; "

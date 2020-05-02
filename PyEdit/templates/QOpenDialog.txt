@@ -1,0 +1,6 @@
+	def openFile(self, path=None):
+		if self.maybeSave():
+			if not path:
+				path, _ = QFileDialog.getOpenFileName(self, "Open File", QDir.homePath() + "/Documents/","Text Files (*.txt)")
+			if path:
+

@@ -21,9 +21,11 @@ from DataFlowPanel import DataFlowPanel
 from KiwixPanel.KiwixPanel import KiwixPanel
 from FileStack.FileStack import FileStackPanel
 from Config import Settings
+from PyEdit.PyEdit2 import EditorPanel
 import psutil
 import time
 import traceback
+import json
 
 
 class Ui_MainWindow(object):
@@ -182,6 +184,23 @@ class Ui_MainWindow(object):
         self.ButtonDock.setObjectName('ButtonDock')
         self.ButtonDockLayout = QtWidgets.QVBoxLayout(self.ButtonDock)
         self.ButtonDockLayout.setObjectName('ButtonDockLayout')
+
+        self.EditorButton = uni_Widget.ICTFEButton(self.centralWidget)
+        size_policy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        size_policy.setHorizontalStretch(0)
+        size_policy.setVerticalStretch(0)
+        size_policy.setHeightForWidth(
+            self.EditorButton.sizePolicy().hasHeightForWidth())
+        self.EditorButton.setSizePolicy(size_policy)
+        self.EditorButton.setObjectName("EditorButton")
+        self.EditorButton.setMinimumHeight(64)
+        self.EditorButton.setMaximumHeight(64)
+        self.EditorButton.setMinimumWidth(64)
+        self.EditorButton.setMaximumWidth(64)
+        self.EditorButton.setIconSize(QtCore.QSize(48, 48))
+        self.EditorButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/editor.png')))
+        self.ButtonDockLayout.addWidget(self.EditorButton)
 
         self.BinaryButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
@@ -410,6 +429,7 @@ class Ui_MainWindow(object):
         self.center()
         self.DataFlowButton.clicked.connect(self.DataFlowPanelCreate)
         self.CyberChefButton.clicked.connect(self.CyberChefCreate)
+        self.EditorButton.clicked.connect(self.EditorPanelCreate)
         self.KiwixButton.clicked.connect(self.KiwixPanelCreate)
         self.PDFButton.clicked.connect(self.PDFJSPanelCreate)
         self.WebButton.clicked.connect(self.WebPanelCreate)
@@ -505,7 +525,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.WebPanelDock.setWidget(self.MainStackWindow.WebPanel)
         self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.WebPanelDock)
         try:
-            if self.currentDock != None:
+            if self.currentDock is not None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.WebPanelDock)
         except:
             traceback.print_exc()
@@ -565,6 +585,32 @@ class Ui_MainWindow(object):
             traceback.print_exc()
         self.currentDock = self.MainStackWindow.DIYPanelDock
 
+    def loadFileInEditor(self, s):
+        self.MainStackWindow.EditorPanel.openFile(s)
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "Editor":
+                dock.raise_()
+                return
+
+    def EditorPanelCreate(self):
+        for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
+            if dock.windowTitle() == "Editor":
+                dock.raise_()
+                return
+        self.MainStackWindow.EditorPanelDock = QtWidgets.QDockWidget("Editor")
+        self.MainStackWindow.EditorPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
+        self.MainStackWindow.EditorPanelDock.setAttribute(Qt.WA_DeleteOnClose)
+        self.MainStackWindow.EditorPanel = EditorPanel()
+        self.MainStackWindow.FileStackPanel.FileDetectedSingal.connect(lambda s: self.loadFileInEditor(s))
+        self.MainStackWindow.EditorPanelDock.setWidget(self.MainStackWindow.EditorPanel)
+        self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.EditorPanelDock)
+        try:
+            if self.currentDock != None:
+                self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.EditorPanelDock)
+        except:
+            traceback.print_exc()
+        self.currentDock = self.MainStackWindow.EditorPanelDock
+
     def PDFJSPanelCreate(self):
         for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
             if dock.windowTitle() == "PDFJS":
@@ -595,8 +641,17 @@ class Ui_MainWindow(object):
                 return
 
     def restorePath(self):
-        with open('Config/startpath.ctfe', 'r') as inp:
-            Settings.GlobalPath = inp.read()
+
+        with open('UserConfig/paths.ctfe', 'r') as inp:
+            paths = json.loads(str(inp.read()))
+            try:
+                Settings.GlobalPath = paths['GlobalPath']
+            except:
+                Settings.GlobalPath = ''
+            try:
+                Settings.PDFPath = paths['PDFPath']
+            except:
+                Settings.PDFPath = '../ICTFE'
         if Settings.GlobalPath == '':
             Settings.GlobalPath = '../ICTFE'
         self.MainStackWindow.FileStackPanelDock = QtWidgets.QDockWidget("File")

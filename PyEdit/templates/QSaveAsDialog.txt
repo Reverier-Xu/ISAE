@@ -1,0 +1,9 @@
+	def fileSave(self):
+		path, _ = QFileDialog.getSaveFileName(self, "Save as...", QDir.homePath(),
+			"Text files (*.txt)")
+		if (path != ""):
+			file = QFile(pathe)
+			if not file.open( QFile.WriteOnly | QFile.Text):
+				QMessageBox.warning(self, "Error",
+					"Cannot write file %s:\n%s." % (path, file.errorString()))
+

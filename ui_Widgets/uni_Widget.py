@@ -231,7 +231,7 @@ class ICTFEList(QtWidgets.QListWidget):
         self.setStyleSheet(
             'QListWidget{'
             'background-color: rgb(20, 20, 20);'
-            'border: 1px solid grey;'
+            'border: 1px solid rgb(50, 50, 50);'
             'color: white;'
             '}')
         font = QtGui.QFont()

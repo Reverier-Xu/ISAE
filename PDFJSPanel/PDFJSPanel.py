@@ -1,5 +1,6 @@
 import os
 
+from Config import Settings
 from PDFJSPanel.ui_PDFJSPanel import ui_PDFJSPanel
 from PyQt5 import QtCore
 import os
@@ -14,6 +15,7 @@ class PDFJSPanel(ui_PDFJSPanel):
     def __init__(self, parent=None):
         super(PDFJSPanel, self).__init__(parent)
         self.PDFFileTreePanel.FileDetectedSignal.connect(lambda s: self.ChangePDFViewer(s))
+        self.PDFFileTreePanel.PathSelected.connect(lambda s: self.updatePDFPath(s))
 
     def ChangePDFViewer(self, item):
         path = item.FilePath
@@ -28,3 +30,6 @@ class PDFJSPanel(ui_PDFJSPanel):
         elif os.path.isdir(path):
             dirs_new = file_name(path)
             self.PDFFileTreePanel.CreateTree(dirs_new, item, path)
+
+    def updatePDFPath(self, s):
+        Settings.PDFPath = s

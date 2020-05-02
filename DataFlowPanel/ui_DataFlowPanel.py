@@ -35,7 +35,7 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
         self.ToolsList = DragList(self.ToolsAreaPanel)
         self.ToolsList.setStyleSheet("QTreeWidget::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
                                      "QTreeWidget::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                     "QTreeWidget{border: 1px solid grey; color: lightgrey; background-color: rgb(20, 20, 20)}")
+                                     "QTreeWidget{border: 1px solid rgb(50, 50, 50); color: lightgrey; background-color: rgb(20, 20, 20)}")
         self.ToolsList.setObjectName("ToolsList")
         self.verticalLayout_5.addWidget(self.ToolsList, alignment=Qt.Alignment())
         self.ToolsArea.setWidget(self.ToolsAreaPanel)
@@ -47,7 +47,7 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
         self.NodeEditorLayout.setSpacing(0)
         scene = FlowScene()
         self.CryptoToolNodeEditor = CryptoFlowView(scene)
-        self.CryptoToolNodeEditor.setStyleSheet('#CryptoToolNodeEditor{border: 0px solid grey;}')
+        self.CryptoToolNodeEditor.setStyleSheet('#CryptoToolNodeEditor{border: 0px solid rgb(50, 50, 50);}')
         self.CryptoToolNodeEditor.setObjectName("CryptoToolNodeEditor")
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor, alignment=Qt.Alignment())
         self.NodeEditorLayout.addWidget(self.CryptoToolNodeEditor, alignment=Qt.Alignment())

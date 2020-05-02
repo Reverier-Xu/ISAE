@@ -60,7 +60,7 @@ class BrowserTab(QMainWindow):
         self.navigation_bar.setIconSize(QSize(18, 18))
         self.navigation_bar.setMaximumHeight(35)
         self.navigation_bar.setContentsMargins(1, -1, 1, -1)
-        self.navigation_bar.setStyleSheet('QToolBar{border: 1px solid grey;}')
+        self.navigation_bar.setStyleSheet('QToolBar{border: 1px solid rgb(50, 50, 50);}')
         self.addToolBar(self.navigation_bar)
         osinfo = platform.system()
         if osinfo == 'Windows':

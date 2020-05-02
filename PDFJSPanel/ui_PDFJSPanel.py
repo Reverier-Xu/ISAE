@@ -5,6 +5,7 @@ from PyQt5.QtCore import QUrl
 
 from ui_Widgets.FileTree import FileTree
 from ui_Widgets import uni_Widget
+from Config import Settings
 
 
 class ui_PDFJSPanel(QtWidgets.QWidget):
@@ -15,7 +16,7 @@ class ui_PDFJSPanel(QtWidgets.QWidget):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         splitter1 = uni_Widget.ICTFESplitter(QtCore.Qt.Horizontal)
         splitter1.setContentsMargins(0, 0, 0, 0)
-        self.PDFFileTreePanel = FileTree()
+        self.PDFFileTreePanel = FileTree(path=Settings.PDFPath)
         self.PDFFileTreePanel.setObjectName("PDFFileTreePanel")
         self.PDFFileTreePanel.setMinimumWidth(200)
         splitter1.addWidget(self.PDFFileTreePanel)

@@ -1,0 +1,84 @@
+
+from PyQt5.QtWidgets import QPlainTextEdit, QWidget, QVBoxLayout, QApplication, QFileDialog, QMessageBox, QHBoxLayout, \
+                             QFrame, QTextEdit, QToolBar, QComboBox, QLabel, QAction, QLineEdit,\
+                             QToolButton, QMenu, QMainWindow, QSizePolicy, QInputDialog, QColorDialog
+from PyQt5.QtGui import QIcon, QPainter, QTextFormat, QColor, QTextCursor, QKeySequence, QClipboard
+from PyQt5.QtCore import Qt, QVariant, QRect, QDir, QFile, QFileInfo, QTextStream, QRegExp, QSettings, QProcess, QPoint
+import sys
+
+class myEditor(QMainWindow):
+	def __init__(self, parent = None):
+		super(myEditor, self).__init__(parent)
+		self.editor = QPlainTextEdit() 
+#		self.editor.setStyleSheet(stylesheet(self))
+		self.editor.setFrameStyle(QFrame.NoFrame)
+		self.editor.setTabStopWidth(20)
+
+		bar=self.menuBar()
+		self.filemenu=bar.addMenu("File")
+		self.separatorAct = self.filemenu.addSeparator()
+		self.filemenu.addAction(QAction(QIcon.fromTheme('document-new'), "New", self, triggered = self.newAct, shortcut = "Ctrl+n"))
+		self.filemenu.addAction(QAction(QIcon.fromTheme('document-open'), "Open", self, triggered = self.openAct, shortcut = "Ctrl+o"))
+		self.filemenu.addAction(QAction(QIcon.fromTheme('document-save'), "Save", self, triggered = self.saveAct, shortcut = "Ctrl+s"))
+		self.filemenu.addAction(QAction(QIcon.fromTheme('document-save-as'), "Save as ...", self, triggered = self.saveAsAct, shortcut = "Shift+Ctrl+s"))
+		self.filemenu.addSeparator()
+#		for i in range(self.MaxRecentFiles):
+#		    self.filemenu.addAction(self.recentFileActs[i])
+#		self.updateRecentFileActions()
+		self.filemenu.addSeparator()
+		self.clearRecentAct = QAction("clear Recent Files List", self, triggered=self.clearRecentFiles)
+		self.clearRecentAct.setIcon(QIcon.fromTheme("edit-clear"))
+		self.filemenu.addAction(self.clearRecentAct)
+		self.filemenu.addSeparator()
+		self.filemenu.addAction(QAction(QIcon.fromTheme('application-exit'), "Exit", self, triggered = self.exitAct, shortcut = "Ctrl+q"))
+		
+		editmenu = bar.addMenu("Edit")
+		editmenu.addAction(QAction(QIcon.fromTheme('edit-undo'), "Undo", self, triggered = self.editor.undo, shortcut = "Ctrl+u"))
+		editmenu.addAction(QAction(QIcon.fromTheme('edit-redo'), "Redo", self, triggered = self.editor.redo, shortcut = "Shift+Ctrl+u"))
+		editmenu.addSeparator()
+		editmenu.addAction(QAction(QIcon.fromTheme('edit-copy'), "Copy", self, triggered = self.editor.copy, shortcut = "Ctrl+c"))
+		editmenu.addAction(QAction(QIcon.fromTheme('edit-cut'), "Cut", self, triggered = self.editor.cut, shortcut = "Ctrl+x"))
+		editmenu.addAction(QAction(QIcon.fromTheme('edit-paste'), "Paste", self, triggered = self.editor.paste, shortcut = "Ctrl+v"))
+		editmenu.addAction(QAction(QIcon.fromTheme('edit-delete'), "Delete", self, triggered = self.editor.cut, shortcut = "Del"))
+		editmenu.addSeparator()
+		editmenu.addAction(QAction(QIcon.fromTheme('edit-select-all'), "Select All", self, triggered = self.editor.selectAll, shortcut = "Ctrl+a"))
+
+		layoutV = QVBoxLayout()
+		layoutV.addWidget(self.editor)
+		mq = QWidget(self)
+		mq.setLayout(layoutV)
+		self.setCentralWidget(mq)
+
+	def newAct(self):
+		return
+
+	def openAct(self):
+		return
+
+	def saveAct(self):
+		return
+
+	def saveAsAct(self):
+		return
+
+	def clearRecentAct(self):
+		return
+
+	def clearRecentFiles(self):
+		return
+
+	def exitAct(self):
+		print("Goodbye ...")
+		app.quit()
+
+if __name__ == '__main__':
+	app = QApplication(sys.argv)
+	win = myEditor()
+	win.setWindowIcon(QIcon.fromTheme("gnome-mime-text-x-python"))
+	win.setWindowTitle("Editor" + "[*]")
+	win.setMinimumSize(640,250)
+	win.showMaximized()
+	if len(sys.argv) > 1:
+		print(sys.argv[1])
+		win.openFileOnStart(sys.argv[1])
+	app.exec_()

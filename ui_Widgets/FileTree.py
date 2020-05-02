@@ -24,6 +24,7 @@ class FileTreeItem(QtWidgets.QTreeWidgetItem):
 
 class FileTree(QMainWindow, ui_FileWindow):
     FileDetectedSignal = QtCore.pyqtSignal(FileTreeItem)
+    PathSelected = QtCore.pyqtSignal(str)
 
     def __init__(self, parent=None, path='../ICTFE'):
         super(FileTree, self).__init__(parent)
@@ -58,7 +59,7 @@ class FileTree(QMainWindow, ui_FileWindow):
         root.setIcon(0, QtGui.QIcon(icon))
         self.CreateTree(dirs, root, path)
         QApplication.processEvents()
-        Settings.GlobalPath = path
+        self.PathSelected.emit(path)
 
     def CreateTree(self, dirs, root, path):
         for i in dirs:

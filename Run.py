@@ -1,5 +1,5 @@
 #!/bin/python3
-
+import json
 import sys
 from time import sleep
 
@@ -21,8 +21,8 @@ class rMainWindow(QMainWindow, MainWindow.Ui_MainWindow):
 
     def closeEvent(self, QCloseEvent):
         self.StatusThread.terminate()
-        with open('Config/startpath.ctfe', 'w') as out:
-            out.write(Settings.GlobalPath)
+        with open('UserConfig/paths.ctfe', 'w') as out:
+            out.write(json.dumps({'GlobalPath': Settings.GlobalPath, 'PDFPath': Settings.PDFPath}))
         super(rMainWindow, self).closeEvent(QCloseEvent)
 
     def mousePressEvent(self, event):

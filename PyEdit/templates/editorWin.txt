@@ -1,0 +1,23 @@
+from PyQt5.QtWidgets import QPlainTextEdit, QWidget, QApplication, QFrame, QMainWindow
+import sys
+
+class myEditor(QMainWindow):
+	def __init__(self, parent = None):
+		super(myEditor, self).__init__(parent)
+		self.editor = QPlainTextEdit() 
+#		self.editor.setStyleSheet(stylesheet(self))
+		self.editor.setFrameStyle(QFrame.NoFrame)
+		self.editor.setTabStopWidth(20)
+		self.setCentralWidget(self.editor)
+
+
+if __name__ == '__main__':
+	app = QApplication(sys.argv)
+	win = myEditor()
+	win.setWindowTitle("Editor" + "[*]")
+	win.setMinimumSize(640,250)
+	win.showMaximized()
+	if len(sys.argv) > 1:
+		print(sys.argv[1])
+		win.openFileOnStart(sys.argv[1])
+	app.exec_()
