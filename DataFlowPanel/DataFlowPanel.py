@@ -42,7 +42,10 @@ class DataFlowPanel(ui_DataFlowPanel):
         super(DataFlowPanel, self).__init__()
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
         self.RegisterModule()
-        self.CryptoToolNodeEditor.scene.load('UserConfig/NodeEditorCurrent.ctfe')
+        try:
+            self.CryptoToolNodeEditor.scene.load('UserConfig/NodeEditorCurrent.ctfe')
+        except:
+            pass
 
     def RegisterModule(self):
         self.ToolsList.clear()
