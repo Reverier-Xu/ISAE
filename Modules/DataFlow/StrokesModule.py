@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from Modules.DataFlow.StrokesModuleUtils import *
 
 properties = {

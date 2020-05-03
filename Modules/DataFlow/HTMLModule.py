@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import html
 
 properties = {

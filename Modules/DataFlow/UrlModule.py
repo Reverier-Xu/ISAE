@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from urllib import parse
 
 properties = {

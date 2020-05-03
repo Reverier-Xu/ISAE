@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import os
 
 from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets

@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 properties = {
     'name': '反转',
     'categories': '字符串操作',

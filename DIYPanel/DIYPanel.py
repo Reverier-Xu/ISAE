@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from DIYPanel.ui_DIYPanel import ui_DIYPanel
 
 

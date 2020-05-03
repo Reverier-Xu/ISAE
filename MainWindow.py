@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 
 from PDFJSPanel.PDFJSPanel import PDFJSPanel
-from ui_Widgets import uni_Widget
+from ui_Widgets import uni_Widget, CloseSigDock
 from DIYPanel.DIYPanel import DIYPanel
 from CyberChefPanel.CyberChefPanel import CyberChefPanel
 from BrowserPanel.BrowserPanel import BrowserPanel
@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
         self.centralWidget = QtWidgets.QWidget(MainWindow, flags=Qt.WindowFlags())
         MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.MainWindow.setStyleSheet("QMainWindow#MainWindow{\n"
-                                      "background-color: rgb(20, 20, 20);\n"
+                                      "background-color: rgb(30, 30, 30);\n"
                                       "border: 1px rgb(50, 50, 50);\n"
                                       "border-style: solid;\n"
                                       "}" + uni_Widget.TabStyle)
@@ -107,7 +107,7 @@ class Ui_MainWindow(object):
                                       "            }\n"
                                       "            QPushButton#MiniButton:hover{\n"
                                       "            image:url(./Resources/mini);\n"
-                                      "            background-color: rgb(30, 30, 30);\n"
+                                      "            background-color: rgb(40, 40, 40);\n"
                                       "            border:none;\n"
                                       "            }\n"
                                       "            QPushButton#MiniButton:pressed{\n"
@@ -137,7 +137,7 @@ class Ui_MainWindow(object):
                                      "            }\n"
                                      "            QPushButton#MaxButton:hover{\n"
                                      "            image:url(./Resources/max);\n"
-                                     "            background-color: rgb(30, 30, 30);\n"
+                                     "            background-color: rgb(40, 40, 40);\n"
                                      "            border:none;\n"
                                      "            }\n"
                                      "            QPushButton#MaxButton:pressed{\n"
@@ -410,7 +410,7 @@ class Ui_MainWindow(object):
         self.MainHLayout.setSpacing(0)
         self.ButtonDockLayout.setSpacing(5)
         self.ButtonDockLayout.setContentsMargins(0, 0, 0, 0)
-        self.ButtonDock.setStyleSheet('#ButtonDock{background-color: rgb(30, 30, 30);}')
+        self.ButtonDock.setStyleSheet('#ButtonDock{background-color: rgb(40, 40, 40);}')
         self.ButtonDock.setMaximumWidth(64)
         self.MainHLayout.setContentsMargins(0, 0, 0, 0)
         self.MainHLayout.addWidget(self.ButtonDock, alignment=Qt.Alignment())
@@ -465,14 +465,15 @@ class Ui_MainWindow(object):
             if dock.windowTitle() == "数据流":
                 dock.raise_()
                 return
-        self.MainStackWindow.DataFlowPanelDock = QtWidgets.QDockWidget("数据流")
+        self.MainStackWindow.DataFlowPanelDock = CloseSigDock.CloseSigDock("数据流")
         self.MainStackWindow.DataFlowPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
         self.MainStackWindow.DataFlowPanelDock.setAttribute(Qt.WA_DeleteOnClose)
         self.MainStackWindow.DataFlowPanel = DataFlowPanel.DataFlowPanel()
         self.MainStackWindow.DataFlowPanelDock.setWidget(self.MainStackWindow.DataFlowPanel)
         self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.DataFlowPanelDock)
+        self.MainStackWindow.DataFlowPanelDock.closeSig.connect(self.MainStackWindow.DataFlowPanel.close)
         try:
-            if self.currentDock != None:
+            if self.currentDock is not None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.DataFlowPanelDock)
         except:
             traceback.print_exc()
@@ -490,7 +491,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.CyberChefDock.setWidget(self.MainStackWindow.CyberChef)
         self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.CyberChefDock)
         try:
-            if self.currentDock != None:
+            if self.currentDock is not None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.CyberChefDock)
         except:
             traceback.print_exc()
@@ -508,7 +509,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.KiwixPanelDock.setWidget(self.MainStackWindow.KiwixPanel)
         self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.KiwixPanelDock)
         try:
-            if self.currentDock != None:
+            if self.currentDock is not None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.KiwixPanelDock)
         except:
             traceback.print_exc()
@@ -544,7 +545,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.WikiPanelDock.setWidget(self.MainStackWindow.WikiPanel)
         self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.WikiPanelDock)
         try:
-            if self.currentDock != None:
+            if self.currentDock is not None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.WikiPanelDock)
         except:
             traceback.print_exc()
@@ -562,7 +563,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.BrowserPanelDock.setWidget(self.MainStackWindow.BrowserPanel)
         self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.BrowserPanelDock)
         try:
-            if self.currentDock != None:
+            if self.currentDock is not None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.BrowserPanelDock)
         except:
             traceback.print_exc()
@@ -580,7 +581,7 @@ class Ui_MainWindow(object):
         self.MainStackWindow.DIYPanelDock.setWidget(self.MainStackWindow.DIYPanel)
         self.MainStackWindow.addDockWidget(Qt.RightDockWidgetArea, self.MainStackWindow.DIYPanelDock)
         try:
-            if self.currentDock != None:
+            if self.currentDock is not None:
                 self.MainStackWindow.tabifyDockWidget(self.currentDock, self.MainStackWindow.DIYPanelDock)
         except:
             traceback.print_exc()
@@ -601,7 +602,8 @@ class Ui_MainWindow(object):
         self.MainStackWindow.EditorPanelDock = QtWidgets.QDockWidget("Editor")
         self.MainStackWindow.EditorPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
         self.MainStackWindow.EditorPanelDock.setAttribute(Qt.WA_DeleteOnClose)
-        self.MainStackWindow.EditorPanelDock.setFeatures(QtWidgets.QDockWidget.DockWidgetMovable | QtWidgets.QDockWidget.DockWidgetFloatable)
+        self.MainStackWindow.EditorPanelDock.setFeatures(
+            QtWidgets.QDockWidget.DockWidgetMovable | QtWidgets.QDockWidget.DockWidgetFloatable)
         self.MainStackWindow.EditorPanel = EditorPanel()
         self.MainStackWindow.FileStackPanel.FileDetectedSingal.connect(lambda s: self.loadFileInEditor(s))
         self.MainStackWindow.EditorPanelDock.setWidget(self.MainStackWindow.EditorPanel)

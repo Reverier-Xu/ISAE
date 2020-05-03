@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 properties = {
     'name': 'Hex To Unicode',
     'categories': '数据转换',

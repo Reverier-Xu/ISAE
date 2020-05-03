@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import os
 
 from PyQt5.QtCore import QMimeData, QPoint, Qt

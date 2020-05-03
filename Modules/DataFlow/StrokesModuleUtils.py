@@ -1,3 +1,6 @@
+__AUTHOR__ = 'arttnba3'
+
+
 def StrokesDecrypt(text):
     output = ''
 

@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 properties = {
     'name': 'Tap Code',
     'categories': '编码解码',

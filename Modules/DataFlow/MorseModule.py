@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import Modules.DataFlow.MorseModuleUtils as utils
 
 properties = {

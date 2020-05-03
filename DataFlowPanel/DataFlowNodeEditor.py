@@ -1,32 +1,7 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from DataFlowPanel.DataFlowNodeModel import *
 
-import importlib
-import os
-
-Modules = {}
-
-
-def get_modules(package="."):
-    """
-    获取包名下所有非__init__的模块名
-    """
-    modules = []
-    files = os.listdir(package)
-
-    for file in files:
-        if not file.startswith("__"):
-            name, ext = os.path.splitext(file)
-            modules.append("." + name)
-
-    return modules
-
-
-for module in get_modules('Modules/DataFlow'):
-    module = importlib.import_module(module, 'Modules.DataFlow')
-    try:
-        Modules[module.properties['name']] = module
-    except:
-        pass
 
 
 class CryptoFlowView(FlowView):

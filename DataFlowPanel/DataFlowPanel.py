@@ -1,14 +1,52 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import copy
 
 from DataFlowPanel.DataFlowNodeEditor import *
 from DataFlowPanel.ui_DataFlowPanel import ui_DataFlowPanel
 from ui_Widgets.qtpynodeeditor import *
 
+import importlib
+import os
+
+Modules = {}
+
+
+def get_modules(package="."):
+    """
+    获取包名下所有非__init__的模块名
+    """
+    modules = []
+    files = os.listdir(package)
+
+    for file in files:
+        if not file.startswith("__"):
+            name, ext = os.path.splitext(file)
+            modules.append("." + name)
+
+    return modules
+
+
+def ScanModules():
+    Modules.clear()
+    for module in get_modules('Modules/DataFlow'):
+        module = importlib.import_module(module, 'Modules.DataFlow')
+        try:
+            Modules[module.properties['name']] = module
+        except:
+            pass
+
 
 class DataFlowPanel(ui_DataFlowPanel):
     def __init__(self):
         super(DataFlowPanel, self).__init__()
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
+        self.RegisterModule()
+        self.CryptoToolNodeEditor.scene.load('UserConfig/NodeEditorCurrent.ctfe')
+
+    def RegisterModule(self):
+        self.ToolsList.clear()
+        ScanModules()
         self.ToolsList.addDIYItem('Input', '基本')
         self.ToolsList.addDIYItem('File Input', '基本')
         self.ToolsList.addDIYItem('Output', '基本')
@@ -41,7 +79,26 @@ class DataFlowPanel(ui_DataFlowPanel):
                     self.outputs = {}
                     super().__init__(self.module, *args, **kwargs)
 
-            reg.register_model(DIYNodesDataModule, category=Modules[i].properties['categories'])
+                def save(self):
+                    doc = super().save()
+                    if self.settings:
+                        doc['settings'] = self.settings
+                    return doc
+
+                def restore(self, doc: dict):
+                    try:
+                        value = copy(doc["settings"])
+                    except Exception:
+                        ...
+                    else:
+                        self.settings = value
+
+            reg.register_model(DIYNodesDataModule,
+                               category=Modules[i].properties['categories'])
         scene = FlowScene(reg)
         self.CryptoToolNodeEditor.setScene(scene)
-        self.CryptoToolNodeEditor.scene.node_double_clicked.connect(self.OptionsBox.LoadOptions)
+        self.CryptoToolNodeEditor.scene.node_double_clicked.connect(
+            self.OptionsBox.LoadOptions)
+
+    def closeEvent(self, QCloseEvent):
+        self.CryptoToolNodeEditor.scene.save('UserConfig/NodeEditorCurrent.ctfe')

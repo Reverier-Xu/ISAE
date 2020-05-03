@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 properties = {
     'name': '字符串拼接',
     'categories': '字符串操作',

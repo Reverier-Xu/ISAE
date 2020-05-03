@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from DataFlowPanel.DataFlowNodeEditor import *
 from DataFlowPanel.OptionEditBox import *
 from DataFlowPanel.DataFlowDragList import *
@@ -19,7 +21,7 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
         self.ToolsAreaPanel = QtWidgets.QWidget(flags=Qt.WindowFlags())
         self.ToolsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 698))
         self.ToolsAreaPanel.setObjectName("ToolsAreaPanel")
-        self.ToolsAreaPanel.setStyleSheet('QWidget#ToolsAreaPanel{background-color: rgb(20, 20, 20);}')
+        self.ToolsAreaPanel.setStyleSheet('QWidget#ToolsAreaPanel{background-color: rgb(30, 30, 30);}')
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.ToolsAreaPanel)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.ToolsSearchBox = uni_Widget.ICTFELineBox(self.ToolsAreaPanel)
@@ -27,7 +29,7 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
                                           'border: 1px solid gray;'
                                           'border-radius: 0px;'
                                           'padding: 5px;'
-                                          'background: rgb(20, 20, 20);'
+                                          'background: rgb(30, 30, 30);'
                                           'selection-background-color: blue;')
         self.ToolsSearchBox.setPlaceholderText('搜索...')
         self.ToolsSearchBox.setObjectName("ToolsSearchBox")
@@ -35,7 +37,7 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
         self.ToolsList = DragList(self.ToolsAreaPanel)
         self.ToolsList.setStyleSheet("QTreeWidget::item:hover{color: lightgrey; background-color: rgb(50,50,50)}"
                                      "QTreeWidget::item:selected{color: lightgrey; background-color:rgb(80,110,205)}"
-                                     "QTreeWidget{border: 1px solid rgb(50, 50, 50); color: lightgrey; background-color: rgb(20, 20, 20)}")
+                                     "QTreeWidget{border: 1px solid rgb(50, 50, 50); color: lightgrey; background-color: rgb(30, 30, 30)}")
         self.ToolsList.setObjectName("ToolsList")
         self.verticalLayout_5.addWidget(self.ToolsList, alignment=Qt.Alignment())
         self.ToolsArea.setWidget(self.ToolsAreaPanel)
@@ -61,7 +63,7 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
         self.OptionsAreaPanel.setGeometry(QtCore.QRect(0, 0, 386, 348))
         self.OptionsAreaPanel.setObjectName("OptionsAreaPanel")
         self.OptionsAreaPanel.setStyleSheet('QWidget#OptionsAreaPanel{'
-                                            'background-color: rgb(20, 20, 20);'
+                                            'background-color: rgb(30, 30, 30);'
                                             'border: 0px solid rgb(40, 40, 40);'
                                             'color: white;'
                                             '}')

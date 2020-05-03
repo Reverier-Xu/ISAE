@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 properties = {
     'name': 'Char To Binary',
     'categories': '数据转换',

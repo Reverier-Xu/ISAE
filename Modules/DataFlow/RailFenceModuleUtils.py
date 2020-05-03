@@ -1,3 +1,6 @@
+__AUTHOR__ = 'arttnba3'
+
+
 def RailFenceEncrypt(text, div):
     if div >= len(text):
         return text

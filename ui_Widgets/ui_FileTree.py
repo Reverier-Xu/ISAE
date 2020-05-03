@@ -40,12 +40,12 @@ class ui_FileWindow(object):
                                 "}"
                                 "QTreeView{"
                                 "color: lightgrey; "
-                                "background-color: rgb(20, 20, 20); "
+                                "background-color: rgb(30, 30, 30); "
                                 "border: 1px solid rgb(50, 50, 50);"
                                 "}"
                                 "QHeaderView::section{"
                                 "color: lightgrey; "
-                                "background-color: rgb(20, 20, 20);"
+                                "background-color: rgb(30, 30, 30);"
                                 "}")
         self.tree.setColumnCount(1)
         self.tree.setColumnWidth(0, 50)

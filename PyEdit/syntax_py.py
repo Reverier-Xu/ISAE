@@ -1,5 +1,5 @@
-# syntax.py
-# adapted from = https://wiki.python.org/moin/PyQt/Python%20syntax%20highlighting
+__AUTHOR__ = 'Reverier Xu'
+
 
 import sys
 
@@ -26,22 +26,22 @@ def format(color, style=''):
         _format.setFontWeight(QFont.Bold)
     return _format
 
-mybrawn = ("#AEA956")
+mybrawn = ("#98C374")
 # Syntax styles that can be shared by all languages
 STYLES = {
-    'keyword': format('#2C2CC8', 'bold'),
-    'operator': format('#6060FF'),
-    'brace': format('#FFF07F'),
-    'defclass': format('#AE59EE', 'bold'),
-    'classes': format('#AE59EE', 'bold'),
-    'Qtclass': format('#9999FF', 'bold'),
+    'keyword': format('#C678DD'),
+    'operator': format('#C678D0'),
+    'brace': format('#FFD708'),
+    'defclass': format('#AE59EE'),
+    'classes': format('#AE59EE'),
+    'Qtclass': format('#AE59FE'),
     'string': format(mybrawn),
-    'string2': format('#42923b', 'italic'),
-    'comment': format('#42923b', 'italic'),
-    'self': format('#D67070', 'italicbold'),
-    'selfnext': format('#CeF4F6', 'bold'),
-    'Qnext': format('#CeF4F6', 'bold'),
-    'numbers': format('#D67070'),
+    'string2': format('#98C379', 'italic'),
+    'comment': format('#516370', 'italic'),
+    'self': format('#E05A4A', 'italic'),
+    'selfnext': format('#C8C8C8'),
+    'Qnext': format('#C8C8C8'),
+    'numbers': format('#CB7E48'),
 }
 
 class Highlighter(QSyntaxHighlighter):
@@ -104,6 +104,9 @@ class Highlighter(QSyntaxHighlighter):
             # 'self'
             (r'\bself\b', 0, STYLES['self']),
 
+            # From '#' until a newline
+            (r'#[^\n]*', 0, STYLES['comment']),
+
             # Double-quoted string, possibly containing escape sequences ### "\"([^\"]*)\"" ### "\"(\\w)*\""
             (r'"[^"\\]*(\\.[^"\\]*)*"', 0, STYLES['string']),
             # Single-quoted string, possibly containing escape sequences
@@ -120,9 +123,6 @@ class Highlighter(QSyntaxHighlighter):
 
             # 'class' followed by an identifier
             (r'\bclass\b\s*(\w+)', 1, STYLES['classes']),
-
-            # From '#' until a newline
-            (r'#[^\n]*', 0, STYLES['comment']),
 
             # 'Q'  word
             #(r'\\bQ[A-Za-z]+\\b', 1, STYLES['Qtclass']), #(QRegExp("\\bQ[A-Za-z]+\\b")

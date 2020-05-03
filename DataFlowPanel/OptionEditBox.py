@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from PyQt5 import QtWidgets, QtCore, QtGui
 from ui_Widgets import uni_Widget
 from ui_Widgets.qtpynodeeditor import Node
@@ -55,7 +57,7 @@ class OptionsEditBox(QtWidgets.QTableWidget):
                                         'border: 0px solid gray;'
                                         'border-radius: 0px;'
                                         'padding: 0 4px;'
-                                        'background: rgb(20, 20, 20);'
+                                        'background: rgb(30, 30, 30);'
                                         'selection-background-color: blue;')
                 exec_item.textEdited.connect(self.GetOptions)
                 exec_item.setText(settings[i])

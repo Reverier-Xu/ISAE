@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import traceback
 
 from PyQt5.QtCore import Qt, QMimeData
@@ -16,7 +18,7 @@ class DragList(QTreeWidget):
         self.setDragEnabled(True)
         self.setStyleSheet("QTreeWidget::item:hover{color: lightgrey; background-color: rgb(60,150,225)}"
                            "QTreeWidget::item:selected{color: lightgrey; background-color:rgb(80,130,255)}"
-                           "QTreeWidget{color: lightgrey; background-color: rgb(20, 20, 20)}")
+                           "QTreeWidget{color: lightgrey; background-color: rgb(30, 30, 30)}")
         self.headerItem().setText(0, "模块")
         self.header().setVisible(False)
         font = QFont()

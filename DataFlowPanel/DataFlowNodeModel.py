@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from typing import Optional, Any
 
 from PyQt5 import QtCore
@@ -57,6 +59,21 @@ class InputModel(NodeDataModel):
     def onTextEdited(self, **kwargs):
         self._string = self._edit.toPlainText()
         self.data_updated.emit(0)
+
+    def save(self):
+        doc = super().save()
+        if self._string:
+            doc['string'] = self._string
+        return doc
+
+    def restore(self, doc):
+        try:
+            value = doc["string"]
+        except Exception:
+            ...
+        else:
+            self._string = value
+            self._edit.setText(value)
 
 
 class FileInputModel(NodeDataModel):
@@ -253,7 +270,8 @@ class ImageShowModel(NodeDataModel):
                     self._node_data.string):
                 w, h = self._label.width(), self._label.height()
                 try:
-                    self._label.setPixmap(self.pixmap.scaled(w, h, Qt.KeepAspectRatio))
+                    self._label.setPixmap(
+                        self.pixmap.scaled(w, h, Qt.KeepAspectRatio))
                 except:
                     pass
 
@@ -402,4 +420,3 @@ class CryptoComputeModel(NodeDataModel):
             self.outputs[i] = StringData(out[i])
         self.computeEndedSig.emit()
         self._statusLabel.setText('√')
-

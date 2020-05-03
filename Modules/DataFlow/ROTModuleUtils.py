@@ -1,3 +1,6 @@
+__AUTHOR__ = 'Reverier Xu'
+
+
 def ROT13(text):
     rot13 = str.maketrans(
         "ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz",

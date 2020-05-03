@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import os
 import platform
 import re
@@ -90,7 +92,7 @@ class BrowserTab(QMainWindow):
             'border: 1px solid gray;'
             'border-radius: 0px;'
             'padding: 0 0px;'
-            'background: rgb(20, 20, 20);'
+            'background: rgb(30, 30, 30);'
             'selection-background-color: blue;'
             'font: 18px;')
         self.navigation_bar.addAction(self.back_button)
@@ -161,15 +163,15 @@ class BrowserWindow(QWidget):
         self.tabs = QTabWidget(self)
         self.tabs.setStyleSheet('''
                                 QTabWidget::pane {
-                                  border: 1px solid rgb(20, 20, 20);
+                                  border: 1px solid rgb(30, 30, 30);
                                   top:0px;
-                                  background: rgb(20, 20, 20);
+                                  background: rgb(30, 30, 30);
                                 }
 
                                 QTabBar::tab {
-                                  background: rgb(20, 20, 20);
+                                  background: rgb(30, 30, 30);
                                   color: white;
-                                  border: 1px solid rgb(20, 20, 20);
+                                  border: 1px solid rgb(30, 30, 30);
                                   padding: 1px;
                                 }
 

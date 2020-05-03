@@ -23,6 +23,10 @@ class rMainWindow(QMainWindow, MainWindow.Ui_MainWindow):
         self.StatusThread.terminate()
         with open('UserConfig/paths.ctfe', 'w') as out:
             out.write(json.dumps({'GlobalPath': Settings.GlobalPath, 'PDFPath': Settings.PDFPath}))
+        try:
+            self.MainStackWindow.DataFlowPanelDock.close()
+        except:
+            pass
         super(rMainWindow, self).closeEvent(QCloseEvent)
 
     def mousePressEvent(self, event):

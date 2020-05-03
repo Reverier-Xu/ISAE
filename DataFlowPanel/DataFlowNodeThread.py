@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 from copy import copy
 
 from PyQt5.QtCore import QThread
@@ -25,4 +27,3 @@ class ComputeThread(QThread):
     def setData(self, inp, settings):
         self.inp = inp
         self.settings = settings
-

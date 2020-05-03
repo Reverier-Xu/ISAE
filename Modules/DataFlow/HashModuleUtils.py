@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 import random
 import string
 from hashlib import md5, \

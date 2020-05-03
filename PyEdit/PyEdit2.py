@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 # -- coding: utf-8 --
 
-# syntax_py  https://wiki.python.org/moin/PyQt/Python%20syntax%20highlighting
-# "© 2017 Axel Schneider <axel99092@gmail.com> https://goodoldsongs.jimdo.com/"
-
 from __future__ import print_function
+
+
+__AUTHOR__ = 'Reverier Xu'
 
 from PyQt5.QtWidgets import QAction, QApplication, QColorDialog, QComboBox, QCompleter, QDialog, QFileDialog, \
     QHBoxLayout, QInputDialog, QLabel, QLineEdit, QMainWindow, QMenu, QMessageBox, QPlainTextEdit, QPushButton, \
@@ -22,7 +22,7 @@ from ui_Widgets import uni_Widget
 # import sys
 
 lineBarColor = QColor("#282828")
-lineHighlightColor = QColor("#282828")
+lineHighlightColor = QColor("#2c323c")
 tab = chr(9)
 eof = "\n"
 iconsize = QSize(16, 16)
@@ -156,7 +156,7 @@ class NumberBar(QWidget):
             while block.isValid() and condition:
                 block_geometry = self.editor.blockBoundingGeometry(block)
                 offset = self.editor.contentOffset()
-                block_top = block_geometry.translated(offset).top()
+                block_top = block_geometry.translated(offset).top() + 3
                 number += 1
 
                 rect = QRect(0, block_top, self.width() - 5, height)
@@ -583,9 +583,8 @@ class EditorPanel(QMainWindow):
         cmenu.addAction(QIcon.fromTheme("zeal"), "show help with 'zeal'", self.showZeal)
         cmenu.addAction(QIcon.fromTheme("firefox"), "find with 'firefox'", self.findWithFirefox)
         cmenu.addAction(QIcon.fromTheme("gtk-find-"), "find this (F10)", self.findNextWord)
-        cmenu.addAction(self.texteditAction)
+
         cmenu.addSeparator()
-        cmenu.addAction(self.py2Act)
         cmenu.addAction(self.py3Act)
         cmenu.addSeparator()
         cmenu.addAction(self.commentAct)
@@ -989,6 +988,7 @@ class EditorPanel(QMainWindow):
         return True
 
     def runPy3(self):
+        self.shellWin.setVisible(True)
         if self.editor.toPlainText() == "":
             self.statusBar().showMessage("no Code!")
             return
@@ -1417,7 +1417,7 @@ QPlainTextEdit
 {
 font-family: 文泉驿等宽微米黑;
 font-size: 24px;
-background: #141414;
+background: #282c34;
 color: #C8C8C8;
 border: 1px solid rgb(50, 50, 50);
 }

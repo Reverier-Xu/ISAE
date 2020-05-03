@@ -110,13 +110,11 @@ class FlowSceneModel:
     def save(self, file_name=None):
         if file_name is None:
             file_name, _ = QFileDialog.getSaveFileName(
-                None, "Save Flow Scene", QDir.homePath(),
-                "Flow Scene Files (*.flow)")
+                None, "保存当前状态", QDir.homePath(),
+                "ICTFE Config Files (*.ctfe)")
 
         if file_name:
             file_name = str(file_name)
-            if not file_name.endswith(".flow"):
-                file_name += ".flow"
 
             with open(file_name, 'wt') as f:
                 json.dump(self.__getstate__(), f)
@@ -125,7 +123,7 @@ class FlowSceneModel:
         if file_name is None:
             file_name, _ = QFileDialog.getOpenFileName(
                 None, "Open Flow Scene", QDir.homePath(),
-                "Flow Scene Files (*.flow)")
+                "ICTFE Config Files (*.ctfe)")
 
         if not os.path.exists(file_name):
             return
@@ -167,7 +165,6 @@ class FlowSceneModel:
         doc : dict
             Dictionary of settings
         """
-        self.clear_scene()
 
         for node in doc["nodes"]:
             self.restore_node(node)

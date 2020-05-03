@@ -6,7 +6,7 @@ def errorInfo(self, info, types='错误提示'):
     errorWin = QtWidgets.QDialog()
     errorWin.setWindowTitle(types)
     errorWin.setFixedSize(400, 300)
-    errorWin.setStyleSheet('background-color: rgb(20, 20, 20)')
+    errorWin.setStyleSheet('background-color: rgb(30, 30, 30)')
     lbl = uni_Widget.ICTFETextBox(errorWin)
     lbl.setText(info)
     lbl.setGeometry(QtCore.QRect(1, 1, 398, 253))

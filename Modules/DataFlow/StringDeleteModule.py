@@ -1,3 +1,5 @@
+__AUTHOR__ = 'Reverier Xu'
+
 properties = {
     'name': '字符去除/替换',
     'categories': '字符串操作',

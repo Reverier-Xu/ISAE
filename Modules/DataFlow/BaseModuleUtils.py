@@ -1,4 +1,6 @@
-﻿from base64 import *
+﻿__AUTHOR__ = 'Shal10w'
+
+from base64 import *
 
 Base64StandardTable = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 Base32StandardTable = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'

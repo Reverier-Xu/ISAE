@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt, QSize
 
 ButtonStyleNormal = "QPushButton{" \
-                    "background-color:rgb(20, 20, 20);" \
+                    "background-color:rgb(30, 30, 30);" \
                     "color: white;" \
                     "border-radius: 0px;" \
                     "border: 0px groove gray;" \
@@ -194,7 +194,7 @@ class ICTFELineBox(QtWidgets.QLineEdit):
             'border: 2px solid gray;'
             'border-radius: 2px;'
             'padding: 0 4px;'
-            'background: rgb(20, 20, 20);'
+            'background: rgb(30, 30, 30);'
             'selection-background-color: blue;')
         self.setDragEnabled(True)
 
@@ -230,7 +230,7 @@ class ICTFEList(QtWidgets.QListWidget):
         super(ICTFEList, self).__init__(parent)
         self.setStyleSheet(
             'QListWidget{'
-            'background-color: rgb(20, 20, 20);'
+            'background-color: rgb(30, 30, 30);'
             'border: 1px solid rgb(50, 50, 50);'
             'color: white;'
             '}')
@@ -253,12 +253,12 @@ class ICTFEScrollArea(QtWidgets.QScrollArea):
         self.setStyleSheet(
             'QScrollArea{'
             'border: none;'
-            'background-color:rgb(20, 20, 20);'
+            'background-color:rgb(30, 30, 30);'
             '}')
         self.viewport().setStyleSheet(
             'QScrollArea{'
             'border: none;'
-            'background-color:rgb(20, 20, 20);'
+            'background-color:rgb(30, 30, 30);'
             '}')
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -337,24 +337,24 @@ right:0px;
 QTabBar::tab {
 border-color: white;
 border-width: 0px;
-border-bottom:none;
+border-bottom: none;
 border-top-left-radius: 0px;
 border-top-right-radius: 0px;
-background:blue;
-color:blue;
 min-width:60px;
 min-height:20px;
 }
 QTabBar::tab:selected{
-background: green;
+background: rgb(50, 50, 50);
 color: white;
+border-top: 0px solid rgb(60, 60, 200);
 }
 QTabBar::tab:!selected{
-background: rgb(60, 60, 245);
+background: rgb(40, 40, 40);
 color: white;
-border: none;
+border-top: 0px solid rgb(40, 40, 40);
 }
 QTabBar::tab:hover{
-background:rgb(115, 25, 255);
+background:rgb(60, 60, 60);
+border-top: 0px solid rgb(80, 80, 200);
 }
 '''

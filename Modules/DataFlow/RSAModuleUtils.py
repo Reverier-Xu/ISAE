@@ -1,3 +1,5 @@
+__AUTHOR__ = 'JayxV'
+
 from functools import reduce
 import random
 import gmpy2
