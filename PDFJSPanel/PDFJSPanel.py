@@ -34,4 +34,4 @@ class PDFJSPanel(ui_PDFJSPanel):
             self.PDFFileTreePanel.CreateTree(dirs_new, item, path)
 
     def updatePDFPath(self, s):
-        Settings.PDFPath = s
+        Settings.PDFPath = os.path.abspath(s)

@@ -5,7 +5,7 @@
 #              Created By Reverier, XDSEC 2020              #
 #                                                           #
 #############################################################
-
+import os
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
@@ -588,6 +588,14 @@ class Ui_MainWindow(object):
         self.currentDock = self.MainStackWindow.DIYPanelDock
 
     def loadFileInEditor(self, s):
+        print(s[-4:])
+        if s[-4:] == '.rxf':
+            try:
+                self.DataFlowPanelCreate()
+                self.MainStackWindow.DataFlowPanel.CryptoToolNodeEditor.scene.load(s)
+                return
+            except:
+                pass
         self.MainStackWindow.EditorPanel.openFile(s)
         for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
             if dock.windowTitle() == "Editor":
@@ -650,15 +658,13 @@ class Ui_MainWindow(object):
         with open('UserConfig/paths.ctfe', 'r') as inp:
             paths = json.loads(str(inp.read()))
             try:
-                Settings.GlobalPath = paths['GlobalPath']
+                Settings.GlobalPath = os.path.abspath(paths['GlobalPath'])
             except:
-                Settings.GlobalPath = ''
+                Settings.GlobalPath = os.path.abspath('../ICTFE')
             try:
-                Settings.PDFPath = paths['PDFPath']
+                Settings.PDFPath = os.path.abspath(paths['PDFPath'])
             except:
-                Settings.PDFPath = '../ICTFE'
-        if Settings.GlobalPath == '':
-            Settings.GlobalPath = '../ICTFE'
+                Settings.PDFPath = os.path.abspath('../ICTFE')
         self.MainStackWindow.FileStackPanelDock = QtWidgets.QDockWidget("File")
         self.MainStackWindow.FileStackPanelDock.setStyleSheet(uni_Widget.DockStyleSheet)
         self.MainStackWindow.FileStackPanelDock.setAttribute(Qt.WA_DeleteOnClose)

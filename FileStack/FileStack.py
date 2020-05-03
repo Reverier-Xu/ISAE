@@ -32,7 +32,7 @@ class FileStackPanel(QtWidgets.QWidget):
         self.FileTreePanel.PathSelected.connect(lambda s: self.updateGlobalPath(s))
 
     def updateGlobalPath(self, s):
-        Settings.GlobalPath = s
+        Settings.GlobalPath = os.path.abspath(s)
 
     def CreateFileTree(self, item):
         path = item.FilePath

@@ -44,7 +44,7 @@ class TextEdit(QPlainTextEdit):
 
         self._completer = c
         c.popup().setStyleSheet(
-            "background-color: #555753; color: #eeeeec; font-size: 16pt; selection-background-color: #4e9a06;")
+            "border: 1px solid rgb(50, 50, 50); background-color: #1e1e1e; color: #cccccc; font-size: 16pt; selection-background-color: #282828;")
 
         c.setWidget(self)
         c.setCompletionMode(QCompleter.PopupCompletion)
@@ -1417,8 +1417,8 @@ QPlainTextEdit
 {
 font-family: 文泉驿等宽微米黑;
 font-size: 24px;
-background: #282c34;
-color: #C8C8C8;
+background: #1e1e1e;
+color: #d4d4d4;
 border: 1px solid rgb(50, 50, 50);
 }
 QTextEdit

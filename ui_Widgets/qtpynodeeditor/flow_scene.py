@@ -15,6 +15,7 @@ from .node_data import NodeDataModel, NodeDataType
 from .node_graphics_object import NodeGraphicsObject
 from .port import Port, PortType
 from .type_converter import DefaultTypeConverter, TypeConverter
+from Config import Settings
 
 
 def locate_node_at(scene_point, scene, view_transform):
@@ -110,20 +111,21 @@ class FlowSceneModel:
     def save(self, file_name=None):
         if file_name is None:
             file_name, _ = QFileDialog.getSaveFileName(
-                None, "保存当前状态", QDir.homePath(),
-                "ICTFE Config Files (*.ctfe)")
+                None, "保存当前状态", Settings.GlobalPath,
+                "数据流状态文件 (*.rxf)")
 
         if file_name:
             file_name = str(file_name)
-
+            if file_name[-4:] != '.rxf':
+                file_name += '.rxf'
             with open(file_name, 'wt') as f:
                 json.dump(self.__getstate__(), f)
 
     def load(self, file_name=None):
         if file_name is None:
             file_name, _ = QFileDialog.getOpenFileName(
-                None, "Open Flow Scene", QDir.homePath(),
-                "ICTFE Config Files (*.ctfe)")
+                None, "打开数据流状态文件", Settings.GlobalPath,
+                "数据流状态文件 (*.rxf)")
 
         if not os.path.exists(file_name):
             return
@@ -165,6 +167,7 @@ class FlowSceneModel:
         doc : dict
             Dictionary of settings
         """
+        self.clear_scene()
 
         for node in doc["nodes"]:
             self.restore_node(node)

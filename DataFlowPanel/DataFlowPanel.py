@@ -43,9 +43,10 @@ class DataFlowPanel(ui_DataFlowPanel):
         self.ToolsSearchBox.textChanged.connect(self.ToolsList.filter)
         self.RegisterModule()
         try:
-            self.CryptoToolNodeEditor.scene.load('UserConfig/NodeEditorCurrent.ctfe')
+            self.CryptoToolNodeEditor.scene.load('UserConfig/NodeEditorCurrent.rxf')
         except:
             pass
+        self.SaveButton.clicked.connect(lambda **kwargs: self.CryptoToolNodeEditor._scene.save())
 
     def RegisterModule(self):
         self.ToolsList.clear()
@@ -104,4 +105,4 @@ class DataFlowPanel(ui_DataFlowPanel):
             self.OptionsBox.LoadOptions)
 
     def closeEvent(self, QCloseEvent):
-        self.CryptoToolNodeEditor.scene.save('UserConfig/NodeEditorCurrent.ctfe')
+        self.CryptoToolNodeEditor.scene.save('UserConfig/NodeEditorCurrent.rxf')

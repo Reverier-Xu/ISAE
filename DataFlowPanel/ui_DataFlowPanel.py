@@ -3,6 +3,7 @@ __AUTHOR__ = 'Reverier Xu'
 from DataFlowPanel.DataFlowNodeEditor import *
 from DataFlowPanel.OptionEditBox import *
 from DataFlowPanel.DataFlowDragList import *
+from ui_Widgets.FileTree import FileTree
 
 
 class ui_DataFlowPanel(QtWidgets.QWidget):
@@ -80,7 +81,9 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
         self.verticalLayout.addWidget(self.OptionsBox, alignment=Qt.Alignment())
         self.OptionsArea.setWidget(self.OptionsAreaPanel)
         self.horizontalLayout_2.addWidget(self.CryptoMainSplitter, alignment=Qt.Alignment())
-
+        self.SaveButton = uni_Widget.ICTFEButton()
+        self.SaveButton.setText('保存')
+        self.FileAndOptionsLayout.addWidget(self.SaveButton)
         self.reTranslateUi()
 
     def reTranslateUi(self):

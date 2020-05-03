@@ -9,6 +9,7 @@ from PyQt5.QtGui import QColor, QTextCharFormat, QFont, QSyntaxHighlighter
 quote = "%s%s%s" % (chr(39), chr(39), chr(39))
 dquote = "%s%s%s" % (chr(34), chr(34), chr(34))
 
+
 def format(color, style=''):
     '''Return a QTextCharFormat with the given attributes.
     '''
@@ -26,11 +27,12 @@ def format(color, style=''):
         _format.setFontWeight(QFont.Bold)
     return _format
 
+
 mybrawn = ("#98C374")
 # Syntax styles that can be shared by all languages
 STYLES = {
-    'keyword': format('#C678DD'),
-    'operator': format('#C678D0'),
+    'keyword': format('#3b88d6'),
+    'operator': format('#c8c8c8'),
     'brace': format('#FFD708'),
     'defclass': format('#AE59EE'),
     'classes': format('#AE59EE'),
@@ -38,11 +40,12 @@ STYLES = {
     'string': format(mybrawn),
     'string2': format('#98C379', 'italic'),
     'comment': format('#516370', 'italic'),
-    'self': format('#E05A4A', 'italic'),
+    'self': format('#3b68d6', 'italic'),
     'selfnext': format('#C8C8C8'),
     'Qnext': format('#C8C8C8'),
     'numbers': format('#CB7E48'),
 }
+
 
 class Highlighter(QSyntaxHighlighter):
     '''Syntax highlighter for the Python language.
@@ -74,6 +77,7 @@ class Highlighter(QSyntaxHighlighter):
     braces = [
         '\{', '\}', '\(', '\)', '\[', '\]',
     ]
+
     def __init__(self, document):
         QSyntaxHighlighter.__init__(self, document)
         tri = (quote)
@@ -88,18 +92,19 @@ class Highlighter(QSyntaxHighlighter):
 
         # Keyword, operator, and brace rules
         rules += [(r'\b%s\b' % w, 0, STYLES['keyword'])
-            for w in Highlighter.keywords]
+                  for w in Highlighter.keywords]
         rules += [(r'%s' % o, 0, STYLES['operator'])
-            for o in Highlighter.operators]
+                  for o in Highlighter.operators]
         rules += [(r'%s' % b, 0, STYLES['brace'])
-            for b in Highlighter.braces]
+                  for b in Highlighter.braces]
 
         # All other rules
         rules += [
             # Numeric literals
             (r'\b[+-]?[0-9]+[lL]?\b', 0, STYLES['numbers']),
             (r'\b[+-]?0[xX][0-9A-Fa-f]+[lL]?\b', 0, STYLES['numbers']),
-            (r'\b[+-]?[0-9]+(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\b', 0, STYLES['numbers']),
+            (r'\b[+-]?[0-9]+(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?\b',
+             0, STYLES['numbers']),
 
             # 'self'
             (r'\bself\b', 0, STYLES['self']),
@@ -113,10 +118,12 @@ class Highlighter(QSyntaxHighlighter):
             (r"'[^'\\]*(\\.[^'\\]*)*'", 0, STYLES['string']),
 
             # 'def' followed by an word
-            (r'\bdef\b\s*(\w+)', 1, STYLES['defclass']), ### (r'\bdef\b\s*(\w+)', 1, STYLES['defclass']),
+            # (r'\bdef\b\s*(\w+)', 1, STYLES['defclass']),
+            (r'\bdef\b\s*(\w+)', 1, STYLES['defclass']),
 
             # 'self.' followed by an word
-            (r'\bself\b)', 1, STYLES['selfnext']), ### (r'\bself.\b\s*(\w+)', 1, STYLES['selfnext']),
+            # (r'\bself.\b\s*(\w+)', 1, STYLES['selfnext']),
+            (r'\bself\b)', 1, STYLES['selfnext']),
 
             # 'Q' followed by an word
             (r'\b[Q.]\b\s*(\w+)', 1, STYLES['Qnext']),
@@ -125,17 +132,16 @@ class Highlighter(QSyntaxHighlighter):
             (r'\bclass\b\s*(\w+)', 1, STYLES['classes']),
 
             # 'Q'  word
-            #(r'\\bQ[A-Za-z]+\\b', 1, STYLES['Qtclass']), #(QRegExp("\\bQ[A-Za-z]+\\b")
+            # (r'\\bQ[A-Za-z]+\\b', 1, STYLES['Qtclass']), #(QRegExp("\\bQ[A-Za-z]+\\b")
         ]
 
         # Build a QRegExp for each pattern
         self.rules = [(QRegExp(pat), index, fmt)
-            for (pat, index, fmt) in rules]
-
+                      for (pat, index, fmt) in rules]
 
     def highlightBlock(self, text):
 
-#        Apply syntax highlighting to the given block of text.
+        #        Apply syntax highlighting to the given block of text.
 
         # Do other syntax formatting
         for expression, nth, format in self.rules:
@@ -154,7 +160,6 @@ class Highlighter(QSyntaxHighlighter):
         in_multiline = self.match_multiline(text, *self.tri_single)
         if not in_multiline:
             in_multiline = self.match_multiline(text, *self.tri_double)
-
 
     def match_multiline(self, text, delimiter, in_state, style):
         '''Do highlighting of multi-line strings. ``delimiter`` should be a
