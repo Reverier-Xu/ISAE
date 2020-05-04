@@ -13,8 +13,9 @@ def break_simplesub(ctext):
 
     # keep going until we are killed by the user
     i = 0
-    for i in range(10000):
-        i = i+1
+    out = ''
+    for i in range(200):
+        print(i)
         random.shuffle(parentkey)
         deciphered = SimpleSub(parentkey).decipher(ctext)
         parentscore = fitness.score(deciphered)
@@ -33,7 +34,6 @@ def break_simplesub(ctext):
                 parentkey = child[:]
                 count = 0
             count = count + 1
-        out = ''
         # keep track of best score seen so far
         if parentscore > maxscore:
             maxscore,maxkey = parentscore,parentkey[:]
@@ -42,8 +42,5 @@ def break_simplesub(ctext):
             temp+= '    best key: '+''.join(maxkey)
             temp += '    plaintext: ' + ss.decipher(ctext)
             out = temp + out
+    print(out)
     return out
-
-    
-
-

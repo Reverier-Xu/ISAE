@@ -444,6 +444,7 @@ class Ui_MainWindow(object):
 
         self.restorePath()
         self.EditorPanelCreate()
+        self.DataFlowPanelCreate()
 
     def MaximumWindow(self):
         if self.MaxFlag:
