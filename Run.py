@@ -32,12 +32,12 @@ class rMainWindow(QMainWindow, MainWindow.Ui_MainWindow):
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton and self.MaxFlag is False:
             self.m_flag = True
-            self.m_Position = event.globalPos() - self.pos()  # 获取鼠标相对窗口的位置
+            self.m_Position = event.globalPos() - self.pos()
             event.accept()
 
     def mouseMoveEvent(self, QMouseEvent):
         if Qt.LeftButton and self.m_flag and self.MaxFlag is False:
-            self.move(QMouseEvent.globalPos() - self.m_Position)  # 更改窗口位置
+            self.move(QMouseEvent.globalPos() - self.m_Position)
             QMouseEvent.accept()
 
     def mouseReleaseEvent(self, QMouseEvent):
@@ -65,6 +65,6 @@ if __name__ == "__main__":
     Win.showMaximized()
     splash.finish(Win)
     font = QtGui.QFont()
-    font.setFamily('文泉驿微米黑')
+    font.setFamily('文泉驿等宽微米黑')
     app.setFont(font)
     sys.exit(app.exec_())

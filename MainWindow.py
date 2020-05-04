@@ -21,11 +21,15 @@ from DataFlowPanel import DataFlowPanel
 from KiwixPanel.KiwixPanel import KiwixPanel
 from FileStack.FileStack import FileStackPanel
 from Config import Settings
-from PyEdit.PyEdit2 import EditorPanel
+from EditorPanel.EditorPanel import EditorPanel
 import psutil
 import time
 import traceback
 import json
+from Crypto.Cipher import *
+import requests
+from aip import AipOcr
+import gmpy2
 
 
 class Ui_MainWindow(object):
@@ -49,7 +53,7 @@ class Ui_MainWindow(object):
                                       "background-color: rgb(30, 30, 30);\n"
                                       "border: 1px rgb(50, 50, 50);\n"
                                       "border-style: solid;\n"
-                                      "}" + uni_Widget.TabStyle)
+                                      "}" + uni_Widget.TabStyle + 'QWidget{color: white;}')
         self.centralWidget.setObjectName("centralWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralWidget)
         self.verticalLayout.setContentsMargins(1, 1, 1, 1)
@@ -201,7 +205,7 @@ class Ui_MainWindow(object):
         self.EditorButton.setIconSize(QtCore.QSize(48, 48))
         self.EditorButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/editor.png')))
         self.ButtonDockLayout.addWidget(self.EditorButton)
-
+        """
         self.BinaryButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -218,7 +222,7 @@ class Ui_MainWindow(object):
         self.BinaryButton.setIconSize(QtCore.QSize(48, 48))
         self.BinaryButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/binary.png')))
         self.ButtonDockLayout.addWidget(self.BinaryButton)
-
+        """
         self.WebButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -252,7 +256,7 @@ class Ui_MainWindow(object):
         self.DataFlowButton.setIconSize(QtCore.QSize(48, 48))
         self.DataFlowButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/dataflow.png')))
         self.ButtonDockLayout.addWidget(self.DataFlowButton)
-
+        """
         self.ToolsButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -269,7 +273,7 @@ class Ui_MainWindow(object):
         self.ToolsButton.setIconSize(QtCore.QSize(48, 48))
         self.ToolsButton.setIcon(QtGui.QIcon(QtGui.QPixmap('./Resources/panel/tools.png')))
         self.ButtonDockLayout.addWidget(self.ToolsButton)
-
+        """
         self.CyberChefButton = uni_Widget.ICTFEButton(self.centralWidget)
         size_policy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -596,6 +600,8 @@ class Ui_MainWindow(object):
                 return
             except:
                 pass
+        if os.path.isdir(s):
+            return
         self.MainStackWindow.EditorPanel.openFile(s)
         for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
             if dock.windowTitle() == "Editor":
@@ -694,7 +700,7 @@ class SystemInfoThread(QtCore.QThread):
             new_net_speed = psutil.net_io_counters().bytes_recv
             time.sleep(1)
             self.__win.StatusBar.showMessage(
-                '-> ICTFE - Version 1.0.0 Dev Build 28147 | Powered By Reverier       ' +
+                '-> ICTFE - Version 1.0.0 Release Alpha Build 59323 | Powered By Reverier       ' +
                 "NetSpeed: %.2fK/s" % ((new_net_speed - old_net_speed) / 1024) + '      Memory Usage: ' + str(
                     int(psutil.virtual_memory().used * 100 / psutil.virtual_memory().total)) + '%' +
                 '      CPU Usage: ' + str(psutil.cpu_percent()) + '%')

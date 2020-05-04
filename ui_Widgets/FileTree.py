@@ -30,8 +30,10 @@ class FileTree(QMainWindow, ui_FileWindow):
         super(FileTree, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("File_Tree")
-
-        dirs = file_name(path)
+        try:
+            dirs = file_name(path)
+        except:
+            dirs = os.path.abspath('.')
         file_info = Qt.QFileInfo(path)
         file_icon = Qt.QFileIconProvider()
         icon = QtGui.QIcon(file_icon.icon(file_info))

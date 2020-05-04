@@ -1,5 +1,4 @@
 from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtCore import Qt, QSize
 
 ButtonStyleNormal = "QPushButton{" \
                     "background-color:rgb(30, 30, 30);" \
@@ -156,7 +155,7 @@ class ICTFEButton(QtWidgets.QPushButton):
             "border-style: outset;"
             "}"
             "QPushButton:hover{"
-            "background-color: rgba(40, 40, 40, 100%);"
+            "background-color: rgb(50, 50, 50);"
             "color: white;"
             "}"
             "QPushButton:pressed{"
@@ -222,7 +221,7 @@ class ICTFELabel(QtWidgets.QLabel):
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
-        self.setStyleSheet('color: white;')
+        self.setStyleSheet('color: white; background-color: rgb(40, 40, 40);')
 
 
 class ICTFEList(QtWidgets.QListWidget):
@@ -241,7 +240,7 @@ class ICTFEList(QtWidgets.QListWidget):
         font.setWeight(50)
         self.setFont(font)
         self.setDragEnabled(True)
-        self.setDefaultDropAction(Qt.TargetMoveAction)
+        self.setDefaultDropAction(QtCore.Qt.TargetMoveAction)
 
     def dragEnterEvent(self, e):
         e.accept()
@@ -275,7 +274,7 @@ class BoolEditItem(QtWidgets.QWidget):
         layout = QtWidgets.QVBoxLayout()
         check = ICTFECheckBox()
         check.setText(name)
-        layout.addWidget(check, alignment=Qt.Alignment())
+        layout.addWidget(check, alignment=QtCore.Qt.Alignment())
         self.setLayout(layout)
 
 
@@ -285,9 +284,9 @@ class LineEditItem(QtWidgets.QWidget):
         layout = QtWidgets.QHBoxLayout()
         label = ICTFELabel()
         label.setText(name)
-        layout.addWidget(label, alignment=Qt.Alignment())
+        layout.addWidget(label, alignment=QtCore.Qt.Alignment())
         editbox = ICTFELineBox()
-        layout.addWidget(editbox, alignment=Qt.Alignment())
+        layout.addWidget(editbox, alignment=QtCore.Qt.Alignment())
         self.setLayout(layout)
 
 

@@ -14,7 +14,7 @@ from PyQt5.QtGui import (QIcon, QPainter, QTextFormat, QColor, QTextCursor, QKey
 from PyQt5.QtCore import (Qt, QVariant, QRect, QDir, QFile, QFileInfo, QTextStream, QSettings, QTranslator, QLocale,
                           QProcess, QPoint, QSize, QCoreApplication, QStringListModel, QLibraryInfo)
 from PyQt5 import QtCore, QtPrintSupport
-from EditorPanel.syntax_py import *
+from EditorPanel.PythonHighlighter import *
 import os
 from Config import Settings
 from ui_Widgets import uni_Widget
@@ -391,53 +391,6 @@ class EditorPanel(QMainWindow):
         layoutV = uni_Widget.ICTFESplitter(QtCore.Qt.Vertical)
         layoutV.setContentsMargins(0, 0, 0, 0)
 
-        bar = self.menuBar()
-        self.filemenu = bar.addMenu("File")
-        self.separatorAct = self.filemenu.addSeparator()
-        self.filemenu.addAction(self.newAct)
-        self.filemenu.addAction(self.openAct)
-        self.filemenu.addAction(self.saveAct)
-        self.filemenu.addAction(self.saveAsAct)
-        self.filemenu.addSeparator()
-        for i in range(self.MaxRecentFiles):
-            self.filemenu.addAction(self.recentFileActs[i])
-        self.updateRecentFileActions()
-        self.filemenu.addSeparator()
-        self.clearRecentAct = QAction("clear Recent Files List", self, triggered=self.clearRecentFiles)
-        self.clearRecentAct.setIcon(QIcon.fromTheme("edit-clear"))
-        self.filemenu.addAction(self.clearRecentAct)
-        self.filemenu.addSeparator()
-
-        editmenu = bar.addMenu("Edit")
-        editmenu.addAction(
-            QAction(QIcon.fromTheme('edit-undo'), "Undo", self, triggered=self.editor.undo, shortcut="Ctrl+u"))
-        editmenu.addAction(
-            QAction(QIcon.fromTheme('edit-redo'), "Redo", self, triggered=self.editor.redo, shortcut="Shift+Ctrl+u"))
-        editmenu.addSeparator()
-        editmenu.addAction(
-            QAction(QIcon.fromTheme('edit-copy'), "Copy", self, triggered=self.editor.copy, shortcut="Ctrl+c"))
-        editmenu.addAction(
-            QAction(QIcon.fromTheme('edit-cut'), "Cut", self, triggered=self.editor.cut, shortcut="Ctrl+x"))
-        editmenu.addAction(
-            QAction(QIcon.fromTheme('edit-paste'), "Paste", self, triggered=self.editor.paste, shortcut="Ctrl+v"))
-        editmenu.addAction(
-            QAction(QIcon.fromTheme('edit-delete'), "Delete", self, triggered=self.editor.cut, shortcut="Del"))
-        editmenu.addSeparator()
-        editmenu.addAction(
-            QAction(QIcon.fromTheme('edit-select-all'), "Select All", self, triggered=self.editor.selectAll,
-                    shortcut="Ctrl+a"))
-        editmenu.addSeparator()
-        editmenu.addAction(self.commentAct)
-        editmenu.addAction(self.uncommentAct)
-        editmenu.addSeparator()
-        editmenu.addAction(self.commentBlockAct)
-        editmenu.addAction(self.uncommentBlockAct)
-        editmenu.addSeparator()
-        editmenu.addAction(self.jumpToAct)
-        editmenu.addSeparator()
-        editmenu.addAction(self.indentAct)
-        editmenu.addAction(self.indentLessAct)
-        layoutV.addWidget(bar)
         layoutV.addWidget(tb)
         layoutV.addWidget(tbf)
         self.editorArea = QWidget()

@@ -39,17 +39,13 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 目前进度:
 
-## 小工具
+## 文件管理
 
 添加暂存池, 方便在不同分类之间传递数据.
 
-## 逆向工程
-
-无
-
 ## Web
 
-无
+Postwoman
 
 ## 密码与编码
 
@@ -103,14 +99,6 @@ ROT13和ROT47加密解密支持
 ### 笔画密码
 Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 
-## Pwn
-
-无
-
-## 杂项
-
-无
-
 ## 启动器
 
 支持创建 最多 120 个自定义分区, 每个分区支持最多54个链接按钮. 采用SQLite进行自动存储.
@@ -139,11 +127,4 @@ Strokes Cipher, 提供约2w字左右的汉字笔画密码查询
 集成了一个具有基本浏览功能的浏览器. 支持Flash插件的使用.
 Windows上的H5不包含h.264的解码器, 无法进行H5播放. Linux上一切正常.
 
-# 当前完成状态预览
-![image.png](https://i.loli.net/2020/04/20/DYJ2dFvqcCpnj74.png)
-![image.png](https://i.loli.net/2020/04/20/8JRqxuGfwtIvsOH.png)
-![image.png](https://i.loli.net/2020/04/20/kTM4l5AC6JYasDQ.png)
-![image.png](https://i.loli.net/2020/04/20/6gGrTaN9ZiPzu3K.png)
-![image.png](https://i.loli.net/2020/04/20/f3RyghxNBS9TWmF.png)
-![image.png](https://i.loli.net/2020/04/20/YXHvW4NSdFCsVBD.png)
-![image.png](https://i.loli.net/2020/04/20/iw4vIoV5WdZg1Qb.png)
+# Release 1.0
