@@ -14,7 +14,7 @@ from PyQt5.QtGui import (QIcon, QPainter, QTextFormat, QColor, QTextCursor, QKey
 from PyQt5.QtCore import (Qt, QVariant, QRect, QDir, QFile, QFileInfo, QTextStream, QSettings, QTranslator, QLocale,
                           QProcess, QPoint, QSize, QCoreApplication, QStringListModel, QLibraryInfo)
 from PyQt5 import QtCore, QtPrintSupport
-from PyEdit.syntax_py import *
+from EditorPanel.syntax_py import *
 import os
 from Config import Settings
 from ui_Widgets import uni_Widget
@@ -183,7 +183,7 @@ class EditorPanel(QMainWindow):
         self.words = []
         self.wordList = []
         self.bookmarkslist = []
-        self.root = './Resources/PyEdit'
+        self.root = './Resources/EditorPanel'
         print("self.root is: ", self.root)
         self.appfolder = self.root
         self.openPath = ""
@@ -193,7 +193,7 @@ class EditorPanel(QMainWindow):
         self.MaxRecentFiles = 15
         self.windowList = []
         self.recentFileActs = []
-        self.settings = QSettings("PyEdit", "PyEdit")
+        self.settings = QSettings("EditorPanel", "EditorPanel")
         self.dirpath = Settings.GlobalPath
         self.setAttribute(Qt.WA_DeleteOnClose)
 
