@@ -14,7 +14,7 @@ def break_simplesub(ctext):
     # keep going until we are killed by the user
     i = 0
     out = ''
-    for i in range(200):
+    for i in range(50):
         print(i)
         random.shuffle(parentkey)
         deciphered = SimpleSub(parentkey).decipher(ctext)

@@ -47,6 +47,7 @@ class FileTree(QMainWindow, ui_FileWindow):
             lambda x: self.EmitFilePath(self.tree.itemFromIndex(x)))
 
     def Open_Folder(self):
+        print('clicked.')
         path = QFileDialog.getExistingDirectory(self, "选取文件夹", Settings.GlobalPath)
         if path == '':
             return

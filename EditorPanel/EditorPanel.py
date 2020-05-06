@@ -855,12 +855,14 @@ class EditorPanel(QMainWindow):
 
     ### open File
     def openFile(self, path=None):
+        print(path)
         if self.openPath == "":
             self.openPath = self.dirpath
         if self.maybeSave():
             if not path:
-                path, _ = QFileDialog.getOpenFileName(self, "Open File", self.openPath,
-                                                      "Python Files (*.py);; all Files (*)")
+                return
+                #path, _ = QFileDialog.getOpenFileName(self, "Open File", self.openPath,
+                #                                      "Python Files (*.py);; all Files (*)")
 
             if path:
                 self.openFileOnStart(path)
