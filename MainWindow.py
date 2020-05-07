@@ -22,7 +22,7 @@ from DataFlowPanel import DataFlowPanel
 from KiwixPanel.KiwixPanel import KiwixPanel
 from FileStack.FileStack import FileStackPanel
 from Config import Settings
-from EditorPanel.PyEdit3 import EditorPanel
+from EditorPanel.EditorPanel import EditorPanel
 import psutil
 import time
 import traceback
@@ -604,7 +604,7 @@ class Ui_MainWindow(object):
                 pass
         if os.path.isdir(s):
             return
-        self.MainStackWindow.EditorPanel.openFile(s)
+        self.MainStackWindow.EditorPanel.editor.set_value(s)
         for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):
             if dock.windowTitle() == "Editor":
                 dock.raise_()
@@ -630,7 +630,7 @@ class Ui_MainWindow(object):
         except:
             traceback.print_exc()
         self.currentDock = self.MainStackWindow.EditorPanelDock
-        self.MainStackWindow.EditorPanel.shellWin.setVisible(False)
+#        self.MainStackWindow.EditorPanel.shellWin.setVisible(False)
 
     def PDFJSPanelCreate(self):
         for dock in self.MainStackWindow.findChildren(QtWidgets.QDockWidget):

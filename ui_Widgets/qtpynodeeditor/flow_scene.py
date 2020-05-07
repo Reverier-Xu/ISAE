@@ -3,7 +3,7 @@ import json
 import os
 
 from qtpy.QtCore import QDir, QPoint, QPointF, Qt, Signal
-from qtpy.QtWidgets import QFileDialog, QGraphicsScene
+from PyQt5.QtWidgets import QFileDialog, QGraphicsScene
 
 from . import exceptions
 from . import style as style_module

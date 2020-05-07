@@ -11,6 +11,7 @@ from .connection_graphics_object import ConnectionGraphicsObject
 from .flow_scene import FlowScene
 from .node_graphics_object import NodeGraphicsObject
 from PyQt5.Qt import QApplication
+from PyQt5.QtGui import QCursor
 
 logger = logging.getLogger(__name__)
 
@@ -218,6 +219,7 @@ class FlowView(QGraphicsView):
         ----------
         event : QWheelEvent
         """
+
         if QApplication.keyboardModifiers() == Qt.ControlModifier:
             delta = event.angleDelta()
             if delta.y() == 0:
@@ -229,6 +231,8 @@ class FlowView(QGraphicsView):
                 self.scale_up()
             else:
                 self.scale_down()
+        else:
+            super().wheelEvent(event)
 
     def keyPressEvent(self, event: QKeyEvent):
         """

@@ -7,7 +7,7 @@ from PyQt5 import QtWidgets, QtCore, QtWebEngineWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWebEngineWidgets import QWebEngineSettings
-from PyQt5.QtWidgets import QShortcut
+from PyQt5.QtWidgets import QApplication, QShortcut
 
 
 class KiwixPanel(QtWidgets.QWidget):
