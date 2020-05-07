@@ -5,6 +5,7 @@
 #              Created By Reverier, XDSEC 2020              #
 #                                                           #
 #############################################################
+
 import os
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -21,7 +22,7 @@ from DataFlowPanel import DataFlowPanel
 from KiwixPanel.KiwixPanel import KiwixPanel
 from FileStack.FileStack import FileStackPanel
 from Config import Settings
-from EditorPanel.EditorPanel import EditorPanel
+from EditorPanel.PyEdit3 import EditorPanel
 import psutil
 import time
 import traceback
@@ -53,7 +54,7 @@ class Ui_MainWindow(object):
                                       "background-color: rgb(30, 30, 30);\n"
                                       "border: 1px rgb(50, 50, 50);\n"
                                       "border-style: solid;\n"
-                                      "}" + uni_Widget.TabStyle + 'QWidget{color: white;}')
+                                      "}" + uni_Widget.TabStyle + uni_Widget.ScrollBarStyle + 'QWidget{color: white;}')
         self.centralWidget.setObjectName("centralWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralWidget)
         self.verticalLayout.setContentsMargins(1, 1, 1, 1)
@@ -663,7 +664,10 @@ class Ui_MainWindow(object):
     def restorePath(self):
 
         with open('UserConfig/paths.ctfe', 'r') as inp:
-            paths = json.loads(str(inp.read()))
+            try:
+                paths = json.loads(str(inp.read()))
+            except:
+                paths = {'GlobalPath': None, 'PDFPath': None}
             try:
                 Settings.GlobalPath = os.path.abspath(paths['GlobalPath'])
             except:

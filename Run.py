@@ -1,5 +1,4 @@
 #!/bin/python
-
 import json
 import sys
 from time import sleep

@@ -120,7 +120,7 @@ class ICTFESplitter(QtWidgets.QSplitter):
     def __init__(self, parent=None):
         super(ICTFESplitter, self).__init__(parent)
         self.setStyleSheet("QSplitter::handle {"
-                           "background-color: rgb(50, 50, 50);"
+                           "background-color: rgb(30, 30, 30);"
                            "}"
                            "QSplitter::handle:horizontal {"
                            "width: 3px;"
@@ -173,7 +173,7 @@ class ICTFETextBox(QtWidgets.QTextEdit):
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
-        self.setStyleSheet('background-color: rgb(20,20,20); color: rgb(200, 200, 200);')
+        self.setStyleSheet('QTextEdit{background-color: rgb(20,20,20); color: rgb(200, 200, 200);}'+ScrollBarStyle)
         self.setTextColor(QtGui.QColor(200, 200, 200))
         self.setAcceptDrops(True)
         self.setAcceptRichText(False)
@@ -221,7 +221,7 @@ class ICTFELabel(QtWidgets.QLabel):
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
-        self.setStyleSheet('color: white; background-color: rgb(40, 40, 40);')
+        self.setStyleSheet('color: white; background-color: rgb(30, 30, 30);')
 
 
 class ICTFEList(QtWidgets.QListWidget):
@@ -292,14 +292,14 @@ class LineEditItem(QtWidgets.QWidget):
 
 DockStyleSheet = '''
 QDockWidget {
-    border: 1px solid black;
+    border: 0px solid black;
     titlebar-close-icon: url(./Resources/closeDock.png);
     titlebar-normal-icon: url(./Resources/maxDock.png);
 }
 
 QDockWidget::title {
     text-align: left; /* align the text to the left */
-    background: rgb(40, 40, 140);
+    background: rgb(60, 60, 60);
     min-height: 24px;
 }
 
@@ -324,9 +324,20 @@ QDockWidget::close-button:pressed{
 
 QDockWidget::float-button:pressed {
     background: rgb(80, 80, 80);
-}'''
+}
+'''
 
 TabStyle = '''
+QMainWindow::separator {
+    background: rgb(30, 30, 30);
+    width: 3px; /* when vertical */
+    height: 3px; /* when horizontal */
+}
+QMainWindow::separator:hover {
+    background: rgb(50, 150, 250);
+    width: 3px; /* when vertical */
+    height: 3px; /* when horizontal */
+}
 QTabWidget::tab-bar {
 alignment:left;
 top:0px;
@@ -341,11 +352,11 @@ border-top-left-radius: 0px;
 border-top-right-radius: 0px;
 min-width:60px;
 min-height:20px;
+margin 2px 2px 2px 2px;
 }
 QTabBar::tab:selected{
-background: rgb(50, 50, 50);
-color: white;
-border-top: 0px solid rgb(60, 60, 200);
+background: rgb(60, 60, 60);
+color: rgb(250, 100, 100);
 }
 QTabBar::tab:!selected{
 background: rgb(40, 40, 40);
@@ -353,7 +364,72 @@ color: white;
 border-top: 0px solid rgb(40, 40, 40);
 }
 QTabBar::tab:hover{
-background:rgb(60, 60, 60);
-border-top: 0px solid rgb(80, 80, 200);
+background:rgb(80, 80, 80);
+}
+'''
+ScrollBarStyle ='''
+QScrollBar:vertical {
+     border: 0px solid grey;
+     background: #1e1e1e;
+     width: 15px;
+     margin: 0px 0 0px 0;
+ }
+ QScrollBar::handle:vertical:hover {
+     border: 0px solid grey;
+     background: #454545;
+     width: 15px;
+ }
+ QScrollBar::handle:vertical {
+     background: #353535;
+     min-height: 20px;
+ }
+ QScrollBar::add-line:vertical {
+     border: 0px solid grey;
+     background: #1e1e1e;
+     height: 2px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical {
+     border: 0px solid grey;
+     background: #1e1e1e;
+     height: 2px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+
+
+ QScrollBar:horizontal {
+    border: 0px solid grey;
+    background: #1e1e1e;
+    height: 15px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #353535;
+    min-width: 20px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #454545;
+    min-width: 20px;
+}
+QScrollBar::add-line:horizontal {
+    border: 0px solid grey;
+    background: #1e1e1e;
+    width: 2px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 0px solid grey;
+    background: #1e1e1e;
+    width: 2px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
 }
 '''
