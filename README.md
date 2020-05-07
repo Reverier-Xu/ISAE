@@ -7,6 +7,8 @@ Intergrated CTF Environment
 
 ## 如何参与
 
+**ICTFE将于2020年6月进行大规模重构, 包括构建插件系统和各类异常处理, 操作系统集成等, 同时进行代码清理. 敬请期待2.0.**
+
 fork本仓库, 使用PyQt5进行开发, 然后发起一个Pull Request.
 
 如果你没有学习过PyQt5, 可以简单的查看[QuickDevelopingDocs](QuickDevelopingDocs/0_ICTFE密码学插件开发指北.md)中的文档, 然后尝试进行开发.
