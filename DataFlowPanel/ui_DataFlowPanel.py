@@ -26,12 +26,12 @@ class ui_DataFlowPanel(QtWidgets.QWidget):
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.ToolsAreaPanel)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.ToolsSearchBox = uni_Widget.ICTFELineBox(self.ToolsAreaPanel)
-        self.ToolsSearchBox.setStyleSheet('color: white;'
-                                          'border: 1px solid gray;'
-                                          'border-radius: 0px;'
-                                          'padding: 5px;'
+        self.ToolsSearchBox.setStyleSheet('border: 1px solid rgb(50, 50, 50);'
+                                          'border-radius: 20px;'
+                                          'padding: 0 15px;'
                                           'background: rgb(30, 30, 30);'
                                           'selection-background-color: blue;')
+        self.ToolsSearchBox.setFixedHeight(40)
         self.ToolsSearchBox.setPlaceholderText('搜索...')
         self.ToolsSearchBox.setObjectName("ToolsSearchBox")
         self.verticalLayout_5.addWidget(self.ToolsSearchBox, alignment=Qt.Alignment())
