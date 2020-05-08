@@ -112,12 +112,12 @@ class Ui_MainWindow(object):
                                       "            }\n"
                                       "            QPushButton#MiniButton:hover{\n"
                                       "            image:url(./Resources/mini);\n"
-                                      "            background-color: rgb(40, 40, 40);\n"
+                                      "            background-color: rgb(50, 50, 50);\n"
                                       "            border:none;\n"
                                       "            }\n"
                                       "            QPushButton#MiniButton:pressed{\n"
                                       "            image:url(./Resources/mini);\n"
-                                      "            background-color: rgb(50, 50, 50);\n"
+                                      "            background-color: rgb(60, 60, 60);\n"
                                       "            border:none;\n"
                                       "            }")
         self.MiniButton.setText("")
@@ -142,12 +142,12 @@ class Ui_MainWindow(object):
                                      "            }\n"
                                      "            QPushButton#MaxButton:hover{\n"
                                      "            image:url(./Resources/max);\n"
-                                     "            background-color: rgb(40, 40, 40);\n"
+                                     "            background-color: rgb(50, 50, 50);\n"
                                      "            border:none;\n"
                                      "            }\n"
                                      "            QPushButton#MaxButton:pressed{\n"
                                      "            image:url(./Resources/max);\n"
-                                     "            background-color: rgb(50, 50, 50);\n"
+                                     "            background-color: rgb(60, 60, 60);\n"
                                      "            border:none;\n"
                                      "            }")
         self.MaxButton.setText("")

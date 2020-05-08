@@ -1,1 +1,1 @@
-{"nodes": [{"id": "5469fb86-8860-4562-bcf6-3ed7a356beef", "model": {"name": "Input", "string": "Hello World!"}, "position": {"x": -117.0, "y": 36.0}}, {"id": "54cb2c6c-9dd8-4570-8e74-fe8d05eb76ad", "model": {"name": "Output"}, "position": {"x": 304.0, "y": 36.0}}], "connections": [{"in_id": "54cb2c6c-9dd8-4570-8e74-fe8d05eb76ad", "in_index": 0, "out_id": "5469fb86-8860-4562-bcf6-3ed7a356beef", "out_index": 0}]}
+{"nodes": [], "connections": []}

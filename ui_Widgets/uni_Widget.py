@@ -292,13 +292,13 @@ class LineEditItem(QtWidgets.QWidget):
 
 DockStyleSheet = '''
 QDockWidget {
-    border: 0px solid black;
+    border: 1px solid rgb(50, 50, 50);
     titlebar-close-icon: url(./Resources/closeDock.png);
     titlebar-normal-icon: url(./Resources/maxDock.png);
 }
 
 QDockWidget::title {
-    text-align: left; /* align the text to the left */
+    text-align: left;
     background: rgb(60, 60, 60);
     min-height: 24px;
 }
@@ -372,7 +372,7 @@ QScrollBar:vertical {
      border: 0px solid grey;
      background: #1e1e1e;
      width: 15px;
-     margin: 0px 0 0px 0;
+     margin: 1px 0 1px 0;
  }
  QScrollBar::handle:vertical:hover {
      border: 0px solid grey;
@@ -407,7 +407,7 @@ QScrollBar:vertical {
     border: 0px solid grey;
     background: #1e1e1e;
     height: 15px;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 1px 0px 1px;
 }
 QScrollBar::handle:horizontal {
     background: #353535;

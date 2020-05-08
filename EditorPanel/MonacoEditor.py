@@ -5,6 +5,8 @@ from PyQt5.QtWebEngineWidgets import QWebEngineView
 from ui_Widgets.ErrorWin import errorInfo
 from PyQt5.QtGui import QKeySequence
 from Config import Settings
+import traceback
+
 
 class Editor(QWebEngineView):
     value = None
@@ -29,15 +31,16 @@ class Editor(QWebEngineView):
                 "All Files (*.*)")
         if self.path == None or not os.path.exists(self.path):
             return
-        with open(self.path, 'w') as out:
+        with open(self.path, 'w', encoding='UTF-8') as out:
             out.write(self.value)
 
     def set_value(self, path):
         """设置编辑器内容"""
         import base64
         try:
-            data = open(path, 'r').read()
+            data = open(path, 'r', encoding='UTF-8').read()
         except:
+            traceback.print_exc()
             errorInfo(self, '所选文件不是文本文件.')
             return
         data = base64.b64encode(data.encode())
