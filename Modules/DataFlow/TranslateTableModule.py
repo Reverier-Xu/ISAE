@@ -1,7 +1,8 @@
 properties = {
     'name': '按表翻译',
-    'categories': '字符串工具',
+    'categories': '密码',
     'input': {0: '目标表', 1: '密文表', 2: '密文'},
+    'output': {0: '明文'},
     'properties': {}
 }
 defaults = {}
