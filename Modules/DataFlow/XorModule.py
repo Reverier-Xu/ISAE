@@ -1,6 +1,6 @@
 properties = {
     'name': 'xor',
-    'categories': '字符串处理',
+    'categories': '字符串操作',
     'input': {0: 'origin', 1: 'pattern'},
     'output': {0: 'output'},
     'properties': {}

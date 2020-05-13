@@ -42,7 +42,6 @@ class Ui_MainWindow(object):
         QtGui.QFontDatabase.addApplicationFont('./Resources/fira-code.ttf')
         self.MainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1600, 900)
         self.StatusBar = QtWidgets.QStatusBar()
         MainWindow.setStatusBar(self.StatusBar)
         self.StatusBar.setObjectName('StatusBar')
