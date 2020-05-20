@@ -146,22 +146,7 @@ class ICTFEButton(QtWidgets.QPushButton):
         font.setBold(False)
         font.setWeight(50)
         self.setFont(font)
-        self.setStyleSheet(
-            "QPushButton{"
-            "background-color: transparent;"
-            "color: white;"
-            "border-radius: 0px;"
-            "border: 0px groove gray;"
-            "border-style: outset;"
-            "}"
-            "QPushButton:hover{"
-            "background-color: rgb(50, 50, 50);"
-            "color: white;"
-            "}"
-            "QPushButton:pressed{"
-            "background-color: rgb(60, 60, 60);"
-            "border-style: inset; "
-            "}")
+        self.setStyleSheet(RPushButtonDarkStyle)
 
 
 class ICTFETextBox(QtWidgets.QTextEdit):
@@ -438,5 +423,72 @@ QScrollBar::sub-line:horizontal {
     width: 2px;
     subcontrol-position: left;
     subcontrol-origin: margin;
+}
+'''
+RMenuButtonDarkStyle = '''
+QPushButton{
+    background-color: transparent;
+    color: white;
+    font: 18px;
+    border-radius: 0px;
+    border: 0px solid rgb(40, 40, 40);
+}
+QPushButton:hover{
+    background-color: rgb(50, 90, 150);
+}
+QPushButton:pressed{
+    background-color: rgb(80, 140, 250);
+}
+'''
+
+RMenuButtonLightStyle = '''
+QPushButton{
+    background-color: transparent;
+    color: black;
+    font: 18px;
+    border-radius: 0px;
+    border: 0px solid rgb(40, 40, 40);
+}
+QPushButton:hover{
+    background-color: rgb(50, 50, 220);
+}
+QPushButton:pressed{
+    background-color: rgb(70, 70, 250);
+}
+'''
+
+RPushButtonDarkStyle = '''
+QPushButton{
+    background-color: rgb(40, 40, 40);
+    color: white;
+    font: 18px;
+    border-radius: 20px;
+    border: 3px solid rgb(40, 40, 40);
+}
+QPushButton:hover{
+    background-color: rgb(50, 90, 150);
+    border: 3px solid rgb(50, 90, 150);
+}
+QPushButton:pressed{
+    background-color: rgb(80, 140, 250);
+    border: 3px solid rgb(80, 140, 250);
+}
+'''
+
+RPushButtonLightStyle = '''
+QPushButton{
+    background-color: rgb(80, 120, 255);
+    color: black;
+    font: 18px;
+    border-radius: 20px;
+    border: 3px solid rgb(80, 120, 255);
+}
+QPushButton:hover{
+    background-color: rgb(50, 50, 220);
+    border: 3px solid rgb(50, 50, 220);
+}
+QPushButton:pressed{
+    background-color: rgb(70, 70, 250);
+    border: 3px solid rgb(70, 70, 250);
 }
 '''
