@@ -82,3 +82,9 @@ Postwoman
 Windows上的H5不包含h.264的解码器, 无法进行H5播放. Linux上一切正常.
 
 # Release 1.0.0 Alpha
+
+# 关于ICTFE V2.0 / ISAE 的开发计划
+
+已有设计图:
+
+![ISAE-preview.png](https://i.loli.net/2020/05/22/NGsjgKiAVpvxyDH.png)
