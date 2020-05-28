@@ -1,8 +1,0 @@
-__pycache__/
-.idea/
-Resources/DIY.sqlite
-dist/
-Run.spec
-dist.7z
-.vscode/
-testsFile/

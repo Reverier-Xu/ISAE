@@ -1,0 +1,61 @@
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockAreaTabBar.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockAreaTabBar.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockAreaTitleBar.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockAreaTitleBar.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockAreaWidget.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockAreaWidget.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockComponentsFactory.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockComponentsFactory.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockContainerWidget.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockContainerWidget.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockManager.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockManager.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockOverlay.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockOverlay.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockSplitter.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockSplitter.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockWidget.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockWidget.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockWidgetTab.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockWidgetTab.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/DockingStateReader.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/DockingStateReader.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/ElidingLabel.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/ElidingLabel.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/FloatingDockContainer.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/FloatingDockContainer.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/FloatingDragPreview.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/FloatingDragPreview.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/IconProvider.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/IconProvider.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/ads_globals.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/ads_globals.cpp.o"
+  "/mnt/Data/ISAE/Librarys/Qt-Advanced-Docking-System/src/linux/FloatingWidgetTitleBar.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/linux/FloatingWidgetTitleBar.cpp.o"
+  "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/qtadvanceddocking_autogen/EWIEGA46WW/qrc_ads.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/qtadvanceddocking_autogen/EWIEGA46WW/qrc_ads.cpp.o"
+  "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/qtadvanceddocking_autogen/mocs_compilation.cpp" "/mnt/Data/ISAE/cmake-build-debug/Librarys/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking.dir/qtadvanceddocking_autogen/mocs_compilation.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "Clang")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "ADS_SHARED_EXPORT"
+  "QT_CORE_LIB"
+  "QT_GUI_LIB"
+  "QT_WIDGETS_LIB"
+  "qtadvanceddocking_EXPORTS"
+  )
+
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "Librarys/Qt-Advanced-Docking-System/src"
+  "../Librarys/Qt-Advanced-Docking-System/src"
+  "Librarys/Qt-Advanced-Docking-System/src/qtadvanceddocking_autogen/include"
+  "/usr/include/qt"
+  "/usr/include/qt/QtCore"
+  "/usr/lib/qt/mkspecs/linux-g++"
+  "/usr/include/qt/QtGui"
+  "/usr/include/qt/QtWidgets"
+  )
+
+# Pairs of files generated by the same build rule.
+set(CMAKE_MULTIPLE_OUTPUT_PAIRS
+  "/mnt/Data/ISAE/cmake-build-debug/x64/lib/libqtadvanceddocking.so" "/mnt/Data/ISAE/cmake-build-debug/x64/lib/libqtadvanceddocking.so.3.4.1"
+  )
+
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

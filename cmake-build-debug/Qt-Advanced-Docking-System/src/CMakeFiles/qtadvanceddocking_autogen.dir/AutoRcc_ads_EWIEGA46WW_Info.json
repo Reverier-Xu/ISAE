@@ -1,0 +1,25 @@
+{
+	"BUILD_DIR" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/src/qtadvanceddocking_autogen",
+	"CMAKE_BINARY_DIR" : "/mnt/Data/ISAE/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/src",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/mnt/Data/ISAE/Qt-Advanced-Docking-System/src",
+	"CMAKE_SOURCE_DIR" : "/mnt/Data/ISAE",
+	"INCLUDE_DIR" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/src/qtadvanceddocking_autogen/include",
+	"INPUTS" : 
+	[
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/src/images/close-button.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/src/images/close-button-disabled.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/src/stylesheets/default_linux.css",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/src/stylesheets/default.css"
+	],
+	"LOCK_FILE" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking_autogen.dir/AutoRcc_ads_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "ads" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_ads.cpp",
+	"RCC_EXECUTABLE" : "/usr/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/src/CMakeFiles/qtadvanceddocking_autogen.dir/AutoRcc_ads_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/mnt/Data/ISAE/Qt-Advanced-Docking-System/src/ads.qrc",
+	"VERBOSITY" : 0
+}

@@ -1,0 +1,38 @@
+{
+	"BUILD_DIR" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/demo/AdvancedDockingSystemDemo_autogen",
+	"CMAKE_BINARY_DIR" : "/mnt/Data/ISAE/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/demo",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo",
+	"CMAKE_SOURCE_DIR" : "/mnt/Data/ISAE",
+	"INCLUDE_DIR" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/demo/AdvancedDockingSystemDemo_autogen/include",
+	"INPUTS" : 
+	[
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/app.css",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/folder_open.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/picture_in_picture.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/create_floating_table.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/note_add.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/restore.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/help_outline.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/folder.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/save.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/date_range.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/edit.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/grid_on.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/docked_editor.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/custom-menu-button.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/create_floating_editor.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/plus.svg",
+		"/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/images/fullscreen.svg"
+	],
+	"LOCK_FILE" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/demo/CMakeFiles/AdvancedDockingSystemDemo_autogen.dir/AutoRcc_demo_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "demo" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_demo.cpp",
+	"RCC_EXECUTABLE" : "/usr/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/mnt/Data/ISAE/cmake-build-debug/Qt-Advanced-Docking-System/demo/CMakeFiles/AdvancedDockingSystemDemo_autogen.dir/AutoRcc_demo_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/mnt/Data/ISAE/Qt-Advanced-Docking-System/demo/demo.qrc",
+	"VERBOSITY" : 0
+}
