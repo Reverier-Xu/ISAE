@@ -1,1 +1,0 @@
-/usr/bin/clang++  -g   CMakeFiles/ISAE.dir/ISAE_autogen/mocs_compilation.cpp.o CMakeFiles/ISAE.dir/main.cpp.o CMakeFiles/ISAE.dir/mainwindow.cpp.o  -o ISAE  -Wl,-rpath,/mnt/Data/ISAE/cmake-build-debug/x64/lib x64/lib/libqtadvanceddocking.so.3.4.1 /usr/lib/libQt5Widgets.so.5.14.2 /usr/lib/libQt5Gui.so.5.14.2 /usr/lib/libQt5Core.so.5.14.2 
