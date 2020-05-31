@@ -22,3 +22,8 @@
 * 可以处理轻度Python开发的编辑器
 * 应用程序启动器
 * 工作区管理器, 暂存池与在线共享
+
+## 设计图
+
+![isae-min.png](https://i.loli.net/2020/05/31/bQP6g2xpBjUqKSE.png)
+![isae.png](https://i.loli.net/2020/05/31/TO1m5zWg8iLSpfQ.png)
