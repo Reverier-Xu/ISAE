@@ -27,3 +27,8 @@
 
 ![isae-min.png](https://i.loli.net/2020/05/31/bQP6g2xpBjUqKSE.png)
 ![isae.png](https://i.loli.net/2020/05/31/TO1m5zWg8iLSpfQ.png)
+
+## 当前开发状态预览
+
+![isae-shot1.png](https://i.loli.net/2020/06/02/soJmBQzYq87ti64.png)
+![isae-shot2.png](https://i.loli.net/2020/06/02/3PVDIbOqjyzvY1c.png)

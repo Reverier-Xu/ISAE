@@ -2,6 +2,7 @@
 #define MAINAPP_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,13 @@ public:
 public slots:
     void changeWindowStatus();
     void pushSideBar();
+    void animateSideBar();
+    void animateAppList();
+    void animateTeamList();
+    void animateWorkspaceList();
+    void pushAppList();
+    void pushTeamList();
+    void pushWorkspaceList();
 
 protected:
   virtual void mousePressEvent(QMouseEvent *event);
@@ -30,5 +38,13 @@ private:
   QPoint mMovePosition;
   bool isMaximum;
   bool isSidebarShow;
+  bool isAppAreaShow;
+  bool isTeamAreaShow;
+  bool isWorkspaceAreaShow;
+  QTimer sideBarAnimation;
+  QTimer appAreaAnimation;
+  QTimer teamAreaAnimation;
+  QTimer workspaceAreaAnimation;
+  int startDuration;
 };
 #endif // MAINAPP_H

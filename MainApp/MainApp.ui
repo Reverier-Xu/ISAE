@@ -12,7 +12,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1480</width>
+    <width>600</width>
     <height>300</height>
    </size>
   </property>
@@ -64,7 +64,7 @@ border: 1px solid black;
       <item>
        <layout class="QHBoxLayout" name="menuLayout">
         <property name="spacing">
-         <number>8</number>
+         <number>15</number>
         </property>
         <item>
          <widget class="QLabel" name="isaeLabel">
@@ -103,7 +103,7 @@ background-image: url(:/imgs/assets/isae.png);
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="menu01">
+         <widget class="QPushButton" name="viewButton">
           <property name="minimumSize">
            <size>
             <width>32</width>
@@ -112,7 +112,7 @@ background-image: url(:/imgs/assets/isae.png);
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
+            <width>100</width>
             <height>32</height>
            </size>
           </property>
@@ -142,7 +142,7 @@ color: #3e79ff;
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="menu02">
+         <widget class="QPushButton" name="aboutButton">
           <property name="minimumSize">
            <size>
             <width>32</width>
@@ -151,7 +151,7 @@ color: #3e79ff;
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
+            <width>100</width>
             <height>32</height>
            </size>
           </property>
@@ -176,436 +176,17 @@ color: #2e69ff;
 }</string>
           </property>
           <property name="text">
-           <string>代码编辑器</string>
+           <string>关于</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="menu03">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>数据流处理器</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu04">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>Web测试工具</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu05">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>常用小工具</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu06">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>Wiki</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu07">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>Cutter</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu08">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>Console</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu09">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>Out3rn3t_Expl0rer</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu10">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>RxReader</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu11">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>哔哩哔哩</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu12">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>启动器</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="menu13">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-color: #2e69fc;
-}
-QPushButton:pressed{
-color: #2e69ff;
-}</string>
-          </property>
-          <property name="text">
-           <string>关于..</string>
+         <widget class="QWidget" name="widget" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
          </widget>
         </item>
@@ -613,13 +194,13 @@ color: #2e69ff;
          <widget class="QLineEdit" name="globalSearchBar">
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>250</width>
             <height>32</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
+            <width>250</width>
             <height>32</height>
            </size>
           </property>
@@ -634,31 +215,33 @@ color: #2e69ff;
           </property>
           <property name="styleSheet">
            <string notr="true">QLineEdit{
-background-color: #1b1b1b;
+background-color: #2c2c2c;
 border: 0px solid black;
 border-top: 1px solid black;
 margin: 0 0 0 0;
+}
+QLineEdit:hover{
+background-color: #323232;
+}
+QLineEdit:focus{
+background-color: #1e1e1e;
 }</string>
+          </property>
+          <property name="dragEnabled">
+           <bool>true</bool>
           </property>
           <property name="placeholderText">
            <string>搜索..</string>
           </property>
+          <property name="cursorMoveStyle">
+           <enum>Qt::VisualMoveStyle</enum>
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <spacer name="titleSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item>
        <layout class="QHBoxLayout" name="windowControlLayout">
@@ -785,6 +368,12 @@ background-color: #3272ff;
       </property>
       <item>
        <widget class="QWidget" name="sidebarWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -878,58 +467,26 @@ color: white;
              <height>24</height>
             </size>
            </property>
+           <property name="shortcut">
+            <string>Alt+O</string>
+           </property>
            <property name="flat">
             <bool>false</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QWidget" name="clientBox" native="true">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
+          <widget class="QPushButton" name="appsButton">
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>80</height>
+             <height>36</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>250</width>
-             <height>80</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QWidget#clientBox{
-background-color: #242424;
-border: 1px solid black;
-color: white;
-}</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolBox" name="MainSideBar">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>250</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="baseSize">
-            <size>
-             <width>300</width>
-             <height>0</height>
+             <width>16777215</width>
+             <height>36</height>
             </size>
            </property>
            <property name="font">
@@ -937,219 +494,372 @@ color: white;
              <family>文泉驿等宽微米黑</family>
             </font>
            </property>
-           <property name="toolTip">
-            <string/>
-           </property>
            <property name="styleSheet">
-            <string notr="true">QToolBox{
+            <string notr="true">QPushButton{
 background-color: #1e1e1e;
 border: 1px solid black;
 border-top: 0px solid black;
 border-bottom: 0px solid black;
-color: #ffffff;
-icon-size: 24px;
-}
-QToolBox::tab{
-background-color: #1e1e1e;
 color: white;
-border-left: 4px solid #1e1e1e;
+text-align: left;
+padding-left: 8px;
 }
-QToolBox::tab:selected{
-background-color: #1e1e1e;
+QPushButton:hover{
+background-color: #2c2c2c;
 color: white;
-border-left: 4px solid #2e69fc;
 }
-QToolBox::tab:hover{
+QPushButton:pressed{
 background-color: #2f2f2f;
 color: white;
-border-left: 4px solid yellow;
-}
-QToolBoxButton{
-min-height: 36px;
 }</string>
            </property>
-           <property name="currentIndex">
-            <number>0</number>
+           <property name="text">
+            <string> 分区</string>
            </property>
-           <property name="tabSpacing">
-            <number>0</number>
+           <property name="icon">
+            <iconset resource="../Resources/Resources.qrc">
+             <normaloff>:/imgs/assets/apps.png</normaloff>:/imgs/assets/apps.png</iconset>
            </property>
-           <widget class="QWidget" name="apps">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>248</width>
-              <height>251</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QWidget#apps{
-background-color:  #2c2c2c;
-border-bottom:  1px solid black;
-border-top:  1px solid black;
-}</string>
-            </property>
-            <attribute name="icon">
-             <iconset resource="../Resources/Resources.qrc">
-              <normaloff>:/imgs/assets/apps.png</normaloff>:/imgs/assets/apps.png</iconset>
-            </attribute>
-            <attribute name="label">
-             <string> 分区</string>
-            </attribute>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QListWidget" name="appList">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QListWidget{
-background-color: #242424;
-border-top: 1px solid black;
-border-bottom: 1px solid black;
-}</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="workspace">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>248</width>
-              <height>251</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QWidget#workspace{
-background-color:  #2c2c2c;
-border-bottom:  1px solid black;
-border-top:  1px solid black;
-}</string>
-            </property>
-            <attribute name="icon">
-             <iconset resource="../Resources/Resources.qrc">
-              <normaloff>:/imgs/assets/workspace.png</normaloff>:/imgs/assets/workspace.png</iconset>
-            </attribute>
-            <attribute name="label">
-             <string> 工作区</string>
-            </attribute>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QListWidget" name="workspaceList">
-               <property name="styleSheet">
-                <string notr="true">QListWidget{
-background-color: #242424;
-border-top: 1px solid black;
-border-bottom: 1px solid black;
-}</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QWidget" name="team">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>248</width>
-              <height>251</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QWidget#team{
-background-color:  #2c2c2c;
-border-bottom:  1px solid black;
-border-top:  1px solid black;
-}</string>
-            </property>
-            <attribute name="icon">
-             <iconset resource="../Resources/Resources.qrc">
-              <normaloff>:/imgs/assets/team.png</normaloff>:/imgs/assets/team.png</iconset>
-            </attribute>
-            <attribute name="label">
-             <string> 团队</string>
-            </attribute>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QListWidget" name="teamList">
-               <property name="styleSheet">
-                <string notr="true">QListWidget{
-background-color: #242424;
-border-top: 1px solid black;
-border-bottom: 1px solid black;
-}</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
           </widget>
          </item>
          <item>
-          <spacer name="sidebarSpacer">
+          <widget class="QWidget" name="appArea" native="true">
+           <property name="styleSheet">
+            <string notr="true">QWidget#appArea{
+border-left: 1px solid black;
+border-right: 1px solid black;
+}</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QListWidget" name="appList">
+              <property name="styleSheet">
+               <string notr="true">QListView{
+border: 0px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+}</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="workspaceButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background-color: #1e1e1e;
+border: 1px solid black;
+border-top: 0px solid black;
+border-bottom: 0px solid black;
+color: white;
+text-align: left;
+padding-left: 8px;
+}
+QPushButton:hover{
+background-color: #2c2c2c;
+color: white;
+}
+QPushButton:pressed{
+background-color: #2f2f2f;
+color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string> 工作区</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../Resources/Resources.qrc">
+             <normaloff>:/imgs/assets/workspace.png</normaloff>:/imgs/assets/workspace.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="workspaceArea" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QListWidget" name="workspaceList">
+              <property name="styleSheet">
+               <string notr="true">QListView{
+border: 0px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+}</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="teamButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background-color: #1e1e1e;
+border: 1px solid black;
+border-top: 0px solid black;
+border-bottom: 0px solid black;
+color: white;
+text-align: left;
+padding-left: 8px;
+}
+QPushButton:hover{
+background-color: #2c2c2c;
+color: white;
+}
+QPushButton:pressed{
+background-color: #2f2f2f;
+color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string> 团队</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../Resources/Resources.qrc">
+             <normaloff>:/imgs/assets/team.png</normaloff>:/imgs/assets/team.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="teamArea" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QListWidget" name="teamList">
+              <property name="styleSheet">
+               <string notr="true">QListView{
+border: 0px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+}</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
              <width>20</width>
-             <height>334</height>
+             <height>40</height>
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clientButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background-color: #1e1e1e;
+border: 1px solid black;
+border-top: 0px solid black;
+border-bottom: 0px solid black;
+color: white;
+text-align: left;
+padding-left: 8px;
+}
+QPushButton:hover{
+background-color: #2c2c2c;
+color: white;
+}
+QPushButton:pressed{
+background-color: #2f2f2f;
+color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string> Reverier Xu</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../Resources/Resources.qrc">
+             <normaloff>:/imgs/assets/online.png</normaloff>:/imgs/assets/online.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="statusButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background-color: #1e1e1e;
+border: 1px solid black;
+border-top: 0px solid black;
+border-bottom: 0px solid black;
+color: white;
+text-align: left;
+padding-left: 8px;
+}
+QPushButton:hover{
+background-color: #2c2c2c;
+color: white;
+}
+QPushButton:pressed{
+background-color: #2f2f2f;
+color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string> 状态良好</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../Resources/Resources.qrc">
+             <normaloff>:/imgs/assets/smile.png</normaloff>:/imgs/assets/smile.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="settingsButton">
@@ -1174,8 +884,7 @@ border-bottom: 1px solid black;
             <string notr="true">QPushButton{
 background-color: #1e1e1e;
 border: 1px solid black;
-border-left: 1px solid black;
-border-bottom: 0px solid black;
+border-top: 0px solid black;
 color: white;
 text-align: left;
 padding-left: 8px;
@@ -1201,6 +910,9 @@ color: white;
              <width>24</width>
              <height>24</height>
             </size>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+Alt+S</string>
            </property>
           </widget>
          </item>
