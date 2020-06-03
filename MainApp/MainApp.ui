@@ -458,7 +458,7 @@ color: white;
             <string> 欢迎</string>
            </property>
            <property name="icon">
-            <iconset resource="../Resources/Resources.qrc">
+            <iconset resource="Resources.qrc">
              <normaloff>:/imgs/assets/menu.png</normaloff>:/imgs/assets/menu.png</iconset>
            </property>
            <property name="iconSize">
@@ -517,7 +517,7 @@ color: white;
             <string> 分区</string>
            </property>
            <property name="icon">
-            <iconset resource="../Resources/Resources.qrc">
+            <iconset resource="Resources.qrc">
              <normaloff>:/imgs/assets/apps.png</normaloff>:/imgs/assets/apps.png</iconset>
            </property>
            <property name="iconSize">
@@ -529,14 +529,14 @@ color: white;
           </widget>
          </item>
          <item>
-          <widget class="QWidget" name="appArea" native="true">
+          <widget class="QWidget" name="appsArea" native="true">
            <property name="styleSheet">
-            <string notr="true">QWidget#appArea{
-border-left: 1px solid black;
-border-right: 1px solid black;
+            <string notr="true">QWidget#appsArea{
+background-color: #2c2c2c;
+border: 1px solid black;
 }</string>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout">
+           <layout class="QVBoxLayout" name="appsLayout">
             <property name="spacing">
              <number>0</number>
             </property>
@@ -552,17 +552,6 @@ border-right: 1px solid black;
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item>
-             <widget class="QListWidget" name="appList">
-              <property name="styleSheet">
-               <string notr="true">QListView{
-border: 0px solid black;
-border-left: 1px solid black;
-border-right: 1px solid black;
-}</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
          </item>
@@ -608,7 +597,7 @@ color: white;
             <string> 工作区</string>
            </property>
            <property name="icon">
-            <iconset resource="../Resources/Resources.qrc">
+            <iconset resource="Resources.qrc">
              <normaloff>:/imgs/assets/workspace.png</normaloff>:/imgs/assets/workspace.png</iconset>
            </property>
            <property name="iconSize">
@@ -621,6 +610,12 @@ color: white;
          </item>
          <item>
           <widget class="QWidget" name="workspaceArea" native="true">
+           <property name="styleSheet">
+            <string notr="true">QWidget#workspaceArea{
+background-color: #2c2c2c;
+border: 1px solid black;
+}</string>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <property name="spacing">
              <number>0</number>
@@ -637,17 +632,6 @@ color: white;
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item>
-             <widget class="QListWidget" name="workspaceList">
-              <property name="styleSheet">
-               <string notr="true">QListView{
-border: 0px solid black;
-border-left: 1px solid black;
-border-right: 1px solid black;
-}</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
          </item>
@@ -693,7 +677,7 @@ color: white;
             <string> 团队</string>
            </property>
            <property name="icon">
-            <iconset resource="../Resources/Resources.qrc">
+            <iconset resource="Resources.qrc">
              <normaloff>:/imgs/assets/team.png</normaloff>:/imgs/assets/team.png</iconset>
            </property>
            <property name="iconSize">
@@ -706,7 +690,13 @@ color: white;
          </item>
          <item>
           <widget class="QWidget" name="teamArea" native="true">
-           <layout class="QVBoxLayout" name="verticalLayout_3">
+           <property name="styleSheet">
+            <string notr="true">QWidget#teamArea{
+background-color: #2c2c2c;
+border: 1px solid black;
+}</string>
+           </property>
+           <layout class="QVBoxLayout" name="workspaceLayout">
             <property name="spacing">
              <number>0</number>
             </property>
@@ -722,17 +712,6 @@ color: white;
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item>
-             <widget class="QListWidget" name="teamList">
-              <property name="styleSheet">
-               <string notr="true">QListView{
-border: 0px solid black;
-border-left: 1px solid black;
-border-right: 1px solid black;
-}</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
          </item>
@@ -743,8 +722,8 @@ border-right: 1px solid black;
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>20</width>
-             <height>40</height>
+             <width>1</width>
+             <height>1</height>
             </size>
            </property>
           </spacer>
@@ -797,7 +776,7 @@ color: white;
             <string> Reverier Xu</string>
            </property>
            <property name="icon">
-            <iconset resource="../Resources/Resources.qrc">
+            <iconset resource="Resources.qrc">
              <normaloff>:/imgs/assets/online.png</normaloff>:/imgs/assets/online.png</iconset>
            </property>
            <property name="iconSize">
@@ -850,7 +829,7 @@ color: white;
             <string> 状态良好</string>
            </property>
            <property name="icon">
-            <iconset resource="../Resources/Resources.qrc">
+            <iconset resource="Resources.qrc">
              <normaloff>:/imgs/assets/smile.png</normaloff>:/imgs/assets/smile.png</iconset>
            </property>
            <property name="iconSize">
@@ -902,7 +881,7 @@ color: white;
             <string> 设置</string>
            </property>
            <property name="icon">
-            <iconset resource="../Resources/Resources.qrc">
+            <iconset resource="Resources.qrc">
              <normaloff>:/imgs/assets/settings.png</normaloff>:/imgs/assets/settings.png</iconset>
            </property>
            <property name="iconSize">
@@ -920,7 +899,7 @@ color: white;
        </widget>
       </item>
       <item>
-       <widget class="QWidget" name="MainDock" native="true">
+       <widget class="ads::CDockManager" name="MainDock" native="true">
         <property name="toolTip">
          <string/>
         </property>
@@ -928,7 +907,7 @@ color: white;
          <string/>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget{
+         <string notr="true">QWidget#MainDock{
 background-color: #2c2c2c;
 border: 1px solid black;
 border-left: 0px solid black;
@@ -960,8 +939,16 @@ border-left: 0px solid black;
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ads::CDockManager</class>
+   <extends>QWidget</extends>
+   <header location="global">DockManager.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
-  <include location="../Resources/Resources.qrc"/>
+  <include location="Resources.qrc"/>
  </resources>
  <connections>
   <connection>

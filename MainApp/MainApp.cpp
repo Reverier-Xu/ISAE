@@ -3,6 +3,7 @@
 #include <QtCore/Qt>
 #include <QMouseEvent>
 #include <iostream>
+#include "DockManager.h"
 
 MainApp::MainApp(QWidget *parent)
   : QMainWindow(parent)
@@ -17,16 +18,11 @@ MainApp::MainApp(QWidget *parent)
   this->isAppAreaShow = false;
   this->isTeamAreaShow = false;
   this->isWorkspaceAreaShow = false;
-  this->ui->appArea->setFixedHeight(0);
+  this->ui->appsArea->setFixedHeight(0);
   this->ui->teamArea->setFixedHeight(0);
   this->ui->workspaceArea->setFixedHeight(0);
+  this->ui->sidebarWidget->setFixedWidth(250);
   this->startDuration = 1;
-  this->ui->appList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  this->ui->workspaceList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  this->ui->teamList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  this->ui->appList->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  this->ui->workspaceList->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  this->ui->teamList->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   this->sideBarAnimation.setInterval(10);
   this->appAreaAnimation.setInterval(10);
   this->teamAreaAnimation.setInterval(10);
@@ -135,19 +131,19 @@ void MainApp::animateAppList(){
   if(this->isAppAreaShow){
     //std::cout << startDuration << ", " << this->ui->sidebarWidget->width() << std::endl;
 
-    this->ui->appArea->setFixedHeight(this->ui->appArea->height()-12);
+    this->ui->appsArea->setFixedHeight(this->ui->appsArea->height()-12);
 
-    if(this->ui->appArea->height()<=0){
-      this->ui->appArea->setFixedHeight(0);
+    if(this->ui->appsArea->height()<=0){
+      this->ui->appsArea->setFixedHeight(0);
       this->appAreaAnimation.stop();
       this->isAppAreaShow = false;
     }
   } else {
 
-    this->ui->appArea->setFixedHeight(this->ui->appArea->height()+12);
+    this->ui->appsArea->setFixedHeight(this->ui->appsArea->height()+12);
 
-    if(this->ui->appArea->height()>=150){
-      this->ui->appArea->setFixedHeight(150);
+    if(this->ui->appsArea->height()>=150){
+      this->ui->appsArea->setFixedHeight(150);
       this->appAreaAnimation.stop();
       this->isAppAreaShow = true;
     }
