@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>about</class>
+ <widget class="QDialog" name="about">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>820</width>
+    <height>483</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#about{
+border: 1px solid black;
+background-color: #2c2c2c;
+}</string>
+  </property>
+  <widget class="QLabel" name="isaelogo">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>301</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿等宽微米黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+	background-image: url(:/imgs/assets/isae-logo.png);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>70</y>
+     <width>411</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿等宽微米黑</family>
+     <pointsize>32</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>集成式安全审计系统</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>130</y>
+     <width>641</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿等宽微米黑</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Intergrated Security Audit Environment Version 2.0</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>210</y>
+     <width>781</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿等宽微米黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPlainTextEdit{color: white;
+background-color: #2c2c2c;
+border: 0px solid black;
+}
+QScrollBar{
+background-color: #2c2c2c;
+border: 0px solid black;
+}
+QScrollBar::handle{
+background-color: #3e3e3e;
+}
+
+QScrollBar::handle:hover{
+background-color: #444444;
+}
+
+QScrollBar::add-line {
+    height: 0px;
+}
+
+QScrollBar::sub-line {
+    height: 0px;
+}</string>
+   </property>
+   <property name="documentTitle">
+    <string/>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="plainText">
+    <string>Powered By 2020 Reverier Xu, XDSEC.
+
+本软件为开源软件, 请在规定的法律条款内自由的使用. 若在使用本软件中部分功能时造成他人的损失, 
+请自行承担一切责任.
+
+欢迎贡献源码, 仓库地址: https://github.com/Reverier-Xu/ISAE
+
+MIT License
+
+Copyright (c) 2020 Reverier Xu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>820</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿等宽微米黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#widget{
+border: 1px solid black;
+background-color: transparent;
+}</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="isaeLabel">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>56</width>
+        <height>26</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1000</width>
+        <height>26</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>文泉驿等宽微米黑</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>欢迎使用ISAE!</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+color: #30acff;
+}</string>
+      </property>
+      <property name="text">
+       <string>ISAE * About</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="closeButton">
+      <property name="minimumSize">
+       <size>
+        <width>54</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>54</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="toolTip">
+       <string>关闭</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-image: url(:/imgs/assets/close.png);
+background-color: #2c2c2c;
+border: 0px solid black;
+border-top: 1px solid black;
+border-right: 1px solid black;
+border-bottom: 1px solid black;
+}
+QPushButton:hover{
+background-color: #ff2f2f;
+}
+QPushButton:pressed{
+background-color: #3272ff;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>about</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>791</x>
+     <y>16</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>409</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

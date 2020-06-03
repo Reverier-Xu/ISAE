@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <about.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +27,7 @@ public slots:
     void pushAppList();
     void pushTeamList();
     void pushWorkspaceList();
+    void showAbout();
 
 protected:
   virtual void mousePressEvent(QMouseEvent *event);
@@ -46,5 +48,6 @@ private:
   QTimer teamAreaAnimation;
   QTimer workspaceAreaAnimation;
   int startDuration;
+  about *aboutWindow;
 };
 #endif // MAINAPP_H

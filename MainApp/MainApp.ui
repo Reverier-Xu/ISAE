@@ -83,16 +83,24 @@ border: 1px solid black;
             <height>26</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <family>文泉驿等宽微米黑</family>
+            <pointsize>14</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="toolTip">
            <string>欢迎使用ISAE!</string>
           </property>
           <property name="styleSheet">
            <string notr="true">QLabel{
-background-image: url(:/imgs/assets/isae.png);
+color: rgb(48, 172, 255);
 }</string>
           </property>
           <property name="text">
-           <string/>
+           <string>ISAE</string>
           </property>
           <property name="scaledContents">
            <bool>false</bool>
@@ -103,7 +111,7 @@ background-image: url(:/imgs/assets/isae.png);
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="viewButton">
+         <widget class="MenuButton" name="viewButton">
           <property name="minimumSize">
            <size>
             <width>32</width>
@@ -123,17 +131,29 @@ background-image: url(:/imgs/assets/isae.png);
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton{
+           <string notr="true">QToolButton{
 background-color: #2c2c2c;
 color: white;
 border: 0px solid black;
 border-top: 1px solid black;
 }
-QPushButton:hover{
+QToolButton:hover{
 color: #3e79fc;
 }
-QPushButton:pressed{
+QToolButton:pressed{
 color: #3e79ff;
+}
+QMenu {
+    background-color: #1e1e1e; 
+    border: 1px solid #606060;
+}
+
+QMenu::item {
+    background-color: transparent;
+}
+
+QMenu::item:selected { 
+    color: rgb(26, 125, 255);
 }</string>
           </property>
           <property name="text">
@@ -142,7 +162,7 @@ color: #3e79ff;
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="aboutButton">
+         <widget class="MenuButton" name="aboutButton">
           <property name="minimumSize">
            <size>
             <width>32</width>
@@ -162,17 +182,29 @@ color: #3e79ff;
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton{
+           <string notr="true">QToolButton{
 background-color: #2c2c2c;
 color: white;
 border: 0px solid black;
 border-top: 1px solid black;
 }
-QPushButton:hover{
-color: #2e69fc;
+QToolButton:hover{
+color: #3e79fc;
 }
-QPushButton:pressed{
-color: #2e69ff;
+QToolButton:pressed{
+color: #3e79ff;
+}
+QMenu {
+    background-color: #1e1e1e; 
+    border: 1px solid #606060;
+}
+
+QMenu::item {
+    background-color:  transparent;
+}
+
+QMenu::item:selected { 
+    color: rgb(26, 125, 255);
 }</string>
           </property>
           <property name="text">
@@ -945,6 +977,11 @@ border-left: 0px solid black;
    <extends>QWidget</extends>
    <header location="global">DockManager.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MenuButton</class>
+   <extends>QToolButton</extends>
+   <header location="global">menubutton.h</header>
   </customwidget>
  </customwidgets>
  <resources>

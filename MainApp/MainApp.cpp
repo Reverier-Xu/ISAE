@@ -1,33 +1,51 @@
 #include "MainApp.h"
-#include "ui_MainApp.h"
+#include "ui_MainApp.h" // ui文件
 #include <QtCore/Qt>
-#include <QMouseEvent>
-#include <iostream>
-#include "DockManager.h"
+#include <QMouseEvent> // 移动窗口所需
+#include <iostream> // 输入输出, debug用
+#include "DockManager.h" // 高级停靠系统
+#include "about.h" // 关于页面
 
 MainApp::MainApp(QWidget *parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow)
 {
-  ui->setupUi(this);
+  ui->setupUi(this); // 先布局
+
+  /* 设置无边框与背景 */
   this->setWindowFlags(Qt::FramelessWindowHint);
   this->setAttribute(Qt::WA_StyledBackground);
+
+  /* 初始化窗口标志 */
   this->mMoving = false;
   this->isMaximum = true;
   this->isSidebarShow = true;
   this->isAppAreaShow = false;
   this->isTeamAreaShow = false;
   this->isWorkspaceAreaShow = false;
+
+  /* 初始化窗口可伸缩部件的大小 */
   this->ui->appsArea->setFixedHeight(0);
   this->ui->teamArea->setFixedHeight(0);
   this->ui->workspaceArea->setFixedHeight(0);
   this->ui->sidebarWidget->setFixedWidth(250);
+
+  /* 初始化动画计时器 */
   this->startDuration = 1;
   this->sideBarAnimation.setInterval(10);
   this->appAreaAnimation.setInterval(10);
   this->teamAreaAnimation.setInterval(10);
   this->workspaceAreaAnimation.setInterval(10);
+
+  /* 初始化窗口状态 */
   this->showMaximized();
+
+  /* 初始化关于页面 */
+  this->aboutWindow = new about(this);
+  this->aboutWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+  this->aboutWindow->setWindowModality(Qt::ApplicationModal);
+
+  /* 信号与槽 */
   QObject::connect(ui->maxButton, SIGNAL(clicked()), this, SLOT(changeWindowStatus()));
   QObject::connect(&(this->sideBarAnimation), SIGNAL(timeout()), SLOT(animateSideBar()));
   QObject::connect(ui->welcomeButton,SIGNAL(clicked()), this, SLOT(pushSideBar()));
@@ -37,12 +55,18 @@ MainApp::MainApp(QWidget *parent)
   QObject::connect(ui->teamButton,SIGNAL(clicked()), this, SLOT(pushTeamList()));
   QObject::connect(&(this->workspaceAreaAnimation), SIGNAL(timeout()), SLOT(animateWorkspaceList()));
   QObject::connect(ui->workspaceButton,SIGNAL(clicked()), this, SLOT(pushWorkspaceList()));
+
+  QAction *act = this->ui->aboutButton->getmenu()->addAction(QString("关于"));
+  QObject::connect(act, SIGNAL(triggered()), this, SLOT(showAbout()));
+
 }
 
 MainApp::~MainApp()
 {
   delete ui;
 }
+
+
 /* 窗口移动函数 */
 void MainApp::mousePressEvent(QMouseEvent *event)
 {
@@ -123,6 +147,7 @@ void MainApp::animateSideBar(){
   }
 }
 
+/* 工作区/分区/团队区分栏展开动画 */
 void MainApp::pushAppList(){
   this->appAreaAnimation.start();
 }
@@ -200,4 +225,9 @@ void MainApp::animateWorkspaceList(){
       this->isWorkspaceAreaShow = true;
     }
   }
+}
+
+/* 显示关于页 */
+void MainApp::showAbout() {
+  this->aboutWindow->show();
 }

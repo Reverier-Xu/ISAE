@@ -29,5 +29,7 @@
         <file>assets/bilibili.png</file>
         <file>assets/apps.png</file>
         <file>assets/smile.png</file>
+        <file>assets/isae-logo.png</file>
+        <file>assets/isae-splash.png</file>
     </qresource>
 </RCC>

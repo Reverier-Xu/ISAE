@@ -8,6 +8,11 @@ set(MainApp_SRCS
     MainApp.h
     MainApp.ui
     Resources.qrc
+    menubutton.cpp
+    menubutton.h
+    about.cpp
+    about.h
+    about.ui
 )
 
 add_executable(MainApp ${MainApp_SRCS})
