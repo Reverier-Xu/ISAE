@@ -32,3 +32,8 @@
 
 ![isae-shot1.png](https://i.loli.net/2020/06/02/soJmBQzYq87ti64.png)
 ![isae-shot2.png](https://i.loli.net/2020/06/02/3PVDIbOqjyzvY1c.png)
+
+## 目前状态
+
+编写设置存储系统
+编写插件注册系统
