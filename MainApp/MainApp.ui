@@ -79,16 +79,18 @@ border: 1px solid black;
           </property>
           <property name="maximumSize">
            <size>
-            <width>56</width>
+            <width>100</width>
             <height>26</height>
            </size>
           </property>
           <property name="font">
            <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>14</pointsize>
+            <family>Earth Orbiter</family>
+            <pointsize>18</pointsize>
             <weight>75</weight>
             <bold>true</bold>
+            <stylestrategy>PreferDefault</stylestrategy>
+            <kerning>true</kerning>
            </font>
           </property>
           <property name="toolTip">
@@ -97,6 +99,9 @@ border: 1px solid black;
           <property name="styleSheet">
            <string notr="true">QLabel{
 color: rgb(48, 172, 255);
+}
+QLabel:hover{
+color: #c9c9c9;
 }</string>
           </property>
           <property name="text">
@@ -941,6 +946,9 @@ color: white;
         <property name="styleSheet">
          <string notr="true">QWidget#MainDock{
 background-color: #2c2c2c;
+background-image:url(:/imgs/assets/workspace_is_empty.png);
+background-position:center;
+background-repeat:no-repeat;
 border: 1px solid black;
 border-left: 0px solid black;
 }</string>

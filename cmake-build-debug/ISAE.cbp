@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ISAE"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Library\;CMake Files\Library\QtAds\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\lib64\;CMake Files\..\..\..\usr\lib64\cmake\;CMake Files\..\..\..\usr\lib64\cmake\Qt5\;CMake Files\..\..\..\usr\lib64\cmake\Qt5Core\;CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\;CMake Files\..\..\..\usr\lib64\cmake\Qt5Widgets\;CMake Files\MainApp\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="qtadvanceddocking">
+				<Option output="/mnt/Data/ISAE/cmake-build-debug/lib/libqtadvanceddocking.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DADS_SHARED_EXPORT"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds"/>
+					<Add directory="/mnt/Data/ISAE/Library/QtAds"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/qtadvanceddocking_autogen/include"/>
+					<Add directory="/usr/include/qt"/>
+					<Add directory="/usr/include/qt/QtCore"/>
+					<Add directory="/usr/lib/qt/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/qt/QtGui"/>
+					<Add directory="/usr/include/qt/QtWidgets"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/backward"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 qtadvanceddocking"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="qtadvanceddocking/fast">
+				<Option output="/mnt/Data/ISAE/cmake-build-debug/lib/libqtadvanceddocking.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DADS_SHARED_EXPORT"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds"/>
+					<Add directory="/mnt/Data/ISAE/Library/QtAds"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/qtadvanceddocking_autogen/include"/>
+					<Add directory="/usr/include/qt"/>
+					<Add directory="/usr/include/qt/QtCore"/>
+					<Add directory="/usr/lib/qt/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/qt/QtGui"/>
+					<Add directory="/usr/include/qt/QtWidgets"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/backward"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 qtadvanceddocking/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="qtadvanceddocking_autogen">
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 qtadvanceddocking_autogen"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MainApp">
+				<Option output="/mnt/Data/ISAE/cmake-build-debug/bin/MainApp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug/MainApp"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/MainApp"/>
+					<Add directory="/mnt/Data/ISAE/MainApp"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/MainApp/MainApp_autogen/include"/>
+					<Add directory="/mnt/Data/ISAE/MainApp/../Library/QtAds"/>
+					<Add directory="/usr/include/qt"/>
+					<Add directory="/usr/include/qt/QtCore"/>
+					<Add directory="/usr/lib/qt/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/qt/QtGui"/>
+					<Add directory="/usr/include/qt/QtWidgets"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/backward"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 MainApp"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MainApp/fast">
+				<Option output="/mnt/Data/ISAE/cmake-build-debug/bin/MainApp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug/MainApp"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/MainApp"/>
+					<Add directory="/mnt/Data/ISAE/MainApp"/>
+					<Add directory="/mnt/Data/ISAE/cmake-build-debug/MainApp/MainApp_autogen/include"/>
+					<Add directory="/mnt/Data/ISAE/MainApp/../Library/QtAds"/>
+					<Add directory="/usr/include/qt"/>
+					<Add directory="/usr/include/qt/QtCore"/>
+					<Add directory="/usr/lib/qt/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/qt/QtGui"/>
+					<Add directory="/usr/include/qt/QtWidgets"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/10.1.0/../../../../include/c++/10.1.0/backward"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 MainApp/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MainApp_autogen">
+				<Option working_dir="/mnt/Data/ISAE/cmake-build-debug/MainApp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 MainApp_autogen"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/Data/ISAE/cmake-build-debug/MainApp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockAreaTabBar.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockAreaTabBar.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockAreaTitleBar.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockAreaTitleBar.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockAreaWidget.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockAreaWidget.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockComponentsFactory.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockComponentsFactory.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockContainerWidget.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockContainerWidget.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockManager.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockManager.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockOverlay.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockOverlay.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockSplitter.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockSplitter.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockWidget.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockWidget.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockWidgetTab.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockWidgetTab.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockingStateReader.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/DockingStateReader.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/ElidingLabel.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/ElidingLabel.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/FloatingDockContainer.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/FloatingDockContainer.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/FloatingDragPreview.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/FloatingDragPreview.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/IconProvider.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/IconProvider.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/ads.qrc">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/ads_globals.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/ads_globals.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/linux/FloatingWidgetTitleBar.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/linux/FloatingWidgetTitleBar.h">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/MainApp.cpp">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/MainApp.h">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/MainApp.ui">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/Resources.qrc">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/about.cpp">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/about.h">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/about.ui">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/main.cpp">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/menubutton.cpp">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/menubutton.h">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/qtadvanceddocking_autogen/EWIEGA46WW/qrc_ads.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/qtadvanceddocking_autogen/EWIEGA46WW/qrc_ads.cpp.rule">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/cmake-build-debug/Library/QtAds/qtadvanceddocking_autogen/mocs_compilation.cpp">
+			<Option target="qtadvanceddocking"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/cmake-build-debug/MainApp/MainApp_autogen/EWIEGA46WW/qrc_Resources.cpp">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/cmake-build-debug/MainApp/MainApp_autogen/EWIEGA46WW/qrc_Resources.cpp.rule">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/cmake-build-debug/MainApp/MainApp_autogen/mocs_compilation.cpp">
+			<Option target="MainApp"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Library\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Library\QtAds\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/Library/QtAds/ads.qrc">
+			<Option virtualFolder="CMake Files\Library\QtAds\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QJp2Plugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QMngPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QTsLibPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QVirtualKeyboardPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QWaylandEglPlatformIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QWaylandIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeEglPlatformIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeGlxPlatformIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QWebGLIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/../../../usr/lib64/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib64\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\MainApp\"/>
+		</Unit>
+		<Unit filename="/mnt/Data/ISAE/MainApp/Resources.qrc">
+			<Option virtualFolder="CMake Files\MainApp\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

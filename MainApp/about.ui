@@ -212,14 +212,14 @@ background-color: transparent;
       </property>
       <property name="font">
        <font>
-        <family>文泉驿等宽微米黑</family>
-        <pointsize>14</pointsize>
+        <family>Earth Orbiter</family>
+        <pointsize>18</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="toolTip">
-       <string>欢迎使用ISAE!</string>
+       <string>ISAE - ABOUT</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel{
@@ -227,7 +227,7 @@ color: #30acff;
 }</string>
       </property>
       <property name="text">
-       <string>ISAE * About</string>
+       <string>ISAE - About</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>

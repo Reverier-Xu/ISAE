@@ -31,5 +31,6 @@
         <file>assets/smile.png</file>
         <file>assets/isae-logo.png</file>
         <file>assets/isae-splash.png</file>
+        <file>assets/workspace_is_empty.png</file>
     </qresource>
 </RCC>
