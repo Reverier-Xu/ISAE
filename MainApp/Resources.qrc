@@ -1,36 +1,37 @@
 <RCC>
     <qresource prefix="/imgs">
-        <file>assets/workspace.png</file>
-        <file>assets/wiki.png</file>
-        <file>assets/tools.png</file>
-        <file>assets/team.png</file>
-        <file>assets/starter.png</file>
-        <file>assets/settings.png</file>
-        <file>assets/send.png</file>
-        <file>assets/rxreader.png</file>
-        <file>assets/postx.png</file>
-        <file>assets/out3rn3t_expl0rer.png</file>
-        <file>assets/online.png</file>
-        <file>assets/offline.png</file>
-        <file>assets/new_folder.png</file>
-        <file>assets/new_file.png</file>
-        <file>assets/mini.png</file>
-        <file>assets/menu.png</file>
-        <file>assets/max.png</file>
-        <file>assets/isae.png</file>
-        <file>assets/folder.png</file>
-        <file>assets/editor.png</file>
-        <file>assets/debugger.png</file>
-        <file>assets/dataflow.png</file>
-        <file>assets/console.png</file>
-        <file>assets/close.png</file>
-        <file>assets/close_dock.png</file>
-        <file>assets/binary.png</file>
-        <file>assets/bilibili.png</file>
-        <file>assets/apps.png</file>
-        <file>assets/smile.png</file>
         <file>assets/isae-logo.png</file>
         <file>assets/isae-splash.png</file>
         <file>assets/workspace_is_empty.png</file>
+        <file>assets/workspace.svg</file>
+        <file>assets/apps.svg</file>
+        <file>assets/bilibili.svg</file>
+        <file>assets/binary.svg</file>
+        <file>assets/close.svg</file>
+        <file>assets/console.svg</file>
+        <file>assets/dataflow.svg</file>
+        <file>assets/debuger.svg</file>
+        <file>assets/editor.svg</file>
+        <file>assets/fail.svg</file>
+        <file>assets/folder.svg</file>
+        <file>assets/max.svg</file>
+        <file>assets/menu.svg</file>
+        <file>assets/mini.svg</file>
+        <file>assets/new_file.svg</file>
+        <file>assets/new_folder.svg</file>
+        <file>assets/offline.svg</file>
+        <file>assets/ok.svg</file>
+        <file>assets/online.svg</file>
+        <file>assets/out3rn3t_expl0rer.svg</file>
+        <file>assets/postx.svg</file>
+        <file>assets/rxreader.svg</file>
+        <file>assets/send.svg</file>
+        <file>assets/settings.svg</file>
+        <file>assets/starter.svg</file>
+        <file>assets/team.svg</file>
+        <file>assets/tools.svg</file>
+        <file>assets/warning.svg</file>
+        <file>assets/wiki.svg</file>
+        <file>assets/CPU.svg</file>
     </qresource>
 </RCC>

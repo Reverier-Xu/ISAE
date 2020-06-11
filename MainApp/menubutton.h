@@ -1,21 +1,19 @@
 #ifndef MENUBUTTON_H
 #define MENUBUTTON_H
 
-
-#include <QToolButton>
 #include <QMenu>
+#include <QToolButton>
 
-class MenuButton : public QToolButton
-{
+class MenuButton : public QToolButton {
     Q_OBJECT
-public:
+   public:
     explicit MenuButton(QWidget *parent = nullptr);
-    QMenu * getmenu();
-    QMenu * menu;
-signals:
+    QMenu *getmenu();
+    QMenu *menu;
+   signals:
 
-public slots:
+   public slots:
     void popupmenu();
 };
 
-#endif // MENUBUTTON_H
+#endif  // MENUBUTTON_H

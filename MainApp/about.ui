@@ -128,7 +128,7 @@ QScrollBar::sub-line {
    <property name="plainText">
     <string>Powered By 2020 Reverier Xu, XDSEC.
 
-本软件为开源软件, 请在规定的法律条款内自由的使用. 若在使用本软件中部分功能时造成他人的损失, 
+本软件为开源软件, 请在规定的法律条款内自由的使用. 若在使用本软件中部分功能时造成他人的损失,
 请自行承担一切责任.
 
 欢迎贡献源码, 仓库地址: https://github.com/Reverier-Xu/ISAE
@@ -269,7 +269,6 @@ color: #30acff;
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
-background-image: url(:/imgs/assets/close.png);
 background-color: #2c2c2c;
 border: 0px solid black;
 border-top: 1px solid black;
@@ -286,12 +285,24 @@ background-color: #3272ff;
       <property name="text">
        <string/>
       </property>
+      <property name="icon">
+       <iconset resource="Resources.qrc">
+        <normaloff>:/imgs/assets/close.svg</normaloff>:/imgs/assets/close.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>24</width>
+        <height>24</height>
+       </size>
+      </property>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>closeButton</sender>

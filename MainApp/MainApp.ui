@@ -101,7 +101,7 @@ border: 1px solid black;
 color: rgb(48, 172, 255);
 }
 QLabel:hover{
-color: #c9c9c9;
+color: rgb(42, 216, 255);
 }</string>
           </property>
           <property name="text">
@@ -303,8 +303,7 @@ background-color: #1e1e1e;
            <string>最小化</string>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-image:url(:/imgs/assets/mini.png);
+           <string notr="true">QPushButton{ 
 background-color: #2c2c2c;
 border: 0px solid black;
 border-top: 1px solid black;
@@ -318,6 +317,10 @@ background-color: #404040;
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/imgs/assets/mini.svg</normaloff>:/imgs/assets/mini.svg</iconset>
           </property>
          </widget>
         </item>
@@ -340,7 +343,6 @@ background-color: #404040;
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-image:url(:/imgs/assets/max.png);
 background-color: #2c2c2c;
 border: 0px solid black;
 border-top: 1px solid black;
@@ -354,6 +356,10 @@ background-color: #404040;
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/imgs/assets/max.svg</normaloff>:/imgs/assets/max.svg</iconset>
           </property>
          </widget>
         </item>
@@ -376,7 +382,6 @@ background-color: #404040;
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-image: url(:/imgs/assets/close.png);
 background-color: #2c2c2c;
 border: 0px solid black;
 border-top: 1px solid black;
@@ -391,6 +396,16 @@ background-color: #3272ff;
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/imgs/assets/close.svg</normaloff>:/imgs/assets/close.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -496,7 +511,7 @@ color: white;
            </property>
            <property name="icon">
             <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/menu.png</normaloff>:/imgs/assets/menu.png</iconset>
+             <normaloff>:/imgs/assets/menu.svg</normaloff>:/imgs/assets/menu.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -555,7 +570,7 @@ color: white;
            </property>
            <property name="icon">
             <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/apps.png</normaloff>:/imgs/assets/apps.png</iconset>
+             <normaloff>:/imgs/assets/apps.svg</normaloff>:/imgs/assets/apps.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -635,7 +650,7 @@ color: white;
            </property>
            <property name="icon">
             <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/workspace.png</normaloff>:/imgs/assets/workspace.png</iconset>
+             <normaloff>:/imgs/assets/workspace.svg</normaloff>:/imgs/assets/workspace.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -715,7 +730,7 @@ color: white;
            </property>
            <property name="icon">
             <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/team.png</normaloff>:/imgs/assets/team.png</iconset>
+             <normaloff>:/imgs/assets/team.svg</normaloff>:/imgs/assets/team.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -814,7 +829,7 @@ color: white;
            </property>
            <property name="icon">
             <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/online.png</normaloff>:/imgs/assets/online.png</iconset>
+             <normaloff>:/imgs/assets/online.svg</normaloff>:/imgs/assets/online.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -867,7 +882,7 @@ color: white;
            </property>
            <property name="icon">
             <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/smile.png</normaloff>:/imgs/assets/smile.png</iconset>
+             <normaloff>:/imgs/assets/ok.svg</normaloff>:/imgs/assets/ok.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -919,7 +934,7 @@ color: white;
            </property>
            <property name="icon">
             <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/settings.png</normaloff>:/imgs/assets/settings.png</iconset>
+             <normaloff>:/imgs/assets/settings.svg</normaloff>:/imgs/assets/settings.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -944,14 +959,7 @@ color: white;
          <string/>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget#MainDock{
-background-color: #2c2c2c;
-background-image:url(:/imgs/assets/workspace_is_empty.png);
-background-position:center;
-background-repeat:no-repeat;
-border: 1px solid black;
-border-left: 0px solid black;
-}</string>
+         <string notr="true"/>
         </property>
        </widget>
       </item>
