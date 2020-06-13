@@ -115,21 +115,6 @@ MainApp::MainApp(QWidget *parent)
                                       "QPushButton:hover{"
                                       "background-color: #353535;"
                                       "}");
-    QCodeEditor* m_codeEditor = new QCodeEditor(this);
-    ads::CDockWidget* DockWidget = new ads::CDockWidget("Editor#1");
-    DockWidget->setWidget(m_codeEditor);
-    this->ui->MainDock->addDockWidget(ads::LeftDockWidgetArea, DockWidget);
-    m_codeEditor->setCompleter(new QPythonCompleter(this));
-    m_codeEditor->setHighlighter(new QPythonHighlighter);
-    m_codeEditor->setFont(this->defaultFont);
-
-    QCodeEditor* nm_codeEditor = new QCodeEditor(this);
-    ads::CDockWidget* nDockWidget = new ads::CDockWidget("Editor#2");
-    nDockWidget->setWidget(nm_codeEditor);
-    this->ui->MainDock->addDockWidget(ads::LeftDockWidgetArea, nDockWidget);
-    nm_codeEditor->setCompleter(new QPythonCompleter(this));
-    nm_codeEditor->setHighlighter(new QPythonHighlighter);
-    nm_codeEditor->setFont(this->defaultFont);
 
     this->ui->MainDock->setStyleSheet(QString(R"(QWidget#MainDock{
                                               background-color: #2c2c2c;
