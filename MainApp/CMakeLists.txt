@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-find_package(Qt5 5.5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt5 5.5 COMPONENTS Core Gui Widgets WebEngineWidgets REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(MainApp_SRCS
@@ -19,7 +19,7 @@ set(MainApp_SRCS
 
 add_executable(MainApp ${MainApp_SRCS})
 
-target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets)
+target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Widgets)
 target_link_libraries(MainApp PRIVATE qtadvanceddocking QCodeEditor)
 
 target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/QtAds")
