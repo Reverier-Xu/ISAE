@@ -23,7 +23,8 @@ target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Widget
 target_link_libraries(MainApp PRIVATE qtadvanceddocking QCodeEditor)
 
 target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/QtAds")
-target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/QCodeEditor")
+target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/CodeEditor")
+target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/NodeEditor")
 set_target_properties(MainApp PROPERTIES 
     AUTOMOC ON
     AUTORCC ON
