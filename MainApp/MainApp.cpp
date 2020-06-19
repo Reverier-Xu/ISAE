@@ -8,19 +8,6 @@
 #include "about.h"        // 关于页面
 #include "ui_MainApp.h"   // ui文件
 
-// QCodeEditor
-#include <QCodeEditor>
-#include <QGLSLCompleter>
-#include <QLuaCompleter>
-#include <QPythonCompleter>
-#include <QSyntaxStyle>
-#include <QCXXHighlighter>
-#include <QGLSLHighlighter>
-#include <QXMLHighlighter>
-#include <QJSONHighlighter>
-#include <QLuaHighlighter>
-#include <QPythonHighlighter>
-
 MainApp::MainApp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);  // 先布局
@@ -117,7 +104,7 @@ MainApp::MainApp(QWidget *parent)
                                       "}");
 
     this->ui->MainDock->setStyleSheet(QString(R"(QWidget#MainDock{
-                                              background-color: #2c2c2c;
+                                              background-color: #242526;
                                               background-image:url(:/imgs/assets/workspace_is_empty.png);
                                               background-position:center;
                                               background-repeat:no-repeat;

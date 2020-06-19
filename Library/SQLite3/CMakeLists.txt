@@ -25,12 +25,16 @@ endif()
 
 #------------------------------------------------------------------------------
 
-# SQLite3 as static library:
-add_library(${PROJECT_NAME} STATIC sqlite3.c)
+# SQLite3 as shared library:
+add_library(${PROJECT_NAME} SHARED sqlite3.c)
 set_target_properties(${PROJECT_NAME} PROPERTIES
     OUTPUT_NAME   sqlite3
     PUBLIC_HEADER sqlite3.h
     DEBUG_POSTFIX d
+    
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     )
 target_include_directories(${PROJECT_NAME} PUBLIC $<INSTALL_INTERFACE:include>)
 target_compile_definitions(${PROJECT_NAME} PUBLIC # inject user's options

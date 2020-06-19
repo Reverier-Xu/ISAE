@@ -72,10 +72,16 @@ find_package(Qt5Core    CONFIG REQUIRED)
 find_package(Qt5Widgets CONFIG REQUIRED)
 find_package(Qt5Gui     CONFIG REQUIRED)
 
-add_library(QCodeEditor STATIC
+add_library(QCodeEditor SHARED
     ${RESOURCES_FILE}
     ${SOURCE_FILES}
     ${INCLUDE_FILES}
+)
+
+set_target_properties(QCodeEditor PROPERTIES 
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
 target_include_directories(QCodeEditor PUBLIC

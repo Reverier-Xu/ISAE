@@ -57,87 +57,119 @@ border: 1px solid black;
      <number>0</number>
     </property>
     <item>
-     <layout class="QHBoxLayout" name="titleLayout">
-      <property name="leftMargin">
-       <number>5</number>
+     <widget class="QWidget" name="titleWidget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>32</height>
+       </size>
       </property>
-      <item>
-       <layout class="QHBoxLayout" name="menuLayout">
-        <property name="spacing">
-         <number>15</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="isaeLabel">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>56</width>
-            <height>26</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>26</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Earth Orbiter</family>
-            <pointsize>18</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-            <stylestrategy>PreferDefault</stylestrategy>
-            <kerning>true</kerning>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>欢迎使用ISAE!</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#titleWidget{
+background-color: #1e1e1e;
+border: 0px solid black;
+border-top: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+}
+QScrollBar{height: 0px; background-color: transparent;}</string>
+      </property>
+      <layout class="QHBoxLayout" name="titleLayout">
+       <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="menuLayout">
+         <property name="spacing">
+          <number>15</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="isaeLabel">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>56</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Earth Orbiter</family>
+             <pointsize>18</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+             <stylestrategy>PreferDefault</stylestrategy>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>欢迎使用ISAE!</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
 color: rgb(48, 172, 255);
 }
 QLabel:hover{
 color: rgb(42, 216, 255);
 }</string>
-          </property>
-          <property name="text">
-           <string>ISAE</string>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="MenuButton" name="viewButton">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QToolButton{
-background-color: #2c2c2c;
+           </property>
+           <property name="text">
+            <string>ISAE</string>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="MenuButton" name="viewButton">
+           <property name="minimumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+background-color: transparent;
 color: white;
 border: 0px solid black;
 border-top: 1px solid black;
@@ -160,35 +192,35 @@ QMenu::item {
 QMenu::item:selected { 
     color: rgb(26, 125, 255);
 }</string>
-          </property>
-          <property name="text">
-           <string>视图</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="MenuButton" name="aboutButton">
-          <property name="minimumSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QToolButton{
-background-color: #2c2c2c;
+           </property>
+           <property name="text">
+            <string>视图</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="MenuButton" name="aboutButton">
+           <property name="minimumSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+background-color: transparent;
 color: white;
 border: 0px solid black;
 border-top: 1px solid black;
@@ -211,48 +243,48 @@ QMenu::item {
 QMenu::item:selected { 
     color: rgb(26, 125, 255);
 }</string>
-          </property>
-          <property name="text">
-           <string>关于</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QWidget" name="widget" native="true">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="globalSearchBar">
-          <property name="minimumSize">
-           <size>
-            <width>250</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>250</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>文泉驿等宽微米黑</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>全局搜索, 告诉我你想要干什么..</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit{
-background-color: #2c2c2c;
+           </property>
+           <property name="text">
+            <string>关于</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="globalSearchBar">
+           <property name="minimumSize">
+            <size>
+             <width>250</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>250</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>全局搜索, 告诉我你想要干什么..</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+background-color: transparent;
 border: 0px solid black;
 border-top: 1px solid black;
 margin: 0 0 0 0;
@@ -261,50 +293,50 @@ QLineEdit:hover{
 background-color: #323232;
 }
 QLineEdit:focus{
-background-color: #1e1e1e;
+background-color: #282828;
 }</string>
-          </property>
-          <property name="dragEnabled">
-           <bool>true</bool>
-          </property>
-          <property name="placeholderText">
-           <string>搜索..</string>
-          </property>
-          <property name="cursorMoveStyle">
-           <enum>Qt::VisualMoveStyle</enum>
-          </property>
-          <property name="clearButtonEnabled">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="windowControlLayout">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QPushButton" name="miniButton">
-          <property name="minimumSize">
-           <size>
-            <width>54</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>54</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>最小化</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{ 
-background-color: #2c2c2c;
+           </property>
+           <property name="dragEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string>搜索..</string>
+           </property>
+           <property name="cursorMoveStyle">
+            <enum>Qt::VisualMoveStyle</enum>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="windowControlLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="miniButton">
+           <property name="minimumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>最小化</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{ 
+background-color: #transparent;
 border: 0px solid black;
 border-top: 1px solid black;
 }
@@ -314,36 +346,36 @@ background-color: #353535;
 QPushButton:pressed{
 background-color: #404040;
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="Resources.qrc">
-            <normaloff>:/imgs/assets/mini.svg</normaloff>:/imgs/assets/mini.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="maxButton">
-          <property name="minimumSize">
-           <size>
-            <width>54</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>54</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>最大化/恢复</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="Resources.qrc">
+             <normaloff>:/imgs/assets/mini.svg</normaloff>:/imgs/assets/mini.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="maxButton">
+           <property name="minimumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>最大化/恢复</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{ 
+background-color: #transparent;
 border: 0px solid black;
 border-top: 1px solid black;
 }
@@ -353,36 +385,36 @@ background-color: #353535;
 QPushButton:pressed{
 background-color: #404040;
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="Resources.qrc">
-            <normaloff>:/imgs/assets/max.svg</normaloff>:/imgs/assets/max.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="closeButton">
-          <property name="minimumSize">
-           <size>
-            <width>54</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>54</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>退出ISAE</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: #2c2c2c;
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="Resources.qrc">
+             <normaloff>:/imgs/assets/max.svg</normaloff>:/imgs/assets/max.svg</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="closeButton">
+           <property name="minimumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>退出ISAE</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background-color: transparent;
 border: 0px solid black;
 border-top: 1px solid black;
 border-right: 1px solid black;
@@ -393,25 +425,26 @@ background-color: #ff2f2f;
 QPushButton:pressed{
 background-color: #3272ff;
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="Resources.qrc">
-            <normaloff>:/imgs/assets/close.svg</normaloff>:/imgs/assets/close.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>24</width>
-            <height>24</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="Resources.qrc">
+             <normaloff>:/imgs/assets/close.svg</normaloff>:/imgs/assets/close.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="appLayout">
@@ -584,7 +617,7 @@ color: white;
           <widget class="QWidget" name="appsArea" native="true">
            <property name="styleSheet">
             <string notr="true">QWidget#appsArea{
-background-color: #2c2c2c;
+background-color: #242526;
 border: 1px solid black;
 }</string>
            </property>
@@ -664,7 +697,7 @@ color: white;
           <widget class="QWidget" name="workspaceArea" native="true">
            <property name="styleSheet">
             <string notr="true">QWidget#workspaceArea{
-background-color: #2c2c2c;
+background-color: #242526;
 border: 1px solid black;
 }</string>
            </property>
@@ -744,7 +777,7 @@ color: white;
           <widget class="QWidget" name="teamArea" native="true">
            <property name="styleSheet">
             <string notr="true">QWidget#teamArea{
-background-color: #2c2c2c;
+background-color: #242526;
 border: 1px solid black;
 }</string>
            </property>
@@ -1005,14 +1038,14 @@ color: white;
  </resources>
  <connections>
   <connection>
-   <sender>closeButton</sender>
+   <sender>miniButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>close()</slot>
+   <slot>showMinimized()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1570</x>
-     <y>17</y>
+     <x>1463</x>
+     <y>16</y>
     </hint>
     <hint type="destinationlabel">
      <x>799</x>
@@ -1021,14 +1054,14 @@ color: white;
    </hints>
   </connection>
   <connection>
-   <sender>miniButton</sender>
+   <sender>closeButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>showMinimized()</slot>
+   <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1462</x>
-     <y>17</y>
+     <x>1571</x>
+     <y>16</y>
     </hint>
     <hint type="destinationlabel">
      <x>799</x>
