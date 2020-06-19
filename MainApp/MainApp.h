@@ -30,6 +30,7 @@ class MainApp : public QMainWindow {
     void pushTeamList();
     void pushWorkspaceList();
     void showAbout();
+    void upgradeCPUStatus();
 
    protected:
     virtual void mousePressEvent(QMouseEvent *event);
@@ -49,6 +50,7 @@ class MainApp : public QMainWindow {
     QTimer appAreaAnimation;
     QTimer teamAreaAnimation;
     QTimer workspaceAreaAnimation;
+    QTimer CPUMonitorTimer;
     int startDuration;
     about *aboutWindow;
     QPushButton* CPUStatusBox;

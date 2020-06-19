@@ -160,7 +160,7 @@ void JQCPUMonitor::tick()
     }
 
     const auto &&dataList = QString( file.readLine() ).split( ' ', QString::SkipEmptyParts );
-    qDebug() << dataList;
+    // qDebug() << dataList;
 
     if ( dataList.size() < 4 )
     {

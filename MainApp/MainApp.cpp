@@ -7,6 +7,9 @@
 #include "DockManager.h"  // 高级停靠系统
 #include "about.h"        // 关于页面
 #include "ui_MainApp.h"   // ui文件
+#include "monitor.h"
+#include <string>
+#include <iostream>
 
 MainApp::MainApp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -62,6 +65,8 @@ MainApp::MainApp(QWidget *parent)
                      SLOT(pushTeamList()));
     QObject::connect(&(this->workspaceAreaAnimation), SIGNAL(timeout()),
                      SLOT(animateWorkspaceList()));
+    QObject::connect(&(this->CPUMonitorTimer), SIGNAL(timeout()),
+                     SLOT(upgradeCPUStatus()));
     QObject::connect(ui->workspaceButton, SIGNAL(clicked()), this,
                      SLOT(pushWorkspaceList()));
 
@@ -92,7 +97,7 @@ MainApp::MainApp(QWidget *parent)
     this->CPUStatusBox = new QPushButton(this);
     this->CPUStatusBox->setIcon(QIcon::fromTheme(":/imgs/assets/CPU.svg"));
     this->CPUStatusBox->setIconSize(QSize(22, 20));
-    this->CPUStatusBox->setText(QString(" CPU 21.86% "));
+    this->CPUStatusBox->setText(QString(" CPU 00.00% "));
     this->CPUStatusBox->setFont(this->defaultFont);
     this->statusBar()->addWidget(this->CPUStatusBox);
     this->CPUStatusBox->setStyleSheet("QPushButton{"
@@ -126,6 +131,11 @@ MainApp::MainApp(QWidget *parent)
                                               QSplitter::handle:hover {
                                               background-color: rgb(50, 150, 250);
                                               })"));
+
+    // CPU Monitor
+    this->CPUMonitorTimer.setInterval(1000);
+    JQCPUMonitor::initialize();
+    this->CPUMonitorTimer.start();
 }
 
 MainApp::~MainApp() { delete ui; }
@@ -282,3 +292,9 @@ void MainApp::animateWorkspaceList() {
 
 /* 显示关于页 */
 void MainApp::showAbout() { this->aboutWindow->show(); }
+
+void MainApp::upgradeCPUStatus() {
+    QString info = " CPU ";
+    info += QString::number(JQCPUMonitor::cpuUsagePercentage() * 100, 'f', 2).rightJustified(5, '0') + "% ";
+    this->CPUStatusBox->setText(info);
+}
