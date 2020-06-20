@@ -87,62 +87,31 @@ MainApp::MainApp(QWidget *parent)
     this->statusBar()->setContentsMargins(8, 0, 0, 0);
 
     this->WootecStatusBox = new QPushButton(this);
+    this->WootecStatusBox->setObjectName("WootecStatusBox");
     this->WootecStatusBox->setIcon(QIcon::fromTheme(":/imgs/assets/online.svg"));
     this->WootecStatusBox->setObjectName("WootecStatusBox");
     this->WootecStatusBox->setIconSize(QSize(24, 20));
     this->WootecStatusBox->setText(QString(" Wootec Cloud  "));
     this->statusBar()->addWidget(this->WootecStatusBox);
-    this->WootecStatusBox->setStyleSheet("QPushButton{"
-                                      "background-color: transparent;"
-                                      "border: 0px solid black;"
-                                      "}"
-                                      "QPushButton:hover{"
-                                      "background-color: #353535;"
-                                      "}");
     this->WootecStatusBox->setFont(this->defaultFont);
 
     this->CPUStatusBox = new QPushButton(this);
+    this->CPUStatusBox->setObjectName("CPUStatusBox");
     this->CPUStatusBox->setIcon(QIcon::fromTheme(":/imgs/assets/CPU.svg"));
     this->CPUStatusBox->setIconSize(QSize(22, 20));
     this->CPUStatusBox->setText(QString(" CPU 00.00% "));
     this->CPUStatusBox->setFont(this->defaultFont);
     this->statusBar()->addWidget(this->CPUStatusBox);
-    this->CPUStatusBox->setStyleSheet("QPushButton{"
-                                      "background-color: transparent;"
-                                      "border: 0px solid black;"
-                                      "}"
-                                      "QPushButton:hover{"
-                                      "background-color: #353535;"
-                                      "}");
-
-    this->ui->MainDock->setStyleSheet(QString(R"(QWidget#MainDock{
-                                              background-color: #242526;
-                                              background-image:url(:/imgs/assets/workspace_is_empty.png);
-                                              background-position:center;
-                                              background-repeat:no-repeat;
-                                              border: 1px solid black;
-                                              border-left: 0px solid black;
-                                              }
-                                              QSplitter::handle {
-                                              background-color: rgb(30, 30, 30);
-                                              }
-                                              QSplitter::handle:horizontal {
-                                              width: 3px;
-                                              }
-                                              QSplitter::handle:vertical {
-                                              height: 3px;
-                                              }
-                                              QSplitter::handle:pressed {
-                                              background-color: rgb(50, 250, 150);
-                                              }
-                                              QSplitter::handle:hover {
-                                              background-color: rgb(50, 150, 250);
-                                              })"));
 
     // CPU Monitor
     this->CPUMonitorTimer.setInterval(1000);
     JQCPUMonitor::initialize();
     this->CPUMonitorTimer.start();
+    QFile qssFile(":/imgs/defaultStyle");
+    qssFile.open(QFile::ReadOnly);
+    QString qss = QLatin1String(qssFile.readAll());
+    this->setStyleSheet(qss);
+    qssFile.close();
 }
 
 MainApp::~MainApp() { delete ui; }

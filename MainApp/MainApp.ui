@@ -29,22 +29,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow{
-border: 1px solid black;
-}
-QMenu {
-    background-color: #1e1e1e; 
-    border: 1px solid #000000;
-}
-
-QMenu::item {
-    background-color:  transparent;
-}
-
-QMenu::item:selected { 
-    color: rgb(26, 125, 255);
-    background-color:  #323232;
-}</string>
+   <string notr="true"/>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -84,14 +69,7 @@ QMenu::item:selected {
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">QWidget#titleWidget{
-background-color: #1e1e1e;
-border: 0px solid black;
-border-top: 1px solid black;
-border-left: 1px solid black;
-border-right: 1px solid black;
-}
-QScrollBar{height: 0px; background-color: transparent;}</string>
+       <string notr="true"/>
       </property>
       <layout class="QHBoxLayout" name="titleLayout">
        <property name="leftMargin">
@@ -142,12 +120,7 @@ QScrollBar{height: 0px; background-color: transparent;}</string>
             <string>欢迎使用ISAE!</string>
            </property>
            <property name="styleSheet">
-            <string notr="true">QLabel{
-color: rgb(48, 172, 255);
-}
-QLabel:hover{
-color: rgb(42, 216, 255);
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>ISAE</string>
@@ -181,18 +154,7 @@ color: rgb(42, 216, 255);
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QToolButton{
-background-color: transparent;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QToolButton:hover{
-color: #3e79fc;
-}
-QToolButton:pressed{
-color: #3e79ff;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>视图</string>
@@ -220,19 +182,7 @@ color: #3e79ff;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QToolButton{
-background-color: transparent;
-color: white;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QToolButton:hover{
-color: #3e79fc;
-}
-QToolButton:pressed{
-color: #3e79ff;
-}
-</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>关于</string>
@@ -273,18 +223,7 @@ color: #3e79ff;
             <string>全局搜索, 告诉我你想要干什么..</string>
            </property>
            <property name="styleSheet">
-            <string notr="true">QLineEdit{
-background-color: transparent;
-border: 0px solid black;
-border-top: 1px solid black;
-margin: 0 0 0 0;
-}
-QLineEdit:hover{
-background-color: #323232;
-}
-QLineEdit:focus{
-background-color: #282828;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="dragEnabled">
             <bool>true</bool>
@@ -325,17 +264,7 @@ background-color: #282828;
             <string>最小化</string>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{ 
-background-color: transparent;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-background-color: #353535;
-}
-QPushButton:pressed{
-background-color: #404040;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>
@@ -364,17 +293,7 @@ background-color: #404040;
             <string>最大化/恢复</string>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{ 
-background-color: transparent;
-border: 0px solid black;
-border-top: 1px solid black;
-}
-QPushButton:hover{
-background-color: #353535;
-}
-QPushButton:pressed{
-background-color: #404040;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>
@@ -403,18 +322,7 @@ background-color: #404040;
             <string>退出ISAE</string>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: transparent;
-border: 0px solid black;
-border-top: 1px solid black;
-border-right: 1px solid black;
-}
-QPushButton:hover{
-background-color: #ff2f2f;
-}
-QPushButton:pressed{
-background-color: #3272ff;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>
@@ -462,11 +370,7 @@ background-color: #3272ff;
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget#sidebarWidget{
-background-color: #1e1e1e;
-border: 1px solid black;
-}
-QScrollBar{height: 0px; background-color: transparent;}</string>
+         <string notr="true"/>
         </property>
         <layout class="QVBoxLayout" name="sidebarLayout">
          <property name="spacing">
@@ -511,23 +415,7 @@ QScrollBar{height: 0px; background-color: transparent;}</string>
             <enum>Qt::LeftToRight</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-left: 1px solid black;
-border-bottom: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> 欢迎</string>
@@ -576,23 +464,7 @@ color: white;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-top: 0px solid black;
-border-bottom: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> Reverier Xu</string>
@@ -629,23 +501,7 @@ color: white;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-top: 0px solid black;
-border-bottom: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> 分区</string>
@@ -665,10 +521,7 @@ color: white;
          <item>
           <widget class="QWidget" name="appsArea" native="true">
            <property name="styleSheet">
-            <string notr="true">QWidget#appsArea{
-background-color: #242526;
-border: 1px solid black;
-}</string>
+            <string notr="true"/>
            </property>
            <layout class="QVBoxLayout" name="appsLayout">
             <property name="spacing">
@@ -709,23 +562,7 @@ border: 1px solid black;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-top: 0px solid black;
-border-bottom: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> 工作区</string>
@@ -745,10 +582,7 @@ color: white;
          <item>
           <widget class="QWidget" name="workspaceArea" native="true">
            <property name="styleSheet">
-            <string notr="true">QWidget#workspaceArea{
-background-color: #242526;
-border: 1px solid black;
-}</string>
+            <string notr="true"/>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <property name="spacing">
@@ -789,23 +623,7 @@ border: 1px solid black;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-top: 0px solid black;
-border-bottom: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
+            <string notr="true">  </string>
            </property>
            <property name="text">
             <string> 团队</string>
@@ -825,10 +643,7 @@ color: white;
          <item>
           <widget class="QWidget" name="teamArea" native="true">
            <property name="styleSheet">
-            <string notr="true">QWidget#teamArea{
-background-color: #242526;
-border: 1px solid black;
-}</string>
+            <string notr="true"/>
            </property>
            <layout class="QVBoxLayout" name="workspaceLayout">
             <property name="spacing">
@@ -882,23 +697,7 @@ border: 1px solid black;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-top: 0px solid black;
-border-bottom: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> 状态良好</string>
@@ -935,22 +734,7 @@ color: white;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-top: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
+            <string notr="true"> </string>
            </property>
            <property name="text">
             <string> 设置</string>

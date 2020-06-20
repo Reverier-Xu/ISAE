@@ -36,5 +36,7 @@
         <file>assets/ISAE.svg</file>
         <file alias="earthOrbiter">assets/EarthOrbiter-YZ12.otf</file>
         <file alias="wqy">assets/wqy-microhei.ttc</file>
+        <file alias="wallpaper">assets/wallpaper.jpg</file>
+        <file alias="defaultStyle">assets/RxFluent.qss</file>
     </qresource>
 </RCC>
