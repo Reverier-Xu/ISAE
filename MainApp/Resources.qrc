@@ -33,5 +33,8 @@
         <file>assets/warning.svg</file>
         <file>assets/wiki.svg</file>
         <file>assets/CPU.svg</file>
+        <file>assets/ISAE.svg</file>
+        <file alias="earthOrbiter">assets/EarthOrbiter-YZ12.otf</file>
+        <file alias="wqy">assets/wqy-microhei.ttc</file>
     </qresource>
 </RCC>

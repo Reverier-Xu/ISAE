@@ -175,7 +175,7 @@ DockWidgetTabPrivate::DockWidgetTabPrivate(CDockWidgetTab* _public) :
 //============================================================================
 void DockWidgetTabPrivate::createLayout()
 {
-	TitleLabel = new tTabLabel();
+    TitleLabel = new tTabLabel();
 	TitleLabel->setElideMode(Qt::ElideRight);
 	TitleLabel->setText(DockWidget->windowTitle());
 	TitleLabel->setObjectName("dockWidgetTabLabel");

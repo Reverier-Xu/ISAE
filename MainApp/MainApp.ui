@@ -31,6 +31,19 @@
   <property name="styleSheet">
    <string notr="true">QMainWindow{
 border: 1px solid black;
+}
+QMenu {
+    background-color: #1e1e1e; 
+    border: 1px solid #000000;
+}
+
+QMenu::item {
+    background-color:  transparent;
+}
+
+QMenu::item:selected { 
+    color: rgb(26, 125, 255);
+    background-color:  #323232;
 }</string>
   </property>
   <property name="animated">
@@ -179,18 +192,6 @@ color: #3e79fc;
 }
 QToolButton:pressed{
 color: #3e79ff;
-}
-QMenu {
-    background-color: #1e1e1e; 
-    border: 1px solid #606060;
-}
-
-QMenu::item {
-    background-color: transparent;
-}
-
-QMenu::item:selected { 
-    color: rgb(26, 125, 255);
 }</string>
            </property>
            <property name="text">
@@ -231,18 +232,7 @@ color: #3e79fc;
 QToolButton:pressed{
 color: #3e79ff;
 }
-QMenu {
-    background-color: #1e1e1e; 
-    border: 1px solid #606060;
-}
-
-QMenu::item {
-    background-color:  transparent;
-}
-
-QMenu::item:selected { 
-    color: rgb(26, 125, 255);
-}</string>
+</string>
            </property>
            <property name="text">
             <string>关于</string>
@@ -336,7 +326,7 @@ background-color: #282828;
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{ 
-background-color: #transparent;
+background-color: transparent;
 border: 0px solid black;
 border-top: 1px solid black;
 }
@@ -375,7 +365,7 @@ background-color: #404040;
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{ 
-background-color: #transparent;
+background-color: transparent;
 border: 0px solid black;
 border-top: 1px solid black;
 }
@@ -557,6 +547,65 @@ color: white;
            </property>
            <property name="flat">
             <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clientButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>文泉驿等宽微米黑</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background-color: #1e1e1e;
+border: 1px solid black;
+border-top: 0px solid black;
+border-bottom: 0px solid black;
+color: white;
+text-align: left;
+padding-left: 8px;
+}
+QPushButton:hover{
+background-color: #2c2c2c;
+color: white;
+}
+QPushButton:pressed{
+background-color: #2f2f2f;
+color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string> Reverier Xu</string>
+           </property>
+           <property name="icon">
+            <iconset resource="Resources.qrc">
+             <normaloff>:/imgs/assets/online.svg</normaloff>:/imgs/assets/online.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -812,65 +861,6 @@ border: 1px solid black;
             </size>
            </property>
           </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="clientButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>文泉驿等宽微米黑</family>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-background-color: #1e1e1e;
-border: 1px solid black;
-border-top: 0px solid black;
-border-bottom: 0px solid black;
-color: white;
-text-align: left;
-padding-left: 8px;
-}
-QPushButton:hover{
-background-color: #2c2c2c;
-color: white;
-}
-QPushButton:pressed{
-background-color: #2f2f2f;
-color: white;
-}</string>
-           </property>
-           <property name="text">
-            <string> Reverier Xu</string>
-           </property>
-           <property name="icon">
-            <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/online.svg</normaloff>:/imgs/assets/online.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>24</width>
-             <height>24</height>
-            </size>
-           </property>
-          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="statusButton">

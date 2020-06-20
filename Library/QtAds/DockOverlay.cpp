@@ -805,11 +805,18 @@ void CDockOverlayCross::setIconColors(const QString& Colors)
 		{"Overlay", CDockOverlayCross::OverlayColor},
 		{"Arrow", CDockOverlayCross::ArrowColor},
 		{"Shadow", CDockOverlayCross::ShadowColor}};
-
-	auto ColorList = Colors.split(' ', QString::SkipEmptyParts);
+ #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+    auto ColorList = Colors.split(' ', Qt::SkipEmptyParts);
+   #else
+    auto ColorList = Colors.split(' ', QString::SkipEmptyParts);
+#endif
 	for (const auto& ColorListEntry : ColorList)
 	{
-		auto ComponentColor = ColorListEntry.split('=', QString::SkipEmptyParts);
+       #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+        auto ComponentColor = ColorListEntry.split('=', Qt::SkipEmptyParts);
+        #else
+      auto ComponentColor = ColorListEntry.split('=', QString::SkipEmptyParts);
+#endif
 		int Component = ColorCompenentStringMap.value(ComponentColor[0], -1);
 		if (Component < 0)
 		{

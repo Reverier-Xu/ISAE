@@ -2,6 +2,7 @@
 
 #include <QMouseEvent>  // 移动窗口所需
 #include <QtCore/Qt>
+#include <QFontDatabase>
 #include <iostream>  // 输入输出, debug用
 
 #include "DockManager.h"  // 高级停靠系统
@@ -14,6 +15,12 @@
 MainApp::MainApp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);  // 先布局
+    QFontDatabase::addApplicationFont(":/imgs/wqy");
+    QFontDatabase::addApplicationFont(":/imgs/earthOrbiter");
+
+    QImage logo;  // 准备logo
+    logo.load(":/imgs/assets/ISAE.svg");
+    this->setWindowIcon(QPixmap::fromImage(logo));
 
     /* 设置无边框与背景 */
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -80,7 +87,7 @@ MainApp::MainApp(QWidget *parent)
     this->statusBar()->setContentsMargins(8, 0, 0, 0);
 
     this->WootecStatusBox = new QPushButton(this);
-    this->WootecStatusBox->setIcon(QIcon::fromTheme(":/imgs/assets/offline.svg"));
+    this->WootecStatusBox->setIcon(QIcon::fromTheme(":/imgs/assets/online.svg"));
     this->WootecStatusBox->setObjectName("WootecStatusBox");
     this->WootecStatusBox->setIconSize(QSize(24, 20));
     this->WootecStatusBox->setText(QString(" Wootec Cloud  "));

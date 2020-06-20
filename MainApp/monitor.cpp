@@ -158,8 +158,11 @@ void JQCPUMonitor::tick()
         qDebug() << "JQCPUMonitor::tick: error(1)";
         return;
     }
-
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+    const auto &&dataList = QString( file.readLine() ).split( ' ', Qt::SkipEmptyParts );
+#else
     const auto &&dataList = QString( file.readLine() ).split( ' ', QString::SkipEmptyParts );
+#endif
     // qDebug() << dataList;
 
     if ( dataList.size() < 4 )

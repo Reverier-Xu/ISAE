@@ -7,7 +7,7 @@
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonValueRef>
 #include <QtCore/QJsonArray>
-
+#include <QtCore/QRandomGenerator>
 #include <QDebug>
 
 #include "StyleCollection.hpp"
@@ -166,8 +166,10 @@ normalColor(QString typeId) const
 
   std::size_t const hue_range = 0xFF;
 
-  qsrand(hash);
-  std::size_t hue = qrand() % hue_range;
+  QRandomGenerator ra;
+
+  ra.seed(hash);
+  std::size_t hue = ra.generate() % hue_range;
 
   std::size_t sat = 120 + hash % 129;
 
