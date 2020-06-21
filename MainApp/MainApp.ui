@@ -25,6 +25,9 @@
     <bold>false</bold>
    </font>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -111,6 +114,7 @@
              <family>Earth Orbiter</family>
              <pointsize>18</pointsize>
              <weight>75</weight>
+             <italic>false</italic>
              <bold>true</bold>
              <stylestrategy>PreferDefault</stylestrategy>
              <kerning>true</kerning>
@@ -151,6 +155,9 @@
             <font>
              <family>文泉驿等宽微米黑</family>
              <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -179,6 +186,9 @@
             <font>
              <family>文泉驿等宽微米黑</family>
              <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -217,6 +227,9 @@
             <font>
              <family>文泉驿等宽微米黑</family>
              <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="toolTip">
@@ -406,6 +419,9 @@
             <font>
              <family>文泉驿等宽微米黑</family>
              <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="toolTip">
@@ -461,6 +477,10 @@
            <property name="font">
             <font>
              <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -498,6 +518,10 @@
            <property name="font">
             <font>
              <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -559,6 +583,10 @@
            <property name="font">
             <font>
              <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -620,10 +648,14 @@
            <property name="font">
             <font>
              <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">  </string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> 团队</string>
@@ -694,6 +726,10 @@
            <property name="font">
             <font>
              <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -731,10 +767,14 @@
            <property name="font">
             <font>
              <family>文泉驿等宽微米黑</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true"> </string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string> 设置</string>
@@ -790,6 +830,10 @@
    <property name="font">
     <font>
      <family>文泉驿等宽微米黑</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
     </font>
    </property>
   </widget>

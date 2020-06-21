@@ -15,6 +15,9 @@ set(MainApp_SRCS
     about.cpp
     about.h
     about.ui
+    donate.cpp
+    donate.h
+    donate.ui
 )
 
 add_executable(MainApp ${MainApp_SRCS})

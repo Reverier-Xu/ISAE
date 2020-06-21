@@ -14,8 +14,16 @@ class about : public QDialog {
     explicit about(QWidget *parent = nullptr);
     ~about();
 
+
+   protected:
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
+
    private:
     Ui::about *ui;
+    QPoint mMovePosition;
+    bool mMoving;
 };
 
 #endif  // ABOUT_H
