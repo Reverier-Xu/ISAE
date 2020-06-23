@@ -276,7 +276,7 @@ void MainApp::animateWorkspaceList() {
 
 /* 显示关于页 */
 void MainApp::showAbout() { this->aboutWindow->show(); }
-void MainApp::showDonate() { this->aboutWindow->show(); }
+void MainApp::showDonate() { this->donateWindow->show(); }
 void MainApp::upgradeCPUStatus() {
     QString info = " CPU ";
     info += QString::number(JQCPUMonitor::cpuUsagePercentage() * 100, 'f', 2).rightJustified(5, '0') + "% ";

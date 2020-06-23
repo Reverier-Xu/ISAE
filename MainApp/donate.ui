@@ -81,7 +81,7 @@ background-color: transparent;
        </font>
       </property>
       <property name="toolTip">
-       <string>ISAE - ABOUT</string>
+       <string>ISAE - DONATE</string>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
@@ -186,7 +186,11 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'思源黑体 CN'; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'思源黑体 CN'; font-size:16pt; font-weight:600; color:#00aaff;&quot;&gt;本软件存在付费版本吗?&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'思源黑体 CN'; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'思源黑体 CN'; color:#ffffff;&quot;&gt;不存在. 本软件的代码完全开源, 各个组件尽力做到能够再次使用并支持剥离出来作为单独程序提供. 如果你对本软件的开发有意见反馈或者想一起为这个项目做出贡献, 欢迎到GitHub的项目平台上提交issue和Pull Request.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'思源黑体 CN'; color:#ffffff;&quot;&gt;不存在. 本软件的代码完全开源, 各个组件尽力做到能够再次使用并支持剥离出来作为单独程序提供. 如果你对本软件的开发有意见反馈或者想一起为这个项目做出贡献, 欢迎到GitHub的项目平台上提交issue和Pull Request.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'思源黑体 CN'; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::TextSelectableByMouse</set>
    </property>
   </widget>
   <widget class="QLabel" name="alipay">
@@ -297,10 +301,30 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'思源黑体 CN'; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'思源黑体 CN'; font-weight:600;&quot;&gt;您的捐助可能会成为开发者的动力.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
+   <property name="textInteractionFlags">
+    <set>Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
  </widget>
  <resources>
   <include location="Resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>donate</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>792</x>
+     <y>15</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>409</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
