@@ -38,5 +38,7 @@
         <file alias="wqy">assets/wqy-microhei.ttc</file>
         <file alias="wallpaper">assets/wallpaper.jpg</file>
         <file alias="defaultStyle">assets/RxFluent.qss</file>
+        <file>assets/wechatpay.png</file>
+        <file>assets/alipay.png</file>
     </qresource>
 </RCC>

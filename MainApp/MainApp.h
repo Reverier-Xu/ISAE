@@ -2,6 +2,7 @@
 #define MAINAPP_H
 
 #include <about.h>
+#include <donate.h>
 
 #include <QMainWindow>
 #include <QTimer>
@@ -30,6 +31,7 @@ class MainApp : public QMainWindow {
     void pushTeamList();
     void pushWorkspaceList();
     void showAbout();
+    void showDonate();
     void upgradeCPUStatus();
 
    protected:
@@ -53,6 +55,7 @@ class MainApp : public QMainWindow {
     QTimer CPUMonitorTimer;
     int startDuration;
     about *aboutWindow;
+    donate *donateWindow;
     QPushButton* CPUStatusBox;
     QPushButton* WootecStatusBox;
     QFont defaultFont;

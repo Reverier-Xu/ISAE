@@ -11,6 +11,7 @@
 #include "monitor.h"
 #include <string>
 #include <iostream>
+#include "donate.h"
 
 MainApp::MainApp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -55,6 +56,11 @@ MainApp::MainApp(QWidget *parent)
     this->aboutWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     this->aboutWindow->setWindowModality(Qt::ApplicationModal);
 
+    /* 初始化捐助页面 */
+    this->donateWindow = new donate(this);
+    this->donateWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    this->donateWindow->setWindowModality(Qt::ApplicationModal);
+
     /* 信号与槽 */
     QObject::connect(ui->maxButton, SIGNAL(clicked()), this,
                      SLOT(changeWindowStatus()));
@@ -79,6 +85,8 @@ MainApp::MainApp(QWidget *parent)
 
     QAction *act = this->ui->aboutButton->getmenu()->addAction(QString("关于"));
     QObject::connect(act, SIGNAL(triggered()), this, SLOT(showAbout()));
+    act = this->ui->aboutButton->getmenu()->addAction(QString("捐助"));
+    QObject::connect(act, SIGNAL(triggered()), this, SLOT(showDonate()));
 
     /* 初始化默认字体 */
     this->defaultFont.setFamily("WenQuanYi Micro Hei Mono");
@@ -268,7 +276,7 @@ void MainApp::animateWorkspaceList() {
 
 /* 显示关于页 */
 void MainApp::showAbout() { this->aboutWindow->show(); }
-
+void MainApp::showDonate() { this->aboutWindow->show(); }
 void MainApp::upgradeCPUStatus() {
     QString info = " CPU ";
     info += QString::number(JQCPUMonitor::cpuUsagePercentage() * 100, 'f', 2).rightJustified(5, '0') + "% ";

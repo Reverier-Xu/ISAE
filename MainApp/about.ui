@@ -101,29 +101,7 @@ background-color: #2c2c2c;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QTextEdit{color: white;
-background-color: #2c2c2c;
-border: 0px solid black;
-}
-QScrollBar{
-background-color: #2c2c2c;
-border: 0px solid black;
-}
-QScrollBar::handle{
-background-color: #3e3e3e;
-}
-
-QScrollBar::handle:hover{
-background-color: #444444;
-}
-
-QScrollBar::add-line {
-    height: 0px;
-}
-
-QScrollBar::sub-line {
-    height: 0px;
-}</string>
+    <string notr="true"/>
    </property>
    <property name="readOnly">
     <bool>true</bool>
