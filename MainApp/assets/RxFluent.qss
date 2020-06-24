@@ -104,26 +104,6 @@ QPushButton#teamButton:pressed {
     color: white;
 }
 
-QPushButton#statusButton {
-    background-color: transparent;
-    border: 1px solid black;
-    border-top: 0px solid black;
-    border-bottom: 0px solid black;
-    color: white;
-    text-align: left;
-    padding-left: 8px;
-}
-
-QPushButton#statusButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
-}
-
-QPushButton#statusButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
-}
-
 QPushButton#settingsButton {
     background-color: transparent;
     border: 1px solid black;

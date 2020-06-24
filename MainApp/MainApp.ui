@@ -710,47 +710,6 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="statusButton">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>文泉驿等宽微米黑</family>
-             <pointsize>12</pointsize>
-             <weight>50</weight>
-             <italic>false</italic>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string> 状态良好</string>
-           </property>
-           <property name="icon">
-            <iconset resource="Resources.qrc">
-             <normaloff>:/imgs/assets/ok.svg</normaloff>:/imgs/assets/ok.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>24</width>
-             <height>24</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="settingsButton">
            <property name="minimumSize">
             <size>
