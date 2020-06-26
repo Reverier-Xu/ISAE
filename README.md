@@ -6,6 +6,8 @@
 
 ## 简介
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/pulls)
+
 采用Python与PyQt5编写的开源安全审计环境.
 
 将整合数据处理工具以及各类安全审计工具与一个软件之中.

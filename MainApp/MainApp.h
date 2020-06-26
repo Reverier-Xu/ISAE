@@ -33,6 +33,11 @@ class MainApp : public QMainWindow {
     void showAbout();
     void showDonate();
     void upgradeCPUStatus();
+    void setBackground(QImage image, int blur);
+    void addApp(QIcon icon, QString name);
+    void addWorkspace(QIcon icon, QString name);
+    void addTeam(QIcon icon, QString name);
+    void showClient(QString name, QIcon icon = QIcon());
 
    protected:
     virtual void mousePressEvent(QMouseEvent *event);
@@ -59,5 +64,10 @@ class MainApp : public QMainWindow {
     QPushButton* CPUStatusBox;
     QPushButton* WootecStatusBox;
     QFont defaultFont;
+    QVector<QPushButton*> appsVector;
+    QVector<QPushButton*> workspaceVector;
+    QVector<QPushButton*> teamVector;
+    QString clientName;
+    QIcon clientIcon;
 };
 #endif  // MAINAPP_H

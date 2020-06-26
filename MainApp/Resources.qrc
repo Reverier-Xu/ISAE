@@ -10,7 +10,6 @@
         <file>assets/close.svg</file>
         <file>assets/console.svg</file>
         <file>assets/dataflow.svg</file>
-        <file>assets/debuger.svg</file>
         <file>assets/editor.svg</file>
         <file>assets/fail.svg</file>
         <file>assets/folder.svg</file>
@@ -40,5 +39,46 @@
         <file alias="defaultStyle">assets/RxFluent.qss</file>
         <file>assets/wechatpay.png</file>
         <file>assets/alipay.png</file>
+        <file alias="wallpaper2">assets/wallpaper2.jpg</file>
+        <file>assets/debugger.svg</file>
+        <file>assets/a-z/0.svg</file>
+        <file>assets/a-z/1.svg</file>
+        <file>assets/a-z/2.svg</file>
+        <file>assets/a-z/3.svg</file>
+        <file>assets/a-z/4.svg</file>
+        <file>assets/a-z/5.svg</file>
+        <file>assets/a-z/6.svg</file>
+        <file>assets/a-z/7.svg</file>
+        <file>assets/a-z/8.svg</file>
+        <file>assets/a-z/9.svg</file>
+        <file>assets/a-z/a.svg</file>
+        <file>assets/a-z/b.svg</file>
+        <file>assets/a-z/c.svg</file>
+        <file>assets/a-z/d.svg</file>
+        <file>assets/a-z/e.svg</file>
+        <file>assets/a-z/f.svg</file>
+        <file>assets/a-z/g.svg</file>
+        <file>assets/a-z/h.svg</file>
+        <file>assets/a-z/i.svg</file>
+        <file>assets/a-z/j.svg</file>
+        <file>assets/a-z/k.svg</file>
+        <file>assets/a-z/l.svg</file>
+        <file>assets/a-z/m.svg</file>
+        <file>assets/a-z/n.svg</file>
+        <file>assets/a-z/nopic.svg</file>
+        <file>assets/a-z/o.svg</file>
+        <file>assets/a-z/p.svg</file>
+        <file>assets/a-z/q.svg</file>
+        <file>assets/a-z/r.svg</file>
+        <file>assets/a-z/s.svg</file>
+        <file>assets/a-z/t.svg</file>
+        <file>assets/a-z/u.svg</file>
+        <file>assets/a-z/v.svg</file>
+        <file>assets/a-z/w.svg</file>
+        <file>assets/a-z/x.svg</file>
+        <file>assets/a-z/y.svg</file>
+        <file>assets/a-z/z.svg</file>
+        <file>assets/future.svg</file>
+        <file>assets/a-z/offline.svg</file>
     </qresource>
 </RCC>

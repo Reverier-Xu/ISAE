@@ -240,16 +240,16 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>565</x>
      <y>40</y>
-     <width>101</width>
+     <width>71</width>
      <height>24</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>文泉驿等宽微米黑</family>
-     <pointsize>16</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
@@ -259,16 +259,16 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>690</x>
+     <x>710</x>
      <y>40</y>
-     <width>101</width>
+     <width>61</width>
      <height>24</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>文泉驿等宽微米黑</family>
-     <pointsize>16</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">

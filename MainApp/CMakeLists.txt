@@ -18,6 +18,8 @@ set(MainApp_SRCS
     donate.cpp
     donate.h
     donate.ui
+    blurutils.cpp
+    blurutils.h
 )
 
 add_executable(MainApp ${MainApp_SRCS})

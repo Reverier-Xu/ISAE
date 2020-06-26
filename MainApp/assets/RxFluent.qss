@@ -5,6 +5,24 @@ QPushButton {
     font: 13pt "WenQuanYi Microhei mono";
 }
 
+QPushButton#apps {
+    background-color: transparent;
+    border: 0px solid black;
+    color: white;
+    text-align: left;
+    padding-left: 7px;
+}
+
+QPushButton#apps:hover {
+    background-color: rgba(140, 140, 140, 20%);
+    color: white;
+}
+
+QPushButton#apps:pressed {
+    background-color: rgba(160, 160, 160, 20%);
+    color: white;
+}
+
 QPushButton#welcomeButton {
     background-color: transparent;
     border: 1px solid black;
@@ -25,12 +43,13 @@ QPushButton#welcomeButton:pressed {
 }
 
 QPushButton#clientButton {
-    background-color: transparent;
+    background-color: rgba(100, 100, 100, 20%);
     border: 1px solid black;
     border-top: 0px solid black;
     border-bottom: 0px solid black;
     color: white;
     text-align: left;
+    font: 16pt "WenQuanYi Microhei mono";
     padding-left: 8px;
 }
 
@@ -106,22 +125,16 @@ QPushButton#teamButton:pressed {
 
 QPushButton#settingsButton {
     background-color: transparent;
-    border: 1px solid black;
-    border-top: 0px solid black;
-    border-bottom: 0px solid black;
-    color: white;
-    text-align: left;
-    padding-left: 8px;
+    border: 0px solid black;
+    border-top: 1px solid black;
 }
 
 QPushButton#settingsButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
+    background-color: rgba(160, 160, 160, 40%);
 }
 
 QPushButton#settingsButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
+    background-color: #404040;
 }
 
 QPushButton:hover {
@@ -136,7 +149,7 @@ QPushButton:pressed {
 
 QMainWindow {
     border: 1px solid black;
-    background-image: url(:/imgs/wallpaper);
+    /*background-image: url(:/imgs/wallpaper);*/
 }
 
 QMenu {
@@ -158,7 +171,7 @@ QWidget#centralwidget {
 }
 
 QWidget#sidebarWidget {
-    background-color: rgba(30, 30, 30, 60%);
+    background-color: rgba(30, 30, 30, 80%);
     border: 1px solid black;
 }
 
@@ -167,9 +180,19 @@ QWidget#appsArea {
     border: 1px solid black;
 }
 
+QWidget#appsAreaContent {
+    background-color: transparent;
+    border: 0px solid black;
+}
+
 QWidget#teamArea {
     background-color: rgba(140, 140, 140, 15%);
     border: 1px solid black;
+}
+
+QWidget#teamAreaContent {
+    background-color: transparent;
+    border: 0px solid black;
 }
 
 QWidget#workspaceArea {
@@ -177,8 +200,13 @@ QWidget#workspaceArea {
     border: 1px solid black;
 }
 
+QWidget#workspaceAreaContent {
+    background-color: transparent;
+    border: 0px solid black;
+}
+
 QWidget#titleWidget {
-    background-color: rgba(30, 31, 32, 60%);
+    background-color: rgba(30, 31, 32, 80%);
     border: 0px solid black;
     border-top: 1px solid black;
     border-left: 1px solid black;
@@ -192,10 +220,12 @@ QToolButton {
 }
 
 QToolButton:hover {
+    background-color: rgba(90, 90, 90, 40%);
     color: #3e79fc;
 }
 
 QToolButton:pressed {
+    background-color: rgba(90, 90, 90, 50%);
     color: #3e79ff;
 }
 
@@ -240,7 +270,7 @@ QPushButton#miniButton:hover {
 }
 
 QPushButton#miniButton:pressed {
-    background-color: #404040;
+    background-color: rgba(160, 160, 160, 30%);
 }
 
 QPushButton#maxButton {
@@ -254,7 +284,7 @@ QPushButton#maxButton:hover {
 }
 
 QPushButton#maxButton:pressed {
-    background-color: #404040;
+    background-color: rgba(160, 160, 160, 30%);
 }
 
 QPushButton#closeButton {
@@ -265,11 +295,11 @@ QPushButton#closeButton {
 }
 
 QPushButton#closeButton:hover {
-    background-color: #ff2f2f;
+    background-color: rgba(255, 48, 48, 90%);
 }
 
 QPushButton#closeButton:pressed {
-    background-color: #3272ff;
+    background-color: rgba(160, 48, 48, 90%);
 }
 
 QPushButton#CPUStatusBox {
@@ -293,7 +323,7 @@ QPushButton#WootecStatusBox:hover {
 }
 
 QWidget#MainDock {
-    background-color: rgba(0, 0, 0, 60%);
+    background-color: rgba(0, 0, 0, 70%);
     background-image: url(:/imgs/assets/workspace_is_empty.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -322,7 +352,7 @@ QSplitter::handle:hover {
 }
 
 QStatusBar {
-    background-color: rgba(30, 30, 30, 60%);
+    background-color: rgba(30, 30, 30, 80%);
 }
 
 QTextEdit {
@@ -353,12 +383,12 @@ QScrollBar::sub-line {
 }
 
 QLabel#isaeLabel {
-    color: rgb(48, 172, 255);
+    color: rgb(48, 160, 255);
     font: 18pt "Earth Orbiter";
 }
 
 QLabel#isaeLabel:hover {
-    color: rgb(42, 216, 255);
+    color: rgb(00, 100, 255);
 }
 
 QLabel#aboutChineseLabel {
@@ -373,4 +403,21 @@ QLabel#aboutEnglishLabel {
 
 QWidget {
     font: 12pt "WenQuanYi Microhei mono";
+}
+
+QListView {
+    background-color: transparent;
+    border: 0px solid black;
+}
+
+QListView::item:selected {
+    background: background: rgba(160, 160, 160, 50%);
+}
+
+QListView::item:hover {
+    background: background: rgba(160, 160, 160, 50%);
+}
+
+QListView::item:pressed {
+    background: background: rgba(160, 160, 160, 30%);
 }
