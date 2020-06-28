@@ -227,7 +227,7 @@ static cJSON *cJSON_New_Item(const internal_hooks *const hooks) {
     return node;
 }
 
-/* Delete a cJSON structure. */
+/* Delete a cJSON structure. 销毁一个cJSON实例 */
 CJSON_PUBLIC(void) cJSON_Delete(cJSON *item) {
     cJSON *next = NULL;
     while (item != NULL) {
