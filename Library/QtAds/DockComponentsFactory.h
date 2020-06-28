@@ -12,15 +12,12 @@
 //============================================================================
 #include "ads_globals.h"
 
-namespace ads
-{
+namespace ads {
 class CDockWidgetTab;
 class CDockAreaTitleBar;
 class CDockAreaTabBar;
 class CDockAreaWidget;
 class CDockWidget;
-
-
 
 /**
  * Factory for creation of certain GUI elements for the docking framework.
@@ -32,59 +29,58 @@ class CDockWidget;
  * CDockComponentsFactory::setDefaultFactory(new MyComponentsFactory()));
  * \endcode
  */
-class ADS_EXPORT CDockComponentsFactory
-{
-public:
-	/**
-	 * Force virtual destructor
-	 */
-	virtual ~CDockComponentsFactory() {}
+class ADS_EXPORT CDockComponentsFactory {
+   public:
+    /**
+     * Force virtual destructor
+     */
+    virtual ~CDockComponentsFactory() {}
 
-	/**
-	 * This default implementation just creates a dock widget tab with
-	 * new CDockWidgetTab(DockWIdget).
-	 */
-	virtual CDockWidgetTab* createDockWidgetTab(CDockWidget* DockWidget) const;
+    /**
+     * This default implementation just creates a dock widget tab with
+     * new CDockWidgetTab(DockWIdget).
+     */
+    virtual CDockWidgetTab* createDockWidgetTab(CDockWidget* DockWidget) const;
 
-	/**
-	 * This default implementation just creates a dock area tab bar with
-	 * new CDockAreaTabBar(DockArea).
-	 */
-	virtual CDockAreaTabBar* createDockAreaTabBar(CDockAreaWidget* DockArea) const;
+    /**
+     * This default implementation just creates a dock area tab bar with
+     * new CDockAreaTabBar(DockArea).
+     */
+    virtual CDockAreaTabBar* createDockAreaTabBar(
+        CDockAreaWidget* DockArea) const;
 
-	/**
-	 * This default implementation just creates a dock area title bar with
-	 * new CDockAreaTitleBar(DockArea).
-	 */
-	virtual CDockAreaTitleBar* createDockAreaTitleBar(CDockAreaWidget* DockArea) const;
+    /**
+     * This default implementation just creates a dock area title bar with
+     * new CDockAreaTitleBar(DockArea).
+     */
+    virtual CDockAreaTitleBar* createDockAreaTitleBar(
+        CDockAreaWidget* DockArea) const;
 
-	/**
-	 * Returns the default components factory
-	 */
-	static const CDockComponentsFactory* factory();
+    /**
+     * Returns the default components factory
+     */
+    static const CDockComponentsFactory* factory();
 
-	/**
-	 * Sets a new default factory for creation of GUI elements.
-	 * This function takes ownership of the given Factory.
-	 */
-	static void setFactory(CDockComponentsFactory* Factory);
+    /**
+     * Sets a new default factory for creation of GUI elements.
+     * This function takes ownership of the given Factory.
+     */
+    static void setFactory(CDockComponentsFactory* Factory);
 
-	/**
-	 * Resets the current factory to the
-	 */
-	static void resetDefaultFactory();
+    /**
+     * Resets the current factory to the
+     */
+    static void resetDefaultFactory();
 };
-
 
 /**
  * Convenience function to ease factory instance access
  */
-inline const CDockComponentsFactory* componentsFactory()
-{
-	return CDockComponentsFactory::factory();
+inline const CDockComponentsFactory* componentsFactory() {
+    return CDockComponentsFactory::factory();
 }
 
-} // namespace ads
+}  // namespace ads
 
 //---------------------------------------------------------------------------
-#endif // DockComponentsFactoryH
+#endif  // DockComponentsFactoryH

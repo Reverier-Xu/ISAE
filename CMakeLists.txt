@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
-PROJECT(ISAE) 
+PROJECT(ISAE)
 add_subdirectory(Library)
 add_subdirectory(MainApp)
 add_subdirectory(Plugins)
+add_subdirectory(Settings)
+add_subdirectory(Utils)

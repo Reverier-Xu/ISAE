@@ -1,21 +1,21 @@
 #include "MainApp.h"
 
-#include <QMouseEvent>  // 移动窗口所需
-#include <QtCore/Qt>
 #include <QFontDatabase>
-#include <iostream>  // 输入输出, debug用
-#include <QGraphicsPixmapItem>
 #include <QGraphicsEffect>
+#include <QGraphicsPixmapItem>
+#include <QMouseEvent>  // 移动窗口所需
 #include <QPainter>
+#include <QtCore/Qt>
+#include <iostream>  // 输入输出, debug用
+#include <iostream>
+#include <string>
 
-#include "blurutils.h"
 #include "DockManager.h"  // 高级停靠系统
 #include "about.h"        // 关于页面
-#include "ui_MainApp.h"   // ui文件
-#include "monitor.h"
-#include <string>
-#include <iostream>
 #include "donate.h"
+#include "isaeutils.h"
+#include "monitor.h"
+#include "ui_MainApp.h"  // ui文件
 
 MainApp::MainApp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -32,10 +32,10 @@ MainApp::MainApp(QWidget *parent)
     /* 设置无边框与背景 */
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_StyledBackground);
-    //this->setAutoFillBackground(true);
+    // this->setAutoFillBackground(true);
     QImage back;
-    back.load(":/imgs/wallpaper");
-    setBackground(back, 0);
+    back.load(":/imgs/wallpaper2");
+    setBackground(back, 10);
 
     /* 初始化窗口标志 */
     this->mMoving = false;
@@ -110,7 +110,8 @@ MainApp::MainApp(QWidget *parent)
 
     this->WootecStatusBox = new QPushButton(this);
     this->WootecStatusBox->setObjectName("WootecStatusBox");
-    this->WootecStatusBox->setIcon(QIcon::fromTheme(":/imgs/assets/online.svg"));
+    this->WootecStatusBox->setIcon(
+        QIcon::fromTheme(":/imgs/assets/online.svg"));
     this->WootecStatusBox->setObjectName("WootecStatusBox");
     this->WootecStatusBox->setIconSize(QSize(24, 20));
     this->WootecStatusBox->setText(QString(" Wootec Cloud  "));
@@ -146,14 +147,16 @@ MainApp::MainApp(QWidget *parent)
     this->addApp(QIcon::fromTheme(":/imgs/assets/wiki.svg"), "Wiki");
     this->addApp(QIcon::fromTheme(":/imgs/assets/rxreader.svg"), "阅读器");
     this->addApp(QIcon::fromTheme(":/imgs/assets/tools.svg"), "小工具集合");
-    this->addApp(QIcon::fromTheme(":/imgs/assets/out3rn3t_expl0rer.svg"), "浏览器");
+    this->addApp(QIcon::fromTheme(":/imgs/assets/out3rn3t_expl0rer.svg"),
+                 "浏览器");
     this->addApp(QIcon::fromTheme(":/imgs/assets/bilibili.svg"), "哔哩哔哩");
     this->addApp(QIcon::fromTheme(":/imgs/assets/starter.svg"), "启动器");
     this->showClient("Reverier-Xu");
 
     // TODO: team and workspace
     this->addTeam(QIcon::fromTheme(":/imgs/assets/future.svg"), "即将来临");
-    this->addWorkspace(QIcon::fromTheme(":/imgs/assets/future.svg"), "即将来临");
+    this->addWorkspace(QIcon::fromTheme(":/imgs/assets/future.svg"),
+                       "即将来临");
 }
 
 MainApp::~MainApp() { delete ui; }
@@ -200,8 +203,9 @@ void MainApp::animateSideBar() {
         // this->ui->sidebarWidget->width() << std::endl;
         this->ui->clientButton->setIconSize(QSize(24, 24));
         this->ui->clientButton->setText("");
-        if(this->ui->clientButton->height() > 36) {
-            this->ui->clientButton->setFixedHeight(this->ui->clientButton->height() - 4);
+        if (this->ui->clientButton->height() > 36) {
+            this->ui->clientButton->setFixedHeight(
+                this->ui->clientButton->height() - 4);
         }
         this->ui->sidebarWidget->setFixedWidth(
             this->ui->sidebarWidget->width() - startDuration);
@@ -223,10 +227,11 @@ void MainApp::animateSideBar() {
             startDuration = 1;
         }
     } else {
-      this->ui->clientButton->setIconSize(QSize(48, 48));
-      this->ui->clientButton->setText(" " + this->clientName);
-        if(this->ui->clientButton->height() < 80){
-            this->ui->clientButton->setFixedHeight(this->ui->clientButton->height() + 4);
+        this->ui->clientButton->setIconSize(QSize(48, 48));
+        this->ui->clientButton->setText(" " + this->clientName);
+        if (this->ui->clientButton->height() < 80) {
+            this->ui->clientButton->setFixedHeight(
+                this->ui->clientButton->height() + 4);
         }
         this->ui->sidebarWidget->setFixedWidth(
             this->ui->sidebarWidget->width() + startDuration);
@@ -255,18 +260,20 @@ void MainApp::pushAppList() { this->appAreaAnimation.start(); }
 
 void MainApp::animateAppList() {
     if (this->isAppAreaShow) {
-
         if (this->ui->appsArea->height() - this->appsVector.size() <= 0) {
             this->ui->appsArea->setFixedHeight(0);
             this->appAreaAnimation.stop();
             this->isAppAreaShow = false;
-        }
-        else this->ui->appsArea->setFixedHeight(this->ui->appsArea->height() - this->appsVector.size());
+        } else
+            this->ui->appsArea->setFixedHeight(this->ui->appsArea->height() -
+                                               this->appsVector.size());
     } else {
-        this->ui->appsArea->setFixedHeight(this->ui->appsArea->height() + this->appsVector.size());
+        this->ui->appsArea->setFixedHeight(this->ui->appsArea->height() +
+                                           this->appsVector.size());
 
         if (this->ui->appsArea->height() >= this->appsVector.size() * 36 + 3) {
-            this->ui->appsArea->setFixedHeight(this->appsVector.size() * 36 + 3);
+            this->ui->appsArea->setFixedHeight(this->appsVector.size() * 36 +
+                                               3);
             this->appAreaAnimation.stop();
             this->isAppAreaShow = true;
         }
@@ -276,19 +283,21 @@ void MainApp::pushTeamList() { this->teamAreaAnimation.start(); }
 
 void MainApp::animateTeamList() {
     if (this->isTeamAreaShow) {
-
         if (this->ui->teamArea->height() - this->teamVector.size() <= 0) {
             this->ui->teamArea->setFixedHeight(0);
             this->teamAreaAnimation.stop();
             this->isTeamAreaShow = false;
-        }
-        else this->ui->teamArea->setFixedHeight(this->ui->teamArea->height() - this->teamVector.size());
+        } else
+            this->ui->teamArea->setFixedHeight(this->ui->teamArea->height() -
+                                               this->teamVector.size());
 
     } else {
-        this->ui->teamArea->setFixedHeight(this->ui->teamArea->height() + this->teamVector.size());
+        this->ui->teamArea->setFixedHeight(this->ui->teamArea->height() +
+                                           this->teamVector.size());
 
         if (this->ui->teamArea->height() >= this->teamVector.size() * 36 + 3) {
-            this->ui->teamArea->setFixedHeight( this->teamVector.size() * 36 + 3);
+            this->ui->teamArea->setFixedHeight(this->teamVector.size() * 36 +
+                                               3);
             this->teamAreaAnimation.stop();
             this->isTeamAreaShow = true;
         }
@@ -298,19 +307,23 @@ void MainApp::pushWorkspaceList() { this->workspaceAreaAnimation.start(); }
 
 void MainApp::animateWorkspaceList() {
     if (this->isWorkspaceAreaShow) {
-
-        if (this->ui->workspaceArea->height() - this->workspaceVector.size() <= 0) {
+        if (this->ui->workspaceArea->height() - this->workspaceVector.size() <=
+            0) {
             this->ui->workspaceArea->setFixedHeight(0);
             this->workspaceAreaAnimation.stop();
             this->isWorkspaceAreaShow = false;
-        }
-        else this->ui->workspaceArea->setFixedHeight(this->ui->workspaceArea->height() - this->workspaceVector.size());
+        } else
+            this->ui->workspaceArea->setFixedHeight(
+                this->ui->workspaceArea->height() -
+                this->workspaceVector.size());
     } else {
         this->ui->workspaceArea->setFixedHeight(
             this->ui->workspaceArea->height() + this->workspaceVector.size());
 
-        if (this->ui->workspaceArea->height() >=  this->workspaceVector.size() * 36 + 3) {
-            this->ui->workspaceArea->setFixedHeight( this->workspaceVector.size() * 36 + 3);
+        if (this->ui->workspaceArea->height() >=
+            this->workspaceVector.size() * 36 + 3) {
+            this->ui->workspaceArea->setFixedHeight(
+                this->workspaceVector.size() * 36 + 3);
             this->workspaceAreaAnimation.stop();
             this->isWorkspaceAreaShow = true;
         }
@@ -322,7 +335,9 @@ void MainApp::showAbout() { this->aboutWindow->show(); }
 void MainApp::showDonate() { this->donateWindow->show(); }
 void MainApp::upgradeCPUStatus() {
     QString info = " CPU ";
-    info += QString::number(JQCPUMonitor::cpuUsagePercentage() * 100, 'f', 2).rightJustified(5, '0') + "% ";
+    info += QString::number(JQCPUMonitor::cpuUsagePercentage() * 100, 'f', 2)
+                .rightJustified(5, '0') +
+            "% ";
     this->CPUStatusBox->setText(info);
 }
 
@@ -371,8 +386,7 @@ void MainApp::addTeam(QIcon icon, QString name) {
 }
 
 void MainApp::showClient(QString name, QIcon icon) {
-
-  this->ui->clientButton->setText(" " + name);
+    this->ui->clientButton->setText(" " + name);
     this->clientName = name;
     if (icon.isNull()) {
         QCharRef x = name[0];

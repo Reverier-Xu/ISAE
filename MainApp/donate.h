@@ -14,7 +14,6 @@ class donate : public QDialog {
     explicit donate(QWidget *parent = nullptr);
     ~donate();
 
-
    protected:
     virtual void mousePressEvent(QMouseEvent *event);
     virtual void mouseMoveEvent(QMouseEvent *event);
@@ -26,4 +25,4 @@ class donate : public QDialog {
     bool mMoving;
 };
 
-#endif // DONATE_H
+#endif  // DONATE_H

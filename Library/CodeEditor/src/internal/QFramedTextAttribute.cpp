@@ -3,44 +3,30 @@
 #include <QSyntaxStyle>
 
 // Qt
+#include <QDebug>
 #include <QFontMetrics>
 #include <QPainter>
-#include <QDebug>
 #include <QTextBlock>
 
-int QFramedTextAttribute::type()
-{
-    return QTextFormat::UserFormat + 1;
-}
+int QFramedTextAttribute::type() { return QTextFormat::UserFormat + 1; }
 
-QFramedTextAttribute::QFramedTextAttribute(QObject* parent) :
-    QObject(parent),
-    m_style(nullptr)
-{
+QFramedTextAttribute::QFramedTextAttribute(QObject* parent)
+    : QObject(parent), m_style(nullptr) {}
 
-}
-
-void QFramedTextAttribute::setSyntaxStyle(QSyntaxStyle* style)
-{
+void QFramedTextAttribute::setSyntaxStyle(QSyntaxStyle* style) {
     m_style = style;
 }
 
-QSyntaxStyle* QFramedTextAttribute::syntaxStyle() const
-{
-    return m_style;
-}
+QSyntaxStyle* QFramedTextAttribute::syntaxStyle() const { return m_style; }
 
-QSizeF QFramedTextAttribute::intrinsicSize(QTextDocument*, int, const QTextFormat&)
-{
+QSizeF QFramedTextAttribute::intrinsicSize(QTextDocument*, int,
+                                           const QTextFormat&) {
     return {0, 0};
 }
 
-void QFramedTextAttribute::drawObject(QPainter* painter,
-                                      const QRectF& rect,
-                                      QTextDocument*,
-                                      int,
-                                      const QTextFormat& format)
-{
+void QFramedTextAttribute::drawObject(QPainter* painter, const QRectF& rect,
+                                      QTextDocument*, int,
+                                      const QTextFormat& format) {
     // Casting
     auto textCharFormat = reinterpret_cast<const QTextCharFormat&>(format);
 
@@ -63,46 +49,34 @@ void QFramedTextAttribute::drawObject(QPainter* painter,
     painter->drawRoundedRect(drawRect, 4, 4);
 }
 
-void QFramedTextAttribute::frame(QTextCursor cursor)
-{
-    auto text = cursor.document()->findBlockByNumber(cursor.blockNumber()).text();
+void QFramedTextAttribute::frame(QTextCursor cursor) {
+    auto text =
+        cursor.document()->findBlockByNumber(cursor.blockNumber()).text();
 
     QTextCharFormat format;
     format.setObjectType(type());
     format.setProperty(FramedString, cursor.selectedText());
 
-    if (cursor.selectionEnd() > cursor.selectionStart())
-    {
+    if (cursor.selectionEnd() > cursor.selectionStart()) {
         cursor.setPosition(cursor.selectionStart());
-    }
-    else
-    {
+    } else {
         cursor.setPosition(cursor.selectionEnd());
     }
 
-    cursor.insertText(
-        QString(QChar::ObjectReplacementCharacter),
-        format
-    );
+    cursor.insertText(QString(QChar::ObjectReplacementCharacter), format);
 }
 
-void QFramedTextAttribute::clear(QTextCursor cursor)
-{
+void QFramedTextAttribute::clear(QTextCursor cursor) {
     auto doc = cursor.document();
 
-    for (auto blockIndex = 0;
-         blockIndex < doc->blockCount();
-         ++blockIndex)
-    {
+    for (auto blockIndex = 0; blockIndex < doc->blockCount(); ++blockIndex) {
         auto block = doc->findBlockByNumber(blockIndex);
 
         auto formats = block.textFormats();
         int offset = 0;
 
-        for (auto& format : formats)
-        {
-            if (format.format.objectType() == type())
-            {
+        for (auto& format : formats) {
+            if (format.format.objectType() == type()) {
                 cursor.setPosition(block.position() + format.start - offset);
                 cursor.deleteChar();
                 ++offset;

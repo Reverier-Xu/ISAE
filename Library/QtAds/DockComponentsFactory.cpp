@@ -12,58 +12,49 @@
 
 #include <memory>
 
-#include "DockWidgetTab.h"
 #include "DockAreaTabBar.h"
 #include "DockAreaTitleBar.h"
-#include "DockWidget.h"
 #include "DockAreaWidget.h"
+#include "DockWidget.h"
+#include "DockWidgetTab.h"
 
-namespace ads
-{
-static std::unique_ptr<CDockComponentsFactory> DefaultFactory(new CDockComponentsFactory());
-
-
-//============================================================================
-CDockWidgetTab* CDockComponentsFactory::createDockWidgetTab(CDockWidget* DockWidget) const
-{
-	return new CDockWidgetTab(DockWidget);
-}
-
+namespace ads {
+static std::unique_ptr<CDockComponentsFactory> DefaultFactory(
+    new CDockComponentsFactory());
 
 //============================================================================
-CDockAreaTabBar* CDockComponentsFactory::createDockAreaTabBar(CDockAreaWidget* DockArea) const
-{
-	return new CDockAreaTabBar(DockArea);
+CDockWidgetTab* CDockComponentsFactory::createDockWidgetTab(
+    CDockWidget* DockWidget) const {
+    return new CDockWidgetTab(DockWidget);
 }
-
 
 //============================================================================
-CDockAreaTitleBar* CDockComponentsFactory::createDockAreaTitleBar(CDockAreaWidget* DockArea) const
-{
-	return new CDockAreaTitleBar(DockArea);
+CDockAreaTabBar* CDockComponentsFactory::createDockAreaTabBar(
+    CDockAreaWidget* DockArea) const {
+    return new CDockAreaTabBar(DockArea);
 }
-
 
 //============================================================================
-const CDockComponentsFactory* CDockComponentsFactory::factory()
-{
-	return DefaultFactory.get();
+CDockAreaTitleBar* CDockComponentsFactory::createDockAreaTitleBar(
+    CDockAreaWidget* DockArea) const {
+    return new CDockAreaTitleBar(DockArea);
 }
-
 
 //============================================================================
-void CDockComponentsFactory::setFactory(CDockComponentsFactory* Factory)
-{
-	DefaultFactory.reset(Factory);
+const CDockComponentsFactory* CDockComponentsFactory::factory() {
+    return DefaultFactory.get();
 }
-
 
 //============================================================================
-void CDockComponentsFactory::resetDefaultFactory()
-{
-	DefaultFactory.reset(new CDockComponentsFactory());
+void CDockComponentsFactory::setFactory(CDockComponentsFactory* Factory) {
+    DefaultFactory.reset(Factory);
 }
-} // namespace ads
+
+//============================================================================
+void CDockComponentsFactory::resetDefaultFactory() {
+    DefaultFactory.reset(new CDockComponentsFactory());
+}
+}  // namespace ads
 
 //---------------------------------------------------------------------------
 // EOF DockComponentsFactory.cpp

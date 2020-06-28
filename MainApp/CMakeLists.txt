@@ -18,17 +18,17 @@ set(MainApp_SRCS
     donate.cpp
     donate.h
     donate.ui
-    blurutils.cpp
-    blurutils.h
 )
 
 add_executable(MainApp ${MainApp_SRCS})
 
 target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets)
-target_link_libraries(MainApp PRIVATE qtadvanceddocking)
+target_link_libraries(MainApp PRIVATE qtadvanceddocking isaeutils)
 
-target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/QtAds")
-set_target_properties(MainApp PROPERTIES 
+target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/QtAds"
+"${CMAKE_CURRENT_SOURCE_DIR}/../Utils"
+"${CMAKE_CURRENT_SOURCE_DIR}/../Settings")
+set_target_properties(MainApp PROPERTIES
     AUTOMOC ON
     AUTORCC ON
     AUTOUIC ON

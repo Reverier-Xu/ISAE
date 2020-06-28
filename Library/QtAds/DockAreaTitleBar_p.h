@@ -18,14 +18,12 @@
 ** License along with this library; If not, see <http://www.gnu.org/licenses/>.
 ******************************************************************************/
 
-
 //============================================================================
 /// \file   DockAreaTitleBar_p.h
 /// \author Uwe Kindler
 /// \date   12.10.2018
 /// \brief  Declaration of classes CTitleBarButton and CSpacerWidget
 //============================================================================
-
 
 //============================================================================
 //                                   INCLUDES
@@ -35,60 +33,57 @@
 
 #include "ads_globals.h"
 
-namespace ads
-{
+namespace ads {
 using tTitleBarButton = QToolButton;
 
 /**
-* Title bar button of a dock area that customizes tTitleBarButton appearance/behaviour
-* according to various config flags such as:
-* CDockManager::DockAreaHas_xxx_Button - if set to 'false' keeps the button always invisible
-* CDockManager::DockAreaHideDisabledButtons - if set to 'true' hides button when it is disabled
-*/
-class CTitleBarButton : public tTitleBarButton
-{
-	Q_OBJECT
-		
-private:
-	bool Visible = true;
-	bool HideWhenDisabled = false;
+ * Title bar button of a dock area that customizes tTitleBarButton
+ * appearance/behaviour according to various config flags such as:
+ * CDockManager::DockAreaHas_xxx_Button - if set to 'false' keeps the button
+ * always invisible CDockManager::DockAreaHideDisabledButtons - if set to 'true'
+ * hides button when it is disabled
+ */
+class CTitleBarButton : public tTitleBarButton {
+    Q_OBJECT
 
-public:
-	using Super = tTitleBarButton;
-	CTitleBarButton(bool visible = true, QWidget* parent = nullptr);
+   private:
+    bool Visible = true;
+    bool HideWhenDisabled = false;
 
-	/**
-	* Adjust this visibility change request with our internal settings:
-	*/
-	virtual void setVisible(bool visible) override;
+   public:
+    using Super = tTitleBarButton;
+    CTitleBarButton(bool visible = true, QWidget* parent = nullptr);
 
-protected:
-	/**
-	* Handle EnabledChanged signal to set button invisible if the configured
-	*/
-	bool event(QEvent *ev) override;
+    /**
+     * Adjust this visibility change request with our internal settings:
+     */
+    virtual void setVisible(bool visible) override;
+
+   protected:
+    /**
+     * Handle EnabledChanged signal to set button invisible if the configured
+     */
+    bool event(QEvent* ev) override;
 };
-
 
 /**
-* This spacer widget is here because of the following problem.
-* The dock area title bar handles mouse dragging and moving the floating widget.
-* The  problem is, that if the title bar becomes invisible, i.e. if the dock
-* area contains only one single dock widget and the dock area is moved
-* into a floating widget, then mouse events are not handled anymore and dragging
-* of the floating widget stops.
-*/
-class CSpacerWidget : public QWidget
-{
-	Q_OBJECT
-public:
-	using Super = QWidget;
-	CSpacerWidget(QWidget* Parent = 0);
-	virtual QSize sizeHint() const override {return QSize(0, 0);}
-	virtual QSize minimumSizeHint() const override {return QSize(0, 0);}
+ * This spacer widget is here because of the following problem.
+ * The dock area title bar handles mouse dragging and moving the floating
+ * widget. The  problem is, that if the title bar becomes invisible, i.e. if the
+ * dock area contains only one single dock widget and the dock area is moved
+ * into a floating widget, then mouse events are not handled anymore and
+ * dragging of the floating widget stops.
+ */
+class CSpacerWidget : public QWidget {
+    Q_OBJECT
+   public:
+    using Super = QWidget;
+    CSpacerWidget(QWidget* Parent = 0);
+    virtual QSize sizeHint() const override { return QSize(0, 0); }
+    virtual QSize minimumSizeHint() const override { return QSize(0, 0); }
 };
 
-}
- // namespace ads
+}  // namespace ads
+   // namespace ads
 //-----------------------------------------------------------------------------
-#endif // DockAreaTitleBar_pH
+#endif  // DockAreaTitleBar_pH

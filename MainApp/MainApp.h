@@ -61,12 +61,12 @@ class MainApp : public QMainWindow {
     int startDuration;
     about *aboutWindow;
     donate *donateWindow;
-    QPushButton* CPUStatusBox;
-    QPushButton* WootecStatusBox;
+    QPushButton *CPUStatusBox;
+    QPushButton *WootecStatusBox;
     QFont defaultFont;
-    QVector<QPushButton*> appsVector;
-    QVector<QPushButton*> workspaceVector;
-    QVector<QPushButton*> teamVector;
+    QVector<QPushButton *> appsVector;
+    QVector<QPushButton *> workspaceVector;
+    QVector<QPushButton *> teamVector;
     QString clientName;
     QIcon clientIcon;
 };

@@ -2,24 +2,23 @@
 #define MONITOR_H
 
 // Qt lib import
-#include <QObject>
 #include <QDateTime>
 #include <QMutex>
-#include <QThread>
+#include <QObject>
 #include <QPointer>
+#include <QThread>
 
-class JQCPUMonitor: public QThread
-{
+class JQCPUMonitor : public QThread {
     Q_OBJECT
-    Q_DISABLE_COPY( JQCPUMonitor )
+    Q_DISABLE_COPY(JQCPUMonitor)
 
-private:
+   private:
     JQCPUMonitor() = default;
 
-public:
+   public:
     ~JQCPUMonitor() = default;
 
-public:
+   public:
     static void initialize();
 
     inline static QString cpuUsagePercentageDisplayString();
@@ -30,8 +29,8 @@ public:
 
     inline static QString cpuUsagePercentageIn5MinuteDisplayString();
 
-    inline static QString cpuUsagePercentageInTimeDisplayString(const qint64 &msecs);
-
+    inline static QString cpuUsagePercentageInTimeDisplayString(
+        const qint64 &msecs);
 
     static qreal cpuUsagePercentage();
 
@@ -43,17 +42,18 @@ public:
 
     static qreal cpuUsagePercentageInTime(const qint64 &msecs);
 
-private:
+   private:
     void run();
 
     static void tick();
 
-private:
-    static QPointer< JQCPUMonitor > cpuMonitor_;
+   private:
+    static QPointer<JQCPUMonitor> cpuMonitor_;
     static bool continueFlag_;
 
     static QMutex mutex_;
-    static QList< QPair< qint64, qreal > > cpuUsagePercentageRecords_; // [ { time, percentage }, ... ]
+    static QList<QPair<qint64, qreal> >
+        cpuUsagePercentageRecords_;  // [ { time, percentage }, ... ]
 };
 
-#endif // MONITOR_H
+#endif  // MONITOR_H
