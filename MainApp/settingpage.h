@@ -2,6 +2,8 @@
 #define _SETTINGPAGE_H_
 
 #include <QDialog>
+#include <QSettings>
+#include <QTreeWidgetItem>
 
 namespace Ui {
 class settingpage;
@@ -13,6 +15,8 @@ class settingpage : public QDialog {
    public:
     explicit settingpage(QWidget *parent = nullptr);
     ~settingpage();
+    void registerSetting();
+    void changePage(QTreeWidgetItem*, QWidget*);
 
    protected:
     virtual void mousePressEvent(QMouseEvent *event);

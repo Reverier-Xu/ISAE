@@ -314,13 +314,35 @@ QListView {
 }
 
 QListView::item:selected {
-    background: background: rgba(160, 160, 160, 50%);
+    background-color: rgba(160, 160, 160, 50%);
 }
 
 QListView::item:hover {
-    background: background: rgba(160, 160, 160, 50%);
+    background-color: rgba(160, 160, 160, 50%);
 }
 
 QListView::item:pressed {
-    background: background: rgba(160, 160, 160, 30%);
+    background-color: rgba(160, 160, 160, 30%);
+}
+
+QTreeView {
+    background-color: transparent;
+}
+
+QTreeView::item {
+    border: 0px solid black;
+    background-color: transparent;
+    color: white;
+}
+
+QTreeView::item:hover {
+    background-color: rgba(160, 160, 160, 50%);
+}
+
+QTreeView::item:pressed {
+    background-color: rgba(160, 160, 160. 30%);
+}
+
+QTreeView::item:selected {
+    border-left: 4px solid rgba(30, 60, 200, 50%);
 }
