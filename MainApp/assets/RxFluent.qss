@@ -304,6 +304,16 @@ QLabel#aboutEnglishLabel {
     font: 16pt "WenQuanYi Microhei mono";
 }
 
+QLabel#title {
+    color: white;
+    font: 24pt "WenQuanYi Microhei mono";
+}
+
+QLabel#tips {
+    color: white;
+    font: 14pt "WenQuanYi Microhei mono";
+}
+
 QWidget {
     font: 12pt "WenQuanYi Microhei mono";
 }

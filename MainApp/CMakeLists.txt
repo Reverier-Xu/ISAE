@@ -26,7 +26,7 @@ set(MainApp_SRCS
 add_executable(MainApp ${MainApp_SRCS})
 
 target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets)
-target_link_libraries(MainApp PRIVATE qtadvanceddocking isaeutils settings)
+target_link_libraries(MainApp PRIVATE qtadvanceddocking isaeutils)
 
 target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/QtAds"
 "${CMAKE_CURRENT_SOURCE_DIR}/../Utils"

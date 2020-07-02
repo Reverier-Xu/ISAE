@@ -193,16 +193,7 @@ background-color: transparent;
          </widget>
         </item>
         <item>
-         <widget class="QTreeWidget" name="menuView">
-          <attribute name="headerVisible">
-           <bool>false</bool>
-          </attribute>
-          <column>
-           <property name="text">
-            <string notr="true">1</string>
-           </property>
-          </column>
-         </widget>
+         <widget class="QListWidget" name="menuView"/>
         </item>
        </layout>
       </widget>
