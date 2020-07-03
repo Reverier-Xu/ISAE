@@ -5,138 +5,6 @@ QPushButton {
     font: 13pt "WenQuanYi Microhei mono";
 }
 
-QPushButton#apps {
-    background-color: transparent;
-    border: 0px solid black;
-    color: white;
-    text-align: left;
-    padding-left: 7px;
-}
-
-QPushButton#apps:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
-}
-
-QPushButton#apps:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
-}
-
-QPushButton#welcomeButton {
-    background-color: transparent;
-    border: 1px solid black;
-    border-bottom: 0px solid black;
-    color: white;
-    text-align: left;
-    padding-left: 8px;
-}
-
-QPushButton#welcomeButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
-}
-
-QPushButton#welcomeButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
-}
-
-QPushButton#clientButton {
-    background-color: rgba(100, 100, 100, 20%);
-    border: 1px solid black;
-    border-top: 0px solid black;
-    border-bottom: 0px solid black;
-    color: white;
-    text-align: left;
-    font: 16pt "WenQuanYi Microhei mono";
-    padding-left: 8px;
-}
-
-QPushButton#clientButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
-}
-
-QPushButton#clientButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
-}
-
-QPushButton#appsButton {
-    background-color: transparent;
-    border: 1px solid black;
-    border-top: 0px solid black;
-    border-bottom: 0px solid black;
-    color: white;
-    text-align: left;
-    padding-left: 8px;
-}
-
-QPushButton#appsButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
-}
-
-QPushButton#appsButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
-}
-
-QPushButton#workspaceButton {
-    background-color: transparent;
-    border: 1px solid black;
-    border-top: 0px solid black;
-    border-bottom: 0px solid black;
-    color: white;
-    text-align: left;
-    padding-left: 8px;
-}
-
-QPushButton#workspaceButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
-}
-
-QPushButton#workspaceButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
-}
-
-QPushButton#teamButton {
-    background-color: transparent;
-    border: 1px solid black;
-    border-top: 0px solid black;
-    border-bottom: 0px solid black;
-    color: white;
-    text-align: left;
-    padding-left: 8px;
-}
-
-QPushButton#teamButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
-    color: white;
-}
-
-QPushButton#teamButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
-    color: white;
-}
-
-QPushButton#settingsButton {
-    background-color: transparent;
-    border: 0px solid black;
-    border-top: 1px solid black;
-}
-
-QPushButton#settingsButton:hover {
-    background-color: rgba(160, 160, 160, 40%);
-}
-
-QPushButton#settingsButton:pressed {
-    background-color: #404040;
-}
-
 QPushButton:hover {
     background-color: rgba(140, 140, 140, 20%);
     color: white;
@@ -147,9 +15,41 @@ QPushButton:pressed {
     color: white;
 }
 
+QPushButton#apps {
+    text-align: left;
+    padding-left: 8px;
+}
+
+QPushButton#welcomeButton {
+    text-align: left;
+    padding-left: 8px;
+}
+
+QPushButton#clientButton {
+    /* background-color: rgba(140, 140, 140, 15%); */
+    border: 1px solid black;
+    text-align: left;
+    font: 16pt "WenQuanYi Microhei mono";
+    padding-left: 8px;
+}
+
+QPushButton#appsButton {
+    text-align: left;
+    padding-left: 8px;
+}
+
+QPushButton#workspaceButton {
+    text-align: left;
+    padding-left: 8px;
+}
+
+QPushButton#teamButton {
+    text-align: left;
+    padding-left: 8px;
+}
+
 QMainWindow {
     border: 1px solid black;
-    /*background-image: url(:/imgs/wallpaper);*/
 }
 
 QMenu {
@@ -231,9 +131,20 @@ QToolButton:pressed {
 
 QLineEdit {
     background-color: transparent;
-    border: 1px solid rgba(100, 100, 100, 50%);
-    /*border-top: 1px solid black;*/
+    border: 0px solid black;
+    border-bottom: 1px solid black;
+    padding-left: 3px;
     margin: 0 0 0 0;
+}
+
+QLineEdit:hover {
+    background-color: rgba(100, 100, 100, 40%);
+    border-bottom: 1px solid rgba(30, 100, 250, 80%);
+}
+
+QLineEdit:focus {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(40, 80, 255, 80%);
 }
 
 QLineEdit#globalSearchBar {
@@ -248,14 +159,6 @@ QLineEdit#globalSearchBar:hover {
 }
 
 QLineEdit#globalSearchBar:focus {
-    background-color: rgba(130, 130, 130, 20%);
-}
-
-QLineEdit:hover {
-    background-color: rgba(100, 100, 100, 40%);
-}
-
-QLineEdit:focus {
     background-color: rgba(130, 130, 130, 20%);
 }
 

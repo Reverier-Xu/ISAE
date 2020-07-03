@@ -3,6 +3,7 @@
 
 #include <about.h>
 #include <donate.h>
+#include <settingpage.h>
 
 #include <QMainWindow>
 #include <QTimer>
@@ -32,6 +33,7 @@ class MainApp : public QMainWindow {
     void pushWorkspaceList();
     void showAbout();
     void showDonate();
+    void showSetting();
     void upgradeCPUStatus();
     void setBackground(QImage image, int blur);
     void addApp(QIcon icon, QString name);
@@ -61,6 +63,7 @@ class MainApp : public QMainWindow {
     int startDuration;
     about *aboutWindow;
     donate *donateWindow;
+    settingpage *settingWindow;
     QPushButton *CPUStatusBox;
     QPushButton *WootecStatusBox;
     QFont defaultFont;

@@ -8,5 +8,7 @@
 #ifndef _SETTINGS_H_
 #define _SETTINGS_H_
 
+#include <QSettings>
+#include <QtCore>
 
 #endif

@@ -88,12 +88,12 @@ typedef struct {
 } error;
 static error global_error = {NULL, 0};
 
-// 获取错误
+/* 获取错误 */
 CJSON_PUBLIC(const char *) cJSON_GetErrorPtr(void) {
     return (const char *)(global_error.json + global_error.position);
 }
 
-// 获取字符串的值
+/* 获取字符串的值 */
 CJSON_PUBLIC(char *) cJSON_GetStringValue(cJSON *item) {
     if (!cJSON_IsString(item)) {
         return NULL;
@@ -102,7 +102,7 @@ CJSON_PUBLIC(char *) cJSON_GetStringValue(cJSON *item) {
     return item->valuestring;
 }
 
-// 获取数值
+/* 获取数值 */
 CJSON_PUBLIC(double) cJSON_GetNumberValue(cJSON *item) {
     if (!cJSON_IsNumber(item)) {
         return NAN;
@@ -118,7 +118,7 @@ CJSON_PUBLIC(double) cJSON_GetNumberValue(cJSON *item) {
 #error cJSON.h and cJSON.c have different versions. Make sure that both have the same.
 #endif
 
-// 返回版本信息
+/* 返回版本信息 */
 CJSON_PUBLIC(const char *) cJSON_Version(void) {
     static char version[15];
     sprintf(version, "%i.%i.%i", CJSON_VERSION_MAJOR, CJSON_VERSION_MINOR,
@@ -134,7 +134,7 @@ static int case_insensitive_strcmp(const unsigned char *string1,
     if ((string1 == NULL) || (string2 == NULL)) {
         return 1;
     }
-    if (string1 == string2) { // 指向同一个字符串
+    if (string1 == string2) { /* 指向同一个字符串 */
         return 0;
     }
     for (; tolower(*string1) == tolower(*string2); (void)string1++, string2++) {

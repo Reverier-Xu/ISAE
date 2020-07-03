@@ -13,6 +13,7 @@
 #include "DockManager.h"  // 高级停靠系统
 #include "about.h"        // 关于页面
 #include "donate.h"
+#include "settingpage.h"
 #include "isaeutils.h"
 #include "monitor.h"
 #include "ui_MainApp.h"  // ui文件
@@ -71,6 +72,11 @@ MainApp::MainApp(QWidget *parent)
     this->donateWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     this->donateWindow->setWindowModality(Qt::ApplicationModal);
 
+    /* 初始化设置页面 */
+    this->settingWindow = new settingpage(this);
+    this->settingWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    this->settingWindow->setWindowModality(Qt::ApplicationModal);
+
     /* 初始化用户 */
     this->clientName = "OFFLINE";
     this->clientIcon = QIcon::fromTheme(":/imgs/assets/a-z/offline.svg");
@@ -96,6 +102,8 @@ MainApp::MainApp(QWidget *parent)
                      SLOT(upgradeCPUStatus()));
     QObject::connect(ui->workspaceButton, SIGNAL(clicked()), this,
                      SLOT(pushWorkspaceList()));
+    QObject::connect(ui->settingsButton, SIGNAL(clicked()), this,
+                     SLOT(showSetting()));
 
     QAction *act = this->ui->aboutButton->getmenu()->addAction(QString("关于"));
     QObject::connect(act, SIGNAL(triggered()), this, SLOT(showAbout()));
@@ -333,6 +341,7 @@ void MainApp::animateWorkspaceList() {
 /* 显示关于页 */
 void MainApp::showAbout() { this->aboutWindow->show(); }
 void MainApp::showDonate() { this->donateWindow->show(); }
+void MainApp::showSetting() { this->settingWindow->show(); }
 void MainApp::upgradeCPUStatus() {
     QString info = " CPU ";
     info += QString::number(JQCPUMonitor::cpuUsagePercentage() * 100, 'f', 2)
