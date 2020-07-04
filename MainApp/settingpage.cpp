@@ -10,14 +10,6 @@ settingpage::settingpage(QWidget *parent)
     ui->setupUi(this);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->mMoving = false;
-
-    // 清空QStackWidget自带的几个页面
-    for (int i = this->ui->settingPageStack->count(); i >= 0; i--) {
-        QWidget *widget = this->ui->settingPageStack->widget(i);
-        this->ui->settingPageStack->removeWidget(widget);
-        widget->deleteLater();
-    }
-
 }
 
 /* 窗口移动函数 */
