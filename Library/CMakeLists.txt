@@ -1,4 +1,4 @@
- 
+add_subdirectory(SettingSystem) 
 add_subdirectory(QtAds)
 add_subdirectory(CodeEditor)
 add_subdirectory(NodeEditor)
