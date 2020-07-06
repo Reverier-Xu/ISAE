@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>about</class>
- <widget class="QDialog" name="about">
+ <class>AboutWindow</class>
+ <widget class="QDialog" name="AboutWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#about{
+   <string notr="true">QWidget#AboutWindow{
 border: 1px solid black;
 background-color: #2c2c2c;
 }</string>
@@ -344,7 +344,7 @@ background-color: transparent;
   <connection>
    <sender>closeButton</sender>
    <signal>clicked()</signal>
-   <receiver>about</receiver>
+   <receiver>AboutWindow</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

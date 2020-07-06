@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     img.load(":/imgs/assets/isae-splash.png");
     QSplashScreen splash(QPixmap::fromImage(img));
     splash.show();         // 展示
-    QThread::msleep(500);  // TODO: 插件增多之后注释掉此行,
+    QThread::msleep(500);  // TODO: 插件增多之后注释掉此行
                            // 这里仅仅只是为了展示splash的效果.
     MainApp w;             // 声明主窗口, 加载所有插件.
     w.setWindowTitle("ISAE");

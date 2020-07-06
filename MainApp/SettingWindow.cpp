@@ -1,25 +1,25 @@
-#include "settingpage.h"
+#include "SettingWindow.h"
 
 #include <QListWidgetItem>
 #include <QMouseEvent>
 
-#include "ui_settingpage.h"
+#include "ui_SettingWindow.h"
 
-settingpage::settingpage(QWidget *parent)
-    : QDialog(parent), ui(new Ui::settingpage) {
+SettingWindow::SettingWindow(QWidget *parent)
+    : QDialog(parent), ui(new Ui::SettingWindow) {
     ui->setupUi(this);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->mMoving = false;
 }
 
 /* 窗口移动函数 */
-void settingpage::mousePressEvent(QMouseEvent *event) {
+void SettingWindow::mousePressEvent(QMouseEvent *event) {
     this->mMoving = true;
     this->mMovePosition = event->globalPos() - pos();
     return QDialog::mousePressEvent(event);
 }
 
-void settingpage::mouseMoveEvent(QMouseEvent *event) {
+void SettingWindow::mouseMoveEvent(QMouseEvent *event) {
     if (this->mMoving && (event->buttons() & Qt::LeftButton) &&
         (event->globalPos() - mMovePosition).manhattanLength() >
             QApplication::startDragDistance()) {
@@ -29,9 +29,9 @@ void settingpage::mouseMoveEvent(QMouseEvent *event) {
     return QDialog::mouseMoveEvent(event);
 }
 
-void settingpage::mouseReleaseEvent(QMouseEvent *event) {
+void SettingWindow::mouseReleaseEvent(QMouseEvent *event) {
     this->mMoving = false;
     event->accept();
 }
 
-settingpage::~settingpage() { delete ui; }
+SettingWindow::~SettingWindow() { delete ui; }

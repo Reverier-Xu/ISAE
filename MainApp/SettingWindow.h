@@ -6,15 +6,15 @@
 #include <QListWidgetItem>
 
 namespace Ui {
-class settingpage;
+class SettingWindow;
 }
 
-class settingpage : public QDialog {
+class SettingWindow : public QDialog {
     Q_OBJECT
 
    public:
-    explicit settingpage(QWidget *parent = nullptr);
-    ~settingpage();
+    explicit SettingWindow(QWidget *parent = nullptr);
+    ~SettingWindow();
 
    protected:
     virtual void mousePressEvent(QMouseEvent *event);
@@ -22,7 +22,7 @@ class settingpage : public QDialog {
     virtual void mouseReleaseEvent(QMouseEvent *event);
 
    private:
-    Ui::settingpage *ui;
+    Ui::SettingWindow *ui;
     QPoint mMovePosition;
     bool mMoving;
 };

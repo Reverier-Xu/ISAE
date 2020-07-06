@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 find_package(Qt5 5.5 COMPONENTS Core Gui Widgets REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 set(MainApp_SRCS
     main.cpp
     MainApp.cpp
@@ -12,16 +12,16 @@ set(MainApp_SRCS
     menubutton.h
     monitor.cpp
     monitor.h
-    about.cpp
-    about.h
-    about.ui
-    donate.cpp
-    donate.h
-    donate.ui
-    settingpage.cpp
-    settingpage.h
-    settingpage.ui
-)
+        AboutWindow.cpp
+        AboutWindow.h
+        AboutWindow.ui
+        DonateWindow.cpp
+        DonateWindow.h
+        DonateWindow.ui
+        SettingWindow.cpp
+        SettingWindow.h
+        SettingWindow.ui
+        AnimateList.cpp AnimateList.h)
 
 add_executable(MainApp ${MainApp_SRCS})
 

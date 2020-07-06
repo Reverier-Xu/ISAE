@@ -31,7 +31,3 @@ C++标准库, 包括STL, 不能使用依赖于操作系统的类库, 例如`wind
 ### 结构图
 
 ![Screenshot_20200607_004647.png](https://i.loli.net/2020/06/07/QCBZvYsz2jol1gE.png)
-
-## 详细接口定义
-
-将在6月10日之前给定.

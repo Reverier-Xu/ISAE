@@ -1,23 +1,23 @@
-#include "about.h"
+#include "DonateWindow.h"
 
 #include <QMouseEvent>
 
-#include "ui_about.h"
+#include "ui_DonateWindow.h"
 
-about::about(QWidget *parent) : QDialog(parent), ui(new Ui::about) {
+DonateWindow::DonateWindow(QWidget *parent) : QDialog(parent), ui(new Ui::DonateWindow) {
     ui->setupUi(this);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->mMoving = false;
 }
 
 /* 窗口移动函数 */
-void about::mousePressEvent(QMouseEvent *event) {
+void DonateWindow::mousePressEvent(QMouseEvent *event) {
     this->mMoving = true;
     this->mMovePosition = event->globalPos() - pos();
     return QDialog::mousePressEvent(event);
 }
 
-void about::mouseMoveEvent(QMouseEvent *event) {
+void DonateWindow::mouseMoveEvent(QMouseEvent *event) {
     if (this->mMoving && (event->buttons() & Qt::LeftButton) &&
         (event->globalPos() - mMovePosition).manhattanLength() >
             QApplication::startDragDistance()) {
@@ -27,9 +27,9 @@ void about::mouseMoveEvent(QMouseEvent *event) {
     return QDialog::mouseMoveEvent(event);
 }
 
-void about::mouseReleaseEvent(QMouseEvent *event) {
+void DonateWindow::mouseReleaseEvent(QMouseEvent *event) {
     this->mMoving = false;
     event->accept();
 }
 
-about::~about() { delete ui; }
+DonateWindow::~DonateWindow() { delete ui; }

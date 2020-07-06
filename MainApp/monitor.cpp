@@ -64,30 +64,6 @@ qreal JQCPUMonitor::cpuUsagePercentage() {
     return cpuUsagePercentageRecords_.last().second;
 }
 
-qreal JQCPUMonitor::cpuUsagePercentageInTime(const qint64 &msecs) {
-    qreal percentageSum = 0.0;
-    auto percentageCount = 0;
-    const auto &&timeStart = QDateTime::currentMSecsSinceEpoch() - msecs;
-
-    QMutexLocker locker(&mutex_);
-
-    for (auto it = cpuUsagePercentageRecords_.rbegin();
-         it != cpuUsagePercentageRecords_.rend(); ++it) {
-        if (it->first >= timeStart) {
-            percentageSum += it->second;
-            ++percentageCount;
-        } else {
-            break;
-        }
-    }
-
-    if (!percentageCount || (percentageSum < 0.01)) {
-        return 0.0;
-    }
-
-    return percentageSum / static_cast<qreal>(percentageCount);
-}
-
 void JQCPUMonitor::run() {
     while (continueFlag_) {
         QThread::msleep(1200);
