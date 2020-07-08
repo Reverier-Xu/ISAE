@@ -58,21 +58,25 @@ class MainApp : public QMainWindow {
 
    private:
     Ui::MainWindow *ui;
-    bool m_isMoving;
+
+    bool m_isMoving{false};
     QPoint m_MovePosition;
-    bool m_isSidebarShow;
-    bool m_isAppsAreaShow;
-    bool m_isTeamAreaShow;
-    bool m_isWorkspaceAreaShow;
+
+    bool m_isSidebarShow{true};
+    bool m_isAppsAreaShow{false};
+    bool m_isTeamAreaShow{false};
+    bool m_isWorkspaceAreaShow{false};
+
     QTimer m_sideBarAnimation;
     QTimer m_appsAreaAnimation;
     QTimer m_teamAreaAnimation;
     QTimer m_workspaceAreaAnimation;
     QTimer m_CPUMonitorTimer;
     int m_startDuration;
-    AboutWindow *aboutWindow;
-    DonateWindow *donateWindow;
-    SettingWindow *settingWindow;
+
+    AboutWindow *aboutWindow{};
+    DonateWindow *donateWindow{};
+    SettingWindow *settingWindow{};
     QPushButton *CPUStatusBox;
     QPushButton *WootecStatusBox;
     QFont m_defaultFont;
@@ -81,5 +85,7 @@ class MainApp : public QMainWindow {
     QVector<QPushButton *> m_teamVector;
     QString m_clientName;
     QIcon m_clientIcon;
+
+    void setExtendWindow();
 };
 #endif  // MAINAPP_H

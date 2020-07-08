@@ -1,5 +1,5 @@
 QPushButton {
-    background-color: transparent;
+    /* background-color: rgba(0, 0, 0, 30%); */
     border: 0px solid black;
     color: white;
     font: 13pt "WenQuanYi Microhei mono";
@@ -7,26 +7,26 @@ QPushButton {
 
 QPushButton:hover {
     background-color: rgba(140, 140, 140, 20%);
-    color: white;
 }
 
 QPushButton:pressed {
     background-color: rgba(160, 160, 160, 20%);
-    color: white;
 }
 
 QPushButton#apps {
+    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#welcomeButton {
+    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#clientButton {
-    /* background-color: rgba(140, 140, 140, 15%); */
+    /*background-color: transparent;*/
     border: 1px solid black;
     text-align: left;
     font: 16pt "WenQuanYi Microhei mono";
@@ -34,16 +34,19 @@ QPushButton#clientButton {
 }
 
 QPushButton#appsButton {
+    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#workspaceButton {
+    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#teamButton {
+    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }

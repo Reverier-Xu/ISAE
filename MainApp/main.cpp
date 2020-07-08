@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
     MainApp w;             // 声明主窗口, 加载所有插件.
     w.setWindowTitle("ISAE");
 
+
     splash.finish(&w);  // 主窗口加载完毕后关掉启动画面
     w.show();           // 让主窗口显示出来
     return a.exec();    // 进入事件循环

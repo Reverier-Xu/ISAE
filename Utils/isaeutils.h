@@ -10,7 +10,6 @@
 #include <QImage>
 
 // 图片模糊算法
-QImage blurred(const QImage& image, const QRect& rect, int radius,
-               bool alphaOnly = false);
+QImage blurred(const QImage &image, const QRect &rect, int radius);
 
 #endif

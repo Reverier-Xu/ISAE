@@ -33,8 +33,9 @@
         <file>assets/wiki.svg</file>
         <file>assets/CPU.svg</file>
         <file>assets/ISAE.svg</file>
-        <file alias="earthOrbiter">assets/EarthOrbiter-YZ12.otf</file>
+        <file alias="earthOrbiter">assets/UI.otf</file>
         <file alias="wqy">assets/wqy-microhei.ttc</file>
+        <file alias="mono">assets/mono.ttf</file>
         <file alias="wallpaper">assets/wallpaper.jpg</file>
         <file alias="defaultStyle">assets/RxFluent.qss</file>
         <file>assets/wechatpay.png</file>

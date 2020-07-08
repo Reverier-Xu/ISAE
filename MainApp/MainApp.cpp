@@ -3,25 +3,26 @@
 #include <QFontDatabase>
 #include <QGraphicsEffect>
 #include <QGraphicsPixmapItem>
-#include <QMouseEvent>  // 移动窗口所需
+#include <QMouseEvent>          // 移动窗口所需
 #include <QPainter>
 #include <QtCore/Qt>
 
-#include "DockManager.h"  // 高级停靠系统
+#include "DockManager.h"        // 高级停靠系统
 #include "AboutWindow.h"        // 关于页面
 #include "DonateWindow.h"
 #include "SettingWindow.h"
 #include "isaeutils.h"
 #include "monitor.h"
-#include "ui_MainApp.h"  // ui文件
+#include "ui_MainApp.h"         // ui文件
 
 MainApp::MainApp(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow) {
+        : QMainWindow(parent), ui(new Ui::MainWindow) {
     /* 设置布局 */
     ui->setupUi(this);
 
     /* 添加字体 */
     QFontDatabase::addApplicationFont(":/imgs/wqy");
+    QFontDatabase::addApplicationFont(":/imgs/mono");
     QFontDatabase::addApplicationFont(":/imgs/earthOrbiter");
 
     /* 设置窗口logo */
@@ -34,14 +35,7 @@ MainApp::MainApp(QWidget *parent)
     this->setAttribute(Qt::WA_StyledBackground);
     QImage back;
     back.load(":/imgs/wallpaper2");
-    setBackground(back, 10);
-
-    /* 初始化窗口标志 */
-    this->m_isMoving = false;
-    this->m_isSidebarShow = true;
-    this->m_isAppsAreaShow = false;
-    this->m_isTeamAreaShow = false;
-    this->m_isWorkspaceAreaShow = false;
+    setBackground(back, 15);
 
     /* 初始化窗口可伸缩部件的大小 */
     this->ui->appsArea->setFixedHeight(0);
@@ -59,20 +53,8 @@ MainApp::MainApp(QWidget *parent)
     /* 初始化窗口状态 */
     this->showMaximized();
 
-    /* 初始化关于页面 */
-    this->aboutWindow = new AboutWindow(this);
-    this->aboutWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
-    this->aboutWindow->setWindowModality(Qt::ApplicationModal);
-
-    /* 初始化捐助页面 */
-    this->donateWindow = new DonateWindow(this);
-    this->donateWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
-    this->donateWindow->setWindowModality(Qt::ApplicationModal);
-
-    /* 初始化设置页面 */
-    this->settingWindow = new SettingWindow(this);
-    this->settingWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
-    this->settingWindow->setWindowModality(Qt::ApplicationModal);
+    /* 设置外部窗口 */
+    this->setExtendWindow();
 
     /* 初始化用户 */
     this->m_clientName = "OFFLINE";
@@ -106,12 +88,12 @@ MainApp::MainApp(QWidget *parent)
     QObject::connect(&(this->m_CPUMonitorTimer), SIGNAL(timeout()),
                      SLOT(upgradeCPUStatus()));
     QObject::connect(ui->settingsButton, SIGNAL(clicked()), this,
-                     SLOT(showSettingWindow ()));
+                     SLOT(showSettingWindow()));
 
     QAction *act = this->ui->aboutButton->getmenu()->addAction(QString("关于"));
-    QObject::connect(act, SIGNAL(triggered()), this, SLOT(showAboutWindow ()));
+    QObject::connect(act, SIGNAL(triggered()), this, SLOT(showAboutWindow()));
     act = this->ui->aboutButton->getmenu()->addAction(QString("捐助"));
-    QObject::connect(act, SIGNAL(triggered()), this, SLOT(showDonateWindow ()));
+    QObject::connect(act, SIGNAL(triggered()), this, SLOT(showDonateWindow()));
 
     /* 初始化默认字体 */
     this->m_defaultFont.setFamily("WenQuanYi Micro Hei Mono");
@@ -122,7 +104,7 @@ MainApp::MainApp(QWidget *parent)
     this->WootecStatusBox = new QPushButton(this);
     this->WootecStatusBox->setObjectName("WootecStatusBox");
     this->WootecStatusBox->setIcon(
-        QIcon::fromTheme(":/imgs/assets/online.svg"));
+            QIcon::fromTheme(":/imgs/assets/online.svg"));
     this->WootecStatusBox->setObjectName("WootecStatusBox");
     this->WootecStatusBox->setIconSize(QSize(24, 20));
     this->WootecStatusBox->setText(QString(" Wootec Cloud  "));
@@ -163,8 +145,8 @@ void MainApp::mousePressEvent(QMouseEvent *event) {
 void MainApp::mouseMoveEvent(QMouseEvent *event) {
     if (this->isMaximized()) return;
     if (this->m_isMoving && (event->buttons() & Qt::LeftButton) &&
-            (event->globalPos() - m_MovePosition).manhattanLength() >
-            QApplication::startDragDistance()) {
+        (event->globalPos() - m_MovePosition).manhattanLength() >
+        QApplication::startDragDistance()) {
         move(event->globalPos() - m_MovePosition);
         m_MovePosition = event->globalPos() - pos();
     }
@@ -175,6 +157,7 @@ void MainApp::mouseReleaseEvent(QMouseEvent *event) {
     this->m_isMoving = false;
     event->accept();
 }
+
 void MainApp::changeWindowStatus() {
     if (this->isMaximized()) {
         this->showNormal();
@@ -190,15 +173,14 @@ void MainApp::sideBarAnimating() {
         this->ui->clientButton->setText("");
         if (this->ui->clientButton->height() > 36) {
             this->ui->clientButton->setFixedHeight(
-                this->ui->clientButton->height() - 4);
+                    this->ui->clientButton->height() - 4);
         }
         this->ui->sidebarWidget->setFixedWidth(
                 this->ui->sidebarWidget->width() - m_startDuration);
 
         if (this->ui->sidebarWidget->width() - 42 > 104)
             m_startDuration += 1;
-        else if (this->ui->sidebarWidget->width() == 145)
-            ;
+        else if (this->ui->sidebarWidget->width() == 145);
         else
             m_startDuration -= 1;
 
@@ -216,18 +198,16 @@ void MainApp::sideBarAnimating() {
         this->ui->clientButton->setText(" " + this->m_clientName);
         if (this->ui->clientButton->height() < 80) {
             this->ui->clientButton->setFixedHeight(
-                this->ui->clientButton->height() + 4);
+                    this->ui->clientButton->height() + 4);
         }
         this->ui->sidebarWidget->setFixedWidth(
                 this->ui->sidebarWidget->width() + m_startDuration);
 
         if (this->ui->sidebarWidget->width() - 42 < 104)
             m_startDuration += 1;
-        else if (this->ui->sidebarWidget->width() == 147)
-            ;
+        else if (this->ui->sidebarWidget->width() == 147);
         else
             m_startDuration -= 1;
-
         if (m_startDuration <= 0) m_startDuration = 1;
 
         if (this->ui->sidebarWidget->width() >= 250) {
@@ -295,11 +275,11 @@ void MainApp::workspaceAreaAnimating() {
             this->m_isWorkspaceAreaShow = false;
         } else
             this->ui->workspaceArea->setFixedHeight(
-                this->ui->workspaceArea->height() -
-                this->m_workspaceVector.size());
+                    this->ui->workspaceArea->height() -
+                    this->m_workspaceVector.size());
     } else {
         this->ui->workspaceArea->setFixedHeight(
-            this->ui->workspaceArea->height() + this->m_workspaceVector.size());
+                this->ui->workspaceArea->height() + this->m_workspaceVector.size());
 
         if (this->ui->workspaceArea->height() >=
             this->m_workspaceVector.size() * 36 + 3) {
@@ -313,17 +293,20 @@ void MainApp::workspaceAreaAnimating() {
 
 /* 显示关于页 */
 void MainApp::showAboutWindow() { this->aboutWindow->show(); }
+
 void MainApp::showDonateWindow() { this->donateWindow->show(); }
+
 void MainApp::showSettingWindow() { this->settingWindow->show(); }
+
 void MainApp::upgradeCPUStatus() {
     QString info = " CPU ";
     info += QString::number(JQCPUMonitor::cpuUsagePercentage() * 100, 'f', 2)
-                .rightJustified(5, '0') +
+                    .rightJustified(5, '0') +
             "% ";
     this->CPUStatusBox->setText(info);
 }
 
-void MainApp::setBackground(const QImage& image, int blur) {
+void MainApp::setBackground(const QImage &image, int blur) {
     QImage res = blurred(image, image.rect(), blur);
     QPalette palette;
     QPixmap pixmap = QPixmap::fromImage(res);
@@ -331,7 +314,7 @@ void MainApp::setBackground(const QImage& image, int blur) {
     this->setPalette(palette);
 }
 
-void MainApp::addApp(const QIcon& icon, const QString& name) {
+void MainApp::addApp(const QIcon &icon, const QString &name) {
     auto *app = new QPushButton(this);
     app->setIcon(icon);
     app->setText(" " + name);
@@ -343,7 +326,7 @@ void MainApp::addApp(const QIcon& icon, const QString& name) {
     this->m_appsVector.push_back(app);
 }
 
-void MainApp::addWorkspace(const QIcon& icon, const QString& name) {
+void MainApp::addWorkspace(const QIcon &icon, const QString &name) {
     auto *app = new QPushButton(this);
     app->setIcon(icon);
     app->setText(" " + name);
@@ -355,7 +338,7 @@ void MainApp::addWorkspace(const QIcon& icon, const QString& name) {
     this->m_workspaceVector.push_back(app);
 }
 
-void MainApp::addTeam(const QIcon& icon, const QString& name) {
+void MainApp::addTeam(const QIcon &icon, const QString &name) {
     auto *app = new QPushButton(this);
     app->setIcon(icon);
     app->setText(" " + name);
@@ -386,18 +369,35 @@ void MainApp::showClient(QString name, QIcon icon) {
     this->ui->clientButton->setIconSize(QSize(48, 48));
 }
 
-void MainApp::activateSideBarAnimation () {
+void MainApp::activateSideBarAnimation() {
     this->m_sideBarAnimation.start();
 }
 
-void MainApp::activateAppsAreaAnimation () {
+void MainApp::activateAppsAreaAnimation() {
     this->m_appsAreaAnimation.start();
 }
 
-void MainApp::activateTeamAreaAnimation () {
+void MainApp::activateTeamAreaAnimation() {
     this->m_teamAreaAnimation.start();
 }
 
-void MainApp::activateWorkspaceAreaAnimation () {
+void MainApp::activateWorkspaceAreaAnimation() {
     this->m_workspaceAreaAnimation.start();
+}
+
+void MainApp::setExtendWindow() {
+    /* 初始化关于页面 */
+    this->aboutWindow = new AboutWindow(this);
+    this->aboutWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    this->aboutWindow->setWindowModality(Qt::ApplicationModal);
+
+    /* 初始化捐助页面 */
+    this->donateWindow = new DonateWindow(this);
+    this->donateWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    this->donateWindow->setWindowModality(Qt::ApplicationModal);
+
+    /* 初始化设置页面 */
+    this->settingWindow = new SettingWindow(this);
+    this->settingWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    this->settingWindow->setWindowModality(Qt::ApplicationModal);
 }
