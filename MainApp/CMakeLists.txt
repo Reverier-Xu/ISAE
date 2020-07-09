@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-find_package(Qt5 5.5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt5 5.5 COMPONENTS Core Gui Widgets Sql REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 set(MainApp_SRCS
@@ -21,11 +21,15 @@ set(MainApp_SRCS
         SettingWindow.cpp
         SettingWindow.h
         SettingWindow.ui
-        AnimateList.cpp AnimateList.h)
+        AnimateList.cpp
+        AnimateList.h
+        MainAppSettingPage.cpp
+        MainAppSettingPage.h
+        MainAppSettingPage.ui)
 
 add_executable(MainApp ${MainApp_SRCS})
 
-target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets)
+target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Sql)
 target_link_libraries(MainApp PRIVATE qtadvanceddocking isaeutils)
 
 target_include_directories(MainApp PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../Library/QtAds"

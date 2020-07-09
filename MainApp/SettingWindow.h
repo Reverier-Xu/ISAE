@@ -14,17 +14,22 @@ class SettingWindow : public QDialog {
 
    public:
     explicit SettingWindow(QWidget *parent = nullptr);
-    ~SettingWindow();
+    ~SettingWindow() override;
+    void addPage(const QString& name, QWidget *page);
+
+public slots:
+    void changePage(QListWidgetItem* item);
 
    protected:
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseMoveEvent(QMouseEvent *event);
-    virtual void mouseReleaseEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
    private:
     Ui::SettingWindow *ui;
     QPoint mMovePosition;
     bool mMoving;
+    QMap<QListWidgetItem*, QWidget*> map{};
 };
 
 

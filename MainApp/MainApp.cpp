@@ -6,6 +6,8 @@
 #include <QMouseEvent>          // 移动窗口所需
 #include <QPainter>
 #include <QtCore/Qt>
+#include <QDir>
+#include <QCoreApplication>
 
 #include "DockManager.h"        // 高级停靠系统
 #include "AboutWindow.h"        // 关于页面
@@ -19,6 +21,7 @@ MainApp::MainApp(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     /* 设置布局 */
     ui->setupUi(this);
+    this->detectDirs();
 
     /* 添加字体 */
     QFontDatabase::addApplicationFont(":/imgs/wqy");
@@ -35,7 +38,7 @@ MainApp::MainApp(QWidget *parent)
     this->setAttribute(Qt::WA_StyledBackground);
     QImage back;
     back.load(":/imgs/wallpaper2");
-    setBackground(back, 15);
+    setBackground(back, 100);
 
     /* 初始化窗口可伸缩部件的大小 */
     this->ui->appsArea->setFixedHeight(0);
@@ -400,4 +403,21 @@ void MainApp::setExtendWindow() {
     this->settingWindow = new SettingWindow(this);
     this->settingWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     this->settingWindow->setWindowModality(Qt::ApplicationModal);
+    this->getPlugins();
+}
+
+void MainApp::getPlugins() {
+    this->setPluginSettingWindow();
+}
+
+void MainApp::setPluginSettingWindow() {
+    this->settingPage = new MainAppSettingPage;
+    settingPage->loadSetting(QCoreApplication::applicationDirPath() + "/../Data/UserConfig/MainApp.conf");
+    this->settingWindow->addPage("主程序", this->settingPage);
+}
+
+void MainApp::detectDirs() {
+    QDir dir;
+    qDebug() << QCoreApplication::applicationDirPath();
+    dir.mkpath(QCoreApplication::applicationDirPath() + "/../Data/UserConfig");
 }

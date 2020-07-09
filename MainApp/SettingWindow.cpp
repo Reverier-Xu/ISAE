@@ -10,6 +10,13 @@ SettingWindow::SettingWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->mMoving = false;
+    for(int i = this->ui->settingPageStack->count(); i >= 0; i--)
+    {
+        QWidget* widget = this->ui->settingPageStack->widget(i);
+        this->ui->settingPageStack->removeWidget(widget);
+        widget->deleteLater();
+    }
+    QObject::connect(this->ui->menuView, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(changePage(QListWidgetItem*)));
 }
 
 /* 窗口移动函数 */
@@ -35,3 +42,14 @@ void SettingWindow::mouseReleaseEvent(QMouseEvent *event) {
 }
 
 SettingWindow::~SettingWindow() { delete ui; }
+
+void SettingWindow::addPage(const QString &name, QWidget *page) {
+    auto* item = new QListWidgetItem(name);
+    this->ui->menuView->addItem(item);
+    this->ui->settingPageStack->addWidget(page);
+    this->map[item] = page;
+}
+
+void SettingWindow::changePage(QListWidgetItem *item) {
+    this->ui->settingPageStack->setCurrentWidget(map[item]);
+}

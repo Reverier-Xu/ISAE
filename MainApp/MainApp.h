@@ -8,6 +8,8 @@
 #include <QMainWindow>
 #include <QTimer>
 
+#include "MainAppSettingPage.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -41,6 +43,9 @@ class MainApp : public QMainWindow {
     void showSettingWindow();
     void upgradeCPUStatus();
 
+    void getPlugins();
+    void setPluginSettingWindow();
+
     /* 设置背景 */
     void setBackground(const QImage& image, int blur);
 
@@ -58,6 +63,8 @@ class MainApp : public QMainWindow {
 
    private:
     Ui::MainWindow *ui;
+
+    static void detectDirs();
 
     bool m_isMoving{false};
     QPoint m_MovePosition;
@@ -85,6 +92,8 @@ class MainApp : public QMainWindow {
     QVector<QPushButton *> m_teamVector;
     QString m_clientName;
     QIcon m_clientIcon;
+
+    MainAppSettingPage *settingPage{};
 
     void setExtendWindow();
 };

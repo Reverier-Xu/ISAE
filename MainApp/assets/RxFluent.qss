@@ -1,5 +1,4 @@
 QPushButton {
-    /* background-color: rgba(0, 0, 0, 30%); */
     border: 0px solid black;
     color: white;
     font: 13pt "WenQuanYi Microhei mono";
@@ -14,19 +13,16 @@ QPushButton:pressed {
 }
 
 QPushButton#apps {
-    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#welcomeButton {
-    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#clientButton {
-    /*background-color: transparent;*/
     border: 1px solid black;
     text-align: left;
     font: 16pt "WenQuanYi Microhei mono";
@@ -34,19 +30,16 @@ QPushButton#clientButton {
 }
 
 QPushButton#appsButton {
-    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#workspaceButton {
-    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
 
 QPushButton#teamButton {
-    /*background-color: transparent;*/
     text-align: left;
     padding-left: 8px;
 }
@@ -57,7 +50,7 @@ QMainWindow {
 
 QMenu {
     background-color: rgba(30, 30, 30, 70%);
-    border: 1px solid #000000;
+    border: 1px solid black;
 }
 
 QMenu::item {
@@ -70,11 +63,11 @@ QMenu::item:selected {
 }
 
 QWidget#centralwidget {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 40%);
 }
 
 QWidget#sidebarWidget {
-    background-color: rgba(30, 30, 30, 80%);
+    background-color: rgba(30, 30, 30, 40%);
     border: 1px solid black;
 }
 
@@ -109,11 +102,9 @@ QWidget#workspaceAreaContent {
 }
 
 QWidget#titleWidget {
-    background-color: rgba(30, 31, 32, 80%);
-    border: 0px solid black;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    background-color: rgba(30, 30, 30, 40%);
+    border: 1px solid black;
+    border-bottom: 0px solid black;
 }
 
 QToolButton {
@@ -165,39 +156,9 @@ QLineEdit#globalSearchBar:focus {
     background-color: rgba(130, 130, 130, 20%);
 }
 
-QPushButton#miniButton {
-    background-color: transparent;
-    border: 0px solid black;
-    border-top: 1px solid black;
-}
-
-QPushButton#miniButton:hover {
-    background-color: rgba(160, 160, 160, 40%);
-}
-
-QPushButton#miniButton:pressed {
-    background-color: rgba(160, 160, 160, 30%);
-}
-
-QPushButton#maxButton {
-    background-color: transparent;
-    border: 0px solid black;
-    border-top: 1px solid black;
-}
-
-QPushButton#maxButton:hover {
-    background-color: rgba(160, 160, 160, 40%);
-}
-
-QPushButton#maxButton:pressed {
-    background-color: rgba(160, 160, 160, 30%);
-}
-
 QPushButton#closeButton {
     background-color: transparent;
     border: 0px solid black;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
 }
 
 QPushButton#closeButton:hover {
@@ -208,32 +169,12 @@ QPushButton#closeButton:pressed {
     background-color: rgba(160, 48, 48, 90%);
 }
 
-QPushButton#CPUStatusBox {
-    background-color: transparent;
-    border: 0px solid black;
-    font: 12pt "WenQuanYi Microhei mono";
-}
-
-QPushButton#CPUStatusBox:hover {
-    background-color: rgba(90, 90, 90, 40%);
-}
-
-QPushButton#WootecStatusBox {
-    background-color: transparent;
-    border: 0px solid black;
-    font: 12pt "WenQuanYi Microhei mono";
-}
-
-QPushButton#WootecStatusBox:hover {
-    background-color: rgba(90, 90, 90, 40%);
-}
-
 QWidget#MainDock {
-    background-color: rgba(0, 0, 0, 70%);
+    background-color: transparent;
     background-image: url(:/imgs/assets/workspace_is_empty.png);
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 40%);
     border-left: 0px solid black;
 }
 
@@ -258,7 +199,7 @@ QSplitter::handle:hover {
 }
 
 QStatusBar {
-    background-color: rgba(30, 30, 30, 80%);
+    background-color: rgba(30, 30, 30, 70%);
 }
 
 QTextEdit {
@@ -324,18 +265,45 @@ QWidget {
 QListView {
     background-color: transparent;
     border: 0px solid black;
+    selection-background-color: transparent;
+}
+QListView::item {
+    background-color: transparent;
+}
+
+QListView#backgroundImageChooser::item {
+    border: 2px solid rgba(90, 90, 90, 80%);
+    border-radius: 10px;
+}
+QListView#backgroundImageChooser::item:selected {
+    background-color: transparent;
+    border: 2px solid rgba(200, 200, 255, 80%);
+}
+
+QListView#backgroundImageChooser::item:hover {
+    background-color: transparent;
+    border: 2px solid rgba(100, 100, 255, 80%);
+}
+
+QListView#backgroundImageChooser::item:pressed {
+    background-color: transparent;
+    border: 2px solid rgba(100, 200, 255, 80%);
+}
+QListView#menuView::item {
+    height: 32px;
+    padding-left: 10px;
 }
 
 QListView::item:selected {
-    background-color: rgba(160, 160, 160, 50%);
+    background-color: rgba(90, 90, 90, 50%);
 }
 
 QListView::item:hover {
-    background-color: rgba(160, 160, 160, 50%);
+    background-color: rgba(90, 90, 90, 50%);
 }
 
 QListView::item:pressed {
-    background-color: rgba(160, 160, 160, 30%);
+    background-color: rgba(90, 90, 90, 30%);
 }
 
 QTreeView {
@@ -358,4 +326,20 @@ QTreeView::item:pressed {
 
 QTreeView::item:selected {
     border-left: 4px solid rgba(30, 60, 200, 50%);
+}
+
+QSlider::groove:horizontal {
+border: 0px solid rgba(40, 70, 255, 80%);
+background: rgba(40, 70, 255, 80%);
+height: 1px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+background: rgba(40, 70, 255, 100%);
+border: 1px solid grey;
+width: 10px;
+margin-top: -5px;
+margin-bottom: -5px;
+border-radius: 5px;
 }
