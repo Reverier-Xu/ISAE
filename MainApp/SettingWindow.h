@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSettings>
 #include <QListWidgetItem>
+#include "ISAEPluginWidget.h"
 
 namespace Ui {
 class SettingWindow;
@@ -15,10 +16,13 @@ class SettingWindow : public QDialog {
    public:
     explicit SettingWindow(QWidget *parent = nullptr);
     ~SettingWindow() override;
-    void addPage(const QString& name, QWidget *page);
+    void addPage(const QString &name, ISAEPluginSettingWidget *page, ISAEPluginWidget *Plugin);
+    void clearPages();
 
 public slots:
     void changePage(QListWidgetItem* item);
+    void applySettings();
+    void saveSettings();
 
    protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -29,7 +33,8 @@ public slots:
     Ui::SettingWindow *ui;
     QPoint mMovePosition;
     bool mMoving;
-    QMap<QListWidgetItem*, QWidget*> map{};
+    QMap<QString, ISAEPluginSettingWidget*> settingPageMap{};
+    QMap<QString, ISAEPluginWidget*> pluginMap{};
 };
 
 

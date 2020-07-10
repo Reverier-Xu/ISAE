@@ -18,7 +18,7 @@
 #include "ui_MainApp.h"         // ui文件
 
 MainApp::MainApp(QWidget *parent)
-        : QMainWindow(parent), ui(new Ui::MainWindow) {
+        : ISAEPluginWidget(parent), ui(new Ui::MainWindow) {
     /* 设置布局 */
     ui->setupUi(this);
     this->detectDirs();
@@ -36,9 +36,6 @@ MainApp::MainApp(QWidget *parent)
     /* 设置无边框与背景 */
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_StyledBackground);
-    QImage back;
-    back.load(":/imgs/wallpaper2");
-    setBackground(back, 100);
 
     /* 初始化窗口可伸缩部件的大小 */
     this->ui->appsArea->setFixedHeight(0);
@@ -133,6 +130,9 @@ MainApp::MainApp(QWidget *parent)
     QString qss = QLatin1String(qssFile.readAll());
     this->setStyleSheet(qss);
     qssFile.close();
+
+    // 应用设置
+    this->applySetting();
 }
 
 MainApp::~MainApp() { delete ui; }
@@ -403,6 +403,7 @@ void MainApp::setExtendWindow() {
     this->settingWindow = new SettingWindow(this);
     this->settingWindow->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     this->settingWindow->setWindowModality(Qt::ApplicationModal);
+
     this->getPlugins();
 }
 
@@ -411,13 +412,20 @@ void MainApp::getPlugins() {
 }
 
 void MainApp::setPluginSettingWindow() {
-    this->settingPage = new MainAppSettingPage;
-    settingPage->loadSetting(QCoreApplication::applicationDirPath() + "/../Data/UserConfig/MainApp.conf");
-    this->settingWindow->addPage("主程序", this->settingPage);
+    this->settingPage = new MainAppSettingPage();
+    this->settingPage->loadSetting(QCoreApplication::applicationDirPath() + "/../Data/UserConfig/MainApp.conf");
+    this->settingWindow->addPage("主程序", this->settingPage, this);
+    this->m_settings = this->settingPage->setting();
 }
 
 void MainApp::detectDirs() {
     QDir dir;
     qDebug() << QCoreApplication::applicationDirPath();
     dir.mkpath(QCoreApplication::applicationDirPath() + "/../Data/UserConfig");
+}
+
+void MainApp::applySetting() {
+    this->m_settings->beginGroup("MainApp");
+    this->setBackground(QImage(this->m_settings->value("PresentWallpaper").toString()), this->m_settings->value("BlurValue").toInt());
+    this->m_settings->endGroup();
 }

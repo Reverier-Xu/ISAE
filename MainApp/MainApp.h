@@ -9,6 +9,7 @@
 #include <QTimer>
 
 #include "MainAppSettingPage.h"
+#include "ISAEPluginWidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,7 +17,7 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
-class MainApp : public QMainWindow {
+class MainApp : public ISAEPluginWidget {
     Q_OBJECT
 
    public:
@@ -48,6 +49,9 @@ class MainApp : public QMainWindow {
 
     /* 设置背景 */
     void setBackground(const QImage& image, int blur);
+
+    /* 应用设置项 */
+    void applySetting() override;
 
     /* 侧栏添加项目 */
     void addApp(const QIcon& icon, const QString& name);

@@ -336,10 +336,10 @@ border-radius: 4px;
 }
 
 QSlider::handle:horizontal {
-background: rgba(40, 70, 255, 100%);
-border: 1px solid grey;
-width: 10px;
-margin-top: -5px;
-margin-bottom: -5px;
-border-radius: 5px;
+background: rgba(55, 130, 255, 100%);
+border: 0px solid rgba(55, 130, 255, 100%);
+width: 16px;
+margin-top: -8px;
+margin-bottom: -8px;
+border-radius: 8px;
 }

@@ -9,7 +9,7 @@
 #include <QCoreApplication>
 
 MainAppSettingPage::MainAppSettingPage(QWidget *parent) :
-        QWidget(parent), ui(new Ui::MainAppSettingPage) {
+        ISAEPluginSettingWidget(parent), ui(new Ui::MainAppSettingPage) {
     ui->setupUi(this);
     this->ui->backgroundImageChooser->setDragEnabled(false);
     this->m_settings = nullptr;
@@ -33,15 +33,16 @@ void MainAppSettingPage::saveSetting() {
         this->m_settings->setValue("Name", this->ui->backgroundImageChooser->item(i)->text());
     }
     this->m_settings->endArray();
+    qDebug() << this->ui->backgroundImageChooser->currentItem();
     this->m_settings->setValue("PresentWallpaper", this->ui->backgroundImageChooser->currentItem()->data(Qt::UserRole));
     this->m_settings->setValue("PresentWallpaperName", this->ui->backgroundImageChooser->currentItem()->text());
     this->m_settings->setValue("BlurValue", this->ui->horizontalSlider->value());
+    this->m_settings->endGroup();
     if (this->isValid())
         this->m_settings->sync();
 }
 
 void MainAppSettingPage::loadSetting(const QString &path) {
-
     this->m_settings = new QSettings(path, QSettings::IniFormat);
     this->m_settings->setIniCodec("UTF-8");
     if (!QFile::exists(path)) {
@@ -77,17 +78,25 @@ void MainAppSettingPage::drawSetting() {
         QPixmap pixmap(this->m_settings->value("Wallpaper").toString());
         pixmap = pixmap.scaled(240, 135);
         auto *uItem = new QListWidgetItem(QIcon(pixmap),
-                                    this->m_settings->value("Name").toString());
+                                          this->m_settings->value("Name").toString());
         uItem->setData(Qt::UserRole, this->m_settings->value("Wallpaper").toString());
         this->ui->backgroundImageChooser->addItem(uItem);
     }
     this->m_settings->endArray();
-    auto item = this->ui->backgroundImageChooser->findItems(this->m_settings->value("PresentWallpaperName").toString(), Qt::MatchExactly)[0];
-    item->setSelected(true);
+    //auto item = this->ui->backgroundImageChooser->findItems(this->m_settings->value("PresentWallpaperName").toString(), Qt::MatchExactly)[0];
+    //item->setSelected(true);
+    for (int i = 0; i < this->ui->backgroundImageChooser->count(); i++) {
+        if (this->ui->backgroundImageChooser->item(i)->text() ==
+            this->m_settings->value("PresentWallpaperName").toString()) {
+            this->ui->backgroundImageChooser->item(i)->setSelected(true);
+            this->ui->backgroundImageChooser->setCurrentItem(
+                    this->ui->backgroundImageChooser->item(i));
+        }
+    }
     this->ui->horizontalSlider->setValue(this->m_settings->value("BlurValue").toInt());
     this->m_settings->endGroup();
 }
 
-const QSettings& MainAppSettingPage::setting() {
-    return *this->m_settings;
+QSettings *MainAppSettingPage::setting() {
+    return this->m_settings;
 }

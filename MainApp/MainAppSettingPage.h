@@ -8,25 +8,24 @@
 #include <QWidget>
 #include <QSettings>
 #include <QSaveFile>
+#include "ISAEPluginWidget.h"
 namespace Ui {
     class MainAppSettingPage;
 }
 
-class MainAppSettingPage : public QWidget {
+class MainAppSettingPage : public ISAEPluginSettingWidget {
     Q_OBJECT
 private:
-    QSettings* m_settings;
-    bool m_isValid = false;
     Ui::MainAppSettingPage *ui;
 public:
     explicit MainAppSettingPage(QWidget *parent = nullptr);
     ~MainAppSettingPage() override;
-public slots:
-    void saveSetting();
-    void loadSetting(const QString& path);
     bool isValid() const;
     void drawSetting();
-    const QSettings& setting();
+    QSettings* setting();
+public slots:
+    void saveSetting() override;
+    void loadSetting(const QString& path) override;
 };
 
 
