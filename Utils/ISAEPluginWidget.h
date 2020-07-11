@@ -9,6 +9,7 @@
 #include <QSettings>
 #include <QMainWindow>
 #include <QWidget>
+#include <QObject>
 
 class ISAEPluginWidget : public QMainWindow {
 Q_OBJECT
