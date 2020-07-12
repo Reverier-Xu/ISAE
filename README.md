@@ -33,8 +33,6 @@
 
 ## 当前开发状态预览
 
-![Screenshot_20200626_112812](https://i.loli.net/2020/06/27/meo9uRaclH6AYtw.png)
-
 ![Screenshot_20200626_112909](https://i.loli.net/2020/06/27/wd5sjrotYQGxE6C.png)
 
 ![Screenshot_20200626_112914](https://i.loli.net/2020/06/27/4T9cLtY35p8S1iq.png)
