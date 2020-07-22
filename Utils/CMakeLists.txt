@@ -5,8 +5,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(ISAEUtils_SRCS
     isaeutils.cpp
-    isaeutils.h
-        ISAEPluginWidget.cpp ISAEPluginWidget.h)
+    isaeutils.h)
 
 add_library(isaeutils STATIC ${ISAEUtils_SRCS})
 
