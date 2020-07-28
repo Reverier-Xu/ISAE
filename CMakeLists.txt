@@ -1,7 +1,5 @@
-cmake_minimum_required(VERSION 3.12)
-PROJECT(ISAE)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-add_subdirectory(Library)
-add_subdirectory(MainApp)
-add_subdirectory(Plugins)
-add_subdirectory(Utils)
+cmake_minimum_required(VERSION 3.10)
+project(ISAE)
+set(CMAKE_CXX_STANDARD 17)
+
+add_subdirectory(src)

@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainApp</class>
+ <widget class="QMainWindow" name="MainApp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>660</width>
+    <height>350</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="centralwidgetLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="titleWidget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>32</height>
+       </size>
+      </property>
+      <layout class="QHBoxLayout" name="titleLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="windowTitle">
+         <property name="font">
+          <font>
+           <family>Earth Orbiter</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>ISAE</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::PlainText</enum>
+         </property>
+         <property name="RxLabelStyle" stdset="0">
+          <string>title</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="menuLayout">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="MenuButton" name="visionButton">
+           <property name="minimumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>视图</string>
+           </property>
+           <property name="RxButtonStyle" stdset="0">
+            <string>menu</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="MenuButton" name="aboutButton">
+           <property name="minimumSize">
+            <size>
+             <width>54</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>关于</string>
+           </property>
+           <property name="RxButtonStyle" stdset="0">
+            <string>menu</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="titleSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="globalSearchBar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>文泉驿等宽微米黑</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="placeholderText">
+          <string>搜索...</string>
+         </property>
+         <property name="RxSearchBoxStyle" stdset="0">
+          <string>global</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="settingsButton">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/app.qrc">
+           <normaloff>:/assets/settings.svg</normaloff>:/assets/settings.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="RxButtonStyle" stdset="0">
+          <string>windowOperator</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="minimizedButton">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/app.qrc">
+           <normaloff>:/assets/mini.svg</normaloff>:/assets/mini.svg</iconset>
+         </property>
+         <property name="RxButtonStyle" stdset="0">
+          <string>windowOperator</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="maximizedButton">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/app.qrc">
+           <normaloff>:/assets/max.svg</normaloff>:/assets/max.svg</iconset>
+         </property>
+         <property name="RxButtonStyle" stdset="0">
+          <string>windowOperator</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="closeButton">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/app.qrc">
+           <normaloff>:/assets/close.svg</normaloff>:/assets/close.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="RxButtonStyle" stdset="0">
+          <string>windowOperator</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="mainAppLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="RxAnimatedWidget" name="sideBarWidget" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <layout class="QVBoxLayout" name="sideBarLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="sideBarButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>WenQuanYi Microhei mono</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string> 欢迎使用</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/app.qrc">
+             <normaloff>:/assets/menu.svg</normaloff>:/assets/menu.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="RxButtonStyle" stdset="0">
+            <string>sideBar</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clientButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>80</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>80</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>WenQuanYi Microhei mono</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string> OFFLINE</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/app.qrc">
+             <normaloff>:/assets/a-z/offline.svg</normaloff>:/assets/a-z/offline.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>64</width>
+             <height>64</height>
+            </size>
+           </property>
+           <property name="RxButtonStyle" stdset="0">
+            <string>sideBar</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="sideBarScrollArea">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>250</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="sideBarContent">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>250</width>
+              <height>681</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <layout class="QVBoxLayout" name="sideBarContentLayout">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="appsAreaButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>WenQuanYi Microhei mono</family>
+                 <pointsize>12</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string> 分区</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/app.qrc">
+                 <normaloff>:/assets/apps.svg</normaloff>:/assets/apps.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="RxButtonStyle" stdset="0">
+                <string>sideBar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="RxAnimatedWidget" name="appsAreaContent" native="true"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="workspaceAreaButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>WenQuanYi Microhei mono</family>
+                 <pointsize>12</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string> 工作区</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/app.qrc">
+                 <normaloff>:/assets/workspace.svg</normaloff>:/assets/workspace.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="RxButtonStyle" stdset="0">
+                <string>sideBar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="RxAnimatedWidget" name="workspaceAreaContent" native="true"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="teamAreaButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>WenQuanYi Microhei mono</family>
+                 <pointsize>12</pointsize>
+                 <weight>50</weight>
+                 <italic>false</italic>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string> 团队</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resources/app.qrc">
+                 <normaloff>:/assets/team.svg</normaloff>:/assets/team.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="RxButtonStyle" stdset="0">
+                <string>sideBar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="RxAnimatedWidget" name="teamAreaContent" native="true"/>
+             </item>
+             <item>
+              <spacer name="sideBarSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>494</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="statusButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>WenQuanYi Microhei mono</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string> 状态良好</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../resources/app.qrc">
+             <normaloff>:/assets/ok.svg</normaloff>:/assets/ok.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="RxButtonStyle" stdset="0">
+            <string>sideBar</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="ads::CDockManager" name="pluginWindowDockArea" native="true">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RxAnimatedWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">RxAnimatedWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ads::CDockManager</class>
+   <extends>QWidget</extends>
+   <header location="global">DockManager.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MenuButton</class>
+   <extends>QToolButton</extends>
+   <header location="global">menubutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../resources/app.qrc"/>
+ </resources>
+ <connections/>
+</ui>
