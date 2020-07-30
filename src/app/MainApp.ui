@@ -521,7 +521,25 @@
               </widget>
              </item>
              <item>
-              <widget class="RxAnimatedWidget" name="appsAreaContent" native="true"/>
+              <widget class="RxAnimatedWidget" name="appsAreaContent" native="true">
+               <layout class="QVBoxLayout" name="appsAreaLayout">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+               </layout>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="workspaceAreaButton">
@@ -565,7 +583,25 @@
               </widget>
              </item>
              <item>
-              <widget class="RxAnimatedWidget" name="workspaceAreaContent" native="true"/>
+              <widget class="RxAnimatedWidget" name="workspaceAreaContent" native="true">
+               <layout class="QVBoxLayout" name="workspaceAreaLayout">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+               </layout>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="teamAreaButton">
@@ -609,7 +645,25 @@
               </widget>
              </item>
              <item>
-              <widget class="RxAnimatedWidget" name="teamAreaContent" native="true"/>
+              <widget class="RxAnimatedWidget" name="teamAreaContent" native="true">
+               <layout class="QVBoxLayout" name="teamAreaLayout">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+               </layout>
+              </widget>
              </item>
              <item>
               <spacer name="sideBarSpacer">

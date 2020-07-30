@@ -6,9 +6,11 @@
 #include <QListWidgetItem>
 #include "ISAEPluginWidget.h"
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class SettingWindow;
 }
+QT_END_NAMESPACE
 
 class SettingWindow : public QDialog {
     Q_OBJECT

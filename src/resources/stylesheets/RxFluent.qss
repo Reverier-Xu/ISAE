@@ -19,13 +19,13 @@ QPushButton {
 }
 
 QPushButton:hover {
-    background-color: rgba(140, 140, 140, 20%);
+    background-color: rgba(100, 100, 100, 20%);
     padding         : 4px 4px 4px 4px;
     border          : 1px solid rgb(50, 150, 250);
 }
 
 QPushButton:pressed {
-    background-color: rgba(160, 160, 160, 20%);
+    background-color: rgba(180, 180, 180, 20%);
     padding         : 4px 4px 4px 4px;
     border          : 1px solid rgb(50, 150, 250);
 }
@@ -105,6 +105,8 @@ QToolButton {
     background-color: transparent;
     color           : white;
     border          : 0px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 QToolButton:hover {
@@ -424,4 +426,29 @@ QListView[viewMode="1"]::item:selected:!active {
 
 QListView[viewMode="1"]::item:selected:active {
     border: 2px solid rgb(40, 90, 255);
+}
+QFrame[frameShape="4"] {
+    background-color: rgb(80, 80, 80);
+    color: rgb(80, 80, 80);
+}
+
+QComboBox {
+    border: 0px solid gray;
+    border-radius: 0px;
+    background-color: rgba(180, 180, 180, 20%);
+    min-width: 120px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    border: 0px solid black;
+    background-color: transparent;
+    padding-right: 18px;
+}
+
+QComboBox::down-arrow {
+    border-image: url(:/assets/down.svg);
+    width: 16px;
+    height: 16px;
 }

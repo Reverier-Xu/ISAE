@@ -14,10 +14,12 @@ class ISAEPluginSettingWidget;
 class ISAEPluginWidget : public QMainWindow {
 Q_OBJECT
     Q_PROPERTY(QString pluginName READ pluginName WRITE setPluginName)
+    Q_PROPERTY(QString pluginIcon READ pluginIcon WRITE setPluginIcon)
     Q_PROPERTY(QSettings *settings READ settings WRITE setSettings)
     Q_PROPERTY(ISAEPluginSettingWidget *settingWindow READ settingWindow WRITE setSettingWindow)
 protected:
     QString m_name;
+    QString m_icon;
     QList<QString> m_dependents;
     QList<ISAEPluginWidget *> m_listener_list;
     QSettings *m_settings {};
@@ -55,6 +57,10 @@ public:
     // 插件名称的设置与获取
     void setPluginName(const QString &name) { this->m_name = name; };
 
+    void setPluginIcon(const QString &iconPath) { this->m_icon = iconPath; };
+
+    QString pluginIcon() { return this->m_icon; };
+
     QString pluginName() { return this->m_name; };
 
     // 广播函数
@@ -65,8 +71,10 @@ public:
         }
         return ok;
     };
+
     // 接收函数, 由用户自行实现
     virtual bool updateStatus(QVector<QString> info) = 0;
+
     // 应用设置, 由用户自行实现
     virtual bool applySettings() = 0;
 };
@@ -75,13 +83,15 @@ public:
 class ISAEPluginSettingWidget : public QWidget {
 Q_OBJECT
 protected:
-    QSettings *m_settings{};
-    ISAEPluginWidget *m_pluginWidget{};
+    QSettings *m_settings {};
+    ISAEPluginWidget *m_pluginWidget {};
 public:
-    explicit ISAEPluginSettingWidget(QWidget* parent):QWidget(parent){};
+    explicit ISAEPluginSettingWidget(QWidget *parent) : QWidget(parent) { };
+
     void applySettings() {
         this->m_pluginWidget->applySettings();
     }
+
     // 加载设置文件, 由用户自行实现
     virtual bool loadSettings(const QString &path) = 0;
 

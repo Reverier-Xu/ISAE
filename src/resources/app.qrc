@@ -1,5 +1,15 @@
 <RCC>
     <qresource prefix="/">
+        <file>assets/save.svg</file>
+        <file>assets/replace.svg</file>
+        <file>assets/replace_all.svg</file>
+        <file>assets/redo.svg</file>
+        <file>assets/undo.svg</file>
+        <file>assets/casesensitive.svg</file>
+        <file>assets/regex.svg</file>
+        <file>assets/delete.svg</file>
+        <file>assets/reload.svg</file>
+        <file>assets/down.svg</file>
         <file>wallpapers/wallpaper.jpg</file>
         <file>wallpapers/wallpaper2.jpg</file>
         <file>stylesheets/RxFluent.qss</file>

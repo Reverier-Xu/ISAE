@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Editor</class>
+    <widget class="QMainWindow" name="Editor">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>937</width>
+                <height>721</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <layout class="QVBoxLayout" name="verticalLayout">
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <property name="leftMargin">
+                    <number>0</number>
+                </property>
+                <property name="topMargin">
+                    <number>0</number>
+                </property>
+                <property name="rightMargin">
+                    <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                    <number>0</number>
+                </property>
+                <item>
+                    <widget class="QWidget" name="editorToolBar" native="true">
+                        <layout class="QHBoxLayout" name="horizontalLayout">
+                            <property name="spacing">
+                                <number>0</number>
+                            </property>
+                            <property name="leftMargin">
+                                <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                                <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                                <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                                <number>0</number>
+                            </property>
+                            <item>
+                                <widget class="QPushButton" name="saveButton">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>保存</string>
+                                    </property>
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources/app.qrc">
+                                            <normaloff>:/assets/save.svg</normaloff>:/assets/save.svg
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="undoButton">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>撤销</string>
+                                    </property>
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources/app.qrc">
+                                            <normaloff>:/assets/undo.svg</normaloff>:/assets/undo.svg
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="redoButton">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>重做</string>
+                                    </property>
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources/app.qrc">
+                                            <normaloff>:/assets/redo.svg</normaloff>:/assets/redo.svg
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit" name="findBox">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>0</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>16777215</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>文泉驿等宽微米黑</family>
+                                            <pointsize>14</pointsize>
+                                        </font>
+                                    </property>
+                                    <property name="placeholderText">
+                                        <string>搜索..</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="regexButton">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>正则表达式</string>
+                                    </property>
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources/app.qrc">
+                                            <normaloff>:/assets/regex.svg</normaloff>:/assets/regex.svg
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="caseSensitiveButton">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>区分大小写</string>
+                                    </property>
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources/app.qrc">
+                                            <normaloff>:/assets/casesensitive.svg</normaloff>:/assets/casesensitive.svg
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit" name="replaceBox">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>0</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>16777215</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>文泉驿等宽微米黑</family>
+                                            <pointsize>14</pointsize>
+                                        </font>
+                                    </property>
+                                    <property name="placeholderText">
+                                        <string>替换..</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="replaceButton">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>替换</string>
+                                    </property>
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources/app.qrc">
+                                            <normaloff>:/assets/replace.svg</normaloff>:/assets/replace.svg
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="replaceAllButton">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>32</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>全部替换</string>
+                                    </property>
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources/app.qrc">
+                                            <normaloff>:/assets/replace_all.svg</normaloff>:/assets/replace_all.svg
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <spacer name="toolBarSpacer">
+                                    <property name="orientation">
+                                        <enum>Qt::Horizontal</enum>
+                                    </property>
+                                    <property name="sizeHint" stdset="0">
+                                        <size>
+                                            <width>40</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </item>
+                            <item>
+                                <widget class="QComboBox" name="modeChooser">
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>0</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                        <size>
+                                            <width>16777215</width>
+                                            <height>32</height>
+                                        </size>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>选择显示模式</string>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                </item>
+                <item>
+                    <widget class="QStackedWidget" name="editorStack">
+                        <widget class="QWidget" name="page"/>
+                        <widget class="QWidget" name="page_2"/>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+    </widget>
+    <resources>
+        <include location="../../resources/app.qrc"/>
+    </resources>
+    <connections/>
+</ui>

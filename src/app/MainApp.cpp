@@ -10,6 +10,8 @@
 #include <QtWidgets/QMessageBox>
 #include <QMouseEvent>
 #include "isaeutils.h"
+#include "filemanager.h"
+#include "editor.h"
 //#include <KTextEditor/Editor>
 //#include <KTextEditor/Document>
 //#include <KTextEditor/View>
@@ -52,6 +54,11 @@ MainApp::MainApp(QWidget *parent, QFlags<Qt::WindowType> flags)
     // 设置默认字体
     this->m_defaultFont.setFamily("WenQuanYi Micro Hei Mono");
 
+    // 设置动画方向
+    ui->teamAreaContent->setVertical(true);
+    ui->appsAreaContent->setVertical(true);
+    ui->workspaceAreaContent->setVertical(true);
+
     // 初始化外部窗口
     this->setExtendWindow();
 
@@ -72,6 +79,12 @@ MainApp::MainApp(QWidget *parent, QFlags<Qt::WindowType> flags)
     QObject::connect(ui->minimizedButton, SIGNAL(clicked()), this,
                      SLOT(showMinimized()));
     QObject::connect(ui->sideBarButton, SIGNAL(clicked()), ui->sideBarWidget,
+                     SLOT(doFold()));
+    QObject::connect(ui->appsAreaButton, SIGNAL(clicked()), ui->appsAreaContent,
+                     SLOT(doFold()));
+    QObject::connect(ui->workspaceAreaButton, SIGNAL(clicked()), ui->workspaceAreaContent,
+                     SLOT(doFold()));
+    QObject::connect(ui->teamAreaButton, SIGNAL(clicked()), ui->teamAreaContent,
                      SLOT(doFold()));
     QObject::connect(ui->sideBarWidget, SIGNAL(animationEnded()), this,
                      SLOT(doFoldClient()));
@@ -172,6 +185,18 @@ void MainApp::changeWindowStatus() {
     }
 }
 
+void MainApp::addPluginButton(QPushButton *button) {
+    ui->appsAreaLayout->addWidget(button);
+    button->setProperty("RxButtonStyle", "sideBar");
+    ui->appsAreaContent->setFixedHeight(ui->appsAreaLayout->count() * 40);
+    ui->appsAreaContent->setUnfoldValue(ui->appsAreaLayout->count() * 40);
+    button->setMinimumHeight(40);
+    button->setMaximumHeight(40);
+    button->setIconSize(QSize(24, 24));
+    QFont font("文泉驿等宽微米黑", 12);
+    button->setFont(font);
+}
+
 void MainApp::setStatusBarButton() {
     /* 初始化状态栏 */
     this->statusBar()->setContentsMargins(8, 0, 0, 0);
@@ -218,16 +243,16 @@ void MainApp::setClientFold(bool flag) {
 }
 
 bool MainApp::applySettings() {
-    qDebug() << "Triggered MainApp::applySettings()";
+    // qDebug() << "Triggered MainApp::applySettings()";
     this->m_settings->beginGroup("MainApp");
-    qDebug() << "Prepared image: " + this->m_settings->value("PresentWallpaper").toString();
+    // qDebug() << "Prepared image: " + this->m_settings->value("PresentWallpaper").toString();
     this->setBackground(QImage(this->m_settings->value("PresentWallpaper").toString()), this->m_settings->value("BlurValue").toInt());
     this->m_settings->endGroup();
     return true;
 }
 
 void MainApp::setBackground(const QImage &image, int blur) {
-    qDebug() << "Triggered MainApp::setBackground()";
+    // qDebug() << "Triggered MainApp::setBackground()";
     QImage res = blurred(image, image.rect(), blur);
     QPalette palette;
     QPixmap pixmap = QPixmap::fromImage(res);
@@ -281,11 +306,41 @@ void MainApp::setExtendWindow() {
 }
 
 void MainApp::getPlugins() {
+    // MainApp
     this->setPluginSettingWindow();
     QAction *act = this->ui->aboutButton->getmenu()->addAction(QString("关于"));
     QObject::connect(act, SIGNAL(triggered()), this, SLOT(showAboutWindow()));
     act = this->ui->aboutButton->getmenu()->addAction(QString("捐助"));
     QObject::connect(act, SIGNAL(triggered()), this, SLOT(showDonateWindow()));
+
+    // FileManager
+    auto *fileManager = new FileManager(this);
+    this->addPlugin(fileManager);
+
+    // Editor
+    auto *editor = new Editor(this);
+    this->addPlugin(editor);
+
+}
+
+void MainApp::addPlugin(ISAEPluginWidget *plugin) {
+    auto *menuButton = new MenuButton(this);
+    this->ui->menuLayout->addWidget(menuButton);
+    menuButton->setFixedHeight(32);
+    menuButton->setText(plugin->pluginName());
+    menuButton->getmenu()->addAction(QString("空菜单"));
+    auto *pluginDock = new ads::CDockWidget(plugin->pluginName());
+    pluginDock->setWidget(plugin);
+    this->m_plugins[plugin->pluginName()] = pluginDock;
+    ui->pluginWindowDockArea->addDockWidget(ads::RightDockWidgetArea, pluginDock);
+    this->m_settingDialog->addPage(plugin->pluginName(), plugin->settingWindow(), plugin);
+    auto *appButton = new QPushButton(QIcon(plugin->pluginIcon()), " " + plugin->pluginName(), this);
+    this->addPluginButton(appButton);
+    QObject::connect(appButton, &QPushButton::clicked, [=]() { showAppDock(pluginDock); });
+}
+
+void MainApp::showAppDock(ads::CDockWidget *plugin) {
+    plugin->show();
 }
 
 void MainApp::setPluginSettingWindow() {

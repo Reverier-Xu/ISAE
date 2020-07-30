@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>FileManager</class>
+    <widget class="QMainWindow" name="FileManager">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>278</width>
+                <height>844</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <layout class="QVBoxLayout" name="fileManagerLayout">
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <property name="leftMargin">
+                    <number>0</number>
+                </property>
+                <property name="topMargin">
+                    <number>0</number>
+                </property>
+                <property name="rightMargin">
+                    <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                    <number>0</number>
+                </property>
+                <item>
+                    <widget class="QSplitter" name="splitter">
+                        <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                        </property>
+                        <widget class="RxAnimatedWidget" name="fileExplorer" native="true">
+                            <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <layout class="QVBoxLayout" name="fileExplorerLayout">
+                                <property name="spacing">
+                                    <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                    <number>0</number>
+                                </property>
+                                <item>
+                                    <widget class="QWidget" name="fileExplorerTitleBar" native="true">
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>0</width>
+                                                <height>32</height>
+                                            </size>
+                                        </property>
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>16777215</width>
+                                                <height>32</height>
+                                            </size>
+                                        </property>
+                                        <layout class="QHBoxLayout" name="fileExplorerTitleBarLayout">
+                                            <property name="spacing">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="leftMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="topMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="rightMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="bottomMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <item>
+                                                <widget class="QPushButton" name="folderButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>0</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>16777215</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="font">
+                                                        <font>
+                                                            <family>文泉驿等宽微米黑</family>
+                                                            <pointsize>12</pointsize>
+                                                        </font>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>文件夹</string>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                            <item>
+                                                <widget class="QPushButton" name="addFileButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string/>
+                                                    </property>
+                                                    <property name="icon">
+                                                        <iconset resource="../../resources/app.qrc">
+                                                            <normaloff>:/assets/new_file.svg</normaloff>
+                                                            :/assets/new_file.svg
+                                                        </iconset>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                            <item>
+                                                <widget class="QPushButton" name="addFolderButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string/>
+                                                    </property>
+                                                    <property name="icon">
+                                                        <iconset resource="../../resources/app.qrc">
+                                                            <normaloff>:/assets/new_folder.svg</normaloff>
+                                                            :/assets/new_folder.svg
+                                                        </iconset>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                        </layout>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="QTreeView" name="fileExplorerBox"/>
+                                </item>
+                            </layout>
+                        </widget>
+                        <widget class="QWidget" name="search" native="true">
+                            <layout class="QVBoxLayout" name="searchLayout">
+                                <property name="spacing">
+                                    <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                    <number>0</number>
+                                </property>
+                                <item>
+                                    <widget class="QWidget" name="searchTitleBar" native="true">
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>0</width>
+                                                <height>32</height>
+                                            </size>
+                                        </property>
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>16777215</width>
+                                                <height>32</height>
+                                            </size>
+                                        </property>
+                                        <layout class="QHBoxLayout" name="searchTitleBarLayout">
+                                            <property name="spacing">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="leftMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="topMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="rightMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="bottomMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <item>
+                                                <widget class="QPushButton" name="searchAreaButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>0</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>16777215</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="font">
+                                                        <font>
+                                                            <family>文泉驿等宽微米黑</family>
+                                                            <pointsize>12</pointsize>
+                                                        </font>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>搜索</string>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                            <item>
+                                                <widget class="QPushButton" name="reloadSearchButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string/>
+                                                    </property>
+                                                    <property name="icon">
+                                                        <iconset resource="../../resources/app.qrc">
+                                                            <normaloff>:/assets/reload.svg</normaloff>
+                                                            :/assets/reload.svg
+                                                        </iconset>
+                                                    </property>
+                                                    <property name="iconSize">
+                                                        <size>
+                                                            <width>16</width>
+                                                            <height>16</height>
+                                                        </size>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                            <item>
+                                                <widget class="QPushButton" name="clearSearchButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string/>
+                                                    </property>
+                                                    <property name="icon">
+                                                        <iconset resource="../../resources/app.qrc">
+                                                            <normaloff>:/assets/delete.svg</normaloff>
+                                                            :/assets/delete.svg
+                                                        </iconset>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                        </layout>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="RxAnimatedWidget" name="searchAreaWidget" native="true">
+                                        <property name="sizePolicy">
+                                            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
+                                        <layout class="QVBoxLayout" name="searchAreaLayout">
+                                            <property name="spacing">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="leftMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="topMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="rightMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="bottomMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <item>
+                                                <widget class="Line" name="line">
+                                                    <property name="orientation">
+                                                        <enum>Qt::Horizontal</enum>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                            <item>
+                                                <widget class="QWidget" name="searchBar" native="true">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>0</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>16777215</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <layout class="QHBoxLayout" name="horizontalLayout">
+                                                        <property name="spacing">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="leftMargin">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="topMargin">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="rightMargin">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <property name="bottomMargin">
+                                                            <number>0</number>
+                                                        </property>
+                                                        <item>
+                                                            <widget class="QLineEdit" name="searchBox">
+                                                                <property name="minimumSize">
+                                                                    <size>
+                                                                        <width>0</width>
+                                                                        <height>32</height>
+                                                                    </size>
+                                                                </property>
+                                                                <property name="maximumSize">
+                                                                    <size>
+                                                                        <width>16777215</width>
+                                                                        <height>32</height>
+                                                                    </size>
+                                                                </property>
+                                                                <property name="font">
+                                                                    <font>
+                                                                        <family>文泉驿等宽微米黑</family>
+                                                                        <pointsize>12</pointsize>
+                                                                    </font>
+                                                                </property>
+                                                                <property name="placeholderText">
+                                                                    <string>搜索..</string>
+                                                                </property>
+                                                            </widget>
+                                                        </item>
+                                                        <item>
+                                                            <widget class="QPushButton" name="RegexButton">
+                                                                <property name="minimumSize">
+                                                                    <size>
+                                                                        <width>32</width>
+                                                                        <height>32</height>
+                                                                    </size>
+                                                                </property>
+                                                                <property name="maximumSize">
+                                                                    <size>
+                                                                        <width>32</width>
+                                                                        <height>32</height>
+                                                                    </size>
+                                                                </property>
+                                                                <property name="font">
+                                                                    <font>
+                                                                        <family>文泉驿等宽微米黑</family>
+                                                                        <pointsize>12</pointsize>
+                                                                    </font>
+                                                                </property>
+                                                                <property name="text">
+                                                                    <string/>
+                                                                </property>
+                                                                <property name="icon">
+                                                                    <iconset resource="../../resources/app.qrc">
+                                                                        <normaloff>:/assets/regex.svg</normaloff>
+                                                                        :/assets/regex.svg
+                                                                    </iconset>
+                                                                </property>
+                                                            </widget>
+                                                        </item>
+                                                        <item>
+                                                            <widget class="QPushButton" name="CaseSensitiveButton">
+                                                                <property name="minimumSize">
+                                                                    <size>
+                                                                        <width>32</width>
+                                                                        <height>32</height>
+                                                                    </size>
+                                                                </property>
+                                                                <property name="maximumSize">
+                                                                    <size>
+                                                                        <width>32</width>
+                                                                        <height>32</height>
+                                                                    </size>
+                                                                </property>
+                                                                <property name="text">
+                                                                    <string/>
+                                                                </property>
+                                                                <property name="icon">
+                                                                    <iconset resource="../../resources/app.qrc">
+                                                                        <normaloff>
+                                                                            :/assets/casesensitive.svg
+                                                                        </normaloff>
+                                                                        :/assets/casesensitive.svg
+                                                                    </iconset>
+                                                                </property>
+                                                            </widget>
+                                                        </item>
+                                                    </layout>
+                                                </widget>
+                                            </item>
+                                            <item>
+                                                <widget class="QListWidget" name="searchResultList">
+                                                    <property name="sizePolicy">
+                                                        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                                            <horstretch>0</horstretch>
+                                                            <verstretch>0</verstretch>
+                                                        </sizepolicy>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                        </layout>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                        <widget class="QWidget" name="tempStack" native="true">
+                            <layout class="QVBoxLayout" name="verticalLayout_2">
+                                <property name="spacing">
+                                    <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                    <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                    <number>0</number>
+                                </property>
+                                <item>
+                                    <widget class="QWidget" name="tempStackTitleBar" native="true">
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>0</width>
+                                                <height>32</height>
+                                            </size>
+                                        </property>
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>16777215</width>
+                                                <height>32</height>
+                                            </size>
+                                        </property>
+                                        <layout class="QHBoxLayout" name="tempStackTitleBarLayout">
+                                            <property name="spacing">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="leftMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="topMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="rightMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="bottomMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <item>
+                                                <widget class="QPushButton" name="tempStackButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>0</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>16777215</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="font">
+                                                        <font>
+                                                            <family>文泉驿等宽微米黑</family>
+                                                            <pointsize>12</pointsize>
+                                                        </font>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>暂存池</string>
+                                                    </property>
+                                                    <property name="flat">
+                                                        <bool>false</bool>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                            <item>
+                                                <widget class="QPushButton" name="newTempDataButton">
+                                                    <property name="minimumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="maximumSize">
+                                                        <size>
+                                                            <width>32</width>
+                                                            <height>32</height>
+                                                        </size>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string/>
+                                                    </property>
+                                                    <property name="icon">
+                                                        <iconset resource="../../resources/app.qrc">
+                                                            <normaloff>:/assets/new_file.svg</normaloff>
+                                                            :/assets/new_file.svg
+                                                        </iconset>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                        </layout>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="RxAnimatedWidget" name="tempStackArea" native="true">
+                                        <layout class="QVBoxLayout" name="temeStackAreaLayout">
+                                            <property name="spacing">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="leftMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="topMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="rightMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="bottomMargin">
+                                                <number>0</number>
+                                            </property>
+                                            <item>
+                                                <widget class="QListWidget" name="tempStackList">
+                                                    <property name="sizePolicy">
+                                                        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                                                            <horstretch>0</horstretch>
+                                                            <verstretch>0</verstretch>
+                                                        </sizepolicy>
+                                                    </property>
+                                                    <property name="frameShape">
+                                                        <enum>QFrame::StyledPanel</enum>
+                                                    </property>
+                                                </widget>
+                                            </item>
+                                        </layout>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+    </widget>
+    <customwidgets>
+        <customwidget>
+            <class>RxAnimatedWidget</class>
+            <extends>QWidget</extends>
+            <header location="global">RxAnimatedWidget.h</header>
+            <container>1</container>
+        </customwidget>
+    </customwidgets>
+    <resources>
+        <include location="../../resources/app.qrc"/>
+    </resources>
+    <connections/>
+</ui>
