@@ -17,106 +17,106 @@
 #include "Serializable.hpp"
 #include "memory.hpp"
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-class Connection;
-class ConnectionState;
-class NodeGraphicsObject;
-class NodeDataModel;
+    class Connection;
 
-class NODE_EDITOR_PUBLIC Node
-  : public QObject
-  , public Serializable
-{
-  Q_OBJECT
+    class ConnectionState;
 
-public:
+    class NodeGraphicsObject;
 
-  /// NodeDataModel should be an rvalue and is moved into the Node
-  Node(std::unique_ptr<NodeDataModel> && dataModel);
+    class NodeDataModel;
 
-  virtual
-  ~Node();
+    class NODE_EDITOR_PUBLIC Node
+            : public QObject, public Serializable {
+    Q_OBJECT
 
-public:
+    public:
 
-  QJsonObject
-  save() const override;
+        /// NodeDataModel should be an rvalue and is moved into the Node
+        Node(std::unique_ptr<NodeDataModel> &&dataModel);
 
-  void
-  restore(QJsonObject const &json) override;
+        virtual
+        ~Node();
 
-public:
+    public:
 
-  QUuid
-  id() const;
+        QJsonObject
+        save() const override;
 
-  void reactToPossibleConnection(PortType,
-                                 NodeDataType const &,
-                                 QPointF const & scenePoint);
+        void
+        restore(QJsonObject const &json) override;
 
-  void
-  resetReactionToConnection();
+    public:
 
-public:
+        QUuid
+        id() const;
 
-  NodeGraphicsObject const &
-  nodeGraphicsObject() const;
+        void reactToPossibleConnection(PortType,
+                                       NodeDataType const &,
+                                       QPointF const &scenePoint);
 
-  NodeGraphicsObject &
-  nodeGraphicsObject();
+        void
+        resetReactionToConnection();
 
-  void
-  setGraphicsObject(std::unique_ptr<NodeGraphicsObject>&& graphics);
+    public:
 
-  NodeGeometry&
-  nodeGeometry();
+        NodeGraphicsObject const &
+        nodeGraphicsObject() const;
 
-  NodeGeometry const&
-  nodeGeometry() const;
+        NodeGraphicsObject &
+        nodeGraphicsObject();
 
-  NodeState const &
-  nodeState() const;
+        void
+        setGraphicsObject(std::unique_ptr<NodeGraphicsObject> &&graphics);
 
-  NodeState &
-  nodeState();
+        NodeGeometry &
+        nodeGeometry();
 
-  NodeDataModel*
-  nodeDataModel() const;
+        NodeGeometry const &
+        nodeGeometry() const;
 
-public Q_SLOTS: // data propagation
+        NodeState const &
+        nodeState() const;
 
-  /// Propagates incoming data to the underlying model.
-  void
-  propagateData(std::shared_ptr<NodeData> nodeData,
-                PortIndex inPortIndex) const;
+        NodeState &
+        nodeState();
 
-  /// Fetches data from model's OUT #index port
-  /// and propagates it to the connection
-  void
-  onDataUpdated(PortIndex index);
+        NodeDataModel *
+        nodeDataModel() const;
 
-  /// update the graphic part if the size of the embeddedwidget changes
-  void
-  onNodeSizeUpdated();
+    public Q_SLOTS: // data propagation
 
-private:
+        /// Propagates incoming data to the underlying model.
+        void
+        propagateData(std::shared_ptr<NodeData> nodeData,
+                      PortIndex inPortIndex) const;
 
-  // addressing
+        /// Fetches data from model's OUT #index port
+        /// and propagates it to the connection
+        void
+        onDataUpdated(PortIndex index);
 
-  QUuid _uid;
+        /// update the graphic part if the size of the embeddedwidget changes
+        void
+        onNodeSizeUpdated();
 
-  // data
+    private:
 
-  std::unique_ptr<NodeDataModel> _nodeDataModel;
+        // addressing
 
-  NodeState _nodeState;
+        QUuid _uid;
 
-  // painting
+        // data
 
-  NodeGeometry _nodeGeometry;
+        std::unique_ptr<NodeDataModel> _nodeDataModel;
 
-  std::unique_ptr<NodeGraphicsObject> _nodeGraphicsObject;
-};
+        NodeState _nodeState;
+
+        // painting
+
+        NodeGeometry _nodeGeometry;
+
+        std::unique_ptr<NodeGraphicsObject> _nodeGraphicsObject;
+    };
 }

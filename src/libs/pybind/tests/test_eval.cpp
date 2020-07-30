@@ -24,9 +24,9 @@ TEST_SUBMODULE(eval_, m) {
 
         // Regular string literal
         py::exec(
-            "message = 'Hello World!'\n"
-            "x = call_test()",
-            global, local
+                "message = 'Hello World!'\n"
+                "x = call_test()",
+                global, local
         );
 
         // Multi-line raw string literal

@@ -13,9 +13,9 @@ def test_function_signatures(doc):
     assert doc(m.args_function) == "args_function(*args) -> tuple"
     assert doc(m.args_kwargs_function) == "args_kwargs_function(*args, **kwargs) -> tuple"
     assert doc(m.KWClass.foo0) == \
-        "foo0(self: m.kwargs_and_defaults.KWClass, arg0: int, arg1: float) -> None"
+           "foo0(self: m.kwargs_and_defaults.KWClass, arg0: int, arg1: float) -> None"
     assert doc(m.KWClass.foo1) == \
-        "foo1(self: m.kwargs_and_defaults.KWClass, x: int, y: float) -> None"
+           "foo1(self: m.kwargs_and_defaults.KWClass, x: int, y: float) -> None"
 
 
 def test_named_arguments(msg):
@@ -170,7 +170,7 @@ def test_args_refcount():
     assert refcount(myval) == expected
 
     assert m.args_kwargs_function(7, 8, myval, a=1, b=myval) == \
-        ((7, 8, myval), {"a": 1, "b": myval})
+           ((7, 8, myval), {"a": 1, "b": myval})
     assert refcount(myval) == expected
 
     exp3 = refcount(myval, myval, myval)

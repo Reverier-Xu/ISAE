@@ -143,7 +143,7 @@ def test_mixed_local_global():
     a.append(cm.get_mixed_lg(12))
 
     assert [x.get() for x in a] == \
-        [101, 1002, 103, 1004, 105, 1006, 207, 2008, 109, 1010, 211, 2012]
+           [101, 1002, 103, 1004, 105, 1006, 207, 2008, 109, 1010, 211, 2012]
 
 
 def test_internal_locals_differ():

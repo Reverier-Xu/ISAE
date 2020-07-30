@@ -12,7 +12,7 @@
 MainAppSettingPage::MainAppSettingPage(QWidget *parent) :
         ISAEPluginSettingWidget(parent), ui(new Ui::MainAppSettingPage) {
     ui->setupUi(this);
-    this->m_pluginWidget = (ISAEPluginWidget*)parent;
+    this->m_pluginWidget = (ISAEPluginWidget *) parent;
     this->ui->backgroundImageChooser->setDragEnabled(false);
     this->ui->backgroundImageChooser->setIconSize(QSize(240, 135));
     this->ui->backgroundImageChooser->setSpacing(10);

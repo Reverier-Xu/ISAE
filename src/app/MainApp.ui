@@ -706,7 +706,7 @@
             </font>
            </property>
            <property name="text">
-            <string> 状态良好</string>
+            <string>状态良好</string>
            </property>
            <property name="icon">
             <iconset resource="../resources/app.qrc">

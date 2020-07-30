@@ -77,7 +77,7 @@ def test_alive_gc(capture):
     p.addChildKeepAlive(m.Child())
     assert ConstructorStats.detail_reg_inst() == n_inst + 2
     lst = [p]
-    lst.append(lst)   # creates a circular reference
+    lst.append(lst)  # creates a circular reference
     with capture:
         del p, lst
         assert ConstructorStats.detail_reg_inst() == n_inst
@@ -96,7 +96,7 @@ def test_alive_gc_derived(capture):
     p.addChildKeepAlive(m.Child())
     assert ConstructorStats.detail_reg_inst() == n_inst + 2
     lst = [p]
-    lst.append(lst)   # creates a circular reference
+    lst.append(lst)  # creates a circular reference
     with capture:
         del p, lst
         assert ConstructorStats.detail_reg_inst() == n_inst
@@ -118,7 +118,7 @@ def test_alive_gc_multi_derived(capture):
     # +3 rather than +2 because Derived corresponds to two registered instances
     assert ConstructorStats.detail_reg_inst() == n_inst + 3
     lst = [p]
-    lst.append(lst)   # creates a circular reference
+    lst.append(lst)  # creates a circular reference
     with capture:
         del p, lst
         assert ConstructorStats.detail_reg_inst() == n_inst

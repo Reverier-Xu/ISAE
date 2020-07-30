@@ -41,7 +41,6 @@ def test_bound_method_callback():
 
 
 def test_keyword_args_and_generalized_unpacking():
-
     def f(*args, **kwargs):
         return args, kwargs
 

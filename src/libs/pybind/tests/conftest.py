@@ -40,6 +40,7 @@ def _make_explanation(a, b):
 
 class Output(object):
     """Basic output post-processing and comparison"""
+
     def __init__(self, string):
         self.string = string
         self.explanation = []
@@ -60,6 +61,7 @@ class Output(object):
 
 class Unordered(Output):
     """Custom comparison for output without strict line ordering"""
+
     def __eq__(self, other):
         a = _split_and_sort(self.string)
         b = _split_and_sort(other)

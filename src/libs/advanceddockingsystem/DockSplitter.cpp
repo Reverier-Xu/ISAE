@@ -34,73 +34,63 @@
 
 #include "DockAreaWidget.h"
 
-namespace ads
-{
+namespace ads {
 /**
  * Private dock splitter data
  */
-struct DockSplitterPrivate
-{
-	CDockSplitter* _this;
-	int VisibleContentCount = 0;
+    struct DockSplitterPrivate {
+        CDockSplitter *_this;
+        int VisibleContentCount = 0;
 
-	DockSplitterPrivate(CDockSplitter* _public) : _this(_public) {}
-};
+        DockSplitterPrivate(CDockSplitter *_public) : _this(_public) { }
+    };
 
 //============================================================================
-CDockSplitter::CDockSplitter(QWidget *parent)
-	: QSplitter(parent),
-	  d(new DockSplitterPrivate(this))
-{
-	setProperty("ads-splitter", true);
-	setChildrenCollapsible(false);
-}
+    CDockSplitter::CDockSplitter(QWidget *parent)
+            : QSplitter(parent),
+              d(new DockSplitterPrivate(this)) {
+        setProperty("ads-splitter", true);
+        setChildrenCollapsible(false);
+    }
 
 
 //============================================================================
-CDockSplitter::CDockSplitter(Qt::Orientation orientation, QWidget *parent)
-	: QSplitter(orientation, parent),
-	  d(new DockSplitterPrivate(this))
-{
+    CDockSplitter::CDockSplitter(Qt::Orientation orientation, QWidget *parent)
+            : QSplitter(orientation, parent),
+              d(new DockSplitterPrivate(this)) {
 
-}
+    }
 
 //============================================================================
-CDockSplitter::~CDockSplitter()
-{
-    ADS_PRINT("~CDockSplitter");
-	delete d;
-}
+    CDockSplitter::~CDockSplitter() {
+        ADS_PRINT("~CDockSplitter");
+        delete d;
+    }
 
 
 //============================================================================
-bool CDockSplitter::hasVisibleContent() const
-{
-	// TODO Cache or precalculate this to speed up
-	for (int i = 0; i < count(); ++i)
-	{
-		if (!widget(i)->isHidden())
-		{
-			return true;
-		}
-	}
+    bool CDockSplitter::hasVisibleContent() const {
+        // TODO Cache or precalculate this to speed up
+        for (int i = 0; i < count(); ++i) {
+            if (!widget(i)->isHidden()) {
+                return true;
+            }
+        }
 
-	return false;
-}
+        return false;
+    }
 
 
 //============================================================================
-QWidget* CDockSplitter::firstWidget() const
-{
-	return (count() > 0) ? widget(0) : nullptr;
-}
+    QWidget *CDockSplitter::firstWidget() const {
+        return (count() > 0) ? widget(0) : nullptr;
+    }
 
 
 //============================================================================
-QWidget* CDockSplitter::lastWidget() const
-{
-	return (count() > 0) ? widget(count() - 1) : nullptr;
-}
+    QWidget *CDockSplitter::lastWidget() const {
+        return (count() > 0) ? widget(count() - 1) : nullptr;
+    }
 
 } // namespace ads
 

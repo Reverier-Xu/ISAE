@@ -401,33 +401,33 @@ def test_initializer_list():
 def test_array_resize(msg):
     a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9], dtype='float64')
     m.array_reshape2(a)
-    assert(a.size == 9)
-    assert(np.all(a == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+    assert (a.size == 9)
+    assert (np.all(a == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
 
     # total size change should succced with refcheck off
     m.array_resize3(a, 4, False)
-    assert(a.size == 64)
+    assert (a.size == 64)
     # ... and fail with refcheck on
     try:
         m.array_resize3(a, 3, True)
     except ValueError as e:
-        assert(str(e).startswith("cannot resize an array"))
+        assert (str(e).startswith("cannot resize an array"))
     # transposed array doesn't own data
     b = a.transpose()
     try:
         m.array_resize3(b, 3, False)
     except ValueError as e:
-        assert(str(e).startswith("cannot resize this array: it does not own its data"))
+        assert (str(e).startswith("cannot resize this array: it does not own its data"))
     # ... but reshape should be fine
     m.array_reshape2(b)
-    assert(b.shape == (8, 8))
+    assert (b.shape == (8, 8))
 
 
 @pytest.unsupported_on_pypy
 def test_array_create_and_resize(msg):
     a = m.create_and_resize(2)
-    assert(a.size == 4)
-    assert(np.all(a == 42.))
+    assert (a.size == 4)
+    assert (np.all(a == 42.))
 
 
 @pytest.unsupported_on_py2

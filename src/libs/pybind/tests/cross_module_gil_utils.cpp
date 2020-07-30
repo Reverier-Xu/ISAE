@@ -19,27 +19,28 @@
 
 namespace {
 
-namespace py = pybind11;
-void gil_acquire() { py::gil_scoped_acquire gil; }
+    namespace py = pybind11;
 
-constexpr char kModuleName[] = "cross_module_gil_utils";
+    void gil_acquire() { py::gil_scoped_acquire gil; }
+
+    constexpr char kModuleName[] = "cross_module_gil_utils";
 
 #if PY_MAJOR_VERSION >= 3
-struct PyModuleDef moduledef = {
-    PyModuleDef_HEAD_INIT,
-    kModuleName,
-    NULL,
-    0,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-};
+    struct PyModuleDef moduledef = {
+        PyModuleDef_HEAD_INIT,
+        kModuleName,
+        NULL,
+        0,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL
+    };
 #else
-PyMethodDef module_methods[] = {
-    {NULL, NULL, 0, NULL}
-};
+    PyMethodDef module_methods[] = {
+            {NULL, NULL, 0, NULL}
+    };
 #endif
 
 }  // namespace
@@ -52,19 +53,19 @@ void initcross_module_gil_utils()
 #endif
 {
 
-    PyObject* m =
+    PyObject *m =
 #if PY_MAJOR_VERSION >= 3
-        PyModule_Create(&moduledef);
+            PyModule_Create(&moduledef);
 #else
-        Py_InitModule(kModuleName, module_methods);
+            Py_InitModule(kModuleName, module_methods);
 #endif
 
     if (m != NULL) {
         static_assert(
-            sizeof(&gil_acquire) == sizeof(void*),
-            "Function pointer must have the same size as void*");
+                sizeof(&gil_acquire) == sizeof(void *),
+                "Function pointer must have the same size as void*");
         PyModule_AddObject(m, "gil_acquire_funcaddr",
-                           PyLong_FromVoidPtr(reinterpret_cast<void*>(&gil_acquire)));
+                           PyLong_FromVoidPtr(reinterpret_cast<void *>(&gil_acquire)));
     }
 
 #if PY_MAJOR_VERSION >= 3

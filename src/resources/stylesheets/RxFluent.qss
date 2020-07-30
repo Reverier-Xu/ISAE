@@ -259,6 +259,7 @@ QFrame#pluginWindowDockArea {
 
 ads--CDockContainerWidget {
     background-color: rgb(34, 35, 36);
+    border: 0px solid black;
 }
 
 ads--CDockContainerWidget QSplitter::handle {
@@ -267,7 +268,7 @@ ads--CDockContainerWidget QSplitter::handle {
 
 ads--CDockAreaWidget {
     background-color: transparent;
-    border          : 1px solid black;
+    border          : 1px solid rgb(80, 80, 80);
     border-radius   : 2px;
 }
 
@@ -293,6 +294,7 @@ ads--CDockWidgetTab[activeTab="true"] QLabel {
 
 ads--CDockWidget {
     background-color: rgb(24, 25, 26);
+    border: 0px solid black;
 }
 
 ads--CTitleBarButton {
@@ -360,7 +362,7 @@ QScrollArea#dockWidgetScrollArea {
 
 ads--CDockAreaTitleBar {
     background   : rgb(34, 35, 36);
-    border-bottom: 1px solid rgb(80, 80, 80);
+    border-bottom: 1px solid rgb(60, 60, 60);
 }
 
 ads--CDockAreaTabBar {
@@ -451,4 +453,29 @@ QComboBox::down-arrow {
     border-image: url(:/assets/down.svg);
     width: 16px;
     height: 16px;
+}
+QTreeView {
+    alternate-background-color: transparent;
+    show-decoration-selected: 0;
+}
+QTreeView::item {
+    border: 1px solid transparent;
+    height: 32px;
+}
+
+QTreeView::item:hover {
+    background: rgba(100, 100, 100, 20%);
+    border: 1px solid rgba(80, 80, 80);
+}
+
+QTreeView::item:selected {
+    border: 1px solid rgba(48, 70, 250, 30%);
+}
+
+QTreeView::item:selected:active{
+    background: rgba(100, 100, 100, 30%);
+}
+
+QTreeView::item:selected:!active {
+    background: rgba(100, 100, 100, 30%);
 }

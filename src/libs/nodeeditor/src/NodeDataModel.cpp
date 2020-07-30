@@ -7,35 +7,31 @@ using QtNodes::NodeStyle;
 
 NodeDataModel::
 NodeDataModel()
-  : _nodeStyle(StyleCollection::nodeStyle())
-{
-  // Derived classes can initialize specific style here
+        : _nodeStyle(StyleCollection::nodeStyle()) {
+    // Derived classes can initialize specific style here
 }
 
 
 QJsonObject
 NodeDataModel::
-save() const
-{
-  QJsonObject modelJson;
+save() const {
+    QJsonObject modelJson;
 
-  modelJson["name"] = name();
+    modelJson["name"] = name();
 
-  return modelJson;
+    return modelJson;
 }
 
 
-NodeStyle const&
+NodeStyle const &
 NodeDataModel::
-nodeStyle() const
-{
-  return _nodeStyle;
+nodeStyle() const {
+    return _nodeStyle;
 }
 
 
 void
 NodeDataModel::
-setNodeStyle(NodeStyle const& style)
-{
-  _nodeStyle = style;
+setNodeStyle(NodeStyle const &style) {
+    _nodeStyle = style;
 }

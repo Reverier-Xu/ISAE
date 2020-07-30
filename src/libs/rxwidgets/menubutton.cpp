@@ -2,6 +2,7 @@
 
 #include <QMenu>
 #include <QRect>
+
 MenuButton::MenuButton(QWidget *parent) : QToolButton(parent) {
     menu = new QMenu(this);
 

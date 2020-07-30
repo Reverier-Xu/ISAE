@@ -102,11 +102,11 @@ def test_inheritance(msg):
 
 
 def test_inheritance_init(msg):
-
     # Single base
     class Python(m.Pet):
         def __init__(self):
             pass
+
     with pytest.raises(TypeError) as exc_info:
         Python()
     expected = ["m.class_.Pet.__init__() must be called when overriding __init__",
@@ -200,8 +200,8 @@ def test_operator_new_delete(capture):
         c = m.AliasedHasOpNewDelSize()
         c2 = SubAliased()
     assert capture == (
-        "C new " + sz_noalias + "\n" +
-        "C new " + sz_alias + "\n"
+            "C new " + sz_noalias + "\n" +
+            "C new " + sz_alias + "\n"
     )
 
     with capture:
@@ -223,8 +223,8 @@ def test_operator_new_delete(capture):
         del c2
         pytest.gc_collect()
     assert capture == (
-        "C delete " + sz_noalias + "\n" +
-        "C delete " + sz_alias + "\n"
+            "C delete " + sz_noalias + "\n" +
+            "C delete " + sz_alias + "\n"
     )
 
 

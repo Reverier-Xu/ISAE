@@ -8,7 +8,7 @@
 #  define NODE_EDITOR_IMPORT __declspec(dllimport)
 #  define NODE_EDITOR_LOCAL
 #elif                                                           \
-  NODE_EDITOR_COMPILER_GNU_VERSION_MAJOR >= 4                         || \
+  NODE_EDITOR_COMPILER_GNU_VERSION_MAJOR >= 4 || \
   defined (NODE_EDITOR_COMPILER_CLANG)
 #  define NODE_EDITOR_EXPORT __attribute__((visibility("default")))
 #  define NODE_EDITOR_IMPORT __attribute__((visibility("default")))

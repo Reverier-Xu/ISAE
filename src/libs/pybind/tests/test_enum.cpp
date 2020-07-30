@@ -17,10 +17,10 @@ TEST_SUBMODULE(enums, m) {
         EThree
     };
     py::enum_<UnscopedEnum>(m, "UnscopedEnum", py::arithmetic(), "An unscoped enumeration")
-        .value("EOne", EOne, "Docstring for EOne")
-        .value("ETwo", ETwo, "Docstring for ETwo")
-        .value("EThree", EThree, "Docstring for EThree")
-        .export_values();
+            .value("EOne", EOne, "Docstring for EOne")
+            .value("ETwo", ETwo, "Docstring for ETwo")
+            .value("EThree", EThree, "Docstring for EThree")
+            .export_values();
 
     // test_scoped_enum
     enum class ScopedEnum {
@@ -28,8 +28,8 @@ TEST_SUBMODULE(enums, m) {
         Three
     };
     py::enum_<ScopedEnum>(m, "ScopedEnum", py::arithmetic())
-        .value("Two", ScopedEnum::Two)
-        .value("Three", ScopedEnum::Three);
+            .value("Two", ScopedEnum::Two)
+            .value("Three", ScopedEnum::Three);
 
     m.def("test_scoped_enum", [](ScopedEnum z) {
         return "ScopedEnum::" + std::string(z == ScopedEnum::Two ? "Two" : "Three");
@@ -42,10 +42,10 @@ TEST_SUBMODULE(enums, m) {
         Execute = 1
     };
     py::enum_<Flags>(m, "Flags", py::arithmetic())
-        .value("Read", Flags::Read)
-        .value("Write", Flags::Write)
-        .value("Execute", Flags::Execute)
-        .export_values();
+            .value("Read", Flags::Read)
+            .value("Write", Flags::Write)
+            .value("Execute", Flags::Execute)
+            .export_values();
 
     // test_implicit_conversion
     class ClassWithUnscopedEnum {
@@ -59,12 +59,12 @@ TEST_SUBMODULE(enums, m) {
             return mode;
         }
     };
-    py::class_<ClassWithUnscopedEnum> exenum_class(m, "ClassWithUnscopedEnum");
+    py::class_ <ClassWithUnscopedEnum> exenum_class(m, "ClassWithUnscopedEnum");
     exenum_class.def_static("test_function", &ClassWithUnscopedEnum::test_function);
     py::enum_<ClassWithUnscopedEnum::EMode>(exenum_class, "EMode")
-        .value("EFirstMode", ClassWithUnscopedEnum::EFirstMode)
-        .value("ESecondMode", ClassWithUnscopedEnum::ESecondMode)
-        .export_values();
+            .value("EFirstMode", ClassWithUnscopedEnum::EFirstMode)
+            .value("ESecondMode", ClassWithUnscopedEnum::ESecondMode)
+            .export_values();
 
     // test_enum_to_int
     m.def("test_enum_to_int", [](int) { });
@@ -72,16 +72,16 @@ TEST_SUBMODULE(enums, m) {
     m.def("test_enum_to_long_long", [](long long) { });
 
     // test_duplicate_enum_name
-    enum SimpleEnum
-    {
+    enum SimpleEnum {
         ONE, TWO, THREE
     };
 
     m.def("register_bad_enum", [m]() {
         py::enum_<SimpleEnum>(m, "SimpleEnum")
-            .value("ONE", SimpleEnum::ONE)          //NOTE: all value function calls are called with the same first parameter value
-            .value("ONE", SimpleEnum::TWO)
-            .value("ONE", SimpleEnum::THREE)
-            .export_values();
+                .value("ONE",
+                       SimpleEnum::ONE)          //NOTE: all value function calls are called with the same first parameter value
+                .value("ONE", SimpleEnum::TWO)
+                .value("ONE", SimpleEnum::THREE)
+                .export_values();
     });
 }

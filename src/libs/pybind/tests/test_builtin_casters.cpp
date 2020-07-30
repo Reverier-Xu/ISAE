@@ -21,26 +21,31 @@ TEST_SUBMODULE(builtin_casters, m) {
 
     // test_unicode_conversion
     // Some test characters in utf16 and utf32 encodings.  The last one (the 𝐀) contains a null byte
-    char32_t a32 = 0x61 /*a*/, z32 = 0x7a /*z*/, ib32 = 0x203d /*‽*/, cake32 = 0x1f382 /*🎂*/,              mathbfA32 = 0x1d400 /*𝐀*/;
-    char16_t b16 = 0x62 /*b*/, z16 = 0x7a,       ib16 = 0x203d,       cake16_1 = 0xd83c, cake16_2 = 0xdf82, mathbfA16_1 = 0xd835, mathbfA16_2 = 0xdc00;
+    char32_t a32 = 0x61 /*a*/, z32 = 0x7a /*z*/, ib32 = 0x203d /*‽*/, cake32 = 0x1f382 /*🎂*/, mathbfA32 = 0x1d400 /*𝐀*/;
+    char16_t b16 = 0x62 /*b*/, z16 = 0x7a, ib16 = 0x203d, cake16_1 = 0xd83c, cake16_2 = 0xdf82, mathbfA16_1 = 0xd835, mathbfA16_2 = 0xdc00;
     std::wstring wstr;
     wstr.push_back(0x61); // a
     wstr.push_back(0x2e18); // ⸘
-    if (sizeof(wchar_t) == 2) { wstr.push_back(mathbfA16_1); wstr.push_back(mathbfA16_2); } // 𝐀, utf16
+    if (sizeof(wchar_t) == 2) {
+        wstr.push_back(mathbfA16_1);
+        wstr.push_back(mathbfA16_2);
+    } // 𝐀, utf16
     else { wstr.push_back((wchar_t) mathbfA32); } // 𝐀, utf32
     wstr.push_back(0x7a); // z
 
-    m.def("good_utf8_string", []() { return std::string((const char*)u8"Say utf8\u203d \U0001f382 \U0001d400"); }); // Say utf8‽ 🎂 𝐀
-    m.def("good_utf16_string", [=]() { return std::u16string({ b16, ib16, cake16_1, cake16_2, mathbfA16_1, mathbfA16_2, z16 }); }); // b‽🎂𝐀z
-    m.def("good_utf32_string", [=]() { return std::u32string({ a32, mathbfA32, cake32, ib32, z32 }); }); // a𝐀🎂‽z
+    m.def("good_utf8_string",
+          []() { return std::string((const char *) u8"Say utf8\u203d \U0001f382 \U0001d400"); }); // Say utf8‽ 🎂 𝐀
+    m.def("good_utf16_string",
+          [=]() { return std::u16string({b16, ib16, cake16_1, cake16_2, mathbfA16_1, mathbfA16_2, z16}); }); // b‽🎂𝐀z
+    m.def("good_utf32_string", [=]() { return std::u32string({a32, mathbfA32, cake32, ib32, z32}); }); // a𝐀🎂‽z
     m.def("good_wchar_string", [=]() { return wstr; }); // a‽𝐀z
-    m.def("bad_utf8_string", []()  { return std::string("abc\xd0" "def"); });
-    m.def("bad_utf16_string", [=]() { return std::u16string({ b16, char16_t(0xd800), z16 }); });
+    m.def("bad_utf8_string", []() { return std::string("abc\xd0" "def"); });
+    m.def("bad_utf16_string", [=]() { return std::u16string({b16, char16_t(0xd800), z16}); });
     // Under Python 2.7, invalid unicode UTF-32 characters don't appear to trigger UnicodeDecodeError
     if (PY_MAJOR_VERSION >= 3)
-        m.def("bad_utf32_string", [=]() { return std::u32string({ a32, char32_t(0xd800), z32 }); });
+        m.def("bad_utf32_string", [=]() { return std::u32string({a32, char32_t(0xd800), z32}); });
     if (PY_MAJOR_VERSION >= 3 || sizeof(wchar_t) == 2)
-        m.def("bad_wchar_string", [=]() { return std::wstring({ wchar_t(0x61), wchar_t(0xd800) }); });
+        m.def("bad_wchar_string", [=]() { return std::wstring({wchar_t(0x61), wchar_t(0xd800)}); });
     m.def("u8_Z", []() -> char { return 'Z'; });
     m.def("u8_eacute", []() -> char { return '\xe9'; });
     m.def("u16_ibang", [=]() -> char16_t { return ib16; });
@@ -106,23 +111,25 @@ TEST_SUBMODULE(builtin_casters, m) {
         return std::make_tuple(std::get<2>(input), std::get<1>(input), std::get<0>(input));
     }, "Return a triple in reversed order");
     m.def("empty_tuple", []() { return std::tuple<>(); });
-    static std::pair<RValueCaster, RValueCaster> lvpair;
-    static std::tuple<RValueCaster, RValueCaster, RValueCaster> lvtuple;
-    static std::pair<RValueCaster, std::tuple<RValueCaster, std::pair<RValueCaster, RValueCaster>>> lvnested;
-    m.def("rvalue_pair", []() { return std::make_pair(RValueCaster{}, RValueCaster{}); });
+    static std::pair <RValueCaster, RValueCaster> lvpair;
+    static std::tuple <RValueCaster, RValueCaster, RValueCaster> lvtuple;
+    static std::pair <RValueCaster, std::tuple<RValueCaster, std::pair < RValueCaster, RValueCaster>>> lvnested;
+    m.def("rvalue_pair", []() { return std::make_pair(RValueCaster {}, RValueCaster {}); });
     m.def("lvalue_pair", []() -> const decltype(lvpair) & { return lvpair; });
-    m.def("rvalue_tuple", []() { return std::make_tuple(RValueCaster{}, RValueCaster{}, RValueCaster{}); });
+    m.def("rvalue_tuple", []() { return std::make_tuple(RValueCaster {}, RValueCaster {}, RValueCaster {}); });
     m.def("lvalue_tuple", []() -> const decltype(lvtuple) & { return lvtuple; });
     m.def("rvalue_nested", []() {
-        return std::make_pair(RValueCaster{}, std::make_tuple(RValueCaster{}, std::make_pair(RValueCaster{}, RValueCaster{}))); });
+        return std::make_pair(RValueCaster {},
+                              std::make_tuple(RValueCaster {}, std::make_pair(RValueCaster {}, RValueCaster {})));
+    });
     m.def("lvalue_nested", []() -> const decltype(lvnested) & { return lvnested; });
 
     // test_builtins_cast_return_none
     m.def("return_none_string", []() -> std::string * { return nullptr; });
-    m.def("return_none_char",   []() -> const char *  { return nullptr; });
-    m.def("return_none_bool",   []() -> bool *        { return nullptr; });
-    m.def("return_none_int",    []() -> int *         { return nullptr; });
-    m.def("return_none_float",  []() -> float *       { return nullptr; });
+    m.def("return_none_char", []() -> const char * { return nullptr; });
+    m.def("return_none_bool", []() -> bool * { return nullptr; });
+    m.def("return_none_int", []() -> int * { return nullptr; });
+    m.def("return_none_float", []() -> float * { return nullptr; });
 
     // test_none_deferred
     m.def("defer_none_cstring", [](char *) { return false; });
@@ -133,8 +140,8 @@ TEST_SUBMODULE(builtin_casters, m) {
     m.def("nodefer_none_void", [](py::none) { return false; });
 
     // test_void_caster
-    m.def("load_nullptr_t", [](std::nullptr_t) {}); // not useful, but it should still compile
-    m.def("cast_nullptr_t", []() { return std::nullptr_t{}; });
+    m.def("load_nullptr_t", [](std::nullptr_t) { }); // not useful, but it should still compile
+    m.def("cast_nullptr_t", []() { return std::nullptr_t {}; });
 
     // test_bool_caster
     m.def("bool_passthrough", [](bool arg) { return arg; });
@@ -142,7 +149,7 @@ TEST_SUBMODULE(builtin_casters, m) {
 
     // test_reference_wrapper
     m.def("refwrap_builtin", [](std::reference_wrapper<int> p) { return 10 * p.get(); });
-    m.def("refwrap_usertype", [](std::reference_wrapper<UserType> p) { return p.get().value(); });
+    m.def("refwrap_usertype", [](std::reference_wrapper <UserType> p) { return p.get().value(); });
     // Not currently supported (std::pair caster has return-by-value cast operator);
     // triggers static_assert failure.
     //m.def("refwrap_pair", [](std::reference_wrapper<std::pair<int, int>>) { });
@@ -175,9 +182,9 @@ TEST_SUBMODULE(builtin_casters, m) {
     m.def("complex_cast", [](std::complex<float> x) { return "({}, {})"_s.format(x.real(), x.imag()); });
 
     // test int vs. long (Python 2)
-    m.def("int_cast", []() {return (int) 42;});
-    m.def("long_cast", []() {return (long) 42;});
-    m.def("longlong_cast", []() {return  ULLONG_MAX;});
+    m.def("int_cast", []() { return (int) 42; });
+    m.def("long_cast", []() { return (long) 42; });
+    m.def("longlong_cast", []() { return ULLONG_MAX; });
 
     /// test void* cast operator
     m.def("test_void_caster", []() -> bool {

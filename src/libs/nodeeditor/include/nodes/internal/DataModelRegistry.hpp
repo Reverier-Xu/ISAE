@@ -14,140 +14,131 @@
 #include "QStringStdHash.hpp"
 #include "memory.hpp"
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-inline
-bool
-operator<(QtNodes::NodeDataType const & d1,
-          QtNodes::NodeDataType const & d2)
-{
-  return d1.id < d2.id;
-}
+    inline
+    bool
+    operator<(QtNodes::NodeDataType const &d1,
+              QtNodes::NodeDataType const &d2) {
+        return d1.id < d2.id;
+    }
 
 
 /// Class uses map for storing models (name, model)
-class NODE_EDITOR_PUBLIC DataModelRegistry
-{
+    class NODE_EDITOR_PUBLIC DataModelRegistry {
 
-public:
+    public:
 
-  using RegistryItemPtr     = std::unique_ptr<NodeDataModel>;
-  using RegistryItemCreator = std::function<RegistryItemPtr()>;
-  using RegisteredModelCreatorsMap = std::unordered_map<QString, RegistryItemCreator>;
-  using RegisteredModelsCategoryMap = std::unordered_map<QString, QString>;
-  using CategoriesSet = std::set<QString>;
+        using RegistryItemPtr = std::unique_ptr<NodeDataModel>;
+        using RegistryItemCreator = std::function<RegistryItemPtr()>;
+        using RegisteredModelCreatorsMap = std::unordered_map<QString, RegistryItemCreator>;
+        using RegisteredModelsCategoryMap = std::unordered_map<QString, QString>;
+        using CategoriesSet = std::set<QString>;
 
-  using RegisteredTypeConvertersMap = std::map<TypeConverterId, TypeConverter>;
+        using RegisteredTypeConvertersMap = std::map<TypeConverterId, TypeConverter>;
 
-  DataModelRegistry()  = default;
-  ~DataModelRegistry() = default;
+        DataModelRegistry() = default;
 
-  DataModelRegistry(DataModelRegistry const &) = delete;
-  DataModelRegistry(DataModelRegistry &&)      = default;
+        ~DataModelRegistry() = default;
 
-  DataModelRegistry&operator=(DataModelRegistry const &) = delete;
-  DataModelRegistry&operator=(DataModelRegistry &&)      = default;
+        DataModelRegistry(DataModelRegistry const &) = delete;
 
-public:
+        DataModelRegistry(DataModelRegistry &&) = default;
 
-  template<typename ModelType>
-  void registerModel(RegistryItemCreator creator,
-                     QString const &category = "Nodes")
-  {
-    registerModelImpl<ModelType>(std::move(creator), category);
-  }
+        DataModelRegistry &operator=(DataModelRegistry const &) = delete;
 
-  template<typename ModelType>
-  void registerModel(QString const &category = "Nodes")
-  {
-    RegistryItemCreator creator = [](){ return std::make_unique<ModelType>(); };
-    registerModelImpl<ModelType>(std::move(creator), category);
-  }
+        DataModelRegistry &operator=(DataModelRegistry &&) = default;
 
-  template<typename ModelType>
-  void registerModel(QString const &category,
-                     RegistryItemCreator creator)
-  {
-    registerModelImpl<ModelType>(std::move(creator), category);
-  }
+    public:
 
-  void registerTypeConverter(TypeConverterId const & id,
-                             TypeConverter typeConverter)
-  {
-    _registeredTypeConverters[id] = std::move(typeConverter);
-  }
+        template<typename ModelType>
+        void registerModel(RegistryItemCreator creator,
+                           QString const &category = "Nodes") {
+            registerModelImpl<ModelType>(std::move(creator), category);
+        }
 
-  std::unique_ptr<NodeDataModel>create(QString const &modelName);
+        template<typename ModelType>
+        void registerModel(QString const &category = "Nodes") {
+            RegistryItemCreator creator = []() { return std::make_unique<ModelType>(); };
+            registerModelImpl<ModelType>(std::move(creator), category);
+        }
 
-  RegisteredModelCreatorsMap const &registeredModelCreators() const;
+        template<typename ModelType>
+        void registerModel(QString const &category,
+                           RegistryItemCreator creator) {
+            registerModelImpl<ModelType>(std::move(creator), category);
+        }
 
-  RegisteredModelsCategoryMap const &registeredModelsCategoryAssociation() const;
+        void registerTypeConverter(TypeConverterId const &id,
+                                   TypeConverter typeConverter) {
+            _registeredTypeConverters[id] = std::move(typeConverter);
+        }
 
-  CategoriesSet const &categories() const;
+        std::unique_ptr<NodeDataModel> create(QString const &modelName);
 
-  TypeConverter getTypeConverter(NodeDataType const & d1,
-                                 NodeDataType const & d2) const;
+        RegisteredModelCreatorsMap const &registeredModelCreators() const;
 
-private:
+        RegisteredModelsCategoryMap const &registeredModelsCategoryAssociation() const;
 
-  RegisteredModelsCategoryMap _registeredModelsCategory;
+        CategoriesSet const &categories() const;
 
-  CategoriesSet _categories;
+        TypeConverter getTypeConverter(NodeDataType const &d1,
+                                       NodeDataType const &d2) const;
 
-  RegisteredModelCreatorsMap _registeredItemCreators;
+    private:
 
-  RegisteredTypeConvertersMap _registeredTypeConverters;
+        RegisteredModelsCategoryMap _registeredModelsCategory;
 
-private:
+        CategoriesSet _categories;
 
-  // If the registered ModelType class has the static member method
-  //
-  //      static Qstring Name();
-  //
-  // use it. Otherwise use the non-static method:
-  //
-  //       virtual QString name() const;
+        RegisteredModelCreatorsMap _registeredItemCreators;
 
-  template <typename T, typename = void>
-  struct HasStaticMethodName
-      : std::false_type
-  {};
+        RegisteredTypeConvertersMap _registeredTypeConverters;
 
-  template <typename T>
-  struct HasStaticMethodName<T,
-          typename std::enable_if<std::is_same<decltype(T::Name()), QString>::value>::type>
-      : std::true_type
-  {};
+    private:
 
-  template<typename ModelType>
-  typename std::enable_if< HasStaticMethodName<ModelType>::value>::type
-  registerModelImpl(RegistryItemCreator creator, QString const &category )
-  {
-    const QString name = ModelType::Name();
-    if (_registeredItemCreators.count(name) == 0)
-    {
-      _registeredItemCreators[name] = std::move(creator);
-      _categories.insert(category);
-      _registeredModelsCategory[name] = category;
-    }
-  }
+        // If the registered ModelType class has the static member method
+        //
+        //      static Qstring Name();
+        //
+        // use it. Otherwise use the non-static method:
+        //
+        //       virtual QString name() const;
 
-  template<typename ModelType>
-  typename std::enable_if< !HasStaticMethodName<ModelType>::value>::type
-  registerModelImpl(RegistryItemCreator creator, QString const &category )
-  {
-    const QString name = creator()->name();
-    if (_registeredItemCreators.count(name) == 0)
-    {
-      _registeredItemCreators[name] = std::move(creator);
-      _categories.insert(category);
-      _registeredModelsCategory[name] = category;
-    }
-  }
+        template<typename T, typename = void>
+        struct HasStaticMethodName
+                : std::false_type {
+        };
 
-};
+        template<typename T>
+        struct HasStaticMethodName<T,
+                typename std::enable_if<std::is_same<decltype(T::Name()), QString>::value>::type>
+                : std::true_type {
+        };
 
+        template<typename ModelType>
+        typename std::enable_if<HasStaticMethodName<ModelType>::value>::type
+        registerModelImpl(RegistryItemCreator creator, QString const &category) {
+            const QString name = ModelType::Name();
+            if (_registeredItemCreators.count(name) == 0) {
+                _registeredItemCreators[name] = std::move(creator);
+                _categories.insert(category);
+                _registeredModelsCategory[name] = category;
+            }
+        }
+
+        template<typename ModelType>
+        typename std::enable_if<!HasStaticMethodName<ModelType>::value>::type
+        registerModelImpl(RegistryItemCreator creator, QString const &category) {
+            const QString name = creator()->name();
+            if (_registeredItemCreators.count(name) == 0) {
+                _registeredItemCreators[name] = std::move(creator);
+                _categories.insert(category);
+                _registeredModelsCategory[name] = category;
+            }
+        }
+
+    };
 
 
 }

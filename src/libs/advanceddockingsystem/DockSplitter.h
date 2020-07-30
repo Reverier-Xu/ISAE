@@ -33,45 +33,44 @@
 
 #include "ads_globals.h"
 
-namespace ads
-{
-struct DockSplitterPrivate;
+namespace ads {
+    struct DockSplitterPrivate;
 
 /**
  * Splitter used internally instead of QSplitter with some additional
  * fuctionality.
  */
-class ADS_EXPORT CDockSplitter : public QSplitter
-{
-	Q_OBJECT
-private:
-	DockSplitterPrivate* d;
-	friend struct DockSplitterPrivate;
+    class ADS_EXPORT CDockSplitter : public QSplitter {
+    Q_OBJECT
+    private:
+        DockSplitterPrivate *d;
+        friend struct DockSplitterPrivate;
 
-public:
-	CDockSplitter(QWidget *parent = Q_NULLPTR);
-	CDockSplitter(Qt::Orientation orientation, QWidget *parent = Q_NULLPTR);
+    public:
+        CDockSplitter(QWidget *parent = Q_NULLPTR);
 
-	/**
-	 * Prints debug info
-	 */
-	virtual ~CDockSplitter();
+        CDockSplitter(Qt::Orientation orientation, QWidget *parent = Q_NULLPTR);
 
-	/**
-	 * Returns true, if any of the internal widgets is visible
-	 */
-	bool hasVisibleContent() const;
+        /**
+         * Prints debug info
+         */
+        virtual ~CDockSplitter();
 
-	/**
-	 * Returns first widget or nullptr if splitter is empty
-	 */
-	QWidget* firstWidget() const;
+        /**
+         * Returns true, if any of the internal widgets is visible
+         */
+        bool hasVisibleContent() const;
 
-	/**
-	 * Returns last widget of nullptr is splitter is empty
-	 */
-	QWidget* lastWidget() const;
-}; // class CDockSplitter
+        /**
+         * Returns first widget or nullptr if splitter is empty
+         */
+        QWidget *firstWidget() const;
+
+        /**
+         * Returns last widget of nullptr is splitter is empty
+         */
+        QWidget *lastWidget() const;
+    }; // class CDockSplitter
 
 } // namespace ads
 

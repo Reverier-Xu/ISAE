@@ -23,23 +23,23 @@ using StringList = std::vector<std::string, std::allocator<std::string>>;
 TEST_SUBMODULE(opaque_types, m) {
     // test_string_list
     py::class_<StringList>(m, "StringList")
-        .def(py::init<>())
-        .def("pop_back", &StringList::pop_back)
-        /* There are multiple versions of push_back(), etc. Select the right ones. */
-        .def("push_back", (void (StringList::*)(const std::string &)) &StringList::push_back)
-        .def("back", (std::string &(StringList::*)()) &StringList::back)
-        .def("__len__", [](const StringList &v) { return v.size(); })
-        .def("__iter__", [](StringList &v) {
-           return py::make_iterator(v.begin(), v.end());
-        }, py::keep_alive<0, 1>());
+            .def(py::init<>())
+            .def("pop_back", &StringList::pop_back)
+                    /* There are multiple versions of push_back(), etc. Select the right ones. */
+            .def("push_back", (void (StringList::*)(const std::string &)) &StringList::push_back)
+            .def("back", (std::string &(StringList::*)()) &StringList::back)
+            .def("__len__", [](const StringList &v) { return v.size(); })
+            .def("__iter__", [](StringList &v) {
+                return py::make_iterator(v.begin(), v.end());
+            }, py::keep_alive<0, 1>());
 
     class ClassWithSTLVecProperty {
     public:
         StringList stringList;
     };
     py::class_<ClassWithSTLVecProperty>(m, "ClassWithSTLVecProperty")
-        .def(py::init<>())
-        .def_readwrite("stringList", &ClassWithSTLVecProperty::stringList);
+            .def(py::init<>())
+            .def_readwrite("stringList", &ClassWithSTLVecProperty::stringList);
 
     m.def("print_opaque_list", [](const StringList &l) {
         std::string ret = "Opaque list: [";

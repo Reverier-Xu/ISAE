@@ -2,78 +2,82 @@
 
 #include <QtGui/QPainter>
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-class Node;
-class NodeState;
-class NodeGeometry;
-class NodeGraphicsObject;
-class NodeDataModel;
-class FlowItemEntry;
-class FlowScene;
+    class Node;
 
-class NodePainter
-{
-public:
+    class NodeState;
 
-  NodePainter();
+    class NodeGeometry;
 
-public:
+    class NodeGraphicsObject;
 
-  static
-  void
-  paint(QPainter* painter,
-        Node& node,
-        FlowScene const& scene);
+    class NodeDataModel;
 
-  static
-  void
-  drawNodeRect(QPainter* painter,
-               NodeGeometry const& geom,
-               NodeDataModel const* model,
-               NodeGraphicsObject const & graphicsObject);
+    class FlowItemEntry;
 
-  static
-  void
-  drawModelName(QPainter* painter,
-                NodeGeometry const& geom,
-                NodeState const& state,
-                NodeDataModel const * model);
+    class FlowScene;
 
-  static
-  void
-  drawEntryLabels(QPainter* painter,
-                  NodeGeometry const& geom,
-                  NodeState const& state,
-                  NodeDataModel const * model);
+    class NodePainter {
+    public:
 
-  static
-  void
-  drawConnectionPoints(QPainter* painter,
-                       NodeGeometry const& geom,
-                       NodeState const& state,
-                       NodeDataModel const * model,
-                       FlowScene const & scene);
+        NodePainter();
 
-  static
-  void
-  drawFilledConnectionPoints(QPainter* painter,
-                             NodeGeometry const& geom,
-                             NodeState const& state,
-                             NodeDataModel const * model);
+    public:
 
-  static
-  void
-  drawResizeRect(QPainter* painter,
-                 NodeGeometry const& geom,
-                 NodeDataModel const * model);
+        static
+        void
+        paint(QPainter *painter,
+              Node &node,
+              FlowScene const &scene);
 
-  static
-  void
-  drawValidationRect(QPainter * painter,
-                     NodeGeometry const & geom,
-                     NodeDataModel const * model,
-                     NodeGraphicsObject const & graphicsObject);
-};
+        static
+        void
+        drawNodeRect(QPainter *painter,
+                     NodeGeometry const &geom,
+                     NodeDataModel const *model,
+                     NodeGraphicsObject const &graphicsObject);
+
+        static
+        void
+        drawModelName(QPainter *painter,
+                      NodeGeometry const &geom,
+                      NodeState const &state,
+                      NodeDataModel const *model);
+
+        static
+        void
+        drawEntryLabels(QPainter *painter,
+                        NodeGeometry const &geom,
+                        NodeState const &state,
+                        NodeDataModel const *model);
+
+        static
+        void
+        drawConnectionPoints(QPainter *painter,
+                             NodeGeometry const &geom,
+                             NodeState const &state,
+                             NodeDataModel const *model,
+                             FlowScene const &scene);
+
+        static
+        void
+        drawFilledConnectionPoints(QPainter *painter,
+                                   NodeGeometry const &geom,
+                                   NodeState const &state,
+                                   NodeDataModel const *model);
+
+        static
+        void
+        drawResizeRect(QPainter *painter,
+                       NodeGeometry const &geom,
+                       NodeDataModel const *model);
+
+        static
+        void
+        drawValidationRect(QPainter *painter,
+                           NodeGeometry const &geom,
+                           NodeDataModel const *model,
+                           NodeGraphicsObject const &graphicsObject);
+    };
 }

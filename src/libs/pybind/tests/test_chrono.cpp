@@ -47,7 +47,8 @@ TEST_SUBMODULE(chrono, m) {
     m.def("test_chrono7", [](std::chrono::microseconds t) { return t; });
     // Float durations (issue #719)
     m.def("test_chrono_float_diff", [](std::chrono::duration<float> a, std::chrono::duration<float> b) {
-        return a - b; });
+        return a - b;
+    });
 
     m.def("test_nano_timepoint", [](timestamp start, timespan delta) -> timestamp {
         return start + delta;

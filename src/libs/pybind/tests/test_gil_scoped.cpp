@@ -11,10 +11,12 @@
 #include <pybind11/functional.h>
 
 
-class VirtClass  {
+class VirtClass {
 public:
-    virtual ~VirtClass() {}
-    virtual void virtual_func() {}
+    virtual ~VirtClass() { }
+
+    virtual void virtual_func() { }
+
     virtual void pure_virtual_func() = 0;
 };
 
@@ -22,16 +24,17 @@ class PyVirtClass : public VirtClass {
     void virtual_func() override {
         PYBIND11_OVERLOAD(void, VirtClass, virtual_func,);
     }
+
     void pure_virtual_func() override {
         PYBIND11_OVERLOAD_PURE(void, VirtClass, pure_virtual_func,);
     }
 };
 
 TEST_SUBMODULE(gil_scoped, m) {
-  py::class_<VirtClass, PyVirtClass>(m, "VirtClass")
-      .def(py::init<>())
-      .def("virtual_func", &VirtClass::virtual_func)
-      .def("pure_virtual_func", &VirtClass::pure_virtual_func);
+    py::class_<VirtClass, PyVirtClass>(m, "VirtClass")
+            .def(py::init<>())
+            .def("virtual_func", &VirtClass::virtual_func)
+            .def("pure_virtual_func", &VirtClass::pure_virtual_func);
 
     m.def("test_callback_py_obj",
           [](py::object func) { func(); });
@@ -45,7 +48,7 @@ TEST_SUBMODULE(gil_scoped, m) {
           []() {
               auto cm = py::module::import("cross_module_gil_utils");
               auto gil_acquire = reinterpret_cast<void (*)()>(
-                  PyLong_AsVoidPtr(cm.attr("gil_acquire_funcaddr").ptr()));
+                      PyLong_AsVoidPtr(cm.attr("gil_acquire_funcaddr").ptr()));
               py::gil_scoped_release gil_release;
               gil_acquire();
           });

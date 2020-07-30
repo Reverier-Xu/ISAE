@@ -8,35 +8,43 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class SettingWindow;
+    class SettingWindow;
 }
 QT_END_NAMESPACE
 
 class SettingWindow : public QDialog {
-    Q_OBJECT
+Q_OBJECT
 
-   public:
+public:
     explicit SettingWindow(QWidget *parent = nullptr);
+
     ~SettingWindow() override;
+
     void addPage(const QString &name, ISAEPluginSettingWidget *page, ISAEPluginWidget *Plugin);
+
     void clearPages();
 
 public slots:
-    void changePage(QListWidgetItem* item);
+
+    void changePage(QListWidgetItem *item);
+
     void applySettings();
+
     void saveSettings();
 
-   protected:
+protected:
     void mousePressEvent(QMouseEvent *event) override;
+
     void mouseMoveEvent(QMouseEvent *event) override;
+
     void mouseReleaseEvent(QMouseEvent *event) override;
 
-   private:
+private:
     Ui::SettingWindow *ui;
     QPoint mMovePosition;
     bool mMoving;
-    QMap<QString, ISAEPluginSettingWidget*> settingPageMap{};
-    QMap<QString, ISAEPluginWidget*> pluginMap{};
+    QMap<QString, ISAEPluginSettingWidget *> settingPageMap {};
+    QMap<QString, ISAEPluginWidget *> pluginMap {};
 };
 
 

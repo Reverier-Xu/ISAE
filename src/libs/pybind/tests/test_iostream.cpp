@@ -42,8 +42,8 @@ TEST_SUBMODULE(iostream, m) {
     });
 
     m.def("guard_output", &noisy_function,
-            py::call_guard<py::scoped_ostream_redirect>(),
-            py::arg("msg"), py::arg("flush")=true);
+          py::call_guard<py::scoped_ostream_redirect>(),
+          py::arg("msg"), py::arg("flush") = true);
 
     m.def("captured_err", [](std::string msg) {
         py::scoped_ostream_redirect redir(std::cerr, py::module::import("sys").attr("stderr"));
@@ -53,8 +53,8 @@ TEST_SUBMODULE(iostream, m) {
     m.def("noisy_function", &noisy_function, py::arg("msg"), py::arg("flush") = true);
 
     m.def("dual_guard", &noisy_funct_dual,
-            py::call_guard<py::scoped_ostream_redirect, py::scoped_estream_redirect>(),
-            py::arg("msg"), py::arg("emsg"));
+          py::call_guard<py::scoped_ostream_redirect, py::scoped_estream_redirect>(),
+          py::arg("msg"), py::arg("emsg"));
 
     m.def("raw_output", [](std::string msg) {
         std::cout << msg << std::flush;

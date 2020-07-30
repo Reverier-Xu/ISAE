@@ -31,7 +31,6 @@ def test_multiple_inheritance_mix1():
 
 
 def test_multiple_inheritance_mix2():
-
     class Base2:
         def __init__(self, i):
             self.i = i
@@ -52,7 +51,6 @@ def test_multiple_inheritance_mix2():
 
 @pytest.bug_in_pypy
 def test_multiple_inheritance_python():
-
     class MI1(m.Base1, m.Base2):
         def __init__(self, i, j):
             m.Base1.__init__(self, i)
@@ -158,7 +156,6 @@ def test_multiple_inheritance_python():
 
 
 def test_multiple_inheritance_python_many_bases():
-
     class MIMany14(m.BaseN1, m.BaseN2, m.BaseN3, m.BaseN4):
         def __init__(self):
             m.BaseN1.__init__(self, 1)
@@ -220,7 +217,6 @@ def test_multiple_inheritance_python_many_bases():
 
 
 def test_multiple_inheritance_virtbase():
-
     class MITypePy(m.Base12a):
         def __init__(self, i, j):
             m.Base12a.__init__(self, i, j)

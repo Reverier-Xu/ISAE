@@ -7,11 +7,11 @@ with pytest.suppress(ImportError):
     from pybind11_tests import eigen as m
     import numpy as np
 
-    ref = np.array([[ 0.,  3,  0,  0,  0, 11],
-                    [22,  0,  0,  0, 17, 11],
-                    [ 7,  5,  0,  1,  0, 11],
-                    [ 0,  0,  0,  0,  0, 11],
-                    [ 0,  0, 14,  0,  8, 11]])
+    ref = np.array([[0., 3, 0, 0, 0, 11],
+                    [22, 0, 0, 0, 17, 11],
+                    [7, 5, 0, 1, 0, 11],
+                    [0, 0, 0, 0, 0, 11],
+                    [0, 0, 14, 0, 8, 11]])
 
 
 def assert_equal_ref(mat):
@@ -183,7 +183,7 @@ def test_negative_stride_from_python(msg):
         double_threer(): incompatible function arguments. The following argument types are supported:
             1. (arg0: numpy.ndarray[numpy.float32[1, 3], flags.writeable]) -> None
 
-        Invoked with: """ + repr(np.array([ 5.,  4.,  3.], dtype='float32'))  # noqa: E501 line too long
+        Invoked with: """ + repr(np.array([5., 4., 3.], dtype='float32'))  # noqa: E501 line too long
 
     with pytest.raises(TypeError) as excinfo:
         m.double_threec(second_col)
@@ -191,7 +191,7 @@ def test_negative_stride_from_python(msg):
         double_threec(): incompatible function arguments. The following argument types are supported:
             1. (arg0: numpy.ndarray[numpy.float32[3, 1], flags.writeable]) -> None
 
-        Invoked with: """ + repr(np.array([ 7.,  4.,  1.], dtype='float32'))  # noqa: E501 line too long
+        Invoked with: """ + repr(np.array([7., 4., 1.], dtype='float32'))  # noqa: E501 line too long
 
 
 def test_nonunit_stride_to_python():
@@ -592,9 +592,9 @@ def test_eigen_ref_life_support():
 def test_special_matrix_objects():
     assert np.all(m.incr_diag(7) == np.diag([1., 2, 3, 4, 5, 6, 7]))
 
-    asymm = np.array([[ 1.,  2,  3,  4],
-                      [ 5,  6,  7,  8],
-                      [ 9, 10, 11, 12],
+    asymm = np.array([[1., 2, 3, 4],
+                      [5, 6, 7, 8],
+                      [9, 10, 11, 12],
                       [13, 14, 15, 16]])
     symm_lower = np.array(asymm)
     symm_upper = np.array(asymm)

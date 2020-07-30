@@ -20,7 +20,7 @@ void AboutWindow::mousePressEvent(QMouseEvent *event) {
 void AboutWindow::mouseMoveEvent(QMouseEvent *event) {
     if (this->mMoving && (event->buttons() & Qt::LeftButton) &&
         (event->globalPos() - mMovePosition).manhattanLength() >
-            QApplication::startDragDistance()) {
+        QApplication::startDragDistance()) {
         move(event->globalPos() - mMovePosition);
         mMovePosition = event->globalPos() - pos();
     }

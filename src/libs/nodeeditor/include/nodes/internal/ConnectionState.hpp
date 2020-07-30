@@ -6,56 +6,49 @@
 
 class QPointF;
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-class Node;
+    class Node;
 
 /// Stores currently draggind end.
 /// Remembers last hovered Node.
-class ConnectionState
-{
-public:
+    class ConnectionState {
+    public:
 
-  ConnectionState(PortType port = PortType::None)
-    : _requiredPort(port)
-  {}
+        ConnectionState(PortType port = PortType::None)
+                : _requiredPort(port) { }
 
-  ConnectionState(const ConnectionState&) = delete;
-  ConnectionState operator=(const ConnectionState&) = delete;
+        ConnectionState(const ConnectionState &) = delete;
 
-  ~ConnectionState();
+        ConnectionState operator=(const ConnectionState &) = delete;
 
-public:
+        ~ConnectionState();
 
-  void setRequiredPort(PortType end)
-  { _requiredPort = end; }
+    public:
 
-  PortType requiredPort() const
-  { return _requiredPort; }
+        void setRequiredPort(PortType end) { _requiredPort = end; }
 
-  bool requiresPort() const
-  { return _requiredPort != PortType::None; }
+        PortType requiredPort() const { return _requiredPort; }
 
-  void setNoRequiredPort()
-  { _requiredPort = PortType::None; }
+        bool requiresPort() const { return _requiredPort != PortType::None; }
 
-public:
+        void setNoRequiredPort() { _requiredPort = PortType::None; }
 
-  void interactWithNode(Node* node);
+    public:
 
-  void setLastHoveredNode(Node* node);
+        void interactWithNode(Node *node);
 
-  Node*
-  lastHoveredNode() const
-  { return _lastHoveredNode; }
+        void setLastHoveredNode(Node *node);
 
-  void resetLastHoveredNode();
+        Node *
+        lastHoveredNode() const { return _lastHoveredNode; }
 
-private:
+        void resetLastHoveredNode();
 
-  PortType _requiredPort;
+    private:
 
-  Node* _lastHoveredNode{nullptr};
-};
+        PortType _requiredPort;
+
+        Node *_lastHoveredNode {nullptr};
+    };
 }

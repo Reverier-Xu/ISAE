@@ -31,11 +31,10 @@
 //============================================================================
 #include <QFrame>
 
-namespace ads
-{
-class CFloatingDockContainer;
+namespace ads {
+    class CFloatingDockContainer;
 
-struct FloatingWidgetTitleBarPrivate;
+    struct FloatingWidgetTitleBarPrivate;
 
 
 /**
@@ -45,46 +44,49 @@ struct FloatingWidgetTitleBarPrivate;
  * for the docking system to work properly, we use our own titlebar here to
  * capture the required mouse events.
  */
-class CFloatingWidgetTitleBar : public QFrame
-{
-	Q_OBJECT
-private:
-	FloatingWidgetTitleBarPrivate *d; ///< private data (pimpl)
+    class CFloatingWidgetTitleBar : public QFrame {
+    Q_OBJECT
+    private:
+        FloatingWidgetTitleBarPrivate *d; ///< private data (pimpl)
 
-protected:
-	virtual void mousePressEvent(QMouseEvent *ev) override;
-	virtual void mouseReleaseEvent(QMouseEvent *ev) override;
-	virtual void mouseMoveEvent(QMouseEvent *ev) override;
+    protected:
+        virtual void mousePressEvent(QMouseEvent *ev) override;
 
-public:
-	using Super = QWidget;
-	explicit CFloatingWidgetTitleBar(CFloatingDockContainer *parent = nullptr);
+        virtual void mouseReleaseEvent(QMouseEvent *ev) override;
 
-	/**
-	 * Virtual Destructor
-	 */
-	virtual ~CFloatingWidgetTitleBar();
+        virtual void mouseMoveEvent(QMouseEvent *ev) override;
 
-	/**
-	 * Enables / disables the window close button.
-	 */
-	void enableCloseButton(bool Enable);
+    public:
+        using Super = QWidget;
 
-	/**
-	 * Sets the window title, that means, the text of the internal tile label.
-	 */
-	void setTitle(const QString &Text);
+        explicit CFloatingWidgetTitleBar(CFloatingDockContainer *parent = nullptr);
 
-    /**
-     * Update stylesheet style if a property changes
-     */
-    void updateStyle();
+        /**
+         * Virtual Destructor
+         */
+        virtual ~CFloatingWidgetTitleBar();
 
-signals:
-	/**
-	 * This signal is emitted, if the close button is clicked.
-	 */
-	void closeRequested();
-};
+        /**
+         * Enables / disables the window close button.
+         */
+        void enableCloseButton(bool Enable);
+
+        /**
+         * Sets the window title, that means, the text of the internal tile label.
+         */
+        void setTitle(const QString &Text);
+
+        /**
+         * Update stylesheet style if a property changes
+         */
+        void updateStyle();
+
+    signals:
+
+        /**
+         * This signal is emitted, if the close button is clicked.
+         */
+        void closeRequested();
+    };
 } // namespace ads
 #endif // FLOATINGWIDGETTITLEBAR_H

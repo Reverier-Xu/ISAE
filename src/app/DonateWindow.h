@@ -5,23 +5,26 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class DonateWindow;
+    class DonateWindow;
 }
 QT_END_NAMESPACE
 
 class DonateWindow : public QDialog {
-    Q_OBJECT
+Q_OBJECT
 
-   public:
+public:
     explicit DonateWindow(QWidget *parent = nullptr);
+
     ~DonateWindow() override;
 
-   protected:
+protected:
     void mousePressEvent(QMouseEvent *event) override;
+
     void mouseMoveEvent(QMouseEvent *event) override;
+
     void mouseReleaseEvent(QMouseEvent *event) override;
 
-   private:
+private:
     Ui::DonateWindow *ui;
     QPoint mMovePosition;
     bool mMoving;

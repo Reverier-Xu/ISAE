@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+     y="0px"
+     width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
 <g>
 	<path fill="#00A0E9" d="M70.788,152.25v-78.5h17.465V160c0.998,7.5,3.327,14.5,6.986,21s8.233,12.208,13.722,17.125
 		s11.768,8.75,18.837,11.5c7.069,2.75,14.513,4.125,22.33,4.125c7.818,0,15.261-1.375,22.331-4.125s13.348-6.583,18.837-11.5
@@ -10,17 +11,17 @@
 		s-15.427,12.667-25.074,16.75s-19.96,6.125-30.938,6.125c-10.978,0-21.291-2.042-30.938-6.125
 		c-9.647-4.083-18.047-9.667-25.199-16.75S81.183,192.25,77.025,182.75S70.788,163.084,70.788,152.25z"/>
 </g>
-<circle fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" cx="150" cy="150" r="145"/>
-<g>
+    <circle fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" cx="150" cy="150" r="145"/>
+    <g>
 </g>
-<g>
+    <g>
 </g>
-<g>
+    <g>
 </g>
-<g>
+    <g>
 </g>
-<g>
+    <g>
 </g>
-<g>
+    <g>
 </g>
 </svg>

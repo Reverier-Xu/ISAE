@@ -2,26 +2,24 @@
 
 #include <QtCore/QString>
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-class Style
-{
-public:
+    class Style {
+    public:
 
-  virtual
-  ~Style() = default;
+        virtual
+        ~Style() = default;
 
-private:
+    private:
 
-  virtual void
-  loadJsonText(QString jsonText) = 0;
+        virtual void
+        loadJsonText(QString jsonText) = 0;
 
-  virtual void
-  loadJsonFile(QString fileName) = 0;
+        virtual void
+        loadJsonFile(QString fileName) = 0;
 
-  virtual void
-  loadJsonFromByteArray(QByteArray const &byteArray) = 0;
-};
+        virtual void
+        loadJsonFromByteArray(QByteArray const &byteArray) = 0;
+    };
 
 }

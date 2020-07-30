@@ -189,7 +189,7 @@ def test_noncopyable_containers():
 
     i = 1
     for j in dnc:
-        assert(j.value == i)
+        assert (j.value == i)
         i += 1
 
     # std::map

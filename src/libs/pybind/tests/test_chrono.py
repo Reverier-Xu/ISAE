@@ -3,7 +3,6 @@ import datetime
 
 
 def test_chrono_system_clock():
-
     # Get the time from both c++ and datetime
     date1 = m.test_chrono1()
     date2 = datetime.datetime.today()
@@ -97,7 +96,6 @@ def test_chrono_system_clock_roundtrip_time():
 
 
 def test_chrono_duration_roundtrip():
-
     # Get the difference between two times (a timedelta)
     date1 = datetime.datetime.today()
     date2 = datetime.datetime.today()
@@ -114,7 +112,6 @@ def test_chrono_duration_roundtrip():
 
 
 def test_chrono_duration_subtraction_equivalence():
-
     date1 = datetime.datetime.today()
     date2 = datetime.datetime.today()
 
@@ -127,7 +124,6 @@ def test_chrono_duration_subtraction_equivalence():
 
 
 def test_chrono_duration_subtraction_equivalence_date():
-
     date1 = datetime.date.today()
     date2 = datetime.date.today()
 
@@ -173,4 +169,4 @@ def test_floating_point_duration():
 def test_nano_timepoint():
     time = datetime.datetime.now()
     time1 = m.test_nano_timepoint(time, datetime.timedelta(seconds=60))
-    assert(time1 == time + datetime.timedelta(seconds=60))
+    assert (time1 == time + datetime.timedelta(seconds=60))

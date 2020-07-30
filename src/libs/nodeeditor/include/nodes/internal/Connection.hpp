@@ -17,150 +17,152 @@
 
 class QPointF;
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-class Node;
-class NodeData;
-class ConnectionGraphicsObject;
+    class Node;
+
+    class NodeData;
+
+    class ConnectionGraphicsObject;
 
 ///
-class NODE_EDITOR_PUBLIC Connection
-  : public QObject
-  , public Serializable
-{
+    class NODE_EDITOR_PUBLIC Connection
+            : public QObject, public Serializable {
 
-  Q_OBJECT
+    Q_OBJECT
 
-public:
+    public:
 
-  /// New Connection is attached to the port of the given Node.
-  /// The port has parameters (portType, portIndex).
-  /// The opposite connection end will require anothre port.
-  Connection(PortType portType,
-             Node& node,
-             PortIndex portIndex);
+        /// New Connection is attached to the port of the given Node.
+        /// The port has parameters (portType, portIndex).
+        /// The opposite connection end will require anothre port.
+        Connection(PortType portType,
+                   Node &node,
+                   PortIndex portIndex);
 
-  Connection(Node& nodeIn,
-             PortIndex portIndexIn,
-             Node& nodeOut,
-             PortIndex portIndexOut,
-             TypeConverter converter =
-               TypeConverter{});
+        Connection(Node &nodeIn,
+                   PortIndex portIndexIn,
+                   Node &nodeOut,
+                   PortIndex portIndexOut,
+                   TypeConverter converter =
+                   TypeConverter {});
 
-  Connection(const Connection&) = delete;
-  Connection operator=(const Connection&) = delete;
+        Connection(const Connection &) = delete;
 
-  ~Connection();
+        Connection operator=(const Connection &) = delete;
 
-public:
+        ~Connection();
 
-  QJsonObject
-  save() const override;
+    public:
 
-public:
+        QJsonObject
+        save() const override;
 
-  QUuid
-  id() const;
+    public:
 
-  /// Remembers the end being dragged.
-  /// Invalidates Node address.
-  /// Grabs mouse.
-  void
-  setRequiredPort(PortType portType);
-  PortType
-  requiredPort() const;
+        QUuid
+        id() const;
 
-  void
-  setGraphicsObject(std::unique_ptr<ConnectionGraphicsObject>&& graphics);
+        /// Remembers the end being dragged.
+        /// Invalidates Node address.
+        /// Grabs mouse.
+        void
+        setRequiredPort(PortType portType);
 
-  /// Assigns a node to the required port.
-  /// It is assumed that there is a required port, no extra checks
-  void
-  setNodeToPort(Node& node,
-                PortType portType,
-                PortIndex portIndex);
+        PortType
+        requiredPort() const;
 
-  void
-  removeFromNodes() const;
+        void
+        setGraphicsObject(std::unique_ptr<ConnectionGraphicsObject> &&graphics);
 
-public:
+        /// Assigns a node to the required port.
+        /// It is assumed that there is a required port, no extra checks
+        void
+        setNodeToPort(Node &node,
+                      PortType portType,
+                      PortIndex portIndex);
 
-  ConnectionGraphicsObject&
-  getConnectionGraphicsObject() const;
+        void
+        removeFromNodes() const;
 
-  ConnectionState const &
-  connectionState() const;
-  ConnectionState&
-  connectionState();
+    public:
 
-  ConnectionGeometry&
-  connectionGeometry();
+        ConnectionGraphicsObject &
+        getConnectionGraphicsObject() const;
 
-  ConnectionGeometry const&
-  connectionGeometry() const;
+        ConnectionState const &
+        connectionState() const;
 
-  Node*
-  getNode(PortType portType) const;
+        ConnectionState &
+        connectionState();
 
-  Node*&
-  getNode(PortType portType);
+        ConnectionGeometry &
+        connectionGeometry();
 
-  PortIndex
-  getPortIndex(PortType portType) const;
+        ConnectionGeometry const &
+        connectionGeometry() const;
 
-  void
-  clearNode(PortType portType);
+        Node *
+        getNode(PortType portType) const;
 
-  NodeDataType
-  dataType(PortType portType) const;
+        Node *&
+        getNode(PortType portType);
 
-  void
-  setTypeConverter(TypeConverter converter);
+        PortIndex
+        getPortIndex(PortType portType) const;
 
-  bool
-  complete() const;
+        void
+        clearNode(PortType portType);
 
-public: // data propagation
+        NodeDataType
+        dataType(PortType portType) const;
 
-  void
-  propagateData(std::shared_ptr<NodeData> nodeData) const;
+        void
+        setTypeConverter(TypeConverter converter);
 
-  void
-  propagateEmptyData() const;
+        bool
+        complete() const;
 
-Q_SIGNALS:
+    public: // data propagation
 
-  void
-  connectionCompleted(Connection const&) const;
+        void
+        propagateData(std::shared_ptr<NodeData> nodeData) const;
 
-  void
-  connectionMadeIncomplete(Connection const&) const;
+        void
+        propagateEmptyData() const;
 
-private:
+    Q_SIGNALS:
 
-  QUuid _uid;
+        void
+        connectionCompleted(Connection const &) const;
 
-private:
+        void
+        connectionMadeIncomplete(Connection const &) const;
 
-  Node* _outNode = nullptr;
-  Node* _inNode  = nullptr;
+    private:
 
-  PortIndex _outPortIndex;
-  PortIndex _inPortIndex;
+        QUuid _uid;
 
-private:
+    private:
 
-  ConnectionState    _connectionState;
-  ConnectionGeometry _connectionGeometry;
+        Node *_outNode = nullptr;
+        Node *_inNode = nullptr;
 
-  std::unique_ptr<ConnectionGraphicsObject>_connectionGraphicsObject;
+        PortIndex _outPortIndex;
+        PortIndex _inPortIndex;
 
-  TypeConverter _converter;
+    private:
 
-Q_SIGNALS:
+        ConnectionState _connectionState;
+        ConnectionGeometry _connectionGeometry;
 
-  void
-  updated(Connection& conn) const;
-};
+        std::unique_ptr<ConnectionGraphicsObject> _connectionGraphicsObject;
+
+        TypeConverter _converter;
+
+    Q_SIGNALS:
+
+        void
+        updated(Connection &conn) const;
+    };
 }

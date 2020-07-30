@@ -14,77 +14,81 @@
 #include "ads_globals.h"
 #include "DockManager.h"
 
-namespace ads
-{
-struct DockFocusControllerPrivate;
-class CDockManager;
-class CFloatingDockContainer;
+namespace ads {
+    struct DockFocusControllerPrivate;
+
+    class CDockManager;
+
+    class CFloatingDockContainer;
 
 /**
  * Manages focus styling of dock widgets and handling of focus changes
  */
-class ADS_EXPORT CDockFocusController : public QObject
-{
-	Q_OBJECT
-private:
-	DockFocusControllerPrivate* d; ///< private data (pimpl)
-    friend struct DockFocusControllerPrivate;
+    class ADS_EXPORT CDockFocusController : public QObject {
+    Q_OBJECT
+    private:
+        DockFocusControllerPrivate *d; ///< private data (pimpl)
+        friend struct DockFocusControllerPrivate;
 
-private slots:
-	void onApplicationFocusChanged(QWidget *old, QWidget *now);
-	void onFocusedDockAreaViewToggled(bool Open);
-	void onStateRestored();
-	void onDockWidgetVisibilityChanged(bool Visible);
+    private slots:
 
-public:
-	using Super = QObject;
-	/**
-	 * Default Constructor
-	 */
-	CDockFocusController(CDockManager* DockManager);
+        void onApplicationFocusChanged(QWidget *old, QWidget *now);
 
-	/**
-	 * Virtual Destructor
-	 */
-	virtual ~CDockFocusController();
+        void onFocusedDockAreaViewToggled(bool Open);
 
-	/**
-	 * Helper function to set focus depending on the configuration of the
-	 * FocusStyling flag
-	 */
-	template <class QWidgetPtr>
-	static void setWidgetFocus(QWidgetPtr widget)
-	{
-		if (!CDockManager::testConfigFlag(CDockManager::FocusHighlighting))
-		{
-			return;
-		}
+        void onStateRestored();
 
-		widget->setFocus(Qt::OtherFocusReason);
-	}
+        void onDockWidgetVisibilityChanged(bool Visible);
 
-	/**
-	 * A container needs to call this function if a widget has been dropped
-	 * into it
-	 */
-	void notifyWidgetOrAreaRelocation(QWidget* RelocatedWidget);
+    public:
+        using Super = QObject;
 
-	/**
-	 * This function is called, if a floating widget has been dropped into
-	 * an new position.
-	 * When this function is called, all dock widgets of the FloatingWidget
-	 * are already inserted into its new position
-	 */
-	void notifyFloatingWidgetDrop(CFloatingDockContainer* FloatingWidget);
+        /**
+         * Default Constructor
+         */
+        CDockFocusController(CDockManager *DockManager);
 
-public slots:
-	/**
-	 * Request a focus change to the given dock widget
-	 */
-	void setDockWidgetFocused(CDockWidget* focusedNow);
-}; // class DockFocusController
+        /**
+         * Virtual Destructor
+         */
+        virtual ~CDockFocusController();
+
+        /**
+         * Helper function to set focus depending on the configuration of the
+         * FocusStyling flag
+         */
+        template<class QWidgetPtr>
+        static void setWidgetFocus(QWidgetPtr widget) {
+            if (!CDockManager::testConfigFlag(CDockManager::FocusHighlighting)) {
+                return;
+            }
+
+            widget->setFocus(Qt::OtherFocusReason);
+        }
+
+        /**
+         * A container needs to call this function if a widget has been dropped
+         * into it
+         */
+        void notifyWidgetOrAreaRelocation(QWidget *RelocatedWidget);
+
+        /**
+         * This function is called, if a floating widget has been dropped into
+         * an new position.
+         * When this function is called, all dock widgets of the FloatingWidget
+         * are already inserted into its new position
+         */
+        void notifyFloatingWidgetDrop(CFloatingDockContainer *FloatingWidget);
+
+    public slots:
+
+        /**
+         * Request a focus change to the given dock widget
+         */
+        void setDockWidgetFocused(CDockWidget *focusedNow);
+    }; // class DockFocusController
 }
- // namespace ads
+// namespace ads
 //-----------------------------------------------------------------------------
 #endif // DockFocusControllerH
 

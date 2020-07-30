@@ -21,7 +21,7 @@ TEST_SUBMODULE(kwargs_and_defaults, m) {
     m.def("kw_func3", [](const char *) { }, py::arg("data") = std::string("Hello world!"));
 
     /* A fancier default argument */
-    std::vector<int> list{{13, 17}};
+    std::vector<int> list {{13, 17}};
     m.def("kw_func4", [](const std::vector<int> &entries) {
         std::string ret = "{";
         for (int i : entries)
@@ -30,8 +30,8 @@ TEST_SUBMODULE(kwargs_and_defaults, m) {
         return ret;
     }, py::arg("myList") = list);
 
-    m.def("kw_func_udl", kw_func, "x"_a, "y"_a=300);
-    m.def("kw_func_udl_z", kw_func, "x"_a, "y"_a=0);
+    m.def("kw_func_udl", kw_func, "x"_a, "y"_a = 300);
+    m.def("kw_func_udl_z", kw_func, "x"_a, "y"_a = 0);
 
     // test_args_and_kwargs
     m.def("args_function", [](py::args args) -> py::tuple {
@@ -54,18 +54,27 @@ TEST_SUBMODULE(kwargs_and_defaults, m) {
     m.def("mixed_plus_args_kwargs", mixed_plus_both);
 
     m.def("mixed_plus_args_kwargs_defaults", mixed_plus_both,
-            py::arg("i") = 1, py::arg("j") = 3.14159);
+          py::arg("i") = 1, py::arg("j") = 3.14159);
 
     // test_args_refcount
     // PyPy needs a garbage collection to get the reference count values to match CPython's behaviour
-    #ifdef PYPY_VERSION
-    #define GC_IF_NEEDED ConstructorStats::gc()
-    #else
-    #define GC_IF_NEEDED
-    #endif
-    m.def("arg_refcount_h", [](py::handle h) { GC_IF_NEEDED; return h.ref_count(); });
-    m.def("arg_refcount_h", [](py::handle h, py::handle, py::handle) { GC_IF_NEEDED; return h.ref_count(); });
-    m.def("arg_refcount_o", [](py::object o) { GC_IF_NEEDED; return o.ref_count(); });
+#ifdef PYPY_VERSION
+#define GC_IF_NEEDED ConstructorStats::gc()
+#else
+#define GC_IF_NEEDED
+#endif
+    m.def("arg_refcount_h", [](py::handle h) {
+        GC_IF_NEEDED;
+        return h.ref_count();
+    });
+    m.def("arg_refcount_h", [](py::handle h, py::handle, py::handle) {
+        GC_IF_NEEDED;
+        return h.ref_count();
+    });
+    m.def("arg_refcount_o", [](py::object o) {
+        GC_IF_NEEDED;
+        return o.ref_count();
+    });
     m.def("args_refcount", [](py::args a) {
         GC_IF_NEEDED;
         py::tuple t(a.size());
@@ -96,20 +105,21 @@ TEST_SUBMODULE(kwargs_and_defaults, m) {
 
     // test_keyword_only_args
     m.def("kwonly_all", [](int i, int j) { return py::make_tuple(i, j); },
-            py::kwonly(), py::arg("i"), py::arg("j"));
+          py::kwonly(), py::arg("i"), py::arg("j"));
     m.def("kwonly_some", [](int i, int j, int k) { return py::make_tuple(i, j, k); },
-            py::arg(), py::kwonly(), py::arg("j"), py::arg("k"));
+          py::arg(), py::kwonly(), py::arg("j"), py::arg("k"));
     m.def("kwonly_with_defaults", [](int i, int j, int k, int z) { return py::make_tuple(i, j, k, z); },
-            py::arg() = 3, "j"_a = 4, py::kwonly(), "k"_a = 5, "z"_a);
+          py::arg() = 3, "j"_a = 4, py::kwonly(), "k"_a = 5, "z"_a);
     m.def("kwonly_mixed", [](int i, int j) { return py::make_tuple(i, j); },
-            "i"_a, py::kwonly(), "j"_a);
+          "i"_a, py::kwonly(), "j"_a);
     m.def("kwonly_plus_more", [](int i, int j, int k, py::kwargs kwargs) {
-            return py::make_tuple(i, j, k, kwargs); },
-            py::arg() /* positional */, py::arg("j") = -1 /* both */, py::kwonly(), py::arg("k") /* kw-only */);
+              return py::make_tuple(i, j, k, kwargs);
+          },
+          py::arg() /* positional */, py::arg("j") = -1 /* both */, py::kwonly(), py::arg("k") /* kw-only */);
 
     m.def("register_invalid_kwonly", [](py::module m) {
         m.def("bad_kwonly", [](int i, int j) { return py::make_tuple(i, j); },
-                py::kwonly(), py::arg() /* invalid unnamed argument */, "j"_a);
+              py::kwonly(), py::arg() /* invalid unnamed argument */, "j"_a);
     });
 
     // These should fail to compile:
@@ -119,8 +129,10 @@ TEST_SUBMODULE(kwargs_and_defaults, m) {
 //    m.def("bad_kwonly2", [](int i, py::args) {}, py::kwonly(), "i"_a);
 
     // test_function_signatures (along with most of the above)
-    struct KWClass { void foo(int, float) {} };
+    struct KWClass {
+        void foo(int, float) { }
+    };
     py::class_<KWClass>(m, "KWClass")
-        .def("foo0", &KWClass::foo)
-        .def("foo1", &KWClass::foo, "x"_a, "y"_a);
+            .def("foo0", &KWClass::foo)
+            .def("foo1", &KWClass::foo, "x"_a, "y"_a);
 }

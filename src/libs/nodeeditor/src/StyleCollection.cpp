@@ -5,60 +5,56 @@ using QtNodes::NodeStyle;
 using QtNodes::ConnectionStyle;
 using QtNodes::FlowViewStyle;
 
-NodeStyle const&
+NodeStyle const &
 StyleCollection::
-nodeStyle()
-{
-  return instance()._nodeStyle;
+nodeStyle() {
+    return instance()._nodeStyle;
 }
 
 
-ConnectionStyle const&
+ConnectionStyle const &
 StyleCollection::
-connectionStyle()
-{
-  return instance()._connectionStyle;
+connectionStyle() {
+    return instance()._connectionStyle;
 }
 
 
-FlowViewStyle const&
+FlowViewStyle const &
 StyleCollection::
-flowViewStyle()
-{
-  return instance()._flowViewStyle;
-}
-
-
-void
-StyleCollection::
-setNodeStyle(NodeStyle nodeStyle)
-{
-  instance()._nodeStyle = nodeStyle;
+flowViewStyle() {
+    return instance()._flowViewStyle;
 }
 
 
 void
-StyleCollection::
-setConnectionStyle(ConnectionStyle connectionStyle)
-{
-  instance()._connectionStyle = connectionStyle;
-}
-
-
-void
-StyleCollection::
-setFlowViewStyle(FlowViewStyle flowViewStyle)
-{
-  instance()._flowViewStyle = flowViewStyle;
-}
-
-
-
-StyleCollection&
-StyleCollection::
+        StyleCollection::
+        setNodeStyle(NodeStyle
+nodeStyle) {
 instance()
-{
-  static StyleCollection collection;
 
-  return collection;
+.
+_nodeStyle = nodeStyle;
+}
+
+
+void
+StyleCollection::
+setConnectionStyle(ConnectionStyle connectionStyle) {
+    instance()._connectionStyle = connectionStyle;
+}
+
+
+void
+StyleCollection::
+setFlowViewStyle(FlowViewStyle flowViewStyle) {
+    instance()._flowViewStyle = flowViewStyle;
+}
+
+
+StyleCollection &
+StyleCollection::
+instance() {
+    static StyleCollection collection;
+
+    return collection;
 }

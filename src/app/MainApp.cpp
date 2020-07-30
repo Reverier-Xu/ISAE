@@ -246,7 +246,8 @@ bool MainApp::applySettings() {
     // qDebug() << "Triggered MainApp::applySettings()";
     this->m_settings->beginGroup("MainApp");
     // qDebug() << "Prepared image: " + this->m_settings->value("PresentWallpaper").toString();
-    this->setBackground(QImage(this->m_settings->value("PresentWallpaper").toString()), this->m_settings->value("BlurValue").toInt());
+    this->setBackground(QImage(this->m_settings->value("PresentWallpaper").toString()),
+                        this->m_settings->value("BlurValue").toInt());
     this->m_settings->endGroup();
     return true;
 }

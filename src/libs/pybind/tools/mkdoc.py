@@ -48,11 +48,11 @@ PREFIX_BLACKLIST = [
 CPP_OPERATORS = {
     '<=': 'le', '>=': 'ge', '==': 'eq', '!=': 'ne', '[]': 'array',
     '+=': 'iadd', '-=': 'isub', '*=': 'imul', '/=': 'idiv', '%=':
-    'imod', '&=': 'iand', '|=': 'ior', '^=': 'ixor', '<<=': 'ilshift',
+        'imod', '&=': 'iand', '|=': 'ior', '^=': 'ixor', '<<=': 'ilshift',
     '>>=': 'irshift', '++': 'inc', '--': 'dec', '<<': 'lshift', '>>':
-    'rshift', '&&': 'land', '||': 'lor', '!': 'lnot', '~': 'bnot',
+        'rshift', '&&': 'land', '||': 'lor', '!': 'lnot', '~': 'bnot',
     '&': 'band', '|': 'bor', '+': 'add', '-': 'sub', '*': 'mul', '/':
-    'div', '%': 'mod', '<': 'lt', '>': 'gt', '=': 'assign', '()': 'call'
+        'div', '%': 'mod', '<': 'lt', '>': 'gt', '=': 'assign', '()': 'call'
 }
 
 CPP_OPERATORS = OrderedDict(
@@ -266,6 +266,7 @@ def read_args(args):
         # Try to autodetect, preferring the highest numbered version.
         def clang_folder_version(d):
             return [int(ver) for ver in re.findall(r'(?<!lib)(?<!\d)\d+', d)]
+
         clang_include_dir = max((
             path
             for libdir in ['lib64', 'lib', 'lib32']
@@ -326,7 +327,6 @@ def write_header(comments, out_file=sys.stdout):
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif
 ''', file=out_file)
-
 
     name_ctr = 1
     name_prev = None

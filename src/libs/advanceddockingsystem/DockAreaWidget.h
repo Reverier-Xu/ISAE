@@ -36,15 +36,19 @@
 #include "DockWidget.h"
 
 QT_FORWARD_DECLARE_CLASS(QXmlStreamWriter)
+
 QT_FORWARD_DECLARE_CLASS(QAbstractButton)
 
-namespace ads
-{
-struct DockAreaWidgetPrivate;
-class CDockManager;
-class CDockContainerWidget;
-class DockContainerWidgetPrivate;
-class CDockAreaTitleBar;
+namespace ads {
+    struct DockAreaWidgetPrivate;
+
+    class CDockManager;
+
+    class CDockContainerWidget;
+
+    class DockContainerWidgetPrivate;
+
+    class CDockAreaTitleBar;
 
 
 /**
@@ -52,276 +56,286 @@ class CDockAreaTitleBar;
  * It displays a title tab, which is clickable and will switch to
  * the contents associated to the title when clicked.
  */
-class ADS_EXPORT CDockAreaWidget : public QFrame
-{
-	Q_OBJECT
-private:
-	DockAreaWidgetPrivate* d; ///< private data (pimpl)
-	friend struct DockAreaWidgetPrivate;
-	friend class CDockContainerWidget;
-	friend class DockContainerWidgetPrivate;
-	friend class CDockWidgetTab;
-	friend struct DockWidgetPrivate;
-	friend class CDockWidget;
-	friend struct DockManagerPrivate;
-	friend class CDockManager;
+    class ADS_EXPORT CDockAreaWidget : public QFrame {
+    Q_OBJECT
+    private:
+        DockAreaWidgetPrivate *d; ///< private data (pimpl)
+        friend struct DockAreaWidgetPrivate;
 
-private slots:
-	void onTabCloseRequested(int Index);
+        friend class CDockContainerWidget;
 
-	/**
-	 * Reorder the index position of DockWidget at fromIndx to toIndex
-	 * if a tab in the tabbar is dragged from one index to another one
-	 */
-	void reorderDockWidget(int fromIndex, int toIndex);
+        friend class DockContainerWidgetPrivate;
 
-protected:
-	/**
-	 * Inserts a dock widget into dock area.
-	 * All dockwidgets in the dock area tabified in a stacked layout with tabs.
-	 * The index indicates the index of the new dockwidget in the tabbar and
-	 * in the stacked layout. If the Activate parameter is true, the new
-	 * DockWidget will be the active one in the stacked layout
-	 */
-	void insertDockWidget(int index, CDockWidget* DockWidget, bool Activate = true);
+        friend class CDockWidgetTab;
 
-	/**
-	 * Add a new dock widget to dock area.
-	 * All dockwidgets in the dock area tabified in a stacked layout with tabs
-	 */
-	void addDockWidget(CDockWidget* DockWidget);
+        friend struct DockWidgetPrivate;
 
-	/**
-	 * Removes the given dock widget from the dock area
-	 */
-	void removeDockWidget(CDockWidget* DockWidget);
+        friend class CDockWidget;
 
-	/**
-	 * Called from dock widget if it is opened or closed
-	 */
-	void toggleDockWidgetView(CDockWidget* DockWidget, bool Open);
+        friend struct DockManagerPrivate;
 
-	/**
-	 * This is a helper function to get the next open dock widget to activate
-	 * if the given DockWidget will be closed or removed.
-	 * The function returns the next widget that should be activated or
-	 * nullptr in case there are no more open widgets in this area.
-	 */
-	CDockWidget* nextOpenDockWidget(CDockWidget* DockWidget) const;
+        friend class CDockManager;
 
-	/**
-	 * Returns the index of the given DockWidget in the internal layout
-	 */
-	int index(CDockWidget* DockWidget);
+    private slots:
 
-	/**
-	 * Call this function, if you already know, that the dock does not
-	 * contain any visible content (any open dock widgets).
-	 */
-	void hideAreaWithNoVisibleContent();
+        void onTabCloseRequested(int Index);
 
-	/**
-	 * Updates the dock area layout and components visibility
-	 */
-	void updateTitleBarVisibility();
+        /**
+         * Reorder the index position of DockWidget at fromIndx to toIndex
+         * if a tab in the tabbar is dragged from one index to another one
+         */
+        void reorderDockWidget(int fromIndex, int toIndex);
 
-	/**
-	 * This is the internal private function for setting the current widget.
-	 * This function is called by the public setCurrentDockWidget() function
-	 * and by the dock manager when restoring the state
-	 */
-	void internalSetCurrentDockWidget(CDockWidget* DockWidget);
+    protected:
+        /**
+         * Inserts a dock widget into dock area.
+         * All dockwidgets in the dock area tabified in a stacked layout with tabs.
+         * The index indicates the index of the new dockwidget in the tabbar and
+         * in the stacked layout. If the Activate parameter is true, the new
+         * DockWidget will be the active one in the stacked layout
+         */
+        void insertDockWidget(int index, CDockWidget *DockWidget, bool Activate = true);
 
-	/**
-	 * Marks tabs menu to update
-	 */
-	void markTitleBarMenuOutdated();
+        /**
+         * Add a new dock widget to dock area.
+         * All dockwidgets in the dock area tabified in a stacked layout with tabs
+         */
+        void addDockWidget(CDockWidget *DockWidget);
 
-protected slots:
-	void toggleView(bool Open);
+        /**
+         * Removes the given dock widget from the dock area
+         */
+        void removeDockWidget(CDockWidget *DockWidget);
 
-public:
-	using Super = QFrame;
+        /**
+         * Called from dock widget if it is opened or closed
+         */
+        void toggleDockWidgetView(CDockWidget *DockWidget, bool Open);
 
-	/**
-	 * Default Constructor
-	 */
-	CDockAreaWidget(CDockManager* DockManager, CDockContainerWidget* parent);
+        /**
+         * This is a helper function to get the next open dock widget to activate
+         * if the given DockWidget will be closed or removed.
+         * The function returns the next widget that should be activated or
+         * nullptr in case there are no more open widgets in this area.
+         */
+        CDockWidget *nextOpenDockWidget(CDockWidget *DockWidget) const;
 
-	/**
-	 * Virtual Destructor
-	 */
-	virtual ~CDockAreaWidget();
+        /**
+         * Returns the index of the given DockWidget in the internal layout
+         */
+        int index(CDockWidget *DockWidget);
 
-	/**
-	 * Returns the dock manager object this dock area belongs to
-	 */
-	CDockManager* dockManager() const;
+        /**
+         * Call this function, if you already know, that the dock does not
+         * contain any visible content (any open dock widgets).
+         */
+        void hideAreaWithNoVisibleContent();
 
-	/**
-	 * Returns the dock container widget this dock area widget belongs to or 0
-	 * if there is no
-	 */
-	CDockContainerWidget* dockContainer() const;
+        /**
+         * Updates the dock area layout and components visibility
+         */
+        void updateTitleBarVisibility();
 
-    /**
-     * Returns the largest minimumSizeHint() of the dock widgets in this
-     * area.
-     * The minimum size hint is updated if a dock widget is removed or added.
-     */
-    virtual QSize minimumSizeHint() const override;
+        /**
+         * This is the internal private function for setting the current widget.
+         * This function is called by the public setCurrentDockWidget() function
+         * and by the dock manager when restoring the state
+         */
+        void internalSetCurrentDockWidget(CDockWidget *DockWidget);
 
-	/**
-	 * Returns the rectangle of the title area
-	 */
-	QRect titleBarGeometry() const;
+        /**
+         * Marks tabs menu to update
+         */
+        void markTitleBarMenuOutdated();
 
-	/**
-	 * Returns the rectangle of the content
-	 */
-	QRect contentAreaGeometry() const;
+    protected slots:
 
-	/**
-	 * Returns the number of dock widgets in this area
-	 */
-	int dockWidgetsCount() const;
+        void toggleView(bool Open);
 
-	/**
-	 * Returns a list of all dock widgets in this dock area.
-	 * This list contains open and closed dock widgets.
-	 */
-	QList<CDockWidget*> dockWidgets() const;
+    public:
+        using Super = QFrame;
 
-	/**
-	 * Returns the number of open dock widgets in this area
-	 */
-	int openDockWidgetsCount() const;
+        /**
+         * Default Constructor
+         */
+        CDockAreaWidget(CDockManager *DockManager, CDockContainerWidget *parent);
 
-	/**
-	 * Returns a list of dock widgets that are not closed.
-	 */
-	QList<CDockWidget*> openedDockWidgets() const;
+        /**
+         * Virtual Destructor
+         */
+        virtual ~CDockAreaWidget();
 
-	/**
-	 * Returns a dock widget by its index
-	 */
-	CDockWidget* dockWidget(int Index) const;
+        /**
+         * Returns the dock manager object this dock area belongs to
+         */
+        CDockManager *dockManager() const;
 
-	/**
-	 * Returns the index of the current active dock widget or -1 if there
-	 * are is no active dock widget (ie.e if all dock widgets are closed)
-	 */
-	int currentIndex() const;
+        /**
+         * Returns the dock container widget this dock area widget belongs to or 0
+         * if there is no
+         */
+        CDockContainerWidget *dockContainer() const;
 
-	/**
-	 * Returns the index of the first open dock widgets in the list of
-	 * dock widgets.
-	 * This function is here for performance reasons. Normally it would
-	 * be possible to take the first dock widget from the list returned by
-	 * openedDockWidgets() function. But that function enumerates all
-	 * dock widgets while this functions stops after the first open dock widget.
-	 * If there are no open dock widgets, the function returns -1.
-	 */
-	int indexOfFirstOpenDockWidget() const;
+        /**
+         * Returns the largest minimumSizeHint() of the dock widgets in this
+         * area.
+         * The minimum size hint is updated if a dock widget is removed or added.
+         */
+        virtual QSize minimumSizeHint() const override;
 
-	/**
-	 * Returns the current active dock widget or a nullptr if there is no
-	 * active dock widget (i.e. if all dock widgets are closed)
-	 */
-	CDockWidget* currentDockWidget() const;
+        /**
+         * Returns the rectangle of the title area
+         */
+        QRect titleBarGeometry() const;
 
-	/**
-	 * Shows the tab with the given dock widget
-	 */
-	void setCurrentDockWidget(CDockWidget* DockWidget);
+        /**
+         * Returns the rectangle of the content
+         */
+        QRect contentAreaGeometry() const;
 
-	/**
-	 * Saves the state into the given stream
-	 */
-	void saveState(QXmlStreamWriter& Stream) const;
+        /**
+         * Returns the number of dock widgets in this area
+         */
+        int dockWidgetsCount() const;
 
-	/**
-	 * This functions returns the dock widget features of all dock widget in
-	 * this area.
-	 * A bitwise and is used to combine the flags of all dock widgets. That
-	 * means, if only one single dock widget does not support a certain flag,
-	 * the whole dock are does not support the flag. I.e. if one single
-	 * dock widget in this area is not closable, the whole dock are is not
-	 * closable.
-	 */
-	CDockWidget::DockWidgetFeatures features(eBitwiseOperator Mode = BitwiseAnd) const;
+        /**
+         * Returns a list of all dock widgets in this dock area.
+         * This list contains open and closed dock widgets.
+         */
+        QList<CDockWidget *> dockWidgets() const;
 
-	/**
-	 * Returns the title bar button corresponding to the given title bar
-	 * button identifier
-	 */
-	QAbstractButton* titleBarButton(TitleBarButton which) const;
+        /**
+         * Returns the number of open dock widgets in this area
+         */
+        int openDockWidgetsCount() const;
 
-	/**
-	 * Update the close button if visibility changed
-	 */
-	virtual void setVisible(bool Visible) override;
+        /**
+         * Returns a list of dock widgets that are not closed.
+         */
+        QList<CDockWidget *> openedDockWidgets() const;
 
-	/**
-	 * Configures the areas of this particular dock area that are allowed for docking
-	 */
-	void setAllowedAreas(DockWidgetAreas areas);
+        /**
+         * Returns a dock widget by its index
+         */
+        CDockWidget *dockWidget(int Index) const;
 
-	/**
-	 * Returns flags with all allowed drop areas of this particular dock area
-	 */
-	DockWidgetAreas allowedAreas() const;
+        /**
+         * Returns the index of the current active dock widget or -1 if there
+         * are is no active dock widget (ie.e if all dock widgets are closed)
+         */
+        int currentIndex() const;
 
-	/**
-	 * Returns the title bar of this dock area
-	 */
-	CDockAreaTitleBar* titleBar() const;
+        /**
+         * Returns the index of the first open dock widgets in the list of
+         * dock widgets.
+         * This function is here for performance reasons. Normally it would
+         * be possible to take the first dock widget from the list returned by
+         * openedDockWidgets() function. But that function enumerates all
+         * dock widgets while this functions stops after the first open dock widget.
+         * If there are no open dock widgets, the function returns -1.
+         */
+        int indexOfFirstOpenDockWidget() const;
 
-public slots:
-	/**
-	 * This activates the tab for the given tab index.
-	 * If the dock widget for the given tab is not visible, the this function
-	 * call will make it visible.
-	 */
-	void setCurrentIndex(int index);
+        /**
+         * Returns the current active dock widget or a nullptr if there is no
+         * active dock widget (i.e. if all dock widgets are closed)
+         */
+        CDockWidget *currentDockWidget() const;
 
-	/**
-	 * Closes the dock area and all dock widgets in this area
-	 */
-	void closeArea();
+        /**
+         * Shows the tab with the given dock widget
+         */
+        void setCurrentDockWidget(CDockWidget *DockWidget);
 
-	/**
-	 * This function closes all other areas except of this area
-	 */
-	void closeOtherAreas();
+        /**
+         * Saves the state into the given stream
+         */
+        void saveState(QXmlStreamWriter &Stream) const;
 
-signals:
-	/**
-	 * This signal is emitted when user clicks on a tab at an index.
-	 */
-	void tabBarClicked(int index);
+        /**
+         * This functions returns the dock widget features of all dock widget in
+         * this area.
+         * A bitwise and is used to combine the flags of all dock widgets. That
+         * means, if only one single dock widget does not support a certain flag,
+         * the whole dock are does not support the flag. I.e. if one single
+         * dock widget in this area is not closable, the whole dock are is not
+         * closable.
+         */
+        CDockWidget::DockWidgetFeatures features(eBitwiseOperator Mode = BitwiseAnd) const;
 
-    /**
-     * This signal is emitted when the tab bar's current tab is about to be changed. The new
-     * current has the given index, or -1 if there isn't a new one.
-     * @param index
-     */
-    void currentChanging(int index);
+        /**
+         * Returns the title bar button corresponding to the given title bar
+         * button identifier
+         */
+        QAbstractButton *titleBarButton(TitleBarButton which) const;
 
-	/**
-	 * This signal is emitted when the tab bar's current tab changes. The new
-	 * current has the given index, or -1 if there isn't a new one
-	 * @param index
-	 */
-	void currentChanged(int index);
+        /**
+         * Update the close button if visibility changed
+         */
+        virtual void setVisible(bool Visible) override;
 
-	/**
-	 * This signal is emitted if the visibility of this dock area is toggled
-	 * via toggle view function
-	 */
-	void viewToggled(bool Open);
-}; // class DockAreaWidget
+        /**
+         * Configures the areas of this particular dock area that are allowed for docking
+         */
+        void setAllowedAreas(DockWidgetAreas areas);
+
+        /**
+         * Returns flags with all allowed drop areas of this particular dock area
+         */
+        DockWidgetAreas allowedAreas() const;
+
+        /**
+         * Returns the title bar of this dock area
+         */
+        CDockAreaTitleBar *titleBar() const;
+
+    public slots:
+
+        /**
+         * This activates the tab for the given tab index.
+         * If the dock widget for the given tab is not visible, the this function
+         * call will make it visible.
+         */
+        void setCurrentIndex(int index);
+
+        /**
+         * Closes the dock area and all dock widgets in this area
+         */
+        void closeArea();
+
+        /**
+         * This function closes all other areas except of this area
+         */
+        void closeOtherAreas();
+
+    signals:
+
+        /**
+         * This signal is emitted when user clicks on a tab at an index.
+         */
+        void tabBarClicked(int index);
+
+        /**
+         * This signal is emitted when the tab bar's current tab is about to be changed. The new
+         * current has the given index, or -1 if there isn't a new one.
+         * @param index
+         */
+        void currentChanging(int index);
+
+        /**
+         * This signal is emitted when the tab bar's current tab changes. The new
+         * current has the given index, or -1 if there isn't a new one
+         * @param index
+         */
+        void currentChanged(int index);
+
+        /**
+         * This signal is emitted if the visibility of this dock area is toggled
+         * via toggle view function
+         */
+        void viewToggled(bool Open);
+    }; // class DockAreaWidget
 }
- // namespace ads
+// namespace ads
 //-----------------------------------------------------------------------------
 #endif // DockAreaWidgetH

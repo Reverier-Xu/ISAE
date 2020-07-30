@@ -51,25 +51,25 @@
 #=============================================================================
 
 # Checking for the extension makes sure that `LibsNew` was found and not just `Libs`.
-if(PYTHONLIBS_FOUND AND PYTHON_MODULE_EXTENSION)
+if (PYTHONLIBS_FOUND AND PYTHON_MODULE_EXTENSION)
     return()
-endif()
+endif ()
 
 # Use the Python interpreter to find the libs.
-if(NOT PythonLibsNew_FIND_VERSION)
+if (NOT PythonLibsNew_FIND_VERSION)
     set(PythonLibsNew_FIND_VERSION "")
-endif()
-if(PythonLibsNew_FIND_REQUIRED)
+endif ()
+if (PythonLibsNew_FIND_REQUIRED)
     find_package(PythonInterp ${PythonLibsNew_FIND_VERSION} REQUIRED)
-else()
+else ()
     find_package(PythonInterp ${PythonLibsNew_FIND_VERSION})
-endif()
+endif ()
 
-if(NOT PYTHONINTERP_FOUND)
+if (NOT PYTHONINTERP_FOUND)
     set(PYTHONLIBS_FOUND FALSE)
     set(PythonLibsNew_FOUND FALSE)
     return()
-endif()
+endif ()
 
 # According to http://stackoverflow.com/questions/646518/python-how-to-detect-debug-interpreter
 # testing whether sys has the gettotalrefcount function is a reliable, cross-platform
@@ -78,7 +78,7 @@ endif()
 # The library suffix is from the config var LDVERSION sometimes, otherwise
 # VERSION. VERSION will typically be like "2.7" on unix, and "27" on windows.
 execute_process(COMMAND "${PYTHON_EXECUTABLE}" "-c"
-    "from distutils import sysconfig as s;import sys;import struct;
+        "from distutils import sysconfig as s;import sys;import struct;
 print('.'.join(str(v) for v in sys.version_info));
 print(sys.prefix);
 print(s.get_python_inc(plat_specific=True));
@@ -90,24 +90,24 @@ print(s.get_config_var('LDVERSION') or s.get_config_var('VERSION'));
 print(s.get_config_var('LIBDIR') or '');
 print(s.get_config_var('MULTIARCH') or '');
 "
-    RESULT_VARIABLE _PYTHON_SUCCESS
-    OUTPUT_VARIABLE _PYTHON_VALUES
-    ERROR_VARIABLE _PYTHON_ERROR_VALUE)
+        RESULT_VARIABLE _PYTHON_SUCCESS
+        OUTPUT_VARIABLE _PYTHON_VALUES
+        ERROR_VARIABLE _PYTHON_ERROR_VALUE)
 
-if(NOT _PYTHON_SUCCESS MATCHES 0)
-    if(PythonLibsNew_FIND_REQUIRED)
+if (NOT _PYTHON_SUCCESS MATCHES 0)
+    if (PythonLibsNew_FIND_REQUIRED)
         message(FATAL_ERROR
-            "Python config failure:\n${_PYTHON_ERROR_VALUE}")
-    endif()
+                "Python config failure:\n${_PYTHON_ERROR_VALUE}")
+    endif ()
     set(PYTHONLIBS_FOUND FALSE)
     set(PythonLibsNew_FOUND FALSE)
     return()
-endif()
+endif ()
 
 # Convert the process output into a list
-if(WIN32)
+if (WIN32)
     string(REGEX REPLACE "\\\\" "/" _PYTHON_VALUES ${_PYTHON_VALUES})
-endif()
+endif ()
 string(REGEX REPLACE ";" "\\\\;" _PYTHON_VALUES ${_PYTHON_VALUES})
 string(REGEX REPLACE "\n" ";" _PYTHON_VALUES ${_PYTHON_VALUES})
 list(GET _PYTHON_VALUES 0 _PYTHON_VERSION_LIST)
@@ -123,18 +123,18 @@ list(GET _PYTHON_VALUES 9 PYTHON_MULTIARCH)
 
 # Make sure the Python has the same pointer-size as the chosen compiler
 # Skip if CMAKE_SIZEOF_VOID_P is not defined
-if(CMAKE_SIZEOF_VOID_P AND (NOT "${PYTHON_SIZEOF_VOID_P}" STREQUAL "${CMAKE_SIZEOF_VOID_P}"))
-    if(PythonLibsNew_FIND_REQUIRED)
+if (CMAKE_SIZEOF_VOID_P AND (NOT "${PYTHON_SIZEOF_VOID_P}" STREQUAL "${CMAKE_SIZEOF_VOID_P}"))
+    if (PythonLibsNew_FIND_REQUIRED)
         math(EXPR _PYTHON_BITS "${PYTHON_SIZEOF_VOID_P} * 8")
         math(EXPR _CMAKE_BITS "${CMAKE_SIZEOF_VOID_P} * 8")
         message(FATAL_ERROR
-            "Python config failure: Python is ${_PYTHON_BITS}-bit, "
-            "chosen compiler is  ${_CMAKE_BITS}-bit")
-    endif()
+                "Python config failure: Python is ${_PYTHON_BITS}-bit, "
+                "chosen compiler is  ${_CMAKE_BITS}-bit")
+    endif ()
     set(PYTHONLIBS_FOUND FALSE)
     set(PythonLibsNew_FOUND FALSE)
     return()
-endif()
+endif ()
 
 # The built-in FindPython didn't always give the version numbers
 string(REGEX REPLACE "\\." ";" _PYTHON_VERSION_LIST ${_PYTHON_VERSION_LIST})
@@ -147,46 +147,46 @@ string(REGEX REPLACE "\\\\" "/" PYTHON_PREFIX "${PYTHON_PREFIX}")
 string(REGEX REPLACE "\\\\" "/" PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}")
 string(REGEX REPLACE "\\\\" "/" PYTHON_SITE_PACKAGES "${PYTHON_SITE_PACKAGES}")
 
-if(CMAKE_HOST_WIN32 AND NOT (MINGW AND DEFINED ENV{MSYSTEM}))
+if (CMAKE_HOST_WIN32 AND NOT (MINGW AND DEFINED ENV{MSYSTEM}))
     set(PYTHON_LIBRARY
-        "${PYTHON_PREFIX}/libs/python${PYTHON_LIBRARY_SUFFIX}.lib")
+            "${PYTHON_PREFIX}/libs/python${PYTHON_LIBRARY_SUFFIX}.lib")
 
     # when run in a venv, PYTHON_PREFIX points to it. But the libraries remain in the
     # original python installation. They may be found relative to PYTHON_INCLUDE_DIR.
-    if(NOT EXISTS "${PYTHON_LIBRARY}")
+    if (NOT EXISTS "${PYTHON_LIBRARY}")
         get_filename_component(_PYTHON_ROOT ${PYTHON_INCLUDE_DIR} DIRECTORY)
         set(PYTHON_LIBRARY
-            "${_PYTHON_ROOT}/libs/python${PYTHON_LIBRARY_SUFFIX}.lib")
-    endif()
+                "${_PYTHON_ROOT}/libs/python${PYTHON_LIBRARY_SUFFIX}.lib")
+    endif ()
 
     # raise an error if the python libs are still not found.
-    if(NOT EXISTS "${PYTHON_LIBRARY}")
+    if (NOT EXISTS "${PYTHON_LIBRARY}")
         message(FATAL_ERROR "Python libraries not found")
-    endif()
+    endif ()
 
-else()
-    if(PYTHON_MULTIARCH)
+else ()
+    if (PYTHON_MULTIARCH)
         set(_PYTHON_LIBS_SEARCH "${PYTHON_LIBDIR}/${PYTHON_MULTIARCH}" "${PYTHON_LIBDIR}")
-    else()
+    else ()
         set(_PYTHON_LIBS_SEARCH "${PYTHON_LIBDIR}")
-    endif()
+    endif ()
     #message(STATUS "Searching for Python libs in ${_PYTHON_LIBS_SEARCH}")
     # Probably this needs to be more involved. It would be nice if the config
     # information the python interpreter itself gave us were more complete.
     find_library(PYTHON_LIBRARY
-        NAMES "python${PYTHON_LIBRARY_SUFFIX}"
-        PATHS ${_PYTHON_LIBS_SEARCH}
-        NO_DEFAULT_PATH)
+            NAMES "python${PYTHON_LIBRARY_SUFFIX}"
+            PATHS ${_PYTHON_LIBS_SEARCH}
+            NO_DEFAULT_PATH)
 
     # If all else fails, just set the name/version and let the linker figure out the path.
-    if(NOT PYTHON_LIBRARY)
+    if (NOT PYTHON_LIBRARY)
         set(PYTHON_LIBRARY python${PYTHON_LIBRARY_SUFFIX})
-    endif()
-endif()
+    endif ()
+endif ()
 
 MARK_AS_ADVANCED(
-  PYTHON_LIBRARY
-  PYTHON_INCLUDE_DIR
+        PYTHON_LIBRARY
+        PYTHON_INCLUDE_DIR
 )
 
 # We use PYTHON_INCLUDE_DIR, PYTHON_LIBRARY and PYTHON_DEBUG_LIBRARY for the
@@ -195,18 +195,18 @@ MARK_AS_ADVANCED(
 # module.
 SET(PYTHON_INCLUDE_DIRS "${PYTHON_INCLUDE_DIR}")
 SET(PYTHON_LIBRARIES "${PYTHON_LIBRARY}")
-if(NOT PYTHON_DEBUG_LIBRARY)
+if (NOT PYTHON_DEBUG_LIBRARY)
     SET(PYTHON_DEBUG_LIBRARY "")
-endif()
+endif ()
 SET(PYTHON_DEBUG_LIBRARIES "${PYTHON_DEBUG_LIBRARY}")
 
 find_package_message(PYTHON
-    "Found PythonLibs: ${PYTHON_LIBRARY}"
-    "${PYTHON_EXECUTABLE}${PYTHON_VERSION_STRING}")
+        "Found PythonLibs: ${PYTHON_LIBRARY}"
+        "${PYTHON_EXECUTABLE}${PYTHON_VERSION_STRING}")
 
 set(PYTHONLIBS_FOUND TRUE)
 set(PythonLibsNew_FOUND TRUE)
 
-if(NOT PYTHON_MODULE_PREFIX)
+if (NOT PYTHON_MODULE_PREFIX)
     SET(PYTHON_MODULE_PREFIX "")
-endif()
+endif ()

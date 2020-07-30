@@ -93,6 +93,7 @@ public:
 
     // 应用样式表
     void loadStyleSheet(const QString &styleSheetFile);
+
     // 探测应用目录
     static void detectDirs();
 

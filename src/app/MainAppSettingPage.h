@@ -9,19 +9,24 @@
 #include <QSettings>
 #include <QSaveFile>
 #include "ISAEPluginWidget.h"
+
 namespace Ui {
     class MainAppSettingPage;
 }
 
 class MainAppSettingPage : public ISAEPluginSettingWidget {
-    Q_OBJECT
+Q_OBJECT
 private:
     Ui::MainAppSettingPage *ui;
 public:
     explicit MainAppSettingPage(QWidget *parent);
+
     ~MainAppSettingPage() override;
+
     void drawSettings();
+
     bool loadSettings(const QString &path) override;
+
     bool saveSettings() override;
 };
 

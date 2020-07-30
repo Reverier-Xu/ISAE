@@ -1,7 +1,7 @@
 #pragma once
 
 #if                                                               \
-  defined (__MINGW32__)                                        || \
+  defined (__MINGW32__) || \
   defined (__MINGW64__)
 #  define NODE_EDITOR_COMPILER "MinGW"
 #  define NODE_EDITOR_COMPILER_MINGW

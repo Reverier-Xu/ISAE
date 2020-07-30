@@ -11,87 +11,85 @@
 #include "NodeData.hpp"
 #include "memory.hpp"
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-class Connection;
-class NodeDataModel;
+    class Connection;
+
+    class NodeDataModel;
 
 /// Contains vectors of connected input and output connections.
 /// Stores bool for reacting on hovering connections
-class NODE_EDITOR_PUBLIC NodeState
-{
-public:
-  enum ReactToConnectionState
-  {
-    REACTING,
-    NOT_REACTING
-  };
+    class NODE_EDITOR_PUBLIC NodeState {
+    public:
+        enum ReactToConnectionState {
+            REACTING,
+            NOT_REACTING
+        };
 
-public:
+    public:
 
-  NodeState(std::unique_ptr<NodeDataModel> const &model);
+        NodeState(std::unique_ptr<NodeDataModel> const &model);
 
-public:
+    public:
 
-  using ConnectionPtrSet =
-          std::unordered_map<QUuid, Connection*>;
+        using ConnectionPtrSet =
+        std::unordered_map<QUuid, Connection *>;
 
-  /// Returns vector of connections ID.
-  /// Some of them can be empty (null)
-  std::vector<ConnectionPtrSet> const&
-  getEntries(PortType) const;
+        /// Returns vector of connections ID.
+        /// Some of them can be empty (null)
+        std::vector<ConnectionPtrSet> const &
+        getEntries(PortType) const;
 
-  std::vector<ConnectionPtrSet> &
-  getEntries(PortType);
+        std::vector<ConnectionPtrSet> &
+        getEntries(PortType);
 
-  ConnectionPtrSet
-  connections(PortType portType, PortIndex portIndex) const;
+        ConnectionPtrSet
+        connections(PortType portType, PortIndex portIndex) const;
 
-  void
-  setConnection(PortType portType,
-                PortIndex portIndex,
-                Connection& connection);
+        void
+        setConnection(PortType portType,
+                      PortIndex portIndex,
+                      Connection &connection);
 
-  void
-  eraseConnection(PortType portType,
-                  PortIndex portIndex,
-                  QUuid id);
+        void
+        eraseConnection(PortType portType,
+                        PortIndex portIndex,
+                        QUuid id);
 
-  ReactToConnectionState
-  reaction() const;
+        ReactToConnectionState
+        reaction() const;
 
-  PortType
-  reactingPortType() const;
+        PortType
+        reactingPortType() const;
 
-  NodeDataType
-  reactingDataType() const;
+        NodeDataType
+        reactingDataType() const;
 
-  void
-  setReaction(ReactToConnectionState reaction,
-              PortType reactingPortType = PortType::None,
+        void
+        setReaction(ReactToConnectionState reaction,
+                    PortType reactingPortType = PortType::None,
 
-              NodeDataType reactingDataType =
-                NodeDataType());
+                    NodeDataType reactingDataType =
+                    NodeDataType());
 
-  bool
-  isReacting() const;
+        bool
+        isReacting() const;
 
-  void
-  setResizing(bool resizing);
+        void
+        setResizing(bool resizing);
 
-  bool
-  resizing() const;
+        bool
+        resizing() const;
 
-private:
+    private:
 
-  std::vector<ConnectionPtrSet> _inConnections;
-  std::vector<ConnectionPtrSet> _outConnections;
+        std::vector<ConnectionPtrSet> _inConnections;
+        std::vector<ConnectionPtrSet> _outConnections;
 
-  ReactToConnectionState _reaction;
-  PortType     _reactingPortType;
-  NodeDataType _reactingDataType;
+        ReactToConnectionState _reaction;
+        PortType _reactingPortType;
+        NodeDataType _reactingDataType;
 
-  bool _resizing;
-};
+        bool _resizing;
+    };
 }

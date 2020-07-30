@@ -14,10 +14,9 @@
 
 #include "ads_globals.h"
 
-namespace ads
-{
+namespace ads {
 
-struct IconProviderPrivate;
+    struct IconProviderPrivate;
 
 /**
  * This object provides all icons that are required by the advanced docking
@@ -25,34 +24,33 @@ struct IconProviderPrivate;
  * The IconProvider enables the user to register custom icons in case using
  * stylesheets is not an option.
  */
-class ADS_EXPORT CIconProvider
-{
-private:
-	IconProviderPrivate* d; ///< private data (pimpl)
-	friend struct IconProviderPrivate;
+    class ADS_EXPORT CIconProvider {
+    private:
+        IconProviderPrivate *d; ///< private data (pimpl)
+        friend struct IconProviderPrivate;
 
-public:
-	/**
-	 * Default Constructor
-	 */
-	CIconProvider();
+    public:
+        /**
+         * Default Constructor
+         */
+        CIconProvider();
 
-	/**
-	 * Virtual Destructor
-	 */
-	virtual ~CIconProvider();
+        /**
+         * Virtual Destructor
+         */
+        virtual ~CIconProvider();
 
-	/**
-	 * The function returns a custom icon if one is registered and a null Icon
-	 * if no custom icon is registered
-	 */
-	QIcon customIcon(eIcon IconId) const;
+        /**
+         * The function returns a custom icon if one is registered and a null Icon
+         * if no custom icon is registered
+         */
+        QIcon customIcon(eIcon IconId) const;
 
-	/**
-	 * Registers a custom icon for the given IconId
-	 */
-	void registerCustomIcon(eIcon IconId, const QIcon &icon);
-}; // class IconProvider
+        /**
+         * Registers a custom icon for the given IconId
+         */
+        void registerCustomIcon(eIcon IconId, const QIcon &icon);
+    }; // class IconProvider
 
 } // namespace ads
 

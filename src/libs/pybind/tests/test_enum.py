@@ -21,7 +21,7 @@ def test_unscoped_enum():
 
     # __members__ property
     assert m.UnscopedEnum.__members__ == \
-        {"EOne": m.UnscopedEnum.EOne, "ETwo": m.UnscopedEnum.ETwo, "EThree": m.UnscopedEnum.EThree}
+           {"EOne": m.UnscopedEnum.EOne, "ETwo": m.UnscopedEnum.ETwo, "EThree": m.UnscopedEnum.EThree}
     # __members__ readonly
     with pytest.raises(AttributeError):
         m.UnscopedEnum.__members__ = {}
@@ -29,7 +29,7 @@ def test_unscoped_enum():
     foo = m.UnscopedEnum.__members__
     foo["bar"] = "baz"
     assert m.UnscopedEnum.__members__ == \
-        {"EOne": m.UnscopedEnum.EOne, "ETwo": m.UnscopedEnum.ETwo, "EThree": m.UnscopedEnum.EThree}
+           {"EOne": m.UnscopedEnum.EOne, "ETwo": m.UnscopedEnum.ETwo, "EThree": m.UnscopedEnum.EThree}
 
     for docstring_line in '''An unscoped enumeration
 

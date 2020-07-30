@@ -17,6 +17,7 @@ Q_OBJECT
     Q_PROPERTY(bool isVertical READ isVertical WRITE setVertical)
 
 signals:
+
     void animationEnded();
 
 public:

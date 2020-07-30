@@ -13,20 +13,24 @@ struct CustomGuard {
     static bool enabled;
 
     CustomGuard() { enabled = true; }
+
     ~CustomGuard() { enabled = false; }
 
     static const char *report_status() { return enabled ? "guarded" : "unguarded"; }
 };
+
 bool CustomGuard::enabled = false;
 
 struct DependentGuard {
     static bool enabled;
 
     DependentGuard() { enabled = CustomGuard::enabled; }
+
     ~DependentGuard() { enabled = false; }
 
     static const char *report_status() { return enabled ? "guarded" : "unguarded"; }
 };
+
 bool DependentGuard::enabled = false;
 
 TEST_SUBMODULE(call_policies, m) {
@@ -36,30 +40,37 @@ TEST_SUBMODULE(call_policies, m) {
     class Child {
     public:
         Child() { py::print("Allocating child."); }
+
         Child(const Child &) = default;
+
         Child(Child &&) = default;
+
         ~Child() { py::print("Releasing child."); }
     };
     py::class_<Child>(m, "Child")
-        .def(py::init<>());
+            .def(py::init<>());
 
     class Parent {
     public:
         Parent() { py::print("Allocating parent."); }
+
         ~Parent() { py::print("Releasing parent."); }
+
         void addChild(Child *) { }
+
         Child *returnChild() { return new Child(); }
+
         Child *returnNullChild() { return nullptr; }
     };
     py::class_<Parent>(m, "Parent")
-        .def(py::init<>())
-        .def(py::init([](Child *) { return new Parent(); }), py::keep_alive<1, 2>())
-        .def("addChild", &Parent::addChild)
-        .def("addChildKeepAlive", &Parent::addChild, py::keep_alive<1, 2>())
-        .def("returnChild", &Parent::returnChild)
-        .def("returnChildKeepAlive", &Parent::returnChild, py::keep_alive<1, 0>())
-        .def("returnNullChildKeepAliveChild", &Parent::returnNullChild, py::keep_alive<1, 0>())
-        .def("returnNullChildKeepAliveParent", &Parent::returnNullChild, py::keep_alive<0, 1>());
+            .def(py::init<>())
+            .def(py::init([](Child *) { return new Parent(); }), py::keep_alive<1, 2>())
+            .def("addChild", &Parent::addChild)
+            .def("addChildKeepAlive", &Parent::addChild, py::keep_alive<1, 2>())
+            .def("returnChild", &Parent::returnChild)
+            .def("returnChildKeepAlive", &Parent::returnChild, py::keep_alive<1, 0>())
+            .def("returnNullChildKeepAliveChild", &Parent::returnNullChild, py::keep_alive<1, 0>())
+            .def("returnNullChildKeepAliveParent", &Parent::returnNullChild, py::keep_alive<0, 1>());
 
 #if !defined(PYPY_VERSION)
     // test_alive_gc
@@ -68,7 +79,7 @@ TEST_SUBMODULE(call_policies, m) {
         using Parent::Parent;
     };
     py::class_<ParentGC, Parent>(m, "ParentGC", py::dynamic_attr())
-        .def(py::init<>());
+            .def(py::init<>());
 #endif
 
     // test_call_guard

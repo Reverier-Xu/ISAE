@@ -1,4 +1,5 @@
 #pragma once
+
 #include <pybind11/pybind11.h>
 
 #if defined(_MSC_VER) && _MSC_VER < 1910
@@ -14,6 +15,7 @@ class test_initializer {
 
 public:
     test_initializer(Initializer init);
+
     test_initializer(const char *submodule_name, Initializer init);
 };
 
@@ -24,15 +26,18 @@ public:
 
 
 /// Dummy type which is not exported anywhere -- something to trigger a conversion error
-struct UnregisteredType { };
+struct UnregisteredType {
+};
 
 /// A user-defined type which is exported and can be used by any test
 class UserType {
 public:
     UserType() = default;
+
     UserType(int i) : i(i) { }
 
     int value() const { return i; }
+
     void set(int set) { i = set; }
 
 private:
@@ -43,23 +48,35 @@ private:
 class IncType : public UserType {
 public:
     using UserType::UserType;
+
     IncType() = default;
+
     IncType(const IncType &other) : IncType(other.value() + 1) { }
+
     IncType(IncType &&) = delete;
+
     IncType &operator=(const IncType &) = delete;
+
     IncType &operator=(IncType &&) = delete;
 };
 
 /// Custom cast-only type that casts to a string "rvalue" or "lvalue" depending on the cast context.
 /// Used to test recursive casters (e.g. std::tuple, stl containers).
-struct RValueCaster {};
+struct RValueCaster {
+};
 PYBIND11_NAMESPACE_BEGIN(pybind11)
 PYBIND11_NAMESPACE_BEGIN(detail)
-template<> class type_caster<RValueCaster> {
+
+template<>
+class type_caster<RValueCaster> {
 public:
-    PYBIND11_TYPE_CASTER(RValueCaster, _("RValueCaster"));
+    PYBIND11_TYPE_CASTER(RValueCaster, _(
+    "RValueCaster"));
+
     static handle cast(RValueCaster &&, return_value_policy, handle) { return py::str("rvalue").release(); }
+
     static handle cast(const RValueCaster &, return_value_policy, handle) { return py::str("lvalue").release(); }
 };
+
 PYBIND11_NAMESPACE_END(detail)
 PYBIND11_NAMESPACE_END(pybind11)

@@ -1,361 +1,574 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AboutWindow</class>
- <widget class="QDialog" name="AboutWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>820</width>
-    <height>483</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget#AboutWindow{
-border: 1px solid black;
-background-color: #2c2c2c;
-}</string>
-  </property>
-  <widget class="QLabel" name="isaelogo">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>60</y>
-     <width>301</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>文泉驿等宽微米黑</family>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel{
-	background-image: url(:/assets/isae-logo.png);
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="aboutChineseLabel">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>70</y>
-     <width>411</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>文泉驿等宽微米黑</family>
-     <pointsize>32</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>集成式安全审计系统</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="aboutEnglishLabel">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>130</y>
-     <width>641</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>文泉驿等宽微米黑</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>Intergrated Security Audit Environment Version 2.0</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="infoBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>200</y>
-     <width>801</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>文泉驿等宽微米黑</family>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'文泉驿等宽微米黑'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#00aaff;&quot;&gt;Powered By 2020 Reverier Xu, XDSEC.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic; color:#ffffff;&quot;&gt;本软件为开源软件, 请在规定的法律条款内自由的使用. 若在使用本软件中部分功能时造成他人的损失,&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-style:italic; color:#ffffff;&quot;&gt;请自行承担一切责任.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;仓库地址&lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;https://github.com/Reverier-Xu/ISAE&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/Reverier-Xu/ISAE&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; text-decoration: underline; color:#07d6ff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#00aaff;&quot;&gt;开发者鸣谢(不分先后):&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;arttnba3&lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt; @ XDSEC 2020, Member&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;JayxV&lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt; @ , Member&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Reverier&lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt; @ XDSEC 2020, Member&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#00aaff;&quot;&gt;第三方库鸣谢(不分先后):&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff00;&quot;&gt;CPR&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/whoshuu/cpr&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/whoshuu/cpr&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff00;&quot;&gt;cURL&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/curl/curl&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/curl/curl&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff7f;&quot;&gt;NodeEditor&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/paceholder/nodeeditor&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/paceholder/nodeeditor&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff7f;&quot;&gt;QCodeEditor&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/Megaxela/QCodeEditor&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/Megaxela/QCodeEditor&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff7f;&quot;&gt;cJSON&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/DaveGamble/cJSON&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/DaveGamble/cJSON&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff7f;&quot;&gt;Qt-Advanced-Docking-System&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff7f;&quot;&gt;SQLite3 CMake bindings&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/azadkuh/sqlite-amalgamation&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/azadkuh/sqlite-amalgamation&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#55ff7f;&quot;&gt;SQLite3&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/mackyle/sqlite&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/mackyle/sqlite&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#00aaff;&quot;&gt;License&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#55ff7f;&quot;&gt;MIT License&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Copyright (c) 2020 Reverier Xu&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Permission is hereby granted, free of charge, to any person obtaining a copy&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;of this software and associated documentation files (the &amp;quot;Software&amp;quot;), to deal&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;in the Software without restriction, including without limitation the rights&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;to use, copy, modify, merge, publish, distribute, sublicense, and/or sell&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;copies of the Software, and to permit persons to whom the Software is&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;furnished to do so, subject to the following conditions:&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;The above copyright notice and this permission notice shall be included in all&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;copies or substantial portions of the Software.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;THE SOFTWARE IS PROVIDED &amp;quot;AS IS&amp;quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;SOFTWARE.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#00aaff;&quot;&gt;一点想法&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#00aaff;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;    最初萌生开发这个软件想法的时候, 我正在为了转专业而奋斗(现在也是). 为了抓住那些珍贵的机会, &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;我希望能开发一些实用的小工具, 让我能够在日益艰难的CTF比赛之中更快的解决问题. 开发了一些简单的&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;几个简单的加密解密小工具, 我不禁想能不能把它整合成一个软件. 当我准备把这些零碎的小工具整合成一&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;个集成工具包的时候, 我又想能不能把这个工具包弄一个跨平台的解题环境--集成式CTF解题环境(ICTFE)&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;于是就有了本软件的Version 1.0版本, 用Python和PyQt5便携而成, 大部分都是现成的轮子. 不过也是&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;有一些创新性的东西, 比如线程安全的数据流处理工具与编写起来十分方便的数据流插件系统, 可以将任何&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Python脚本稍加修改, 当成一个合格的密码学插件导入到ICTFE中, 进行可视化数据处理. 这个强大的功&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;能让我激动了好一阵子.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;    Mini L CTF 2020让我知道了, 这个工具可能远比我想象中的更像一个花瓶. 正常比赛就只派上用场&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;了一次, 而那一次还是我为了让它露脸强行使用的. 比赛结束后我就在想这个工具的未来. 我究竟还要不要&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;继续开发下去, 添加一些新功能? 与此同时, CPython的GIL只能跑单核性能的缺点也显露了出来. 在某些&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;情况下软件很难利用CPU性能, 并且还很卡. 集成方面也出现了问题. 可能是太少有人用PyQt5开发生产力&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;套件的缘故, 许多有用的UI套件都只提供了Qt C++版本. 于是我就开始着手将这个软件移植到Qt C++上.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Python的官方实现也是用C/C++写的, 所以我抱有希望, 能不能把Python集成到软件中, 然后作为扩展脚&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;本解释器来使用? Python丰富的C++ API和现有的案例告诉了我答案. 于是我就下定决心, 将1.0的一切都&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;着手移植到C++平台, 这样就能更好的利用CPU性能, 对于开发各项功能也更加的方便.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;    我不知道它的未来如何, 但是我希望它能在未来的各种比赛之中助我一臂之力. 感谢一些师傅在开发过&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;程中给出的建议和赞赏. 毕竟目的不是为了流量, 不是为了火, 仅仅只是为了改善自己的状况, 开发一些有&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;用的东西, 于是就格外自由与舒心. 希望它能越来越强大.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="textInteractionFlags">
-    <set>Qt::TextBrowserInteraction</set>
-   </property>
-  </widget>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>820</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>文泉驿等宽微米黑</family>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QWidget#widget{
-border: 1px solid black;
-background-color: transparent;
-}</string>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="spacing">
-     <number>6</number>
-    </property>
-    <property name="leftMargin">
-     <number>6</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <item>
-     <widget class="QLabel" name="isaeLabel">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>56</width>
-        <height>26</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>1000</width>
-        <height>26</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Earth Orbiter</family>
-        <pointsize>18</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>ISAE - ABOUT</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>ISAE - About</string>
-      </property>
-      <property name="scaledContents">
-       <bool>false</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QPushButton" name="closeButton">
-      <property name="minimumSize">
-       <size>
-        <width>54</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>54</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="toolTip">
-       <string>关闭</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="../resources/app.qrc">
-        <normaloff>:/assets/close.svg</normaloff>:/assets/close.svg</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>24</width>
-        <height>24</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
- </widget>
- <resources>
-  <include location="../resources/app.qrc"/>
- </resources>
- <connections>
-  <connection>
-   <sender>closeButton</sender>
-   <signal>clicked()</signal>
-   <receiver>AboutWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>791</x>
-     <y>16</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>409</x>
-     <y>299</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+    <class>AboutWindow</class>
+    <widget class="QDialog" name="AboutWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>820</width>
+                <height>483</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Dialog</string>
+        </property>
+        <property name="styleSheet">
+            <string notr="true">QWidget#AboutWindow{
+                border: 1px solid black;
+                background-color: #2c2c2c;
+                }
+            </string>
+        </property>
+        <widget class="QLabel" name="isaelogo">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>60</y>
+                    <width>301</width>
+                    <height>101</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>文泉驿等宽微米黑</family>
+                </font>
+            </property>
+            <property name="styleSheet">
+                <string notr="true">QLabel{
+                    background-image: url(:/assets/isae-logo.png);
+                    }
+                </string>
+            </property>
+            <property name="text">
+                <string/>
+            </property>
+        </widget>
+        <widget class="QLabel" name="aboutChineseLabel">
+            <property name="geometry">
+                <rect>
+                    <x>340</x>
+                    <y>70</y>
+                    <width>411</width>
+                    <height>81</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>文泉驿等宽微米黑</family>
+                    <pointsize>32</pointsize>
+                </font>
+            </property>
+            <property name="styleSheet">
+                <string notr="true"/>
+            </property>
+            <property name="text">
+                <string>集成式安全审计系统</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="aboutEnglishLabel">
+            <property name="geometry">
+                <rect>
+                    <x>140</x>
+                    <y>130</y>
+                    <width>641</width>
+                    <height>51</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>文泉驿等宽微米黑</family>
+                    <pointsize>16</pointsize>
+                </font>
+            </property>
+            <property name="styleSheet">
+                <string notr="true"/>
+            </property>
+            <property name="text">
+                <string>Intergrated Security Audit Environment Version 2.0</string>
+            </property>
+        </widget>
+        <widget class="QTextEdit" name="infoBox">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>200</y>
+                    <width>801</width>
+                    <height>261</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>文泉驿等宽微米黑</family>
+                </font>
+            </property>
+            <property name="styleSheet">
+                <string notr="true"/>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+            <property name="html">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                    &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style
+                    type=&quot;text/css&quot;&gt;
+                    p, li { white-space: pre-wrap; }
+                    &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'文泉驿等宽微米黑'; font-size:10pt;
+                    font-weight:400; font-style:normal;&quot;&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:18pt; color:#00aaff;&quot;&gt;Powered By 2020 Reverier Xu, XDSEC.&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-style:italic; color:#ffffff;&quot;&gt;本软件为开源软件, 请在规定的法律条款内自由的使用.
+                    若在使用本软件中部分功能时造成他人的损失,&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-style:italic; color:#ffffff;&quot;&gt;请自行承担一切责任.&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;仓库地址&lt;/span&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;:&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;
+                    &lt;/span&gt;&lt;a href=&quot;https://github.com/Reverier-Xu/ISAE&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/Reverier-Xu/ISAE&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; text-decoration: underline; color:#07d6ff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:18pt; color:#00aaff;&quot;&gt;开发者鸣谢(不分先后):&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;arttnba3&lt;/span&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt; @ XDSEC 2020, Member&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;JayxV&lt;/span&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt; @ , Member&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Reverier&lt;/span&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt; @ XDSEC 2020, Member&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:18pt; color:#00aaff;&quot;&gt;第三方库鸣谢(不分先后):&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff00;&quot;&gt;CPR&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;
+                    &lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/whoshuu/cpr&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/whoshuu/cpr&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff00;&quot;&gt;cURL&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/curl/curl&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/curl/curl&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff7f;&quot;&gt;NodeEditor&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/paceholder/nodeeditor&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/paceholder/nodeeditor&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff7f;&quot;&gt;QCodeEditor&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/Megaxela/QCodeEditor&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/Megaxela/QCodeEditor&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff7f;&quot;&gt;cJSON&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/DaveGamble/cJSON&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/DaveGamble/cJSON&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff7f;&quot;&gt;Qt-Advanced-Docking-System&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff7f;&quot;&gt;SQLite3 CMake bindings&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/azadkuh/sqlite-amalgamation&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/azadkuh/sqlite-amalgamation&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#55ff7f;&quot;&gt;SQLite3&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/mackyle/sqlite&quot;&gt;&lt;span
+                    style=&quot; font-size:12pt; text-decoration: underline; color:#00aaff;&quot;&gt;https://github.com/mackyle/sqlite&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:18pt; color:#00aaff;&quot;&gt;License&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#55ff7f;&quot;&gt;MIT License&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Copyright (c) 2020 Reverier Xu&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;Permission is hereby granted, free of
+                    charge, to any person obtaining a copy&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;of this software and associated
+                    documentation files (the &amp;quot;Software&amp;quot;), to deal&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;in the Software without restriction,
+                    including without limitation the rights&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;to use, copy, modify, merge, publish,
+                    distribute, sublicense, and/or sell&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;copies of the Software, and to permit
+                    persons to whom the Software is&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;furnished to do so, subject to the
+                    following conditions:&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;The above copyright notice and this
+                    permission notice shall be included in all&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;copies or substantial portions of the
+                    Software.&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;THE SOFTWARE IS PROVIDED &amp;quot;AS IS&amp;quot;,
+                    WITHOUT WARRANTY OF ANY KIND, EXPRESS OR&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+                    WARRANTIES OF MERCHANTABILITY,&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;FITNESS FOR A PARTICULAR PURPOSE AND
+                    NONINFRINGEMENT. IN NO EVENT SHALL THE&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+                    ANY CLAIM, DAMAGES OR OTHER&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;LIABILITY, WHETHER IN AN ACTION OF
+                    CONTRACT, TORT OR OTHERWISE, ARISING FROM,&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;OUT OF OR IN CONNECTION WITH THE SOFTWARE
+                    OR THE USE OR OTHER DEALINGS IN THE&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;SOFTWARE.&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:18pt; color:#00aaff;&quot;&gt;一点想法&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#00aaff;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt; 最初萌生开发这个软件想法的时候, 我正在为了转专业而奋斗(现在也是). 为了抓住那些珍贵的机会, &lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;我希望能开发一些实用的小工具, 让我能够在日益艰难的CTF比赛之中更快的解决问题. 开发了一些简单的&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;几个简单的加密解密小工具, 我不禁想能不能把它整合成一个软件. 当我准备把这些零碎的小工具整合成一&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;个集成工具包的时候, 我又想能不能把这个工具包弄一个跨平台的解题环境--集成式CTF解题环境(ICTFE)&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;于是就有了本软件的Version 1.0版本, 用Python和PyQt5便携而成, 大部分都是现成的轮子. 不过也是&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;有一些创新性的东西, 比如线程安全的数据流处理工具与编写起来十分方便的数据流插件系统, 可以将任何&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;Python脚本稍加修改, 当成一个合格的密码学插件导入到ICTFE中, 进行可视化数据处理. 这个强大的功&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;能让我激动了好一阵子.&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt; Mini L CTF 2020让我知道了, 这个工具可能远比我想象中的更像一个花瓶. 正常比赛就只派上用场&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;了一次, 而那一次还是我为了让它露脸强行使用的. 比赛结束后我就在想这个工具的未来. 我究竟还要不要&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;继续开发下去, 添加一些新功能? 与此同时, CPython的GIL只能跑单核性能的缺点也显露了出来. 在某些&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;情况下软件很难利用CPU性能, 并且还很卡. 集成方面也出现了问题. 可能是太少有人用PyQt5开发生产力&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;套件的缘故, 许多有用的UI套件都只提供了Qt C++版本. 于是我就开始着手将这个软件移植到Qt C++上.&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;Python的官方实现也是用C/C++写的, 所以我抱有希望, 能不能把Python集成到软件中, 然后作为扩展脚&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;本解释器来使用? Python丰富的C++ API和现有的案例告诉了我答案. 于是我就下定决心, 将1.0的一切都&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;着手移植到C++平台, 这样就能更好的利用CPU性能, 对于开发各项功能也更加的方便.&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px;
+                    margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;
+                    font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt; 我不知道它的未来如何, 但是我希望它能在未来的各种比赛之中助我一臂之力. 感谢一些师傅在开发过&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;程中给出的建议和赞赏. 毕竟目的不是为了流量, 不是为了火, 仅仅只是为了改善自己的状况, 开发一些有&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-size:12pt; color:#ffffff;&quot;&gt;用的东西, 于是就格外自由与舒心. 希望它能越来越强大.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                </string>
+            </property>
+            <property name="textInteractionFlags">
+                <set>Qt::TextBrowserInteraction</set>
+            </property>
+        </widget>
+        <widget class="QWidget" name="widget" native="true">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>820</width>
+                    <height>32</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <family>文泉驿等宽微米黑</family>
+                </font>
+            </property>
+            <property name="styleSheet">
+                <string notr="true">QWidget#widget{
+                    border: 1px solid black;
+                    background-color: transparent;
+                    }
+                </string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <property name="leftMargin">
+                    <number>6</number>
+                </property>
+                <property name="topMargin">
+                    <number>0</number>
+                </property>
+                <property name="rightMargin">
+                    <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                    <number>0</number>
+                </property>
+                <item>
+                    <widget class="QLabel" name="isaeLabel">
+                        <property name="enabled">
+                            <bool>true</bool>
+                        </property>
+                        <property name="minimumSize">
+                            <size>
+                                <width>56</width>
+                                <height>26</height>
+                            </size>
+                        </property>
+                        <property name="maximumSize">
+                            <size>
+                                <width>1000</width>
+                                <height>26</height>
+                            </size>
+                        </property>
+                        <property name="font">
+                            <font>
+                                <family>Earth Orbiter</family>
+                                <pointsize>18</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                            </font>
+                        </property>
+                        <property name="toolTip">
+                            <string>ISAE - ABOUT</string>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true"/>
+                        </property>
+                        <property name="text">
+                            <string>ISAE - About</string>
+                        </property>
+                        <property name="scaledContents">
+                            <bool>false</bool>
+                        </property>
+                        <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                        </property>
+                    </widget>
+                </item>
+                <item>
+                    <spacer name="horizontalSpacer">
+                        <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                            <size>
+                                <width>40</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </item>
+                <item>
+                    <widget class="QPushButton" name="closeButton">
+                        <property name="minimumSize">
+                            <size>
+                                <width>54</width>
+                                <height>32</height>
+                            </size>
+                        </property>
+                        <property name="maximumSize">
+                            <size>
+                                <width>54</width>
+                                <height>32</height>
+                            </size>
+                        </property>
+                        <property name="toolTip">
+                            <string>关闭</string>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true"/>
+                        </property>
+                        <property name="text">
+                            <string/>
+                        </property>
+                        <property name="icon">
+                            <iconset resource="../resources/app.qrc">
+                                <normaloff>:/assets/close.svg</normaloff>:/assets/close.svg
+                            </iconset>
+                        </property>
+                        <property name="iconSize">
+                            <size>
+                                <width>24</width>
+                                <height>24</height>
+                            </size>
+                        </property>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+    </widget>
+    <resources>
+        <include location="../resources/app.qrc"/>
+    </resources>
+    <connections>
+        <connection>
+            <sender>closeButton</sender>
+            <signal>clicked()</signal>
+            <receiver>AboutWindow</receiver>
+            <slot>close()</slot>
+            <hints>
+                <hint type="sourcelabel">
+                    <x>791</x>
+                    <y>16</y>
+                </hint>
+                <hint type="destinationlabel">
+                    <x>409</x>
+                    <y>299</y>
+                </hint>
+            </hints>
+        </connection>
+    </connections>
 </ui>

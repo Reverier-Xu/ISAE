@@ -4,58 +4,56 @@
 #include "ConnectionStyle.hpp"
 #include "FlowViewStyle.hpp"
 
-namespace QtNodes
-{
+namespace QtNodes {
 
-class StyleCollection
-{
-public:
+    class StyleCollection {
+    public:
 
-  static
-  NodeStyle const&
-  nodeStyle();
+        static
+        NodeStyle const &
+        nodeStyle();
 
-  static
-  ConnectionStyle const&
-  connectionStyle();
+        static
+        ConnectionStyle const &
+        connectionStyle();
 
-  static
-  FlowViewStyle const&
-  flowViewStyle();
+        static
+        FlowViewStyle const &
+        flowViewStyle();
 
-public:
+    public:
 
-  static
-  void
-  setNodeStyle(NodeStyle);
+        static
+        void
+        setNodeStyle(NodeStyle);
 
-  static
-  void
-  setConnectionStyle(ConnectionStyle);
+        static
+        void
+        setConnectionStyle(ConnectionStyle);
 
-  static
-  void
-  setFlowViewStyle(FlowViewStyle);
+        static
+        void
+        setFlowViewStyle(FlowViewStyle);
 
-private:
+    private:
 
-  StyleCollection() = default;
+        StyleCollection() = default;
 
-  StyleCollection(StyleCollection const&) = delete;
+        StyleCollection(StyleCollection const &) = delete;
 
-  StyleCollection&
-  operator=(StyleCollection const&) = delete;
+        StyleCollection &
+        operator=(StyleCollection const &) = delete;
 
-  static
-  StyleCollection&
-  instance();
+        static
+        StyleCollection &
+        instance();
 
-private:
+    private:
 
-  NodeStyle _nodeStyle;
+        NodeStyle _nodeStyle;
 
-  ConnectionStyle _connectionStyle;
+        ConnectionStyle _connectionStyle;
 
-  FlowViewStyle _flowViewStyle;
-};
+        FlowViewStyle _flowViewStyle;
+    };
 }

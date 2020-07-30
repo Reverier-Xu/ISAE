@@ -79,6 +79,7 @@ def test_alias_delay_initialization1(capture):
     If we just create and use an A instance directly, the trampoline initialization is
     bypassed and we only initialize an A() instead (for performance reasons).
     """
+
     class B(m.A):
         def __init__(self):
             super(B, self).__init__()
@@ -115,6 +116,7 @@ def test_alias_delay_initialization2(capture):
     performance penalty, it also allows us to do more things with the trampoline
     class such as defining local variables and performing construction/destruction.
     """
+
     class B2(m.A2):
         def __init__(self):
             super(B2, self).__init__()
@@ -209,6 +211,7 @@ def test_move_support():
 
 def test_dispatch_issue(msg):
     """#159: virtual function dispatch has problems with similar-named functions"""
+
     class PyClass1(m.DispatchIssue):
         def dispatch(self):
             return "Yay.."

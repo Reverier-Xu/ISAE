@@ -26,7 +26,7 @@ def dt_fmt():
     e = '<' if byteorder == 'little' else '>'
     return ("{{'names':['bool_','uint_','float_','ldbl_'],"
             " 'formats':['?','" + e + "u4','" + e + "f4','" + e + "f{}'],"
-            " 'offsets':[0,4,8,{}], 'itemsize':{}}}")
+                                                                  " 'offsets':[0,4,8,{}], 'itemsize':{}}}")
 
 
 def simple_dtype_fmt():
@@ -43,7 +43,7 @@ def packed_dtype_fmt():
 
 def partial_ld_offset():
     return 12 + 4 * (np.dtype('uint64').alignment > 4) + 8 + 8 * (
-        np.dtype('longdouble').alignment > 8)
+            np.dtype('longdouble').alignment > 8)
 
 
 def partial_dtype_fmt():
@@ -214,9 +214,9 @@ def test_array_array():
 
     arr = m.create_array_array(3)
     assert str(arr.dtype) == (
-        "{{'names':['a','b','c','d'], " +
-        "'formats':[('S4', (3,)),('" + e + "i4', (2,)),('u1', (3,)),('{e}f4', (4, 2))], " +
-        "'offsets':[0,12,20,24], 'itemsize':56}}").format(e=e)
+            "{{'names':['a','b','c','d'], " +
+            "'formats':[('S4', (3,)),('" + e + "i4', (2,)),('u1', (3,)),('{e}f4', (4, 2))], " +
+            "'offsets':[0,12,20,24], 'itemsize':56}}").format(e=e)
     assert m.print_array_array(arr) == [
         "a={{A,B,C,D},{K,L,M,N},{U,V,W,X}},b={0,1}," +
         "c={0,1,2},d={{0,1},{10,11},{20,21},{30,31}}",
@@ -268,7 +268,7 @@ def test_complex_array():
 
 def test_signature(doc):
     assert doc(m.create_rec_nested) == \
-        "create_rec_nested(arg0: int) -> numpy.ndarray[NestedStruct]"
+           "create_rec_nested(arg0: int) -> numpy.ndarray[NestedStruct]"
 
 
 def test_scalar_conversion():

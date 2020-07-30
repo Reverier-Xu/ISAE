@@ -17,9 +17,9 @@ add_library(test_embed_lib ../embed.cpp)
 target_link_libraries(test_embed_lib PRIVATE pybind11::embed)
 
 install(TARGETS test_embed_lib
-        EXPORT  test_export
+        EXPORT test_export
         ARCHIVE DESTINATION bin
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION lib)
-install(EXPORT      test_export
+install(EXPORT test_export
         DESTINATION lib/cmake/test_export/test_export-Targets.cmake)

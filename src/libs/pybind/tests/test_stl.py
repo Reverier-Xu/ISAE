@@ -177,7 +177,7 @@ def test_variant(doc):
 def test_vec_of_reference_wrapper():
     """#171: Can't return reference wrappers (or STL structures containing them)"""
     assert str(m.return_vec_of_reference_wrapper(UserType(4))) == \
-        "[UserType(1), UserType(2), UserType(3), UserType(4)]"
+           "[UserType(1), UserType(2), UserType(3), UserType(4)]"
 
 
 def test_stl_pass_by_pointer(msg):
@@ -225,7 +225,7 @@ def test_missing_header_message():
 def test_function_with_string_and_vector_string_arg():
     """Check if a string is NOT implicitly converted to a list, which was the
     behavior before fix of issue #1258"""
-    assert m.func_with_string_or_vector_string_arg_overload(('A', 'B', )) == 2
+    assert m.func_with_string_or_vector_string_arg_overload(('A', 'B',)) == 2
     assert m.func_with_string_or_vector_string_arg_overload(['A', 'B']) == 2
     assert m.func_with_string_or_vector_string_arg_overload('A') == 3
 
