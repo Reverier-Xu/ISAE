@@ -261,7 +261,7 @@ void MainApp::setBackground(const QImage &image, int blur) {
     this->setPalette(palette);
 }
 
-void MainApp::showClient(QString name, QIcon icon) {
+[[maybe_unused]] void MainApp::showClient(QString name, QIcon icon) {
     this->ui->clientButton->setText(" " + name);
     this->m_clientName = name;
     if (icon.isNull()) {
@@ -282,7 +282,6 @@ void MainApp::showClient(QString name, QIcon icon) {
 
 void MainApp::detectDirs() {
     QDir dir;
-    // qDebug() << QCoreApplication::applicationDirPath();
     dir.mkpath(QCoreApplication::applicationDirPath() + "/../Data/UserConfig");
 }
 
@@ -332,16 +331,17 @@ void MainApp::addPlugin(ISAEPluginWidget *plugin) {
     menuButton->getmenu()->addAction(QString("空菜单"));
     auto *pluginDock = new ads::CDockWidget(plugin->pluginName());
     pluginDock->setWidget(plugin);
+    pluginDock->setObjectName(plugin->pluginName());
     this->m_plugins[plugin->pluginName()] = pluginDock;
     ui->pluginWindowDockArea->addDockWidget(ads::RightDockWidgetArea, pluginDock);
     this->m_settingDialog->addPage(plugin->pluginName(), plugin->settingWindow(), plugin);
     auto *appButton = new QPushButton(QIcon(plugin->pluginIcon()), " " + plugin->pluginName(), this);
     this->addPluginButton(appButton);
-    QObject::connect(appButton, &QPushButton::clicked, [=]() { showAppDock(pluginDock); });
+    QObject::connect(appButton, &QPushButton::clicked, [=]() { showAppDock(plugin->pluginName()); });
 }
 
-void MainApp::showAppDock(ads::CDockWidget *plugin) {
-    plugin->show();
+void MainApp::showAppDock(const QString &plugin) {
+    ui->pluginWindowDockArea->findDockWidget(plugin)->toggleView();
 }
 
 void MainApp::setPluginSettingWindow() {

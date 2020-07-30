@@ -7,9 +7,6 @@
 #include "hexeditor.h"
 #include <algorithm>
 
-
-// ********************************************************************** Constructor, destructor
-
 HexEditor::HexEditor(QWidget *parent) : QAbstractScrollArea(parent) {
     _addressArea = true;
     _addressWidth = 4;
@@ -29,7 +26,7 @@ HexEditor::HexEditor(QWidget *parent) : QAbstractScrollArea(parent) {
     _undoStack = new UndoStack(_chunks, this);
     setFont(QFont("Jetbrains Mono", 16));
 
-    setAddressAreaColor(QColor(60, 60, 60));
+    setAddressAreaColor(QColor(34, 37, 39));
     setHighlightingColor(QColor(60, 255, 60));
     setSelectionColor(QColor(48, 80, 255));
 
@@ -55,7 +52,7 @@ HexEditor::HexEditor(QWidget *parent) : QAbstractScrollArea(parent) {
 HexEditor::~HexEditor()
 = default;
 
-// ********************************************************************** Properties
+// Properties
 
 void HexEditor::setAddressArea(bool addressArea) {
     _addressArea = addressArea;

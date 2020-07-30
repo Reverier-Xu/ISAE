@@ -7,6 +7,8 @@
 
 #include "ISAEPluginWidget.h"
 #include <QFileSystemModel>
+#include <QtWidgets/QTreeView>
+#include <QtGui/QStandardItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,12 +37,13 @@ public slots:
 
     void doFoldStack();
 
+    void openFolder();
+
 private:
     Ui::FileManager *ui;
     bool m_isSearchFolded {false};
     bool m_isStackFolded {false};
     QFileSystemModel *m_model {};
-
 };
 
 

@@ -6,6 +6,8 @@
 #include "ui_filemanager.h"
 #include "filemanagerSettingPage.h"
 #include <QFileSystemModel>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QTreeWidgetItem>
 
 FileManager::FileManager(QWidget *parent, QFlags<Qt::WindowType> flags) :
         ISAEPluginWidget(parent, flags), ui(new Ui::FileManager) {
@@ -18,10 +20,13 @@ FileManager::FileManager(QWidget *parent, QFlags<Qt::WindowType> flags) :
     ui->splitter->setChildrenCollapsible(false);
     openPath(QDir::homePath());
     this->m_icon = ":/assets/folder.svg";
+    QObject::connect(ui->folderButton, SIGNAL(clicked()), SLOT(openFolder()));
 }
 
 bool FileManager::openPath(const QString &path) {
     this->m_model = new QFileSystemModel;
+    QDir dir(path);
+    if (!dir.exists(path)) return false;
     this->m_model->setRootPath(path);
     ui->fileExplorerBox->setModel(this->m_model);
     ui->fileExplorerBox->setRootIndex(this->m_model->index(path));
@@ -30,7 +35,17 @@ bool FileManager::openPath(const QString &path) {
     ui->fileExplorerBox->setColumnHidden(3, true);
     ui->fileExplorerBox->setColumnHidden(4, true);
     ui->fileExplorerBox->header()->hide();
+    ui->folderButton->setText(dir.dirName());
     return true;
+}
+
+void FileManager::openFolder() {
+    QString dir = QFileDialog::getExistingDirectory(this, tr("打开文件夹"),
+                                                    this->m_model->rootPath(),
+                                                    QFileDialog::ShowDirsOnly
+                                                    | QFileDialog::DontResolveSymlinks);
+    if (dir == "") return;
+    openPath(dir);
 }
 
 bool FileManager::updateStatus(QVector<QString> info) {

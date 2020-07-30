@@ -77,7 +77,7 @@ public slots:
 
     void showSettingWindow() { this->m_settingDialog->show(); }
 
-    void showAppDock(ads::CDockWidget *plugin);
+    void showAppDock(const QString &plugin);
 
 public:
     // 构造函数
@@ -98,7 +98,7 @@ public:
     static void detectDirs();
 
     // 更新用户信息
-    void showClient(QString name, QIcon icon);
+    [[maybe_unused]] void showClient(QString name, QIcon icon);
 
     // 设置背景
     void setBackground(const QImage &image, int blur);

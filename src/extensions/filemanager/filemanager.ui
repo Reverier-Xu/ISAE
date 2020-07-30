@@ -439,8 +439,7 @@
                                                                 <property name="icon">
                                                                     <iconset resource="../../resources/app.qrc">
                                                                         <normaloff>
-                                                                            :/assets/casesensitive.svg
-                                                                        </normaloff>
+                                                                            :/assets/casesensitive.svg</normaloff>
                                                                         :/assets/casesensitive.svg
                                                                     </iconset>
                                                                 </property>

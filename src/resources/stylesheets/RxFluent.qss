@@ -249,7 +249,7 @@ QSlider::handle:horizontal {
 
 QFrame#pluginWindowDockArea {
     background-color   : rgba(0, 0, 0, 70%);
-    background-image   : url(":/assets/workspace_is_empty.png");
+    /*background-image   : url(":/assets/workspace_is_empty.png");*/
     background-position: center;
     background-repeat  : no-repeat;
     border             : 1px solid black;
@@ -258,7 +258,7 @@ QFrame#pluginWindowDockArea {
 }
 
 ads--CDockContainerWidget {
-    background-color: rgb(34, 35, 36);
+    background-color: rgba(34, 35, 36, 30%);
     border: 0px solid black;
 }
 
@@ -293,7 +293,7 @@ ads--CDockWidgetTab[activeTab="true"] QLabel {
 }
 
 ads--CDockWidget {
-    background-color: rgb(24, 25, 26);
+    background-color: rgba(24, 25, 26, 20%);
     border: 0px solid black;
 }
 
@@ -361,12 +361,12 @@ QScrollArea#dockWidgetScrollArea {
 }
 
 ads--CDockAreaTitleBar {
-    background   : rgb(34, 35, 36);
+    background   : rgb(34, 35, 36, 30%);
     border-bottom: 1px solid rgb(60, 60, 60);
 }
 
 ads--CDockAreaTabBar {
-    background: rgb(34, 35, 36);
+    background: rgb(34, 35, 36, 30%);
 }
 
 QListView {
@@ -430,7 +430,7 @@ QListView[viewMode="1"]::item:selected:active {
     border: 2px solid rgb(40, 90, 255);
 }
 QFrame[frameShape="4"] {
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(80, 80, 80, 80%);
     color: rgb(80, 80, 80);
 }
 
@@ -457,7 +457,9 @@ QComboBox::down-arrow {
 QTreeView {
     alternate-background-color: transparent;
     show-decoration-selected: 0;
+    background-color: transparent;
 }
+
 QTreeView::item {
     border: 1px solid transparent;
     height: 32px;

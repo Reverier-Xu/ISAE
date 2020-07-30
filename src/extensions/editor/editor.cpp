@@ -5,6 +5,7 @@
 #include "editor.h"
 #include "ui_editor.h"
 #include "editorSettingPage.h"
+#include <KTextEditor/ConfigInterface>
 
 Editor::Editor(QWidget *parent, QFlags<Qt::WindowType> flags) :
         ISAEPluginWidget(parent, flags), ui(new Ui::Editor) {
@@ -22,8 +23,13 @@ Editor::Editor(QWidget *parent, QFlags<Qt::WindowType> flags) :
     KTextEditor::Document *doc = editor->createDocument(this);
     auto *l = new QWidget();
     this->m_textEditor = doc->createView(l);
+    auto iface = qobject_cast<KTextEditor::ConfigInterface *>(this->m_textEditor);
+    iface->setConfigValue("background-color", QColor(32, 36, 40));
+    iface->setConfigValue("icon-border-color", QColor(32, 36, 40));
     ui->editorStack->addWidget(this->m_textEditor);
     ui->editorStack->addWidget(this->m_hexEditor);
+    // this->m_hexEditor->setStyleSheet("background-color: transparent;");
+    this->m_hexEditor->setAcceptDrops(true);
     ui->modeChooser->addItem("文本模式");
     ui->modeChooser->addItem("Hex模式");
     ui->editorStack->setCurrentWidget(this->m_textEditor);
