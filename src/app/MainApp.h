@@ -27,6 +27,7 @@ private:
     // 状态栏组件
     QPushButton *WootecStatusBox {};
     QPushButton *CPUStatusBox {};
+    QPushButton *agileEngineBox {};
     // 默认字体
     QFont m_defaultFont {};
     // 标识窗口是否在移动

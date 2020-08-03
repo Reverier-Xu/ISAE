@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
+
 find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(KF5WidgetsAddons)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(MainApp_SRCS
         main.cpp
@@ -22,7 +24,7 @@ qt5_add_resources(RESOURCES "${CMAKE_CURRENT_SOURCE_DIR}/../resources/app.qrc")
 
 add_executable(MainApp ${MainApp_SRCS} ${RESOURCES})
 
-target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets)
+target_link_libraries(MainApp PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets KF5::WidgetsAddons)
 target_link_libraries(MainApp PRIVATE
         qtadvanceddocking
         nodes
@@ -31,6 +33,7 @@ target_link_libraries(MainApp PRIVATE
         isaeutils
         FileManager
         Editor
+        Console
         )
 
 target_include_directories(MainApp PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../libs/advanceddockingsystem"
@@ -39,7 +42,8 @@ target_include_directories(MainApp PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../libs/a
         "${CMAKE_CURRENT_SOURCE_DIR}/../libs/rxwidgets"
         "${CMAKE_CURRENT_SOURCE_DIR}/../libs/utils"
         "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/filemanager"
-        "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/editor")
+        "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/editor"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/console")
 
 set_target_properties(MainApp PROPERTIES
         AUTOMOC ON

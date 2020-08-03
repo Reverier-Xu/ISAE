@@ -522,6 +522,9 @@
              </item>
              <item>
               <widget class="RxAnimatedWidget" name="appsAreaContent" native="true">
+               <property name="RxWidgetStyle" stdset="0">
+                <string>area</string>
+               </property>
                <layout class="QVBoxLayout" name="appsAreaLayout">
                 <property name="spacing">
                  <number>0</number>
@@ -584,6 +587,9 @@
              </item>
              <item>
               <widget class="RxAnimatedWidget" name="workspaceAreaContent" native="true">
+               <property name="RxWidgetStyle" stdset="0">
+                <string>area</string>
+               </property>
                <layout class="QVBoxLayout" name="workspaceAreaLayout">
                 <property name="spacing">
                  <number>0</number>
@@ -646,6 +652,9 @@
              </item>
              <item>
               <widget class="RxAnimatedWidget" name="teamAreaContent" native="true">
+               <property name="RxWidgetStyle" stdset="0">
+                <string>area</string>
+               </property>
                <layout class="QVBoxLayout" name="teamAreaLayout">
                 <property name="spacing">
                  <number>0</number>
@@ -706,7 +715,7 @@
             </font>
            </property>
            <property name="text">
-            <string>状态良好</string>
+            <string> 状态良好</string>
            </property>
            <property name="icon">
             <iconset resource="../resources/app.qrc">

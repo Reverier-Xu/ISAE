@@ -12,12 +12,21 @@
 #include "isaeutils.h"
 #include "filemanager.h"
 #include "editor.h"
-//#include <KTextEditor/Editor>
-//#include <KTextEditor/Document>
-//#include <KTextEditor/View>
+#include "console.h"
 
 MainApp::MainApp(QWidget *parent, QFlags<Qt::WindowType> flags)
         : ISAEPluginWidget(parent, flags), ui(new Ui::MainApp) {
+    /* 设置DockManager的配置选项 */
+    ads::CDockManager::setConfigFlag(ads::CDockManager::OpaqueSplitterResize, false);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::AllTabsHaveCloseButton, false);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::ActiveTabHasCloseButton, false);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::DockAreaCloseButtonClosesTab, true);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::DockAreaHasUndockButton, false);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::DragPreviewIsDynamic, true);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::DragPreviewShowsContentPixmap, false);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::DragPreviewHasWindowFrame, false);
+    ads::CDockManager::setConfigFlag(ads::CDockManager::FocusHighlighting, true);
+
     ui->setupUi(this);
     // 设置窗口
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -44,13 +53,7 @@ MainApp::MainApp(QWidget *parent, QFlags<Qt::WindowType> flags)
     ui->sideBarWidget->setCurrentAnimateValue(250);
     ui->sideBarWidget->setFolded(false);
     ui->sideBarScrollArea->horizontalScrollBar()->setEnabled(false);
-
-    /* 设置DockManager的配置选项 */
-    ads::CDockManager::setConfigFlag(ads::CDockManager::OpaqueSplitterResize, false);
-    ads::CDockManager::setConfigFlag(ads::CDockManager::AllTabsHaveCloseButton, true);
-    ads::CDockManager::setConfigFlag(ads::CDockManager::FocusHighlighting, true);
-    ads::CDockManager::setConfigFlag(ads::CDockManager::DockAreaHasUndockButton, false);
-
+    
     // 设置默认字体
     this->m_defaultFont.setFamily("WenQuanYi Micro Hei Mono");
 
@@ -90,54 +93,6 @@ MainApp::MainApp(QWidget *parent, QFlags<Qt::WindowType> flags)
                      SLOT(doFoldClient()));
     QObject::connect(ui->settingsButton, SIGNAL(clicked()), this,
                      SLOT(showSettingWindow()));
-    /*ads::CDockWidget *DockWidget;
-    {
-        auto *l = new QWidget();
-        editor = KTextEditor::Editor::instance();
-        KTextEditor::Document *doc = editor->createDocument(this);
-        KTextEditor::View *view = doc->createView(l);
-
-        QObject::connect(ui->settingsButton, SIGNAL(clicked()), this, SLOT(showEditorConf()));
-
-        // Create a dock widget with the title Label 1 and set the created label
-        // as the dock widget content
-        DockWidget = new ads::CDockWidget("Editor");
-        DockWidget->setWidget(view);
-    }
-    ui->pluginWindowDockArea->addDockWidget(ads::TopDockWidgetArea, DockWidget);
-
-    ads::CDockWidget *DockWidget2;
-    {
-        auto *l = new QLabel();
-        l->setWordWrap(true);
-        l->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-        l->setText("Hello World~");
-        QFont l_font;
-        l_font.setFamilies({"JetBrains Mono", "文泉驿等宽微米黑"});
-        l_font.setPixelSize(20);
-        l->setFont(l_font);
-        // Create a dock widget with the title Label 1 and set the created label
-        // as the dock widget content
-        DockWidget2 = new ads::CDockWidget("Hello World");
-        DockWidget2->setWidget(l);
-    }
-    ads::CDockWidget *DockWidget3;
-    {
-        auto *l = new QLabel();
-        l->setWordWrap(true);
-        l->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-        l->setText("Preview");
-        QFont l_font;
-        l_font.setFamilies({"JetBrains Mono", "文泉驿等宽微米黑"});
-        l_font.setPixelSize(20);
-        l->setFont(l_font);
-        // Create a dock widget with the title Label 1 and set the created label
-        // as the dock widget content
-        DockWidget3 = new ads::CDockWidget("Preview");
-        DockWidget3->setWidget(l);
-    }
-    ui->pluginWindowDockArea->addDockWidget(ads::TopDockWidgetArea, DockWidget2);
-    ui->pluginWindowDockArea->addDockWidget(ads::TopDockWidgetArea, DockWidget3);*/
 }
 
 void MainApp::loadStyleSheet(const QString &styleSheetFile) {
@@ -206,11 +161,24 @@ void MainApp::setStatusBarButton() {
     this->WootecStatusBox->setIcon(
             QIcon::fromTheme(":/assets/online.svg"));
     this->WootecStatusBox->setObjectName("WootecStatusBox");
+    this->WootecStatusBox->setToolTip("ISAE Version 2.0 已连接到Wootec Cloud.");
     this->WootecStatusBox->setIconSize(QSize(24, 20));
     this->WootecStatusBox->setText(QString(" Wootec Cloud  "));
     this->WootecStatusBox->setFont(this->m_defaultFont);
     this->WootecStatusBox->setProperty("RxButtonStyle", "statusBar");
     this->statusBar()->addWidget(this->WootecStatusBox);
+
+    this->agileEngineBox = new QPushButton(this);
+    this->agileEngineBox->setObjectName("agileEngineBox");
+    //this->agileEngineBox->setIcon(QIcon::fromTheme(":/assets/fire-down.svg"));
+    this->agileEngineBox->setIcon(QIcon::fromTheme(":/assets/fire-up.svg"));
+    //this->agileEngineBox->setToolTip("Agile Engine没有运行/没有连接到ISAE, 仅有部分功能可以正常使用.");
+    this->agileEngineBox->setToolTip("Agile Engine V1 正在运行.");
+    this->agileEngineBox->setIconSize(QSize(16, 16));
+    this->agileEngineBox->setText(QString(" Agile Engine "));
+    this->agileEngineBox->setFont(this->m_defaultFont);
+    this->agileEngineBox->setProperty("RxButtonStyle", "statusBar");
+    this->statusBar()->addWidget(this->agileEngineBox);
 
     this->CPUStatusBox = new QPushButton(this);
     this->CPUStatusBox->setObjectName("CPUStatusBox");
@@ -321,6 +289,9 @@ void MainApp::getPlugins() {
     auto *editor = new Editor(this);
     this->addPlugin(editor);
 
+    auto *term = new Console(this);
+    this->addPlugin(term);
+
 }
 
 void MainApp::addPlugin(ISAEPluginWidget *plugin) {
@@ -332,8 +303,9 @@ void MainApp::addPlugin(ISAEPluginWidget *plugin) {
     auto *pluginDock = new ads::CDockWidget(plugin->pluginName());
     pluginDock->setWidget(plugin);
     pluginDock->setObjectName(plugin->pluginName());
+    pluginDock->setFeature(ads::CDockWidget::DockWidgetFloatable, false);
     this->m_plugins[plugin->pluginName()] = pluginDock;
-    ui->pluginWindowDockArea->addDockWidget(ads::RightDockWidgetArea, pluginDock);
+    ui->pluginWindowDockArea->addDockWidget(ads::RightDockWidgetArea, pluginDock,ui->pluginWindowDockArea->dockArea(0));
     this->m_settingDialog->addPage(plugin->pluginName(), plugin->settingWindow(), plugin);
     auto *appButton = new QPushButton(QIcon(plugin->pluginIcon()), " " + plugin->pluginName(), this);
     this->addPluginButton(appButton);
