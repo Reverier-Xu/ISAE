@@ -21,7 +21,9 @@ public:
 
     bool loadSettings(const QString &path) override { return true; };
 
-    bool saveSettings() override { return false; };
+    bool saveSettings() override;
+
+    void addPage(QWidget* widget, const QString& name);
 
 private:
     Ui::EditorSettingPage *ui;
