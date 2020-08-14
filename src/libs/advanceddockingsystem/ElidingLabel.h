@@ -33,8 +33,9 @@
 
 #include "ads_globals.h"
 
-namespace ads {
-    struct ElidingLabelPrivate;
+namespace ads
+{
+struct ElidingLabelPrivate;
 
 /**
  * A QLabel that supports eliding text.
@@ -42,71 +43,64 @@ namespace ads {
  * and reading the text via a pointer to the base class QLabel does not work
  * properly
  */
-    class ADS_EXPORT CElidingLabel : public QLabel {
-    Q_OBJECT
-    private:
-        ElidingLabelPrivate *d;
-        friend struct ElidingLabelPrivate;
+class ADS_EXPORT CElidingLabel : public QLabel
+{
+	Q_OBJECT
+private:
+	ElidingLabelPrivate* d;
+	friend struct ElidingLabelPrivate;
 
-    protected:
-        virtual void mouseReleaseEvent(QMouseEvent *event) override;
+protected:
+	virtual void mouseReleaseEvent(QMouseEvent* event) override;
+    virtual void resizeEvent( QResizeEvent *event ) override;
+    virtual void mouseDoubleClickEvent( QMouseEvent *ev ) override;
 
-        virtual void resizeEvent(QResizeEvent *event) override;
+public:
+    using Super = QLabel;
 
-        virtual void mouseDoubleClickEvent(QMouseEvent *ev) override;
+	CElidingLabel(QWidget* parent = 0, Qt::WindowFlags f = 0);
+	CElidingLabel(const QString& text, QWidget* parent = 0, Qt::WindowFlags f = 0);
+	virtual ~CElidingLabel();
 
-    public:
-        using Super = QLabel;
+	/**
+	 * Returns the text elide mode.
+	 * The default mode is ElideNone
+	 */
+	Qt::TextElideMode elideMode() const;
 
-        CElidingLabel(QWidget *parent = 0, Qt::WindowFlags f = Qt::WindowFlags());
+	/**
+	 * Sets the text elide mode
+	 */
+	void setElideMode(Qt::TextElideMode mode);
 
-        CElidingLabel(const QString &text, QWidget *parent = 0, Qt::WindowFlags f = Qt::WindowFlags());
+	/**
+	 * This function indicates whether the text on this label is currently elided
+	 */
+	bool isElided() const;
 
-        virtual ~CElidingLabel();
+public: // reimplements QLabel ----------------------------------------------
+	virtual QSize minimumSizeHint() const override;
+	virtual QSize sizeHint() const override;
+	void setText(const QString &text);
+	QString text() const;
 
-        /**
-         * Returns the text elide mode.
-         * The default mode is ElideNone
-         */
-        Qt::TextElideMode elideMode() const;
+signals:
+	/**
+	 * This signal is emitted if the user clicks on the label (i.e. pressed
+	 * down then released while the mouse cursor is inside the label)
+	 */
+	void clicked();
 
-        /**
-         * Sets the text elide mode
-         */
-        void setElideMode(Qt::TextElideMode mode);
-
-        /**
-         * This function indicates whether the text on this label is currently elided
-         */
-        bool isElided() const;
-
-    public: // reimplements QLabel ----------------------------------------------
-        virtual QSize minimumSizeHint() const override;
-
-        virtual QSize sizeHint() const override;
-
-        void setText(const QString &text);
-
-        QString text() const;
-
-    signals:
-
-        /**
-         * This signal is emitted if the user clicks on the label (i.e. pressed
-         * down then released while the mouse cursor is inside the label)
-         */
-        void clicked();
-
-        /**
-         * This signal is emitted if the user does a double click on the label
-         */
-        void doubleClicked();
-
-        /**
-         * This signal is emitted when isElided() state of this label is changed
-         */
-        void elidedChanged(bool elided);
-    }; //class CElidingLabel
+	/**
+	 * This signal is emitted if the user does a double click on the label
+	 */
+	void doubleClicked();
+    
+    /**
+	 * This signal is emitted when isElided() state of this label is changed
+	 */
+	void elidedChanged(bool elided);
+}; //class CElidingLabel
 
 } // namespace QtLabb
 

@@ -39,102 +39,112 @@
 #include "ads_globals.h"
 
 
-namespace ads {
+namespace ads
+{
 
-    namespace internal {
+namespace internal
+{
 //============================================================================
-        void replaceSplitterWidget(QSplitter *Splitter, QWidget *From, QWidget *To) {
-            int index = Splitter->indexOf(From);
-            From->setParent(nullptr);
-            Splitter->insertWidget(index, To);
-        }
-
-//============================================================================
-        CDockInsertParam dockAreaInsertParameters(DockWidgetArea Area) {
-            switch (Area) {
-                case TopDockWidgetArea:
-                    return CDockInsertParam(Qt::Vertical, false);
-                case RightDockWidgetArea:
-                    return CDockInsertParam(Qt::Horizontal, true);
-                case CenterDockWidgetArea:
-                case BottomDockWidgetArea:
-                    return CDockInsertParam(Qt::Vertical, true);
-                case LeftDockWidgetArea:
-                    return CDockInsertParam(Qt::Horizontal, false);
-                default:
-                    CDockInsertParam(Qt::Vertical, false);
-            } // switch (Area)
-
-            return CDockInsertParam(Qt::Vertical, false);
-        }
+void replaceSplitterWidget(QSplitter* Splitter, QWidget* From, QWidget* To)
+{
+	int index = Splitter->indexOf(From);
+	From->setParent(nullptr);
+	Splitter->insertWidget(index, To);
+}
 
 //============================================================================
-        QPixmap createTransparentPixmap(const QPixmap &Source, qreal Opacity) {
-            QPixmap TransparentPixmap(Source.size());
-            TransparentPixmap.fill(Qt::transparent);
-            QPainter p(&TransparentPixmap);
-            p.setOpacity(Opacity);
-            p.drawPixmap(0, 0, Source);
-            return TransparentPixmap;
-        }
+CDockInsertParam dockAreaInsertParameters(DockWidgetArea Area)
+{
+	switch (Area)
+    {
+	case TopDockWidgetArea: return CDockInsertParam(Qt::Vertical, false);
+	case RightDockWidgetArea: return CDockInsertParam(Qt::Horizontal, true);
+	case CenterDockWidgetArea:
+	case BottomDockWidgetArea: return CDockInsertParam(Qt::Vertical, true);
+	case LeftDockWidgetArea: return CDockInsertParam(Qt::Horizontal, false);
+	default: CDockInsertParam(Qt::Vertical, false);
+    } // switch (Area)
 
-//============================================================================
-        void hideEmptyParentSplitters(CDockSplitter *Splitter) {
-            while (Splitter && Splitter->isVisible()) {
-                if (!Splitter->hasVisibleContent()) {
-                    Splitter->hide();
-                }
-                Splitter = internal::findParent<CDockSplitter *>(Splitter);
-            }
-        }
+	return CDockInsertParam(Qt::Vertical, false);
+}
 
 
 //============================================================================
-        void setButtonIcon(QAbstractButton *Button, QStyle::StandardPixmap StandarPixmap,
-                           ads::eIcon CustomIconId) {
-            // First we try to use custom icons if available
-            QIcon Icon = CDockManager::iconProvider().customIcon(CustomIconId);
-            if (!Icon.isNull()) {
-                Button->setIcon(Icon);
-                return;
-            }
+QPixmap createTransparentPixmap(const QPixmap& Source, qreal Opacity)
+{
+	QPixmap TransparentPixmap(Source.size());
+	TransparentPixmap.fill(Qt::transparent);
+	QPainter p(&TransparentPixmap);
+	p.setOpacity(Opacity);
+	p.drawPixmap(0, 0, Source);
+	return TransparentPixmap;
+}
+
+
+//============================================================================
+void hideEmptyParentSplitters(CDockSplitter* Splitter)
+{
+	while (Splitter && Splitter->isVisible())
+	{
+		if (!Splitter->hasVisibleContent())
+		{
+			Splitter->hide();
+		}
+		Splitter = internal::findParent<CDockSplitter*>(Splitter);
+	}
+}
+
+
+//============================================================================
+void setButtonIcon(QAbstractButton* Button, QStyle::StandardPixmap StandarPixmap,
+	ads::eIcon CustomIconId)
+{
+	// First we try to use custom icons if available
+	QIcon Icon = CDockManager::iconProvider().customIcon(CustomIconId);
+	if (!Icon.isNull())
+	{
+		Button->setIcon(Icon);
+		return;
+	}
 
 #ifdef Q_OS_LINUX
-            Button->setIcon(Button->style()->standardIcon(StandarPixmap));
+	Button->setIcon(Button->style()->standardIcon(StandarPixmap));
 #else
-            // The standard icons does not look good on high DPI screens so we create
-            // our own "standard" icon here.
-            QPixmap normalPixmap = Button->style()->standardPixmap(StandarPixmap, 0, Button);
-            Icon.addPixmap(internal::createTransparentPixmap(normalPixmap, 0.25), QIcon::Disabled);
-            Icon.addPixmap(normalPixmap, QIcon::Normal);
-            Button->setIcon(Icon);
+	// The standard icons does not look good on high DPI screens so we create
+	// our own "standard" icon here.
+	QPixmap normalPixmap = Button->style()->standardPixmap(StandarPixmap, 0, Button);
+	Icon.addPixmap(internal::createTransparentPixmap(normalPixmap, 0.25), QIcon::Disabled);
+	Icon.addPixmap(normalPixmap, QIcon::Normal);
+	Button->setIcon(Icon);
 #endif
-        }
+}
 
 
 //============================================================================
-        void repolishStyle(QWidget *w, eRepolishChildOptions Options) {
-            if (!w) {
-                return;
-            }
-            w->style()->unpolish(w);
-            w->style()->polish(w);
+void repolishStyle(QWidget* w, eRepolishChildOptions Options)
+{
+	if (!w)
+	{
+		return;
+	}
+	w->style()->unpolish(w);
+	w->style()->polish(w);
 
-            if (RepolishIgnoreChildren == Options) {
-                return;
-            }
+	if (RepolishIgnoreChildren == Options)
+	{
+		return;
+	}
 
-            QList<QWidget *> Children = w->findChildren<QWidget *>(QString(),
-                                                                   (RepolishDirectChildren == Options)
-                                                                   ? Qt::FindDirectChildrenOnly
-                                                                   : Qt::FindChildrenRecursively);
-            for (auto Widget : Children) {
-                Widget->style()->unpolish(Widget);
-                Widget->style()->polish(Widget);
-            }
-        }
+	QList<QWidget*> Children = w->findChildren<QWidget*>(QString(),
+		(RepolishDirectChildren == Options) ? Qt::FindDirectChildrenOnly: Qt::FindChildrenRecursively);
+	for (auto Widget : Children)
+	{
+		Widget->style()->unpolish(Widget);
+		Widget->style()->polish(Widget);
+	}
+}
 
-    } // namespace internal
+} // namespace internal
 } // namespace ads
 
 

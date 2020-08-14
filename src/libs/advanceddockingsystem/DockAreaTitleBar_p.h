@@ -35,8 +35,9 @@
 
 #include "ads_globals.h"
 
-namespace ads {
-    using tTitleBarButton = QToolButton;
+namespace ads
+{
+using tTitleBarButton = QToolButton;
 
 /**
 * Title bar button of a dock area that customizes tTitleBarButton appearance/behaviour
@@ -44,29 +45,29 @@ namespace ads {
 * CDockManager::DockAreaHas_xxx_Button - if set to 'false' keeps the button always invisible
 * CDockManager::DockAreaHideDisabledButtons - if set to 'true' hides button when it is disabled
 */
-    class CTitleBarButton : public tTitleBarButton {
-    Q_OBJECT
+class CTitleBarButton : public tTitleBarButton
+{
+	Q_OBJECT
+		
+private:
+	bool Visible = true;
+	bool HideWhenDisabled = false;
 
-    private:
-        bool Visible = true;
-        bool HideWhenDisabled = false;
+public:
+	using Super = tTitleBarButton;
+	CTitleBarButton(bool visible = true, QWidget* parent = nullptr);
 
-    public:
-        using Super = tTitleBarButton;
+	/**
+	* Adjust this visibility change request with our internal settings:
+	*/
+	virtual void setVisible(bool visible) override;
 
-        CTitleBarButton(bool visible = true, QWidget *parent = nullptr);
-
-        /**
-        * Adjust this visibility change request with our internal settings:
-        */
-        virtual void setVisible(bool visible) override;
-
-    protected:
-        /**
-        * Handle EnabledChanged signal to set button invisible if the configured
-        */
-        bool event(QEvent *ev) override;
-    };
+protected:
+	/**
+	* Handle EnabledChanged signal to set button invisible if the configured
+	*/
+	bool event(QEvent *ev) override;
+};
 
 
 /**
@@ -77,19 +78,17 @@ namespace ads {
 * into a floating widget, then mouse events are not handled anymore and dragging
 * of the floating widget stops.
 */
-    class CSpacerWidget : public QWidget {
-    Q_OBJECT
-    public:
-        using Super = QWidget;
-
-        CSpacerWidget(QWidget *Parent = 0);
-
-        virtual QSize sizeHint() const override { return QSize(0, 0); }
-
-        virtual QSize minimumSizeHint() const override { return QSize(0, 0); }
-    };
+class CSpacerWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	using Super = QWidget;
+	CSpacerWidget(QWidget* Parent = 0);
+	virtual QSize sizeHint() const override {return QSize(0, 0);}
+	virtual QSize minimumSizeHint() const override {return QSize(0, 0);}
+};
 
 }
-// namespace ads
+ // namespace ads
 //-----------------------------------------------------------------------------
 #endif // DockAreaTitleBar_pH
