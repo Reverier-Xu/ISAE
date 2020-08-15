@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="/">
-    <file>assets/file.svg</file>
+    <file>assets/update.svg</file>
+    <file>assets/import.svg</file>
     <file>assets/alipay.png</file>
     <file>assets/apps.svg</file>
     <file>assets/casesensitive.svg</file>
@@ -9,9 +10,12 @@
     <file>assets/delete.svg</file>
     <file>assets/down.svg</file>
     <file>assets/fail.svg</file>
-    <file>assets/fire.svg</file>
+    <file>assets/file.svg</file>
+    <file>assets/fire-down.svg</file>
+    <file>assets/fire-up.svg</file>
     <file>assets/folder.svg</file>
     <file>assets/future.svg</file>
+    <file>assets/GoOEngine.svg</file>
     <file>assets/isae-logo.png</file>
     <file>assets/isae-splash.png</file>
     <file>assets/ISAE.svg</file>
@@ -33,31 +37,16 @@
     <file>assets/send.svg</file>
     <file>assets/settings.svg</file>
     <file>assets/shake.svg</file>
+    <file>assets/single.svg</file>
     <file>assets/stream.svg</file>
+    <file>assets/switch-off.svg</file>
+    <file>assets/switch-on.svg</file>
     <file>assets/team.svg</file>
     <file>assets/undo.svg</file>
     <file>assets/warning.svg</file>
     <file>assets/wechatpay.png</file>
     <file>assets/workspace.svg</file>
     <file>assets/workspace_is_empty.png</file>
-    <file>wallpapers/wallpaper.jpg</file>
-    <file>wallpapers/wallpaper2.jpg</file>
-    <file>stylesheets/RxFluent.qss</file>
-    <file>stylesheets/CodeEditor.xml</file>
-    <file>plugins/bilibili.svg</file>
-    <file>plugins/binary.svg</file>
-    <file>plugins/console.svg</file>
-    <file>plugins/dataflow.svg</file>
-    <file>plugins/debugger.svg</file>
-    <file>plugins/editor.svg</file>
-    <file>plugins/out3rn3t_expl0rer.svg</file>
-    <file>plugins/rxreader.svg</file>
-    <file>plugins/starter.svg</file>
-    <file>plugins/tools.svg</file>
-    <file>plugins/wiki.svg</file>
-    <file>fonts/mono.ttf</file>
-    <file>fonts/UI.otf</file>
-    <file>fonts/wqy-microhei.ttc</file>
     <file>assets/a-z/0.svg</file>
     <file>assets/a-z/1.svg</file>
     <file>assets/a-z/2.svg</file>
@@ -96,5 +85,24 @@
     <file>assets/a-z/x.svg</file>
     <file>assets/a-z/y.svg</file>
     <file>assets/a-z/z.svg</file>
+    <file>fonts/mono.ttf</file>
+    <file>fonts/UI.otf</file>
+    <file>fonts/wqy-microhei.ttc</file>
+    <file>plugins/bilibili.svg</file>
+    <file>plugins/binary.svg</file>
+    <file>plugins/console.svg</file>
+    <file>plugins/dataflow.svg</file>
+    <file>plugins/debugger.svg</file>
+    <file>plugins/editor.svg</file>
+    <file>plugins/folder.svg</file>
+    <file>plugins/out3rn3t_expl0rer.svg</file>
+    <file>plugins/rxreader.svg</file>
+    <file>plugins/starter.svg</file>
+    <file>plugins/tools.svg</file>
+    <file>plugins/wiki.svg</file>
+    <file>stylesheets/CodeEditor.xml</file>
+    <file>stylesheets/RxFluent.qss</file>
+    <file>wallpapers/wallpaper.jpg</file>
+    <file>wallpapers/wallpaper2.jpg</file>
   </qresource>
 </RCC>
