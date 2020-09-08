@@ -1,3 +1,2 @@
 add_subdirectory(filemanager)
 add_subdirectory(editor)
-add_subdirectory(console)

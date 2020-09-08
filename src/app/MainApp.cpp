@@ -12,7 +12,6 @@
 #include "isaeutils.h"
 #include "filemanager.h"
 #include "editor.h"
-#include "console.h"
 
 MainApp::MainApp(QWidget *parent, QFlags<Qt::WindowType> flags)
         : ISAEPluginWidget(parent, flags), ui(new Ui::MainApp) {
@@ -288,9 +287,6 @@ void MainApp::getPlugins() {
     // Editor
     auto *editor = new Editor(this);
     this->addPlugin(editor);
-
-    auto *term = new Console(this);
-    this->addPlugin(term);
 
 }
 

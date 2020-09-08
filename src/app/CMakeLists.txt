@@ -33,7 +33,6 @@ target_link_libraries(MainApp PRIVATE
         isaeutils
         FileManager
         Editor
-        Console
         )
 
 target_include_directories(MainApp PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../libs/advanceddockingsystem"
@@ -42,8 +41,7 @@ target_include_directories(MainApp PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../libs/a
         "${CMAKE_CURRENT_SOURCE_DIR}/../libs/rxwidgets"
         "${CMAKE_CURRENT_SOURCE_DIR}/../libs/utils"
         "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/filemanager"
-        "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/editor"
-        "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/console")
+        "${CMAKE_CURRENT_SOURCE_DIR}/../extensions/editor")
 
 set_target_properties(MainApp PROPERTIES
         AUTOMOC ON
