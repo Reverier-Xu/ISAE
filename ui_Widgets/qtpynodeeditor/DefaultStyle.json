@@ -19,10 +19,10 @@
     "ErrorColor": "red",
     "WarningColor": [128, 128, 0],
 
-    "PenWidth": 1.0,
-    "HoveredPenWidth": 1.5,
+    "PenWidth": 1,
+    "HoveredPenWidth": 2,
 
-    "ConnectionPointDiameter": 8.0,
+    "ConnectionPointDiameter": 8,
 
     "Opacity": 1.0
   },
@@ -33,9 +33,9 @@
     "SelectedHaloColor": "orange",
     "HoveredColor": "lightcyan",
 
-    "LineWidth": 3.0,
-    "ConstructionLineWidth": 2.0,
-    "PointDiameter": 10.0,
+    "LineWidth": 3,
+    "ConstructionLineWidth": 2,
+    "PointDiameter": 10,
 
     "UseDataDefinedColors": false
   }

@@ -29,7 +29,6 @@ import traceback
 import json
 from Crypto.Cipher import AES, DES, ARC4
 import requests
-from aip import AipOcr
 import gmpy2
 
 

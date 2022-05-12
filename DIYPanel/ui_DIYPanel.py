@@ -241,7 +241,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             r = i // 12
             w = i % 12
             animation.setEndValue(QtCore.QPoint(
-                panel.GrimBox[w], panel.GrimBox[r]))
+                int(panel.GrimBox[w]), int(panel.GrimBox[r])))
             animation.start()
         try:
             if panel.Buttons[end_one].isEnabled() is False:
@@ -259,7 +259,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         r = i // 12
         w = i % 12
         animation.setEndValue(QtCore.QPoint(
-            panel.GrimBox[w], panel.GrimBox[r]))
+            int(panel.GrimBox[w]), int(panel.GrimBox[r])))
         animation.start()
         if aim_btn != '':
             conn = sqlite3.connect('./Resources/DIY.sqlite')
@@ -290,7 +290,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
             r = i // 12
             w = i % 12
             animation.setEndValue(QtCore.QPoint(
-                self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
+                int(self.TabAreaPanel.GrimBox[w]), int(self.TabAreaPanel.GrimBox[r])))
             animation.start()
         try:
             if self.TabButtons[end_one].isEnabled() is False:
@@ -307,7 +307,7 @@ class ui_DIYPanel(QtWidgets.QWidget):
         r = i // 12
         w = i % 12
         animation.setEndValue(QtCore.QPoint(
-            self.TabAreaPanel.GrimBox[w], self.TabAreaPanel.GrimBox[r]))
+            int(self.TabAreaPanel.GrimBox[w]), int(self.TabAreaPanel.GrimBox[r])))
         animation.start()
 
 
@@ -347,7 +347,7 @@ class ResizablePanel(QtWidgets.QWidget):
         animation.setDuration(150)
         animation.setStartValue(self.TheAddButton.pos())
         animation.setEndValue(QtCore.QPoint(
-            self.GrimBox[i % 12], self.GrimBox[i // 12]))
+            int(self.GrimBox[i % 12]), int(self.GrimBox[i // 12])))
         animation.start()
         return button
 
